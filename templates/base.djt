@@ -1,0 +1,95 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		
+		<title>UCF Campus Map</title>
+		<meta name="description" content="Google will often use this as its description of your page/site. Make it good." />
+		
+		<meta charset="utf-8">
+		<meta name="google-site-verification" content="" />
+		<link rel="shortcut icon" href="{{MEDIA_URL}}images/favicon.ico">
+		<link rel="apple-touch-icon" href="{{MEDIA_URL}}images/apple-touch-icon.png">
+		
+		<!-- HTML5 compatibility -->
+		<!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+		<style> article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { display: block; } </style>
+		
+		<!-- YUI reset-fonts-base -->
+		<link href="{{MEDIA_URL}}-/yui-3.1.1/reset-fonts-base.css" rel="stylesheet" media="screen, projection">
+		
+		<!-- blueprint css (grid & print) -->
+		<link href="{{MEDIA_URL}}-/blueprint-0.9/src/grid.css" rel="stylesheet" media="screen, projection">
+		<link href="{{MEDIA_URL}}-/blueprint-0.9/print.css" rel="stylesheet" media="print">
+				
+		<!-- jquery UI -->
+		<link href="{{MEDIA_URL}}-/jquery-ui-1.8.4/css/ui-lightness/jquery-ui-1.8.4.custom.css" rel="stylesheet" />
+		
+		<!-- UCF Header and Stylesheets -->
+		<link href="http://universityheader.ucf.edu/bar/css/bar.css" rel="stylesheet">
+		<link href="http://www.ucf.edu/css/global.css" rel="stylesheet">
+		
+		<!-- UCF Web Communications -->		
+		<link href="{{MEDIA_URL}}style/style.css?v=1" rel="stylesheet">
+		{% block head %}{% endblock %}
+		
+	</head>
+	
+<!--[if lt IE 7 ]>  <body class="ie ie6"> <![endif]-->
+<!--[if IE 7 ]>     <body class="ie ie7"> <![endif]-->
+<!--[if IE 8 ]>     <body class="ie ie8"> <![endif]-->
+<!--[if IE 9 ]>     <body class="ie ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <body> <!--<![endif]-->
+	
+	
+	<header>
+		<h1>UCF Campus Map</h1>
+		<nav>
+			<ol>
+				<li><a href="">Nav Link 1</a></li>
+				<li><a href="">Nav Link 2</a></li>
+				<li class="last"><a href="">Nav Link 3</a></li>
+			</ol>
+		</nav>
+	</header>
+	
+	
+	<div id="wrap" {# class="showgrid" #}>
+	{% block wrap %}
+		Default Content
+	{% endblock %}
+	</div><!--/wrap -->
+	
+	<footer></footer>
+	
+	
+	<!-- Javascript at the bottom for fast page loading -->
+	<script type="text/javascript" src="http://universityheader.ucf.edu/bar/js/university-header.js"></script>
+	
+	<!-- Grab Google CDN's jQuery. fall back to local if necessary -->
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.4/jquery-ui.min.js"></script>
+	<script>!window.jQuery && document.write(
+		'<script src="{{MEDIA_URL}}-/jquery-ui-1.8.4/js/jquery-1.4.2.min.js"><\/script>' +
+		'<script src="{{MEDIA_URL}}-/jquery-ui-1.8.4/js/jquery-ui-1.8.4.custom.min.js"><\/script>')</script>
+	
+	<script src="{{MEDIA_URL}}js/script.js?v=1"></script>
+	{% block js %}{% endblock %}
+	
+	{% if not debug %}
+	{# analytics #}
+	{% comment %}
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-6464593-21']);
+		_gaq.push(['_trackPageview']);
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);   
+		})();
+	</script>
+	{% endcomment %}
+	{% endif %}
+	
+</body>
+</html>

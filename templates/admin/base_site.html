@@ -1,0 +1,16 @@
+{% extends "admin/base.html" %}
+{% load i18n %}
+
+{% block title %}{{ title }} | Campus Map Admin{% endblock %}
+
+{% block branding %}
+<h1 id="site-name">Campus Map</h1>
+<a href="{% url home %}">view map</a>
+{% endblock %}
+
+{% block nav-global %}{% endblock %}
+
+
+{% block extrahead %}
+<link rel="stylesheet" type="text/css" href="{{MEDIA_URL}}/style/admin.css" media="all">
+{% endblock %}

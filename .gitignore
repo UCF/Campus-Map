@@ -1,0 +1,9 @@
+# Local Settings
+settings_local.py
+
+# Application, OS, and backup files
+*~
+*.pyc
+._*
+.DS_Store
+Thumbs.db

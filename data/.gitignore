@@ -1,0 +1,4 @@
+*.db
+*.sql
+*.sqlite
+*.sqlite3
