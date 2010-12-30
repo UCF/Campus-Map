@@ -29,7 +29,7 @@ the `t_srs` option converts the points from meters to coordinates
 [helpful resource](http://gis.stackexchange.com/questions/98/how-can-i-convert-kml-to-esris-shapefile-format) 
 
 
-# `create_update_buildings.py`
+# Create / Update Buildings
 
 `old_map_dump.py` is a dump from the old webcom map, this file should not be updated/edited
 
