@@ -22,7 +22,6 @@ urlpatterns = patterns('',
 	#(r'^logout/$', 'django.contrib.auth.views.logout_then_login'),
 	
 	url(r'^$', direct_to_template, {'template':'base.djt'}, name='home'),
-	(r'^example/', include('example.urls')),
 	(r'^favicon\.ico$', 'django.views.generic.simple.redirect_to', {'url': '/media/images/favicon.ico'}),
 	(r'^robots.txt$', direct_to_template, {'template':'robots.txt', 'mimetype':'text/plain'}),
 )

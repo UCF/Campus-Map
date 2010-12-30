@@ -41,6 +41,7 @@ TEMPLATE_DIRS = (TEMPL_FOLDER,)
 sys.path.append(APP_FOLDER)
 sys.path.append(INC_FOLDER)
 INSTALLED_APPS = (
+	'campus',
 	'django.contrib.admin',
 	'django.contrib.auth',
 	'django.contrib.contenttypes',

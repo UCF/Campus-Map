@@ -1,7 +1,0 @@
-{% extends 'base.djt' %}
-
-
-{% block wrap %}
-	Media url: {{MEDIA_URL}}
-	Content: {{content}}
-{% endblock %}

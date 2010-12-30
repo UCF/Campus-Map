@@ -23,7 +23,7 @@ SECRET_KEY = '**************************************************'
 DATABASES = {
     'default': {
         'ENGINE'   : 'django.db.backends.sqlite3',   # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME'     : 'data/project.sqlite3.db',      # Or path to database file if using sqlite3, ex: data/sqlite3.db
+        'NAME'     : 'data/map.sqlite3.db',          # Or path to database file if using sqlite3, ex: data/sqlite3.db
         'USER'     : '',                             # Not used with sqlite3.
         'PASSWORD' : '',                             # Not used with sqlite3.
         'HOST'     : '',                             # Set to empty string for localhost. Not used with sqlite3.
