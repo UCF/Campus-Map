@@ -9,7 +9,7 @@ APP_FOLDER        = os.path.join(PROJECT_FOLDER, 'apps')
 INC_FOLDER        = os.path.join(PROJECT_FOLDER, 'third-party')
 TEMPL_FOLDER      = os.path.join(PROJECT_FOLDER, 'templates')
 ROOT_URLCONF      = os.path.basename(PROJECT_FOLDER) + '.urls'
-MEDIA_ROOT        = os.path.join(PROJECT_FOLDER, 'media')
+MEDIA_ROOT        = os.path.join(PROJECT_FOLDER, 'static')
 
 TIME_ZONE         = 'America/New_York'
 LANGUAGE_CODE     = 'en-us'
