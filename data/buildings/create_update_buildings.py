@@ -3,7 +3,7 @@ import sys, os, json
 os.environ['DJANGO_SETTINGS_MODULE'] = 'settings'
 sys.path.append(os.path.abspath('../../'))
 from apps.campus.models import Building
-
+from django.core.exceptions import ValidationError
 
 # must update sqlite db name since it is a relative path
 import settings
@@ -29,15 +29,29 @@ if "destroy" in sys.argv:
 
 	for b in buildings:
 		new = {}
-		new['number']            = b['pk']
+		new['number']            = b['pk'].lower()
 		new['name']              = b['fields']['name']
 		new['abbreviation']      = b['fields']['abbreviation']
 		new['image']             = b['fields']['image']
 		new['description']       = b['fields']['description']
-		new['googlemap_point']   = "{0}, {1}".format(b['fields']['coord_x'], b['fields']['coord_y'])
-		new['illustrated_point'] = "{0}, {1}".format(b['fields']['ill_coord_x'], b['fields']['ill_coord_y'])
-		new = Building.objects.create(**new)
-	
+		
+		if(		b['fields']['coord_x'] != None 
+			and b['fields']['coord_x'] != ""
+			and b['fields']['coord_y'] != None
+			and b['fields']['coord_y'] != ""
+		): new['googlemap_point']   = "{0}, {1}".format(b['fields']['coord_x'], b['fields']['coord_y'])
+		else: new['googlemap_point'] = ""
+		
+		if(		b['fields']['ill_coord_x'] != None 
+			and b['fields']['ill_coord_x'] != "" 
+			and b['fields']['ill_coord_y'] != None
+			and b['fields']['ill_coord_y'] != ""
+		): new['illustrated_point'] = "{0}, {1}".format(b['fields']['ill_coord_x'], b['fields']['ill_coord_y'])
+		else: new['illustrated_point'] = None
+		new = Building(**new)
+		new.clean()
+		new.save()
+
 	print
 	print
 
@@ -54,6 +68,9 @@ for b in buildings['features']:
 	if b['properties']['Num']==None or b['properties']['Num']=='0' or b['properties']['Num'].strip()=='':
 		print "Invalid number.  Skipped:\n  Items: {0}\n  Geometry: {1}\n\n".format(b['properties'], b['geometry']['coordinates'])
 		continue
+	else:
+		# fix building numbers to all be lowercase
+		b['properties']['Num'] = b['properties']['Num'].lower()
 	if b['properties']['Name']==None or b['properties']['Name'].strip()=='':
 		print "Invalid name.  Skipped:\n  Items: {0}\n  Geometry: {1}\n\n".format(b['properties'], b['geometry']['coordinates'])
 		continue
@@ -68,23 +85,8 @@ for b in buildings['features']:
 		print "No Geometry. Skipped:\n  Items: {0}\n\n".format(b['properties'])
 		continue
 	try:
-		building_nums.append(b['properties']['Num'])
+		building_nums.append( b['properties']['Num'] )
 		building = Building.objects.get( pk=b['properties']['Num'] )
-		old = building.json()
-		building = Building.objects.get( pk=b['properties']['Num'] )
-		building.name         = b['properties']['Name']
-		building.abbreviation = b['properties']['Abrev']
-		building.poly_coords  = b['geometry']['coordinates']
-		building.save()
-		building = Building.objects.get( pk=b['properties']['Num'] )
-		if old != building.json():
-			print "Updating {0}:".format(building)
-			for f in building.json().items():
-				if f[1] != old[f[0]]:
-					print "  From: [{0}] {1}".format(f[0], old[f[0]])
-					print "    To: [{0}] {1}".format(f[0], f[1])
-			print "\n"
-		
 	except Building.DoesNotExist:
 		new = {}
 		new['number']        = b['properties']['Num']
@@ -93,6 +95,27 @@ for b in buildings['features']:
 		new['poly_coords']   = b['geometry']['coordinates']
 		new = Building.objects.create(**new)
 		print "Created new building {0}, {1}\n\n".format(new.name, new.number)
+	else:
+		before_update = building.json()
+		building = Building.objects.get( pk=b['properties']['Num'] )
+		building.name         = b['properties']['Name']
+		building.abbreviation = b['properties']['Abrev']
+		building.poly_coords  = b['geometry']['coordinates']
+		try:
+			building.clean()
+			building.save()
+		except ValidationError as e:
+			print "Unable to save building: {0} Skipped:\n  Items: {1}\n  Geometry: {1}\n\n".format(e.messages[0], b['properties'], b['geometry']['coordinates'])
+			continue
+
+		building = Building.objects.get( pk=b['properties']['Num'] )
+		if before_update != building.json():
+			print "Updated {0}:".format(building)
+			for f in building.json().items():
+				if f[1] != before_update[f[0]]:
+					print "  From: [{0}] {1}".format(f[0], before_update[f[0]])
+					print "    To: [{0}] {1}".format(f[0], f[1])
+			print "\n"
 
 # Print orphaned buildings
 # building in the database but not in the authoritative source

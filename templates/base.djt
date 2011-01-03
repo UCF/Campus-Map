@@ -39,7 +39,7 @@
 <!--[if IE 8 ]>     <body class="ie ie8"> <![endif]-->
 <!--[if IE 9 ]>     <body class="ie ie9"> <![endif]-->
 <!--[if (gt IE 9)|!(IE)]><!--> <body> <!--<![endif]-->
-	
+{% block body %}
 	
 	<header>
 		<h1>UCF Campus Map</h1>
@@ -61,6 +61,7 @@
 	
 	<footer></footer>
 	
+{% endblock %}
 	
 	<!-- Javascript at the bottom for fast page loading -->
 	<script type="text/javascript" src="http://universityheader.ucf.edu/bar/js/university-header.js"></script>
