@@ -9,20 +9,33 @@ class Building(models.Model):
 	poly_coords       = models.TextField(blank=True, null=True)
 	illustrated_point = models.CharField(max_length=255, null=True, blank=True)
 	googlemap_point   = models.CharField(max_length=255, null=True, blank=True)
-	test		 = models.DecimalField("Map Latitude", max_digits=18, decimal_places=15, null=True, blank=True)
 	
 	def json(self):
 		"""Returns a json serializable object for this instance"""
+		import json
 		obj = self.__dict__
-		# super dumb:
-		# http://code.djangoproject.com/ticket/3324
+		
 		for f in obj.items():
+			
 			if f[0] == "_state":
 				# prevents object.save() function from being destroyed
 				# not sure how or why it does, but if object.json() is called
 				# first, object.save() will fail
 				obj.pop("_state")
 				continue
+			
+			# with the validator, hopefully this never causes an issue
+			if f[0] == "poly_coords":
+				if obj["poly_coords"] != None:
+					obj["poly_coords"] = json.loads(str(obj["poly_coords"]))
+				continue
+			if f[0] == "illustrated_point" or f[0] == "googlemap_point":
+				if obj[f[0]] != None:
+					obj[f[0]] = json.loads("[{0}]".format(obj[f[0]]))
+				continue
+			
+			# super dumb:
+			# http://code.djangoproject.com/ticket/3324
 			if not hasattr(f[1], '__type__') or f[1].__type__ != "unicode":
 				obj[f[0]] = f[1].__str__()
 		return obj

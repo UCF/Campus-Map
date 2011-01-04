@@ -1,26 +1,33 @@
 {% extends "base.djt"%}
 
 {% block body %}
+<div id="map-canvas"></div>
 {% endblock %}
 
 
 {% block js %}
+	<script src="http://maps.google.com/maps/api/js?sensor=false" type="text/javascript" ></script>
 	<script src=" {{MEDIA_URL}}js/map.js?date={{date}}" type="text/javascript"></script>
 	<script type="text/javascript">
-	    Campus_Map.media = " {{MEDIA_URL}}";
+	    Campus_Map.media = "{{MEDIA_URL}}";
 		{% comment %}
 		Campus_Map.search_url   = "{%url search %}";
 		Campus_Map.location_url = "{%url map_location pk=1%}";
 		{% endcomment %}
 		Campus_Map.buildings = {
 		{% for b in buildings %}
-			"{{b.pk}}":{ cords : {{b.googlemap_point}} }{% if not forloop.last %},{% endif %}{% endfor %}
+			"{{b.pk}}":{ "point":[{{b.googlemap_point}}] }{% if not forloop.last %},{% endif %}{% endfor %}
 		};
 		$(document).ready(function(){
 			Campus_Map.init();
 			Campus_Map.gmap();
 			Campus_Map.locationMarkers();
 			Campus_Map.search();
+			
+			// load some VML yo
+			//var buildingLayer = new google.maps.KmlLayer('buildings/.kml');
+			//buildingLayer.setMap(Campus_Map.map);
+			
 		});
 	</script>
 {% endblock %}
