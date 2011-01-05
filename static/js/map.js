@@ -27,6 +27,7 @@ var Campus_Map = {
 };
 
 Campus_Map.init = function(){
+	this.resize();
 	//Campus_Map.location_url = Campus_Map.location_url.replace('1', '');
 	//Campus_Map.search_url	  = Campus_Map.search_url.replace('foo', '');
 };
@@ -53,8 +54,6 @@ Campus_Map.gmap = function(){
 	  center: myLatlng,
 	  mapTypeId: google.maps.MapTypeId.ROADMAP
 	};
-
-	this.resize();
 	
 	this.map = new google.maps.Map(document.getElementById("map-canvas"), myOptions);
 	google.maps.event.addListener(this.map, "tilesloaded", function(){
@@ -85,23 +84,22 @@ Campus_Map.resize = function(){
 	
 	var resize = function(){
 		var height = document.documentElement.clientHeight;
-		
 		var blackbar = document.getElementById('UCFHBHeader');
-		var header   = $('#map header')[0];
-		var mapfoot  = document.getElementById('map-foot');
-		var footer   = $('footer')[0];
+		height -= blackbar ? blackbar.clientHeight : 0;
+		height -= $('#map header')[0].clientHeight;
+		height -= document.getElementById('map-foot').clientHeight;
+		height -= $('footer')[0].clientHeight;
+		height -= 2; // top + bottom border
+		
 		var canvas   = document.getElementById('map-canvas');
-		if(blackbar && header && mapfoot && footer){
-			height -= blackbar.clientHeight;
-			height -= header.clientHeight;
-			height -= mapfoot.clientHeight;
-			height -= footer.clientHeight;
-			height -= 2; // top + bottom border
-			canvas.style.height = height + "px";
-			Campus_Map.resize_tries = 0;
-		} else {
+		canvas.style.height = height + "px";
+		
+		// sometimes blackbar is slow to load
+		if(!blackbar){
 			if(++Campus_Map.resize_tries > 3) { return; }
 			window.setTimeout(resize, 50);
+		} else {
+			Campus_Map.resize_tries = 0;
 		}
 		
 		// iphone, hide url bar
