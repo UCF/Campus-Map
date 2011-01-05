@@ -10,6 +10,11 @@
 
 */
 
+// debug
+if(!window.console ) {
+	window.console = { log: function() { return; } };
+}
+
 /******************************************************************************\
  Global Namespace
  the only variable exposed to the window should be Campus_Map
@@ -58,25 +63,36 @@ Campus_Map.gmap = function(){
 
 /******************************************************************************\
  Resize
-	sets map to 100% height
+	sets map to 100% height and width
 	attaches function to window resize
 \******************************************************************************/
 Campus_Map.resize = function(){
 	
+	Campus_Map.resize_tries = 0;
+	
 	var resize = function(){
-		var height;
+		var height = document.documentElement.clientHeight;
 		
-		// window - header
-		if(jQuery.browser.name === 'msie'){
-			height = document.documentElement.clientHeight - document.getElementById('UCFHBHeader').scrollHeight;
+		var blackbar = document.getElementById('UCFHBHeader');
+		var header   = $('#map header')[0];
+		var mapfoot  = document.getElementById('map-foot');
+		var footer   = $('footer')[0];
+		var canvas   = document.getElementById('map-canvas');
+		if(blackbar && header && mapfoot && footer){
+			height -= blackbar.clientHeight;
+			height -= header.clientHeight;
+			height -= mapfoot.clientHeight;
+			height -= footer.clientHeight;
+			canvas.style.height = height + "px";
+			Campus_Map.resize_tries = 0;
 		} else {
-			height = document.documentElement.clientHeight - document.getElementById('UCFHBHeader').clientHeight;
+			if(++Campus_Map.resize_tries > 3) { return; }
+			window.setTimeout(resize, 50);
+			console.log(blackbar, header, mapfoot, footer);
 		}
 		
-		document.getElementById('map-canvas').style.height = height + "px";
-		
 		// iphone, hide url bar
-		if(Campus_Map.device === "webkit"){
+		if(jQuery.os.name === "iphone"){
 			height += 58;
 			document.getElementById('map-canvas').style.height = height + "px";
 			window.scrollTo(0, 1);
@@ -86,8 +102,9 @@ Campus_Map.resize = function(){
 	resize();
 	
 	// if not mobile, attach resize fn to window
-	if( jQuery.os.name === "iphone" || (jQuery.os.name === "linux" && jQuery.browser.name === "safari") ) { return; }
+	if( jQuery.os.name === "iphone" || (jQuery.os.name === "linux" && jQuery.browser.name === "safari") ) { return; }	
 	window.onresize = resize;
+	
 };
 
 

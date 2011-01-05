@@ -32,6 +32,12 @@ nav ol li a { font-family: Georgia, Times, serif; margin-right:5px; color:#333; 
 nav ol li a:hover {  color:#ed1c24;  text-decoration: underline; }
 
 
+#map { padding:0 17px; }
+#map header { margin:0; padding:0; overflow:hidden; display:block; width:100%; position:relative; }
+#map header h1 { border:0; padding:0; }
+#map-foot { padding:6px 0; text-align:right; display:block; overflow:hidden; }
+footer { background:black; margin:0; padding:8px; text-align:right; color:white; display:block; overflow:hidden; }
+
 
 /******************************************************************************\
     Google Map

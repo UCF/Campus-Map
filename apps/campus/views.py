@@ -1,13 +1,14 @@
 from django.shortcuts import render_to_response
 from django.http      import HttpResponse, HttpResponseNotFound
+from django.views.generic.simple import direct_to_template as render
 import settings
-from django.db.models import Q
 
 def home(request, format=None):
 	from campus.models import Building
 	from time import time
 	date = int(time())
 	buildings = Building.objects.exclude(googlemap_point__isnull=True)
+	# from django.db.models import Q
 	# buildings = Building.objects.exclude( Q(googlemap_point__isnull=True) | Q(googlemap_point__exact='') | Q(googlemap_point__contains='None') )
 	
 	if format == 'json':
@@ -24,8 +25,8 @@ def home(request, format=None):
 		# http://code.google.com/apis/kml/documentation/kml_tut.html#network_links
 		import json
 		
-		# flatten array and create a a list of coordinates separated by a space
 		def flat(l):
+			'''flatten array and create a a list of coordinates separated by a space'''
 			str = ""
 			for i in l:
 				if type(i[0]) == type([]):
@@ -44,4 +45,4 @@ def home(request, format=None):
 		response['Content-type'] = 'application/vnd.google-earth.kml+xml'
 		return response
 	
-	return render_to_response('campus/base.djt', { 'buildings':buildings, 'date':date, 'MEDIA_URL' : settings.MEDIA_URL })
+	return render(request, 'campus/base.djt', { 'buildings':buildings, 'date':date })
