@@ -33,7 +33,7 @@ nav ol li a:hover {  color:#ed1c24;  text-decoration: underline; }
 
 
 #map { padding:0 17px; }
-#map header { margin:0; padding:0; overflow:hidden; display:block; width:100%; position:relative; }
+#map header { margin:0; padding:0 0 3px 0; overflow:hidden; display:block; width:100%; position:relative; min-width:450px; }
 #map header h1 { border:0; padding:0; }
 #map-foot { padding:6px 0; text-align:right; display:block; overflow:hidden; }
 footer { background:black; margin:0; padding:8px; text-align:right; color:white; display:block; overflow:hidden; }
@@ -42,7 +42,12 @@ footer { background:black; margin:0; padding:8px; text-align:right; color:white;
 /******************************************************************************\
     Google Map
 \******************************************************************************/
-#map_canvas { height:500px; width:100%; }
+#map-canvas { }
+#canvas-wrap { border:1px solid #aaa; }
+#maptypes { margin-top:0 !important; border-width:0 1px 1px 1px; border-style:solid; border-color:#aaa; background:white; }
+#maptypes div { border:0 !important; }
+#maptypes > div + div { border-left:1px solid #aaa !important; }
+#maptypes > div { padding-top:4px; padding-bottom:4px; }
 
 
 /******************************************************************************\

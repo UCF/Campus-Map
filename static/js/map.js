@@ -44,8 +44,7 @@ Campus_Map.infoWindow = { close : function(){} };
 	- stores in Campus_Map.map
 \******************************************************************************/
 Campus_Map.gmap = function(){
-	var map;
-	
+
 	//center map at Student Union
 	var myLatlng = new google.maps.LatLng(28.601584019049238,-81.20095419304656);
 	
@@ -56,7 +55,21 @@ Campus_Map.gmap = function(){
 	};
 
 	this.resize();
+	
 	this.map = new google.maps.Map(document.getElementById("map-canvas"), myOptions);
+	google.maps.event.addListener(this.map, "tilesloaded", function(){
+		if(jQuery.browser.name == 'msie'){
+			$('.gmnoprint').filter(function(){
+				if(this.style && this.style.top == "0px" && this.style.right == "0px"){
+					$(this).find('div:first div:first').html('UCF');
+					$(this).attr('id','maptypes');
+				}
+			});
+		} else {
+			$('.gmnoprint:first div:first div:first').html('UCF');
+			$('.gmnoprint:first').attr('id','maptypes');
+		}	
+	});
 	
 };
 
@@ -83,12 +96,12 @@ Campus_Map.resize = function(){
 			height -= header.clientHeight;
 			height -= mapfoot.clientHeight;
 			height -= footer.clientHeight;
+			height -= 2; // top + bottom border
 			canvas.style.height = height + "px";
 			Campus_Map.resize_tries = 0;
 		} else {
 			if(++Campus_Map.resize_tries > 3) { return; }
 			window.setTimeout(resize, 50);
-			console.log(blackbar, header, mapfoot, footer);
 		}
 		
 		// iphone, hide url bar
