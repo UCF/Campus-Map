@@ -46,6 +46,17 @@ footer { background:black; margin:0; padding:8px; text-align:right; color:white;
 
 
 /******************************************************************************\
+    Weather
+\******************************************************************************/
+#weather { position:absolute; top:18px; right:0; width:185px; }
+#weather .navweatherimage { width:61px; overflow:hidden; display:block; height:34px; float:left; }
+#weather .discription { position:absolute; left:35px; top:12px; color:#666; }
+#weather .discription a { color:#666; }
+#weather .discription span { font-size:18px; font-weight:bold; color:black; }
+#weather .discription acronym { border:0; }
+
+
+/******************************************************************************\
     Alt Media
 \******************************************************************************/
 @media print {

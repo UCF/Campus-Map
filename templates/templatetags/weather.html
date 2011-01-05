@@ -1,0 +1,7 @@
+{% if weather %}
+	<div id="weather">
+	{{ weather|safe }}
+	</div>
+{% else %}
+	<!-- Weather Error: {{error}} -->
+{% endif %}
