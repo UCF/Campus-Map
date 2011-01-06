@@ -32,3 +32,10 @@ DATABASES = {
 }
 
 # INTERNAL_IPS = ['127.0.0.1',]
+
+# For Google to render KML layers, it needs to import the map data.  If working
+# locally or behind a firewall, this will not be possible.  If GOOGLE_CAN_SEE_ME
+# if false, will fall back to GOOGLE_LOOK_HERE (leave off trailing slash)
+GOOGLE_CAN_SEE_ME = True
+GOOGLE_LOOK_HERE  = "http://webcom.dev.smca.ucf.edu/map"
+

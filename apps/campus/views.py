@@ -64,4 +64,9 @@ def buildings(request, format=None):
 		response['Content-type'] = 'application/vnd.google-earth.kml+xml'
 		return response
 	
-	return home(request, buildings=buildings)
+	if settings.GOOGLE_CAN_SEE_ME:
+		kml = "%s.kml" % (request.build_absolute_uri(request.path) )
+	else:
+		kml = "%s%s.kml" % (settings.GOOGLE_LOOK_HERE, request.path)
+	
+	return home(request, buildings=buildings, kml=kml)
