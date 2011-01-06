@@ -6,7 +6,7 @@ html, body { background:white url(img/gradient.png) repeat-x; }
 a { color:#990000; }
 a:hover { cursor:pointer; color:#C30202; }
 
-h1 { font-family:georgia, serif; }
+h1 { font-family:"Adobe Caslon Pro", "Adobe Caslon", "Caslon Pro", caslon, georgia, serif; }
 h1 a {text-decoration:none; color:black; }
 h1 a:hover { color:black; }
 h2 { font-size:23px; color:#FF7700; font-family: "Arial Black", arial, sans-serif; margin:0 0 .5em; }
@@ -32,7 +32,7 @@ nav ol li a { font-family: Georgia, Times, serif; margin-right:5px; color:#333; 
 nav ol li a:hover {  color:#ed1c24;  text-decoration: underline; }
 
 
-#map { padding:0 17px; }
+#map { padding:0 17px; position:relative; min-width:416px; }
 #map header { margin:0; padding:0 0 3px 0; overflow:hidden; display:block; width:100%; position:relative; min-width:450px; }
 #map header h1 { border:0; padding:0; }
 #map-foot { padding:6px 0; text-align:right; display:block; overflow:hidden; }
@@ -42,7 +42,7 @@ footer { background:black; margin:0; padding:8px; text-align:right; color:white;
 /******************************************************************************\
     Google Map
 \******************************************************************************/
-#map-canvas { }
+#map-canvas { min-width:450px; }
 #canvas-wrap { border:1px solid #aaa; }
 #maptypes { margin-top:0 !important; border-width:0 1px 1px 1px; border-style:solid; border-color:#aaa; background:white; }
 #maptypes div { border:0 !important; }
