@@ -3,10 +3,29 @@ from django.http      import HttpResponse, HttpResponseNotFound
 from django.views.generic.simple import direct_to_template as render
 import settings
 
-def home(request, format=None):
-	from campus.models import Building
+def home(request, format=None, **kwargs):
 	from time import time
 	date = int(time())
+		
+	if format == 'json':
+		import json
+		from campus.templatetags.weather import weather
+		campus = { 
+			"name"    : "UCF Campus Map",
+			"weather" : weather(json_request=True) 
+		}
+		
+		response = HttpResponse(json.dumps(campus))
+		response['Content-type'] = 'application/json'
+		return response
+	
+	return render(request, 'campus/base.djt', { 'date':date, 'options': kwargs })
+
+
+
+def buildings(request, format=None):
+	
+	from campus.models import Building
 	buildings = Building.objects.exclude(googlemap_point__isnull=True)
 	# from django.db.models import Q
 	# buildings = Building.objects.exclude( Q(googlemap_point__isnull=True) | Q(googlemap_point__exact='') | Q(googlemap_point__contains='None') )
@@ -45,4 +64,4 @@ def home(request, format=None):
 		response['Content-type'] = 'application/vnd.google-earth.kml+xml'
 		return response
 	
-	return render(request, 'campus/base.djt', { 'buildings':buildings, 'date':date })
+	return home(request, buildings=buildings)

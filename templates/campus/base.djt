@@ -32,10 +32,12 @@
 			Campus_Map.gmap();
 			Campus_Map.locationMarkers();
 			Campus_Map.search();
-			
+		
+		{% if options.buildings %}
 			// load some VML yo
 			//var buildingLayer = new google.maps.KmlLayer('buildings/.kml');
 			//buildingLayer.setMap(Campus_Map.map);
+		{% endif %}
 			
 		});
 	</script>
