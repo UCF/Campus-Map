@@ -56,19 +56,31 @@ Campus_Map.gmap = function(){
 	};
 	
 	this.map = new google.maps.Map(document.getElementById("map-canvas"), myOptions);
-	google.maps.event.addListener(this.map, "tilesloaded", function(){
+	
+	var restyle = function(){
+		var controls = $('.gmnoprint');
+		
+		if(controls.length < 1){
+			//map glitch, not finished loading
+			window.setTimeout(restyle, 100);
+			return;
+		}
+		
 		if(jQuery.browser.name == 'msie'){
-			$('.gmnoprint').filter(function(){
+			// won't be first control, need to search for it
+			controls.filter(function(){
 				if(this.style && this.style.top == "0px" && this.style.right == "0px"){
-					$(this).find('div:first div:first').html('UCF');
 					$(this).attr('id','maptypes');
+					$(this).find('div:first div:first').html('UCF');
 				}
 			});
 		} else {
-			$('.gmnoprint:first div:first div:first').html('UCF');
-			$('.gmnoprint:first').attr('id','maptypes');
-		}	
-	});
+			controls.first().attr('id','maptypes');
+			controls.first().find('div:first div:first').html('UCF');
+		}
+	};
+	
+	google.maps.event.addListener(this.map, "tilesloaded", restyle);
 	
 };
 
