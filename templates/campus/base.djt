@@ -40,21 +40,22 @@
 			Campus_Map.gmap();
 			Campus_Map.locationMarkers();
 			Campus_Map.search();
-
-		Campus_Map.KML = false;
-		buildings = Campus_Map.menu.find('#buildings')[0];
-		$(buildings).click(function(){
-			if($(this).is(':checked')){
-				// load some kml yo
-				if(!Campus_Map.KML) {
-					Campus_Map.KML = new google.maps.KmlLayer(Campus_Map.urls.kml);
+			
+			// buildings functionality
+			Campus_Map.KML = false;
+			buildings = Campus_Map.menu.find('#buildings')[0];
+			$(buildings).click(function(){
+				if($(this).is(':checked')){
+					// load some kml yo
+					if(!Campus_Map.KML) {
+						Campus_Map.KML = new google.maps.KmlLayer(Campus_Map.urls.kml);
+					}
+					Campus_Map.KML.setMap(Campus_Map.map);
+				} else {
+					// remove building shapes
+					Campus_Map.KML.setMap(null);
 				}
-				Campus_Map.KML.setMap(Campus_Map.map);
-			} else {
-				// remove building shapes
-				Campus_Map.KML.setMap(null);
-			}
-		});
+			});
 		
 		{% if options.buildings %}
 			Campus_Map.KML = new google.maps.KmlLayer(Campus_Map.urls.kml);

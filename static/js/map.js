@@ -44,8 +44,10 @@ Campus_Map.infoWindow = { close : function(){} };
  Create Google Map
 	- stores in Campus_Map.map
 \******************************************************************************/
-Campus_Map.gmap = function(){
-
+Campus_Map.gmap = function(options){
+	
+	var settings = $.extend({ 'naked': false }, options);
+	
 	// arbitrary point, looks good on load
 	var myLatlng = new google.maps.LatLng(28.6018,-81.1995);
 	
@@ -68,8 +70,13 @@ Campus_Map.gmap = function(){
 		}
 	};
 	
+	if(settings.naked){
+		// TODO: extend settings to remove google attributes
+		// http://code.google.com/apis/maps/documentation/javascript/maptypes.html#StyledMaps
+	}
+	
 	this.map = new google.maps.Map(document.getElementById("map-canvas"), myOptions);
-	this.controls();	
+	this.controls( {'google': !settings.naked });
 };
 
 
@@ -78,7 +85,9 @@ Campus_Map.gmap = function(){
 	- styles native maptype controls
 	- adds custom controls
 \******************************************************************************/
-Campus_Map.controls = function(){
+Campus_Map.controls = function(options){
+	
+	var settings = $.extend({ 'google': true }, options);
 	
 	// maptypes style
 	var restyle = function(){
@@ -106,7 +115,7 @@ Campus_Map.controls = function(){
 	
 	google.maps.event.addListener(this.map, "tilesloaded", restyle);
 	
-	// search 
+	// search
 	var searchUI = document.createElement('div');
 	searchUI.id = "search";
 	searchUI.innerHTML = '<form method="get" id="search-form"><input '+
@@ -117,10 +126,33 @@ Campus_Map.controls = function(){
 	// menu
 	var menuUI = document.createElement('div');
 	menuUI.id = "menu";
-	menuUI.innerHTML = $('#menu-html').html();
-	$('#menu-html').html('');
-	this.map.controls[google.maps.ControlPosition.RIGHT_TOP].push(menuUI);
+	if(Campus_Map.menu_html === 'undefined' || !Campus_Map.menu_html){
+		Campus_Map.menu_html = $('#menu-html').html();
+		menuUI.innerHTML = Campus_Map.menu_html;
+		$('#menu-html').html('');
+	} else {
+		menuUI.innerHTML = Campus_Map.menu_html;
+	}
 	Campus_Map.menu = $(menuUI);
+	this.map.controls[google.maps.ControlPosition.RIGHT_TOP].push(menuUI);
+	
+	
+	// buildings checkbox handeled in the template
+	
+	// google checkbox
+	var gcb = Campus_Map.menu.find('#google-element')[0];
+	$(gcb).attr('checked', settings.google);
+	$(gcb).click(function(){
+		if($(this).is(':checked')){
+			// reload campus map as default
+			Campus_Map.gmap()
+		} else {
+			// unstyle the whole damn thing
+			Campus_Map.gmap({'naked':true})
+		}
+	});
+	
+	
 	
 }
 
