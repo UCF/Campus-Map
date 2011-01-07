@@ -1,6 +1,8 @@
 from django.shortcuts import render_to_response
 from django.http      import HttpResponse, HttpResponseNotFound
 from django.views.generic.simple import direct_to_template as render
+from django.core.urlresolvers import reverse
+
 import settings
 
 def home(request, format=None, **kwargs):
@@ -19,7 +21,12 @@ def home(request, format=None, **kwargs):
 		response['Content-type'] = 'application/json'
 		return response
 	
-	return render(request, 'campus/base.djt', { 'date':date, 'options': kwargs })
+	if settings.GOOGLE_CAN_SEE_ME:
+		kml = "%s.kml" % (request.build_absolute_uri(reverse('buildings')))
+	else:
+		kml = "%s%s.kml" % (settings.GOOGLE_LOOK_HERE, reverse('buildings'))
+	
+	return render(request, 'campus/base.djt', { 'date':date, 'options': kwargs, 'kml':kml })
 
 
 
@@ -64,9 +71,4 @@ def buildings(request, format=None):
 		response['Content-type'] = 'application/vnd.google-earth.kml+xml'
 		return response
 	
-	if settings.GOOGLE_CAN_SEE_ME:
-		kml = "%s.kml" % (request.build_absolute_uri(request.path) )
-	else:
-		kml = "%s%s.kml" % (settings.GOOGLE_LOOK_HERE, request.path)
-	
-	return home(request, buildings=buildings, kml=kml)
+	return home(request, buildings=buildings)

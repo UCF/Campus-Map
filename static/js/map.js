@@ -69,8 +69,7 @@ Campus_Map.gmap = function(){
 	};
 	
 	this.map = new google.maps.Map(document.getElementById("map-canvas"), myOptions);
-	this.controls();
-	
+	this.controls();	
 };
 
 
@@ -121,8 +120,8 @@ Campus_Map.controls = function(){
 	menuUI.innerHTML = $('#menu-html').html();
 	$('#menu-html').html('');
 	this.map.controls[google.maps.ControlPosition.RIGHT_TOP].push(menuUI);
+	Campus_Map.menu = $(menuUI);
 	
-
 }
 
 
@@ -385,7 +384,7 @@ Campus_Map.search = function(){
 		
 		$("#search ul").html('<li>Searching...</li>');
 		Campus_Map.ajax = $.ajax({
-			url: Campus_Map.search_url,
+			url: Campus_Map.urls.search,
 			data: {q:q},
 			success: function(html){
 				//show results

@@ -24,25 +24,44 @@
 	<script src="{{MEDIA_URL}}js/map.js?date={{date}}" type="text/javascript"></script>
 	<script type="text/javascript">
 	    Campus_Map.media = "{{MEDIA_URL}}";
-		{% comment %}
-		Campus_Map.search_url   = "{%url search %}";
-		Campus_Map.location_url = "{%url map_location pk=1%}";
-		{% endcomment %}
+		Campus_Map.urls = {
+			"search"   : "{# url search #}",
+			"location" : "{# url map_location pk=1 #}",
+			"kml"      : "{{kml}}"
+		}
+		
 		Campus_Map.buildings = {
 		{% for b in buildings %}
 			"{{b.pk}}":{ "point":[{{b.googlemap_point}}] }{% if not forloop.last %},{% endif %}{% endfor %}
 		};
+		
 		$(document).ready(function(){
 			Campus_Map.init();
 			Campus_Map.gmap();
 			Campus_Map.locationMarkers();
 			Campus_Map.search();
+
+		Campus_Map.KML = false;
+		buildings = Campus_Map.menu.find('#buildings')[0];
+		$(buildings).click(function(){
+			if($(this).is(':checked')){
+				// load some kml yo
+				if(!Campus_Map.KML) {
+					Campus_Map.KML = new google.maps.KmlLayer(Campus_Map.urls.kml);
+				}
+				Campus_Map.KML.setMap(Campus_Map.map);
+			} else {
+				// remove building shapes
+				Campus_Map.KML.setMap(null);
+			}
+		});
 		
 		{% if options.buildings %}
-			var buildingLayer = new google.maps.KmlLayer('{{ options.kml }}');
-			buildingLayer.setMap(Campus_Map.map);
+			Campus_Map.KML = new google.maps.KmlLayer(Campus_Map.urls.kml);
+			Campus_Map.KML.setMap(Campus_Map.map);
+			$(buildings).attr('checked', true);
 		{% endif %}
-			
+		
 		});
 	</script>
 {% endblock %}
