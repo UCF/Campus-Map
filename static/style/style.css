@@ -49,6 +49,8 @@ footer { background:black; margin:0; padding:8px; text-align:right; color:white;
 #maptypes > div + div { border-left:1px solid #aaa !important; }
 #maptypes > div { padding-top:4px; padding-bottom:4px; }
 
+#search { padding:10px; background:black; color:white; text-transform:uppercase; font-size:11px;  }
+
 
 /******************************************************************************\
     Weather
@@ -58,7 +60,7 @@ footer { background:black; margin:0; padding:8px; text-align:right; color:white;
 #weather .discription { position:absolute; left:35px; top:12px; color:#666; }
 #weather .discription a { color:#666; }
 #weather .discription span { font-size:18px; font-weight:bold; color:black; }
-#weather .discription acronym { border:0; }
+#weather .discription abbr { border:0; }
 
 
 /******************************************************************************\

@@ -56,7 +56,19 @@ Campus_Map.gmap = function(){
 	};
 	
 	this.map = new google.maps.Map(document.getElementById("map-canvas"), myOptions);
+	this.controls();
 	
+};
+
+
+/******************************************************************************\
+ Controls
+	- styles native maptype controls
+	- adds custom controls
+\******************************************************************************/
+Campus_Map.controls = function(){
+	
+	// maptypes style
 	var restyle = function(){
 		var controls = $('.gmnoprint');
 		
@@ -82,7 +94,14 @@ Campus_Map.gmap = function(){
 	
 	google.maps.event.addListener(this.map, "tilesloaded", restyle);
 	
-};
+	// search 
+	var searchUI = document.createElement('div');
+	searchUI.id = "search";
+	searchUI.innerHTML = 'Search...';
+	
+	this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(searchUI);
+
+}
 
 
 /******************************************************************************\

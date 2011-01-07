@@ -19,16 +19,22 @@ def weather(json_request = False):
 		c = f.read()
 		f.close()
 		
+		# OCD about HTML validation (acronym obsolete)
+		c = c.replace("acronym", "abbr")
+		c = re.sub(r'&(site|promo|cm)', r'&amp;\1', c)
+		
 		# was: text description + weather channel icon linking to extended forecast
 		# now: description linking to extended forecast
-		fix = re.search('</acronym></span>(.+)&nbsp;&nbsp;', c)
+		fix = re.search(r'</abbr></span>(.+)&nbsp;&nbsp;', c)
 		if fix is not None:
-			c = re.sub('</acronym></span>(.+)&nbsp;&nbsp;', '</acronym></span>&nbsp;&nbsp;', c)
+			c = re.sub(r'</abbr></span>(.+)&nbsp;&nbsp;', '</abbr></span>&nbsp;&nbsp;', c)
 			description = fix.group(1)
 			c = re.sub('<span class="efc"></span>', description, c)
+		else:
+			return { 'weather': None, 'error':'Error parsing weather content' }
 		
 		# fill json request
-		find = re.search('<span>(\d+)<acronym title="Degree">', c)
+		find = re.search(r'<span>(\d+)<abbr title="Degree">', c)
 		if find is None:
 			temp = "Error"
 		else:
