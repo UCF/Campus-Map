@@ -6,7 +6,7 @@ html, body { background:white url(img/gradient.png) repeat-x; }
 a { color:#990000; }
 a:hover { cursor:pointer; color:#C30202; }
 
-h1 { font-family:"Adobe Caslon Pro", "Adobe Caslon", "Caslon Pro", caslon, georgia, serif; }
+h1 { font-family:"Adobe Caslon Pro", "Adobe Caslon", "Caslon Pro", caslon, georgia, serif;}
 h1 a {text-decoration:none; color:black; }
 h1 a:hover { color:black; }
 h2 { font-size:23px; color:#FF7700; font-family: "Arial Black", arial, sans-serif; margin:0 0 .5em; }
@@ -21,6 +21,7 @@ h4 { font-family: "Trebuchet MS", sans-serif; }
 #wrap { width:950px; padding:18px 0 32px; margin:0 auto; clear:both; }
 
 .col { padding-left:1em; }
+.clear { clear:both; height:1px; font-size:1px; overflow:hidden; }
 
 header { width:950px; margin:0 auto; padding-bottom:1em; }
 header h1 { font-weight:normal; border-bottom:1px dotted black; padding-bottom:10px; margin:20px 0 10px; font-size:28px; }
@@ -31,11 +32,11 @@ nav ol li.last:after{ content:""; margin-left:0; }
 nav ol li a { font-family: Georgia, Times, serif; margin-right:5px; color:#333; font-size:16px; text-decoration: none; font-weight: normal; }
 nav ol li a:hover {  color:#ed1c24;  text-decoration: underline; }
 
-
-#map { padding:0 17px; position:relative; min-width:656px; }
-#map header { margin:0; padding:0 0 3px 0; overflow:hidden; display:block; width:100%; position:relative; min-width:690px; }
-#map header h1 { border:0; padding:0; }
+#map { padding:0 17px; position:relative; min-width:556px; }
+#map header { margin:0; padding:0 0 3px 0; overflow:hidden; display:block; width:100%; position:relative; min-width:59px; }
+#map header h1 { border:0; padding:0 0 0 4px; }
 #map-foot { padding:6px 0; text-align:right; display:block; overflow:hidden; }
+.ie #map * { zoom:1; }
 footer { background:black; margin:0; padding:8px; text-align:right; color:white; display:block; overflow:hidden; }
 
 
@@ -48,34 +49,32 @@ footer { background:black; margin:0; padding:8px; text-align:right; color:white;
 #maptypes div { border:0 !important; }
 #maptypes > div + div { border-left:1px solid #aaa !important; }
 #maptypes > div { padding-top:4px; padding-bottom:4px; }
-
-#search { 
-	-moz-border-radius-bottomleft: 6px; -webkit-border-bottom-left-radius: 6px; border-bottom-left-radius:6px;
+#search {
+	box-shadow:rgba(0, 0, 0, 0.5) 0px 0px 8px; -webkit-box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 8px; 
+	-moz-box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 8px; 
 	-moz-border-radius-bottomright: 6px; -webkit-border-bottom-right-radius: 6px; border-bottom-right-radius:6px;
-	padding:6px; background:black; color:white; text-transform:uppercase; font-size:11px; position:relative; overflow:hidden;  }
+	padding:6px; background:black; color:white; text-transform:uppercase; font-size:11px; position:relative;  }
 #search input { 
-	outline:0;
-	float:left; width:180px; border:0; padding:3px; margin:0;
-	-webkit-padding-left:0;
-	color: initial;
-	display: inline-block;
-	font: -webkit-small-control;
-	letter-spacing: normal;
-	line-height: normal;
-	margin: 0em;
-	text-align: -webkit-auto;
-	text-indent: 0px;
-	text-shadow: none;
-	text-transform: none;
-	word-spacing: normal;
-	
-	-webkit-appearance: textfield;
-	-webkit-rtl-ordering: logical;
-	-webkit-user-select: text;
-	
-	 }
+	outline:0; float:left; width:180px; border:0; padding:3px; margin:0;
+	-webkit-appearance: textfield; -webkit-rtl-ordering: logical; -webkit-user-select: text; }
 #search a { float:left; display:block; color:white; height:14px; padding:3px 20px 0 6px; background:url('img/arrow.png') no-repeat right 1px; }
 
+#menu { 
+	box-shadow:rgba(0, 0, 0, 0.2) 0px 0px 3px; -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 3px; -moz-box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 3px; 
+	width:200px; margin:-4px 6px 0 0; border:1px solid #aaa; background: rgb(255, 255, 255); background: rgba(255, 255, 255, 0.6); }
+#menu .body { padding:8px 8px 10px 8px; }
+#menu h2 { margin:0; padding:6px; 
+	background: #aaa; background:rgba(170, 170, 170, .5); 
+	font-size:13px; text-transform:uppercase; font-weight:normal; color:black; text-align:center; font-family:helvetica; }
+#menu h3 { margin:0; padding:4px 0; font-weight:normal; font-family:helvetica; }
+#menu .item { background: rgba(255, 255, 255, .7); 
+	padding:5px; margin:0 0 6px 0; display:block;
+	border:1px solid #aaa; border:1px solid rgba(170, 170, 170, .5); 
+	border-radius:4px; -moz-border-radius: 4px; -webkit-border-radius: 4px; }
+#menu a.item { color:black; background-image:url('img/arrow-grey.png'); background-repeat:no-repeat; background-position:right center; cursor:pointer; }
+#menu a.item:hover { border:1px solid #aaa; }
+#menu label { display:block; padding:0 0 4px 8px; float:left; }
+.ie6 #search { width:255px;  }
 
 /******************************************************************************\
     Weather

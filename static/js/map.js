@@ -46,13 +46,26 @@ Campus_Map.infoWindow = { close : function(){} };
 \******************************************************************************/
 Campus_Map.gmap = function(){
 
-	//center map at Student Union
-	var myLatlng = new google.maps.LatLng(28.601584019049238,-81.20095419304656);
+	// arbitrary point, looks good on load
+	var myLatlng = new google.maps.LatLng(28.6018,-81.1995);
 	
 	var myOptions = {
-	  zoom: 16,
-	  center: myLatlng,
-	  mapTypeId: google.maps.MapTypeId.ROADMAP
+		zoom: 16,
+		center: myLatlng,
+		mapTypeId: google.maps.MapTypeId.ROADMAP,
+		panControl: true,
+		panControlOptions: {
+			position: google.maps.ControlPosition.LEFT_TOP
+		},
+		zoomControl: true,
+		zoomControlOptions: {
+			style: google.maps.ZoomControlStyle.LARGE,
+			position: google.maps.ControlPosition.LEFT_TOP
+		},
+		streetViewControl: true,
+		streetViewControlOptions: {
+			position: google.maps.ControlPosition.LEFT_TOP
+		}
 	};
 	
 	this.map = new google.maps.Map(document.getElementById("map-canvas"), myOptions);
@@ -97,10 +110,18 @@ Campus_Map.controls = function(){
 	// search 
 	var searchUI = document.createElement('div');
 	searchUI.id = "search";
-	searchUI.innerHTML = '<form method="get" id="search-form"><input type="text" name="q"><a id="search-submit" onclick="$(\'#search-form\').submit()">search</a></form>';
-	
-	
+	searchUI.innerHTML = '<form method="get" id="search-form"><input '+
+		'type="text" name="q"><a id="search-submit" onclick'+
+		'="$(\'#search-form\').submit()">search</a></form>';
 	this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(searchUI);
+	
+	// menu
+	var menuUI = document.createElement('div');
+	menuUI.id = "menu";
+	menuUI.innerHTML = $('#menu-html').html();
+	$('#menu-html').html('');
+	this.map.controls[google.maps.ControlPosition.RIGHT_TOP].push(menuUI);
+	
 
 }
 
@@ -113,6 +134,9 @@ Campus_Map.controls = function(){
 Campus_Map.resize = function(){
 	
 	Campus_Map.resize_tries = 0;
+	
+	var browser = $.browser.name + "" + $.browser.versionX
+	if(browser === "firefox2" || browser === "msie6") { return; }
 	
 	var resize = function(){
 		var height = document.documentElement.clientHeight;
@@ -145,7 +169,8 @@ Campus_Map.resize = function(){
 	resize();
 	
 	// if not mobile, attach resize fn to window
-	if( jQuery.os.name === "iphone" || (jQuery.os.name === "linux" && jQuery.browser.name === "safari") ) { return; }	
+	if( jQuery.os.name === "iphone" || (
+		jQuery.os.name === "linux" && jQuery.browser.name === "safari") ) { return; }	
 	window.onresize = resize;
 	
 };

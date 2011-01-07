@@ -7,10 +7,15 @@
 		<h1>UCF Campus Map</h1>
 		{% weather %}
 	</header>
-	<div id="canvas-wrap"><div id="map-canvas" style="width:100%; height:450px"></div></div>
+	<div id="canvas-wrap"><div id="map-canvas" style="width:100%; height:550px"></div></div>
 	<div id="map-foot">PDF Map, Directions</div>
 </div>
 <footer>Regional Campuses | College of Medicine | Downtown | Rosen</footer>
+
+<div id="menu-html" style="display:none;">
+	{% include 'campus/menu.djt' %}
+</div>
+
 {% endblock %}
 
 
