@@ -1,0 +1,19 @@
+<h2>Menu</h2>
+<div class="body">
+	<div class="item">
+		Location: Sup yo?
+	</div>
+
+	<div class="item">
+		Locaition information!!<br><br><br><br><br><br><br><br><br>
+	</div>
+
+	<a class="item">Building list</a>
+
+	<a class="item">Dept/Organizations</a>
+		
+	<h3>Map view options:</h3>
+	<label><input type="checkbox" id="buildings"> Buildings</label>
+	<label><input type="checkbox" checked="checked" id="google-element"> Google</label>
+	<div class="clear"></div>
+</div>
