@@ -19,7 +19,7 @@ def weather(json_request = False):
 		c = f.read()
 		f.close()
 		
-		# OCD about HTML validation (acronym obsolete)
+		# OCD about HTML validation
 		c = c.replace("acronym", "abbr")
 		c = re.sub(r'&(site|promo|cm)', r'&amp;\1', c)
 		
