@@ -25,7 +25,7 @@
 	<script type="text/javascript">
 	    Campus_Map.media = "{{MEDIA_URL}}";
 		Campus_Map.urls = {
-			"search"   : "{# url search #}",
+			"search"   : "{% url search %}",
 			"location" : "{# url map_location pk=1 #}",
 			"kml"      : "{{kml}}"
 		}

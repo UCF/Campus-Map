@@ -1,0 +1,22 @@
+{% extends "base.djt"%}
+
+{% block wrap %}
+	
+	<div style="padding:2em;">
+		
+		<form method="get" action="{% url search %}">
+			<input type="text" name="q" value="{{query}}">
+			<input type="submit">
+		</form>
+		
+		<p>Results:</p>
+	
+		{% for r in results %}
+			<div>{{r}}</div>
+		{% endfor %}
+	
+	
+	</div>
+	
+	
+{% endblock %}

@@ -118,7 +118,8 @@ Campus_Map.controls = function(options){
 	// search
 	var searchUI = document.createElement('div');
 	searchUI.id = "search";
-	searchUI.innerHTML = '<form method="get" id="search-form"><input '+
+	searchUI.innerHTML = '<form method="get" action="' + 
+		Campus_Map.urls.search + '" id="search-form"><input '+
 		'type="text" name="q"><a id="search-submit" onclick'+
 		'="$(\'#search-form\').submit()">search</a></form>';
 	this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(searchUI);

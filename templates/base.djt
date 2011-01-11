@@ -67,9 +67,7 @@
 	{% endblock %}
 	</div><!--/wrap -->
 	
-	<footer> 
-		Some Stuff
-	</footer>
+	<footer>footer</footer>
 	
 {% endblock %}{# /body #}
 	
