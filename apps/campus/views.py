@@ -70,8 +70,43 @@ def buildings(request, format=None):
 	
 	return home(request, buildings=buildings)
 
+def location(request, loc, format=None):
+	'''
+	Will one day be a wrapper for all data models, searching over all locations
+	and organizations, maybe even people too
+	'''
+	from campus.models import Building
+	try:
+		location = Building.objects.get(pk=loc)
+	except Building.DoesNotExist:
+		location = None
+	
+	base_url = request.build_absolute_uri('/')[:-1]
+	context  = { 'location':location, 'base_url':base_url }
+	
+	if format == 'bubble':
+		return render(request, 'api/google_info_win.djt', context)
+	
+	if format == 'json':
+		from django.template import Context
+		from django.template.loader import get_template
+		t = get_template('api/google_info_win.djt')
+		info = t.render(Context({ 'location':location, 'base_url':base_url, 'MEDIA_URL':settings.MEDIA_URL }))
+		location = location.json()
+		location['info'] = info
+		location['marker'] = base_url + settings.MEDIA_URL + 'images/markers/yellow.png'
+		# del(location['poly_coords'])
+		response = HttpResponse(json.dumps(location))
+		response['Content-type'] = 'application/json'
+		return response
+	
+	return home(request, location=location)
+	
 
 def search(request, format=None):
+	'''
+	one day will search over all data available
+	'''
 	from campus.models import Building
 	query_string = ''
 	found_entries = None
@@ -90,7 +125,7 @@ def search(request, format=None):
 		return response
 	
 	context = {'search':True, 'query':query_string, 'results':found_entries }
-	return render_to_response('campus/search.djt', context)
+	return render(request, 'campus/search.djt', context)
 	
 
 
