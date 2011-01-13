@@ -20,9 +20,12 @@ if(!window.console ) {
  the only variable exposed to the window should be Campus_Map
 \******************************************************************************/
 var Campus_Map = {
-	options : {
+	settings : {
 		drawn_min_zoom : 12,
-		drawn_max_zoom : 17
+		drawn_max_zoom : 17,
+		buildings      : false,  // UCF's building data, remove google's
+		locations      : false,  // Yellow markers for each location
+		traffic        : false
 	}
 };
 
@@ -44,9 +47,7 @@ Campus_Map.infoWindow = { close : function(){} };
  Create Google Map
 	- stores in Campus_Map.map
 \******************************************************************************/
-Campus_Map.gmap = function(options){
-	
-	var settings = $.extend({ 'naked': false }, options);
+Campus_Map.gmap = function(){
 	
 	// arbitrary point, looks good on load
 	var myLatlng = new google.maps.LatLng(28.6018,-81.1995);
@@ -70,13 +71,13 @@ Campus_Map.gmap = function(options){
 		}
 	};
 	
-	if(settings.naked){
-		// TODO: extend settings to remove google attributes
-		// http://code.google.com/apis/maps/documentation/javascript/maptypes.html#StyledMaps
-	}
-	
+	// create map
 	this.map = new google.maps.Map(document.getElementById("map-canvas"), myOptions);
-	this.controls( {'google': !settings.naked });
+	
+	// add layers & controls
+	this.layers.update();
+	this.controls();
+	
 };
 
 
@@ -85,9 +86,9 @@ Campus_Map.gmap = function(options){
 	- styles native maptype controls
 	- adds custom controls
 \******************************************************************************/
-Campus_Map.controls = function(options){
+Campus_Map.controls = function(){
 	
-	var settings = $.extend({ 'google': true }, options);
+	var settings = $.extend({ 'google': true }, this.options);
 	
 	// maptypes style
 	var restyle = function(){
@@ -137,25 +138,84 @@ Campus_Map.controls = function(options){
 	Campus_Map.menu = $(menuUI);
 	this.map.controls[google.maps.ControlPosition.RIGHT_TOP].push(menuUI);
 	
-	
-	// buildings checkbox handeled in the template
-	
-	// google checkbox
-	var gcb = Campus_Map.menu.find('#google-element')[0];
-	$(gcb).attr('checked', settings.google);
-	$(gcb).click(function(){
-		if($(this).is(':checked')){
-			// reload campus map as default
-			Campus_Map.gmap()
-		} else {
-			// unstyle the whole damn thing
-			Campus_Map.gmap({'naked':true})
-		}
+	// buildings checkbox
+	var bcb = Campus_Map.menu.find('#buildings')[0];
+	$(bcb).attr('checked', Campus_Map.settings.buildings);
+	$(bcb).click(function(){
+		Campus_Map.settings.buildings = $(this).is(':checked');
+		Campus_Map.layers.buildings.update();
 	});
 	
-	
+	// traffic checkbox
+	var tcb = Campus_Map.menu.find('#traffic')[0];
+	$(tcb).attr('checked', Campus_Map.settings.traffic);
+	$(tcb).click(function(){
+		Campus_Map.settings.traffic = $(this).is(':checked');
+		Campus_Map.layers.traffic.update();
+	});
 	
 }
+
+/******************************************************************************\
+ Map Layers
+\******************************************************************************/
+Campus_Map.layers = {
+	update : function(){
+		this.buildings.update();
+		this.traffic.update();
+	},
+	
+	/* Google's traffic layer */
+	traffic : {
+		loaded : false,
+		layer  : { setMap:function(){} },
+		update : function() {
+			if(!this.loaded){
+				this.layer  = new google.maps.TrafficLayer();
+				this.loaded = true;
+			}
+			var on = Campus_Map.settings.traffic;
+			if(on){
+				this.layer.setMap(Campus_Map.map);
+			} else {
+				this.layer.setMap(null);
+			}
+		}
+	},
+	
+	/* Display building shapes based on UCF data */
+	buildings : {
+		loaded : false,
+		layer  : { setMap:function(){} },
+		load   : function(){
+			if(!this.loaded){
+				// send KML to google
+				// http://code.google.com/apis/maps/documentation/javascript/overlays.html#KMLLayers
+				this.layer = new google.maps.KmlLayer(Campus_Map.urls.kml, { preserveViewport : true });
+				
+				// strip map of google elements
+				// http://code.google.com/apis/maps/documentation/javascript/maptypes.html#StyledMaps
+				// http://gmaps-samples-v3.googlecode.com/svn/trunk/styledmaps/wizard/index.html
+				var styles = [ { featureType: "landscape.man_made", elementType: "geometry", stylers: [ { visibility: "off" } ] },{ featureType: "poi.sports_complex", elementType: "geometry", stylers: [ { visibility: "off" } ] } ];
+				var naked = new google.maps.StyledMapType( styles, { name : "Naked" } );
+				Campus_Map.map.mapTypes.set('naked', naked);
+				
+				this.loaded = true;
+			}
+			Campus_Map.map.setMapTypeId('naked');
+			this.layer.setMap(Campus_Map.map);
+		},
+		unload : function() {
+			Campus_Map.map.setMapTypeId(google.maps.MapTypeId.ROADMAP);
+			this.layer.setMap(null);
+		},
+		update : function(){
+			var on = Campus_Map.settings.buildings;
+			if(on) this.load(); else this.unload();
+		}
+	}
+	
+};
 
 
 /******************************************************************************\
