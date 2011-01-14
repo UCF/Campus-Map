@@ -7,3 +7,4 @@ settings_local.py
 ._*
 .DS_Store
 Thumbs.db
+.svn
