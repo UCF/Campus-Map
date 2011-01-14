@@ -9,13 +9,21 @@
 			<input type="submit">
 		</form>
 		
-		<p>Results:</p>
+		
+		<div style="padding:2em 0;">
+			<h2 style="font-size:16px;">Results:</h2>
+		
+			{% if results %}
+			<ul>
+				{% for loc in results %}
+				<li><a href="{%url location loc.pk %}">{{loc}} {% if loc.abbreviation %}({{loc.abbreviation}}){%endif%}</a></li>
+				{% endfor %}
+			</ul>
+			{% else %}
+			<p><strong>No Results</strong></p>
+			{% endif %}
 	
-		{% for r in results %}
-			<div>{{r}}</div>
-		{% endfor %}
-	
-	
+		</div>
 	</div>
 	
 	
