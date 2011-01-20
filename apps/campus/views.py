@@ -119,11 +119,16 @@ def location(request, loc, format=None):
 		from django.template import Context
 		from django.template.loader import get_template
 		t = get_template('api/google_info_win.djt')
-		info = t.render(Context({ 'location':location, 'base_url':base_url, 'MEDIA_URL':settings.MEDIA_URL }))
-		location = location.json()
-		location['info'] = info
-		location['marker'] = base_url + settings.MEDIA_URL + 'images/markers/yellow.png'
-		# del(location['poly_coords'])
+		c = Context({ 
+			'location'  : location,
+			'base_url'  : base_url,
+			'debug'     : settings.DEBUG,
+			'MEDIA_URL' : settings.MEDIA_URL })
+		info = t.render(c)
+		if location:
+			location = location.json()
+			location['info'] = info
+			location['marker'] = base_url + settings.MEDIA_URL + 'images/markers/yellow.png'
 		response = HttpResponse(json.dumps(location))
 		response['Content-type'] = 'application/json'
 		return response

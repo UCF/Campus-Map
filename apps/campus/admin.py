@@ -3,7 +3,7 @@ from django.contrib import admin
 
 class BuildingAdmin(admin.ModelAdmin):
 	list_display = ('name', 'number', 'abbreviation')
-	search_fields = ['name', 'number']
+	search_fields = ['name', 'number', 'abbreviation']
 	actions = None	  
 	#change_form_template = 'admin/campus_location.djt';
 	

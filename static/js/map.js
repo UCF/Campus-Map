@@ -217,7 +217,7 @@ Campus.layers = {
 	points : {
 		info   : function(id){
 			
-			Campus.ajax.abort();
+			if(Campus.ajax){ Campus.ajax.abort(); }
 			var title = $('#item-title');
 			var desc  = $('#item-desc');
 			title.html("Loading...");

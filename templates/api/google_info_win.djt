@@ -1,15 +1,15 @@
 {% if not location %}null{% else %}
 <div id="location-{{location.pk}}">
-    <div class="info-window">
-        <h2>{{location.name}} {% if location.abbreviation %}({{ location.abbreviation }}){%endif%}</h2>
-        <img src="{{ base_url }}{{MEDIA_URL}}images/buildings/{{ location.image }}">
-        {% if location.description %}
-            <p>{{ location.description }}</p>
-        {% else %}
+	<div class="info-window">
+		<h2>{{location.name}} {% if location.abbreviation %}({{ location.abbreviation }}){%endif%}</h2>
+		{% if location.image %}<img src="{{ base_url }}{{MEDIA_URL}}images/buildings/{{ location.image }}">{% endif %}
+		{% if location.description %}
+			<p>{{ location.description }}</p>
+		{% else %}
 			{% if debug %}
-            	<p><a href="{% url admin:app_list 'campus'%}location/{{location.pk}}/">add a description</a></p>
+				<p><a href="{% url admin:app_list 'campus'%}building/{{location.pk}}/">add a description</a></p>
 			{% endif %}
-        {% endif %}
-    </div>
+		{% endif %}
+	</div>
 </div>
 {% endif %}
