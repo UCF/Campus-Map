@@ -20,21 +20,48 @@ def home(request, format=None, **kwargs):
 		response['Content-type'] = 'application/json'
 		return response
 	
+	# points on the map (will have to be extended with more data added)
+	if 'points' in kwargs and kwargs['points']:
+		from campus.models import Building
+		from django.db.models import Q
+		q1 = Q(googlemap_point__isnull=True)
+		q2 = Q(googlemap_point__exact='')
+		q3 = Q(googlemap_point__contains='None')
+		q =  (q1 | q2 | q3)
+		points = Building.objects.exclude( q )
+		
+		'''
+		buildings = ["union", "millican"];
+		q = Q()
+		for name in buildings:
+			q = q | Q(name__icontains = name)
+		points = Building.objects.filter( q )
+		'''
+	else:
+		points = None
+		
+	# urls
 	if settings.GOOGLE_CAN_SEE_ME:
 		kml = "%s.kml" % (request.build_absolute_uri(reverse('buildings')))
 	else:
 		kml = "%s%s.kml" % (settings.GOOGLE_LOOK_HERE, reverse('buildings'))
+	loc = "%s.json" % reverse('location', kwargs={'loc':'foo'})
+	loc = loc.replace('foo', '%s');
+	context = { 
+		'options' : kwargs, 
+		'points'  : points, 
+		'date'    : date,
+		'kml_url' : kml,
+		'loc_url' : loc
+	}
 	
-	return render(request, 'campus/base.djt', { 'date':date, 'options': kwargs, 'kml':kml })
-
-
+	
+	return render(request, 'campus/base.djt', context)
 
 def buildings(request, format=None):
 	
 	from campus.models import Building
 	buildings = Building.objects.exclude(googlemap_point__isnull=True)
-	# from django.db.models import Q
-	# buildings = Building.objects.exclude( Q(googlemap_point__isnull=True) | Q(googlemap_point__exact='') | Q(googlemap_point__contains='None') )
 	
 	if format == 'json':
 		arr = []
@@ -69,6 +96,7 @@ def buildings(request, format=None):
 		return response
 	
 	return home(request, buildings=buildings)
+
 
 def location(request, loc, format=None):
 	'''

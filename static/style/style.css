@@ -77,6 +77,8 @@ footer { background:black; margin:0; padding:8px; text-align:right; color:white;
 #menu label { display:block; padding:0 0 4px 8px; float:left; }
 #item-desc { min-height:120px; }
 #item-desc img { width:100%; }
+#item-desc h2 { display:none; }
+
 .ie6 #search { width:255px;  }
 
 /******************************************************************************\

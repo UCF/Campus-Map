@@ -23,21 +23,24 @@
 	<script src="http://maps.google.com/maps/api/js?sensor=false" type="text/javascript" ></script>
 	<script src="{{MEDIA_URL}}js/map.js?date={{date}}" type="text/javascript"></script>
 	<script type="text/javascript">
-	    Campus_Map.media = "{{MEDIA_URL}}";
 		Campus_Map.urls = {
+			"static"   : "{{ MEDIA_URL }}",
 			"search"   : "{% url search %}",
-			"location" : "{# url map_location pk=1 #}",
-			"kml"      : "{{kml}}"
+			"location" : "{{ loc_url }}",
+			"kml"      : "{{ kml_url }}"
 		}
 		
-		Campus_Map.buildings = {
-		{% for b in buildings %}
-			"{{b.pk}}":{ "point":[{{b.googlemap_point}}] }{% if not forloop.last %},{% endif %}{% endfor %}
+		{% if points %}
+		Campus_Map.points = {
+		{% for p in points %}
+			"{{p.pk}}":{ "point":[{{p.googlemap_point}}] }{% if not forloop.last %},{% endif %}{% endfor %}
 		};
+		{% endif %}
 		
 		$(document).ready(function(){
 			Campus_Map.init();
-			Campus_Map.settings.buildings = {% if options.buildings %}true{%else%}false{% endif %};
+			Campus_Map.settings.points    = {% if options.points %}true{% else %}false{% endif %};
+			Campus_Map.settings.buildings = {% if options.buildings %}true{% else %}false{% endif %};
 			Campus_Map.gmap();
 		});
 	</script>

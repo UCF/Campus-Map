@@ -24,15 +24,13 @@ var Campus_Map = {
 		drawn_min_zoom : 12,
 		drawn_max_zoom : 17,
 		buildings      : false,  // UCF's building data, remove google's
-		locations      : false,  // Yellow markers for each location
+		points         : false,  // Yellow markers for each location
 		traffic        : false
 	}
 };
 
 Campus_Map.init = function(){
 	this.resize();
-	//Campus_Map.location_url = Campus_Map.location_url.replace('1', '');
-	//Campus_Map.search_url	  = Campus_Map.search_url.replace('foo', '');
 };
 
 
@@ -40,7 +38,6 @@ Campus_Map.init = function(){
  Helpers, Vars, and Placeholders
 \******************************************************************************/
 Campus_Map.ajax = { abort : function(){} };
-Campus_Map.infoWindow = { close : function(){} };
 
 
 /******************************************************************************\
@@ -93,28 +90,25 @@ Campus_Map.controls = function(){
 	// maptypes style
 	var restyle = function(){
 		var controls = $('.gmnoprint');
-		
+
 		if(controls.length < 1){
 			//map glitch, not finished loading
 			window.setTimeout(restyle, 100);
 			return;
 		}
 		
-		if(jQuery.browser.name == 'msie'){
-			// won't be first control, need to search for it
-			controls.filter(function(){
-				if(this.style && this.style.top == "0px" && this.style.right == "0px"){
-					$(this).attr('id','maptypes');
-					$(this).find('div:first div:first').html('UCF');
-				}
-			});
-		} else {
-			controls.first().attr('id','maptypes');
-			controls.first().find('div:first div:first').html('UCF');
-		}
+		// find the maptype control
+		controls.filter(function(){
+			if(this.style && this.style.top == "0px" && this.style.right == "0px"){
+				$(this).attr('id','maptypes');
+				$(this).find('div:first div:first').html('UCF');
+			}
+		});
+		
 	};
 	
 	google.maps.event.addListener(this.map, "tilesloaded", restyle);
+	setTimeout(restyle, 1500);
 	
 	// search
 	var searchUI = document.createElement('div');
@@ -124,6 +118,7 @@ Campus_Map.controls = function(){
 		'type="text" name="q"><a id="search-submit" onclick'+
 		'="$(\'#search-form\').submit()">search</a></form>';
 	this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(searchUI);
+	// this.search(); // init search
 	
 	// menu
 	var menuUI = document.createElement('div');
@@ -136,6 +131,7 @@ Campus_Map.controls = function(){
 		menuUI.innerHTML = Campus_Map.menu_html;
 	}
 	Campus_Map.menu = $(menuUI);
+	
 	this.map.controls[google.maps.ControlPosition.RIGHT_TOP].push(menuUI);
 	
 	// buildings checkbox
@@ -154,6 +150,7 @@ Campus_Map.controls = function(){
 		Campus_Map.layers.traffic.update();
 	});
 	
+	
 }
 
 /******************************************************************************\
@@ -163,6 +160,7 @@ Campus_Map.layers = {
 	update : function(){
 		this.buildings.update();
 		this.traffic.update();
+		this.points.update();
 	},
 	
 	/* Google's traffic layer */
@@ -212,6 +210,60 @@ Campus_Map.layers = {
 		update : function(){
 			var on = Campus_Map.settings.buildings;
 			if(on) this.load(); else this.unload();
+		}
+	},
+	
+	/* points populated in base template */
+	points : {
+		info   : function(id){
+			
+			Campus_Map.ajax.abort();
+			var title = $('#item-title');
+			var desc  = $('#item-desc');
+			title.html("Loading...");
+			desc.html("");
+			
+			var url = Campus_Map.urls['location'].replace("%s", id);
+			
+			Campus_Map.ajax = $.ajax({
+				url: url,
+				success: function(data){
+					var name = data.name;
+					if(data.abbreviation){ name += ' (' + data.abbreviation + ')'; }
+					title.html(name);
+					desc.html(data.info);
+					//place icon
+				},
+				error: function(){
+					title.html("Error");
+					desc.html("Request failed for building: " + id);
+				}
+			});
+		},
+		update : function(){
+			// should only run once
+			if(!Campus_Map.settings.points){ return; }
+			var map = Campus_Map.map;
+			var points = Campus_Map.points;
+			var image = new google.maps.MarkerImage(
+				(Campus_Map.urls['static'] + 'images/markers/yellow.png'),
+				new google.maps.Size(19, 19),
+				new google.maps.Point(0,0),
+				new google.maps.Point(9,9));
+			for(var id in points ) {
+				var p = points[id].point;
+				var latLng = new google.maps.LatLng(p[0], p[1]);
+				var marker = new google.maps.Marker({
+					position: latLng,
+					map: map,
+					icon: image,
+					location: id
+				});
+				var info = this.info;
+				google.maps.event.addListener(marker, 'click', function(event) {
+					info(this.location);
+				});
+			}
 		}
 	}
 	
@@ -337,80 +389,26 @@ Campus_Map.imap.getTileUrl = function(coord,zoom) {
 	return tile;
 };
 
-/******************************************************************************\
- Plots location on the Google Map
-	- locations are populated in the base template
-\******************************************************************************/
-Campus_Map.locationMarkers = function(){
-	var map = this.map;
-	var locations = this.locations;
-	var image = new google.maps.MarkerImage(
-		(this.media + 'img/markers/yellow.png'),
-		new google.maps.Size(19, 19),
-		new google.maps.Point(0,0),
-		new google.maps.Point(9,9));
-	for(var id in locations ) {
-		var loc = locations[id];
-		var latLng = new google.maps.LatLng(loc.x, loc.y);
-		var marker = new google.maps.Marker({
-			position: latLng,
-			map: map,
-			icon: image,
-			locationId: id
-			
-		});
-		google.maps.event.addListener(marker, 'click', function(event) {
-			Campus_Map.locationInfo(this.locationId);
-		});
-	}
-};
-
-
-/******************************************************************************\
- Location Information
-	- used when clicking marker
-	- used when searching
-\******************************************************************************/
-Campus_Map.locationInfo = function(id){
-	var locations = this.locations;
-	if(locations[id] === undefined || !locations[id]){
-		$('#search-help').html('No coordinate data available.  Check the <a href="admin/campus/location/' + id + '/">admin</a>.');
-	} else {
-		Campus_Map.ajax.abort();
-		$("#search ul").html('');
-		var latlng = new google.maps.LatLng(locations[id].x,locations[id].y);
-		Campus_Map.map.panTo(latlng);
-		Campus_Map.map.panBy(0, -100);
-		this.infoWindow.close();
-		this.infoWindow = new google.maps.InfoWindow({
-			content: '<div id="location-info">Loading...</div>',
-			position: latlng
-		});
-		this.infoWindow.open(this.map);
-		this.infoWindowListen = google.maps.event.addListener(this.infoWindow, 'domready', function(event) {
-			Campus_Map.ajax = $.ajax({
-				url: Campus_Map.location_url + id,
-				success: function(html){
-					google.maps.event.removeListener(Campus_Map.infoWindowListen);
-					Campus_Map.infoWindow.setContent(html);
-				},
-				error: function(){
-					google.maps.event.removeListener(Campus_Map.infoWindowListen);
-					Campus_Map.infoWindow.setContent('<a href="'+this.url+'">Request</a> failed.  Check <a href="admin/campus/location/' + id + '/">location</a>.');
-				}
-			});
-		});
-	}
-};
-
 
 /******************************************************************************\
  Search
 	- attach events to search input
 \******************************************************************************/
 Campus_Map.search = function(){
-	$('#search input').focus();
+	var search = $('#search input');
+	console.log($('#search input'));
+	
+	if(search.length < 1){
+		//map glitch, not finished loading
+		console.log('search glitch');
+		window.setTimeout(Campus_Map.search, 300);
+		return;
+	}
+	
 	var location_list_item = false;
+	
+	search[0].focus();
+	console.log('ah ha');
 	
 	$('#search input').keydown(function(event){
 		Campus_Map.ajax.abort();
