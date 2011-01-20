@@ -17,9 +17,9 @@ if(!window.console ) {
 
 /******************************************************************************\
  Global Namespace
- the only variable exposed to the window should be Campus_Map
+ the only variable exposed to the window should be Campus
 \******************************************************************************/
-var Campus_Map = {
+var Campus = {
 	settings : {
 		drawn_min_zoom : 12,
 		drawn_max_zoom : 17,
@@ -29,7 +29,7 @@ var Campus_Map = {
 	}
 };
 
-Campus_Map.init = function(){
+Campus.init = function(){
 	this.resize();
 };
 
@@ -37,14 +37,14 @@ Campus_Map.init = function(){
 /******************************************************************************\
  Helpers, Vars, and Placeholders
 \******************************************************************************/
-Campus_Map.ajax = { abort : function(){} };
+Campus.ajax = { abort : function(){} };
 
 
 /******************************************************************************\
  Create Google Map
-	- stores in Campus_Map.map
+	- stores in Campus.map
 \******************************************************************************/
-Campus_Map.gmap = function(){
+Campus.gmap = function(){
 	
 	// arbitrary point, looks good on load
 	var myLatlng = new google.maps.LatLng(28.6018,-81.1995);
@@ -83,7 +83,7 @@ Campus_Map.gmap = function(){
 	- styles native maptype controls
 	- adds custom controls
 \******************************************************************************/
-Campus_Map.controls = function(){
+Campus.controls = function(){
 	
 	var settings = $.extend({ 'google': true }, this.options);
 	
@@ -114,7 +114,7 @@ Campus_Map.controls = function(){
 	var searchUI = document.createElement('div');
 	searchUI.id = "search";
 	searchUI.innerHTML = '<form method="get" action="' + 
-		Campus_Map.urls.search + '" id="search-form"><input '+
+		Campus.urls.search + '" id="search-form"><input '+
 		'type="text" name="q"><a id="search-submit" onclick'+
 		'="$(\'#search-form\').submit()">search</a></form>';
 	this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(searchUI);
@@ -123,31 +123,31 @@ Campus_Map.controls = function(){
 	// menu
 	var menuUI = document.createElement('div');
 	menuUI.id = "menu";
-	if(Campus_Map.menu_html === 'undefined' || !Campus_Map.menu_html){
-		Campus_Map.menu_html = $('#menu-html').html();
-		menuUI.innerHTML = Campus_Map.menu_html;
+	if(Campus.menu_html === 'undefined' || !Campus.menu_html){
+		Campus.menu_html = $('#menu-html').html();
+		menuUI.innerHTML = Campus.menu_html;
 		$('#menu-html').html('');
 	} else {
-		menuUI.innerHTML = Campus_Map.menu_html;
+		menuUI.innerHTML = Campus.menu_html;
 	}
-	Campus_Map.menu = $(menuUI);
+	Campus.menu = $(menuUI);
 	
 	this.map.controls[google.maps.ControlPosition.RIGHT_TOP].push(menuUI);
 	
 	// buildings checkbox
-	var bcb = Campus_Map.menu.find('#buildings')[0];
-	$(bcb).attr('checked', Campus_Map.settings.buildings);
+	var bcb = Campus.menu.find('#buildings')[0];
+	$(bcb).attr('checked', Campus.settings.buildings);
 	$(bcb).click(function(){
-		Campus_Map.settings.buildings = $(this).is(':checked');
-		Campus_Map.layers.buildings.update();
+		Campus.settings.buildings = $(this).is(':checked');
+		Campus.layers.buildings.update();
 	});
 	
 	// traffic checkbox
-	var tcb = Campus_Map.menu.find('#traffic')[0];
-	$(tcb).attr('checked', Campus_Map.settings.traffic);
+	var tcb = Campus.menu.find('#traffic')[0];
+	$(tcb).attr('checked', Campus.settings.traffic);
 	$(tcb).click(function(){
-		Campus_Map.settings.traffic = $(this).is(':checked');
-		Campus_Map.layers.traffic.update();
+		Campus.settings.traffic = $(this).is(':checked');
+		Campus.layers.traffic.update();
 	});
 	
 	
@@ -156,7 +156,7 @@ Campus_Map.controls = function(){
 /******************************************************************************\
  Map Layers
 \******************************************************************************/
-Campus_Map.layers = {
+Campus.layers = {
 	update : function(){
 		this.buildings.update();
 		this.traffic.update();
@@ -172,9 +172,9 @@ Campus_Map.layers = {
 				this.layer  = new google.maps.TrafficLayer();
 				this.loaded = true;
 			}
-			var on = Campus_Map.settings.traffic;
+			var on = Campus.settings.traffic;
 			if(on){
-				this.layer.setMap(Campus_Map.map);
+				this.layer.setMap(Campus.map);
 			} else {
 				this.layer.setMap(null);
 			}
@@ -189,26 +189,26 @@ Campus_Map.layers = {
 			if(!this.loaded){
 				// send KML to google
 				// http://code.google.com/apis/maps/documentation/javascript/overlays.html#KMLLayers
-				this.layer = new google.maps.KmlLayer(Campus_Map.urls.kml, { preserveViewport : true });
+				this.layer = new google.maps.KmlLayer(Campus.urls.kml, { preserveViewport : true });
 				
 				// strip map of google elements
 				// http://code.google.com/apis/maps/documentation/javascript/maptypes.html#StyledMaps
 				// http://gmaps-samples-v3.googlecode.com/svn/trunk/styledmaps/wizard/index.html
 				var styles = [ { featureType: "landscape.man_made", elementType: "geometry", stylers: [ { visibility: "off" } ] },{ featureType: "poi.sports_complex", elementType: "geometry", stylers: [ { visibility: "off" } ] } ];
 				var naked = new google.maps.StyledMapType( styles, { name : "Naked" } );
-				Campus_Map.map.mapTypes.set('naked', naked);
+				Campus.map.mapTypes.set('naked', naked);
 				
 				this.loaded = true;
 			}
-			Campus_Map.map.setMapTypeId('naked');
-			this.layer.setMap(Campus_Map.map);
+			Campus.map.setMapTypeId('naked');
+			this.layer.setMap(Campus.map);
 		},
 		unload : function() {
-			Campus_Map.map.setMapTypeId(google.maps.MapTypeId.ROADMAP);
+			Campus.map.setMapTypeId(google.maps.MapTypeId.ROADMAP);
 			this.layer.setMap(null);
 		},
 		update : function(){
-			var on = Campus_Map.settings.buildings;
+			var on = Campus.settings.buildings;
 			if(on) this.load(); else this.unload();
 		}
 	},
@@ -217,15 +217,15 @@ Campus_Map.layers = {
 	points : {
 		info   : function(id){
 			
-			Campus_Map.ajax.abort();
+			Campus.ajax.abort();
 			var title = $('#item-title');
 			var desc  = $('#item-desc');
 			title.html("Loading...");
 			desc.html("");
 			
-			var url = Campus_Map.urls['location'].replace("%s", id);
+			var url = Campus.urls['location'].replace("%s", id);
 			
-			Campus_Map.ajax = $.ajax({
+			Campus.ajax = $.ajax({
 				url: url,
 				success: function(data){
 					var name = data.name;
@@ -242,11 +242,11 @@ Campus_Map.layers = {
 		},
 		update : function(){
 			// should only run once
-			if(!Campus_Map.settings.points){ return; }
-			var map = Campus_Map.map;
-			var points = Campus_Map.points;
+			if(!Campus.settings.points){ return; }
+			var map = Campus.map;
+			var points = Campus.points;
 			var image = new google.maps.MarkerImage(
-				(Campus_Map.urls['static'] + 'images/markers/yellow.png'),
+				(Campus.urls['static'] + 'images/markers/yellow.png'),
 				new google.maps.Size(19, 19),
 				new google.maps.Point(0,0),
 				new google.maps.Point(9,9));
@@ -275,9 +275,9 @@ Campus_Map.layers = {
 	sets map to 100% height and width
 	attaches function to window resize
 \******************************************************************************/
-Campus_Map.resize = function(){
+Campus.resize = function(){
 	
-	Campus_Map.resize_tries = 0;
+	Campus.resize_tries = 0;
 	
 	var browser = $.browser.name + "" + $.browser.versionX
 	if(browser === "firefox2" || browser === "msie6") { return; }
@@ -296,10 +296,10 @@ Campus_Map.resize = function(){
 		
 		// sometimes blackbar is slow to load
 		if(!blackbar){
-			if(++Campus_Map.resize_tries > 3) { return; }
+			if(++Campus.resize_tries > 3) { return; }
 			window.setTimeout(resize, 50);
 		} else {
-			Campus_Map.resize_tries = 0;
+			Campus.resize_tries = 0;
 		}
 		
 		// iphone, hide url bar
@@ -324,7 +324,7 @@ Campus_Map.resize = function(){
  Create illustrated map
 	- 
 \******************************************************************************/
-Campus_Map.imap = function(){	 
+Campus.imap = function(){	 
 	var CoordMapType= function(){};
 	
 	CoordMapType.prototype.tileSize = new google.maps.Size(256,256);
@@ -336,7 +336,7 @@ Campus_Map.imap = function(){
 	  var div = ownerDocument.createElement('DIV');
 	  div.style.width = this.tileSize.width + 'px';
 	  div.style.height = this.tileSize.height + 'px';
-	  div.style.backgroundImage = 'url("' + Campus_Map.media + 'img/illustrated_tiles/' + Campus_Map.imap.getTileUrl(coord, zoom) + '")';
+	  div.style.backgroundImage = 'url("' + Campus.media + 'img/illustrated_tiles/' + Campus.imap.getTileUrl(coord, zoom) + '")';
 	  return div;
 	};
 	
@@ -367,7 +367,7 @@ Campus_Map.imap = function(){
 
  see "readme" in the map_tiles dir
 \******************************************************************************/
-Campus_Map.imap.getTileUrl = function(coord,zoom) {
+Campus.imap.getTileUrl = function(coord,zoom) {
 	var tile = "zoom_" + zoom + "/" + zoom + "_" + coord.x + "_" + coord.y + ".jpg";
 	var nope = "white.png"; //white tile
 
@@ -394,14 +394,14 @@ Campus_Map.imap.getTileUrl = function(coord,zoom) {
  Search
 	- attach events to search input
 \******************************************************************************/
-Campus_Map.search = function(){
+Campus.search = function(){
 	var search = $('#search input');
 	console.log($('#search input'));
 	
 	if(search.length < 1){
 		//map glitch, not finished loading
 		console.log('search glitch');
-		window.setTimeout(Campus_Map.search, 300);
+		window.setTimeout(Campus.search, 300);
 		return;
 	}
 	
@@ -411,7 +411,7 @@ Campus_Map.search = function(){
 	console.log('ah ha');
 	
 	$('#search input').keydown(function(event){
-		Campus_Map.ajax.abort();
+		Campus.ajax.abort();
 		
 		//parse keycode
 		var keyCode =
@@ -455,13 +455,13 @@ Campus_Map.search = function(){
 			if(li.length > 0){
 				// parse location ID
 				var id = li.find('a').attr('href').substring(1);
-				Campus_Map.locationInfo(id);
+				Campus.locationInfo(id);
 				return;
 			}
 			li = $('#search li');
 			if(li.length===1){
 				var id = li.find('a').attr('href').substring(1);
-				Campus_Map.locationInfo(id);
+				Campus.locationInfo(id);
 			}
 			return;
 		}
@@ -474,8 +474,8 @@ Campus_Map.search = function(){
 		}
 		
 		$("#search ul").html('<li>Searching...</li>');
-		Campus_Map.ajax = $.ajax({
-			url: Campus_Map.urls.search,
+		Campus.ajax = $.ajax({
+			url: Campus.urls.search,
 			data: {q:q},
 			success: function(html){
 				//show results
@@ -484,7 +484,7 @@ Campus_Map.search = function(){
 				$('#search li').click(function(event){
 					event.preventDefault();
 					var id = $(this).find('a').attr('href').substring(1);
-					Campus_Map.locationInfo(id);
+					Campus.locationInfo(id);
 				});
 			}
 		});

@@ -23,7 +23,7 @@
 	<script src="http://maps.google.com/maps/api/js?sensor=false" type="text/javascript" ></script>
 	<script src="{{MEDIA_URL}}js/map.js?date={{date}}" type="text/javascript"></script>
 	<script type="text/javascript">
-		Campus_Map.urls = {
+		Campus.urls = {
 			"static"   : "{{ MEDIA_URL }}",
 			"search"   : "{% url search %}",
 			"location" : "{{ loc_url }}",
@@ -31,17 +31,17 @@
 		}
 		
 		{% if points %}
-		Campus_Map.points = {
+		Campus.points = {
 		{% for p in points %}
 			"{{p.pk}}":{ "point":[{{p.googlemap_point}}] }{% if not forloop.last %},{% endif %}{% endfor %}
 		};
 		{% endif %}
 		
 		$(document).ready(function(){
-			Campus_Map.init();
-			Campus_Map.settings.points    = {% if options.points %}true{% else %}false{% endif %};
-			Campus_Map.settings.buildings = {% if options.buildings %}true{% else %}false{% endif %};
-			Campus_Map.gmap();
+			Campus.init();
+			Campus.settings.points    = {% if options.points %}true{% else %}false{% endif %};
+			Campus.settings.buildings = {% if options.buildings %}true{% else %}false{% endif %};
+			Campus.gmap();
 		});
 	</script>
 {% endblock %}
