@@ -119,7 +119,7 @@ def location(request, loc, format=None):
 		from django.template import Context
 		from django.template.loader import get_template
 		t = get_template('api/google_info_win.djt')
-		c = Context({ 
+		c = Context({
 			'location'  : location,
 			'base_url'  : base_url,
 			'debug'     : settings.DEBUG,
@@ -148,10 +148,37 @@ def search(request, format=None):
 		entry_query = get_query(query_string, ['name',])		
 		found_entries = Building.objects.filter(entry_query).order_by('name')
 		
+	if format == 'list':
+		''' used with the search ajax '''
+		
+		if settings.DEBUG:
+			# otherwise too many/too fast, gives browser a sad
+			import time
+			time.sleep(.5)
+		
+		response = ''
+		if len(found_entries) < 1:
+			response = '<li><a data-pk="null">No results</a></li>'
+			return HttpResponse(response)
+		count = 0
+		for item in found_entries:
+			response += '<li>%s</li>' % (item.link)
+			count += 1
+			if(count > 9):
+				response += '<li class="more"><a href="%s?q=%s" data-pk="more-results">More results &hellip;</a></li>' % (
+					reverse('search'), query_string)
+				return HttpResponse(response)
+		return HttpResponse(response)
+	
 	if format == 'json':
+		def clean(item):
+			return {
+				'type' : str(item.__class__.__name__),
+				'name' : item.name,
+				'id'   : item.pk }
 		search = {
 			"query"   : query_string,
-			"results" : map(lambda e: e.json(), found_entries)
+			"results" : map(clean, found_entries)
 		}
 		response = HttpResponse(json.dumps(search))
 		response['Content-type'] = 'application/json'

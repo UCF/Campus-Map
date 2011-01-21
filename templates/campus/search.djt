@@ -16,7 +16,7 @@
 			{% if results %}
 			<ul>
 				{% for loc in results %}
-				<li><a href="{%url location loc.pk %}">{{loc}} {% if loc.abbreviation %}({{loc.abbreviation}}){%endif%}</a></li>
+				<li>{{loc.link|safe}}</li>
 				{% endfor %}
 			</ul>
 			{% else %}

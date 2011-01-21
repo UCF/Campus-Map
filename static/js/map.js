@@ -15,6 +15,14 @@ if(!window.console ) {
 	window.console = { log: function() { return; } };
 }
 
+// helper
+Array.prototype.has=function(v){
+	for (i=0;i<this.length;i++){
+		if (this[i]==v) return true;
+	}
+	return false;
+}
+
 /******************************************************************************\
  Global Namespace
  the only variable exposed to the window should be Campus
@@ -89,10 +97,13 @@ Campus.controls = function(){
 	
 	// maptypes style
 	var restyle = function(){
+		
 		var controls = $('.gmnoprint');
-
+		
+		var styled = false;
 		if(controls.length < 1){
 			//map glitch, not finished loading
+			console.log("maptype glitch");
 			window.setTimeout(restyle, 100);
 			return;
 		}
@@ -102,23 +113,32 @@ Campus.controls = function(){
 			if(this.style && this.style.top == "0px" && this.style.right == "0px"){
 				$(this).attr('id','maptypes');
 				$(this).find('div:first div:first').html('UCF');
+				styled = true;
 			}
 		});
 		
+		if(!styled){
+			console.log("maptype glitch");
+			window.setTimeout(restyle, 200);
+		} else {
+			console.log("map styled");
+		}
+		
 	};
 	
-	google.maps.event.addListener(this.map, "tilesloaded", restyle);
-	setTimeout(restyle, 1500);
+	// kills load time
+	//google.maps.event.addListener(this.map, "tilesloaded", restyle);
 	
 	// search
 	var searchUI = document.createElement('div');
 	searchUI.id = "search";
 	searchUI.innerHTML = '<form method="get" action="' + 
 		Campus.urls.search + '" id="search-form"><input '+
-		'type="text" name="q"><a id="search-submit" onclick'+
+		'type="text" name="q" autocomplete="off"><a id="search-submit" onclick'+
 		'="$(\'#search-form\').submit()">search</a></form>';
 	this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(searchUI);
-	// this.search(); // init search
+	Campus.searchUI = searchUI;
+	this.search(); // init search
 	
 	// menu
 	var menuUI = document.createElement('div');
@@ -131,7 +151,6 @@ Campus.controls = function(){
 		menuUI.innerHTML = Campus.menu_html;
 	}
 	Campus.menu = $(menuUI);
-	
 	this.map.controls[google.maps.ControlPosition.RIGHT_TOP].push(menuUI);
 	
 	// buildings checkbox
@@ -215,31 +234,6 @@ Campus.layers = {
 	
 	/* points populated in base template */
 	points : {
-		info   : function(id){
-			
-			if(Campus.ajax){ Campus.ajax.abort(); }
-			var title = $('#item-title');
-			var desc  = $('#item-desc');
-			title.html("Loading...");
-			desc.html("");
-			
-			var url = Campus.urls['location'].replace("%s", id);
-			
-			Campus.ajax = $.ajax({
-				url: url,
-				success: function(data){
-					var name = data.name;
-					if(data.abbreviation){ name += ' (' + data.abbreviation + ')'; }
-					title.html(name);
-					desc.html(data.info);
-					//place icon
-				},
-				error: function(){
-					title.html("Error");
-					desc.html("Request failed for building: " + id);
-				}
-			});
-		},
 		update : function(){
 			// should only run once
 			if(!Campus.settings.points){ return; }
@@ -259,9 +253,8 @@ Campus.layers = {
 					icon: image,
 					location: id
 				});
-				var info = this.info;
 				google.maps.event.addListener(marker, 'click', function(event) {
-					info(this.location);
+					Campus.info(this.location);
 				});
 			}
 		}
@@ -269,6 +262,36 @@ Campus.layers = {
 	
 };
 
+
+/******************************************************************************\
+Locaiton Information
+\******************************************************************************/
+Campus.info = function(id){
+	console.log('info', id);
+	if(!id || id=="null" || id=="searching"){ return; }
+	if(Campus.ajax){ Campus.ajax.abort(); }
+	var title = $('#item-title');
+	var desc  = $('#item-desc');
+	title.html("Loading...");
+	desc.html("");
+	
+	var url = Campus.urls['location'].replace("%s", id);
+	
+	Campus.ajax = $.ajax({
+		url: url,
+		dataType: 'json',
+		success: function(data){
+			var name = data.name;
+			if(data.abbreviation){ name += ' (' + data.abbreviation + ')'; }
+			title.html(name);
+			desc.html(data.info);
+		},
+		error: function(){
+			title.html("Error");
+			desc.html("Request failed for building: " + id);
+		}
+	});
+}
 
 /******************************************************************************\
  Resize
@@ -392,26 +415,36 @@ Campus.imap.getTileUrl = function(coord,zoom) {
 
 /******************************************************************************\
  Search
-	- attach events to search input
 \******************************************************************************/
 Campus.search = function(){
-	var search = $('#search input');
-	console.log($('#search input'));
 	
-	if(search.length < 1){
-		//map glitch, not finished loading
-		console.log('search glitch');
-		window.setTimeout(Campus.search, 300);
-		return;
-	}
+	var search = $(Campus.searchUI);
+	var input  = search.find('input');
 	
-	var location_list_item = false;
-	
-	search[0].focus();
-	console.log('ah ha');
-	
-	$('#search input').keydown(function(event){
-		Campus.ajax.abort();
+	search.keydown(function(event){
+		//parse keycode
+		var keyCode =
+			document.layers ? event.which :
+			document.all ? event.keyCode :
+			document.getElementById ? event.keyCode : 0;
+		
+		//'enter' key
+		if(keyCode===13){
+			event.preventDefault();
+			var li = $('#search .hover');
+			if(li.length < 1){ 
+				li = $('#search li'); 
+				if(li.length > 1) { return; }
+			}
+			var pk = li.find('a').attr('data-pk');
+			if(pk !== "searching"){
+				search.find('ul').remove(); 
+			}
+			Campus.info(pk);
+		}
+	});//keydown
+		
+	search.keyup(function(event){
 		
 		//parse keycode
 		var keyCode =
@@ -419,8 +452,9 @@ Campus.search = function(){
 			document.all ? event.keyCode :
 			document.getElementById ? event.keyCode : 0;
 		
-		//left and right keys
-		if(keyCode===37 || keyCode ===39){ return; }
+		//enter, left, right, shift, control, option, command
+		var ignore = [13, 37, 39, 16, 17, 18, 224];
+		if(ignore.has(keyCode)){ return; }
 		
 		//'down' key
 		if(keyCode===40 && $('#search ul').html() !== ''){
@@ -437,7 +471,6 @@ Campus.search = function(){
 				li.next().addClass('hover');
 			}
 			return;
-			
 		}
 		
 		//'up' key
@@ -449,46 +482,48 @@ Campus.search = function(){
 			return;
 		}
 		
-		//'enter' key
-		if(keyCode===13){
-			var li = $('#search .hover');
-			if(li.length > 0){
-				// parse location ID
-				var id = li.find('a').attr('href').substring(1);
-				Campus.locationInfo(id);
-				return;
-			}
-			li = $('#search li');
-			if(li.length===1){
-				var id = li.find('a').attr('href').substring(1);
-				Campus.locationInfo(id);
-			}
-			return;
-		}
-		
 		// ajax search
-		var q = $(this).val();
+		if(Campus.ajax){ Campus.ajax.abort(); }
+		var q = input.val();
 		if(!q){
-			$("#search ul").html('');
+			search.find('ul').remove();
 			return;
+		} else {
+			if(search.find('ul').length < 1){ 
+				search.append('<ul></ul>');
+			}
 		}
 		
-		$("#search ul").html('<li>Searching...</li>');
+		search.find('ul').html('<li><a data-pk="searching">Searching&hellip;</a></li>');
 		Campus.ajax = $.ajax({
-			url: Campus.urls.search,
+			url: Campus.urls['search'] + '.list',
 			data: {q:q},
 			success: function(html){
 				//show results
 				$("#search ul").html(html);
 				//attach event to open info window
-				$('#search li').click(function(event){
+				$('#search li:not(.more)').click(function(event){
 					event.preventDefault();
-					var id = $(this).find('a').attr('href').substring(1);
-					Campus.locationInfo(id);
+					pk = $(this).find('a').attr('data-pk');
+					$('#search li').removeClass('hover');
+					$(this).addClass('hover');
+					Campus.info(pk);
 				});
 			}
 		});
 
-	});//keydown
+	});//keyup
+	
+	// set z-index and focus, but must wait until loaded in dom
+	var style = function(){
+		if($('#search input').length > 0){
+			$('#search').css('z-index', 15);
+			$('#search input').focus();
+		} else {
+			console.log("search glitch");
+			setTimeout(style, 250);
+		}
+	}
+	style();
 	
 };//search

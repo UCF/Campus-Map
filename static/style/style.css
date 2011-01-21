@@ -50,22 +50,47 @@ footer { background:black; margin:0; padding:8px; text-align:right; color:white;
 #maptypes div { border:0 !important; }
 #maptypes > div + div { border-left:1px solid #aaa !important; }
 #maptypes > div { padding-top:4px; padding-bottom:4px; }
+
+
+/******************************************************************************\
+    Search
+\******************************************************************************/
 #search {
 	box-shadow:rgba(0, 0, 0, 0.5) 0px 0px 8px; -webkit-box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 8px; 
 	-moz-box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 8px; 
 	-moz-border-radius-bottomright: 6px; -webkit-border-bottom-right-radius: 6px; border-bottom-right-radius:6px;
 	padding:6px; background:black; color:white; text-transform:uppercase; font-size:11px; position:relative;  }
 #search input { 
-	outline:0; float:left; width:180px; border:0; padding:3px; margin:0;
+	outline:0; float:left; width:180px; border:0; padding:3px; margin:0; line-height:14px;
 	-webkit-appearance: textfield; -webkit-rtl-ordering: logical; -webkit-user-select: text; }
 #search a { float:left; display:block; color:white; height:14px; padding:3px 20px 0 6px; background:url('img/arrow.png') no-repeat right 1px; }
+#search ul { 
+	-moz-border-radius-bottomleft: 6px; -webkit-border-bottom-left-radius: 6px; border-bottom-left-radius:6px;
+	-moz-border-radius-bottomright: 6px; -webkit-border-bottom-right-radius: 6px; border-bottom-right-radius:6px;
+	padding:7px 0 8px 0; margin:0 10px 0 0; position:absolute; top:30px; left:5px;
+	background:black; background: rgba(0, 0, 0, 0.8); width:253px;
+	}
+#search ul li { margin:0; padding:3px 8px 3px 12px; list-style:none; height:auto; }
+#search ul li a { float:none; display:inline; background:none; padding:0; text-decoration:none; whitespace:no-wrap; }
+#search ul li.hover,
+#search ul li:hover { background:#535353; background:rgba(200,200,200,.3);  }
+#search a:active { border:0; outline:none; }
+#search a:focus { border:0; outline:none; }
+.ie #search { width:258px; }
+.ie #search ul { margin-right:0; width:250px }
+.ie6 #search { width:255px;  }
+.ie7 #search ul li a { display:block; overflow:hidden; }
 
+
+/******************************************************************************\
+    Menu
+\******************************************************************************/
 #menu { 
 	box-shadow:rgba(0, 0, 0, 0.2) 0px 0px 3px; -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 3px; -moz-box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 3px; 
-	width:200px; margin:-4px 6px 0 0; border:1px solid #aaa; background: rgb(255, 255, 255); background: rgba(255, 255, 255, 0.6); }
+	width:200px; margin:0 6px 0 0; border:1px solid #aaa; background: rgb(255, 255, 255); background: rgba(255, 255, 255, 0.6); }
 #menu .body { padding:8px 8px 10px 8px; }
 #menu h2 { margin:0; padding:6px; 
-	background: #aaa; background:rgba(170, 170, 170, .5); 
+	background: #C5C5C5; background:rgba(170, 170, 170, .5); 
 	font-size:13px; text-transform:uppercase; font-weight:normal; color:black; text-align:center; font-family:helvetica; }
 #menu h3 { margin:0; padding:4px 0; font-weight:normal; font-family:helvetica; }
 #menu .item { background: rgba(255, 255, 255, .7); 
@@ -78,8 +103,7 @@ footer { background:black; margin:0; padding:8px; text-align:right; color:white;
 #item-desc { min-height:120px; }
 #item-desc img { width:100%; }
 #item-desc h2 { display:none; }
-
-.ie6 #search { width:255px;  }
+.safari #menu { margin-top:0; }
 
 /******************************************************************************\
     Weather

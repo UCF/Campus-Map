@@ -10,6 +10,22 @@ class Building(models.Model):
 	illustrated_point = models.CharField(max_length=255, null=True, blank=True)
 	googlemap_point   = models.CharField(max_length=255, null=True, blank=True)
 	
+	
+	def _title(self):
+		if self.abbreviation:
+			return "%s (%s)" % (self.name, self.abbreviation)
+		else:
+			return self.name
+	title = property(_title)
+	
+	def _link(self):
+		from django.core.urlresolvers import reverse
+		from django.template.defaultfilters import slugify
+		url = reverse('location', kwargs={'loc':self.number})
+		return '<a href="%s%s/" data-pk="%s">%s</a>' % (
+					url, slugify(self.title), self.number, self.title)
+	link = property(_link)
+	
 	def json(self):
 		"""Returns a json serializable object for this instance"""
 		import json
