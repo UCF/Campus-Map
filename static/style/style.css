@@ -98,7 +98,7 @@ footer { background:black; margin:0; padding:8px; text-align:right; color:white;
 	border:1px solid #aaa; border:1px solid rgba(170, 170, 170, .5); 
 	border-radius:4px; -moz-border-radius: 4px; -webkit-border-radius: 4px; }
 #menu .load { background-image:url('img/spinner.gif'); background-repeat:no-repeat; background-position:center 25px; }
-#menu a.item { color:black; background-image:url('img/arrow-grey.png'); background-repeat:no-repeat; background-position:right center; cursor:pointer; }
+#menu a.item { text-decoration:none; color:black; background-image:url('img/arrow-grey.png'); background-repeat:no-repeat; background-position:right center; cursor:pointer; }
 #menu a.item:hover { border:1px solid #aaa; }
 #menu label { display:block; padding:0 0 4px 8px; float:left; }
 #item-desc { min-height:120px; }

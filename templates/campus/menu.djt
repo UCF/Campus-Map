@@ -15,9 +15,9 @@
 		{% endif %}
 	</div>
 
-	<a class="item">Building list</a>
+	<a class="item" href="{% url buildings %}">Building list</a>
 
-	<a class="item">Dept/Organizations</a>
+	<a class="item" href="{% url organizations %}">Dept/Organizations</a>
 		
 	<h3>Map view options:</h3>
 	<label><input type="checkbox" id="buildings"> Buildings</label>
