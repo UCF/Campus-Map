@@ -39,6 +39,11 @@ var Campus = {
 
 Campus.init = function(){
 	this.resize();
+	//preload images
+	var spin = new Image(); spin.src = Campus.urls['static'] + 'style/img/spinner.gif';
+	var mark = new Image(); mark.src = Campus.urls['static'] + 'images/markers/gold-with-dot.png';
+	var shad = new Image(); shad.src = Campus.urls['static'] + 'images/markers/shadow.png';
+	
 };
 
 
@@ -208,7 +213,7 @@ Campus.layers = {
 			if(!this.loaded){
 				// send KML to google
 				// http://code.google.com/apis/maps/documentation/javascript/overlays.html#KMLLayers
-				this.layer = new google.maps.KmlLayer(Campus.urls.kml, { preserveViewport : true });
+				this.layer = new google.maps.KmlLayer(Campus.urls.kml, { preserveViewport : true, suppressInfoWindows: true, clickable: false });
 				
 				// strip map of google elements
 				// http://code.google.com/apis/maps/documentation/javascript/maptypes.html#StyledMaps
@@ -243,7 +248,7 @@ Campus.layers = {
 				(Campus.urls['static'] + 'images/markers/yellow.png'),
 				new google.maps.Size(19, 19),
 				new google.maps.Point(0,0),
-				new google.maps.Point(9,9));
+				new google.maps.Point(10,10));
 			for(var id in points ) {
 				var p = points[id].point;
 				var latLng = new google.maps.LatLng(p[0], p[1]);
@@ -254,7 +259,7 @@ Campus.layers = {
 					location: id
 				});
 				google.maps.event.addListener(marker, 'click', function(event) {
-					Campus.info(this.location);
+					Campus.info(this.location, false);
 				});
 			}
 		}
@@ -264,9 +269,32 @@ Campus.layers = {
 
 
 /******************************************************************************\
-Locaiton Information
+ Locaiton Information
 \******************************************************************************/
-Campus.info = function(id){
+Campus.infoMaker = false;
+Campus.info = function(id, pan){
+	
+	// init infoMaker
+	if(!Campus.infoMaker){
+		var image = new google.maps.MarkerImage(
+				(Campus.urls['static'] + 'images/markers/gold-with-dot.png'),
+				new google.maps.Size(32, 32),  // dimensions
+				new google.maps.Point(0,0),  // origin
+				new google.maps.Point(16,32)); // anchor 
+		var shadow = new google.maps.MarkerImage(
+				Campus.urls['static'] + 'images/markers/shadow.png',
+				new google.maps.Size(59, 32),
+				new google.maps.Point(0,0),
+				new google.maps.Point(14, 32));
+		var marker = new google.maps.Marker({
+			map: Campus.map,
+			shadow: shadow,
+			clickable: false,
+			icon: image
+		});
+		Campus.infoMaker = marker;
+	}
+	
 	console.log('info', id);
 	if(!id || id=="null" || id=="searching"){ return; }
 	if(Campus.ajax){ Campus.ajax.abort(); }
@@ -274,6 +302,7 @@ Campus.info = function(id){
 	var desc  = $('#item-desc');
 	title.html("Loading...");
 	desc.html("");
+	desc.addClass('load');
 	
 	var url = Campus.urls['location'].replace("%s", id);
 	
@@ -285,13 +314,19 @@ Campus.info = function(id){
 			if(data.abbreviation){ name += ' (' + data.abbreviation + ')'; }
 			title.html(name);
 			desc.html(data.info);
+			desc.removeClass('load');
+			var latlng = new google.maps.LatLng(data.googlemap_point[0], data.googlemap_point[1]);
+			Campus.infoMaker.setPosition(latlng);
+			if(pan){ Campus.map.panTo(latlng);  }
 		},
 		error: function(){
 			title.html("Error");
 			desc.html("Request failed for building: " + id);
+			desc.removeClass('load');
 		}
 	});
 }
+
 
 /******************************************************************************\
  Resize
@@ -441,7 +476,7 @@ Campus.search = function(){
 			if(pk !== "searching"){
 				search.find('ul').remove(); 
 			}
-			Campus.info(pk);
+			Campus.info(pk, true);
 		}
 	});//keydown
 		
@@ -508,7 +543,7 @@ Campus.search = function(){
 					pk = $(this).find('a').attr('data-pk');
 					$('#search li').removeClass('hover');
 					$(this).addClass('hover');
-					Campus.info(pk);
+					Campus.info(pk, true);
 				});
 			}
 		});

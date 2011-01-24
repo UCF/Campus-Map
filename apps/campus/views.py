@@ -118,6 +118,11 @@ def location(request, loc, format=None):
 	if format == 'json':
 		from django.template import Context
 		from django.template.loader import get_template
+		
+		if settings.DEBUG:
+			import time
+			time.sleep(.5)
+		
 		t = get_template('api/google_info_win.djt')
 		c = Context({
 			'location'  : location,

@@ -71,7 +71,7 @@ footer { background:black; margin:0; padding:8px; text-align:right; color:white;
 	background:black; background: rgba(0, 0, 0, 0.8); width:253px;
 	}
 #search ul li { margin:0; padding:0; list-style:none; height:auto; }
-#search ul li a { float:none; display:block; background:none; padding:3px 8px 3px 12px; text-decoration:none; whitespace:no-wrap; }
+#search ul li a { float:none; display:block; height:auto; background:none; padding:3px 8px 3px 12px; text-decoration:none; }
 #search ul li.hover a,
 #search ul li:hover a { background:#535353; background:rgba(200,200,200,.3);  }
 #search a:active { border:0; outline:none; }
@@ -97,6 +97,7 @@ footer { background:black; margin:0; padding:8px; text-align:right; color:white;
 	padding:5px; margin:0 0 6px 0; display:block;
 	border:1px solid #aaa; border:1px solid rgba(170, 170, 170, .5); 
 	border-radius:4px; -moz-border-radius: 4px; -webkit-border-radius: 4px; }
+#menu .load { background-image:url('img/spinner.gif'); background-repeat:no-repeat; background-position:center 25px; }
 #menu a.item { color:black; background-image:url('img/arrow-grey.png'); background-repeat:no-repeat; background-position:right center; cursor:pointer; }
 #menu a.item:hover { border:1px solid #aaa; }
 #menu label { display:block; padding:0 0 4px 8px; float:left; }
