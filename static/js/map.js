@@ -550,6 +550,11 @@ Campus.search = function(){
 
 	});//keyup
 	
+	// hide results on mapclick
+	google.maps.event.addListener(this.map, "click", function(){
+		search.find('ul').remove(); 
+	});
+	
 	// set z-index and focus, but must wait until loaded in dom
 	var style = function(){
 		if($('#search input').length > 0){
