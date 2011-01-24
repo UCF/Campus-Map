@@ -430,13 +430,14 @@ Campus.search = function(){
 		
 		//'enter' key
 		if(keyCode===13){
-			event.preventDefault();
 			var li = $('#search .hover');
+			var pk = li.find('a').attr('data-pk');
+			if(pk == "more-results"){ return; }
+			event.preventDefault();
 			if(li.length < 1){ 
 				li = $('#search li'); 
 				if(li.length > 1) { return; }
 			}
-			var pk = li.find('a').attr('data-pk');
 			if(pk !== "searching"){
 				search.find('ul').remove(); 
 			}
