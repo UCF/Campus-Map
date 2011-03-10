@@ -295,7 +295,6 @@ Campus.info = function(id, pan){
 		Campus.infoMaker = marker;
 	}
 	
-	console.log('info', id);
 	if(!id || id=="null" || id=="searching"){ return; }
 	if(Campus.ajax){ Campus.ajax.abort(); }
 	var title = $('#item-title');
@@ -450,6 +449,21 @@ Campus.imap.getTileUrl = function(coord,zoom) {
 
 /******************************************************************************\
  Search
+	recieved quite a bit of feedback about this.  After watching people use the 
+	search, an important observation is that people instinctively hit "enter" 
+	after they type their search, even if the results are ajax'd.
+	
+	Getting the "intuitive" feel has been difficult.
+	Currently the behavior is:
+		* typing initiates search
+		* ignore enter key while searching
+		* single result + enter = display result & close search
+		* up/down key = navigates & highlights results
+		* highlighted result + enter = display result & close search
+		* mouse clicking result = display result & keep search open
+		* mouse clicking the search button = search results page
+		* "more results" = search results page
+		* escape key closes & cancels everything
 \******************************************************************************/
 Campus.search = function(){
 	
@@ -470,10 +484,12 @@ Campus.search = function(){
 			if(pk == "more-results"){ return; }
 			event.preventDefault();
 			if(li.length < 1){ 
-				li = $('#search li'); 
-				if(li.length > 1) { return; }
+				li = $('#search li');
+				if(li.length == 1) {
+					pk = li.find('a').attr('data-pk');
+				}
 			}
-			if(pk !== "searching"){
+			if(pk && pk !== "searching" && pk != "null"){
 				search.find('ul').remove(); 
 			}
 			Campus.info(pk, true);
@@ -515,6 +531,13 @@ Campus.search = function(){
 			if(li.length < 1) { return; }
 			li.removeClass('hover');
 			li.prev().addClass('hover');
+			return;
+		}
+		
+		//'escape' key
+		if(keyCode===27){
+			Campus.ajax.abort();
+			search.find('ul').remove();
 			return;
 		}
 		
