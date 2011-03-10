@@ -87,7 +87,6 @@ Campus.gmap = function(){
 	// add layers & controls
 	this.layers.update();
 	this.controls();
-	
 };
 
 
@@ -157,10 +156,8 @@ Campus.controls = function(){
 	}
 	Campus.menu = $(menuUI);
 	var menuToggle = function(){
-		console.log('toggle', Campus.menuHidden);
 		if(Campus.menuHidden){
 			//show
-			console.log('show that shee');
 			Campus.menu.find('.body').show();
 			Campus.menu.find('#menu-hide').html('hide');
 			Campus.menu.removeClass('closed');
@@ -168,7 +165,6 @@ Campus.controls = function(){
 			$.cookie('hide_menu', false);
 		} else {
 			//hide
-			console.log('hide that shee');
 			Campus.menu.find('.body').hide();
 			Campus.menu.find('#menu-hide').html('show');
 			Campus.menu.addClass('closed');
@@ -368,6 +364,7 @@ Campus.resize = function(){
 	var resize = function(){
 		var height = document.documentElement.clientHeight;
 		var blackbar = document.getElementById('UCFHBHeader');
+		
 		height -= blackbar ? blackbar.clientHeight : 0;
 		height -= $('#map header')[0].clientHeight;
 		height -= document.getElementById('map-foot').clientHeight;
@@ -376,14 +373,6 @@ Campus.resize = function(){
 		
 		var canvas   = document.getElementById('map-canvas');
 		canvas.style.height = height + "px";
-		
-		// sometimes blackbar is slow to load
-		if(!blackbar){
-			if(++Campus.resize_tries > 3) { return; }
-			window.setTimeout(resize, 50);
-		} else {
-			Campus.resize_tries = 0;
-		}
 		
 		// iphone, hide url bar
 		if(jQuery.os.name === "iphone"){
