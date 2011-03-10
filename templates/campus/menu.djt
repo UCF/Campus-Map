@@ -1,4 +1,5 @@
 <h2>Menu</h2>
+<a id="menu-hide">hide</a>
 <div class="body">
 	<div class="item" id="item-title">
 		Location: {% if options.location %}{{ options.location }}{% else %}UCF{% endif %}

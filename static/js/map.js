@@ -156,6 +156,32 @@ Campus.controls = function(){
 		menuUI.innerHTML = Campus.menu_html;
 	}
 	Campus.menu = $(menuUI);
+	var menuToggle = function(){
+		console.log('toggle', Campus.menuHidden);
+		if(Campus.menuHidden){
+			//show
+			console.log('show that shee');
+			Campus.menu.find('.body').show();
+			Campus.menu.find('#menu-hide').html('hide');
+			Campus.menu.removeClass('closed');
+			Campus.menuHidden = false;
+			$.cookie('hide_menu', false);
+		} else {
+			//hide
+			console.log('hide that shee');
+			Campus.menu.find('.body').hide();
+			Campus.menu.find('#menu-hide').html('show');
+			Campus.menu.addClass('closed');
+			Campus.menuHidden = true;
+			$.cookie('hide_menu', true);
+		}
+	};
+	// this doesn't seem intuitive (setting 'true' to false) but the value 
+	// needs to be flipped so the 'toggle' function can be used (we dont' want
+	// to toggle away from previous state)
+	Campus.menuHidden = $.cookie('hide_menu') == 'true' ? false : true;
+	menuToggle();
+	Campus.menu.find('#menu-hide').click(menuToggle);
 	this.map.controls[google.maps.ControlPosition.RIGHT_TOP].push(menuUI);
 	
 	// buildings checkbox
@@ -584,7 +610,7 @@ Campus.search = function(){
 			$('#search').css('z-index', 15);
 			$('#search input').focus();
 		} else {
-			console.log("search glitch");
+			//console.log("search glitch");
 			setTimeout(style, 250);
 		}
 	}
