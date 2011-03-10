@@ -20,6 +20,19 @@ def home(request, format=None, **kwargs):
 		response['Content-type'] = 'application/json'
 		return response
 	
+	if format == 'txt':
+		from campus.templatetags.weather import weather
+		text = u"UCF Campus Map - %s\n%s\n\n# Campus Address\n%s\n\n# Weather\n%s" % (
+				request.build_absolute_uri(reverse('home')),
+				"-"*78,
+				"4000 Central Florida Blvd. Orlando, Florida, 32816",
+				weather(text_request=True))
+				
+				
+		response = HttpResponse(text)
+		response['Content-type'] = 'text/plain'
+		return response
+	
 	# points on the map (will have to be extended with more data added)
 	if 'points' in kwargs and kwargs['points']:
 		from campus.models import Building

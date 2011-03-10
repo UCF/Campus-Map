@@ -2,6 +2,8 @@
 
 {% block wrap %}
 	
+	<h2>Search</h2>
+	
 	<div style="padding:2em;">
 		
 		<form method="get" action="{% url search %}">

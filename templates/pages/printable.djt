@@ -1,0 +1,8 @@
+{% extends "base.djt"%}
+
+{% block wrap %}
+	
+	<h2>Printable Map</h2>
+	<p>Coming soon.</p>
+	
+{% endblock %}

@@ -11,6 +11,7 @@ urlpatterns = patterns('',
 	(r'^favicon\.ico$', 'django.views.generic.simple.redirect_to', {'url': '/media/images/favicon.ico'}),
 	(r'^robots.txt$', direct_to_template, {'template':'robots.txt', 'mimetype':'text/plain'}),
 	(r'^admin/', include(admin.site.urls)),
+	url(r'^(?P<page>[a-z]+)/(\.(?P<format>json|txt))?$', 'views.pages', name="page"),
 )
 
 if settings.DEBUG:

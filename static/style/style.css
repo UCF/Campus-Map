@@ -6,20 +6,24 @@ body { background:white url(img/gradient.png) repeat-x; }
 
 a { color:#990000; }
 a:hover { cursor:pointer; color:#C30202; }
+a:active { outline:0; }
 
 h1 { font-family:"Adobe Caslon Pro", "Adobe Caslon", "Caslon Pro", caslon, georgia, serif;}
 h1 a {text-decoration:none; color:black; }
-h1 a:hover { color:black; }
-h2 { font-size:23px; color:#FF7700; font-family: "Arial Black", arial, sans-serif; margin:0 0 .5em; }
+h1 a:hover { color:#990000; color:rgba(0,0,0,1); text-shadow: #FFB71B 0 0 7px; }
+h2 { font-size:23px; color:#FF7700; font-family: "Arial Black", arial, sans-serif; margin:5px 0 15px; }
 h3 { font-family: "Arial Black", arial, sans-serif; }
 h3 a { text-decoration:none; }
 h4 { font-family: "Trebuchet MS", sans-serif; }
 
+code { font-weight:bold; color:#21759B; }
+code a { color:#21759B; text-decoration:none; border-bottom:1px dotted #7DA4C2; }
+code a:hover { border-bottom:1px solid #7DA4C2; color:#21759B; }
 
 /******************************************************************************\
     Layout
 \******************************************************************************/
-#wrap { width:950px; padding:18px 0 32px; margin:0 auto; clear:both; }
+#wrap { width:950px; padding:18px 0 36px; margin:0 auto; clear:both; }
 
 .col { padding-left:1em; }
 .clear { clear:both; height:1px; font-size:1px; overflow:hidden; }

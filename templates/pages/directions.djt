@@ -1,0 +1,8 @@
+{% extends "base.djt"%}
+
+{% block wrap %}
+	
+	<h2>Directions to UCF</h2>
+	<p>Coming soon.</p>
+	
+{% endblock %}

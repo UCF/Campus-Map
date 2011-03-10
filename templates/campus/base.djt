@@ -8,7 +8,11 @@
 		{% weather %}
 	</header>
 	<div id="canvas-wrap"><div id="map-canvas" style="width:100%; height:550px"></div></div>
-	<div id="map-foot">PDF Map, Directions</div>
+	<div id="map-foot">
+		<a href="{% url page 'printable' %}">Printable Map</a>
+		<a href="{% url page 'printable' %}">Directions to UCF</a>
+		<a href="{% url page 'about' %}">About</a>
+	</div>
 </div>
 <footer>Regional Campuses | College of Medicine | Downtown | Rosen</footer>
 

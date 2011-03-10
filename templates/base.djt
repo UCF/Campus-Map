@@ -55,9 +55,10 @@
 		{% block nav %}
 		<nav>
 			<ol>
-				<li><a href="">Nav Link 1</a></li>
-				<li><a href="">Nav Link 2</a></li>
-				<li class="last"><a href="">Nav Link 3</a></li>
+				<li><a href="{% url search %}">Search</a></li>
+				<li><a href="{% url page 'printable' %}">Printable Map</a></li>
+				<li><a href="{% url page 'directions' %}">Directions</a></li>
+				<li class="last"><a href="{% url page 'about' %}">About</a></li>
 			</ol>
 		</nav>
 		{% endblock %}
@@ -70,7 +71,21 @@
 	{% endblock %}
 	</div><!--/wrap -->
 	
-	<footer>footer</footer>
+	<footer> 
+		<dl>
+			<dt>Mailing Address:</dt>
+			<dd>
+				4000 Central Florida Blvd.
+				Orlando, FL, 32816
+			</dd>
+			<dt>Contact</dt>
+			<dd>
+				Phone: (407) 823-2000
+			</dd>
+		</dl>
+		
+		<a id="logo" href="http://www.ucf.edu/">UCF Stands For Opportunity</a>
+	</footer>
 	
 {% endblock %}{# /body #}
 	

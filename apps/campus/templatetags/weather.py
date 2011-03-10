@@ -1,7 +1,7 @@
 from django import template
 from django.core.cache import cache
 
-def weather(json_request = False):
+def weather(json_request = False, text_request = False):
 	'''
 	Yahoo Weather
 	'''
@@ -9,6 +9,8 @@ def weather(json_request = False):
 	if w is not None:
 		if json_request:
 			return cache.get('yahoo_weather_json')
+		elif text_request:
+			return cache.get('yahoo_weather_text')
 		else:
 			return { 'weather': w }
 	
@@ -41,6 +43,7 @@ def weather(json_request = False):
 			temp = find.group(1)
 		
 		w_json = { "temperature" : u'{0}\u00B0F'.format(temp), "description":description }
+		w_text = u'temperature: {0}\u00B0F\ndescription: {1}'.format(temp, description)
 			
 		# grab just icon and description
 		w = re.search('(<div class="navweatherimage[\s\S]+</div>)\s*(<div class="discription">[\s\S]+</div>)\s*<div class="floatright">', c)
@@ -54,9 +57,12 @@ def weather(json_request = False):
 
 	cache.set('yahoo_weather', w)
 	cache.set('yahoo_weather_json', w_json)
+	cache.set('yahoo_weather_text', w_text)
 	
 	if json_request:
 		return w_json
+	elif text_request:
+		return w_text
 	else:
 		return { 'weather': w }
 
