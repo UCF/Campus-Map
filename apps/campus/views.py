@@ -161,12 +161,13 @@ def search(request, format=None):
 	one day will search over all data available
 	'''
 	from campus.models import Building
+	
 	query_string = ''
-	found_entries = None
+	bldgs = None
 	if ('q' in request.GET) and request.GET['q'].strip():
 		query_string = request.GET['q']
 		entry_query = get_query(query_string, ['name',])		
-		found_entries = Building.objects.filter(entry_query).order_by('name')
+		bldgs = Building.objects.filter(entry_query).order_by('name')
 		
 	if format == 'list':
 		''' used with the search ajax '''
@@ -177,11 +178,11 @@ def search(request, format=None):
 			time.sleep(.5)
 		
 		response = ''
-		if len(found_entries) < 1:
+		if len(bldgs) < 1:
 			response = '<li><a data-pk="null">No results</a></li>'
 			return HttpResponse(response)
 		count = 0
-		for item in found_entries:
+		for item in bldgs:
 			response += '<li>%s</li>' % (item.link)
 			count += 1
 			if(count > 9):
@@ -198,11 +199,19 @@ def search(request, format=None):
 				'id'   : item.pk }
 		search = {
 			"query"   : query_string,
-			"results" : map(clean, found_entries)
+			"results" : map(clean, bldgs)
 		}
 		response = HttpResponse(json.dumps(search))
 		response['Content-type'] = 'application/json'
 		return response
+	
+	from apps.views import phonebook_search
+	phonebook = phonebook_search(query_string)
+	
+	found_entries = {
+		'buildings' : bldgs,
+		'phonebook' : phonebook['results']
+	}
 	
 	context = {'search':True, 'query':query_string, 'results':found_entries }
 	return render(request, 'campus/search.djt', context)

@@ -65,3 +65,8 @@ def get_org(id):
 				if d['org_id'] == id and d['name'] is not None:
 					o['departments'].append(d)
 			return o
+
+def phonebook_search(q):
+	url = "%s?search=%s" % (settings.PHONEBOOK, q)
+	results = urllib.urlopen(url).read()
+	return json.loads(results)

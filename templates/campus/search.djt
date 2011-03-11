@@ -13,18 +13,32 @@
 	
 	</div>
 	
-	{% if results %}
+	{% if query %}
 	<div style="padding:10px 20px;">
 		<h3 style="color:#FF7700;">Results</h3>
+		
 		<h4>Buildings:</h4>
+		{% if results.buildings %}
 		<ul>
-			{% for loc in results %}
+			{% for loc in results.buildings %}
 			<li>{{loc.link|safe}}</li>
 			{% endfor %}
 		</ul>
+		{% else %}
+		<p>No Results</p>
+		{% endif %}
 		
 		<h4>Phonebook:</h4>
-		<p>Coming Soon</p>
+		{% if results.phonebook %}
+		<ul>
+			{% for e in results.phonebook %}
+			<li>{{e.name}}</li>
+			{% endfor %}
+		</ul>
+		{% else %}
+		<p>No Results</p>
+		{% endif %}
+		
 	</div>
 	{% endif %}
 {% endblock %}
