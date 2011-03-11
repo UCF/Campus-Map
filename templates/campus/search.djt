@@ -4,29 +4,27 @@
 	
 	<h2>Search</h2>
 	
-	<div style="padding:2em;">
+	<div style="padding:20px 20px 10px">
 		
 		<form method="get" action="{% url search %}">
 			<input type="text" name="q" value="{{query}}">
 			<input type="submit">
 		</form>
-		
-		
-		<div style="padding:2em 0;">
-			<h2 style="font-size:16px;">Results:</h2>
-		
-			{% if results %}
-			<ul>
-				{% for loc in results %}
-				<li>{{loc.link|safe}}</li>
-				{% endfor %}
-			</ul>
-			{% else %}
-			<p><strong>No Results</strong></p>
-			{% endif %}
 	
-		</div>
 	</div>
 	
-	
+	{% if results %}
+	<div style="padding:10px 20px;">
+		<h3 style="color:#FF7700;">Results</h3>
+		<h4>Buildings:</h4>
+		<ul>
+			{% for loc in results %}
+			<li>{{loc.link|safe}}</li>
+			{% endfor %}
+		</ul>
+		
+		<h4>Phonebook:</h4>
+		<p>Coming Soon</p>
+	</div>
+	{% endif %}
 {% endblock %}

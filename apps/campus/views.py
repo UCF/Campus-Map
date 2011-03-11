@@ -71,15 +71,6 @@ def home(request, format=None, **kwargs):
 	
 	return render(request, 'campus/base.djt', context)
 
-def organizations(request, format=None):
-	
-	if format == 'json':
-		response = HttpResponse("org data coming soon!")
-		response['Content-type'] = 'application/json'
-		return response
-	
-	return render(request, 'campus/organizations.djt')
-	
 
 def buildings(request, format=None):
 	

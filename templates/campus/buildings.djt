@@ -2,19 +2,16 @@
 
 {% block wrap %}
 	
-	<div style="padding:2em;">
-		
-		<h2> Buildings </h2>
-		
-		{% if buildings %}
-			<ul>
-			{% for b in buildings %}
-				<li>{{b.link|safe}}</li>
-			{% endfor %}
-		{% else %} 
-			<p>No buildings found.</p>
-		{% endif %}
-	</div>
+	<h2> Buildings </h2>
 	
+	{% if buildings %}
+		<ul>
+		{% for b in buildings %}
+			<li>{{b.link|safe}}</li>
+		{% endfor %}
+		</ul>
+	{% else %} 
+		<p>No buildings found.</p>
+	{% endif %}
 	
 {% endblock %}

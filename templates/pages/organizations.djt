@@ -1,0 +1,16 @@
+{% extends "base.djt"%}
+
+{% block wrap %}
+	
+	<h2> Organizations </h2>
+	{% if organizations %}
+		<ul>
+		{% for o in organizations.results %}
+			<li><a href="/organization/{{o.id}}/{{o.name|lower|slugify}}/">{{o.name}}</a></li>
+		{% endfor %}
+		</ul>
+	{% else %} 
+		<p>No organizations available.</p>
+	{% endif %}
+	
+{% endblock %}

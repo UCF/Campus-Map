@@ -10,6 +10,8 @@ urlpatterns = patterns('',
 	#url(r'^$', direct_to_template, {'template':'base.djt'}, name='home'),
 	(r'^favicon\.ico$', 'django.views.generic.simple.redirect_to', {'url': '/media/images/favicon.ico'}),
 	(r'^robots.txt$', direct_to_template, {'template':'robots.txt', 'mimetype':'text/plain'}),
+	url(r'^organizations/(\.(?P<format>json|txt))?$', 'views.organizations', name="organizations"),
+	url(r'^organization/(?P<id>\d+)/([^/]+/)?(\.(?P<format>json|txt))?$', 'views.organization', name="org"),
 	(r'^admin/', include(admin.site.urls)),
 	url(r'^(?P<page>[a-z]+)/(\.(?P<format>json|txt))?$', 'views.pages', name="page"),
 )

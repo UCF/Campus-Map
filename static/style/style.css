@@ -20,6 +20,8 @@ code { font-weight:bold; color:#21759B; }
 code a { color:#21759B; text-decoration:none; border-bottom:1px dotted #7DA4C2; }
 code a:hover { border-bottom:1px solid #7DA4C2; color:#21759B; }
 
+ul li a { text-decoration:none; border-bottom:1px dotted #CE353B; line-height:1.5; }
+
 /******************************************************************************\
     Layout
 \******************************************************************************/
@@ -54,6 +56,13 @@ footer { background:black; margin:0; padding:8px; text-align:right; color:white;
 #maptypes div { border:0 !important; }
 #maptypes > div + div { border-left:1px solid #aaa !important; }
 #maptypes > div { padding-top:4px; padding-bottom:4px; }
+
+
+/******************************************************************************\
+    Dept / Org
+\******************************************************************************/
+#org ul li { padding-bottom:10px; }
+
 
 
 /******************************************************************************\
