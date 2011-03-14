@@ -1,30 +1,12 @@
 from django.db import models
 
-class Building(models.Model):
-	number            = models.CharField("Building Number", max_length=50, primary_key=True)
+class CommonLocation(models.Model):
 	name              = models.CharField(max_length=255)
+	image             = models.CharField(max_length=50,  blank=True, help_text='Don&rsquo;t forget to append a file extension')
 	description       = models.CharField(max_length=255, blank=True)
-	image             = models.CharField(max_length=50, blank=True)
-	abbreviation      = models.CharField(max_length=50, blank=True)
-	poly_coords       = models.TextField(blank=True, null=True)
+	googlemap_point   = models.CharField(max_length=255, null=True, blank=True, help_text='E.g., <code>28.6017, -81.2005</code>')
 	illustrated_point = models.CharField(max_length=255, null=True, blank=True)
-	googlemap_point   = models.CharField(max_length=255, null=True, blank=True)
-	
-	
-	def _title(self):
-		if self.abbreviation:
-			return "%s (%s)" % (self.name, self.abbreviation)
-		else:
-			return self.name
-	title = property(_title)
-	
-	def _link(self):
-		from django.core.urlresolvers import reverse
-		from django.template.defaultfilters import slugify
-		url = reverse('location', kwargs={'loc':self.number})
-		return '<a href="%s%s/" data-pk="%s">%s</a>' % (
-					url, slugify(self.title), self.number, self.title)
-	link = property(_link)
+	poly_coords       = models.TextField(blank=True, null=True)
 	
 	def json(self):
 		"""Returns a json serializable object for this instance"""
@@ -60,9 +42,6 @@ class Building(models.Model):
 		from django.core.exceptions import ValidationError
 		import json
 		
-		# change all numbers to be lowercase
-		self.number = self.number.lower()
-		
 		# keep blanks out of coordinates
 		if self.poly_coords       == "": self.poly_coords       = None
 		if self.illustrated_point == "": self.illustrated_point = None
@@ -89,11 +68,44 @@ class Building(models.Model):
 			except ValueError:
 				raise ValidationError("Invalid Google Map Point (not json serializable)")
 		
-		super(Building, self).clean(*args, **kwargs)
+		super(CommonLocation, self).clean(*args, **kwargs)
 	
 	def __unicode__(self):
 		return u'%s' % (self.name)
 		
 	class Meta:
 		ordering = ("name",)
+		abstract = True
 
+class Location(CommonLocation):
+	slug              = models.SlugField(max_length=255, primary_key=True)
+	pass
+
+class RegionalCampus(CommonLocation):
+	slug              = models.SlugField(max_length=255, primary_key=True)
+	class Meta:
+		verbose_name_plural = "Regional Campuses"
+
+class Building(CommonLocation):
+	number            = models.CharField("Building Number", max_length=50, primary_key=True)
+	abbreviation      = models.CharField(max_length=50, blank=True)
+	
+	def _title(self):
+		if self.abbreviation:
+			return "%s (%s)" % (self.name, self.abbreviation)
+		else:
+			return self.name
+	title = property(_title)
+	
+	def _link(self):
+		from django.core.urlresolvers import reverse
+		from django.template.defaultfilters import slugify
+		url = reverse('location', kwargs={'loc':self.number})
+		return '<a href="%s%s/" data-pk="%s">%s</a>' % (url, slugify(self.title), self.number, self.title)
+	link = property(_link)
+	
+	def clean(self, *args, **kwargs):
+		super(Building, self).clean(*args, **kwargs)
+		
+		# change all numbers to be lowercase
+		self.number = self.number.lower()
