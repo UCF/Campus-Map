@@ -181,7 +181,7 @@ Campus.controls = function(){
 	this.map.controls[google.maps.ControlPosition.RIGHT_TOP].push(menuUI);
 	
 	// buildings checkbox
-	var bcb = Campus.menu.find('#buildings')[0];
+	var bcb = $('#buildings')[0];
 	$(bcb).attr('checked', Campus.settings.buildings);
 	$(bcb).click(function(){
 		Campus.settings.buildings = $(this).is(':checked');

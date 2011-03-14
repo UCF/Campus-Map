@@ -9,9 +9,18 @@
 	</header>
 	<div id="canvas-wrap"><div id="map-canvas" style="width:100%; height:550px"></div></div>
 	<div id="map-foot">
-		<a href="{% url page 'printable' %}">Printable Map</a>
-		<a href="{% url page 'printable' %}">Directions to UCF</a>
-		<a href="{% url page 'about' %}">About &amp; More</a>
+		<span class="left checkboxes">
+			<label class="disabled"><input type="checkbox" disabled="disabled"> Parking</label>
+			<label class="disabled"><input type="checkbox" disabled="disabled"> Entrances/Exits</label>
+			<label><input type="checkbox" id="buildings"> Buildings</label>
+			<label class="disabled"><input type="checkbox" disabled="disabled"> Walking Paths</label>
+		</span>
+		<span class="right">
+			<a href="{% url page 'printable' %}">Printable Map</a>
+			<a href="{% url page 'printable' %}">Directions to UCF</a>
+			<a href="{% url page 'about' %}">About &amp; More</a>
+		</span>
+		<div class="clear">&nbps;</div>
 	</div>
 </div>
 <footer>

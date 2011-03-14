@@ -21,7 +21,16 @@
 	<a class="item" href="{% url organizations %}">Dept/Organizations</a>
 		
 	<h3>Map view options:</h3>
-	<label><input type="checkbox" id="buildings"> Buildings</label>
 	<label><input type="checkbox" checked="checked" id="traffic"> Traffic</label>
+	
+	<h3>Coming Soon:</h3>
+	<label class="disabled"><input type="checkbox" disabled="disabled"> Food</label>
+	<label class="disabled"><input type="checkbox" disabled="disabled"> Housing</label>
+	<label class="disabled"><input type="checkbox" disabled="disabled"> Shuttle Routes</label>
+	<label class="disabled"><input type="checkbox" disabled="disabled"> Bike Racks</label>
+	<label class="disabled"><input type="checkbox" disabled="disabled"> Sports/Rec</label>
+	<label class="disabled"><input type="checkbox" disabled="disabled"> Computer Labs</label>
+	<label class="disabled"><input type="checkbox" disabled="disabled"> Emergency Assistance</label>
+	
 	<div class="clear"></div>
 </div>
