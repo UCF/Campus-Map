@@ -13,7 +13,7 @@ urlpatterns = patterns('',
 	url(r'^organizations/(\.(?P<format>json|txt))?$', 'views.organizations', name="organizations"),
 	url(r'^organization/(?P<id>\d+)/([^/]+/)?(\.(?P<format>json|txt))?$', 'views.organization', name="org"),
 	(r'^admin/', include(admin.site.urls)),
-	url(r'^(?P<page>[a-z]+)/(\.(?P<format>json|txt))?$', 'views.pages', name="page"),
+	url(r'^(?P<page>[\w-]+)/(\.(?P<format>json|txt))?$', 'views.pages', name="page"),
 )
 
 if settings.DEBUG:

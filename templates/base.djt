@@ -73,20 +73,33 @@
 	{% endblock %}
 	</div><!--/wrap -->
 	
-	<footer> 
-		<dl>
-			<dt>Mailing Address:</dt>
-			<dd>
-				4000 Central Florida Blvd.
-				Orlando, FL, 32816
-			</dd>
-			<dt>Contact</dt>
-			<dd>
-				Phone: (407) 823-2000
-			</dd>
-		</dl>
+	<footer>
+		<div class="wrap">
+			<div class="left">
+				<dl>
+					<dt>Mailing Address:</dt>
+					<dd>
+						4000 Central Florida Blvd.<br>
+						Orlando, FL, 32816
+					</dd>
+					<dt>Contact</dt>
+					<dd>
+						Phone: (407) 823-2000
+					</dd>
+				</dl>
+			</div>
 		
-		<a id="logo" href="http://www.ucf.edu/">UCF Stands For Opportunity</a>
+			<div class="right">
+				<a href="{% url page 'regional-campuses' %}">Regional Campuses</a> | 
+				<a href="{% url location 'college-of-medicine' %}">College of Medicine</a> | 
+				<a href="{% url page 'downtown' %}">Downtown</a> | 
+				<a href="{% url location 'rosen-college' %}">Rosen College</a>
+				
+				<a id="logo" href="http://www.ucf.edu/">UCF Stands For Opportunity</a>
+			</div>
+		
+			<div class="clear">&nbsp;</div>
+		</div>
 	</footer>
 	
 {% endblock %}{# /body #}

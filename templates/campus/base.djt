@@ -11,10 +11,21 @@
 	<div id="map-foot">
 		<a href="{% url page 'printable' %}">Printable Map</a>
 		<a href="{% url page 'printable' %}">Directions to UCF</a>
-		<a href="{% url page 'about' %}">About</a>
+		<a href="{% url page 'about' %}">About &amp; More</a>
 	</div>
 </div>
-<footer>Regional Campuses | College of Medicine | Downtown | Rosen</footer>
+<footer>
+	<span class="left">
+		<a href="{% url page 'directions'%}">4000 Central Florida Blvd.  Orlando, FL 32816</a>
+	</span>
+	<span class="right">
+		<a href="{% url page 'regional-campuses' %}">Regional Campuses</a> | 
+		<a href="{% url location 'college-of-medicine' %}">College of Medicine</a> | 
+		<a href="{% url page 'downtown' %}">Downtown</a> | 
+		<a href="{% url location 'rosen-college' %}">Rosen College</a>
+	</span>
+	<div class="clear">&nbsp;</div>
+</footer>
 
 <div id="menu-html" style="display:none;">
 	{% include 'campus/menu.djt' %}
