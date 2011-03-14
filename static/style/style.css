@@ -66,7 +66,7 @@ nav ol li a:hover {  color:#ed1c24;  text-decoration: underline; }
 #map header h1 { border:0; padding:0 0 0 4px; }
 #map-foot { padding:4px 0; text-align:right; display:block; overflow:hidden; }
 #map-foot .right { padding-top:3px; }
-#map-foot a { vertical-align:middle; text-decoration:none; color:#333; font-size:12px; background:white; padding:2px 4px; margin:0 0 0 2px; border:1px solid #444; border-radius:4px; -moz-border-radius: 4px; -webkit-border-radius: 4px; }
+#map-foot a { vertical-align:middle; text-decoration:none; color:#333; font-size:12px; background:white; padding:2px 4px; margin:0 0 0 2px; border:1px solid #aaa; border-radius:4px; -moz-border-radius: 4px; -webkit-border-radius: 4px; }
 .firefox #map-foot a { vertical-align:baseline; }
 #map-foot a:hover { border:1px solid #6688cc; box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.35); -webkit-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.20); -moz-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.20); }
 .ie #map-foot a:hover { border-color:#6688cc; color:black; }
