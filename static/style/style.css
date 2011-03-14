@@ -132,9 +132,10 @@ footer { background:black; margin:0; padding:8px; text-align:right; color:white;
 
 
 /******************************************************************************\
-    Weather
+    Weather (width is set in template tag)
 \******************************************************************************/
-#weather { position:absolute; top:18px; right:0; width:185px; }
+#weather { position:absolute; top:18px; right:0; }
+#weather div { background-repeat:no-repeat; }
 #weather .navweatherimage { width:61px; overflow:hidden; display:block; height:34px; float:left; }
 #weather .discription { position:absolute; left:35px; top:12px; color:#666; }
 #weather .discription a { color:#666; }
