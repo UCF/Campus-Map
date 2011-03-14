@@ -17,7 +17,7 @@ def pages(request, page=None, format=None):
 	
 	if format == 'txt':
 		response = HttpResponse('Not this page silly!')
-		response['Content-type'] = 'text/plain'
+		response['Content-type'] = 'text/plain; charset=utf-8'
 		return response
 	
 	try:

@@ -30,7 +30,7 @@ def home(request, format=None, **kwargs):
 				
 				
 		response = HttpResponse(text)
-		response['Content-type'] = 'text/plain'
+		response['Content-type'] = 'text/plain; charset=utf-8'
 		return response
 	
 	# points on the map (will have to be extended with more data added)
