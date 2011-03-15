@@ -6,7 +6,7 @@
 	{% if organizations %}
 		<ul>
 		{% for o in organizations.results %}
-			<li><a href="/organization/{{o.id}}/{{o.name|lower|slugify}}/">{{o.name}}</a></li>
+			<li><a href="{% url org o.id %}{{o.name|lower|slugify}}/">{{o.name}}</a></li>
 		{% endfor %}
 		</ul>
 	{% else %} 
