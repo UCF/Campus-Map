@@ -13,7 +13,7 @@
 <Placemark>
 	{% if b.poly_coords %}
 	<name>{{b.name}}</name>
-	<Style><LineStyle><color>ff0bcaff</color></LineStyle><PolyStyle><color>590bf3ff</color></PolyStyle></Style>
+	<Style><LineStyle><color>a60bcafd</color></LineStyle><PolyStyle><color>590bf3ff</color></PolyStyle></Style>
 	<ExtendedData><SchemaData schemaUrl="#building">
 		<SimpleData name="number">{{b.number}}</SimpleData>
 		<SimpleData name="name">{{b.name}}</SimpleData>
