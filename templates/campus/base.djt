@@ -63,8 +63,7 @@
 		
 		$(document).ready(function(){
 			Campus.init();
-			Campus.settings.points    = {% if options.points %}true{% else %}false{% endif %};
-			Campus.settings.buildings = {% if options.buildings %}true{% else %}false{% endif %};
+			Campus.settings = {{options|safe}};
 			Campus.gmap();
 		});
 	</script>

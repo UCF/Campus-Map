@@ -6,6 +6,12 @@ from django.core.urlresolvers import reverse
 import settings, json, re
 
 def home(request, format=None, **kwargs):
+	'''
+	Renders the main google map.
+	One thing that seems to be working well so far, json encoding kwargs and
+	using as js options for the map, that way other views can call home and
+	pass whatever map options are needed
+	'''
 	from time import time
 	date = int(time())
 		
@@ -61,7 +67,7 @@ def home(request, format=None, **kwargs):
 	loc = "%s.json" % reverse('location', kwargs={'loc':'foo'})
 	loc = loc.replace('foo', '%s');
 	context = { 
-		'options' : kwargs, 
+		'options' : json.dumps(kwargs), 
 		'points'  : points, 
 		'date'    : date,
 		'kml_url' : kml,
@@ -90,7 +96,10 @@ def buildings(request, format=None):
 		# http://code.google.com/apis/kml/documentation/kml_tut.html#network_links
 		
 		def flat(l):
-			'''flatten array and create a a list of coordinates separated by a space'''
+			'''
+			TODO: move this into an abstract model
+			flatten array and create a a list of coordinates separated by a space
+			'''
 			str = ""
 			for i in l:
 				if type(i[0]) == type([]):
@@ -111,6 +120,53 @@ def buildings(request, format=None):
 	
 	context = { 'buildings' : buildings }
 	return render(request, 'campus/buildings.djt', context)
+
+def sidewalks(request, format=None):
+	'''
+	Mostly an API wrapper
+	'''
+	from campus.models import Sidewalk
+	sidewalks = Sidewalk.objects.all()
+	
+	if format == 'kml':
+		response = render_to_response('api/sidewalks.kml', { 'sidewalks':sidewalks })
+		response['Content-type'] = 'application/vnd.google-earth.kml+xml'
+		return response
+	
+	if format == 'json':
+		# trying to stick to the  geojson spec: http://geojson.org/geojson-spec.html
+		arr = []
+		for s in sidewalks:
+			sidewalk = {
+				"type": "Feature", 
+				"geometry": { 
+					"type": "LineString", 
+					"coordinates": json.loads(s.poly_coords)
+				}
+			}
+			arr.append(sidewalk)
+		obj = {
+			"name"     : "UCF Sidewalks",
+			"source"   : "University of Central Florida",
+			"url"      : request.build_absolute_uri(reverse('sidewalks')) + ".json",
+			"type"     : "FeatureCollection",
+			"features" : arr
+		}
+		response = HttpResponse(json.dumps(obj, indent=4))
+		response['Content-type'] = 'application/json'
+		return response
+	
+	if format == 'txt':
+		text = "University of Central Florida\nCampus Map: Sidewalks\n%s\n%s\n" % (
+					request.build_absolute_uri(reverse('sidewalks')) + ".txt",
+					"-"*78)
+		for s in sidewalks:
+			text += "\n" + s.kml_coords
+		response = HttpResponse(text)
+		response['Content-type'] = 'text/plain; charset=utf-8'
+		return response
+	
+	return home(request, sidewalks=True)
 
 
 def location(request, loc, format=None):

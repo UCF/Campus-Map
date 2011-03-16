@@ -109,3 +109,47 @@ class Building(CommonLocation):
 		
 		# change all numbers to be lowercase
 		self.number = self.number.lower()
+
+
+class Sidewalk(models.Model):
+	poly_coords       = models.TextField(blank=True, null=True)
+	
+	def _kml_coords(self):
+		if self.poly_coords == None:
+			return None
+		
+		import json
+		def flat(l):
+			''' 
+			recursive function to flatten array and create a a list of coordinates separated by a space
+			'''
+			str = ""
+			for i in l:
+				if type(i[0]) == type([]):
+					return flat(i)
+				else:
+					str += ("%.6f,%.6f ")  % (i[0], i[1])
+			return str
+		
+		
+		arr = json.loads(self.poly_coords)
+		return flat(arr)
+	kml_coords = property(_kml_coords)
+	
+	
+	def clean(self, *args, **kwargs):
+		from django.core.exceptions import ValidationError
+		import json
+		
+		# keep blanks out of coordinates
+		if self.poly_coords       == "": self.poly_coords       = None
+		
+		# check poloy coordinates
+		if self.poly_coords != None: 
+			try:
+				json.loads("{0}".format(self.poly_coords))
+			except ValueError:
+				raise ValidationError("Invalid polygon coordinates (not json serializable)")
+		
+		super(Sidewalk, self).clean(*args, **kwargs)
+	
