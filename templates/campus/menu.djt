@@ -21,7 +21,7 @@
 	<a class="item" href="{% url organizations %}">Dept/Organizations</a>
 		
 	<h3>Map view options:</h3>
-	<label><input type="checkbox" checked="checked" id="traffic"> Traffic</label>
+	<label><input type="checkbox" id="traffic"> Traffic</label>
 	
 	<h3>Coming Soon:</h3>
 	<label class="disabled"><input type="checkbox" disabled="disabled"> Food</label>

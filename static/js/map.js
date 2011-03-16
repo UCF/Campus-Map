@@ -196,6 +196,13 @@ Campus.controls = function(){
 		Campus.layers.traffic.update();
 	});
 	
+	// walking paths checkbox
+	var scb = $('#sidewalks')[0];
+	$(scb).attr('checked', Campus.settings.sidewalks);
+	$(scb).click(function(){
+		Campus.settings.sidewalks = $(this).is(':checked');
+		Campus.layers.sidewalks.update();
+	});
 	
 }
 
@@ -207,6 +214,7 @@ Campus.layers = {
 		this.buildings.update();
 		this.traffic.update();
 		this.points.update();
+		this.sidewalks.update();
 	},
 	
 	/* Google's traffic layer */
@@ -235,7 +243,7 @@ Campus.layers = {
 			if(!this.loaded){
 				// send KML to google
 				// http://code.google.com/apis/maps/documentation/javascript/overlays.html#KMLLayers
-				this.layer = new google.maps.KmlLayer(Campus.urls.kml, { preserveViewport : true, suppressInfoWindows: true, clickable: false });
+				this.layer = new google.maps.KmlLayer(Campus.urls.buildings_kml, { preserveViewport : true, suppressInfoWindows: true, clickable: false });
 				
 				// strip map of google elements
 				// http://code.google.com/apis/maps/documentation/javascript/maptypes.html#StyledMaps
@@ -284,6 +292,26 @@ Campus.layers = {
 					Campus.info(this.location, false);
 				});
 			}
+		}
+	},
+	
+	/* Display sidewalk lines based on UCF data */
+	sidewalks : {
+		loaded : false,
+		layer  : { setMap:function(){} },
+		load   : function(){
+			if(!this.loaded){
+				this.layer = new google.maps.KmlLayer(Campus.urls.sidewalks_kml, { preserveViewport : true, suppressInfoWindows: true, clickable: false });
+				this.loaded = true;
+			}
+			this.layer.setMap(Campus.map);
+		},
+		unload : function() {
+			this.layer.setMap(null);
+		},
+		update : function(){
+			var on = Campus.settings.sidewalks;
+			if(on) this.load(); else this.unload();
 		}
 	}
 	

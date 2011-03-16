@@ -60,18 +60,23 @@ def home(request, format=None, **kwargs):
 		points = None
 		
 	# urls
+	version = 1 # clears google's cache
+	# TODO: https://groups.google.com/group/kml-support-getting-started/browse_thread/thread/757295a81285c8c5
 	if settings.GOOGLE_CAN_SEE_ME:
-		kml = "%s.kml" % (request.build_absolute_uri(reverse('buildings')))
+		buildings_kml = "%s.kml?v=%s" % (request.build_absolute_uri(reverse('buildings')), version)
+		sidewalks_kml = "%s.kml?v=%s" % (request.build_absolute_uri(reverse('sidewalks')), version)
 	else:
-		kml = "%s%s.kml" % (settings.GOOGLE_LOOK_HERE, reverse('buildings'))
+		buildings_kml = "%s%s.kml?v=%s" % (settings.GOOGLE_LOOK_HERE, reverse('buildings'), version)
+		sidewalks_kml = "%s%s.kml?v=%s" % (settings.GOOGLE_LOOK_HERE, reverse('sidewalks'), version)
 	loc = "%s.json" % reverse('location', kwargs={'loc':'foo'})
 	loc = loc.replace('foo', '%s');
-	context = { 
-		'options' : json.dumps(kwargs), 
-		'points'  : points, 
-		'date'    : date,
-		'kml_url' : kml,
-		'loc_url' : loc
+	context = {
+		'options'       : json.dumps(kwargs), 
+		'points'        : points, 
+		'date'          : date,
+		'buildings_kml' : buildings_kml,
+		'sidewalks_kml' : sidewalks_kml,
+		'loc_url'       : loc
 	}
 	
 	
@@ -128,6 +133,8 @@ def sidewalks(request, format=None):
 	from campus.models import Sidewalk
 	sidewalks = Sidewalk.objects.all()
 	
+	url = request.build_absolute_uri(reverse('sidewalks'))
+	
 	if format == 'kml':
 		response = render_to_response('api/sidewalks.kml', { 'sidewalks':sidewalks })
 		response['Content-type'] = 'application/vnd.google-earth.kml+xml'
@@ -148,7 +155,7 @@ def sidewalks(request, format=None):
 		obj = {
 			"name"     : "UCF Sidewalks",
 			"source"   : "University of Central Florida",
-			"url"      : request.build_absolute_uri(reverse('sidewalks')) + ".json",
+			"url"      : url + ".json",
 			"type"     : "FeatureCollection",
 			"features" : arr
 		}
@@ -158,7 +165,7 @@ def sidewalks(request, format=None):
 	
 	if format == 'txt':
 		text = "University of Central Florida\nCampus Map: Sidewalks\n%s\n%s\n" % (
-					request.build_absolute_uri(reverse('sidewalks')) + ".txt",
+					url + ".txt",
 					"-"*78)
 		for s in sidewalks:
 			text += "\n" + s.kml_coords

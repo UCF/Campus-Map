@@ -13,7 +13,7 @@
 			<label class="disabled"><input type="checkbox" disabled="disabled"> Parking</label>
 			<label class="disabled"><input type="checkbox" disabled="disabled"> Entrances/Exits</label>
 			<label><input type="checkbox" id="buildings"> Buildings</label>
-			<label class="disabled"><input type="checkbox" disabled="disabled"> Walking Paths</label>
+			<label><input type="checkbox" id="sidewalks"> Walking Paths</label>
 		</span>
 		<span class="right">
 			<a href="{% url page 'printable' %}">Printable Map</a>
@@ -48,10 +48,11 @@
 	<script src="{{MEDIA_URL}}js/map.js?date={{date}}" type="text/javascript"></script>
 	<script type="text/javascript">
 		Campus.urls = {
-			"static"   : "{{ MEDIA_URL }}",
-			"search"   : "{% url search %}",
-			"location" : "{{ loc_url }}",
-			"kml"      : "{{ kml_url }}"
+			"static"        : "{{ MEDIA_URL }}",
+			"search"        : "{% url search %}",
+			"location"      : "{{ loc_url }}",
+			"buildings_kml" : "{{ buildings_kml }}",
+			"sidewalks_kml" : "{{ sidewalks_kml }}"
 		}
 		
 		{% if points %}
