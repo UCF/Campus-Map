@@ -4,7 +4,7 @@
 
 {% for s in sidewalks %}{% if s.kml_coords %}
 <Placemark>
-	<Style><LineStyle><color>999a6700</color><width>8</width></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<Style><LineStyle><color>999a6700</color><width>2</width></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
 	<LineString><coordinates>{{s.kml_coords}}</coordinates></LineString>
 </Placemark>
 {%endif%}{%endfor %}
