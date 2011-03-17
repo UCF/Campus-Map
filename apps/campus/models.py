@@ -81,11 +81,14 @@ class CommonLocation(models.Model):
 
 class Location(CommonLocation):
 	slug              = models.SlugField(max_length=255, primary_key=True, help_text='will also be used for image name')
-	pass
+	
+	class Meta:
+		ordering = ("name",)
 
 class RegionalCampus(CommonLocation):
 	slug              = models.SlugField(max_length=255, primary_key=True, help_text='will also be used for image name')
 	class Meta:
+		ordering = ("name",)
 		verbose_name_plural = "Regional Campuses"
 
 class Building(CommonLocation):
@@ -111,6 +114,9 @@ class Building(CommonLocation):
 		
 		# change all numbers to be lowercase
 		self.number = self.number.lower()
+	
+	class Meta:
+		ordering = ("name",)
 
 
 class Sidewalk(models.Model):
