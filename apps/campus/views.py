@@ -337,7 +337,7 @@ def regional_campuses(request, campus=None, format=None):
 	if campus:
 		try:
 			rc = RegionalCampus.objects.get(pk=campus)
-		except DoesNotExist:
+		except RegionalCampus.DoesNotExist:
 			raise Http404()
 		else:
 			img = rc.img_tag
