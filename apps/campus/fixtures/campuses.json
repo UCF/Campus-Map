@@ -1,0 +1,132 @@
+[
+    {
+        "pk": "cocoa", 
+        "model": "campus.regionalcampus", 
+        "fields": {
+            "profile": "<p>1519 Clearlake Road<br /> Building 3<br /> Cocoa, FL 32922<br /> Phone: 321.433.7821 <br /> Fax: 321.433.7816</p>", 
+            "name": "Cocoa", 
+            "image": "", 
+            "poly_coords": null, 
+            "illustrated_point": null, 
+            "googlemap_point": "28.385403, -80.757025", 
+            "description": "UCF Cocoa"
+        }
+    }, 
+    {
+        "pk": "daytona-beach", 
+        "model": "campus.regionalcampus", 
+        "fields": {
+            "profile": "<p>1200 W. International Speedway Blvd. <br /> Daytona Beach, FL 32114<br /> Phone: 386.506.4021<br /> Fax: 386.506.3010</p>", 
+            "name": "Daytona Beach", 
+            "image": "", 
+            "poly_coords": null, 
+            "illustrated_point": null, 
+            "googlemap_point": "29.200747, -81.048013", 
+            "description": "UCF Daytona Beach"
+        }
+    }, 
+    {
+        "pk": "leesburg", 
+        "model": "campus.regionalcampus", 
+        "fields": {
+            "profile": "<p>9501 U.S. Highway 441<br /> Leesburg, FL 34788<br /> Phone: 352.536.2113<br /> Fax: 352.243.7489</p>", 
+            "name": "Leesburg", 
+            "image": "", 
+            "poly_coords": null, 
+            "illustrated_point": null, 
+            "googlemap_point": "28.829179, -81.795457", 
+            "description": "UCF Leesburg"
+        }
+    }, 
+    {
+        "pk": "ocala", 
+        "model": "campus.regionalcampus", 
+        "fields": {
+            "profile": "<p>3001 S.W. College Road<br /> Ocala, FL 34474<br /> Phone: 352.854.2322 x. 1824 <br /> Fax: 352.873.5872</p>", 
+            "name": "Ocala", 
+            "image": "", 
+            "poly_coords": null, 
+            "illustrated_point": null, 
+            "googlemap_point": "29.163613, -82.173455", 
+            "description": "UCF Ocala"
+        }
+    }, 
+    {
+        "pk": "palm-bay", 
+        "model": "campus.regionalcampus", 
+        "fields": {
+            "profile": "<p>250 Community College Parkway<br /> Building 3<br /> Palm Bay, FL 32909<br /> Phone: 321.433.7838<br /> Fax: 321.433.7977</p>", 
+            "name": "Palm Bay", 
+            "image": "", 
+            "poly_coords": null, 
+            "illustrated_point": null, 
+            "googlemap_point": "27.993512, -80.630208", 
+            "description": "UCF Palm Bay"
+        }
+    }, 
+    {
+        "pk": "sanford-lake-mary", 
+        "model": "campus.regionalcampus", 
+        "fields": {
+            "profile": "<p>100 Weldon Boulevard<br /> Partnership Building<br /> Sanford, FL 32773<br /> Phone: 407.708.2471<br /> Fax: 407.708.2573</p>", 
+            "name": "Sanford/Lake Mary", 
+            "image": "", 
+            "poly_coords": null, 
+            "illustrated_point": null, 
+            "googlemap_point": "28.745686, -81.304665", 
+            "description": "UCF Sanford/Lake Mary"
+        }
+    }, 
+    {
+        "pk": "south-lake", 
+        "model": "campus.regionalcampus", 
+        "fields": {
+            "profile": "<p>1250 North Hancock Road<br /> Clermont, FL 34711<br /> Phone: 352.536.2113<br /> Fax: 352.243.7489</p>", 
+            "name": "South Lake", 
+            "image": "", 
+            "poly_coords": null, 
+            "illustrated_point": null, 
+            "googlemap_point": "28.551308, -81.708515", 
+            "description": "UCF South Lake"
+        }
+    }, 
+    {
+        "pk": "south-orlando", 
+        "model": "campus.regionalcampus", 
+        "fields": {
+            "profile": "<p>7300 Lake Ellenor Drive <br /> Orlando, FL 32809<br /> Phone: 407.608.1440<br /> Fax: 407.856.6596</p>", 
+            "name": "South Orlando", 
+            "image": "", 
+            "poly_coords": null, 
+            "illustrated_point": null, 
+            "googlemap_point": "28.462534, -81.406675", 
+            "description": "UCF South Orlando"
+        }
+    }, 
+    {
+        "pk": "valencia-osceola", 
+        "model": "campus.regionalcampus", 
+        "fields": {
+            "profile": "<p>1800 Denn John Lane<br /> Building 3, Suite 319<br /> Kissimmee, FL 34744<br /> Phone: 407.582.4190<br /> Fax: 407.582.4859</p>", 
+            "name": "Valencia Osceola", 
+            "image": "", 
+            "poly_coords": null, 
+            "illustrated_point": null, 
+            "googlemap_point": "28.306583, -81.381854", 
+            "description": "UCF Valencia Osceola"
+        }
+    }, 
+    {
+        "pk": "valencia-west", 
+        "model": "campus.regionalcampus", 
+        "fields": {
+            "profile": "<p>1800 South Kirkman Road <br /> Building 11, Suite 104<strong></strong><br /> Orlando, FL 32811<br /> Phone: 407.582.5500<br /> Fax: 407.582.5503</p>", 
+            "name": "Valencia West", 
+            "image": "", 
+            "poly_coords": null, 
+            "illustrated_point": null, 
+            "googlemap_point": "28.521904, -81.463461", 
+            "description": "UCF Valencia West"
+        }
+    }
+]
