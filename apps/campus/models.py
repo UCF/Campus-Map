@@ -1,9 +1,11 @@
 from django.db import models
+from tinymce import models as tinymce_models
 
 class CommonLocation(models.Model):
 	name              = models.CharField(max_length=255)
 	image             = models.CharField(max_length=50,  blank=True, help_text='Don&rsquo;t forget to append a file extension')
 	description       = models.CharField(max_length=255, blank=True)
+	profile           = tinymce_models.HTMLField(blank=True, null=True)
 	googlemap_point   = models.CharField(max_length=255, null=True, blank=True, help_text='E.g., <code>28.6017, -81.2005</code>')
 	illustrated_point = models.CharField(max_length=255, null=True, blank=True)
 	poly_coords       = models.TextField(blank=True, null=True)
@@ -78,11 +80,11 @@ class CommonLocation(models.Model):
 		abstract = True
 
 class Location(CommonLocation):
-	slug              = models.SlugField(max_length=255, primary_key=True)
+	slug              = models.SlugField(max_length=255, primary_key=True, help_text='will also be used for image name')
 	pass
 
 class RegionalCampus(CommonLocation):
-	slug              = models.SlugField(max_length=255, primary_key=True)
+	slug              = models.SlugField(max_length=255, primary_key=True, help_text='will also be used for image name')
 	class Meta:
 		verbose_name_plural = "Regional Campuses"
 
