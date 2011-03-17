@@ -180,6 +180,17 @@ Campus.controls = function(){
 	Campus.menu.find('#menu-hide').click(menuToggle);
 	this.map.controls[google.maps.ControlPosition.RIGHT_TOP].push(menuUI);
 	
+	// looking at a regional campus
+	if(Campus.settings.regional_campus){
+		var rc = Campus.settings.regional_campus;
+		var latlng = new google.maps.LatLng(rc.googlemap_point[0], rc.googlemap_point[1]);
+		Campus.map.panTo(latlng);
+		Campus.info(); //inits info marker
+		Campus.infoMaker.setPosition(latlng);
+		Campus.menu.find('#item-title').html(rc.description);
+		Campus.menu.find('#item-desc').html(rc.html);
+	}
+	
 	// buildings checkbox
 	var bcb = $('#buildings')[0];
 	$(bcb).attr('checked', Campus.settings.buildings);
@@ -335,7 +346,7 @@ Campus.info = function(id, pan){
 				Campus.urls['static'] + 'images/markers/shadow.png',
 				new google.maps.Size(59, 32),
 				new google.maps.Point(0,0),
-				new google.maps.Point(14, 32));
+				new google.maps.Point(15, 32));
 		var marker = new google.maps.Marker({
 			map: Campus.map,
 			shadow: shadow,

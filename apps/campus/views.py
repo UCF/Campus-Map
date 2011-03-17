@@ -317,3 +317,35 @@ def get_query(query_string, search_fields):
 		else:
 			query = query & or_query
 	return query
+
+
+def regional_campuses(request, campus=None, format=None):
+	from django.http   import Http404
+	from campus.models import RegionalCampus
+	
+	# TODO - regional campuses API
+	if format == 'json':
+		response = HttpResponse(json.dumps("API not available for Regional Campuses"))
+		response['Content-type'] = 'application/json'
+		return response
+	
+	if format == 'txt':
+		response = HttpResponse("API not available for Regional Campuses")
+		response['Content-type'] = 'text/plain; charset=utf-8'
+		return response
+	
+	if campus:
+		try:
+			rc = RegionalCampus.objects.get(pk=campus)
+		except DoesNotExist:
+			raise Http404()
+		else:
+			img = rc.img_tag
+			rc = rc.json()
+			rc['html'] = img + '<a href="%s">More info...</a>' % (reverse('regional'))
+			return home(request, regional_campus=rc)
+	
+	campuses = RegionalCampus.objects.all()
+	context = { "campuses": campuses }
+	
+	return render(request, 'campus/regional-campuses.djt', context)

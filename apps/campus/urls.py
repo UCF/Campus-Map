@@ -7,4 +7,5 @@ urlpatterns = patterns('campus.views',
 	url(r'^search/(\.(?P<format>json|list))?$', 'search', name="search"),
 	url(r'^sidewalks/(\.(?P<format>json|kml|txt))?$', 'sidewalks', name="sidewalks"),
 	url(r'^location/(?P<loc>[\w-]+)/([^/]+/)?(\.(?P<format>json|bubble))?$', 'location', name="location"),
+	url(r'^regional-campuses/((?P<campus>[\w-]+)/)?(\.(?P<format>json|txt))?$', 'regional_campuses', name="regional"),
 )

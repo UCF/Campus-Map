@@ -1,0 +1,24 @@
+{% extends "base.djt"%}
+
+{% block wrap %}
+<div id="regional-campuses">	
+	<h2>Regional Campuses</h2>
+	<p><strong><a href="http://regionalcampuses.ucf.edu/">http://regionalcampuses.ucf.edu/</a></strong></p>
+	
+	{% if not campuses %}
+		<p>Coming Soon!</p>
+	{% else %}
+		
+		{% for c in campuses %}
+		<div class="rc {% cycle 'rc-clear' '' '' %}">
+			<h3><a href="{% url regional %}{{c.slug}}/">{{c.name}}</a></h3>
+			<p><a href="{% url regional %}{{c.slug}}/">{{c.img_tag|safe}}</a></p>
+			{{c.profile|safe}}
+		</div>
+		
+		{%endfor%}
+		
+	{% endif %}
+	<div class="clear">&nbsp;</div>
+</div>
+{% endblock %}

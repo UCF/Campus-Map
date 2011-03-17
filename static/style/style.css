@@ -74,7 +74,7 @@ nav ol li a:hover {  color:#ed1c24;  text-decoration: underline; }
 #map-foot .checkboxes label:first-of-type { margin-left:3px; }
 #map-foot .checkboxes label { margin-right:15px; display:inline-block; }
 .ie #map * { zoom:1; }
-footer { background:black; margin:0; padding:8px 18px; color:white; display:block; overflow:hidden; }
+footer { background:black; margin:0; padding:8px 18px; color:white; display:block; overflow:hidden; clear:both; }
 footer a { color:white; text-decoration:none; border-bottom:1px dotted black; }
 footer a:hover { color:white; border-bottom:1px dotted #C30202; }
 footer .wrap { width:932px; padding:9px; margin:0 auto; clear:both; }
@@ -183,6 +183,20 @@ footer dd { padding:8px 0 0 8px; margin:0; }
 #weather .discription a { color:#666; }
 #weather .discription span { font-size:18px; font-weight:bold; color:black; }
 #weather .discription abbr { border:0; }
+
+
+/******************************************************************************\
+    Regional Campuses
+\******************************************************************************/
+#regional-campuses .rc { float:left; width:28%; padding-bottom:18px; }
+#regional-campuses .rc h3 { margin:0; padding:4px 0; }
+#regional-campuses .rc a:hover img { cursor:pointer; }
+#regional-campuses .rc p { margin:0; padding:2px 0; }
+#regional-campuses .rc img { -webkit-box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 6px; -moz-box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 6px; background-color: white; -moz-border-radius: 5px; -webkit-border-radius: 5x; border-radius:5px; padding:5px; }
+#regional-campuses .rc a:hover img { -webkit-box-shadow: rgba(255, 109, 3, 0.3) 0px 0px 6px; -moz-box-shadow: rgba(255, 109, 3, 0.3) 0px 0px 6px; }
+.ie #regional-campuses .rc img { border:1px solid #ccc;  }
+#regional-campuses .rc-clear { clear:both; }
+
 
 
 /******************************************************************************\

@@ -87,6 +87,13 @@ class Location(CommonLocation):
 
 class RegionalCampus(CommonLocation):
 	slug              = models.SlugField(max_length=255, primary_key=True, help_text='will also be used for image name')
+	
+	def _img_tag(self):
+		import settings
+		image_url = settings.MEDIA_URL + 'images/regional-campuses/' + self.slug + '.jpg'
+		return '<img src="%s" alt="%s">' % (image_url, self.description)
+	img_tag = property(_img_tag)
+	
 	class Meta:
 		ordering = ("name",)
 		verbose_name_plural = "Regional Campuses"
