@@ -80,13 +80,13 @@ class CommonLocation(models.Model):
 		abstract = True
 
 class Location(CommonLocation):
-	slug              = models.SlugField(max_length=255, primary_key=True, help_text='will also be used for image name')
+	slug              = models.SlugField(max_length=255, primary_key=True, help_text='<strong class="caution">Caution</strong>: changing may break external resources (used for links and images)')
 	
 	class Meta:
 		ordering = ("name",)
 
 class RegionalCampus(CommonLocation):
-	slug              = models.SlugField(max_length=255, primary_key=True, help_text='will also be used for image name')
+	slug              = models.SlugField(max_length=255, primary_key=True, help_text='<strong class="caution">Caution</strong>: changing may break external resources (used for links and images)')
 	
 	def _img_tag(self):
 		import settings
