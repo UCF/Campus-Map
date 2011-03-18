@@ -6,7 +6,7 @@
 	</div>
 
 	<div class="item" id="item-desc">
-		Locaition information!!
+		<img src="{{MEDIA_URL}}images/buildings/_home.jpg">
 	</div>
 
 	<a class="item" href="{% url buildings %}">Building list</a>
