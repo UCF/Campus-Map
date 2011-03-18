@@ -25,7 +25,7 @@
 			{% endfor %}
 		</ul>
 		{% else %}
-		<p>No Results</p>
+		<p class="no-results">No Results</p>
 		{% endif %}
 		
 		<h4>Phonebook:</h4>

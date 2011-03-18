@@ -103,7 +103,6 @@ footer dd { padding:8px 0 0 8px; margin:0; }
 #org ul li { padding-bottom:10px; }
 
 
-
 /******************************************************************************\
     Search
 \******************************************************************************/
@@ -133,6 +132,7 @@ footer dd { padding:8px 0 0 8px; margin:0; }
 .ie #search ul { margin-right:0; width:250px }
 .ie6 #search { width:255px;  }
 .ie7 #search ul li a { display:block; overflow:hidden; }
+.no-results { padding:10px 0 0 12px; }
 
 
 /******************************************************************************\
