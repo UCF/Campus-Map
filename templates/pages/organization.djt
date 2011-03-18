@@ -1,22 +1,33 @@
 {% extends "base.djt"%}
 
 {% block wrap %}
-<div id="org">	
+
+<div id="org">
+
 	<h2>{{ org.name }}</h2>
 	
-	{{org.name}}<br>
-	{{org.phone}}<br>
-	{{org.building}} ({{org.bldg_id}}) room {{org.room}}
+	<div class="span-12">
+		
+		{{org.name}}<br>
+		{{org.phone}}<br>
+		{{org.building}} room {{org.room}}
 	
-	<h3>Departments</h3>
-	<ul>
-	{% for d in org.departments %}
-		<li>
-			{{d.name}}<br>
-			{{d.phone}}<br>
-			{{d.building}} ({{d.bldg_id}}) room {{d.room}}
-		</li>
-	{% endfor %}
-	</ul>
-</div>
+		{% if org.departments %}
+			<h3>Departments</h3>
+			<ul>
+			{% for d in org.departments %}
+				<li>
+					{{d.name}}<br>
+					{{d.phone}}<br>
+					{{d.building}} room {{d.room}}
+				</li>
+			{% endfor %}
+			</ul>
+		{% endif %}
+	</div>
+	<div class="span-10" id="org-building">
+		{{ building_html }}
+	</div>
+	<div class="clear"></div>
+</div><!--/org-->
 {% endblock %}

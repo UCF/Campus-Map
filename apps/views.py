@@ -32,7 +32,17 @@ def organizations(request, format=None):
 
 def organization(request, id, format=None):
 	org = get_org(id)
-	return render(request, "pages/organization.djt", {'org': org })
+	building = None
+	try:
+		from campus.models import Building
+		building = Building.objects.get(pk=org['bldg_id'])
+		from campus.views import location_html
+		# TODO: make this a model method
+		building_html = location_html(building, request)
+	except Building.DoesNotExist:
+		pass
+	context = {'org': org, 'building':building, 'building_html': building_html }
+	return render(request, "pages/organization.djt", context)
 
 
 def get_orgs():
@@ -57,8 +67,6 @@ def get_org(id):
 	orgs = get_orgs()
 	for o in orgs['results']:
 		if o['id'] == id:
-			print o
-			print
 			depts = get_depts()
 			o['departments'] = []
 			for d in depts['results']:

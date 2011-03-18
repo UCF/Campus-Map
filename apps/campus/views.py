@@ -175,6 +175,26 @@ def sidewalks(request, format=None):
 	
 	return home(request, sidewalks=True)
 
+def location_html(loc, request):
+	'''
+	TODO
+	This really should be a model method, but it's time to go home
+	'''
+	from django.template.loader import get_template
+	from django.template import Context
+	base_url = request.build_absolute_uri('/')[:-1]
+	context  = { 'location':loc, 'base_url':base_url }
+	location_type = loc.__class__.__name__.lower()
+	template = 'api/info_win_%s.djt' % (location_type)
+	
+	# create info HTML using template
+	t = get_template(template)
+	c = Context({
+		'location'  : loc,
+		'base_url'  : base_url,
+		'debug'     : settings.DEBUG,
+		'MEDIA_URL' : settings.MEDIA_URL })
+	return t.render(c)
 
 def location(request, loc, format=None):
 	'''
@@ -182,34 +202,19 @@ def location(request, loc, format=None):
 	and organizations, maybe even people too
 	'''
 	from campus.models import Building, Location
-	from django.template.loader import get_template
-	from django.template import Context
 	
-	location_type = None
 	try:
 		location = Building.objects.get(pk=loc)
-		location_type = 'building'
 	except Building.DoesNotExist:
 		try:
 			location = Location.objects.get(pk=loc)
-			location_type = 'location'
 		except Location.DoesNotExist:
 			raise Http404()
 	
-	base_url = request.build_absolute_uri('/')[:-1]
-	context  = { 'location':location, 'base_url':base_url }
-	template = 'api/info_win_%s.djt' % (location_type)
-	
-	# create info HTML using template
-	t = get_template(template)
-	c = Context({
-		'location'  : location,
-		'base_url'  : base_url,
-		'debug'     : settings.DEBUG,
-		'MEDIA_URL' : settings.MEDIA_URL })
-	info = t.render(c)
+	html = location_html(location, request)
 	location = location.json()
-	location['info'] = info
+	location['info'] = html
+	base_url = request.build_absolute_uri('/')[:-1]
 	location['marker'] = base_url + settings.MEDIA_URL + 'images/markers/yellow.png'
 	
 	if format == 'bubble':
