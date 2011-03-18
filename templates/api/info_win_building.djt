@@ -2,7 +2,7 @@
 <div id="location-{{location.pk}}">
 	<div class="info-window">
 		<h2>{{location.name}} {% if location.abbreviation %}({{ location.abbreviation }}){%endif%}</h2>
-		{% if location.image %}<img src="{{ base_url }}{{MEDIA_URL}}images/buildings/{{ location.image }}">{% endif %}
+		{% if location.image %}<img src="{{ base_url }}{{MEDIA_URL}}images/buildings/{{ location.image }}">{%else%}<img src="{{ base_url }}{{MEDIA_URL}}images/buildings/_no_image.jpg">{% endif %}
 		{% if location.description %}
 			<p>{{ location.description }}</p>
 		{% else %}

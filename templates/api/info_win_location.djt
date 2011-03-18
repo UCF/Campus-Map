@@ -1,0 +1,11 @@
+{% if not location %}null{% else %}
+<div id="location-{{location.pk}}">
+	<div class="info-window">
+		<h2>{{location.name}}</h2>
+		<img src="{{ base_url }}{{MEDIA_URL}}images/locations/{{ location.slug }}.jpg">
+		{% if location.description %}
+			<p>{{ location.description }}</p>
+		{% endif %}
+	</div>
+</div>
+{% endif %}

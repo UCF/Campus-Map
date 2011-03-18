@@ -17,7 +17,7 @@
 		</span>
 		<span class="right">
 			<a href="{% url page 'printable' %}">Printable Map</a>
-			<a href="{% url page 'printable' %}">Directions to UCF</a>
+			<a href="{% url page 'directions' %}">Directions to UCF</a>
 			<a href="{% url page 'about' %}">About &amp; More</a>
 		</span>
 		<div class="clear">&nbps;</div>

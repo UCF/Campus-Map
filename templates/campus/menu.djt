@@ -2,18 +2,11 @@
 <a id="menu-hide">hide</a>
 <div class="body">
 	<div class="item" id="item-title">
-		Location: {% if options.location %}{{ options.location }}{% else %}UCF{% endif %}
+		Location: UCF
 	</div>
 
 	<div class="item" id="item-desc">
-		{% if options.location %}
-			{% if options.location.image %}
-				<img src="{{MEDIA_URL}}images/buildings/{{ options.location.image }}">
-			{% endif %}
-			{{ options.location.description }}
-		{% else %}
-			Locaition information!!
-		{% endif %}
+		Locaition information!!
 	</div>
 
 	<a class="item" href="{% url buildings %}">Building list</a>

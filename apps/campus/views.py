@@ -1,5 +1,5 @@
 from django.shortcuts import render_to_response
-from django.http      import HttpResponse, HttpResponseNotFound
+from django.http      import HttpResponse, HttpResponseNotFound, Http404
 from django.views.generic.simple import direct_to_template as render
 from django.core.urlresolvers import reverse
 
@@ -181,37 +181,45 @@ def location(request, loc, format=None):
 	Will one day be a wrapper for all data models, searching over all locations
 	and organizations, maybe even people too
 	'''
-	from campus.models import Building
+	from campus.models import Building, Location
+	from django.template.loader import get_template
+	from django.template import Context
+	
+	location_type = None
 	try:
 		location = Building.objects.get(pk=loc)
+		location_type = 'building'
 	except Building.DoesNotExist:
-		location = None
+		try:
+			location = Location.objects.get(pk=loc)
+			location_type = 'location'
+		except Location.DoesNotExist:
+			raise Http404()
 	
 	base_url = request.build_absolute_uri('/')[:-1]
 	context  = { 'location':location, 'base_url':base_url }
+	template = 'api/info_win_%s.djt' % (location_type)
+	
+	# create info HTML using template
+	t = get_template(template)
+	c = Context({
+		'location'  : location,
+		'base_url'  : base_url,
+		'debug'     : settings.DEBUG,
+		'MEDIA_URL' : settings.MEDIA_URL })
+	info = t.render(c)
+	location = location.json()
+	location['info'] = info
+	location['marker'] = base_url + settings.MEDIA_URL + 'images/markers/yellow.png'
 	
 	if format == 'bubble':
-		return render(request, 'api/google_info_win.djt', context)
+		return render(request, template, context)
 	
 	if format == 'json':
-		from django.template import Context
-		from django.template.loader import get_template
-		
 		if settings.DEBUG:
 			import time
 			time.sleep(.5)
 		
-		t = get_template('api/google_info_win.djt')
-		c = Context({
-			'location'  : location,
-			'base_url'  : base_url,
-			'debug'     : settings.DEBUG,
-			'MEDIA_URL' : settings.MEDIA_URL })
-		info = t.render(c)
-		if location:
-			location = location.json()
-			location['info'] = info
-			location['marker'] = base_url + settings.MEDIA_URL + 'images/markers/yellow.png'
 		response = HttpResponse(json.dumps(location))
 		response['Content-type'] = 'application/json'
 		return response
@@ -320,7 +328,6 @@ def get_query(query_string, search_fields):
 
 
 def regional_campuses(request, campus=None, format=None):
-	from django.http   import Http404
 	from campus.models import RegionalCampus
 	
 	# TODO - regional campuses API

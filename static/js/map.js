@@ -59,7 +59,6 @@ Campus.ajax = { abort : function(){} };
 \******************************************************************************/
 Campus.gmap = function(){
 	
-	// arbitrary point, looks good on load
 	var myLatlng = new google.maps.LatLng(28.6018,-81.1995);
 	
 	var myOptions = {
@@ -189,6 +188,17 @@ Campus.controls = function(){
 		Campus.infoMaker.setPosition(latlng);
 		Campus.menu.find('#item-title').html(rc.description);
 		Campus.menu.find('#item-desc').html(rc.html);
+	}
+	
+	// looking at a location (very similar to regional campus)
+	if(Campus.settings.location){
+		var loc = Campus.settings.location;
+		var latlng = new google.maps.LatLng(loc.googlemap_point[0], loc.googlemap_point[1]);
+		Campus.map.panTo(latlng);
+		Campus.info();
+		Campus.infoMaker.setPosition(latlng);
+		Campus.menu.find('#item-title').html(loc.name);
+		Campus.menu.find('#item-desc').html(loc.info);
 	}
 	
 	// buildings checkbox
