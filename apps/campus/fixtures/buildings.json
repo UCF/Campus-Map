@@ -3,6 +3,7 @@
         "pk": "12150", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "", 
             "name": "AT&T Wireless Services", 
             "image": "12150.jpg", 
@@ -16,6 +17,7 @@
         "pk": "101", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "AV1", 
             "name": "Academic Village I - Nike", 
             "image": "b101.jpg", 
@@ -29,6 +31,7 @@
         "pk": "102", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "AV2", 
             "name": "Academic Village I - Nike", 
             "image": "b102.jpg", 
@@ -42,6 +45,7 @@
         "pk": "103", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "AV3", 
             "name": "Academic Village I - Nike", 
             "image": "", 
@@ -55,6 +59,7 @@
         "pk": "104", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "AV4", 
             "name": "Academic Village I - Nike", 
             "image": "b104.jpg", 
@@ -68,6 +73,7 @@
         "pk": "105", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "AV5", 
             "name": "Academic Village I - Nike", 
             "image": "b105.jpg", 
@@ -81,6 +87,7 @@
         "pk": "106", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "AV6", 
             "name": "Academic Village I - Nike", 
             "image": "b106.jpg", 
@@ -94,6 +101,7 @@
         "pk": "107", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "AV7", 
             "name": "Academic Village I - Nike", 
             "image": "b107.jpg", 
@@ -107,6 +115,7 @@
         "pk": "115", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "AV15", 
             "name": "Academic Village II - Hercules", 
             "image": "b115.jpg", 
@@ -120,6 +129,7 @@
         "pk": "108", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "AV08", 
             "name": "Academic Village II - Hercules", 
             "image": "b108.jpg", 
@@ -133,6 +143,7 @@
         "pk": "109", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "AV09", 
             "name": "Academic Village II - Hercules", 
             "image": "b109.jpg", 
@@ -146,6 +157,7 @@
         "pk": "110", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "AV10", 
             "name": "Academic Village II - Hercules", 
             "image": "b110.jpg", 
@@ -159,6 +171,7 @@
         "pk": "111", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "AV11", 
             "name": "Academic Village II - Hercules", 
             "image": "b111.jpg", 
@@ -172,6 +185,7 @@
         "pk": "112", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "AV12", 
             "name": "Academic Village II - Hercules", 
             "image": "AV112.jpg", 
@@ -185,6 +199,7 @@
         "pk": "113", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "AV13", 
             "name": "Academic Village II - Hercules", 
             "image": "b113.jpg", 
@@ -198,6 +213,7 @@
         "pk": "114", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "AV14", 
             "name": "Academic Village II - Hercules", 
             "image": "b114.jpg", 
@@ -211,6 +227,7 @@
         "pk": "7h", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "", 
             "name": "Activities Center - Ferrell Commons", 
             "image": "b7h.jpg", 
@@ -224,6 +241,7 @@
         "pk": "406", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "ADLT", 
             "name": "Alpha Delta Pi - Sorority - Greek Park", 
             "image": "b406.jpg", 
@@ -237,6 +255,7 @@
         "pk": "410", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "ATO", 
             "name": "Alpha Tau Omega - Fraternity - Greek Park", 
             "image": "b410.jpg", 
@@ -250,6 +269,7 @@
         "pk": "404", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "AXD", 
             "name": "Alpha Xi Delta - Sorority - Greek Park", 
             "image": "b404.jpg", 
@@ -263,6 +283,7 @@
         "pk": "152", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "", 
             "name": "Ampac", 
             "image": "ampac_b152.jpg", 
@@ -276,6 +297,7 @@
         "pk": "117", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "", 
             "name": "Animal Research Center", 
             "image": "WAF_b117.jpg", 
@@ -289,6 +311,7 @@
         "pk": "55", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "SA55", 
             "name": "Aquarius Courtyard #55 - Lake Claire Apartments", 
             "image": "b55.jpg", 
@@ -302,6 +325,7 @@
         "pk": "56", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "SA56", 
             "name": "Aquarius Courtyard #56 - Lake Claire Apartments", 
             "image": "b56.jpg", 
@@ -315,6 +339,7 @@
         "pk": "57", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "SA57", 
             "name": "Aquarius Courtyard #57 - Lake Claire Apartments", 
             "image": "b57.jpg", 
@@ -328,6 +353,7 @@
         "pk": "58", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "SA58", 
             "name": "Aquarius Courtyard #58 - Lake Claire Apartments", 
             "image": "b58.jpg", 
@@ -341,6 +367,7 @@
         "pk": "59", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "SA59", 
             "name": "Aquarius Courtyard #59 - Lake Claire Apartments", 
             "image": "b59.jpg", 
@@ -354,6 +381,7 @@
         "pk": "50", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "ARNA", 
             "name": "Arena", 
             "image": "ARNA_50.jpg", 
@@ -367,6 +395,7 @@
         "pk": "51a", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "VAB", 
             "name": "Art Gallery", 
             "image": "artgallery_b51b.jpg", 
@@ -380,6 +409,7 @@
         "pk": "625", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "LS25", 
             "name": "Athletic Development", 
             "image": "AthDev_b625.jpg", 
@@ -393,6 +423,7 @@
         "pk": "402", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "BPW", 
             "name": "BPW Scholarship House", 
             "image": "b402.jpg", 
@@ -406,6 +437,7 @@
         "pk": "630", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "LS30", 
             "name": "Band Storage", 
             "image": "LS30_630.jpg", 
@@ -419,6 +451,7 @@
         "pk": "71", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "BYC", 
             "name": "Barbara Ying Center", 
             "image": "b71.jpg", 
@@ -432,6 +465,7 @@
         "pk": "basefield", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "", 
             "name": "Baseball Field", 
             "image": "b_basefield.jpg", 
@@ -445,6 +479,7 @@
         "pk": "82", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "", 
             "name": "Baseball Stadium", 
             "image": "", 
@@ -458,6 +493,7 @@
         "pk": "3251", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "", 
             "name": "Bennett Research II", 
             "image": "b3251.jpg", 
@@ -471,6 +507,7 @@
         "pk": "20", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "BL", 
             "name": "Biological Sciences", 
             "image": "b20.jpg", 
@@ -484,6 +521,7 @@
         "pk": "92", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "BFRC", 
             "name": "Biology Field Research Center", 
             "image": "b92.jpg", 
@@ -497,6 +535,7 @@
         "pk": "8114", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "BMRA", 
             "name": "Biomolecular Research Annex", 
             "image": "b8114.jpg", 
@@ -510,6 +549,7 @@
         "pk": "30", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "BREV", 
             "name": "Brevard Hall - Libra Community", 
             "image": "b30.jpg", 
@@ -523,6 +563,7 @@
         "pk": "135", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "BHNS", 
             "name": "Bright House Networks Stadium", 
             "image": "BHNS_135.jpg", 
@@ -536,6 +577,7 @@
         "pk": "95", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "BAH", 
             "name": "Burnett Honors College", 
             "image": "b95.jpg", 
@@ -549,6 +591,7 @@
         "pk": "100", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "PRS", 
             "name": "Burnett House", 
             "image": "b100.jpg", 
@@ -562,6 +605,7 @@
         "pk": "45", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "BA", 
             "name": "Business Administration", 
             "image": "b45.jpg", 
@@ -575,6 +619,7 @@
         "pk": "94", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "BA2", 
             "name": "Business Administration II", 
             "image": "b94.jpg", 
@@ -588,6 +633,7 @@
         "pk": "607", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "MOD7", 
             "name": "CAS Faculty Offices", 
             "image": "", 
@@ -601,6 +647,7 @@
         "pk": "609", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "MOD3", 
             "name": "CAS Faculty Offices", 
             "image": "", 
@@ -614,6 +661,7 @@
         "pk": "mod7", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "MOD7", 
             "name": "CAS Faculty Offices", 
             "image": "", 
@@ -627,6 +675,7 @@
         "pk": "mod3", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "MOD3", 
             "name": "CAS Faculty Offices", 
             "image": "", 
@@ -640,6 +689,7 @@
         "pk": "53", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "CROL", 
             "name": "CREOL", 
             "image": "b53.jpg", 
@@ -653,6 +703,7 @@
         "pk": "622", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "LS22", 
             "name": "CREOL Gradute Study Office", 
             "image": "b622.jpg", 
@@ -666,6 +717,7 @@
         "pk": "7f", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "", 
             "name": "Career Services and Experiential Learning - Ferrell Commons", 
             "image": "b7f.jpg", 
@@ -679,6 +731,7 @@
         "pk": "7g", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "", 
             "name": "Career Services and Experiential Learning - Ferrell Commons", 
             "image": "b7g.jpg", 
@@ -692,6 +745,7 @@
         "pk": "541", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "TR41", 
             "name": "Center for Humanities and Digital Research", 
             "image": "CHDR_TR41.jpg", 
@@ -705,6 +759,7 @@
         "pk": "81", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "MMC", 
             "name": "Center for Multilingual Multicultural Studies", 
             "image": "b81.jpg", 
@@ -718,6 +773,7 @@
         "pk": "8111", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "CPS", 
             "name": "Center for Public Safety/Security", 
             "image": "b8111.jpg", 
@@ -731,6 +787,7 @@
         "pk": "u4", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "", 
             "name": "Challenge Course", 
             "image": "bu4.jpg", 
@@ -744,6 +801,7 @@
         "pk": "5", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "CH", 
             "name": "Chemistry", 
             "image": "b5.jpg", 
@@ -757,6 +815,7 @@
         "pk": "85", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "CIH", 
             "name": "Citrus Hall - Libra Community", 
             "image": "", 
@@ -770,6 +829,7 @@
         "pk": "627", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "M010", 
             "name": "Classroom", 
             "image": "", 
@@ -783,6 +843,7 @@
         "pk": "626", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "M009", 
             "name": "Classroom", 
             "image": "", 
@@ -796,6 +857,7 @@
         "pk": "613", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "MOD2", 
             "name": "Classroom", 
             "image": "", 
@@ -809,6 +871,7 @@
         "pk": "612", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "MOD1", 
             "name": "Classroom", 
             "image": "", 
@@ -822,6 +885,7 @@
         "pk": "611", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "MOD5", 
             "name": "Classroom", 
             "image": "", 
@@ -835,6 +899,7 @@
         "pk": "628", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "M011", 
             "name": "Classroom", 
             "image": "", 
@@ -848,6 +913,7 @@
         "pk": "79", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "CL1", 
             "name": "Classroom Building I", 
             "image": "b79.jpg", 
@@ -861,6 +927,7 @@
         "pk": "18", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "CNH", 
             "name": "Colbourn Hall", 
             "image": "b18.jpg", 
@@ -874,6 +941,7 @@
         "pk": "87", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "CAH", 
             "name": "College of Arts & Humanities", 
             "image": "b87.jpg", 
@@ -887,6 +955,7 @@
         "pk": "54", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "CS", 
             "name": "College of Science", 
             "image": "b54.jpg", 
@@ -900,6 +969,7 @@
         "pk": "65", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "SA65", 
             "name": "Commons - Lake Claire Apartments", 
             "image": "b65.jpg", 
@@ -913,6 +983,7 @@
         "pk": "33", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "COMN", 
             "name": "Commons - Libra Community", 
             "image": "", 
@@ -926,6 +997,7 @@
         "pk": "75", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "COMM", 
             "name": "Communications Building", 
             "image": "NSC_75.jpg", 
@@ -939,6 +1011,7 @@
         "pk": "29", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "CC2", 
             "name": "Computer Center II", 
             "image": "b29.jpg", 
@@ -952,6 +1025,7 @@
         "pk": "13", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "CC1", 
             "name": "Computer CenterI", 
             "image": "b13.jpg", 
@@ -965,6 +1039,7 @@
         "pk": "27", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "COUN", 
             "name": "Counseling Center", 
             "image": "b27.jpg", 
@@ -978,6 +1053,7 @@
         "pk": "540", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "TR40", 
             "name": "Creative School", 
             "image": "b540.jpg", 
@@ -991,6 +1067,7 @@
         "pk": "529", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "CRTR", 
             "name": "Creative School", 
             "image": "b540.jpg", 
@@ -1004,6 +1081,7 @@
         "pk": "24", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "CRSC", 
             "name": "Creative School for Children", 
             "image": "b24.jpg", 
@@ -1017,6 +1095,7 @@
         "pk": "403", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "TRID", 
             "name": "Delta Delta Delta", 
             "image": "b403.jpg", 
@@ -1030,6 +1109,7 @@
         "pk": "dgc", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "", 
             "name": "Disc Golf Course", 
             "image": "DGC.jpg", 
@@ -1043,6 +1123,7 @@
         "pk": "629", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "M012", 
             "name": "Diversity Initiatives", 
             "image": "b629.jpg", 
@@ -1056,6 +1137,7 @@
         "pk": "m012", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "MO12", 
             "name": "Diversity Initiatives", 
             "image": "", 
@@ -1069,6 +1151,7 @@
         "pk": "28", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "ECC", 
             "name": "Early Childhood Center", 
             "image": "b28.jpg", 
@@ -1082,6 +1165,7 @@
         "pk": "21", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "ED", 
             "name": "Education", 
             "image": "b21.jpg", 
@@ -1095,6 +1179,7 @@
         "pk": "350", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "EST", 
             "name": "Emergency Services Training Facility", 
             "image": "b350.jpg", 
@@ -1108,6 +1193,7 @@
         "pk": "76", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "ERL", 
             "name": "Engine Research Lab", 
             "image": "EngRschLab_b76.jpg", 
@@ -1121,6 +1207,7 @@
         "pk": "44", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "EFL", 
             "name": "Engineering Field Lab", 
             "image": "EngrFieldLab_b44.jpg", 
@@ -1134,6 +1221,7 @@
         "pk": "40", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "ENGR", 
             "name": "Engineering I", 
             "image": "b40.jpg", 
@@ -1147,6 +1235,7 @@
         "pk": "91", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "ENG2", 
             "name": "Engineering II", 
             "image": "b91.jpg", 
@@ -1160,6 +1249,7 @@
         "pk": "319", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "ENP", 
             "name": "Engineering Research Pavilion", 
             "image": "b319.jpg", 
@@ -1173,6 +1263,7 @@
         "pk": "525", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "TR25", 
             "name": "Environmental Initiative Office", 
             "image": "EL_TR25.jpg", 
@@ -1186,6 +1277,7 @@
         "pk": "16", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "FSC", 
             "name": "Facilities and Safety", 
             "image": "b16.jpg", 
@@ -1199,6 +1291,7 @@
         "pk": "610", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "MOD4", 
             "name": "Faculty Offices", 
             "image": "", 
@@ -1212,6 +1305,7 @@
         "pk": "mod4", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "MOD4", 
             "name": "Faculty Offices", 
             "image": "", 
@@ -1225,6 +1319,7 @@
         "pk": "126", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "FAI", 
             "name": "Fairwinds Alumni Center", 
             "image": "b126.jpg", 
@@ -1238,6 +1333,7 @@
         "pk": "351", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "FS65", 
             "name": "Fire Station #62", 
             "image": "b351.jpg", 
@@ -1251,6 +1347,7 @@
         "pk": "86", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "FLH", 
             "name": "Flagler Hall - Libra Community", 
             "image": "b86.jpg", 
@@ -1264,6 +1361,7 @@
         "pk": "footpracfld", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "", 
             "name": "Football Practice Field", 
             "image": "footpracfld2.jpg", 
@@ -1277,6 +1375,7 @@
         "pk": "66", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "SA66", 
             "name": "Gemini Courtyard #66 - Lake Claire Apartments", 
             "image": "b66.jpg", 
@@ -1290,6 +1389,7 @@
         "pk": "67", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "SA67", 
             "name": "Gemini Courtyard #67 - Lake Claire Apartments", 
             "image": "b67.jpg", 
@@ -1303,6 +1403,7 @@
         "pk": "68", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "SA68", 
             "name": "Gemini Courtyard #68 - Lake Claire Apartments", 
             "image": "b68.jpg", 
@@ -1316,6 +1417,7 @@
         "pk": "69", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "SA69", 
             "name": "Gemini Courtyard #69 - Lake Claire Apartments", 
             "image": "b69.jpg", 
@@ -1329,6 +1431,7 @@
         "pk": "70", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "SA70", 
             "name": "Gemini Courtyard #70 - Lake Claire Apartments", 
             "image": "b70.jpg", 
@@ -1342,6 +1445,7 @@
         "pk": "124", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "", 
             "name": "Greenhouse", 
             "image": "GrnHse_b124.jpg", 
@@ -1355,6 +1459,7 @@
         "pk": "116", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "HEC", 
             "name": "Harris Corporation Engineering Center", 
             "image": "b116.jpg", 
@@ -1368,6 +1473,7 @@
         "pk": "80", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "HPA", 
             "name": "Health & Public Affairs I", 
             "image": "b80.jpg", 
@@ -1381,6 +1487,7 @@
         "pk": "90", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "HPA2", 
             "name": "Health & Public Affairs II", 
             "image": "b90.jpg", 
@@ -1394,6 +1501,7 @@
         "pk": "127", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "HC", 
             "name": "Health Center", 
             "image": "b127.jpg", 
@@ -1407,6 +1515,7 @@
         "pk": "73", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "HAB", 
             "name": "Housing Administration", 
             "image": "b73.jpg", 
@@ -1420,6 +1529,7 @@
         "pk": "14", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "PH", 
             "name": "Howard Phillips Hall", 
             "image": "b14.jpg", 
@@ -1433,6 +1543,7 @@
         "pk": "538", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "T538", 
             "name": "ICA Office", 
             "image": "b538.jpg", 
@@ -1446,6 +1557,7 @@
         "pk": "t538", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "T538", 
             "name": "ICA Office", 
             "image": "", 
@@ -1459,6 +1571,7 @@
         "pk": "12601", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "", 
             "name": "IN VIVO Research", 
             "image": "12601.jpg", 
@@ -1472,6 +1585,7 @@
         "pk": "12423", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "", 
             "name": "IST Technology Development Center", 
             "image": "12423.jpg", 
@@ -1485,6 +1599,7 @@
         "pk": "8112", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "BNT", 
             "name": "Institute for Simulation and Training", 
             "image": "b8112.jpg", 
@@ -1498,6 +1613,7 @@
         "pk": "bergman", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "", 
             "name": "Jay Bergman Field", 
             "image": "b_bergman.jpg", 
@@ -1511,6 +1627,7 @@
         "pk": "26", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "", 
             "name": "John T. Washington Center", 
             "image": "b26.jpg", 
@@ -1524,6 +1641,7 @@
         "pk": "407", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "KDLT", 
             "name": "Kappa Delta Sorority - Greek Park", 
             "image": "b407.jpg", 
@@ -1537,6 +1655,7 @@
         "pk": "413", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "KSIG", 
             "name": "Kappa Sigma - Fraternity - Greek Park", 
             "image": "b413.jpg", 
@@ -1550,6 +1669,7 @@
         "pk": "50b", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "", 
             "name": "Knightro's", 
             "image": "kntro_b50b.jpg", 
@@ -1563,6 +1683,7 @@
         "pk": "137", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "KP1", 
             "name": "Knights Plaza 1", 
             "image": "b137.jpg", 
@@ -1576,6 +1697,7 @@
         "pk": "12351", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "", 
             "name": "L3 Communications", 
             "image": "12351.jpg", 
@@ -1589,6 +1711,7 @@
         "pk": "11805", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "", 
             "name": "La Quinta Inn", 
             "image": "11805.jpg", 
@@ -1602,6 +1725,7 @@
         "pk": "9", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "LAH", 
             "name": "Lake Hall- Apollo Community", 
             "image": "b9.jpg", 
@@ -1615,6 +1739,7 @@
         "pk": "118", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "LPS", 
             "name": "Leisure Pool Services", 
             "image": "b118.jpg", 
@@ -1628,6 +1753,7 @@
         "pk": "2", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "LR", 
             "name": "Library", 
             "image": "b2.jpg", 
@@ -1641,6 +1767,7 @@
         "pk": "7ab", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "", 
             "name": "Live Oak Ballroom/Garden Room", 
             "image": "b7ab.jpg", 
@@ -1654,6 +1781,7 @@
         "pk": "7a", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "", 
             "name": "Live Oak Ballroom/Garden Room- Ferrell Commons", 
             "image": "", 
@@ -1667,6 +1795,7 @@
         "pk": "7aa", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "", 
             "name": "Marketplace Dining Hall", 
             "image": "b7aa.jpg", 
@@ -1680,6 +1809,7 @@
         "pk": "7d", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "", 
             "name": "Marketplace Dining Hall- Ferrell Commons", 
             "image": "", 
@@ -1693,6 +1823,7 @@
         "pk": "12", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "MAP", 
             "name": "Math & Physics", 
             "image": "b12.jpg", 
@@ -1706,6 +1837,7 @@
         "pk": "memorymall", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "", 
             "name": "Memory Mall", 
             "image": "b_us.jpg", 
@@ -1719,6 +1851,7 @@
         "pk": "u5", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "", 
             "name": "Memory Mall", 
             "image": "bu5.jpg", 
@@ -1732,6 +1865,7 @@
         "pk": "1", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "MH", 
             "name": "Millican Hall", 
             "image": "b1.jpg", 
@@ -1745,6 +1879,7 @@
         "pk": "329", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "NRP", 
             "name": "Nature Pavilion", 
             "image": "NRP_329.jpg", 
@@ -1758,6 +1893,7 @@
         "pk": "128", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "", 
             "name": "Nicholson Fieldhouse", 
             "image": "b128.jpg", 
@@ -1771,6 +1907,7 @@
         "pk": "74", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "OBSV", 
             "name": "Observatory/Astro Lab", 
             "image": "b74.jpg", 
@@ -1784,6 +1921,7 @@
         "pk": "7c", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "", 
             "name": "Office of Student Rights and Responsibilities - Ferrell Commons", 
             "image": "b7c.jpg", 
@@ -1797,6 +1935,7 @@
         "pk": "546", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "T546", 
             "name": "Orange County School System", 
             "image": "b546.jpg", 
@@ -1810,6 +1949,7 @@
         "pk": "t546", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "T546", 
             "name": "Orange County School System", 
             "image": "", 
@@ -1823,6 +1963,7 @@
         "pk": "31", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "ORNG", 
             "name": "Orange Hall - Libra Community", 
             "image": "b31.jpg", 
@@ -1836,6 +1977,7 @@
         "pk": "8113", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "OTC3", 
             "name": "Orlando Tech Center - Bldg. 300", 
             "image": "b8113.jpg", 
@@ -1849,6 +1991,7 @@
         "pk": "8120", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "OTC5", 
             "name": "Orlando Tech Center - Bldg. 500", 
             "image": "b8120.jpg", 
@@ -1862,6 +2005,7 @@
         "pk": "8121", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "OTC6", 
             "name": "Orlando Tech Center - Bldg. 600", 
             "image": "b8121.jpg", 
@@ -1875,6 +2019,7 @@
         "pk": "10", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "OSH", 
             "name": "Osceola Hall - Apollo Community", 
             "image": "b10.jpg", 
@@ -1888,6 +2033,7 @@
         "pk": "u1", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "", 
             "name": "Parking & Transportation Services", 
             "image": "bu1.jpg", 
@@ -1901,6 +2047,7 @@
         "pk": "147", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "PG-A", 
             "name": "Parking Garage A", 
             "image": "b147.jpg", 
@@ -1914,6 +2061,7 @@
         "pk": "89", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "PG-B", 
             "name": "Parking Garage B", 
             "image": "pkgB_b89.jpg", 
@@ -1927,6 +2075,7 @@
         "pk": "83", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "PG-C", 
             "name": "Parking Garage C", 
             "image": "b83.jpg", 
@@ -1940,6 +2089,7 @@
         "pk": "97", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "PG-D", 
             "name": "Parking Garage D", 
             "image": "b97.jpg", 
@@ -1953,6 +2103,7 @@
         "pk": "134", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "PG-E", 
             "name": "Parking Garage E", 
             "image": "b134.jpg", 
@@ -1966,6 +2117,7 @@
         "pk": "141", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "PG-F", 
             "name": "Parking Garage F", 
             "image": "PGF_141.jpg", 
@@ -1979,6 +2131,7 @@
         "pk": "131", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "PG-G", 
             "name": "Parking Garage G", 
             "image": "b131.jpg", 
@@ -1992,6 +2145,7 @@
         "pk": "78", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "PG-H", 
             "name": "Parking Garage H", 
             "image": "b78.jpg", 
@@ -2005,6 +2159,7 @@
         "pk": "8119", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "P2", 
             "name": "Partnership II", 
             "image": "b8119.jpg", 
@@ -2018,6 +2173,7 @@
         "pk": "60", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "SA60", 
             "name": "Pegasus Courtyard #60 - Lake Claire Apartments", 
             "image": "b60.jpg", 
@@ -2031,6 +2187,7 @@
         "pk": "61", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "SA61", 
             "name": "Pegasus Courtyard #61 - Lake Claire Apartments", 
             "image": "b61.jpg", 
@@ -2044,6 +2201,7 @@
         "pk": "62", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "SA62", 
             "name": "Pegasus Courtyard #62 - Lake Claire Apartments", 
             "image": "b62.jpg", 
@@ -2057,6 +2215,7 @@
         "pk": "63", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "SA63", 
             "name": "Pegasus Courtyard #63 - Lake Claire Apartments", 
             "image": "b63.jpg", 
@@ -2070,6 +2229,7 @@
         "pk": "64", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "SA64", 
             "name": "Pegasus Courtyard #64 - Lake Claire Apartments", 
             "image": "b64.jpg", 
@@ -2083,6 +2243,7 @@
         "pk": "pl", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "", 
             "name": "Pegasus Landing", 
             "image": "landing.jpg", 
@@ -2096,6 +2257,7 @@
         "pk": "pp", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "", 
             "name": "Pegasus Point", 
             "image": "pointe.jpg", 
@@ -2109,6 +2271,7 @@
         "pk": "tr541", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "PL", 
             "name": "Physcs Lab", 
             "image": "", 
@@ -2122,6 +2285,7 @@
         "pk": "25", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "PESP", 
             "name": "Physical Education Support", 
             "image": "PESP_25.jpg", 
@@ -2135,6 +2299,7 @@
         "pk": "121", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "PS", 
             "name": "Physical Sciences", 
             "image": "PS_121.jpg", 
@@ -2148,6 +2313,7 @@
         "pk": "514", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "PL", 
             "name": "Physics Labs", 
             "image": "b514.jpg", 
@@ -2161,6 +2327,7 @@
         "pk": "405", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "PIBP", 
             "name": "Pi Beta Phi - Sorority - Greek Park", 
             "image": "b405.jpg", 
@@ -2174,6 +2341,7 @@
         "pk": "11", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "POH", 
             "name": "Polk Hall - Apollo Community", 
             "image": "b11.jpg", 
@@ -2187,6 +2355,7 @@
         "pk": "22", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "PRNT", 
             "name": "Print Shop", 
             "image": "b22.jpg", 
@@ -2200,6 +2369,7 @@
         "pk": "99", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "PSY", 
             "name": "Psychology Building", 
             "image": "b99.jpg", 
@@ -2213,6 +2383,7 @@
         "pk": "501", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "ROTC", 
             "name": "ROTC", 
             "image": "b501.jpg", 
@@ -2226,6 +2397,7 @@
         "pk": "503", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "", 
             "name": "ROTC 2", 
             "image": "ROTC2_b503.jpg", 
@@ -2239,6 +2411,7 @@
         "pk": "504", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "", 
             "name": "ROTC 3", 
             "image": "rotc4_b504.jpg", 
@@ -2252,6 +2425,7 @@
         "pk": "505", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "", 
             "name": "ROTC 4", 
             "image": "ROTC_b505.jpg", 
@@ -2265,6 +2439,7 @@
         "pk": "u3", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "", 
             "name": "RWC Park", 
             "image": "bu3.jpg", 
@@ -2278,6 +2453,7 @@
         "pk": "321", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "RFM", 
             "name": "Rec Field Maintenance", 
             "image": "RFM_321.jpg", 
@@ -2291,6 +2467,7 @@
         "pk": "320", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "RSFR", 
             "name": "Rec Serv Field Restroom", 
             "image": "RSFR_320.jpg", 
@@ -2304,6 +2481,7 @@
         "pk": "318", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "RSP", 
             "name": "Rec Serv Pavilion", 
             "image": "RSP_318.jpg", 
@@ -2317,6 +2495,7 @@
         "pk": "317", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "RSSP", 
             "name": "Rec Serv Soccer Field Pavilion", 
             "image": "RSSP_317.jpg", 
@@ -2330,6 +2509,7 @@
         "pk": "88", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "RCW", 
             "name": "Rec and Wellness Center", 
             "image": "rwc_b88.jpg", 
@@ -2343,6 +2523,7 @@
         "pk": "15", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "RS", 
             "name": "Recreational Services", 
             "image": "", 
@@ -2356,6 +2537,7 @@
         "pk": "327", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "RC", 
             "name": "Recycling Center", 
             "image": "RC_327.jpg", 
@@ -2369,6 +2551,7 @@
         "pk": "pond", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "", 
             "name": "Reflecting Pond", 
             "image": "b_pond.jpg", 
@@ -2382,6 +2565,7 @@
         "pk": "310", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "KSK", 
             "name": "Reflections Kiosk", 
             "image": "b310.jpg", 
@@ -2395,6 +2579,7 @@
         "pk": "19", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "RH", 
             "name": "Rehearsal Hall", 
             "image": "b19.jpg", 
@@ -2408,6 +2593,7 @@
         "pk": "8102", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "PVL", 
             "name": "Research Pavilion", 
             "image": "b8102.jpg", 
@@ -2421,6 +2607,7 @@
         "pk": "614", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "LS14", 
             "name": "Restrooms", 
             "image": "", 
@@ -2434,6 +2621,7 @@
         "pk": "ls14", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "LS14", 
             "name": "Restrooms", 
             "image": "", 
@@ -2447,6 +2635,7 @@
         "pk": "623", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "LS23", 
             "name": "Retirement Planning & Investments / Athletics", 
             "image": "b623.jpg", 
@@ -2460,6 +2649,7 @@
         "pk": "7e", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "", 
             "name": "SRC Auditorium - Ferrell Commons", 
             "image": "b7e.jpg", 
@@ -2473,6 +2663,7 @@
         "pk": "32", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "SEMN", 
             "name": "Seminole Hall - Libra Community", 
             "image": "b32.jpg", 
@@ -2486,6 +2677,7 @@
         "pk": "409", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "SAEP", 
             "name": "Sigma Alpha Epsilon - Fraternity - Greek Park", 
             "image": "TC_b409.jpg", 
@@ -2499,6 +2691,7 @@
         "pk": "412", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "SCHI", 
             "name": "Sigma Chi - Fraternity - Greek Park", 
             "image": "b412.jpg", 
@@ -2512,6 +2705,7 @@
         "pk": "411", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "SPE", 
             "name": "Sigma Phi Epsilon - Fraternity - Greek Park", 
             "image": "b411.jpg", 
@@ -2525,6 +2719,7 @@
         "pk": "8125", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "STTC", 
             "name": "Simulation, Training and Technology Center", 
             "image": "12423.jpg", 
@@ -2538,6 +2733,7 @@
         "pk": "socpracfld", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "", 
             "name": "Soccer Practice Field", 
             "image": "socpracfld.jpg", 
@@ -2551,6 +2747,7 @@
         "pk": "125", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "SBS", 
             "name": "Softball Stadium", 
             "image": "b125.jpg", 
@@ -2564,6 +2761,7 @@
         "pk": "4", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "SWRL", 
             "name": "Storm Water Research Lab", 
             "image": "StormwaterLab_b4.jpg", 
@@ -2577,6 +2775,7 @@
         "pk": "7b", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "", 
             "name": "Student Disabilities", 
             "image": "b7b.jpg", 
@@ -2590,6 +2789,7 @@
         "pk": "52", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "STUN", 
             "name": "Student Union", 
             "image": "b52.jpg", 
@@ -2603,6 +2803,7 @@
         "pk": "84", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "SUH", 
             "name": "Sumter Hall - Libra Community", 
             "image": "", 
@@ -2616,6 +2817,7 @@
         "pk": "533", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "", 
             "name": "TR533", 
             "image": "", 
@@ -2629,6 +2831,7 @@
         "pk": "535", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "", 
             "name": "TR535", 
             "image": "", 
@@ -2642,6 +2845,7 @@
         "pk": "93", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "TA", 
             "name": "Teaching Academy", 
             "image": "b93.jpg", 
@@ -2655,6 +2859,7 @@
         "pk": "3267", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "IRIF", 
             "name": "Technology Incubator", 
             "image": "b3267.jpg", 
@@ -2668,6 +2873,7 @@
         "pk": "3259", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "IRIF", 
             "name": "Technology Incubator", 
             "image": "b3259.jpg", 
@@ -2681,6 +2887,7 @@
         "pk": "50c", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "", 
             "name": "The Venue", 
             "image": "venue_b50c.jpg", 
@@ -2694,6 +2901,7 @@
         "pk": "t537", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "T537\r\nT537", 
             "name": "Theater", 
             "image": "", 
@@ -2707,6 +2915,7 @@
         "pk": "6", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "TH", 
             "name": "Theatre", 
             "image": "b6.jpg", 
@@ -2720,6 +2929,7 @@
         "pk": "534", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "T534", 
             "name": "Theatre", 
             "image": "b534.jpg", 
@@ -2733,6 +2943,7 @@
         "pk": "537", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "T537", 
             "name": "Theatre", 
             "image": "b537.jpg", 
@@ -2746,6 +2957,7 @@
         "pk": "t534", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "T534", 
             "name": "Theatre", 
             "image": "", 
@@ -2759,6 +2971,7 @@
         "pk": "12001", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "", 
             "name": "Three Resource Square", 
             "image": "12001.jpg", 
@@ -2772,6 +2985,7 @@
         "pk": "129", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "T1", 
             "name": "Tower 1", 
             "image": "b129.jpg", 
@@ -2785,6 +2999,7 @@
         "pk": "130", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "T2", 
             "name": "Tower 2", 
             "image": "b130.jpg", 
@@ -2798,6 +3013,7 @@
         "pk": "132", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "T3", 
             "name": "Tower 3", 
             "image": "T3.jpg", 
@@ -2811,6 +3027,7 @@
         "pk": "133", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "T4", 
             "name": "Tower 4", 
             "image": "b133.jpg", 
@@ -2824,6 +3041,7 @@
         "pk": "142", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "TS", 
             "name": "Track & Soccer Field", 
             "image": "b142.jpg", 
@@ -2837,6 +3055,7 @@
         "pk": "12000", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "", 
             "name": "Two Resource Square", 
             "image": "12000.jpg", 
@@ -2850,6 +3069,7 @@
         "pk": "408", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "UCFH", 
             "name": "UCF House - Greek Park", 
             "image": "", 
@@ -2863,6 +3083,7 @@
         "pk": "49", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "CPOL", 
             "name": "University Police Station", 
             "image": "b49.jpg", 
@@ -2876,6 +3097,7 @@
         "pk": "8110", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "UTC", 
             "name": "University Tech Center", 
             "image": "b8110.jpg", 
@@ -2889,6 +3111,7 @@
         "pk": "8118", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "UTWR", 
             "name": "University Tower", 
             "image": "b8118.jpg", 
@@ -2902,6 +3125,7 @@
         "pk": "3", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "UTI", 
             "name": "Utility Plant /HVAC", 
             "image": "b3.jpg", 
@@ -2915,6 +3139,7 @@
         "pk": "502", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "LS605", 
             "name": "Visitor's Center (temporary)", 
             "image": "b502.jpg", 
@@ -2928,6 +3153,7 @@
         "pk": "51", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "VAB", 
             "name": "Visual Arts Building", 
             "image": "b51.jpg", 
@@ -2941,6 +3167,7 @@
         "pk": "8", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "VOH", 
             "name": "Volusia Hall - Apollo Community", 
             "image": "b8.jpg", 
@@ -2954,6 +3181,7 @@
         "pk": "301", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "WT", 
             "name": "Water Tower", 
             "image": "b301.jpg", 
@@ -2967,6 +3195,7 @@
         "pk": "39", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "WDI", 
             "name": "Wayne Densch Center I", 
             "image": "b39.jpg", 
@@ -2980,6 +3209,7 @@
         "pk": "38", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "WDII", 
             "name": "Wayne Densch Center II", 
             "image": "b38.jpg", 
@@ -2993,6 +3223,7 @@
         "pk": "77", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "", 
             "name": "Wayne Densch Sports Center", 
             "image": "b77.jpg", 
@@ -3006,6 +3237,7 @@
         "pk": "96", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "UWC", 
             "name": "Welcome Center, Progress Energy University", 
             "image": "b96.jpg", 
@@ -3019,6 +3251,7 @@
         "pk": "608", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "MOD8", 
             "name": "Writing Center", 
             "image": "b608.jpg", 
@@ -3032,6 +3265,7 @@
         "pk": "mod8", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "MOD8", 
             "name": "Writing Center", 
             "image": "", 
@@ -3045,6 +3279,7 @@
         "pk": "401", 
         "model": "campus.building", 
         "fields": {
+            "profile": null, 
             "abbreviation": "ZETA", 
             "name": "Zeta Tau Alpha - Sorority- Greek Park", 
             "image": "b401.jpg", 
