@@ -10,7 +10,8 @@ from django.core.exceptions import ValidationError
 # must update sqlite db name since it is a relative path
 import settings
 db = settings.DATABASES['default']['NAME']
-settings.DATABASES['default']['NAME'] = os.path.abspath('../../') + '/' + db
+if 'sqlite3' in db:
+	settings.DATABASES['default']['NAME'] = os.path.abspath('../../') + '/' + db
 
 # update buildings from the authoritative source
 f = open('sidewalks_export.json')
