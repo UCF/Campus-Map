@@ -1,0 +1,137 @@
+{
+"type": "FeatureCollection",
+"features": [
+{ "type": "Feature", "properties": { "NO_BIKES": 24, "Building": "CREOL", "ID": 1 }, "geometry": { "type": "Point", "coordinates": [ -81.196880, 28.600839 ] } }
+,
+{ "type": "Feature", "properties": { "NO_BIKES": 30, "Building": "Harris Engineering Center", "ID": 2 }, "geometry": { "type": "Point", "coordinates": [ -81.197071, 28.600714 ] } }
+,
+{ "type": "Feature", "properties": { "NO_BIKES": 12, "Building": "CREOL", "ID": 3 }, "geometry": { "type": "Point", "coordinates": [ -81.197401, 28.601152 ] } }
+,
+{ "type": "Feature", "properties": { "NO_BIKES": 12, "Building": "CREOL", "ID": 4 }, "geometry": { "type": "Point", "coordinates": [ -81.197483, 28.601239 ] } }
+,
+{ "type": "Feature", "properties": { "NO_BIKES": 27, "Building": "Engineering I\/ BA II", "ID": 5 }, "geometry": { "type": "Point", "coordinates": [ -81.198171, 28.601095 ] } }
+,
+{ "type": "Feature", "properties": { "NO_BIKES": 9, "Building": "Engineering I\/ BA II", "ID": 6 }, "geometry": { "type": "Point", "coordinates": [ -81.198250, 28.601028 ] } }
+,
+{ "type": "Feature", "properties": { "NO_BIKES": 9, "Building": "Engineering I\/ BA II", "ID": 7 }, "geometry": { "type": "Point", "coordinates": [ -81.198377, 28.601097 ] } }
+,
+{ "type": "Feature", "properties": { "NO_BIKES": 54, "Building": "Engineering II", "ID": 8 }, "geometry": { "type": "Point", "coordinates": [ -81.197758, 28.602141 ] } }
+,
+{ "type": "Feature", "properties": { "NO_BIKES": 24, "Building": "Health & Public Affairs I", "ID": 9 }, "geometry": { "type": "Point", "coordinates": [ -81.198859, 28.603589 ] } }
+,
+{ "type": "Feature", "properties": { "NO_BIKES": 24, "Building": "Classroom Building I", "ID": 10 }, "geometry": { "type": "Point", "coordinates": [ -81.199739, 28.603891 ] } }
+,
+{ "type": "Feature", "properties": { "NO_BIKES": 18, "Building": "Psychology Building", "ID": 11 }, "geometry": { "type": "Point", "coordinates": [ -81.200042, 28.604554 ] } }
+,
+{ "type": "Feature", "properties": { "NO_BIKES": 24, "Building": "Physics Lab", "ID": 12 }, "geometry": { "type": "Point", "coordinates": [ -81.201700, 28.604162 ] } }
+,
+{ "type": "Feature", "properties": { "NO_BIKES": 22, "Building": "Visual Arts Building", "ID": 13 }, "geometry": { "type": "Point", "coordinates": [ -81.202667, 28.602926 ] } }
+,
+{ "type": "Feature", "properties": { "NO_BIKES": 12, "Building": "Colbourn Hall", "ID": 14 }, "geometry": { "type": "Point", "coordinates": [ -81.202597, 28.601770 ] } }
+,
+{ "type": "Feature", "properties": { "NO_BIKES": 12, "Building": "Colbourn Hall", "ID": 15 }, "geometry": { "type": "Point", "coordinates": [ -81.202540, 28.601649 ] } }
+,
+{ "type": "Feature", "properties": { "NO_BIKES": 24, "Building": "John T. Washington Center", "ID": 16 }, "geometry": { "type": "Point", "coordinates": [ -81.201851, 28.600680 ] } }
+,
+{ "type": "Feature", "properties": { "NO_BIKES": 16, "Building": "Howard Phillips Hall", "ID": 17 }, "geometry": { "type": "Point", "coordinates": [ -81.202521, 28.600379 ] } }
+,
+{ "type": "Feature", "properties": { "NO_BIKES": 20, "Building": "Library", "ID": 18 }, "geometry": { "type": "Point", "coordinates": [ -81.201942, 28.600168 ] } }
+,
+{ "type": "Feature", "properties": { "NO_BIKES": 24, "Building": "Math & Physics", "ID": 19 }, "geometry": { "type": "Point", "coordinates": [ -81.200474, 28.600046 ] } }
+,
+{ "type": "Feature", "properties": { "NO_BIKES": 24, "Building": "Chemistry", "ID": 20 }, "geometry": { "type": "Point", "coordinates": [ -81.199436, 28.600044 ] } }
+,
+{ "type": "Feature", "properties": { "NO_BIKES": 6, "Building": "Health Center", "ID": 21 }, "geometry": { "type": "Point", "coordinates": [ -81.199165, 28.599569 ] } }
+,
+{ "type": "Feature", "properties": { "NO_BIKES": 22, "Building": "North Bookstore", "ID": 22 }, "geometry": { "type": "Point", "coordinates": [ -81.197177, 28.606311 ] } }
+,
+{ "type": "Feature", "properties": { "NO_BIKES": 9, "Building": "Arena", "ID": 23 }, "geometry": { "type": "Point", "coordinates": [ -81.196560, 28.607454 ] } }
+,
+{ "type": "Feature", "properties": { "NO_BIKES": 9, "Building": "Stadium", "ID": 24 }, "geometry": { "type": "Point", "coordinates": [ -81.193031, 28.609464 ] } }
+,
+{ "type": "Feature", "properties": { "NO_BIKES": 18, "Building": "Stadium", "ID": 25 }, "geometry": { "type": "Point", "coordinates": [ -81.192729, 28.609545 ] } }
+,
+{ "type": "Feature", "properties": { "NO_BIKES": 27, "Building": "Stadium", "ID": 26 }, "geometry": { "type": "Point", "coordinates": [ -81.192602, 28.609522 ] } }
+,
+{ "type": "Feature", "properties": { "NO_BIKES": 36, "Building": "Wayne Dench Center", "ID": 27 }, "geometry": { "type": "Point", "coordinates": [ -81.194726, 28.606011 ] } }
+,
+{ "type": "Feature", "properties": { "NO_BIKES": 24, "Building": "Lake Claire Apartments", "ID": 28 }, "geometry": { "type": "Point", "coordinates": [ -81.202793, 28.604663 ] } }
+,
+{ "type": "Feature", "properties": { "NO_BIKES": 44, "Building": "Lake Claire Apartments", "ID": 29 }, "geometry": { "type": "Point", "coordinates": [ -81.203039, 28.604465 ] } }
+,
+{ "type": "Feature", "properties": { "NO_BIKES": 44, "Building": "Lake Claire Apartments", "ID": 30 }, "geometry": { "type": "Point", "coordinates": [ -81.203353, 28.604139 ] } }
+,
+{ "type": "Feature", "properties": { "NO_BIKES": 48, "Building": "Lake Claire Apartments", "ID": 31 }, "geometry": { "type": "Point", "coordinates": [ -81.203606, 28.603826 ] } }
+,
+{ "type": "Feature", "properties": { "NO_BIKES": 12, "Building": "Lake Claire Apartments", "ID": 32 }, "geometry": { "type": "Point", "coordinates": [ -81.203941, 28.603951 ] } }
+,
+{ "type": "Feature", "properties": { "NO_BIKES": 12, "Building": "Lake Claire Apartments", "ID": 33 }, "geometry": { "type": "Point", "coordinates": [ -81.204242, 28.603946 ] } }
+,
+{ "type": "Feature", "properties": { "NO_BIKES": 12, "Building": "Lake Claire Apartments", "ID": 34 }, "geometry": { "type": "Point", "coordinates": [ -81.204363, 28.603864 ] } }
+,
+{ "type": "Feature", "properties": { "NO_BIKES": 12, "Building": "Lake Claire Apartments", "ID": 35 }, "geometry": { "type": "Point", "coordinates": [ -81.205248, 28.603958 ] } }
+,
+{ "type": "Feature", "properties": { "NO_BIKES": 12, "Building": "Lake Claire Apartments", "ID": 36 }, "geometry": { "type": "Point", "coordinates": [ -81.205214, 28.604073 ] } }
+,
+{ "type": "Feature", "properties": { "NO_BIKES": 12, "Building": "Lake Claire Apartments", "ID": 37 }, "geometry": { "type": "Point", "coordinates": [ -81.204802, 28.604130 ] } }
+,
+{ "type": "Feature", "properties": { "NO_BIKES": 12, "Building": "Lake Claire Apartments", "ID": 38 }, "geometry": { "type": "Point", "coordinates": [ -81.205238, 28.603493 ] } }
+,
+{ "type": "Feature", "properties": { "NO_BIKES": 24, "Building": "Visual Arts Building", "ID": 39 }, "geometry": { "type": "Point", "coordinates": [ -81.203880, 28.602576 ] } }
+,
+{ "type": "Feature", "properties": { "NO_BIKES": 12, "Building": "Colbourn Hall", "ID": 40 }, "geometry": { "type": "Point", "coordinates": [ -81.203205, 28.601433 ] } }
+,
+{ "type": "Feature", "properties": { "NO_BIKES": 18, "Building": "Education Building", "ID": 41 }, "geometry": { "type": "Point", "coordinates": [ -81.203286, 28.600117 ] } }
+,
+{ "type": "Feature", "properties": { "NO_BIKES": 36, "Building": "Millican Hall", "ID": 42 }, "geometry": { "type": "Point", "coordinates": [ -81.202495, 28.599684 ] } }
+,
+{ "type": "Feature", "properties": { "NO_BIKES": 36, "Building": "Millican Hall", "ID": 43 }, "geometry": { "type": "Point", "coordinates": [ -81.201644, 28.599257 ] } }
+,
+{ "type": "Feature", "properties": { "NO_BIKES": 18, "Building": "Apollo Community", "ID": 44 }, "geometry": { "type": "Point", "coordinates": [ -81.200984, 28.598576 ] } }
+,
+{ "type": "Feature", "properties": { "NO_BIKES": 12, "Building": "Apollo Community", "ID": 45 }, "geometry": { "type": "Point", "coordinates": [ -81.201118, 28.597578 ] } }
+,
+{ "type": "Feature", "properties": { "NO_BIKES": 30, "Building": "Ferrell Commons", "ID": 46 }, "geometry": { "type": "Point", "coordinates": [ -81.199686, 28.597552 ] } }
+,
+{ "type": "Feature", "properties": { "NO_BIKES": 75, "Building": "Libra Community", "ID": 47 }, "geometry": { "type": "Point", "coordinates": [ -81.198629, 28.597835 ] } }
+,
+{ "type": "Feature", "properties": { "NO_BIKES": 12, "Building": "Libra Community", "ID": 48 }, "geometry": { "type": "Point", "coordinates": [ -81.198361, 28.598143 ] } }
+,
+{ "type": "Feature", "properties": { "NO_BIKES": 60, "Building": "Academic Village", "ID": 49 }, "geometry": { "type": "Point", "coordinates": [ -81.197276, 28.594937 ] } }
+,
+{ "type": "Feature", "properties": { "NO_BIKES": 60, "Building": "Academic Village", "ID": 50 }, "geometry": { "type": "Point", "coordinates": [ -81.197477, 28.594370 ] } }
+,
+{ "type": "Feature", "properties": { "NO_BIKES": 60, "Building": "Academic Village", "ID": 51 }, "geometry": { "type": "Point", "coordinates": [ -81.198626, 28.595012 ] } }
+,
+{ "type": "Feature", "properties": { "NO_BIKES": 40, "Building": "Academic Village", "ID": 52 }, "geometry": { "type": "Point", "coordinates": [ -81.199712, 28.594721 ] } }
+,
+{ "type": "Feature", "properties": { "NO_BIKES": 60, "Building": "Academic Village", "ID": 53 }, "geometry": { "type": "Point", "coordinates": [ -81.200743, 28.594150 ] } }
+,
+{ "type": "Feature", "properties": { "NO_BIKES": 60, "Building": "Academic Village", "ID": 54 }, "geometry": { "type": "Point", "coordinates": [ -81.200246, 28.593416 ] } }
+,
+{ "type": "Feature", "properties": { "NO_BIKES": 20, "Building": "Center for Multilingual Multicultural Studies", "ID": 55 }, "geometry": { "type": "Point", "coordinates": [ -81.202193, 28.594996 ] } }
+,
+{ "type": "Feature", "properties": { "NO_BIKES": 12, "Building": "Barbara Ying Center", "ID": 56 }, "geometry": { "type": "Point", "coordinates": [ -81.202478, 28.595407 ] } }
+,
+{ "type": "Feature", "properties": { "NO_BIKES": 48, "Building": "Rec and Wellness Center", "ID": 57 }, "geometry": { "type": "Point", "coordinates": [ -81.199405, 28.596237 ] } }
+,
+{ "type": "Feature", "properties": { "NO_BIKES": 18, "Building": "Early Childhood Center", "ID": 58 }, "geometry": { "type": "Point", "coordinates": [ -81.198177, 28.596296 ] } }
+,
+{ "type": "Feature", "properties": { "NO_BIKES": 24, "Building": "Engineering I\/ BA", "ID": 59 }, "geometry": { "type": "Point", "coordinates": [ -81.198931, 28.601608 ] } }
+,
+{ "type": "Feature", "properties": { "NO_BIKES": 24, "Building": "Student Union", "ID": 60 }, "geometry": { "type": "Point", "coordinates": [ -81.200045, 28.601283 ] } }
+,
+{ "type": "Feature", "properties": { "NO_BIKES": 24, "Building": "College of Science", "ID": 61 }, "geometry": { "type": "Point", "coordinates": [ -81.200442, 28.600829 ] } }
+,
+{ "type": "Feature", "properties": { "NO_BIKES": 24, "Building": "Burnett Honors College", "ID": 62 }, "geometry": { "type": "Point", "coordinates": [ -81.201570, 28.602229 ] } }
+,
+{ "type": "Feature", "properties": { "NO_BIKES": 40, "Building": "Student Union", "ID": 63 }, "geometry": { "type": "Point", "coordinates": [ -81.201007, 28.602813 ] } }
+,
+{ "type": "Feature", "properties": { "NO_BIKES": 20, "Building": "UCF Arena", "ID": 64 }, "geometry": { "type": "Point", "coordinates": [ -81.197354, 28.606807 ] } }
+,
+{ "type": "Feature", "properties": { "NO_BIKES": 12, "Building": "Physical Plant", "ID": 65 }, "geometry": { "type": "Point", "coordinates": [ -81.197970, 28.592105 ] } }
+,
+{ "type": "Feature", "properties": { "NO_BIKES": 8, "Building": "Girls softball", "ID": 66 }, "geometry": { "type": "Point", "coordinates": [ -81.189929, 28.604277 ] } }
+
+]
+}

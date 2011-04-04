@@ -1,0 +1,860 @@
+[
+    {
+        "pk": 1, 
+        "model": "campus.bikerack", 
+        "fields": {
+            "profile": null, 
+            "name": "", 
+            "image": "", 
+            "poly_coords": null, 
+            "illustrated_point": null, 
+            "googlemap_point": "-81.196880, 28.600839", 
+            "description": ""
+        }
+    }, 
+    {
+        "pk": 2, 
+        "model": "campus.bikerack", 
+        "fields": {
+            "profile": null, 
+            "name": "", 
+            "image": "", 
+            "poly_coords": null, 
+            "illustrated_point": null, 
+            "googlemap_point": "-81.197071, 28.600714", 
+            "description": ""
+        }
+    }, 
+    {
+        "pk": 3, 
+        "model": "campus.bikerack", 
+        "fields": {
+            "profile": null, 
+            "name": "", 
+            "image": "", 
+            "poly_coords": null, 
+            "illustrated_point": null, 
+            "googlemap_point": "-81.197401, 28.601152", 
+            "description": ""
+        }
+    }, 
+    {
+        "pk": 4, 
+        "model": "campus.bikerack", 
+        "fields": {
+            "profile": null, 
+            "name": "", 
+            "image": "", 
+            "poly_coords": null, 
+            "illustrated_point": null, 
+            "googlemap_point": "-81.197483, 28.601239", 
+            "description": ""
+        }
+    }, 
+    {
+        "pk": 5, 
+        "model": "campus.bikerack", 
+        "fields": {
+            "profile": null, 
+            "name": "", 
+            "image": "", 
+            "poly_coords": null, 
+            "illustrated_point": null, 
+            "googlemap_point": "-81.198171, 28.601095", 
+            "description": ""
+        }
+    }, 
+    {
+        "pk": 6, 
+        "model": "campus.bikerack", 
+        "fields": {
+            "profile": null, 
+            "name": "", 
+            "image": "", 
+            "poly_coords": null, 
+            "illustrated_point": null, 
+            "googlemap_point": "-81.198250, 28.601028", 
+            "description": ""
+        }
+    }, 
+    {
+        "pk": 7, 
+        "model": "campus.bikerack", 
+        "fields": {
+            "profile": null, 
+            "name": "", 
+            "image": "", 
+            "poly_coords": null, 
+            "illustrated_point": null, 
+            "googlemap_point": "-81.198377, 28.601097", 
+            "description": ""
+        }
+    }, 
+    {
+        "pk": 8, 
+        "model": "campus.bikerack", 
+        "fields": {
+            "profile": null, 
+            "name": "", 
+            "image": "", 
+            "poly_coords": null, 
+            "illustrated_point": null, 
+            "googlemap_point": "-81.197758, 28.602141", 
+            "description": ""
+        }
+    }, 
+    {
+        "pk": 9, 
+        "model": "campus.bikerack", 
+        "fields": {
+            "profile": null, 
+            "name": "", 
+            "image": "", 
+            "poly_coords": null, 
+            "illustrated_point": null, 
+            "googlemap_point": "-81.198859, 28.603589", 
+            "description": ""
+        }
+    }, 
+    {
+        "pk": 10, 
+        "model": "campus.bikerack", 
+        "fields": {
+            "profile": null, 
+            "name": "", 
+            "image": "", 
+            "poly_coords": null, 
+            "illustrated_point": null, 
+            "googlemap_point": "-81.199739, 28.603891", 
+            "description": ""
+        }
+    }, 
+    {
+        "pk": 11, 
+        "model": "campus.bikerack", 
+        "fields": {
+            "profile": null, 
+            "name": "", 
+            "image": "", 
+            "poly_coords": null, 
+            "illustrated_point": null, 
+            "googlemap_point": "-81.200042, 28.604554", 
+            "description": ""
+        }
+    }, 
+    {
+        "pk": 12, 
+        "model": "campus.bikerack", 
+        "fields": {
+            "profile": null, 
+            "name": "", 
+            "image": "", 
+            "poly_coords": null, 
+            "illustrated_point": null, 
+            "googlemap_point": "-81.201700, 28.604162", 
+            "description": ""
+        }
+    }, 
+    {
+        "pk": 13, 
+        "model": "campus.bikerack", 
+        "fields": {
+            "profile": null, 
+            "name": "", 
+            "image": "", 
+            "poly_coords": null, 
+            "illustrated_point": null, 
+            "googlemap_point": "-81.202667, 28.602926", 
+            "description": ""
+        }
+    }, 
+    {
+        "pk": 14, 
+        "model": "campus.bikerack", 
+        "fields": {
+            "profile": null, 
+            "name": "", 
+            "image": "", 
+            "poly_coords": null, 
+            "illustrated_point": null, 
+            "googlemap_point": "-81.202597, 28.601770", 
+            "description": ""
+        }
+    }, 
+    {
+        "pk": 15, 
+        "model": "campus.bikerack", 
+        "fields": {
+            "profile": null, 
+            "name": "", 
+            "image": "", 
+            "poly_coords": null, 
+            "illustrated_point": null, 
+            "googlemap_point": "-81.202540, 28.601649", 
+            "description": ""
+        }
+    }, 
+    {
+        "pk": 16, 
+        "model": "campus.bikerack", 
+        "fields": {
+            "profile": null, 
+            "name": "", 
+            "image": "", 
+            "poly_coords": null, 
+            "illustrated_point": null, 
+            "googlemap_point": "-81.201851, 28.600680", 
+            "description": ""
+        }
+    }, 
+    {
+        "pk": 17, 
+        "model": "campus.bikerack", 
+        "fields": {
+            "profile": null, 
+            "name": "", 
+            "image": "", 
+            "poly_coords": null, 
+            "illustrated_point": null, 
+            "googlemap_point": "-81.202521, 28.600379", 
+            "description": ""
+        }
+    }, 
+    {
+        "pk": 18, 
+        "model": "campus.bikerack", 
+        "fields": {
+            "profile": null, 
+            "name": "", 
+            "image": "", 
+            "poly_coords": null, 
+            "illustrated_point": null, 
+            "googlemap_point": "-81.201942, 28.600168", 
+            "description": ""
+        }
+    }, 
+    {
+        "pk": 19, 
+        "model": "campus.bikerack", 
+        "fields": {
+            "profile": null, 
+            "name": "", 
+            "image": "", 
+            "poly_coords": null, 
+            "illustrated_point": null, 
+            "googlemap_point": "-81.200474, 28.600046", 
+            "description": ""
+        }
+    }, 
+    {
+        "pk": 20, 
+        "model": "campus.bikerack", 
+        "fields": {
+            "profile": null, 
+            "name": "", 
+            "image": "", 
+            "poly_coords": null, 
+            "illustrated_point": null, 
+            "googlemap_point": "-81.199436, 28.600044", 
+            "description": ""
+        }
+    }, 
+    {
+        "pk": 21, 
+        "model": "campus.bikerack", 
+        "fields": {
+            "profile": null, 
+            "name": "", 
+            "image": "", 
+            "poly_coords": null, 
+            "illustrated_point": null, 
+            "googlemap_point": "-81.199165, 28.599569", 
+            "description": ""
+        }
+    }, 
+    {
+        "pk": 22, 
+        "model": "campus.bikerack", 
+        "fields": {
+            "profile": null, 
+            "name": "", 
+            "image": "", 
+            "poly_coords": null, 
+            "illustrated_point": null, 
+            "googlemap_point": "-81.197177, 28.606311", 
+            "description": ""
+        }
+    }, 
+    {
+        "pk": 23, 
+        "model": "campus.bikerack", 
+        "fields": {
+            "profile": null, 
+            "name": "", 
+            "image": "", 
+            "poly_coords": null, 
+            "illustrated_point": null, 
+            "googlemap_point": "-81.196560, 28.607454", 
+            "description": ""
+        }
+    }, 
+    {
+        "pk": 24, 
+        "model": "campus.bikerack", 
+        "fields": {
+            "profile": null, 
+            "name": "", 
+            "image": "", 
+            "poly_coords": null, 
+            "illustrated_point": null, 
+            "googlemap_point": "-81.193031, 28.609464", 
+            "description": ""
+        }
+    }, 
+    {
+        "pk": 25, 
+        "model": "campus.bikerack", 
+        "fields": {
+            "profile": null, 
+            "name": "", 
+            "image": "", 
+            "poly_coords": null, 
+            "illustrated_point": null, 
+            "googlemap_point": "-81.192729, 28.609545", 
+            "description": ""
+        }
+    }, 
+    {
+        "pk": 26, 
+        "model": "campus.bikerack", 
+        "fields": {
+            "profile": null, 
+            "name": "", 
+            "image": "", 
+            "poly_coords": null, 
+            "illustrated_point": null, 
+            "googlemap_point": "-81.192602, 28.609522", 
+            "description": ""
+        }
+    }, 
+    {
+        "pk": 27, 
+        "model": "campus.bikerack", 
+        "fields": {
+            "profile": null, 
+            "name": "", 
+            "image": "", 
+            "poly_coords": null, 
+            "illustrated_point": null, 
+            "googlemap_point": "-81.194726, 28.606011", 
+            "description": ""
+        }
+    }, 
+    {
+        "pk": 28, 
+        "model": "campus.bikerack", 
+        "fields": {
+            "profile": null, 
+            "name": "", 
+            "image": "", 
+            "poly_coords": null, 
+            "illustrated_point": null, 
+            "googlemap_point": "-81.202793, 28.604663", 
+            "description": ""
+        }
+    }, 
+    {
+        "pk": 29, 
+        "model": "campus.bikerack", 
+        "fields": {
+            "profile": null, 
+            "name": "", 
+            "image": "", 
+            "poly_coords": null, 
+            "illustrated_point": null, 
+            "googlemap_point": "-81.203039, 28.604465", 
+            "description": ""
+        }
+    }, 
+    {
+        "pk": 30, 
+        "model": "campus.bikerack", 
+        "fields": {
+            "profile": null, 
+            "name": "", 
+            "image": "", 
+            "poly_coords": null, 
+            "illustrated_point": null, 
+            "googlemap_point": "-81.203353, 28.604139", 
+            "description": ""
+        }
+    }, 
+    {
+        "pk": 31, 
+        "model": "campus.bikerack", 
+        "fields": {
+            "profile": null, 
+            "name": "", 
+            "image": "", 
+            "poly_coords": null, 
+            "illustrated_point": null, 
+            "googlemap_point": "-81.203606, 28.603826", 
+            "description": ""
+        }
+    }, 
+    {
+        "pk": 32, 
+        "model": "campus.bikerack", 
+        "fields": {
+            "profile": null, 
+            "name": "", 
+            "image": "", 
+            "poly_coords": null, 
+            "illustrated_point": null, 
+            "googlemap_point": "-81.203941, 28.603951", 
+            "description": ""
+        }
+    }, 
+    {
+        "pk": 33, 
+        "model": "campus.bikerack", 
+        "fields": {
+            "profile": null, 
+            "name": "", 
+            "image": "", 
+            "poly_coords": null, 
+            "illustrated_point": null, 
+            "googlemap_point": "-81.204242, 28.603946", 
+            "description": ""
+        }
+    }, 
+    {
+        "pk": 34, 
+        "model": "campus.bikerack", 
+        "fields": {
+            "profile": null, 
+            "name": "", 
+            "image": "", 
+            "poly_coords": null, 
+            "illustrated_point": null, 
+            "googlemap_point": "-81.204363, 28.603864", 
+            "description": ""
+        }
+    }, 
+    {
+        "pk": 35, 
+        "model": "campus.bikerack", 
+        "fields": {
+            "profile": null, 
+            "name": "", 
+            "image": "", 
+            "poly_coords": null, 
+            "illustrated_point": null, 
+            "googlemap_point": "-81.205248, 28.603958", 
+            "description": ""
+        }
+    }, 
+    {
+        "pk": 36, 
+        "model": "campus.bikerack", 
+        "fields": {
+            "profile": null, 
+            "name": "", 
+            "image": "", 
+            "poly_coords": null, 
+            "illustrated_point": null, 
+            "googlemap_point": "-81.205214, 28.604073", 
+            "description": ""
+        }
+    }, 
+    {
+        "pk": 37, 
+        "model": "campus.bikerack", 
+        "fields": {
+            "profile": null, 
+            "name": "", 
+            "image": "", 
+            "poly_coords": null, 
+            "illustrated_point": null, 
+            "googlemap_point": "-81.204802, 28.604130", 
+            "description": ""
+        }
+    }, 
+    {
+        "pk": 38, 
+        "model": "campus.bikerack", 
+        "fields": {
+            "profile": null, 
+            "name": "", 
+            "image": "", 
+            "poly_coords": null, 
+            "illustrated_point": null, 
+            "googlemap_point": "-81.205238, 28.603493", 
+            "description": ""
+        }
+    }, 
+    {
+        "pk": 39, 
+        "model": "campus.bikerack", 
+        "fields": {
+            "profile": null, 
+            "name": "", 
+            "image": "", 
+            "poly_coords": null, 
+            "illustrated_point": null, 
+            "googlemap_point": "-81.203880, 28.602576", 
+            "description": ""
+        }
+    }, 
+    {
+        "pk": 40, 
+        "model": "campus.bikerack", 
+        "fields": {
+            "profile": null, 
+            "name": "", 
+            "image": "", 
+            "poly_coords": null, 
+            "illustrated_point": null, 
+            "googlemap_point": "-81.203205, 28.601433", 
+            "description": ""
+        }
+    }, 
+    {
+        "pk": 41, 
+        "model": "campus.bikerack", 
+        "fields": {
+            "profile": null, 
+            "name": "", 
+            "image": "", 
+            "poly_coords": null, 
+            "illustrated_point": null, 
+            "googlemap_point": "-81.203286, 28.600117", 
+            "description": ""
+        }
+    }, 
+    {
+        "pk": 42, 
+        "model": "campus.bikerack", 
+        "fields": {
+            "profile": null, 
+            "name": "", 
+            "image": "", 
+            "poly_coords": null, 
+            "illustrated_point": null, 
+            "googlemap_point": "-81.202495, 28.599684", 
+            "description": ""
+        }
+    }, 
+    {
+        "pk": 43, 
+        "model": "campus.bikerack", 
+        "fields": {
+            "profile": null, 
+            "name": "", 
+            "image": "", 
+            "poly_coords": null, 
+            "illustrated_point": null, 
+            "googlemap_point": "-81.201644, 28.599257", 
+            "description": ""
+        }
+    }, 
+    {
+        "pk": 44, 
+        "model": "campus.bikerack", 
+        "fields": {
+            "profile": null, 
+            "name": "", 
+            "image": "", 
+            "poly_coords": null, 
+            "illustrated_point": null, 
+            "googlemap_point": "-81.200984, 28.598576", 
+            "description": ""
+        }
+    }, 
+    {
+        "pk": 45, 
+        "model": "campus.bikerack", 
+        "fields": {
+            "profile": null, 
+            "name": "", 
+            "image": "", 
+            "poly_coords": null, 
+            "illustrated_point": null, 
+            "googlemap_point": "-81.201118, 28.597578", 
+            "description": ""
+        }
+    }, 
+    {
+        "pk": 46, 
+        "model": "campus.bikerack", 
+        "fields": {
+            "profile": null, 
+            "name": "", 
+            "image": "", 
+            "poly_coords": null, 
+            "illustrated_point": null, 
+            "googlemap_point": "-81.199686, 28.597552", 
+            "description": ""
+        }
+    }, 
+    {
+        "pk": 47, 
+        "model": "campus.bikerack", 
+        "fields": {
+            "profile": null, 
+            "name": "", 
+            "image": "", 
+            "poly_coords": null, 
+            "illustrated_point": null, 
+            "googlemap_point": "-81.198629, 28.597835", 
+            "description": ""
+        }
+    }, 
+    {
+        "pk": 48, 
+        "model": "campus.bikerack", 
+        "fields": {
+            "profile": null, 
+            "name": "", 
+            "image": "", 
+            "poly_coords": null, 
+            "illustrated_point": null, 
+            "googlemap_point": "-81.198361, 28.598143", 
+            "description": ""
+        }
+    }, 
+    {
+        "pk": 49, 
+        "model": "campus.bikerack", 
+        "fields": {
+            "profile": null, 
+            "name": "", 
+            "image": "", 
+            "poly_coords": null, 
+            "illustrated_point": null, 
+            "googlemap_point": "-81.197276, 28.594937", 
+            "description": ""
+        }
+    }, 
+    {
+        "pk": 50, 
+        "model": "campus.bikerack", 
+        "fields": {
+            "profile": null, 
+            "name": "", 
+            "image": "", 
+            "poly_coords": null, 
+            "illustrated_point": null, 
+            "googlemap_point": "-81.197477, 28.594370", 
+            "description": ""
+        }
+    }, 
+    {
+        "pk": 51, 
+        "model": "campus.bikerack", 
+        "fields": {
+            "profile": null, 
+            "name": "", 
+            "image": "", 
+            "poly_coords": null, 
+            "illustrated_point": null, 
+            "googlemap_point": "-81.198626, 28.595012", 
+            "description": ""
+        }
+    }, 
+    {
+        "pk": 52, 
+        "model": "campus.bikerack", 
+        "fields": {
+            "profile": null, 
+            "name": "", 
+            "image": "", 
+            "poly_coords": null, 
+            "illustrated_point": null, 
+            "googlemap_point": "-81.199712, 28.594721", 
+            "description": ""
+        }
+    }, 
+    {
+        "pk": 53, 
+        "model": "campus.bikerack", 
+        "fields": {
+            "profile": null, 
+            "name": "", 
+            "image": "", 
+            "poly_coords": null, 
+            "illustrated_point": null, 
+            "googlemap_point": "-81.200743, 28.594150", 
+            "description": ""
+        }
+    }, 
+    {
+        "pk": 54, 
+        "model": "campus.bikerack", 
+        "fields": {
+            "profile": null, 
+            "name": "", 
+            "image": "", 
+            "poly_coords": null, 
+            "illustrated_point": null, 
+            "googlemap_point": "-81.200246, 28.593416", 
+            "description": ""
+        }
+    }, 
+    {
+        "pk": 55, 
+        "model": "campus.bikerack", 
+        "fields": {
+            "profile": null, 
+            "name": "", 
+            "image": "", 
+            "poly_coords": null, 
+            "illustrated_point": null, 
+            "googlemap_point": "-81.202193, 28.594996", 
+            "description": ""
+        }
+    }, 
+    {
+        "pk": 56, 
+        "model": "campus.bikerack", 
+        "fields": {
+            "profile": null, 
+            "name": "", 
+            "image": "", 
+            "poly_coords": null, 
+            "illustrated_point": null, 
+            "googlemap_point": "-81.202478, 28.595407", 
+            "description": ""
+        }
+    }, 
+    {
+        "pk": 57, 
+        "model": "campus.bikerack", 
+        "fields": {
+            "profile": null, 
+            "name": "", 
+            "image": "", 
+            "poly_coords": null, 
+            "illustrated_point": null, 
+            "googlemap_point": "-81.199405, 28.596237", 
+            "description": ""
+        }
+    }, 
+    {
+        "pk": 58, 
+        "model": "campus.bikerack", 
+        "fields": {
+            "profile": null, 
+            "name": "", 
+            "image": "", 
+            "poly_coords": null, 
+            "illustrated_point": null, 
+            "googlemap_point": "-81.198177, 28.596296", 
+            "description": ""
+        }
+    }, 
+    {
+        "pk": 59, 
+        "model": "campus.bikerack", 
+        "fields": {
+            "profile": null, 
+            "name": "", 
+            "image": "", 
+            "poly_coords": null, 
+            "illustrated_point": null, 
+            "googlemap_point": "-81.198931, 28.601608", 
+            "description": ""
+        }
+    }, 
+    {
+        "pk": 60, 
+        "model": "campus.bikerack", 
+        "fields": {
+            "profile": null, 
+            "name": "", 
+            "image": "", 
+            "poly_coords": null, 
+            "illustrated_point": null, 
+            "googlemap_point": "-81.200045, 28.601283", 
+            "description": ""
+        }
+    }, 
+    {
+        "pk": 61, 
+        "model": "campus.bikerack", 
+        "fields": {
+            "profile": null, 
+            "name": "", 
+            "image": "", 
+            "poly_coords": null, 
+            "illustrated_point": null, 
+            "googlemap_point": "-81.200442, 28.600829", 
+            "description": ""
+        }
+    }, 
+    {
+        "pk": 62, 
+        "model": "campus.bikerack", 
+        "fields": {
+            "profile": null, 
+            "name": "", 
+            "image": "", 
+            "poly_coords": null, 
+            "illustrated_point": null, 
+            "googlemap_point": "-81.201570, 28.602229", 
+            "description": ""
+        }
+    }, 
+    {
+        "pk": 63, 
+        "model": "campus.bikerack", 
+        "fields": {
+            "profile": null, 
+            "name": "", 
+            "image": "", 
+            "poly_coords": null, 
+            "illustrated_point": null, 
+            "googlemap_point": "-81.201007, 28.602813", 
+            "description": ""
+        }
+    }, 
+    {
+        "pk": 64, 
+        "model": "campus.bikerack", 
+        "fields": {
+            "profile": null, 
+            "name": "", 
+            "image": "", 
+            "poly_coords": null, 
+            "illustrated_point": null, 
+            "googlemap_point": "-81.197354, 28.606807", 
+            "description": ""
+        }
+    }, 
+    {
+        "pk": 65, 
+        "model": "campus.bikerack", 
+        "fields": {
+            "profile": null, 
+            "name": "", 
+            "image": "", 
+            "poly_coords": null, 
+            "illustrated_point": null, 
+            "googlemap_point": "-81.197970, 28.592105", 
+            "description": ""
+        }
+    }, 
+    {
+        "pk": 66, 
+        "model": "campus.bikerack", 
+        "fields": {
+            "profile": null, 
+            "name": "", 
+            "image": "", 
+            "poly_coords": null, 
+            "illustrated_point": null, 
+            "googlemap_point": "-81.189929, 28.604277", 
+            "description": ""
+        }
+    }
+]

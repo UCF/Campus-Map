@@ -167,4 +167,6 @@ class Sidewalk(models.Model):
 				raise ValidationError("Invalid polygon coordinates (not json serializable)")
 		
 		super(Sidewalk, self).clean(*args, **kwargs)
-	
+
+class BikeRack(CommonLocation):
+	pass
