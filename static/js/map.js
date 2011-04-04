@@ -269,7 +269,11 @@ Campus.layers = {
 				// strip map of google elements
 				// http://code.google.com/apis/maps/documentation/javascript/maptypes.html#StyledMaps
 				// http://gmaps-samples-v3.googlecode.com/svn/trunk/styledmaps/wizard/index.html
-				var styles = [ { featureType: "landscape.man_made", elementType: "geometry", stylers: [ { visibility: "off" } ] },{ featureType: "poi.sports_complex", elementType: "geometry", stylers: [ { visibility: "off" } ] } ];
+				var styles = [ 
+					{ featureType: "landscape.man_made", elementType: "geometry", stylers: [ { visibility: "off" } ] },
+					{ featureType: "poi.school", elementType: "geometry", stylers: [ { visibility: "off" } ] },
+					{ featureType: "poi.sports_complex", elementType: "geometry", stylers: [ { visibility: "off" } ] } 
+				];
 				var naked = new google.maps.StyledMapType( styles, { name : "Naked" } );
 				Campus.map.mapTypes.set('naked', naked);
 				
