@@ -352,7 +352,7 @@ Campus.layers = {
 		}
 	},
 	
-	/* Display sidewalk lines based on UCF data */
+	/* Place marker on each bike rack */
 	bikeracks : {
 		loaded  : false,
 		geo     : false,
