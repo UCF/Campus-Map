@@ -4,13 +4,18 @@
 html { background:black; }
 body { background:white url(img/gradient.png) repeat-x; min-width:974px; }
 
-a { color:#990000; }
+a { 
+	color:#990000;
+	-moz-transition: color 0.2s linear;
+	-webkit-transition: color 0.2s linear;
+	-o-transition: color 0.2s linear;
+	transition: color 0.2s linear; }
 a:hover { cursor:pointer; color:#C30202; }
 a:active, a:focus { outline:0; }
 
 h1 { font-family:"Adobe Caslon Pro", "Adobe Caslon", "Caslon Pro", caslon, georgia, serif;}
-h1 a {text-decoration:none; color:black; }
-h1 a:hover { color:#990000; color:rgba(0,0,0,1); text-shadow: #FFB71B 0 0 7px; }
+h1 a { text-decoration:none; color:black; }
+h1 a:hover { color:#D10020; }
 h2 { font-size:23px; color:#FF7700; font-family: "Arial Black", arial, sans-serif; margin:5px 0 15px; }
 h3 { font-family: "Arial Black", arial, sans-serif; }
 h3 a { text-decoration:none; }

@@ -4,7 +4,7 @@
 {% block body %}
 <div id="map">
 	<header>
-		<h1>UCF Campus Map</h1>
+		<h1><a href="{% url home %}">UCF Campus Map</a></h1>
 		{% weather %}
 	</header>
 	<div id="canvas-wrap"><div id="map-canvas" style="width:100%; height:550px"></div></div>
