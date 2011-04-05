@@ -417,6 +417,20 @@ Campus.layers = {
 			var on = Campus.settings.bikeracks;
 			if(on) this.load(); else this.unload();
 		}
+	},
+	
+	bluelights : {
+		update : function(){
+			var icon = new google.maps.MarkerImage(Campus.urls.static + '/images/markers/marker_sprite_blue.png', new google.maps.Size(20, 34));
+			var shadow = new google.maps.MarkerImage(Campus.urls.static + '/images/markers/marker_sprite_blue.png', new google.maps.Size(37,34), new google.maps.Point(20, 0), new google.maps.Point(10, 34));
+			var marker = new google.maps.Marker({
+				icon:icon,
+				shadow: shadow,
+				clickable: false,
+				position: latlng, 
+				map: Campus.map
+			});
+		}
 	}
 	
 };

@@ -131,7 +131,7 @@ footer dd { padding:8px 0 0 8px; margin:0; }
 #search ul li { margin:0; padding:0; list-style:none; height:auto; }
 #search ul li a { float:none; display:block; height:auto; background:none; padding:3px 8px 3px 12px; text-decoration:none; border-bottom:0; }
 #search ul li.hover a,
-#search ul li:hover a { background:#535353; background:rgba(200,200,200,.3);  }
+#search ul li:hover a { background:#535353; background:rgba(200,200,200,.3); text-decoration:none; }
 #search a:active { border:0; outline:none; }
 #search a:focus { border:0; outline:none; }
 .ie #search { width:258px; }
