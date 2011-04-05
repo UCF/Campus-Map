@@ -52,7 +52,8 @@
 			"search"        : "{% url search %}",
 			"location"      : "{{ loc_url }}",
 			"buildings_kml" : "{{ buildings_kml }}",
-			"sidewalks_kml" : "{{ sidewalks_kml }}"
+			"sidewalks_kml" : "{{ sidewalks_kml }}",
+			"bikeracks"     : "{% url bikeracks %}.json"
 		}
 		
 		{% if points %}

@@ -225,6 +225,15 @@ Campus.controls = function(){
 		Campus.layers.sidewalks.update();
 	});
 	
+	// walking paths checkbox
+	var br = Campus.menu.find('#bikeracks')[0];
+	$(br).attr('checked', Campus.settings.bikeracks);
+	console.log(br);
+	$(br).click(function(){
+		Campus.settings.bikeracks = $(this).is(':checked');
+		Campus.layers.bikeracks.update();
+	});
+	
 }
 
 /******************************************************************************\
@@ -236,6 +245,7 @@ Campus.layers = {
 		this.traffic.update();
 		this.points.update();
 		this.sidewalks.update();
+		this.bikeracks.update();
 	},
 	
 	/* Google's traffic layer */
@@ -283,6 +293,7 @@ Campus.layers = {
 			this.layer.setMap(Campus.map);
 		},
 		unload : function() {
+			if(!this.loaded) return;
 			Campus.map.setMapTypeId(google.maps.MapTypeId.ROADMAP);
 			this.layer.setMap(null);
 		},
@@ -332,10 +343,78 @@ Campus.layers = {
 			this.layer.setMap(Campus.map);
 		},
 		unload : function() {
+			if(!this.loaded) return;
 			this.layer.setMap(null);
 		},
 		update : function(){
 			var on = Campus.settings.sidewalks;
+			if(on) this.load(); else this.unload();
+		}
+	},
+	
+	/* Display sidewalk lines based on UCF data */
+	bikeracks : {
+		loaded  : false,
+		geo     : false,
+		markers : [],
+		load    : function(){
+			
+			// load geo location
+			if(!this.loaded){
+				// bikeracks delivered with request
+				if( Campus.settings.bikeracks_geo !== undefined && Campus.settings.bikeracks_geo.features) {
+					this.geo = Campus.settings.bikeracks_geo;
+					this.loaded = true;
+				} else {
+					// pull down with ajax
+					Campus.ajax = $.ajax({
+						url: Campus.urls.bikeracks,
+						dataType: 'json',
+						success: function(data){
+							Campus.layers.bikeracks.geo = data;
+							Campus.layers.bikeracks.loaded = true;
+							Campus.layers.bikeracks.load();
+						}
+					});
+					return;
+				}
+			}
+			
+			// markers have already been created, show them
+			if(this.markers.length > 0){
+				for(var i in this.markers){
+					var marker = this.markers[i];
+					if(marker.setVisible) marker.setVisible(true);
+				}
+				return;
+			}
+			
+			// create and place markers
+			for(var i in this.geo.features){
+				var rack = this.geo.features[i];
+				if(rack.geometry && rack.geometry.coordinates){
+					var point = rack.geometry.coordinates;
+					var latlng = new google.maps.LatLng(point[1],point[0]);
+					this.markers.push(
+						new google.maps.Marker({
+							clickable: false,
+							position: latlng, 
+							map: Campus.map
+						})
+					);
+				}
+			}
+			
+		},
+		unload : function() {
+			if(!this.loaded) return;
+			for(var i in this.markers){
+				var marker = this.markers[i];
+				if(marker.setVisible) marker.setVisible(false);
+			}
+		},
+		update : function(){
+			var on = Campus.settings.bikeracks;
 			if(on) this.load(); else this.unload();
 		}
 	}

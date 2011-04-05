@@ -175,6 +175,51 @@ def sidewalks(request, format=None):
 	
 	return home(request, sidewalks=True)
 
+def bikeracks(request, format=None):
+	'''
+	Mostly an API wrapper
+	'''
+	from campus.models import BikeRack
+	bikeracks = BikeRack.objects.all()
+	
+	url = request.build_absolute_uri(reverse('bikeracks'))
+	
+	# trying to stick to the  geojson spec: http://geojson.org/geojson-spec.html
+	arr = []
+	for r in bikeracks:
+		bikerack = {
+			"type": "Feature", 
+			"geometry": { 
+				"type": "Point", 
+				"coordinates": json.loads( "[%s]" % r.googlemap_point)
+			}
+		}
+		arr.append(bikerack)
+	obj = {
+		"name"     : "UCF Bike Racks",
+		"source"   : "University of Central Florida",
+		"url"      : url + ".json",
+		"type"     : "FeatureCollection",
+		"features" : arr
+	}
+	
+	if format == 'json':
+		response = HttpResponse(json.dumps(obj, indent=4))
+		response['Content-type'] = 'application/json'
+		return response
+	
+	if format == 'txt':
+		text = "University of Central Florida\nCampus Map: Bike Racks\n%s\n%s\n" % (
+					url + ".txt",
+					"-"*78)
+		for r in bikeracks:
+			text += "\n%*d: %s" %(2, r.id, r.googlemap_point)
+		response = HttpResponse(text)
+		response['Content-type'] = 'text/plain; charset=utf-8'
+		return response
+	
+	return home(request, bikeracks=True, bikeracks_geo=obj)
+
 def location_html(loc, request):
 	'''
 	TODO
