@@ -517,7 +517,7 @@ Campus.layers = {
 		layer  : { setMap:function(){} },
 		load   : function(){
 			if(!this.loaded){
-				this.layer = new google.maps.KmlLayer(Campus.urls.parking_kml, { preserveViewport : true, suppressInfoWindows: true, clickable: false });
+				this.layer = new google.maps.KmlLayer(Campus.urls.parking_kml, { preserveViewport : true });
 				this.loaded = true;
 			}
 			this.layer.setMap(Campus.map);
