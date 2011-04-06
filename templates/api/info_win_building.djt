@@ -7,7 +7,7 @@
 			<p>{{ location.description }}</p>
 		{% else %}
 			{% if debug %}
-				<p><a href="{% url admin:app_list 'campus'%}building/{{location.pk}}/">add a description</a></p>
+				{# <p><a href="{% url admin:app_list 'campus'%}building/{{location.pk}}/">add a description</a></p> #}
 			{% endif %}
 		{% endif %}
 	</div>
