@@ -65,9 +65,11 @@ def home(request, format=None, **kwargs):
 	if settings.GOOGLE_CAN_SEE_ME:
 		buildings_kml = "%s.kml?v=%s" % (request.build_absolute_uri(reverse('buildings')), version)
 		sidewalks_kml = "%s.kml?v=%s" % (request.build_absolute_uri(reverse('sidewalks')), version)
+		phones_kml    = "%s.kml?v=%s" % (request.build_absolute_uri(reverse('sidewalks')), version)
 	else:
 		buildings_kml = "%s%s.kml?v=%s" % (settings.GOOGLE_LOOK_HERE, reverse('buildings'), version)
 		sidewalks_kml = "%s%s.kml?v=%s" % (settings.GOOGLE_LOOK_HERE, reverse('sidewalks'), version)
+		phones_kml    = "%s%s.kml?v=%s" % (settings.GOOGLE_LOOK_HERE, reverse('sidewalks'), version)
 	loc = "%s.json" % reverse('location', kwargs={'loc':'foo'})
 	loc = loc.replace('foo', '%s');
 	context = {
@@ -76,9 +78,9 @@ def home(request, format=None, **kwargs):
 		'date'          : date,
 		'buildings_kml' : buildings_kml,
 		'sidewalks_kml' : sidewalks_kml,
+		'phones_kml'    : phones_kml,
 		'loc_url'       : loc
 	}
-	
 	
 	return render(request, 'campus/base.djt', context)
 
@@ -126,6 +128,19 @@ def buildings(request, format=None):
 	context = { 'buildings' : buildings }
 	return render(request, 'campus/buildings.djt', context)
 
+def parking(request, format=None):
+	
+	from campus.models import ParkingLot
+	lots = ParkingLot.objects.all()
+	
+	if format == 'kml':
+		response = render_to_response('api/parking.kml', { 'parking':lots })
+		response['Content-type'] = 'application/vnd.google-earth.kml+xml'
+		return response
+	
+	return home(request, parking=True)
+	
+	
 def sidewalks(request, format=None):
 	'''
 	Mostly an API wrapper

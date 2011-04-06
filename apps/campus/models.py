@@ -128,6 +128,47 @@ class Building(CommonLocation):
 class ParkingLot(CommonLocation):
 	permit_type = models.CharField(max_length=255, blank=True, null=True)
 	number      = models.CharField(max_length=50, blank=True, null=True)
+	
+	def _kml_coords(self):
+		if self.poly_coords == None:
+			return None
+		
+		import json
+		def flat(l):
+			''' 
+			recursive function to flatten array and create a a list of coordinates separated by a space
+			'''
+			str = ""
+			for i in l:
+				if type(i[0]) == type([]):
+					return flat(i)
+				else:
+					str += ("%.6f,%.6f ")  % (i[0], i[1])
+			return str
+		
+		
+		arr = json.loads(self.poly_coords)
+		return flat(arr)
+	kml_coords = property(_kml_coords)
+	
+	
+	def _color_fill(self):
+		rgb = '0067a6'
+		opacity = .35
+		
+		# kml is weird, it goes [opacity][blue][green][red] (each two digit hex)
+		kml_color = "%x%s%s%s" % (int(opacity*255), rgb[4:], rgb[2:4], rgb[0:2])
+		return kml_color
+	color_fill = property(_color_fill)
+	
+	def _color_line(self):
+		# same as fill, up opacity
+		color = self.color_fill
+		opacity = .60
+		kml_color = "%x%s" % (opacity * 255, color[2:])
+		return kml_color
+	color_line = property(_color_line)
+
 
 class Sidewalk(models.Model):
 	poly_coords       = models.TextField(blank=True, null=True)

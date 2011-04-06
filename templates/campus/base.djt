@@ -10,7 +10,7 @@
 	<div id="canvas-wrap"><div id="map-canvas" style="width:100%; height:550px"></div></div>
 	<div id="map-foot">
 		<span class="left checkboxes">
-			<label class="disabled"><input type="checkbox" disabled="disabled"> Parking</label>
+			<label><input type="checkbox" id="parking"> Parking</label>
 			<label class="disabled"><input type="checkbox" disabled="disabled"> Entrances/Exits</label>
 			<label><input type="checkbox" id="buildings"> Buildings</label>
 			<label><input type="checkbox" id="sidewalks"> Walking Paths</label>
