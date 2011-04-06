@@ -153,10 +153,17 @@ class ParkingLot(CommonLocation):
 	
 	
 	def _color_fill(self):
-		rgb = '0067a6'
-		opacity = .35
 		
-		# B, D, C, Housing, Greek, D Permits
+		colors = {
+			"B Permits"       : "cc0400", #red
+			"C Permits"       : "0052d9", #blue
+			"D Permits"       : "009a36", #green
+			"Housing Permits" : "ffba00", #orange
+			"Greek Row"       : "eb00e3", #pink
+		}
+		
+		rgb = colors.get(self.permit_type) or 'fffb00' #default=yellow
+		opacity = .35
 		
 		# kml is weird, it goes [opacity][blue][green][red] (each two digit hex)
 		kml_color = "%x%s%s%s" % (int(opacity*255), rgb[4:], rgb[2:4], rgb[0:2])
@@ -166,7 +173,7 @@ class ParkingLot(CommonLocation):
 	def _color_line(self):
 		# same as fill, up opacity
 		color = self.color_fill
-		opacity = .60
+		opacity = .70
 		kml_color = "%x%s" % (opacity * 255, color[2:])
 		return kml_color
 	color_line = property(_color_line)
