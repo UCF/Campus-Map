@@ -241,6 +241,14 @@ Campus.controls = function(){
 		Campus.layers.emergency_phones.update();
 	});
 	
+	// parking lots
+	var scb = $('#parking')[0];
+	$(scb).attr('checked', Campus.settings.parking);
+	$(scb).click(function(){
+		Campus.settings.parking = $(this).is(':checked');
+		Campus.layers.parking.update();
+	});
+	
 }
 
 /******************************************************************************\
@@ -254,6 +262,7 @@ Campus.layers = {
 		this.sidewalks.update();
 		this.bikeracks.update();
 		this.emergency_phones.update();
+		this.parking.update();
 	},
 	
 	/* Google's traffic layer */
@@ -498,6 +507,27 @@ Campus.layers = {
 		},
 		update : function(){
 			var on = Campus.settings.emergency_phones;
+			if(on) this.load(); else this.unload();
+		}
+	},
+	
+	/* Display parking lots (much like sidewalks) */
+	parking : {
+		loaded : false,
+		layer  : { setMap:function(){} },
+		load   : function(){
+			if(!this.loaded){
+				this.layer = new google.maps.KmlLayer(Campus.urls.parking_kml, { preserveViewport : true, suppressInfoWindows: true, clickable: false });
+				this.loaded = true;
+			}
+			this.layer.setMap(Campus.map);
+		},
+		unload : function() {
+			if(!this.loaded) return;
+			this.layer.setMap(null);
+		},
+		update : function(){
+			var on = Campus.settings.parking;
 			if(on) this.load(); else this.unload();
 		}
 	}

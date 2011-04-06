@@ -51,6 +51,7 @@
 			"static"        : "{{ MEDIA_URL }}",
 			"search"        : "{% url search %}",
 			"location"      : "{{ loc_url }}",
+			"parking_kml"   : "{{ parking_kml}}",
 			"buildings_kml" : "{{ buildings_kml }}",
 			"sidewalks_kml" : "{{ sidewalks_kml }}",
 			"bikeracks"     : "{% url bikeracks %}.json",

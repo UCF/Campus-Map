@@ -156,6 +156,8 @@ class ParkingLot(CommonLocation):
 		rgb = '0067a6'
 		opacity = .35
 		
+		# B, D, C, Housing, Greek, D Permits
+		
 		# kml is weird, it goes [opacity][blue][green][red] (each two digit hex)
 		kml_color = "%x%s%s%s" % (int(opacity*255), rgb[4:], rgb[2:4], rgb[0:2])
 		return kml_color

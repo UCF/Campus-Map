@@ -65,11 +65,11 @@ def home(request, format=None, **kwargs):
 	if settings.GOOGLE_CAN_SEE_ME:
 		buildings_kml = "%s.kml?v=%s" % (request.build_absolute_uri(reverse('buildings')), version)
 		sidewalks_kml = "%s.kml?v=%s" % (request.build_absolute_uri(reverse('sidewalks')), version)
-		phones_kml    = "%s.kml?v=%s" % (request.build_absolute_uri(reverse('sidewalks')), version)
+		parking_kml   = "%s.kml?v=%s" % (request.build_absolute_uri(reverse('parking')), version)
 	else:
 		buildings_kml = "%s%s.kml?v=%s" % (settings.GOOGLE_LOOK_HERE, reverse('buildings'), version)
 		sidewalks_kml = "%s%s.kml?v=%s" % (settings.GOOGLE_LOOK_HERE, reverse('sidewalks'), version)
-		phones_kml    = "%s%s.kml?v=%s" % (settings.GOOGLE_LOOK_HERE, reverse('sidewalks'), version)
+		parking_kml    = "%s%s.kml?v=%s" % (settings.GOOGLE_LOOK_HERE, reverse('parking'), version)
 	loc = "%s.json" % reverse('location', kwargs={'loc':'foo'})
 	loc = loc.replace('foo', '%s');
 	context = {
@@ -78,7 +78,7 @@ def home(request, format=None, **kwargs):
 		'date'          : date,
 		'buildings_kml' : buildings_kml,
 		'sidewalks_kml' : sidewalks_kml,
-		'phones_kml'    : phones_kml,
+		'parking_kml'   : parking_kml,
 		'loc_url'       : loc
 	}
 	
