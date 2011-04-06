@@ -125,6 +125,9 @@ class Building(CommonLocation):
 	class Meta:
 		ordering = ("name",)
 
+class ParkingLot(CommonLocation):
+	permit_type = models.CharField(max_length=255, blank=True, null=True)
+	number      = models.CharField(max_length=50, blank=True, null=True)
 
 class Sidewalk(models.Model):
 	poly_coords       = models.TextField(blank=True, null=True)

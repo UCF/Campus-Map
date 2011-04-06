@@ -22,4 +22,4 @@ Commit `buildings.json` back to github.
 
 Reset campus and load fixtures:
     python manage.py reset campus
-    python manage.py loaddata buildings campuses sidewalks locations bikeracks phones
+    python manage.py loaddata buildings campuses sidewalks locations bikeracks phones parkinglots
