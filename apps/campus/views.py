@@ -220,6 +220,52 @@ def bikeracks(request, format=None):
 	
 	return home(request, bikeracks=True, bikeracks_geo=obj)
 
+def emergency_phones(request, format=None):
+	'''
+	Mostly an API wrapper (very similar to bike racks, probably shoudl abstract this a bit)
+	'''
+	from campus.models import EmergencyPhone
+	phones = EmergencyPhone.objects.all()
+	
+	url = request.build_absolute_uri(reverse('emergency_phones'))
+	
+	# trying to stick to the  geojson spec: http://geojson.org/geojson-spec.html
+	arr = []
+	for p in phones:
+		phone = {
+			"type": "Feature", 
+			"geometry": { 
+				"type": "Point", 
+				"coordinates": json.loads( "[%s]" % p.googlemap_point)
+			}
+		}
+		arr.append(phone)
+	obj = {
+		"name"     : "UCF Emergency Phones",
+		"source"   : "University of Central Florida",
+		"url"      : url + ".json",
+		"type"     : "FeatureCollection",
+		"features" : arr
+	}
+	
+	if format == 'json':
+		response = HttpResponse(json.dumps(obj, indent=4))
+		response['Content-type'] = 'application/json'
+		return response
+	
+	if format == 'txt':
+		text = "University of Central Florida\nCampus Map: Emergency Phones\n%s\n%s\n" % (
+					url + ".txt",
+					"-"*78)
+		for p in phones:
+			text += "\n%*d: %s" %(2, p.id, p.googlemap_point)
+		response = HttpResponse(text)
+		response['Content-type'] = 'text/plain; charset=utf-8'
+		return response
+	
+	return home(request, emergency_phones=True, phone_geo=obj)
+
+
 def location_html(loc, request):
 	'''
 	TODO

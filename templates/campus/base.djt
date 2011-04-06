@@ -53,7 +53,8 @@
 			"location"      : "{{ loc_url }}",
 			"buildings_kml" : "{{ buildings_kml }}",
 			"sidewalks_kml" : "{{ sidewalks_kml }}",
-			"bikeracks"     : "{% url bikeracks %}.json"
+			"bikeracks"     : "{% url bikeracks %}.json",
+			"phones"        : "{% url emergency_phones %}.json"
 		}
 		
 		{% if points %}

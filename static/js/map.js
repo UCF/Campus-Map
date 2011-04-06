@@ -225,13 +225,20 @@ Campus.controls = function(){
 		Campus.layers.sidewalks.update();
 	});
 	
-	// walking paths checkbox
+	// bikeracks paths checkbox
 	var br = Campus.menu.find('#bikeracks')[0];
 	$(br).attr('checked', Campus.settings.bikeracks);
-	console.log(br);
 	$(br).click(function(){
 		Campus.settings.bikeracks = $(this).is(':checked');
 		Campus.layers.bikeracks.update();
+	});
+
+	// emergency phones paths checkbox
+	var phones = Campus.menu.find('#emergency_phones')[0];
+	$(phones).attr('checked', Campus.settings.emergency_phones);
+	$(phones).click(function(){
+		Campus.settings.emergency_phones = $(this).is(':checked');
+		Campus.layers.emergency_phones.update();
 	});
 	
 }
@@ -246,6 +253,7 @@ Campus.layers = {
 		this.points.update();
 		this.sidewalks.update();
 		this.bikeracks.update();
+		this.emergency_phones.update();
 	},
 	
 	/* Google's traffic layer */
@@ -419,17 +427,78 @@ Campus.layers = {
 		}
 	},
 	
-	bluelights : {
-		update : function(){
+	emergency_phones : {
+		/* really similar to bikeracks (but with different icon), should probalby abstract this a bit */
+		loaded  : false,
+		geo     : false,
+		markers : [],
+		load    : function(){
+			
+			// load geo location
+			if(!this.loaded){
+				// geoinfo delivered with request
+				if( Campus.settings.phones_geo !== undefined && Campus.settings.phones_geo.features) {
+					this.geo = Campus.settings.phones_geo;
+					this.loaded = true;
+				} 
+				// pull down with ajax
+				else {
+					
+					Campus.ajax = $.ajax({
+						url: Campus.urls.phones,
+						dataType: 'json',
+						success: function(data){
+							Campus.layers.emergency_phones.geo = data;
+							Campus.layers.emergency_phones.loaded = true;
+							Campus.layers.emergency_phones.load();
+						}
+					});
+					return;
+				}
+			}
+			
+			// markers have already been created, show them
+			if(this.markers.length > 0){
+				for(var i in this.markers){
+					var marker = this.markers[i];
+					if(marker.setVisible) marker.setVisible(true);
+				}
+				return;
+			}
+			
+			// custom icon
 			var icon = new google.maps.MarkerImage(Campus.urls.static + '/images/markers/marker_sprite_blue.png', new google.maps.Size(20, 34));
 			var shadow = new google.maps.MarkerImage(Campus.urls.static + '/images/markers/marker_sprite_blue.png', new google.maps.Size(37,34), new google.maps.Point(20, 0), new google.maps.Point(10, 34));
-			var marker = new google.maps.Marker({
-				icon:icon,
-				shadow: shadow,
-				clickable: false,
-				position: latlng, 
-				map: Campus.map
-			});
+			
+			// create and place markers
+			for(var i in this.geo.features){
+				var phone = this.geo.features[i];
+				if(phone.geometry && phone.geometry.coordinates){
+					var point = phone.geometry.coordinates;
+					var latlng = new google.maps.LatLng(point[1],point[0]);
+					this.markers.push(
+						new google.maps.Marker({
+							icon:icon,
+							shadow: shadow,
+							clickable: false,
+							position: latlng, 
+							map: Campus.map
+						})
+					);
+				}
+			}
+			
+		},
+		unload : function() {
+			if(!this.loaded) return;
+			for(var i in this.markers){
+				var marker = this.markers[i];
+				if(marker.setVisible) marker.setVisible(false);
+			}
+		},
+		update : function(){
+			var on = Campus.settings.emergency_phones;
+			if(on) this.load(); else this.unload();
 		}
 	}
 	
