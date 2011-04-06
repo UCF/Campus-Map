@@ -170,3 +170,6 @@ class Sidewalk(models.Model):
 
 class BikeRack(CommonLocation):
 	pass
+
+class EmergencyPhone(CommonLocation):
+	pass

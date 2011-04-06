@@ -1,0 +1,81 @@
+{
+"type": "FeatureCollection",
+"features": [
+{ "type": "Feature", "properties": { "MYNUMBER": 1.000000, "LABELEDNUM": 3.000000, "STYLE": "OLD YELLOW BOX", "EMSIGN": "Y", "COLOR": "YELLOW", "SOLARPANEL": "Y" }, "geometry": { "type": "Point", "coordinates": [ -81.199417, 28.592718 ] } }
+,
+{ "type": "Feature", "properties": { "MYNUMBER": 2.000000, "LABELEDNUM": 0.000000, "STYLE": "CB1-S", "EMSIGN": "N", "COLOR": "YELLOW", "SOLARPANEL": "N" }, "geometry": { "type": "Point", "coordinates": [ -81.200239, 28.593450 ] } }
+,
+{ "type": "Feature", "properties": { "MYNUMBER": 3.000000, "LABELEDNUM": 0.000000, "STYLE": "CB1-S", "EMSIGN": "N", "COLOR": "YELLOW", "SOLARPANEL": "N" }, "geometry": { "type": "Point", "coordinates": [ -81.201373, 28.592550 ] } }
+,
+{ "type": "Feature", "properties": { "MYNUMBER": 4.000000, "LABELEDNUM": 0.000000, "STYLE": "CB1-S", "EMSIGN": "N", "COLOR": "YELLOW", "SOLARPANEL": "N" }, "geometry": { "type": "Point", "coordinates": [ -81.202086, 28.591919 ] } }
+,
+{ "type": "Feature", "properties": { "MYNUMBER": 5.000000, "LABELEDNUM": 0.000000, "STYLE": "CB1-S", "EMSIGN": "N", "COLOR": "MEDIUM BRONZE", "SOLARPANEL": "N" }, "geometry": { "type": "Point", "coordinates": [ -81.201793, 28.594599 ] } }
+,
+{ "type": "Feature", "properties": { "MYNUMBER": 6.000000, "LABELEDNUM": 0.000000, "STYLE": "CB1-S", "EMSIGN": "N", "COLOR": "YELLOW", "SOLARPANEL": "N" }, "geometry": { "type": "Point", "coordinates": [ -81.203140, 28.595196 ] } }
+,
+{ "type": "Feature", "properties": { "MYNUMBER": 11.000000, "LABELEDNUM": 0.000000, "STYLE": "CB1-S", "EMSIGN": "N", "COLOR": "YELLOW", "SOLARPANEL": "N" }, "geometry": { "type": "Point", "coordinates": [ -81.203124, 28.596322 ] } }
+,
+{ "type": "Feature", "properties": { "MYNUMBER": 13.000000, "LABELEDNUM": 0.000000, "STYLE": "CB1-S", "EMSIGN": "N", "COLOR": "YELLOW", "SOLARPANEL": "N" }, "geometry": { "type": "Point", "coordinates": [ -81.204051, 28.597371 ] } }
+,
+{ "type": "Feature", "properties": { "MYNUMBER": 14.000000, "LABELEDNUM": 5.000000, "STYLE": "OLD YELLOW BOX", "EMSIGN": "Y", "COLOR": "YELLOW", "SOLARPANEL": "Y" }, "geometry": { "type": "Point", "coordinates": [ -81.204359, 28.598107 ] } }
+,
+{ "type": "Feature", "properties": { "MYNUMBER": 12.000000, "LABELEDNUM": 4.000000, "STYLE": "OLD YELLOW BOX", "EMSIGN": "Y", "COLOR": "YELLOW", "SOLARPANEL": "Y" }, "geometry": { "type": "Point", "coordinates": [ -81.202212, 28.597026 ] } }
+,
+{ "type": "Feature", "properties": { "MYNUMBER": 8.000000, "LABELEDNUM": 0.000000, "STYLE": "CB1-S", "EMSIGN": "N", "COLOR": "YELLOW", "SOLARPANEL": "N" }, "geometry": { "type": "Point", "coordinates": [ -81.199166, 28.594865 ] } }
+,
+{ "type": "Feature", "properties": { "MYNUMBER": 10.000000, "LABELEDNUM": 0.000000, "STYLE": "CB1-S", "EMSIGN": "N", "COLOR": "YELLOW", "SOLARPANEL": "N" }, "geometry": { "type": "Point", "coordinates": [ -81.196802, 28.594774 ] } }
+,
+{ "type": "Feature", "properties": { "MYNUMBER": 9.000000, "LABELEDNUM": 0.000000, "STYLE": "CB1-S", "EMSIGN": "N", "COLOR": "YELLOW", "SOLARPANEL": "N" }, "geometry": { "type": "Point", "coordinates": [ -81.197274, 28.593786 ] } }
+,
+{ "type": "Feature", "properties": { "MYNUMBER": 31.000000, "LABELEDNUM": 8.000000, "STYLE": "OLD YELLOW  BOX", "EMSIGN": "Y", "COLOR": "YELLOW", "SOLARPANEL": "Y" }, "geometry": { "type": "Point", "coordinates": [ -81.202960, 28.607366 ] } }
+,
+{ "type": "Feature", "properties": { "MYNUMBER": 32.000000, "LABELEDNUM": 0.000000, "STYLE": "CB1-S", "EMSIGN": "N", "COLOR": "YELLOW", "SOLARPANEL": "N" }, "geometry": { "type": "Point", "coordinates": [ -81.203856, 28.605259 ] } }
+,
+{ "type": "Feature", "properties": { "MYNUMBER": 34.000000, "LABELEDNUM": 7.000000, "STYLE": "OLD YELLOW BOX", "EMSIGN": "Y", "COLOR": "YELLOW", "SOLARPANEL": "Y" }, "geometry": { "type": "Point", "coordinates": [ -81.203830, 28.603407 ] } }
+,
+{ "type": "Feature", "properties": { "MYNUMBER": 33.000000, "LABELEDNUM": 0.000000, "STYLE": "CB1-S", "EMSIGN": "N", "COLOR": "YELLOW", "SOLARPANEL": "N" }, "geometry": { "type": "Point", "coordinates": [ -81.201673, 28.604178 ] } }
+,
+{ "type": "Feature", "properties": { "MYNUMBER": 36.000000, "LABELEDNUM": 0.000000, "STYLE": "CB1-S", "EMSIGN": "N", "COLOR": "YELLOW", "SOLARPANEL": "N" }, "geometry": { "type": "Point", "coordinates": [ -81.201421, 28.602838 ] } }
+,
+{ "type": "Feature", "properties": { "MYNUMBER": 35.000000, "LABELEDNUM": 0.000000, "STYLE": "CB1-S", "EMSIGN": "N", "COLOR": "YELLOW", "SOLARPANEL": "N" }, "geometry": { "type": "Point", "coordinates": [ -81.205504, 28.602444 ] } }
+,
+{ "type": "Feature", "properties": { "MYNUMBER": 37.000000, "LABELEDNUM": 0.000000, "STYLE": "CB1-S", "EMSIGN": "N", "COLOR": "YELLOW", "SOLARPANEL": "N" }, "geometry": { "type": "Point", "coordinates": [ -81.203536, 28.600939 ] } }
+,
+{ "type": "Feature", "properties": { "MYNUMBER": 38.000000, "LABELEDNUM": 0.000000, "STYLE": "CB1-S", "EMSIGN": "N", "COLOR": "YELLOW", "SOLARPANEL": "N" }, "geometry": { "type": "Point", "coordinates": [ -81.202130, 28.600275 ] } }
+,
+{ "type": "Feature", "properties": { "MYNUMBER": 15.000000, "LABELEDNUM": 0.000000, "STYLE": "CB1-S", "EMSIGN": "N", "COLOR": "YELLOW", "SOLARPANEL": "N" }, "geometry": { "type": "Point", "coordinates": [ -81.199995, 28.598996 ] } }
+,
+{ "type": "Feature", "properties": { "MYNUMBER": 16.000000, "LABELEDNUM": 0.000000, "STYLE": "CB1-S", "EMSIGN": "N", "COLOR": "YELLOW", "SOLARPANEL": "N" }, "geometry": { "type": "Point", "coordinates": [ -81.197442, 28.600068 ] } }
+,
+{ "type": "Feature", "properties": { "MYNUMBER": 17.000000, "LABELEDNUM": 0.000000, "STYLE": "OLD YELLOW BOX", "EMSIGN": "Y", "COLOR": "YELLOW", "SOLARPANEL": "Y" }, "geometry": { "type": "Point", "coordinates": [ -81.196703, 28.601624 ] } }
+,
+{ "type": "Feature", "properties": { "MYNUMBER": 18.000000, "LABELEDNUM": 0.000000, "STYLE": "CB1-S", "EMSIGN": "N", "COLOR": "YELLOW", "SOLARPANEL": "N" }, "geometry": { "type": "Point", "coordinates": [ -81.199255, 28.603081 ] } }
+,
+{ "type": "Feature", "properties": { "MYNUMBER": 19.000000, "LABELEDNUM": 0.000000, "STYLE": "CB1-S", "EMSIGN": "N", "COLOR": "YELLOW", "SOLARPANEL": "N" }, "geometry": { "type": "Point", "coordinates": [ -81.199523, 28.604337 ] } }
+,
+{ "type": "Feature", "properties": { "MYNUMBER": 20.000000, "LABELEDNUM": 9.000000, "STYLE": "OLD YELLOW BOX", "EMSIGN": "Y", "COLOR": "YELLOW", "SOLARPANEL": "Y" }, "geometry": { "type": "Point", "coordinates": [ -81.198165, 28.604970 ] } }
+,
+{ "type": "Feature", "properties": { "MYNUMBER": 25.000000, "LABELEDNUM": 0.000000, "STYLE": "CB2-E", "EMSIGN": "N", "COLOR": "METAL", "SOLARPANEL": "N" }, "geometry": { "type": "Point", "coordinates": [ -81.197348, 28.606651 ] } }
+,
+{ "type": "Feature", "properties": { "MYNUMBER": 26.000000, "LABELEDNUM": 0.000000, "STYLE": "CB2-E", "EMSIGN": "N", "COLOR": "METAL", "SOLARPANEL": "N" }, "geometry": { "type": "Point", "coordinates": [ -81.197665, 28.607755 ] } }
+,
+{ "type": "Feature", "properties": { "MYNUMBER": 27.000000, "LABELEDNUM": 0.000000, "STYLE": "CB5-S", "EMSIGN": "N", "COLOR": "BLACK", "SOLARPANEL": "N" }, "geometry": { "type": "Point", "coordinates": [ -81.197804, 28.608032 ] } }
+,
+{ "type": "Feature", "properties": { "MYNUMBER": 28.000000, "LABELEDNUM": 0.000000, "STYLE": "CB5-S", "EMSIGN": "N", "COLOR": "BLACK", "SOLARPANEL": "N" }, "geometry": { "type": "Point", "coordinates": [ -81.198170, 28.608709 ] } }
+,
+{ "type": "Feature", "properties": { "MYNUMBER": 29.000000, "LABELEDNUM": 0.000000, "STYLE": "CB5-S", "EMSIGN": "N", "COLOR": "BLACK", "SOLARPANEL": "N" }, "geometry": { "type": "Point", "coordinates": [ -81.197977, 28.609066 ] } }
+,
+{ "type": "Feature", "properties": { "MYNUMBER": 30.000000, "LABELEDNUM": 0.000000, "STYLE": "CB5-S", "EMSIGN": "N", "COLOR": "BLACK", "SOLARPANEL": "N" }, "geometry": { "type": "Point", "coordinates": [ -81.196882, 28.609563 ] } }
+,
+{ "type": "Feature", "properties": { "MYNUMBER": 24.000000, "LABELEDNUM": 0.000000, "STYLE": "CB2-E", "EMSIGN": "N", "COLOR": "METAL", "SOLARPANEL": "N" }, "geometry": { "type": "Point", "coordinates": [ -81.196547, 28.607540 ] } }
+,
+{ "type": "Feature", "properties": { "MYNUMBER": 23.000000, "LABELEDNUM": 0.000000, "STYLE": "CB5-E", "EMSIGN": "N", "COLOR": "BLACK", "SOLARPANEL": "N" }, "geometry": { "type": "Point", "coordinates": [ -81.196597, 28.607152 ] } }
+,
+{ "type": "Feature", "properties": { "MYNUMBER": 22.000000, "LABELEDNUM": 0.000000, "STYLE": "CB5-E", "EMSIGN": "N", "COLOR": "BLACK", "SOLARPANEL": "N" }, "geometry": { "type": "Point", "coordinates": [ -81.195841, 28.606263 ] } }
+,
+{ "type": "Feature", "properties": { "MYNUMBER": 21.000000, "LABELEDNUM": 0.000000, "STYLE": "CB5-E", "EMSIGN": "N", "COLOR": "BLACK", "SOLARPANEL": "N" }, "geometry": { "type": "Point", "coordinates": [ -81.196441, 28.605812 ] } }
+,
+{ "type": "Feature", "properties": { "MYNUMBER": 7.000000, "LABELEDNUM": 6.000000, "STYLE": "OLD YELLOW BOX", "EMSIGN": "Y", "COLOR": "YELLOW", "SOLARPANEL": "Y" }, "geometry": { "type": "Point", "coordinates": [ -81.205690, 28.595093 ] } }
+
+]
+}
