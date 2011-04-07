@@ -8,7 +8,7 @@
             "image": "", 
             "poly_coords": null, 
             "illustrated_point": null, 
-            "googlemap_point": "28.370003, -81.275876", 
+            "googlemap_point": "[28.370003, -81.275876]", 
             "description": ""
         }
     }, 
@@ -21,7 +21,7 @@
             "image": "", 
             "poly_coords": null, 
             "illustrated_point": null, 
-            "googlemap_point": "28.541141, -81.379800", 
+            "googlemap_point": "[28.541141, -81.379800]", 
             "description": ""
         }
     }, 
@@ -47,7 +47,7 @@
             "image": "", 
             "poly_coords": null, 
             "illustrated_point": null, 
-            "googlemap_point": "28.432559, -81.443424", 
+            "googlemap_point": "[28.432559, -81.443424]", 
             "description": ""
         }
     }

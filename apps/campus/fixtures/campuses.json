@@ -8,7 +8,7 @@
             "image": "", 
             "poly_coords": null, 
             "illustrated_point": null, 
-            "googlemap_point": "28.385403, -80.757025", 
+            "googlemap_point": "[28.385403, -80.757025]", 
             "description": "UCF Cocoa"
         }
     }, 
@@ -21,7 +21,7 @@
             "image": "", 
             "poly_coords": null, 
             "illustrated_point": null, 
-            "googlemap_point": "29.200747, -81.048013", 
+            "googlemap_point": "[29.200747, -81.048013]", 
             "description": "UCF Daytona Beach"
         }
     }, 
@@ -34,7 +34,7 @@
             "image": "", 
             "poly_coords": null, 
             "illustrated_point": null, 
-            "googlemap_point": "28.829179, -81.795457", 
+            "googlemap_point": "[28.829179, -81.795457]", 
             "description": "UCF Leesburg"
         }
     }, 
@@ -47,7 +47,7 @@
             "image": "", 
             "poly_coords": null, 
             "illustrated_point": null, 
-            "googlemap_point": "29.163613, -82.173455", 
+            "googlemap_point": "[29.163613, -82.173455]", 
             "description": "UCF Ocala"
         }
     }, 
@@ -60,7 +60,7 @@
             "image": "", 
             "poly_coords": null, 
             "illustrated_point": null, 
-            "googlemap_point": "27.993512, -80.630208", 
+            "googlemap_point": "[27.993512, -80.630208]", 
             "description": "UCF Palm Bay"
         }
     }, 
@@ -73,7 +73,7 @@
             "image": "", 
             "poly_coords": null, 
             "illustrated_point": null, 
-            "googlemap_point": "28.745686, -81.304665", 
+            "googlemap_point": "[28.745686, -81.304665]", 
             "description": "UCF Sanford/Lake Mary"
         }
     }, 
@@ -86,7 +86,7 @@
             "image": "", 
             "poly_coords": null, 
             "illustrated_point": null, 
-            "googlemap_point": "28.551308, -81.708515", 
+            "googlemap_point": "[28.551308, -81.708515]", 
             "description": "UCF South Lake"
         }
     }, 
@@ -99,7 +99,7 @@
             "image": "", 
             "poly_coords": null, 
             "illustrated_point": null, 
-            "googlemap_point": "28.462534, -81.406675", 
+            "googlemap_point": "[28.462534, -81.406675]", 
             "description": "UCF South Orlando"
         }
     }, 
@@ -112,7 +112,7 @@
             "image": "", 
             "poly_coords": null, 
             "illustrated_point": null, 
-            "googlemap_point": "28.306583, -81.381854", 
+            "googlemap_point": "[28.306583, -81.381854]", 
             "description": "UCF Valencia Osceola"
         }
     }, 
@@ -125,7 +125,7 @@
             "image": "", 
             "poly_coords": null, 
             "illustrated_point": null, 
-            "googlemap_point": "28.521904, -81.463461", 
+            "googlemap_point": "[28.521904, -81.463461]", 
             "description": "UCF Valencia West"
         }
     }
