@@ -1,8 +1,34 @@
 {% extends "base.djt"%}
 
 {% block wrap %}
-	
+<div id="printable">
 	<h2>Printable Map</h2>
-	<p>Coming soon.</p>
+	<p>All printable maps require <a href="http://get.adobe.com/reader/">Adobe Reader</a>.</p>
 	
+	<h3>Illustrated Campus Map</h3>
+	<a href="{{MEDIA_URL}}pdf/Illustrated Campus Map.pdf" class="pdf">Download 3D Illustrated Folding Map</a>
+	<br><a href="{{MEDIA_URL}}pdf/Illustrated Campus Map.pdf"><img src="{{MEDIA_URL}}pdf/illustrated.jpg" alt="color printable map"></a>
+	
+	<h3>UCF Main Campus</h3>
+	<div class="span-6">
+		<a href="{{MEDIA_URL}}pdf/printable-color/UCF Campus Map.pdf" class="pdf">Download Color Map</a>
+		<br><a href="{{MEDIA_URL}}pdf/printable-color/UCF Campus Map.pdf"><img src="{{MEDIA_URL}}pdf/printable-color/campus.jpg" alt="color printable map"></a>
+	</div>
+	<div class="span-10">
+		<a href="{{MEDIA_URL}}pdf/printable-bw/UCF Campus Map.pdf" class="pdf">Download Black and White</a>
+		<br><a href="{{MEDIA_URL}}pdf/printable-bw/UCF Campus Map.pdf"><img src="{{MEDIA_URL}}pdf/printable-bw/campus.jpg" alt="black and white printable map"></a>
+	</div>
+	
+	<h3>Research Park</h3>
+	<div class="span-6">
+		<a href="{{MEDIA_URL}}pdf/printable-color/Research Park.pdf" class="pdf">Download Color Map</a>
+		<br><a href="{{MEDIA_URL}}pdf/printable-color/Research Park.pdf"><img src="{{MEDIA_URL}}pdf/printable-color/research.jpg" alt="color printable map"></a>
+	</div>
+	<div class="span-10">
+	</div>
+		<a href="{{MEDIA_URL}}pdf/printable-bw/Research Park.pdf" class="pdf">Download Black and White</a>
+		<br><a href="{{MEDIA_URL}}pdf/printable-bw/Research Park.pdf"><img src="{{MEDIA_URL}}pdf/printable-bw/research.jpg" alt="black and white printable map"></a>
+	<div class="clear"></div>
+
+</div>
 {% endblock %}

@@ -206,6 +206,14 @@ footer dd { padding:8px 0 0 8px; margin:0; }
 
 
 /******************************************************************************\
+    Misc back pages
+\******************************************************************************/
+.pdf { display:inline-block; line-height:18px; background:url(img/document-pdf-text.png) right top no-repeat; padding:0 20px 5px 0; overflow:hidden; }
+#printable h3 { clear:both; padding:20px 0 10px; margin:0; font-size:18px; }
+
+
+
+/******************************************************************************\
     Header Fixes
 \******************************************************************************/
 #UCFHBHeader label { border:0; }
