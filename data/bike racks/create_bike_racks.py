@@ -26,7 +26,7 @@ for r in racks['features']:
 		continue
 	new = {}
 	new['id']              = r['properties']['ID']
-	new['googlemap_point'] = "%f, %f" % (r['geometry']['coordinates'][0], r['geometry']['coordinates'][1])
+	new['googlemap_point'] = "[%f, %f]" % (r['geometry']['coordinates'][0], r['geometry']['coordinates'][1])
 	# ignoring buildings because we only have name and not building id
 	new = BikeRack.objects.create(**new)
 	count += 1

@@ -206,7 +206,7 @@ def bikeracks(request, format=None):
 			"type": "Feature", 
 			"geometry": { 
 				"type": "Point", 
-				"coordinates": json.loads( "[%s]" % r.googlemap_point)
+				"coordinates": json.loads( "%s" % r.googlemap_point)
 			}
 		}
 		arr.append(bikerack)
@@ -251,7 +251,7 @@ def emergency_phones(request, format=None):
 			"type": "Feature", 
 			"geometry": { 
 				"type": "Point", 
-				"coordinates": json.loads( "[%s]" % p.googlemap_point)
+				"coordinates": json.loads( "%s" % p.googlemap_point)
 			}
 		}
 		arr.append(phone)

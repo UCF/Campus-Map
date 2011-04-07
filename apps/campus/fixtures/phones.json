@@ -8,7 +8,7 @@
             "image": "", 
             "poly_coords": null, 
             "illustrated_point": null, 
-            "googlemap_point": "-81.199417, 28.592718", 
+            "googlemap_point": "[-81.199417, 28.592718]", 
             "description": ""
         }
     }, 
@@ -21,7 +21,7 @@
             "image": "", 
             "poly_coords": null, 
             "illustrated_point": null, 
-            "googlemap_point": "-81.200239, 28.593450", 
+            "googlemap_point": "[-81.200239, 28.593450]", 
             "description": ""
         }
     }, 
@@ -34,7 +34,7 @@
             "image": "", 
             "poly_coords": null, 
             "illustrated_point": null, 
-            "googlemap_point": "-81.201373, 28.592550", 
+            "googlemap_point": "[-81.201373, 28.592550]", 
             "description": ""
         }
     }, 
@@ -47,7 +47,7 @@
             "image": "", 
             "poly_coords": null, 
             "illustrated_point": null, 
-            "googlemap_point": "-81.202086, 28.591919", 
+            "googlemap_point": "[-81.202086, 28.591919]", 
             "description": ""
         }
     }, 
@@ -60,7 +60,7 @@
             "image": "", 
             "poly_coords": null, 
             "illustrated_point": null, 
-            "googlemap_point": "-81.201793, 28.594599", 
+            "googlemap_point": "[-81.201793, 28.594599]", 
             "description": ""
         }
     }, 
@@ -73,7 +73,7 @@
             "image": "", 
             "poly_coords": null, 
             "illustrated_point": null, 
-            "googlemap_point": "-81.203140, 28.595196", 
+            "googlemap_point": "[-81.203140, 28.595196]", 
             "description": ""
         }
     }, 
@@ -86,7 +86,7 @@
             "image": "", 
             "poly_coords": null, 
             "illustrated_point": null, 
-            "googlemap_point": "-81.203124, 28.596322", 
+            "googlemap_point": "[-81.203124, 28.596322]", 
             "description": ""
         }
     }, 
@@ -99,7 +99,7 @@
             "image": "", 
             "poly_coords": null, 
             "illustrated_point": null, 
-            "googlemap_point": "-81.204051, 28.597371", 
+            "googlemap_point": "[-81.204051, 28.597371]", 
             "description": ""
         }
     }, 
@@ -112,7 +112,7 @@
             "image": "", 
             "poly_coords": null, 
             "illustrated_point": null, 
-            "googlemap_point": "-81.204359, 28.598107", 
+            "googlemap_point": "[-81.204359, 28.598107]", 
             "description": ""
         }
     }, 
@@ -125,7 +125,7 @@
             "image": "", 
             "poly_coords": null, 
             "illustrated_point": null, 
-            "googlemap_point": "-81.202212, 28.597026", 
+            "googlemap_point": "[-81.202212, 28.597026]", 
             "description": ""
         }
     }, 
@@ -138,7 +138,7 @@
             "image": "", 
             "poly_coords": null, 
             "illustrated_point": null, 
-            "googlemap_point": "-81.199166, 28.594865", 
+            "googlemap_point": "[-81.199166, 28.594865]", 
             "description": ""
         }
     }, 
@@ -151,7 +151,7 @@
             "image": "", 
             "poly_coords": null, 
             "illustrated_point": null, 
-            "googlemap_point": "-81.196802, 28.594774", 
+            "googlemap_point": "[-81.196802, 28.594774]", 
             "description": ""
         }
     }, 
@@ -164,7 +164,7 @@
             "image": "", 
             "poly_coords": null, 
             "illustrated_point": null, 
-            "googlemap_point": "-81.197274, 28.593786", 
+            "googlemap_point": "[-81.197274, 28.593786]", 
             "description": ""
         }
     }, 
@@ -177,7 +177,7 @@
             "image": "", 
             "poly_coords": null, 
             "illustrated_point": null, 
-            "googlemap_point": "-81.202960, 28.607366", 
+            "googlemap_point": "[-81.202960, 28.607366]", 
             "description": ""
         }
     }, 
@@ -190,7 +190,7 @@
             "image": "", 
             "poly_coords": null, 
             "illustrated_point": null, 
-            "googlemap_point": "-81.203856, 28.605259", 
+            "googlemap_point": "[-81.203856, 28.605259]", 
             "description": ""
         }
     }, 
@@ -203,7 +203,7 @@
             "image": "", 
             "poly_coords": null, 
             "illustrated_point": null, 
-            "googlemap_point": "-81.203830, 28.603407", 
+            "googlemap_point": "[-81.203830, 28.603407]", 
             "description": ""
         }
     }, 
@@ -216,7 +216,7 @@
             "image": "", 
             "poly_coords": null, 
             "illustrated_point": null, 
-            "googlemap_point": "-81.201673, 28.604178", 
+            "googlemap_point": "[-81.201673, 28.604178]", 
             "description": ""
         }
     }, 
@@ -229,7 +229,7 @@
             "image": "", 
             "poly_coords": null, 
             "illustrated_point": null, 
-            "googlemap_point": "-81.201421, 28.602838", 
+            "googlemap_point": "[-81.201421, 28.602838]", 
             "description": ""
         }
     }, 
@@ -242,7 +242,7 @@
             "image": "", 
             "poly_coords": null, 
             "illustrated_point": null, 
-            "googlemap_point": "-81.205504, 28.602444", 
+            "googlemap_point": "[-81.205504, 28.602444]", 
             "description": ""
         }
     }, 
@@ -255,7 +255,7 @@
             "image": "", 
             "poly_coords": null, 
             "illustrated_point": null, 
-            "googlemap_point": "-81.203536, 28.600939", 
+            "googlemap_point": "[-81.203536, 28.600939]", 
             "description": ""
         }
     }, 
@@ -268,7 +268,7 @@
             "image": "", 
             "poly_coords": null, 
             "illustrated_point": null, 
-            "googlemap_point": "-81.202130, 28.600275", 
+            "googlemap_point": "[-81.202130, 28.600275]", 
             "description": ""
         }
     }, 
@@ -281,7 +281,7 @@
             "image": "", 
             "poly_coords": null, 
             "illustrated_point": null, 
-            "googlemap_point": "-81.199995, 28.598996", 
+            "googlemap_point": "[-81.199995, 28.598996]", 
             "description": ""
         }
     }, 
@@ -294,7 +294,7 @@
             "image": "", 
             "poly_coords": null, 
             "illustrated_point": null, 
-            "googlemap_point": "-81.197442, 28.600068", 
+            "googlemap_point": "[-81.197442, 28.600068]", 
             "description": ""
         }
     }, 
@@ -307,7 +307,7 @@
             "image": "", 
             "poly_coords": null, 
             "illustrated_point": null, 
-            "googlemap_point": "-81.196703, 28.601624", 
+            "googlemap_point": "[-81.196703, 28.601624]", 
             "description": ""
         }
     }, 
@@ -320,7 +320,7 @@
             "image": "", 
             "poly_coords": null, 
             "illustrated_point": null, 
-            "googlemap_point": "-81.199255, 28.603081", 
+            "googlemap_point": "[-81.199255, 28.603081]", 
             "description": ""
         }
     }, 
@@ -333,7 +333,7 @@
             "image": "", 
             "poly_coords": null, 
             "illustrated_point": null, 
-            "googlemap_point": "-81.199523, 28.604337", 
+            "googlemap_point": "[-81.199523, 28.604337]", 
             "description": ""
         }
     }, 
@@ -346,7 +346,7 @@
             "image": "", 
             "poly_coords": null, 
             "illustrated_point": null, 
-            "googlemap_point": "-81.198165, 28.604970", 
+            "googlemap_point": "[-81.198165, 28.604970]", 
             "description": ""
         }
     }, 
@@ -359,7 +359,7 @@
             "image": "", 
             "poly_coords": null, 
             "illustrated_point": null, 
-            "googlemap_point": "-81.197348, 28.606651", 
+            "googlemap_point": "[-81.197348, 28.606651]", 
             "description": ""
         }
     }, 
@@ -372,7 +372,7 @@
             "image": "", 
             "poly_coords": null, 
             "illustrated_point": null, 
-            "googlemap_point": "-81.197665, 28.607755", 
+            "googlemap_point": "[-81.197665, 28.607755]", 
             "description": ""
         }
     }, 
@@ -385,7 +385,7 @@
             "image": "", 
             "poly_coords": null, 
             "illustrated_point": null, 
-            "googlemap_point": "-81.197804, 28.608032", 
+            "googlemap_point": "[-81.197804, 28.608032]", 
             "description": ""
         }
     }, 
@@ -398,7 +398,7 @@
             "image": "", 
             "poly_coords": null, 
             "illustrated_point": null, 
-            "googlemap_point": "-81.198170, 28.608709", 
+            "googlemap_point": "[-81.198170, 28.608709]", 
             "description": ""
         }
     }, 
@@ -411,7 +411,7 @@
             "image": "", 
             "poly_coords": null, 
             "illustrated_point": null, 
-            "googlemap_point": "-81.197977, 28.609066", 
+            "googlemap_point": "[-81.197977, 28.609066]", 
             "description": ""
         }
     }, 
@@ -424,7 +424,7 @@
             "image": "", 
             "poly_coords": null, 
             "illustrated_point": null, 
-            "googlemap_point": "-81.196882, 28.609563", 
+            "googlemap_point": "[-81.196882, 28.609563]", 
             "description": ""
         }
     }, 
@@ -437,7 +437,7 @@
             "image": "", 
             "poly_coords": null, 
             "illustrated_point": null, 
-            "googlemap_point": "-81.196547, 28.607540", 
+            "googlemap_point": "[-81.196547, 28.607540]", 
             "description": ""
         }
     }, 
@@ -450,7 +450,7 @@
             "image": "", 
             "poly_coords": null, 
             "illustrated_point": null, 
-            "googlemap_point": "-81.196597, 28.607152", 
+            "googlemap_point": "[-81.196597, 28.607152]", 
             "description": ""
         }
     }, 
@@ -463,7 +463,7 @@
             "image": "", 
             "poly_coords": null, 
             "illustrated_point": null, 
-            "googlemap_point": "-81.195841, 28.606263", 
+            "googlemap_point": "[-81.195841, 28.606263]", 
             "description": ""
         }
     }, 
@@ -476,7 +476,7 @@
             "image": "", 
             "poly_coords": null, 
             "illustrated_point": null, 
-            "googlemap_point": "-81.196441, 28.605812", 
+            "googlemap_point": "[-81.196441, 28.605812]", 
             "description": ""
         }
     }, 
@@ -489,7 +489,7 @@
             "image": "", 
             "poly_coords": null, 
             "illustrated_point": null, 
-            "googlemap_point": "-81.205690, 28.595093", 
+            "googlemap_point": "[-81.205690, 28.595093]", 
             "description": ""
         }
     }
