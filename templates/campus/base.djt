@@ -61,7 +61,7 @@
 		{% if points %}
 		Campus.points = {
 		{% for p in points %}
-			"{{p.pk}}":{ "point":[{{p.googlemap_point}}] }{% if not forloop.last %},{% endif %}{% endfor %}
+			"{{p.pk}}":{ "point":{{p.googlemap_point}} }{% if not forloop.last %},{% endif %}{% endfor %}
 		};
 		{% endif %}
 		

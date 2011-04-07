@@ -39,14 +39,14 @@ if "destroy" in sys.argv:
 			and b['fields']['coord_x'] != ""
 			and b['fields']['coord_y'] != None
 			and b['fields']['coord_y'] != ""
-		): new['googlemap_point']   = "{0}, {1}".format(b['fields']['coord_x'], b['fields']['coord_y'])
+		): new['googlemap_point']   = "[{0}, {1}]".format(b['fields']['coord_x'], b['fields']['coord_y'])
 		else: new['googlemap_point'] = ""
 		
 		if(		b['fields']['ill_coord_x'] != None 
 			and b['fields']['ill_coord_x'] != "" 
 			and b['fields']['ill_coord_y'] != None
 			and b['fields']['ill_coord_y'] != ""
-		): new['illustrated_point'] = "{0}, {1}".format(b['fields']['ill_coord_x'], b['fields']['ill_coord_y'])
+		): new['illustrated_point'] = "[{0}, {1}]".format(b['fields']['ill_coord_x'], b['fields']['ill_coord_y'])
 		else: new['illustrated_point'] = None
 		new = Building(**new)
 		new.clean()

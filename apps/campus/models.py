@@ -6,7 +6,7 @@ class CommonLocation(models.Model):
 	image             = models.CharField(max_length=50,  blank=True, help_text='Don&rsquo;t forget to append a file extension')
 	description       = models.CharField(max_length=255, blank=True)
 	profile           = tinymce_models.HTMLField(blank=True, null=True)
-	googlemap_point   = models.CharField(max_length=255, null=True, blank=True, help_text='E.g., <code>28.6017, -81.2005</code>')
+	googlemap_point   = models.CharField(max_length=255, null=True, blank=True, help_text='E.g., <code>[28.6017, -81.2005]</code>')
 	illustrated_point = models.CharField(max_length=255, null=True, blank=True)
 	poly_coords       = models.TextField(blank=True, null=True)
 	
@@ -31,7 +31,7 @@ class CommonLocation(models.Model):
 				continue
 			if f[0] == "illustrated_point" or f[0] == "googlemap_point":
 				if obj[f[0]] != None:
-					obj[f[0]] = json.loads("[{0}]".format(obj[f[0]]))
+					obj[f[0]] = json.loads(str(obj[f[0]]))
 				continue
 			
 			# super dumb:
@@ -59,14 +59,14 @@ class CommonLocation(models.Model):
 		# check illustrated point
 		if self.illustrated_point != None: 
 			try:
-				json.loads("[{0}]".format(self.illustrated_point))
+				json.loads("{0}".format(self.illustrated_point))
 			except ValueError:
 				raise ValidationError("Invalid Illustrated Map Point (not json serializable)")
 			
 		# check google map point
 		if self.googlemap_point != None: 
 			try:
-				json.loads("[{0}]".format(self.googlemap_point))
+				json.loads("{0}".format(self.googlemap_point))
 			except ValueError:
 				raise ValidationError("Invalid Google Map Point (not json serializable)")
 		
