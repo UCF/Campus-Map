@@ -49,18 +49,28 @@ def get_orgs():
 	orgs = cache.get('organizations')
 	if orgs is None:
 		url = settings.PHONEBOOK + '?use=tableSearch&in=organizations&order_by=name&order=ASC'
-		results = urllib.urlopen(url).read()
-		orgs = json.loads(results)
-		cache.set('organizations', orgs)
+		try:
+			results = urllib.urlopen(url).read()
+			orgs = json.loads(results)
+		except:
+			print "Issue with phonebook search service"
+			return None
+		else:
+			cache.set('organizations', orgs)
 	return orgs
 
 def get_depts():
 	depts = cache.get('departments')
 	if depts is None:
 		url = settings.PHONEBOOK + '?use=tableSearch&in=departments&order_by=name&order=ASC'
-		results = urllib.urlopen(url).read()
-		depts = json.loads(results)
-		cache.set('departments', depts)
+		try:
+			results = urllib.urlopen(url).read()
+			depts = json.loads(results)
+		except:
+			print "Issue with phonebook search service"
+			return None
+		else:
+			cache.set('departments', depts)
 	return depts
 
 def get_org(id):
@@ -76,5 +86,9 @@ def get_org(id):
 
 def phonebook_search(q):
 	url = "%s?search=%s" % (settings.PHONEBOOK, q)
-	results = urllib.urlopen(url).read()
-	return json.loads(results)
+	try:
+		results = urllib.urlopen(url).read()
+		return json.loads(results)
+	except:
+		print "Issue with phonebook search service"
+		return None
