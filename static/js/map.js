@@ -119,9 +119,9 @@ Campus.maps = {
 			Campus.map = new google.maps.Map(document.getElementById("map-canvas"), options);
 			Campus.map.mapTypes.set('illustrated',Campus.maps.imap_type);
 			google.maps.event.addListener(Campus.map, 'maptypeid_changed', function() {
-				var options = (Campus.map.mapTypeId == 'illustrated') ? 
-					Campus.maps.imap_options : Campus.maps.gmap_options;
-				//Campus.map.setOptions(options);
+				var type = Campus.map.mapTypeId;
+				var options = (type == 'illustrated') ? Campus.maps.imap_options : Campus.maps.gmap_options;
+				//Campus.map.setOptions(options); //super slow
 				Campus.map.setZoom(options.zoom);
 				Campus.map.setCenter(options.center);
 				Campus.layers.update();
@@ -391,15 +391,18 @@ Campus.layers = {
 				
 				this.loaded = true;
 			}
-			Campus.map.setMapTypeId('naked');
+			// without this check, the switch to the 'naked' maptype causes loop
+			// dumb of the google maps API to fire "maptypeid_changed" when you set it to the same id :(
+			if(Campus.map.mapTypeId != 'naked') Campus.map.setMapTypeId('naked');
 			this.layer.setMap(Campus.map);
 		},
 		unload : function() {
 			if(!this.loaded) return;
-			Campus.map.setMapTypeId(google.maps.MapTypeId.ROADMAP);
+			if(Campus.map.mapTypeId != 'roadmap') Campus.map.setMapTypeId('roadmap');
 			this.layer.setMap(null);
 		},
 		update : function(){
+			if(Campus.map.mapTypeId == 'illustrated') return;
 			var on = Campus.settings.buildings;
 			if(on) this.load(); else this.unload();
 		}
