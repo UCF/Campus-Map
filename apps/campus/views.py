@@ -71,7 +71,8 @@ def home(request, format=None, **kwargs):
 		sidewalks_kml = "%s%s.kml?v=%s" % (settings.GOOGLE_LOOK_HERE, reverse('sidewalks'), version)
 		parking_kml    = "%s%s.kml?v=%s" % (settings.GOOGLE_LOOK_HERE, reverse('parking'), version)
 	loc = "%s.json" % reverse('location', kwargs={'loc':'foo'})
-	loc = loc.replace('foo', '%s');
+	loc = loc.replace('foo', '%s')
+	kwargs['map'] = 'gmap'
 	context = {
 		'options'       : json.dumps(kwargs), 
 		'points'        : points, 

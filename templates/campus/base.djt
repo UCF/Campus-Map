@@ -65,10 +65,10 @@
 		};
 		{% endif %}
 		
+		Campus.settings = {{options|safe}};
+		
 		$(document).ready(function(){
 			Campus.init();
-			Campus.settings = {{options|safe}};
-			Campus.gmap();
 		});
 	</script>
 {% endblock %}

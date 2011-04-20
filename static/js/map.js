@@ -39,11 +39,14 @@ var Campus = {
 
 Campus.init = function(){
 	this.resize();
-	//preload images
+	
+	// preload images
 	var spin = new Image(); spin.src = Campus.urls['static'] + 'style/img/spinner.gif';
 	var mark = new Image(); mark.src = Campus.urls['static'] + 'images/markers/gold-with-dot.png';
 	var shad = new Image(); shad.src = Campus.urls['static'] + 'images/markers/shadow.png';
 	
+	// register illustrated map and create map
+	Campus.maps[this.settings.map]();
 };
 
 
@@ -51,19 +54,19 @@ Campus.init = function(){
  Helpers, Vars, and Placeholders
 \******************************************************************************/
 Campus.ajax = { abort : function(){} };
+Campus.map  = false;
 
 
 /******************************************************************************\
- Create Google Map
-	- stores in Campus.map
+ Maps Wrapper
+	houses map options, custom maps, and functions to create the maps
 \******************************************************************************/
-Campus.gmap = function(){
+Campus.maps = {
 	
-	var myLatlng = new google.maps.LatLng(28.6018,-81.1995);
-	
-	var myOptions = {
+	// Map options for the default Google Map
+	gmap_options : {
 		zoom: 16,
-		center: myLatlng,
+		center: new google.maps.LatLng(28.6018,-81.1995),
 		mapTypeId: google.maps.MapTypeId.ROADMAP,
 		panControl: true,
 		panControlOptions: {
@@ -77,15 +80,97 @@ Campus.gmap = function(){
 		streetViewControl: true,
 		streetViewControlOptions: {
 			position: google.maps.ControlPosition.LEFT_TOP
+		},
+		mapTypeControlOptions: {
+			mapTypeIds: [google.maps.MapTypeId.ROADMAP, google.maps.MapTypeId.SATELLITE, 'illustrated']
 		}
-	};
+	},
 	
-	// create map
-	this.map = new google.maps.Map(document.getElementById("map-canvas"), myOptions);
+	// Custom Map type for the Illustrated Map
+	// http://code.google.com/apis/maps/documentation/javascript/maptypes.html#BasicMapTypes
+	// note: this code looks a little different than the example because I'm simply
+	// creating an object instead of instantiating one wiht the "new" keyword
+	imap_type : {
+		tileSize : new google.maps.Size(256,256),
+		minZoom: 12,
+		maxZoom :19,
+		getTile : function(coord, zoom, ownerDocument) {
+		  var div = ownerDocument.createElement('div');
+		  div.style.width = this.tileSize.width + 'px';
+		  div.style.height = this.tileSize.height + 'px';
+		  div.style.backgroundImage = this.bg(coord,zoom);
+		  return div;
+		},
+		name : "Illustrated",
+		alt : "Show illustrated map"
+	},
+	imap_options : {
+		zoom : 14,
+		center : new google.maps.LatLng(85.04591,-179.92189), // world's corner
+		mapTypeId : 'illustrated',
+		mapTypeControl : true
+	},
 	
-	// add layers & controls
-	this.layers.update();
-	this.controls();
+	/* Called from Campus.init - make a map! */
+	create : function(options){
+		if(!Campus.map){
+			// init map, switching between map types is not straight-forward
+			// must rezoom and recenter because illustrated map sits WAY far away
+			Campus.map = new google.maps.Map(document.getElementById("map-canvas"), options);
+			Campus.map.mapTypes.set('illustrated',Campus.maps.imap_type);
+			google.maps.event.addListener(Campus.map, 'maptypeid_changed', function() {
+				var options = (Campus.map.mapTypeId == 'illustrated') ? 
+					Campus.maps.imap_options : Campus.maps.gmap_options;
+				//Campus.map.setOptions(options);
+				Campus.map.setZoom(options.zoom);
+				Campus.map.setCenter(options.center);
+				Campus.layers.update();
+			});
+		}
+	},
+	gmap : function(){
+		this.create(this.gmap_options);
+		Campus.map.campus_center = this.gmap_options.center;
+		Campus.layers.update();
+		Campus.controls();
+	},
+	imap : function(){
+		this.create(this.imap_options);
+	}
+};
+
+/******************************************************************************\
+ Custom URL generator for Map Tiles
+
+ The entire map is placed in the far "upper left" corner of the world 
+ (latititude 85, longitude -180) so the first tile requested is #1.  Makes it
+ easier to chop the map and do the math to determine bounds
+
+ see "readme" in the map_tiles dir
+\******************************************************************************/
+Campus.maps.imap_type.bg = function(coord,zoom) {
+	var tile = "zoom_" + zoom + "/" + zoom + "_" + coord.x + "_" + coord.y + ".jpg";
+	var nope = "white.png";
+
+	// check to see if requested tile for this zoom is within bounds,
+	// if not, return a whilte tile
+	if(zoom < 12 || coord.y<0 || coord.x<0){
+		tile = nope;
+	} else if( zoom === 12){
+		// map is 2 tiles tall, 3 wide (zero indexed)
+		if(coord.y >1 || coord.x > 2) tile = nope;
+	} else {
+		// smallest map is 5x3
+		// for each zoom a tile is divided equally into 4 parts
+		var wide = 5;
+		var tall = 3;
+		var factor = Math.pow(2, (zoom - 13));
+		if( coord.x >= wide*factor || coord.y >= tall*factor) tile = nope;
+	}
+	
+	return 'url("' 
+		+ 'http://webcom.dev.smca.ucf.edu/media/map_old/' 
+		+ 'img/illustrated_tiles/' + tile + '")';
 };
 
 
@@ -634,76 +719,6 @@ Campus.resize = function(){
 		jQuery.os.name === "linux" && jQuery.browser.name === "safari") ) { return; }	
 	window.onresize = resize;
 	
-};
-
-
-/******************************************************************************\
- Create illustrated map
-	- 
-\******************************************************************************/
-Campus.imap = function(){	 
-	var CoordMapType= function(){};
-	
-	CoordMapType.prototype.tileSize = new google.maps.Size(256,256);
-	CoordMapType.prototype.minZoom = 12;
-	CoordMapType.prototype.maxZoom = 16; // have tiles for 17 as well (they're grainy)
-	CoordMapType.prototype.alt = "UCF Illustrated Campus Map";	  
-
-	CoordMapType.prototype.getTile = function(coord, zoom, ownerDocument) {
-	  var div = ownerDocument.createElement('DIV');
-	  div.style.width = this.tileSize.width + 'px';
-	  div.style.height = this.tileSize.height + 'px';
-	  div.style.backgroundImage = 'url("' + Campus.media + 'img/illustrated_tiles/' + Campus.imap.getTileUrl(coord, zoom) + '")';
-	  return div;
-	};
-	
-	var map;
-	var worldsCorner = new google.maps.LatLng(85.04591,-179.92189);
-	var coordinateMapType = new CoordMapType();
-
-	var mapOptions = {
-		zoom: 14,
-		center: worldsCorner,
-		mapTypeControl: false
-	};
-	this.map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
-
-	// Now attach the coordinate map type to the map's registry
-	this.map.mapTypes.set('coordinate',coordinateMapType);
-
-	// We can now set the map to use the 'coordinate' map type
-	this.map.setMapTypeId('coordinate');
-};
-
-/******************************************************************************\
- Custom ULR generator for Map Tiles
-
- The entire map is placed in the far "upper left" corner of the world 
- (latititude 85, longitude -180) so the first tile requested is #1.	 Makes it
- easier to chop the map and do the math to determine bounds
-
- see "readme" in the map_tiles dir
-\******************************************************************************/
-Campus.imap.getTileUrl = function(coord,zoom) {
-	var tile = "zoom_" + zoom + "/" + zoom + "_" + coord.x + "_" + coord.y + ".jpg";
-	var nope = "white.png"; //white tile
-
-	// check to see if requested tile for this zoom is within bounds,
-	// if not, return a whilte tile
-	if(zoom < 12 || coord.y<0 || coord.x<0){
-		return nope;
-	} else if( zoom === 12){
-		// map is 2 tiles tall, 3 wide (zero indexed)
-		if(coord.y >1 || coord.x > 2){ return nope; }
-	} else {
-		// smallest map is 5x3
-		// for each zoom a tile is divided equally into 4 parts
-		var wide = 5;
-		var tall = 3;
-		var factor = window.Math.pow(2, (zoom - 13));
-		if( coord.x >= wide*factor || coord.y >= tall*factor){ return nope; }
-	}
-	return tile;
 };
 
 
