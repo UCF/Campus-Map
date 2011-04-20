@@ -417,8 +417,10 @@ Campus.layers = {
 				new google.maps.Size(19, 19),
 				new google.maps.Point(0,0),
 				new google.maps.Point(10,10));
+			var point = (Campus.map.mapTypeId == 'illustrated') ? 'ipoint' : 'gpoint';
 			for(var id in points ) {
-				var p = points[id].point;
+				var p = points[id][point];
+				if(!p || !p[0] || !p[1]) continue;
 				var latLng = new google.maps.LatLng(p[0], p[1]);
 				var marker = new google.maps.Marker({
 					position: latLng,
@@ -666,7 +668,8 @@ Campus.info = function(id, pan){
 			title.html(name);
 			desc.html(data.info);
 			desc.removeClass('load');
-			var latlng = new google.maps.LatLng(data.googlemap_point[0], data.googlemap_point[1]);
+			var point = (Campus.map.mapTypeId == 'illustrated') ? 'illustrated_point' : 'googlemap_point';
+			var latlng = new google.maps.LatLng(data[point][0], data[point][1]);
 			Campus.infoMaker.setPosition(latlng);
 			if(pan){ Campus.map.panTo(latlng);  }
 		},

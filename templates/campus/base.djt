@@ -58,13 +58,8 @@
 			"phones"        : "{% url emergency_phones %}.json"
 		}
 		
-		{% if points %}
-		Campus.points = {
-		{% for p in points %}
-			"{{p.pk}}":{ "point":{{p.googlemap_point}} }{% if not forloop.last %},{% endif %}{% endfor %}
-		};
-		{% endif %}
 		
+		Campus.points = {{ points|safe }};
 		Campus.settings = {{options|safe}};
 		
 		$(document).ready(function(){

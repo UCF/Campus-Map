@@ -42,6 +42,13 @@ def home(request, format=None, **kwargs):
 	# points on the map (will have to be extended with more data added)
 	if 'points' in kwargs and kwargs['points']:
 		from campus.models import Building
+		buildings = Building.objects.all()
+		points = {}
+		for b in buildings:
+			b = b.json()
+			points[b['number']] = { 'gpoint' : b['googlemap_point'], 'ipoint' : b['illustrated_point'] }
+		
+		'''
 		from django.db.models import Q
 		q1 = Q(googlemap_point__isnull=True)
 		q2 = Q(googlemap_point__exact='')
@@ -49,7 +56,7 @@ def home(request, format=None, **kwargs):
 		q =  (q1 | q2 | q3)
 		points = Building.objects.exclude( q )
 		
-		'''
+		
 		buildings = ["union", "millican"];
 		q = Q()
 		for name in buildings:
@@ -72,10 +79,10 @@ def home(request, format=None, **kwargs):
 		parking_kml    = "%s%s.kml?v=%s" % (settings.GOOGLE_LOOK_HERE, reverse('parking'), version)
 	loc = "%s.json" % reverse('location', kwargs={'loc':'foo'})
 	loc = loc.replace('foo', '%s')
-	kwargs['map'] = 'gmap'
+	kwargs['map'] = 'gmap';
 	context = {
 		'options'       : json.dumps(kwargs), 
-		'points'        : points, 
+		'points'        : json.dumps(points), 
 		'date'          : date,
 		'buildings_kml' : buildings_kml,
 		'sidewalks_kml' : sidewalks_kml,
