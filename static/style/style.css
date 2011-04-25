@@ -145,17 +145,21 @@ footer dd { padding:8px 0 0 8px; margin:0; }
     Menu
 \******************************************************************************/
 #menu { 
-	color:#333; border-radius:2px; -moz-border-radius: 2px; -webkit-border-radius: 2px; overflow:hidden;
+	color:#333; overflow:hidden;
+	border-radius:2px; -moz-border-radius: 2px; -webkit-border-radius: 2px;
 	box-shadow:2px 2px 3px rgba(0, 0, 0, 0.25); -moz-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.25); -webkit-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.25); 
-	width:230px; margin:2px 5px 0 0; border:1px solid #aaa; background: rgb(255, 255, 255); background: rgba(255, 255, 255, 0.6); 
+	width:230px; margin:2px 5px 0 0; border:1px solid #3b3b39; border:1px solid rgba(0,0,0,0.6); background: rgb(255, 255, 255); background: rgba(255, 255, 255, 0.6); 
 	}
 .ie #menu { margin-top:0; }
 .ie #menu.closed { background:red; }
 #menu.closed { border-color: rgba(0, 0, 0, 0.15); }
 #menu.closed h2 { background: rgba(0, 0, 0, 0.05); color:#474747; }
-#menu h2 { margin:0; padding:6px; 
-	background: #C5C5C5; background: -webkit-gradient(linear, left top, left bottom, from(#B1B1B1), to(#C5C5C5)); background: -moz-linear-gradient(top,  #B1B1B1,  #C5C5C5);
-	color:black; text-align: center; font-family: Arial,sans-serif; font-size: 13px; font-weight: normal; text-transform:uppercase; }
+#menu h2 { margin:0; padding:0; color:white; text-align: left; line-height:13px; height:13px; }
+#menu h2 a {
+	position:absolute; top:0; left:0; z-index:4;
+	color:white; font-family:"Helvetica Neue", helvetica; font-weight:bold; font-size:11.5px; margin:0; letter-spacing:.5px; letter-spacing:1px;
+	display:inline-block; padding:6px 18px 7px 6px; background:url('img/menu-arrow.png') top right no-repeat; }
+#menu h2 a.inactive { background-position:right -26px; }
 #menu h3 { margin:0; padding:4px 0; font-family:helvetica; clear:both; font-size:13px;  }
 #menu .item { 
 	background:white;
@@ -178,7 +182,9 @@ footer dd { padding:8px 0 0 8px; margin:0; }
 .safari #menu { margin-top:0; }
 
 
-#menu-header { position:relative; overflow:hidden; }
+#menu-header { position:relative; overflow:hidden; height:26px; background: #7d7d7b; background:rgba(1,1,1, 0.5); }
+#menu #menu-label-main  { z-index:5; width:37px; }
+#menu #menu-label-stage { z-index:4; }
 #menu-pages { position:absolute; top:2px; right:0; }
 #menu-pages a { display:block; float:left; width:20px; height:20px; background:transparent url('img/menu-dots.png') 0 -20px; text-indent:-50px; overflow:hidden; }
 #menu-pages a.active, #menu-pages a.active:hover { background-position:0 0; }

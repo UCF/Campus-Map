@@ -1,5 +1,8 @@
 <div id="menu-header">
-	<h2>Menu</h2>
+	<h2> 
+		<a id="menu-label-main">Menu</a>
+		<a id="menu-label-stage"></a>
+	</h2>
 	<div id="menu-pages">
 		<a id="nav-1" class="nav active">1</a>
 		<a id="nav-2" class="nav">2</a>

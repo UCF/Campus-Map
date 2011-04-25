@@ -273,19 +273,45 @@ Campus.controls = function(){
 	*/
 	
 	Campus.menuWin = Campus.menu.find('#menu-window');
+	Campus.menuMargin = -246;
 	Campus.menu.find('.nav').click(function(){
+		Campus.menu.find('.nav').removeClass('active');
+		$(this).addClass('active');
 		var winNum = $(this).attr('id').substring(4);
-		var margin = '-' + (Number(winNum) * 230 + 16);
-		Campus.menuWin.animate({"margin-left" : margin }, 300);
+		Campus.menuMargin = '-' + (Number(winNum) * 230 + 16);
+		Campus.menuWin.animate({"margin-left" : Campus.menuMargin }, 300);
 	});
 	
 	Campus.stage = Campus.menu.find('#menu-stage');
-	Campus.stageNext = Campus.menu.find('#menu-stage-next');
+	Campus.stageVisible = false;
+	Campus.stageNext  = Campus.menu.find('#menu-stage-next');
+	Campus.label      = Campus.menu.find('#menu-label-main');
+	Campus.labelStage = Campus.menu.find('#menu-label-stage');
+	Campus.menuPages  = Campus.menu.find('#menu-pages');
+	
+	Campus.label.click(function(){
+		Campus.menu.show('main');
+	});
+	Campus.labelStage.click(function(){
+		Campus.menu.show($(this).html());
+	});
 	
 	Campus.menu.show = function(label){
-		Campus.stageNext.animate({"width" : 230 }, 300);
-		Campus.menuWin.animate({"margin-left" : (-246) }, 300);
-		Campus.menu.find('h2').html(label);
+		if(label=='main'){
+			Campus.stageNext.animate({"width" : 0 }, 300);
+			Campus.menuWin.animate({"margin-left" : Campus.menuMargin }, 300);
+			Campus.label.removeClass('inactive');
+			Campus.labelStage.addClass('inactive');
+			Campus.menuPages.animate({"top" : 2 }, 300);
+		} else {
+			Campus.stageNext.animate({"width" : 230 }, 300);
+			Campus.menuWin.animate({"margin-left" : -246 }, 300);
+			Campus.labelStage.html(label);
+			Campus.labelStage.removeClass('inactive');
+			Campus.labelStage.animate({"padding-left" : 68 }, 300);
+			Campus.label.addClass('inactive');
+			Campus.menuPages.animate({"top" : -26 }, 300);
+		}
 	};
 	
 	// looking at a regional campus
@@ -677,7 +703,7 @@ Campus.info = function(id, pan){
 	}
 	
 	// show in menu
-	Campus.menu.show('location');
+	Campus.menu.show('Location');
 	
 	if(!id || id=="null" || id=="searching"){ return; }
 	if(Campus.ajax){ Campus.ajax.abort(); }
