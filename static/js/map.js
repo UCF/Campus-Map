@@ -89,7 +89,7 @@ Campus.maps = {
 	// Custom Map type for the Illustrated Map
 	// http://code.google.com/apis/maps/documentation/javascript/maptypes.html#BasicMapTypes
 	// note: this code looks a little different than the example because I'm simply
-	// creating an object instead of instantiating one wiht the "new" keyword
+	// creating an object instead of instantiating one with the "new" keyword
 	imap_type : {
 		tileSize : new google.maps.Size(256,256),
 		minZoom: 12,
@@ -141,12 +141,9 @@ Campus.maps = {
 
 /******************************************************************************\
  Custom URL generator for Map Tiles
-
- The entire map is placed in the far "upper left" corner of the world 
- (latititude 85, longitude -180) so the first tile requested is #1.  Makes it
- easier to chop the map and do the math to determine bounds
-
- see "readme" in the map_tiles dir
+	The entire map is placed in the far "upper left" corner of the world 
+	(latititude 85, longitude -180) so the first tile requested is #1.  Makes
+	it easier to chop the map and do the math to determine bounds
 \******************************************************************************/
 Campus.maps.imap_type.bg = function(coord,zoom) {
 	var tile = "zoom_" + zoom + "/" + zoom + "_" + coord.x + "_" + coord.y + ".jpg";
@@ -263,6 +260,33 @@ Campus.controls = function(){
 	menuToggle();
 	Campus.menu.find('#menu-hide').click(menuToggle);
 	this.map.controls[google.maps.ControlPosition.RIGHT_TOP].push(menuUI);
+	
+	
+	// additionall menu functionality
+	/*
+	Campus.menu.find('#menu-more').click(function(){
+		var main = Campus.menu.find('#menu-main');
+		var left = Campus.menu.find('#menu-left');
+		Campus.menu.equalHeights();
+		left.animate({ "margin-left" : '+=230' }, 300);
+	});
+	*/
+	
+	Campus.menuWin = Campus.menu.find('#menu-window');
+	Campus.menu.find('.nav').click(function(){
+		var winNum = $(this).attr('id').substring(4);
+		var margin = '-' + (Number(winNum) * 230 + 16);
+		Campus.menuWin.animate({"margin-left" : margin }, 300);
+	});
+	
+	Campus.stage = Campus.menu.find('#menu-stage');
+	Campus.stageNext = Campus.menu.find('#menu-stage-next');
+	
+	Campus.menu.show = function(label){
+		Campus.stageNext.animate({"width" : 230 }, 300);
+		Campus.menuWin.animate({"margin-left" : (-246) }, 300);
+		Campus.menu.find('h2').html(label);
+	};
 	
 	// looking at a regional campus
 	if(Campus.settings.regional_campus){
@@ -652,6 +676,9 @@ Campus.info = function(id, pan){
 		Campus.infoMaker = marker;
 	}
 	
+	// show in menu
+	Campus.menu.show('location');
+	
 	if(!id || id=="null" || id=="searching"){ return; }
 	if(Campus.ajax){ Campus.ajax.abort(); }
 	var title = $('#item-title');
@@ -872,3 +899,22 @@ Campus.search = function(){
 	style();
 	
 };//search
+
+
+/******************************************************************************\
+ JQuery Plugin: "EqualHeights"
+ by: Scott Jehl, Todd Parker, Maggie Costello Wachs (http://www.filamentgroup.com)
+\******************************************************************************/
+$.fn.equalHeights = function(px) {
+	$(this).each(function(){
+		var currentTallest = 0;
+		$(this).children().each(function(i){
+			if ($(this).height() > currentTallest) { currentTallest = $(this).height(); }
+		});
+		// for ie6, set height since min-height isn't supported
+		if ($.browser.msie && $.browser.version == 6.0) { $(this).children().css({'height': currentTallest}); }
+		$(this).children().css({'min-height': currentTallest}); 
+		console.log(this, currentTallest);
+	});
+	return this;
+};
