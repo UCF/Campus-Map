@@ -1,51 +1,69 @@
-<div id="menu-header">
-	<h2> 
-		<a id="menu-label-main">Menu</a>
-		<a id="menu-label-stage"></a>
-	</h2>
-	<div id="menu-pages">
-		<a id="nav-1" class="nav active">1</a>
-		<a id="nav-2" class="nav">2</a>
-		<a id="nav-3" class="nav">3</a>
-	</div>
-</div>
-	
-<div id="menu-window">
-	
-	<div id="menu-stage-next" class="slide"></div>
-	
-	<div id="menu-stage" class="slide">
-		<div class="item" id="item-title">
-			Loading...
+<div id="menu">
+	<div id="menu-header">
+		<h2> 
+			<a id="menu-label-main">Menu</a>
+			<a id="menu-label-stage"></a>
+		</h2>
+		<div id="menu-pages">
+			<a id="nav-1" title="Menu One" class="nav active">1</a>
+			<a id="nav-2" title="Menu Two" class="nav">2</a>
+			<a id="nav-3" title="Menu Three" class="nav">3</a>
 		</div>
-		<div class="item" id="item-desc"></div>
 	</div>
 	
-	<div id="menu-1" class="slide">
-		<div class="item" id="item-desc">
-			<img src="{{MEDIA_URL}}images/buildings/_home.jpg">
+	<div id="menu-window">
+	
+		<div id="menu-stage-next" class="slide"></div>
+	
+		<div id="menu-stage" class="slide">
+			<div class="item" id="item-title">
+				Loading...
+			</div>
+			<div class="item" id="item-desc"></div>
 		</div>
-		<a class="item" href="{% url buildings %}">Building list</a>
-		<a class="item" href="{% url organizations %}">Dept/Organizations</a>
-	</div>
 	
-	<div id="menu-2" class="slide">
-		<h3>Map view options:</h3>
-		<label><input type="checkbox" id="traffic"> Traffic</label>
-		<label><input type="checkbox" id="bikeracks"> Bike Racks</label>
-		<label><input type="checkbox" id="emergency_phones"> Emergency Assistance</label>
+		<div id="menu-1" class="slide">
+			<div class="item" id="item-desc">
+				<img src="{{MEDIA_URL}}images/buildings/_home.jpg">
+			</div>
+			<a class="item" href="{% url buildings %}">Building list</a>
+			<a class="item" href="{% url organizations %}">Dept/Organizations</a>
+			<div class="more-menu">
+				<span>&nbsp;</span>
+				<a class="next">Next Menu &#9654;</a>
+				<div class="clear"></div>
+			</div>
+		</div>
+	
+		<div id="menu-2" class="slide">
+			<h3>Map view options:</h3>
+			<label><input type="checkbox" id="traffic"> Traffic</label>
+			<label><input type="checkbox" id="bikeracks"> Bike Racks</label>
+			<label><input type="checkbox" id="emergency_phones"> Emergency Assistance</label>
 		
-		<h3>Coming Soon:</h3>
-		<label class="disabled"><input type="checkbox" disabled="disabled"> Food</label>
-		<label class="disabled"><input type="checkbox" disabled="disabled"> Housing</label>
-		<label class="disabled"><input type="checkbox" disabled="disabled"> Shuttle Routes</label>
-	</div>
+			<h3>Coming Soon:</h3>
+			<label class="disabled"><input type="checkbox" disabled="disabled"> Food</label>
+			<label class="disabled"><input type="checkbox" disabled="disabled"> Housing</label>
+			<label class="disabled"><input type="checkbox" disabled="disabled"> Shuttle Routes</label>
+			<div class="more-menu">
+				<a class="prev">&#9664; Previous Menu</a>
+				<a class="next">Next Menu &#9654;</a>
+				<div class="clear"></div>
+			</div>
+		</div>
 	
-	<div id="menu-3" class="slide">
-		Parking<br>
-		Entrances<br>
-		Buildings<br>
-		Walking Paths<br>
-	</div>
+		<div id="menu-3" class="slide">
+			Parking<br>
+			Entrances<br>
+			Buildings<br>
+			Walking Paths<br>
+			<div class="more-menu">
+				<a class="prev">&#9664; Previous Menu</a>
+				<div class="clear"></div>
+			</div>
+		</div>
 	
+	</div>
+	<div id="menu-screen"></div>
 </div>
+<a id="menu-hide" title="Collapse Menu" >&nbsp;</a>

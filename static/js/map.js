@@ -227,7 +227,6 @@ Campus.controls = function(){
 	
 	// menu
 	var menuUI = document.createElement('div');
-	menuUI.id = "menu";
 	if(Campus.menu_html === 'undefined' || !Campus.menu_html){
 		Campus.menu_html = $('#menu-html').html();
 		menuUI.innerHTML = Campus.menu_html;
@@ -236,42 +235,8 @@ Campus.controls = function(){
 		menuUI.innerHTML = Campus.menu_html;
 	}
 	Campus.menu = $(menuUI);
-	var menuToggle = function(){
-		if(Campus.menuHidden){
-			//show
-			Campus.menu.find('.body').show();
-			Campus.menu.find('#menu-hide').html('hide');
-			Campus.menu.removeClass('closed');
-			Campus.menuHidden = false;
-			$.cookie('hide_menu', false);
-		} else {
-			//hide
-			Campus.menu.find('.body').hide();
-			Campus.menu.find('#menu-hide').html('show');
-			Campus.menu.addClass('closed');
-			Campus.menuHidden = true;
-			$.cookie('hide_menu', true);
-		}
-	};
-	// this doesn't seem intuitive (setting 'true' to false) but the value 
-	// needs to be flipped so the 'toggle' function can be used (we dont' want
-	// to toggle away from previous state)
-	Campus.menuHidden = $.cookie('hide_menu') == 'true' ? false : true;
-	menuToggle();
-	Campus.menu.find('#menu-hide').click(menuToggle);
-	this.map.controls[google.maps.ControlPosition.RIGHT_TOP].push(menuUI);
 	
-	
-	// additionall menu functionality
-	/*
-	Campus.menu.find('#menu-more').click(function(){
-		var main = Campus.menu.find('#menu-main');
-		var left = Campus.menu.find('#menu-left');
-		Campus.menu.equalHeights();
-		left.animate({ "margin-left" : '+=230' }, 300);
-	});
-	*/
-	
+	// sliding windows
 	Campus.menuWin = Campus.menu.find('#menu-window');
 	Campus.menuMargin = -246;
 	Campus.menu.find('.nav').click(function(){
@@ -281,6 +246,17 @@ Campus.controls = function(){
 		Campus.menuMargin = '-' + (Number(winNum) * 230 + 16);
 		Campus.menuWin.animate({"margin-left" : Campus.menuMargin }, 300);
 	});
+	
+	// more menu buttons
+	Campus.menuWin.equalHeights();
+	Campus.menu.find('.more-menu .next').click(function(){
+		Campus.menu.next();
+		console.log("todo... next");
+	});
+	Campus.menu.find('.more-menu .prev').click(function(){
+		console.log("todo... prev");
+	});
+	
 	
 	Campus.stage = Campus.menu.find('#menu-stage');
 	Campus.stageVisible = false;
@@ -313,6 +289,36 @@ Campus.controls = function(){
 			Campus.menuPages.animate({"top" : -26 }, 300);
 		}
 	};
+	
+	// menu hiding
+	var menuToggle = function(){
+		if(Campus.menuHidden){
+			//show
+			Campus.menuWin.slideDown();
+			Campus.menu.removeClass('closed');
+			Campus.menu.animate({"opacity" : 1 }, 300);
+			Campus.menuHidden = false;
+			$.cookie('hide_menu', false);
+		} else {
+			//hide
+			Campus.menuWin.slideUp();
+			Campus.menu.animate({"opacity" : .5 }, 300, function(){
+				Campus.menu.addClass('closed');
+			});
+			Campus.menuHidden = true;
+			$.cookie('hide_menu', true);
+		}
+		return false;
+	};
+	// this doesn't seem intuitive (setting 'true' to false) but the value 
+	// needs to be flipped so the 'toggle' function can be used (we dont' want
+	// to toggle away from previous state)
+	Campus.menuHidden = $.cookie('hide_menu') == 'true' ? false : true;
+	menuToggle();
+	Campus.menu.find('#menu-hide').click(menuToggle);
+	Campus.menu.find('#menu-screen').click(menuToggle);
+	this.map.controls[google.maps.ControlPosition.RIGHT_TOP].push(menuUI);
+	
 	
 	// looking at a regional campus
 	if(Campus.settings.regional_campus){
@@ -931,6 +937,7 @@ Campus.search = function(){
  JQuery Plugin: "EqualHeights"
  by: Scott Jehl, Todd Parker, Maggie Costello Wachs (http://www.filamentgroup.com)
 \******************************************************************************/
+Campus.equalFailTime = 0;
 $.fn.equalHeights = function(px) {
 	$(this).each(function(){
 		var currentTallest = 0;
@@ -939,8 +946,19 @@ $.fn.equalHeights = function(px) {
 		});
 		// for ie6, set height since min-height isn't supported
 		if ($.browser.msie && $.browser.version == 6.0) { $(this).children().css({'height': currentTallest}); }
-		$(this).children().css({'min-height': currentTallest}); 
-		console.log(this, currentTallest);
+		$(this).children().css({'min-height': currentTallest});
+		
+		// hack to retry equal heights because it takes a while to render in dom
+		if(currentTallest > 0){
+			Campus.equalFailTime = 0;
+		} else {
+			Campus.equalFail = $(this);
+			Campus.equalFailTime += 250;
+			if(Campus.equalFailTime > 1000) Campus.equalFailTime = 0;
+			else {
+				window.setTimeout(function(){Campus.equalFail.equalHeights();}, Campus.equalFailTime);
+			}
+		}
 	});
 	return this;
 };
