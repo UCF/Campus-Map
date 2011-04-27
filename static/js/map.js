@@ -238,25 +238,15 @@ Campus.controls = function(){
 	
 	// sliding windows
 	Campus.menuWin = Campus.menu.find('#menu-window');
+	Campus.menuWin.equalHeights();
 	Campus.menuMargin = -246;
 	Campus.menu.find('.nav').click(function(){
+		var winNum = $(this).attr('data-nav');
 		Campus.menu.find('.nav').removeClass('active');
-		$(this).addClass('active');
-		var winNum = $(this).attr('id').substring(4);
+		$('#nav-'+winNum).addClass('active');
 		Campus.menuMargin = '-' + (Number(winNum) * 230 + 16);
 		Campus.menuWin.animate({"margin-left" : Campus.menuMargin }, 300);
 	});
-	
-	// more menu buttons
-	Campus.menuWin.equalHeights();
-	Campus.menu.find('.more-menu .next').click(function(){
-		Campus.menu.next();
-		console.log("todo... next");
-	});
-	Campus.menu.find('.more-menu .prev').click(function(){
-		console.log("todo... prev");
-	});
-	
 	
 	Campus.stage = Campus.menu.find('#menu-stage');
 	Campus.stageVisible = false;
