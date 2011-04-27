@@ -36,7 +36,7 @@
 	<div class="clear">&nbsp;</div>
 </footer>
 
-<div id="menu-html" style="display:none;">
+<div id="menu-wrap">
 	{% include 'campus/menu.djt' %}
 </div>
 

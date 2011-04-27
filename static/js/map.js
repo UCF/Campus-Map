@@ -10,19 +10,6 @@
 
 */
 
-// debug
-if(!window.console ) {
-	window.console = { log: function() { return; } };
-}
-
-// helper
-Array.prototype.has=function(v){
-	for (i=0;i<this.length;i++){
-		if (this[i]==v) return true;
-	}
-	return false;
-}
-
 /******************************************************************************\
  Global Namespace
  the only variable exposed to the window should be Campus
@@ -36,6 +23,7 @@ var Campus = {
 		traffic        : false
 	}
 };
+/*global window, document, Image, google, $ */
 
 Campus.init = function(){
 	this.resize();
@@ -49,13 +37,21 @@ Campus.init = function(){
 	Campus.maps[this.settings.map]();
 };
 
-
 /******************************************************************************\
  Helpers, Vars, and Placeholders
 \******************************************************************************/
 Campus.ajax = { abort : function(){} };
 Campus.map  = false;
 
+if(!window.console ) { window.console = { log: function() { return; } }; }
+
+Array.prototype.has=function(v){
+	var i;
+	for (i=0;i<this.length;i++){
+		if (this[i]===v){ return true; }
+	}
+	return false;
+};
 
 /******************************************************************************\
  Maps Wrapper
@@ -113,14 +109,16 @@ Campus.maps = {
 	
 	/* Called from Campus.init - make a map! */
 	create : function(options){
+		Campus.prevMapType = false;
 		if(!Campus.map){
 			// init map, switching between map types is not straight-forward
 			// must rezoom and recenter because illustrated map sits WAY far away
 			Campus.map = new google.maps.Map(document.getElementById("map-canvas"), options);
 			Campus.map.mapTypes.set('illustrated',Campus.maps.imap_type);
 			google.maps.event.addListener(Campus.map, 'maptypeid_changed', function() {
+				// TODO: fix building toggling so it doesn't change zoom
 				var type = Campus.map.mapTypeId;
-				var options = (type == 'illustrated') ? Campus.maps.imap_options : Campus.maps.gmap_options;
+				var options = (type === 'illustrated') ? Campus.maps.imap_options : Campus.maps.gmap_options;
 				//Campus.map.setOptions(options); //super slow
 				Campus.map.setZoom(options.zoom);
 				Campus.map.setCenter(options.center);
@@ -155,14 +153,14 @@ Campus.maps.imap_type.bg = function(coord,zoom) {
 		tile = nope;
 	} else if( zoom === 12){
 		// map is 2 tiles tall, 3 wide (zero indexed)
-		if(coord.y >1 || coord.x > 2) tile = nope;
+		if(coord.y >1 || coord.x > 2){ tile = nope; }
 	} else {
 		// smallest map is 5x3
 		// for each zoom a tile is divided equally into 4 parts
 		var wide = 5;
 		var tall = 3;
 		var factor = Math.pow(2, (zoom - 13));
-		if( coord.x >= wide*factor || coord.y >= tall*factor) tile = nope;
+		if( coord.x >= wide*factor || coord.y >= tall*factor){ tile = nope; }
 	}
 	
 	return 'url("' 
@@ -173,46 +171,10 @@ Campus.maps.imap_type.bg = function(coord,zoom) {
 
 /******************************************************************************\
  Controls
-	- styles native maptype controls
-	- adds custom controls
+	- create, init, and push controls onto google map
+	- inspect settings and manipulat map as needed
 \******************************************************************************/
 Campus.controls = function(){
-	
-	var settings = $.extend({ 'google': true }, this.options);
-	
-	// maptypes style
-	var restyle = function(){
-		
-		var controls = $('.gmnoprint');
-		
-		var styled = false;
-		if(controls.length < 1){
-			//map glitch, not finished loading
-			console.log("maptype glitch");
-			window.setTimeout(restyle, 100);
-			return;
-		}
-		
-		// find the maptype control
-		controls.filter(function(){
-			if(this.style && this.style.top == "0px" && this.style.right == "0px"){
-				$(this).attr('id','maptypes');
-				$(this).find('div:first div:first').html('UCF');
-				styled = true;
-			}
-		});
-		
-		if(!styled){
-			console.log("maptype glitch");
-			window.setTimeout(restyle, 200);
-		} else {
-			console.log("map styled");
-		}
-		
-	};
-	
-	// kills load time
-	//google.maps.event.addListener(this.map, "tilesloaded", restyle);
 	
 	// search
 	var searchUI = document.createElement('div');
@@ -226,16 +188,91 @@ Campus.controls = function(){
 	this.search(); // init search
 	
 	// menu
-	var menuUI = document.createElement('div');
-	if(Campus.menu_html === 'undefined' || !Campus.menu_html){
-		Campus.menu_html = $('#menu-html').html();
-		menuUI.innerHTML = Campus.menu_html;
-		$('#menu-html').html('');
-	} else {
-		menuUI.innerHTML = Campus.menu_html;
+	Campus.menu = $('#menu-wrap');
+	this.menuInit();
+	this.map.controls[google.maps.ControlPosition.RIGHT_TOP].push(this.menu[0]);
+		
+	var rc, loc, latlng;
+	// looking at a regional campus
+	if(Campus.settings.regional_campus){
+		rc = Campus.settings.regional_campus;
+		latlng = new google.maps.LatLng(rc.googlemap_point[0], rc.googlemap_point[1]);
+		Campus.map.panTo(latlng);
+		Campus.info(); //inits info marker
+		Campus.infoMaker.setPosition(latlng);
+		Campus.menu.find('#item-title').html(rc.description);
+		Campus.menu.find('#item-desc').html(rc.html);
 	}
-	Campus.menu = $(menuUI);
 	
+	// looking at a location (very similar to regional campus)
+	if(Campus.settings.location){
+		loc = Campus.settings.location;
+		latlng = new google.maps.LatLng(loc.googlemap_point[0], loc.googlemap_point[1]);
+		Campus.map.panTo(latlng);
+		Campus.info();
+		Campus.infoMaker.setPosition(latlng);
+		Campus.menu.find('#item-title').html(loc.name);
+		Campus.menu.find('#item-desc').html(loc.info);
+	}
+	
+	// buildings checkbox
+	$('#buildings')
+		.click(function(){
+			Campus.settings.buildings = $(this).is(':checked');
+			Campus.layers.buildings.update();
+		})
+		.attr('checked', Campus.settings.buildings);
+	
+	// traffic checkbox
+	Campus.menu.find('#traffic')
+		.click(function(){
+			Campus.settings.traffic = $(this).is(':checked');
+			Campus.layers.traffic.update();
+		})
+		.attr('checked', Campus.settings.traffic);
+	
+	// walking paths checkbox
+	$('#sidewalks')
+		.click(function(){
+			Campus.settings.sidewalks = $(this).is(':checked');
+			Campus.layers.sidewalks.update();
+		})
+		.attr('checked', Campus.settings.sidewalks);
+	
+	// bikeracks paths checkbox
+	Campus.menu.find('#bikeracks')
+		.click(function(){
+			Campus.settings.bikeracks = $(this).is(':checked');
+			Campus.layers.bikeracks.update();
+		})
+		.attr('checked', Campus.settings.bikeracks);
+
+	// emergency phones paths checkbox
+	Campus.menu.find('#emergency_phones')
+		.click(function(){
+			Campus.settings.emergency_phones = $(this).is(':checked');
+			Campus.layers.emergency_phones.update();
+		})
+		.attr('checked', Campus.settings.emergency_phones);
+	
+	// parking lots
+	$('#parking')
+		.click(function(){
+			Campus.settings.parking = $(this).is(':checked');
+			Campus.layers.parking.update();
+		})
+		.attr('checked', Campus.settings.parking);
+	
+};
+
+/******************************************************************************\
+ Menu
+	the menu is paginated, the separate pages are floating in a wide
+	"menu-window" (2000px) with the wrapper set to overflow:hidden.  The window
+	is shuffled left/right to display different pages.
+\******************************************************************************/
+Campus.menuInit = function(){
+
 	// sliding windows
 	Campus.menuWin = Campus.menu.find('#menu-window');
 	Campus.menuWin.equalHeights();
@@ -247,23 +284,23 @@ Campus.controls = function(){
 		Campus.menuMargin = '-' + (Number(winNum) * 230 + 16);
 		Campus.menuWin.animate({"margin-left" : Campus.menuMargin }, 300);
 	});
-	
+
 	Campus.stage = Campus.menu.find('#menu-stage');
 	Campus.stageVisible = false;
 	Campus.stageNext  = Campus.menu.find('#menu-stage-next');
 	Campus.label      = Campus.menu.find('#menu-label-main');
 	Campus.labelStage = Campus.menu.find('#menu-label-stage');
 	Campus.menuPages  = Campus.menu.find('#menu-pages');
-	
+
 	Campus.label.click(function(){
 		Campus.menu.show('main');
 	});
 	Campus.labelStage.click(function(){
 		Campus.menu.show($(this).html());
 	});
-	
+
 	Campus.menu.show = function(label){
-		if(label=='main'){
+		if(label==='main'){
 			Campus.stageNext.animate({"width" : 0 }, 300);
 			Campus.menuWin.animate({"margin-left" : Campus.menuMargin }, 300);
 			Campus.label.removeClass('inactive');
@@ -279,7 +316,7 @@ Campus.controls = function(){
 			Campus.menuPages.animate({"top" : -26 }, 300);
 		}
 	};
-	
+
 	// menu hiding
 	var menuToggle = function(){
 		if(Campus.menuHidden){
@@ -292,7 +329,7 @@ Campus.controls = function(){
 		} else {
 			//hide
 			Campus.menuWin.slideUp();
-			Campus.menu.animate({"opacity" : .5 }, 300, function(){
+			Campus.menu.animate({"opacity" : 0.5 }, 300, function(){
 				Campus.menu.addClass('closed');
 			});
 			Campus.menuHidden = true;
@@ -303,84 +340,12 @@ Campus.controls = function(){
 	// this doesn't seem intuitive (setting 'true' to false) but the value 
 	// needs to be flipped so the 'toggle' function can be used (we dont' want
 	// to toggle away from previous state)
-	Campus.menuHidden = $.cookie('hide_menu') == 'true' ? false : true;
+	Campus.menuHidden = $.cookie('hide_menu') === 'true' ? false : true;
 	menuToggle();
 	Campus.menu.find('#menu-hide').click(menuToggle);
 	Campus.menu.find('#menu-screen').click(menuToggle);
-	this.map.controls[google.maps.ControlPosition.RIGHT_TOP].push(menuUI);
-	
-	
-	// looking at a regional campus
-	if(Campus.settings.regional_campus){
-		var rc = Campus.settings.regional_campus;
-		var latlng = new google.maps.LatLng(rc.googlemap_point[0], rc.googlemap_point[1]);
-		Campus.map.panTo(latlng);
-		Campus.info(); //inits info marker
-		Campus.infoMaker.setPosition(latlng);
-		Campus.menu.find('#item-title').html(rc.description);
-		Campus.menu.find('#item-desc').html(rc.html);
-	}
-	
-	// looking at a location (very similar to regional campus)
-	if(Campus.settings.location){
-		var loc = Campus.settings.location;
-		var latlng = new google.maps.LatLng(loc.googlemap_point[0], loc.googlemap_point[1]);
-		Campus.map.panTo(latlng);
-		Campus.info();
-		Campus.infoMaker.setPosition(latlng);
-		Campus.menu.find('#item-title').html(loc.name);
-		Campus.menu.find('#item-desc').html(loc.info);
-	}
-	
-	// buildings checkbox
-	var bcb = $('#buildings')[0];
-	$(bcb).attr('checked', Campus.settings.buildings);
-	$(bcb).click(function(){
-		Campus.settings.buildings = $(this).is(':checked');
-		Campus.layers.buildings.update();
-	});
-	
-	// traffic checkbox
-	var tcb = Campus.menu.find('#traffic')[0];
-	$(tcb).attr('checked', Campus.settings.traffic);
-	$(tcb).click(function(){
-		Campus.settings.traffic = $(this).is(':checked');
-		Campus.layers.traffic.update();
-	});
-	
-	// walking paths checkbox
-	var scb = $('#sidewalks')[0];
-	$(scb).attr('checked', Campus.settings.sidewalks);
-	$(scb).click(function(){
-		Campus.settings.sidewalks = $(this).is(':checked');
-		Campus.layers.sidewalks.update();
-	});
-	
-	// bikeracks paths checkbox
-	var br = Campus.menu.find('#bikeracks')[0];
-	$(br).attr('checked', Campus.settings.bikeracks);
-	$(br).click(function(){
-		Campus.settings.bikeracks = $(this).is(':checked');
-		Campus.layers.bikeracks.update();
-	});
+};
 
-	// emergency phones paths checkbox
-	var phones = Campus.menu.find('#emergency_phones')[0];
-	$(phones).attr('checked', Campus.settings.emergency_phones);
-	$(phones).click(function(){
-		Campus.settings.emergency_phones = $(this).is(':checked');
-		Campus.layers.emergency_phones.update();
-	});
-	
-	// parking lots
-	var scb = $('#parking')[0];
-	$(scb).attr('checked', Campus.settings.parking);
-	$(scb).click(function(){
-		Campus.settings.parking = $(this).is(':checked');
-		Campus.layers.parking.update();
-	});
-	
-}
 
 /******************************************************************************\
  Map Layers
@@ -423,8 +388,27 @@ Campus.layers = {
 				// send KML to google
 				// http://code.google.com/apis/maps/documentation/javascript/overlays.html#KMLLayers
 				this.layer = new google.maps.KmlLayer(Campus.urls.buildings_kml, { preserveViewport : true, suppressInfoWindows: true, clickable: false });
-				
-				// strip map of google elements
+				this.loaded = true;
+			}
+			if(Campus.map.mapTypeId === 'naked'){
+				this.layer.setMap(Campus.map);
+			} else {
+				Campus.map.setMapTypeId('naked');
+			}
+		},
+		unload : function() {
+			if(!this.loaded){ return; }
+			if(Campus.map.mapTypeId !== 'roadmap'){ Campus.map.setMapTypeId('roadmap'); }
+			this.layer.setMap(null);
+		},
+		naked  : false,
+		update : function(){
+			if(Campus.map.mapTypeId === 'illustrated'){ return; }
+			var on = Campus.settings.buildings;
+			if(on){ this.load(); } else { this.unload(); }
+			
+			if(!this.naked){
+				// create naked map type, strip map of google elements
 				// http://code.google.com/apis/maps/documentation/javascript/maptypes.html#StyledMaps
 				// http://gmaps-samples-v3.googlecode.com/svn/trunk/styledmaps/wizard/index.html
 				var styles = [ 
@@ -434,23 +418,8 @@ Campus.layers = {
 				];
 				var naked = new google.maps.StyledMapType( styles, { name : "Naked" } );
 				Campus.map.mapTypes.set('naked', naked);
-				
-				this.loaded = true;
 			}
-			// without this check, the switch to the 'naked' maptype causes loop
-			// dumb of the google maps API to fire "maptypeid_changed" when you set it to the same id :(
-			if(Campus.map.mapTypeId != 'naked') Campus.map.setMapTypeId('naked');
-			this.layer.setMap(Campus.map);
-		},
-		unload : function() {
-			if(!this.loaded) return;
-			if(Campus.map.mapTypeId != 'roadmap') Campus.map.setMapTypeId('roadmap');
-			this.layer.setMap(null);
-		},
-		update : function(){
-			if(Campus.map.mapTypeId == 'illustrated') return;
-			var on = Campus.settings.buildings;
-			if(on) this.load(); else this.unload();
+			
 		}
 	},
 	
@@ -466,20 +435,23 @@ Campus.layers = {
 				new google.maps.Size(19, 19),
 				new google.maps.Point(0,0),
 				new google.maps.Point(10,10));
-			var point = (Campus.map.mapTypeId == 'illustrated') ? 'ipoint' : 'gpoint';
-			for(var id in points ) {
-				var p = points[id][point];
-				if(!p || !p[0] || !p[1]) continue;
-				var latLng = new google.maps.LatLng(p[0], p[1]);
-				var marker = new google.maps.Marker({
-					position: latLng,
-					map: map,
-					icon: image,
-					location: id
-				});
-				google.maps.event.addListener(marker, 'click', function(event) {
-					Campus.info(this.location, false);
-				});
+			var point = (Campus.map.mapTypeId === 'illustrated') ? 'ipoint' : 'gpoint';
+			var id;
+			for(id in points ) {
+				if(points.hasOwnProperty(id)){
+					var p = points[id][point];
+					if(!p || !p[0] || !p[1]){ continue; }
+					var latLng = new google.maps.LatLng(p[0], p[1]);
+					var marker = new google.maps.Marker({
+						position: latLng,
+						map: map,
+						icon: image,
+						location: id
+					});
+					google.maps.event.addListener(marker, 'click', function(event) {
+						Campus.info(this.location, false);
+					});
+				}
 			}
 		}
 	},
@@ -496,12 +468,12 @@ Campus.layers = {
 			this.layer.setMap(Campus.map);
 		},
 		unload : function() {
-			if(!this.loaded) return;
+			if(!this.loaded){ return; }
 			this.layer.setMap(null);
 		},
 		update : function(){
 			var on = Campus.settings.sidewalks;
-			if(on) this.load(); else this.unload();
+			if(on){ this.load(); } else { this.unload(); }
 		}
 	},
 	
@@ -511,6 +483,7 @@ Campus.layers = {
 		geo     : false,
 		markers : [],
 		load    : function(){
+			var i;
 			
 			// load geo location
 			if(!this.loaded){
@@ -535,40 +508,43 @@ Campus.layers = {
 			
 			// markers have already been created, show them
 			if(this.markers.length > 0){
-				for(var i in this.markers){
+				for(i=0; i < this.markers.length; i++){
 					var marker = this.markers[i];
-					if(marker.setVisible) marker.setVisible(true);
+					if(marker.setVisible){ marker.setVisible(true); }
 				}
 				return;
 			}
 			
 			// create and place markers
-			for(var i in this.geo.features){
-				var rack = this.geo.features[i];
-				if(rack.geometry && rack.geometry.coordinates){
-					var point = rack.geometry.coordinates;
-					var latlng = new google.maps.LatLng(point[1],point[0]);
-					this.markers.push(
-						new google.maps.Marker({
-							clickable: false,
-							position: latlng, 
-							map: Campus.map
-						})
-					);
+			for(i in this.geo.features){
+				if(this.geo.features.hasOwnProperty(i)){
+					var rack = this.geo.features[i];
+					if(rack.geometry && rack.geometry.coordinates){
+						var point = rack.geometry.coordinates;
+						var latlng = new google.maps.LatLng(point[1],point[0]);
+						this.markers.push(
+							new google.maps.Marker({
+								clickable: false,
+								position: latlng, 
+								map: Campus.map
+							})
+						);
+					}
 				}
 			}
 			
 		},
 		unload : function() {
-			if(!this.loaded) return;
-			for(var i in this.markers){
+			if(!this.loaded){ return; }
+			var i;
+			for(i=0; i< this.markers.length; i++){
 				var marker = this.markers[i];
-				if(marker.setVisible) marker.setVisible(false);
+				if(marker.setVisible){ marker.setVisible(false); }
 			}
 		},
 		update : function(){
 			var on = Campus.settings.bikeracks;
-			if(on) this.load(); else this.unload();
+			if(on){ this.load(); } else { this.unload(); }
 		}
 	},
 	
@@ -604,46 +580,51 @@ Campus.layers = {
 			
 			// markers have already been created, show them
 			if(this.markers.length > 0){
-				for(var i in this.markers){
+				var i;
+				for(i=0; i<this.markers.length; i++){
 					var marker = this.markers[i];
-					if(marker.setVisible) marker.setVisible(true);
+					if(marker.setVisible){ marker.setVisible(true); }
 				}
 				return;
 			}
 			
 			// custom icon
-			var icon = new google.maps.MarkerImage(Campus.urls.static + '/images/markers/marker_phone.png', new google.maps.Size(20, 34));
-			var shadow = new google.maps.MarkerImage(Campus.urls.static + '/images/markers/marker_phone.png', new google.maps.Size(37,34), new google.maps.Point(20, 0), new google.maps.Point(10, 34));
+			var icon = new google.maps.MarkerImage(Campus.urls['static'] + '/images/markers/marker_phone.png', new google.maps.Size(20, 34));
+			var shadow = new google.maps.MarkerImage(Campus.urls['static'] + '/images/markers/marker_phone.png', new google.maps.Size(37,34), new google.maps.Point(20, 0), new google.maps.Point(10, 34));
 			
 			// create and place markers
-			for(var i in this.geo.features){
-				var phone = this.geo.features[i];
-				if(phone.geometry && phone.geometry.coordinates){
-					var point = phone.geometry.coordinates;
-					var latlng = new google.maps.LatLng(point[1],point[0]);
-					this.markers.push(
-						new google.maps.Marker({
-							icon:icon,
-							shadow: shadow,
-							clickable: false,
-							position: latlng, 
-							map: Campus.map
-						})
-					);
+			var f;
+			for(f in this.geo.features){
+				if(this.geo.features.hasOwnProperty(f)){
+					var phone = this.geo.features[f];
+					if(phone.geometry && phone.geometry.coordinates){
+						var point = phone.geometry.coordinates;
+						var latlng = new google.maps.LatLng(point[1],point[0]);
+						this.markers.push(
+							new google.maps.Marker({
+								icon:icon,
+								shadow: shadow,
+								clickable: false,
+								position: latlng, 
+								map: Campus.map
+							})
+						);
+					}
 				}
 			}
 			
 		},
 		unload : function() {
-			if(!this.loaded) return;
-			for(var i in this.markers){
+			if(!this.loaded){ return; }
+			var i;
+			for(i=0; i < this.markers.length; i++){
 				var marker = this.markers[i];
-				if(marker.setVisible) marker.setVisible(false);
+				if(marker.setVisible){ marker.setVisible(false); }
 			}
 		},
 		update : function(){
 			var on = Campus.settings.emergency_phones;
-			if(on) this.load(); else this.unload();
+			if(on){ this.load(); } else { this.unload(); }
 		}
 	},
 	
@@ -659,12 +640,12 @@ Campus.layers = {
 			this.layer.setMap(Campus.map);
 		},
 		unload : function() {
-			if(!this.loaded) return;
+			if(!this.loaded){ return; }
 			this.layer.setMap(null);
 		},
 		update : function(){
 			var on = Campus.settings.parking;
-			if(on) this.load(); else this.unload();
+			if(on){ this.load(); } else { this.unload(); }
 		}
 	}
 	
@@ -701,7 +682,7 @@ Campus.info = function(id, pan){
 	// show in menu
 	Campus.menu.show('Location');
 	
-	if(!id || id=="null" || id=="searching"){ return; }
+	if(!id || id==="null" || id==="searching"){ return; }
 	if(Campus.ajax){ Campus.ajax.abort(); }
 	var title = $('#item-title');
 	var desc  = $('#item-desc');
@@ -709,7 +690,7 @@ Campus.info = function(id, pan){
 	desc.html("");
 	desc.addClass('load');
 	
-	var url = Campus.urls['location'].replace("%s", id);
+	var url = Campus.urls.location.replace("%s", id);
 	
 	Campus.ajax = $.ajax({
 		url: url,
@@ -720,7 +701,7 @@ Campus.info = function(id, pan){
 			title.html(name);
 			desc.html(data.info);
 			desc.removeClass('load');
-			var point = (Campus.map.mapTypeId == 'illustrated') ? 'illustrated_point' : 'googlemap_point';
+			var point = (Campus.map.mapTypeId === 'illustrated') ? 'illustrated_point' : 'googlemap_point';
 			var latlng = new google.maps.LatLng(data[point][0], data[point][1]);
 			Campus.infoMaker.setPosition(latlng);
 			if(pan){ Campus.map.panTo(latlng);  }
@@ -731,7 +712,7 @@ Campus.info = function(id, pan){
 			desc.removeClass('load');
 		}
 	});
-}
+};
 
 
 /******************************************************************************\
@@ -743,8 +724,8 @@ Campus.resize = function(){
 	
 	Campus.resize_tries = 0;
 	
-	var browser = $.browser.name + "" + $.browser.versionX
-	if(browser === "firefox2" || browser === "msie6") { return; }
+	var browser = $.browser.name + " " + $.browser.versionX;
+	if(browser === "firefox 2" || browser === "msie 6") { return; }
 	
 	var resize = function(){
 		var height = document.documentElement.clientHeight;
@@ -760,7 +741,7 @@ Campus.resize = function(){
 		canvas.style.height = height + "px";
 		
 		// iphone, hide url bar
-		if(jQuery.os.name === "iphone"){
+		if($.os.name === "iphone"){
 			height += 58;
 			document.getElementById('map-canvas').style.height = height + "px";
 			window.scrollTo(0, 1);
@@ -770,8 +751,8 @@ Campus.resize = function(){
 	resize();
 	
 	// if not mobile, attach resize fn to window
-	if( jQuery.os.name === "iphone" || (
-		jQuery.os.name === "linux" && jQuery.browser.name === "safari") ) { return; }	
+	if( $.os.name === "iphone" || (
+		$.os.name === "linux" && $.browser.name === "safari") ) { return; }	
 	window.onresize = resize;
 	
 };
@@ -811,15 +792,15 @@ Campus.search = function(){
 		if(keyCode===13){
 			var li = $('#search .hover');
 			var pk = li.find('a').attr('data-pk');
-			if(pk == "more-results"){ return; }
+			if(pk === "more-results"){ return; }
 			event.preventDefault();
 			if(li.length < 1){ 
 				li = $('#search li');
-				if(li.length == 1) {
+				if(li.length === 1) {
 					pk = li.find('a').attr('data-pk');
 				}
 			}
-			if(pk && pk !== "searching" && pk != "null"){
+			if(pk && pk !== "searching" && pk !== "null"){
 				search.find('ul').remove(); 
 			}
 			Campus.info(pk, true);
@@ -838,9 +819,11 @@ Campus.search = function(){
 		var ignore = [13, 37, 39, 16, 17, 18, 224];
 		if(ignore.has(keyCode)){ return; }
 		
+		var li;
+		
 		//'down' key
 		if(keyCode===40 && $('#search ul').html() !== ''){
-			var li = $('#search .hover');
+			li = $('#search .hover');
 			
 			if(li.length < 1){
 				 $('#search li:first').addClass('hover');
@@ -857,7 +840,7 @@ Campus.search = function(){
 		
 		//'up' key
 		if(keyCode===38 && $('#search ul').html() !== ''){
-			var li = $('#search .hover');
+			li = $('#search .hover');
 			if(li.length < 1) { return; }
 			li.removeClass('hover');
 			li.prev().addClass('hover');
@@ -887,7 +870,7 @@ Campus.search = function(){
 		
 		search.find('ul').html('<li><a data-pk="searching">Searching&hellip;</a></li>');
 		Campus.ajax = $.ajax({
-			url: Campus.urls['search'] + '.list',
+			url: Campus.urls.search + '.list',
 			data: {q:q},
 			success: function(html){
 				//show results
@@ -895,7 +878,7 @@ Campus.search = function(){
 				//attach event to open info window
 				$('#search li:not(.more)').click(function(event){
 					event.preventDefault();
-					pk = $(this).find('a').attr('data-pk');
+					var pk = $(this).find('a').attr('data-pk');
 					$('#search li').removeClass('hover');
 					$(this).addClass('hover');
 					Campus.info(pk, true);
@@ -911,16 +894,16 @@ Campus.search = function(){
 	});
 	
 	// set z-index and focus, but must wait until loaded in dom
-	var style = function(){
+	Campus.searchStyle = function(){
 		if($('#search input').length > 0){
 			$('#search').css('z-index', 15);
 			$('#search input').focus();
 		} else {
 			//console.log("search glitch");
-			setTimeout(style, 250);
+			window.setTimeout(Campus.searchStyle, 250);
 		}
-	}
-	style();
+	};
+	Campus.searchStyle();
 	
 };//search
 
@@ -937,7 +920,7 @@ $.fn.equalHeights = function(px) {
 			if ($(this).height() > currentTallest) { currentTallest = $(this).height(); }
 		});
 		// for ie6, set height since min-height isn't supported
-		if ($.browser.msie && $.browser.version == 6.0) { $(this).children().css({'height': currentTallest}); }
+		if ($.browser.msie && $.browser.version === 6.0) { $(this).children().css({'height': currentTallest}); }
 		$(this).children().css({'min-height': currentTallest});
 		
 		// hack to retry equal heights because it takes a while to render in dom
@@ -946,7 +929,7 @@ $.fn.equalHeights = function(px) {
 		} else {
 			Campus.equalFail = $(this);
 			Campus.equalFailTime += 250;
-			if(Campus.equalFailTime > 1000) Campus.equalFailTime = 0;
+			if(Campus.equalFailTime > 1000){ Campus.equalFailTime = 0; }
 			else {
 				window.setTimeout(function(){Campus.equalFail.equalHeights();}, Campus.equalFailTime);
 			}
