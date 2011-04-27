@@ -45,6 +45,7 @@ code a { color:#21759B; text-decoration:none; border-bottom:1px dotted #7DA4C2; 
 code a:hover { border-bottom:1px solid #7DA4C2; color:#21759B; }
 
 ul li a { text-decoration:none; border-bottom:1px dotted #CE353B; line-height:1.5; }
+a.button { vertical-align:middle; text-decoration:none; color:#333; font-size:12px; background:white; padding:2px 4px; margin:0 0 0 2px; border:1px solid #aaa; border-radius:4px; -moz-border-radius: 4px; -webkit-border-radius: 4px; }
 
 /******************************************************************************\
     Layout
@@ -66,18 +67,9 @@ nav ol li.last:after{ content:""; margin-left:0; }
 nav ol li a { font-family: Georgia, Times, serif; margin-right:5px; color:#333; font-size:16px; text-decoration: none; font-weight: normal; }
 nav ol li a:hover {  color:#ed1c24;  text-decoration: underline; }
 
-#map { padding:0 17px; position:relative; min-width:556px; }
+#map { padding:0 17px 17px; position:relative; min-width:556px; }
 #map header { margin:0; padding:0 0 3px 0; overflow:hidden; display:block; width:100%; position:relative; min-width:59px; }
 #map header h1 { border:0; padding:0 0 0 4px; }
-#map-foot { padding:4px 0; text-align:right; display:block; overflow:hidden; }
-#map-foot .right { padding-top:3px; }
-#map-foot a { vertical-align:middle; text-decoration:none; color:#333; font-size:12px; background:white; padding:2px 4px; margin:0 0 0 2px; border:1px solid #aaa; border-radius:4px; -moz-border-radius: 4px; -webkit-border-radius: 4px; }
-.firefox #map-foot a { vertical-align:baseline; }
-#map-foot a:hover { border:1px solid #6688cc; box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.35); -webkit-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.20); -moz-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.20); }
-.ie #map-foot a:hover { border-color:#6688cc; color:black; }
-.ie7 #map-foot .right { width:45%; }
-#map-foot .checkboxes label:first-of-type { margin-left:3px; }
-#map-foot .checkboxes label { margin-right:15px; display:inline-block; }
 .ie #map * { zoom:1; }
 footer { background:black; margin:0; padding:8px 18px; color:white; display:block; overflow:hidden; clear:both; }
 footer a { color:white; text-decoration:none; border-bottom:1px dotted black; }
@@ -168,6 +160,7 @@ footer dd { padding:8px 0 0 8px; margin:0; }
 #item-desc img { width:100%; }
 #item-desc h2 { display:none; }
 
+#menu-wrap { position:absolute; top:-5000px; }
 #menu-header { position:relative; overflow:hidden; height:26px; background: #7d7d7b; background:rgba(1,1,1, 0.5); }
 #menu #menu-label-main  { z-index:5; width:37px; }
 #menu #menu-label-stage { z-index:4; }

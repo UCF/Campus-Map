@@ -28,6 +28,13 @@
 			</div>
 			<a class="item" href="{% url buildings %}">Building list</a>
 			<a class="item" href="{% url organizations %}">Dept/Organizations</a>
+			
+			<label><input type="checkbox" id="parking"> Parking</label>
+			<label class="disabled"><input type="checkbox" disabled="disabled"> Entrances/Exits</label>
+			<label><input type="checkbox" id="buildings"> Buildings</label>
+			<label><input type="checkbox" id="sidewalks"> Walking Paths</label>
+			
+			
 			<div class="more-menu">
 				<span>&nbsp;</span>
 				<a class="next nav" data-nav="2">Next Menu &#9654;</a>
@@ -53,10 +60,10 @@
 		</div>
 	
 		<div id="menu-3" class="slide">
-			Parking<br>
-			Entrances<br>
-			Buildings<br>
-			Walking Paths<br>
+			<a class="item" href="{% url page 'printable' %}">Printable Map</a>
+			<a class="item" href="{% url page 'directions' %}">Directions to UCF</a>
+			<a class="item" href="{% url page 'about' %}">About &amp; More</a>
+			
 			<div class="more-menu">
 				<a class="prev nav" data-nav="2">&#9664; Previous Menu</a>
 				<div class="clear"></div>

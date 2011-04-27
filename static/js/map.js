@@ -117,6 +117,7 @@ Campus.maps = {
 			Campus.map.mapTypes.set('illustrated',Campus.maps.imap_type);
 			google.maps.event.addListener(Campus.map, 'maptypeid_changed', function() {
 				// TODO: fix building toggling so it doesn't change zoom
+				// TODO: this also breaks traffic
 				var type = Campus.map.mapTypeId;
 				var options = (type === 'illustrated') ? Campus.maps.imap_options : Campus.maps.gmap_options;
 				//Campus.map.setOptions(options); //super slow
@@ -721,7 +722,6 @@ Campus.info = function(id, pan){
 	attaches function to window resize
 \******************************************************************************/
 Campus.resize = function(){
-	
 	Campus.resize_tries = 0;
 	
 	var browser = $.browser.name + " " + $.browser.versionX;
@@ -733,9 +733,8 @@ Campus.resize = function(){
 		
 		height -= blackbar ? blackbar.clientHeight : 0;
 		height -= $('#map header')[0].clientHeight;
-		height -= document.getElementById('map-foot').clientHeight;
 		height -= $('footer')[0].clientHeight;
-		height -= 2; // top + bottom border
+		height -= 2 + 17; // borders + margin
 		
 		var canvas   = document.getElementById('map-canvas');
 		canvas.style.height = height + "px";
