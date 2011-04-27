@@ -872,7 +872,9 @@ Campus.search = function(){
 		}
 		
 		// ajax search
-		if(Campus.ajax){ Campus.ajax.abort(); }
+		try{ Campus.ajax.abort(); }
+		catch(e) { /* ie sux */ }
+		
 		var q = input.val();
 		if(!q){
 			search.find('ul').remove();
