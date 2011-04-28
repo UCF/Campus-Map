@@ -216,54 +216,24 @@ Campus.controls = function(){
 		$('#item-desc').html(loc.info);
 	}
 	
-	// buildings checkbox
-	$('#buildings')
-		.click(function(){
-			Campus.settings.buildings = $(this).is(':checked');
-			Campus.layers.buildings.update();
-		})
-		.attr('checked', Campus.settings.buildings);
-	
-	// traffic checkbox
-	$('#traffic')
-		.click(function(){
-			Campus.settings.traffic = $(this).is(':checked');
-			Campus.layers.traffic.update();
-		})
-		.attr('checked', Campus.settings.traffic);
-	
-	// walking paths checkbox
-	$('#sidewalks')
-		.click(function(){
-			Campus.settings.sidewalks = $(this).is(':checked');
-			Campus.layers.sidewalks.update();
-		})
-		.attr('checked', Campus.settings.sidewalks);
-	
-	// bikeracks paths checkbox
-	$('#bikeracks')
-		.click(function(){
-			Campus.settings.bikeracks = $(this).is(':checked');
-			Campus.layers.bikeracks.update();
-		})
-		.attr('checked', Campus.settings.bikeracks);
-
-	// emergency phones paths checkbox
-	$('#emergency_phones')
-		.click(function(){
-			Campus.settings.emergency_phones = $(this).is(':checked');
-			Campus.layers.emergency_phones.update();
-		})
-		.attr('checked', Campus.settings.emergency_phones);
-	
-	// parking lots
-	$('#parking')
-		.click(function(){
-			Campus.settings.parking = $(this).is(':checked');
-			Campus.layers.parking.update();
-		})
-		.attr('checked', Campus.settings.parking);
-	
+	// Checkboxes:
+	//   the setting name and checkbox ID are the same
+	//   cycle through each and add onclick event to init appropriate layer
+	//   if layer is already turned on, "check" the checkbox
+	var checkboxes = ['buildings', 'traffic', 'sidewalks', 'bikeracks', 'emergency_phones', 'parking'];
+	var i, id;
+	var make_onclick = function(layer){
+		return function(){
+			Campus.settings[layer] = $(this).is(':checked');
+			Campus.layers[layer].update();
+		};
+	};
+	for(i=0; i<checkboxes.length; i++){
+		id = checkboxes[i];
+		$('#' + id)
+			.click(make_onclick(id))
+			.attr('checked', Campus.settings[id]);
+	}
 };
 
 /******************************************************************************\
@@ -284,7 +254,13 @@ Campus.menuInit = function(){
 		$('#nav-'+winNum).addClass('active');
 		Campus.menuMargin = '-' + (Number(winNum) * 230 + 16);
 		Campus.menuWin.animate({"margin-left" : Campus.menuMargin }, 300);
+		$.cookie('menu_page', winNum);
 	});
+	
+	var menu_page = Number($.cookie('menu_page'));
+	if(menu_page > 1){
+		$('#nav-' + menu_page).click();
+	}
 
 	Campus.stage = $('#menu-stage');
 	Campus.stageVisible = false;
