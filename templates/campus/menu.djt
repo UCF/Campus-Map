@@ -44,11 +44,11 @@
 	
 		<div id="menu-2" class="slide">
 			<h3>Map view options:</h3>
-			<label><input type="checkbox" id="traffic"> Traffic</label>
 			<label><input type="checkbox" id="bikeracks"> Bike Racks</label>
 			<label><input type="checkbox" id="emergency_phones"> Emergency Assistance</label>
 		
 			<h3>Coming Soon:</h3>
+			<label class="disabled"><input type="checkbox" disabled="disabled"> Traffic</label>
 			<label class="disabled"><input type="checkbox" disabled="disabled"> Food</label>
 			<label class="disabled"><input type="checkbox" disabled="disabled"> Housing</label>
 			<label class="disabled"><input type="checkbox" disabled="disabled"> Shuttle Routes</label>
