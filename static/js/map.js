@@ -201,8 +201,8 @@ Campus.controls = function(){
 		Campus.map.panTo(latlng);
 		Campus.info(); //inits info marker
 		Campus.infoMaker.setPosition(latlng);
-		Campus.menu.find('#item-title').html(rc.description);
-		Campus.menu.find('#item-desc').html(rc.html);
+		$('#item-title').html(rc.description);
+		$('#item-desc').html(rc.html);
 	}
 	
 	// looking at a location (very similar to regional campus)
@@ -212,8 +212,8 @@ Campus.controls = function(){
 		Campus.map.panTo(latlng);
 		Campus.info();
 		Campus.infoMaker.setPosition(latlng);
-		Campus.menu.find('#item-title').html(loc.name);
-		Campus.menu.find('#item-desc').html(loc.info);
+		$('#item-title').html(loc.name);
+		$('#item-desc').html(loc.info);
 	}
 	
 	// buildings checkbox
@@ -225,7 +225,7 @@ Campus.controls = function(){
 		.attr('checked', Campus.settings.buildings);
 	
 	// traffic checkbox
-	Campus.menu.find('#traffic')
+	$('#traffic')
 		.click(function(){
 			Campus.settings.traffic = $(this).is(':checked');
 			Campus.layers.traffic.update();
@@ -241,7 +241,7 @@ Campus.controls = function(){
 		.attr('checked', Campus.settings.sidewalks);
 	
 	// bikeracks paths checkbox
-	Campus.menu.find('#bikeracks')
+	$('#bikeracks')
 		.click(function(){
 			Campus.settings.bikeracks = $(this).is(':checked');
 			Campus.layers.bikeracks.update();
@@ -249,7 +249,7 @@ Campus.controls = function(){
 		.attr('checked', Campus.settings.bikeracks);
 
 	// emergency phones paths checkbox
-	Campus.menu.find('#emergency_phones')
+	$('#emergency_phones')
 		.click(function(){
 			Campus.settings.emergency_phones = $(this).is(':checked');
 			Campus.layers.emergency_phones.update();
@@ -275,23 +275,23 @@ Campus.controls = function(){
 Campus.menuInit = function(){
 
 	// sliding windows
-	Campus.menuWin = Campus.menu.find('#menu-window');
+	Campus.menuWin = $('#menu-window');
 	Campus.menuWin.equalHeights();
 	Campus.menuMargin = -246;
-	Campus.menu.find('.nav').click(function(){
+	$('.nav').click(function(){
 		var winNum = $(this).attr('data-nav');
-		Campus.menu.find('.nav').removeClass('active');
+		$('.nav').removeClass('active');
 		$('#nav-'+winNum).addClass('active');
 		Campus.menuMargin = '-' + (Number(winNum) * 230 + 16);
 		Campus.menuWin.animate({"margin-left" : Campus.menuMargin }, 300);
 	});
 
-	Campus.stage = Campus.menu.find('#menu-stage');
+	Campus.stage = $('#menu-stage');
 	Campus.stageVisible = false;
-	Campus.stageNext  = Campus.menu.find('#menu-stage-next');
-	Campus.label      = Campus.menu.find('#menu-label-main');
-	Campus.labelStage = Campus.menu.find('#menu-label-stage');
-	Campus.menuPages  = Campus.menu.find('#menu-pages');
+	Campus.stageNext  = $('#menu-stage-next');
+	Campus.label      = $('#menu-label-main');
+	Campus.labelStage = $('#menu-label-stage');
+	Campus.menuPages  = $('#menu-pages');
 
 	Campus.label.click(function(){
 		Campus.menu.show('main');
@@ -343,8 +343,8 @@ Campus.menuInit = function(){
 	// to toggle away from previous state)
 	Campus.menuHidden = $.cookie('hide_menu') === 'true' ? false : true;
 	menuToggle();
-	Campus.menu.find('#menu-hide').click(menuToggle);
-	Campus.menu.find('#menu-screen').click(menuToggle);
+	$('#menu-hide').click(menuToggle);
+	$('#menu-screen').click(menuToggle);
 };
 
 
@@ -364,13 +364,8 @@ Campus.layers = {
 	
 	/* Google's traffic layer */
 	traffic : {
-		loaded : false,
-		layer  : { setMap:function(){} },
+		layer  : new google.maps.TrafficLayer(),
 		update : function() {
-			if(!this.loaded){
-				this.layer  = new google.maps.TrafficLayer();
-				this.loaded = true;
-			}
 			var on = Campus.settings.traffic;
 			if(on){
 				this.layer.setMap(Campus.map);
