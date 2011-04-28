@@ -29,11 +29,14 @@
 			<a class="item" href="{% url buildings %}">Building list</a>
 			<a class="item" href="{% url organizations %}">Dept/Organizations</a>
 			
-			<label><input type="checkbox" id="parking"> Parking</label>
-			<label class="disabled"><input type="checkbox" disabled="disabled"> Entrances/Exits</label>
-			<label><input type="checkbox" id="buildings"> Buildings</label>
-			<label><input type="checkbox" id="sidewalks"> Walking Paths</label>
-			
+			<div class="item">
+				<label><input type="checkbox" id="parking"> Parking</label>
+				<label><input type="checkbox" id="traffic"> Traffic</label>
+				<label><input type="checkbox" id="bikeracks"> Bike Racks</label>
+				<label><input type="checkbox" id="sidewalks"> Walking Paths</label>
+				<label><input type="checkbox" id="emergency_phones"> Emergency Assistance</label>
+				<div class="clear"></div>
+			</div>
 			
 			<div class="more-menu">
 				<span>&nbsp;</span>
@@ -44,11 +47,13 @@
 	
 		<div id="menu-2" class="slide">
 			<h3>Map view options:</h3>
-			<label><input type="checkbox" id="traffic"> Traffic</label>
-			<label><input type="checkbox" id="bikeracks"> Bike Racks</label>
-			<label><input type="checkbox" id="emergency_phones"> Emergency Assistance</label>
-		
+			<div class="item">
+				<label><input type="checkbox" id="buildings"> Buildings</label>
+				<div class="clear"></div>
+			</div>
+			
 			<h3>Coming Soon:</h3>
+			<label class="disabled"><input type="checkbox" disabled="disabled"> Entrances/Exits</label>
 			<label class="disabled"><input type="checkbox" disabled="disabled"> Food</label>
 			<label class="disabled"><input type="checkbox" disabled="disabled"> Housing</label>
 			<label class="disabled"><input type="checkbox" disabled="disabled"> Shuttle Routes</label>
