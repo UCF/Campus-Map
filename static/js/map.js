@@ -117,7 +117,6 @@ Campus.maps = {
 			Campus.map.mapTypes.set('illustrated',Campus.maps.imap_type);
 			google.maps.event.addListener(Campus.map, 'maptypeid_changed', function() {
 				// TODO: fix building toggling so it doesn't change zoom
-				// TODO: this also breaks traffic
 				var type = Campus.map.mapTypeId;
 				var options = (type === 'illustrated') ? Campus.maps.imap_options : Campus.maps.gmap_options;
 				//Campus.map.setOptions(options); //super slow
