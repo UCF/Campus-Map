@@ -170,7 +170,7 @@ footer dd { padding:8px 0 0 8px; margin:0; }
 #menu-pages a:hover { background-position: 0 -40px; }
 
 #menu-window { width:2000px; position:relative; margin-left:-246px;  }
-#menu .slide { padding:8px 8px 18px 8px; width:214px; float:left; position:relative; }
+#menu .slide { padding:8px 8px 23px 8px; width:214px; float:left; position:relative; }
 #menu #menu-stage-next { min-height:50px; width:0px; overflow:hidden; }
 #menu-screen { display:none; }
 #menu-screen:hover { cursor:pointer; }
@@ -181,9 +181,9 @@ footer dd { padding:8px 0 0 8px; margin:0; }
 .closed #menu-hide { background-position:center -12px; }
 .closed #menu #menu-screen { display:block; position:absolute; top:0; left:0; height:30px; width:230px; z-index:10; }
 
-#menu .more-menu { padding:3px 0; font-size:11px; position:absolute; width:230px; height:13px; overflow:hidden; bottom:0; left:0; }
+#menu .more-menu { padding:0 0 4px; font-size:11px; position:absolute; width:230px; height:15px; overflow:hidden; bottom:0; left:0; }
 #menu .more-menu span { display:block; width:104px; padding:0 5px; float:left; }
-#menu .more-menu a { color:black; display:block; width:104px; padding:0 5px; height:13px; float:left; }
+#menu .more-menu a { color:black; display:block; width:104px; padding:0 5px; height:15px; float:left; }
 #menu .more-menu a.next { text-align:right; }
 #menu .more-menu a:hover { color:#C30202; }
 
