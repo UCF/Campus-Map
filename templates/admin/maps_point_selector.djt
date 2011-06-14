@@ -89,13 +89,15 @@ $(document).ready(function(){
 /* Illustrated Map */	 
 $(document).ready(function(){
 	/**************************************************************************\
-		See media/js/illustrated.js for better documentation
+		See static/js/map.js for better documentation
 	\**************************************************************************/
 	var location = {
 		x : {{original.illustrated_point|default:'[null,null]'}}[0],
 		y : {{original.illustrated_point|default:'[null,null]'}}[1],
 		name : "{{original.name}}"
 	};
+	
+	if(!location.x || !location.y) return;
 	
 	var CoordMapType= function(){};
 	
