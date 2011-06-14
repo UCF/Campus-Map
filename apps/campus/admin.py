@@ -7,7 +7,7 @@ class BuildingAdmin(admin.ModelAdmin):
 	prepopulated_fields = {'image':('name',)}
 	fields = ('name', 'number', 'abbreviation', 'image', 'description', 'profile', 'googlemap_point', 'illustrated_point', 'poly_coords')
 	actions = None
-	#change_form_template = 'admin/campus_location.djt';
+	change_form_template = 'admin/maps_point_selector.djt';
 	
 admin.site.register(Building, BuildingAdmin)
 
