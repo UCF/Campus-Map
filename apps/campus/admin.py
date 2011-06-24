@@ -26,3 +26,12 @@ class LocationAdmin(admin.ModelAdmin):
 	actions = None
 	change_form_template = 'admin/maps_point_selector.djt';
 admin.site.register(Location, LocationAdmin)
+
+
+
+
+class GroupAdmin(admin.ModelAdmin):
+	search_fields = ('name',)
+	ordering = ('name',)
+	filter_horizontal = ('locations',)
+admin.site.register(Group, GroupAdmin)

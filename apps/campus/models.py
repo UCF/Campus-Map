@@ -1,5 +1,6 @@
 from django.db import models
 from tinymce import models as tinymce_models
+from django.contrib.contenttypes.models import ContentType
 
 class CommonLocation(models.Model):
 	name              = models.CharField(max_length=255)
@@ -226,3 +227,33 @@ class BikeRack(CommonLocation):
 
 class EmergencyPhone(CommonLocation):
 	pass
+
+
+
+class LocationManager(models.Manager):
+	pass
+	def get_query_set(self):
+		''' Ensure All Locations are Groupable '''
+		for l in Building.objects.all():
+			location_type = ContentType.objects.get_for_model(l)
+			gl = GroupedItem.objects.filter(content_type__pk=location_type.id, object_id=l.id)
+			if not gl:
+				print "no location"
+			else:
+				print "must create {0}".format(l)
+		return super(LocationManager, self).get_query_set()
+		
+class GroupedLocation(models.Model):
+	object_id = models.CharField(max_length=255)
+	content_type = models.ForeignKey(ContentType)
+	objects = LocationManager()
+	def __unicode__(self):
+		return str(self.pk) + ' ' + self.content_object.__unicode__()
+
+class Group(models.Model):
+	name = models.CharField(max_length=80, unique=True)
+	locations = models.ManyToManyField(GroupableLocation, blank=True)
+	def create(*args, **kwargs):
+		print "CREATE WORKS"
+		return Group(*args, **kwargs)
+	create = staticmethod(create)
