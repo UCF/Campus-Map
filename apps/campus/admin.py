@@ -34,6 +34,7 @@ class GroupAdmin(admin.ModelAdmin):
 	search_fields = ('name',)
 	ordering = ('name',)
 	filter_horizontal = ('locations',)
+	actions = None
 	def get_form(self, request, obj=None, **kwargs):
 		
 		''' ensure all campus locations are groupable '''
