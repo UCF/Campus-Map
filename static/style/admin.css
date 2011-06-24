@@ -25,3 +25,10 @@
 
 code { font-weight:bold;color:#21759B;  }
 .caution { color:#993333; }
+
+
+/* create groups */
+#group_form .selector { width:100% !important; float:none; margin:0 auto;  }
+#group_form .selector-available { width:40%; }
+#group_form .selector-chosen    { width:40%; }
+#group_form .selector select    { width:100%; }

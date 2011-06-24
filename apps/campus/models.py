@@ -1,6 +1,7 @@
 from django.db import models
 from tinymce import models as tinymce_models
 from django.contrib.contenttypes.models import ContentType
+from django.contrib.contenttypes import generic
 
 class CommonLocation(models.Model):
 	name              = models.CharField(max_length=255)
@@ -230,29 +231,28 @@ class EmergencyPhone(CommonLocation):
 
 
 
-class LocationManager(models.Manager):
-	pass
-	def get_query_set(self):
-		''' Ensure All Locations are Groupable '''
-		for l in Building.objects.all():
-			location_type = ContentType.objects.get_for_model(l)
-			gl = GroupedItem.objects.filter(content_type__pk=location_type.id, object_id=l.id)
-			if not gl:
-				print "no location"
-			else:
-				print "must create {0}".format(l)
-		return super(LocationManager, self).get_query_set()
-		
 class GroupedLocation(models.Model):
-	object_id = models.CharField(max_length=255)
+	object_pk    = models.CharField(max_length=255)
 	content_type = models.ForeignKey(ContentType)
-	objects = LocationManager()
+	content_object = generic.GenericForeignKey('content_type', 'object_pk')
 	def __unicode__(self):
-		return str(self.pk) + ' ' + self.content_object.__unicode__()
+		loc      = self.content_object
+		loc_name = str(loc)
+		if not loc_name:
+			loc_name = "#{0}".format(loc.pk)
+		if hasattr(loc, 'abbreviation') and str(loc.abbreviation):
+			loc_name = "{0} ({1})".format(loc_name, loc.abbreviation)
+		if hasattr(loc, 'number'):
+			loc_name = "{0} | {1}".format(loc_name, loc.number)
+		
+		
+		
+		loc_class = loc.__class__.__name__
+		return "{0} | {1}".format(loc_class, loc_name)
 
 class Group(models.Model):
 	name = models.CharField(max_length=80, unique=True)
-	locations = models.ManyToManyField(GroupableLocation, blank=True)
+	locations = models.ManyToManyField(GroupedLocation, blank=True)
 	def create(*args, **kwargs):
 		print "CREATE WORKS"
 		return Group(*args, **kwargs)
