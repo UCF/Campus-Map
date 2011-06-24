@@ -1,4 +1,5 @@
 from models import *
+from django.db import models
 from django.contrib import admin
 import campus
 import inspect
@@ -29,9 +30,6 @@ class LocationAdmin(admin.ModelAdmin):
 	change_form_template = 'admin/maps_point_selector.djt';
 admin.site.register(Location, LocationAdmin)
 
-
-
-
 class GroupAdmin(admin.ModelAdmin):
 	search_fields = ('name',)
 	ordering = ('name',)
@@ -39,15 +37,10 @@ class GroupAdmin(admin.ModelAdmin):
 	def get_form(self, request, obj=None, **kwargs):
 		
 		''' ensure all campus locations are groupable '''
-		for key in dir(campus.models):
-			attr = getattr(campus.models, key)
-			if (not inspect.isclass(attr)
-				or not issubclass(attr, campus.models.CommonLocation) 
-				or attr._meta.abstract ):
+		for ct in ContentType.objects.filter(app_label="campus"):
+			model = models.get_model("campus", ct.model)
+			if not issubclass(model, campus.models.CommonLocation):
 				continue
-			
-			# the attribute is a model we'd like to use for grouping 
-			model = attr
 			for loc in model.objects.all():
 				loc_type = ContentType.objects.get_for_model(loc)
 				gl = GroupedLocation.objects.filter(content_type__pk=loc_type.pk, object_pk=loc.pk)

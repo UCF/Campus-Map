@@ -229,8 +229,6 @@ class BikeRack(CommonLocation):
 class EmergencyPhone(CommonLocation):
 	pass
 
-
-
 class GroupedLocation(models.Model):
 	object_pk    = models.CharField(max_length=255)
 	content_type = models.ForeignKey(ContentType)
@@ -244,16 +242,11 @@ class GroupedLocation(models.Model):
 			loc_name = "{0} ({1})".format(loc_name, loc.abbreviation)
 		if hasattr(loc, 'number') and str(loc.number):
 			loc_name = "{0} | {1}".format(loc_name, loc.number)
-		
-		
-		
 		loc_class = loc.__class__.__name__
 		return "{0} | {1}".format(loc_class, loc_name)
 
 class Group(models.Model):
 	name = models.CharField(max_length=80, unique=True)
 	locations = models.ManyToManyField(GroupedLocation, blank=True)
-	def create(*args, **kwargs):
-		print "CREATE WORKS"
-		return Group(*args, **kwargs)
-	create = staticmethod(create)
+	def __unicode__(self):
+		return self.name
