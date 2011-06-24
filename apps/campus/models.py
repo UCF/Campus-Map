@@ -242,7 +242,7 @@ class GroupedLocation(models.Model):
 			loc_name = "#{0}".format(loc.pk)
 		if hasattr(loc, 'abbreviation') and str(loc.abbreviation):
 			loc_name = "{0} ({1})".format(loc_name, loc.abbreviation)
-		if hasattr(loc, 'number'):
+		if hasattr(loc, 'number' and str(loc.number)):
 			loc_name = "{0} | {1}".format(loc_name, loc.number)
 		
 		
