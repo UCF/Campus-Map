@@ -747,7 +747,9 @@ Campus.resize = function(){
 \******************************************************************************/
 Campus.search = function(){
 	
-	var search = $(Campus.searchUI);
+	var search = $(Campus.searchUI),
+		search_timer = null,
+		search_typing_timeout = 400; // milliseconds
 	var input  = search.find('input');
 	
 	search.keydown(function(event){
@@ -837,23 +839,32 @@ Campus.search = function(){
 			}
 		}
 		
-		search.find('ul').html('<li><a data-pk="searching">Searching&hellip;</a></li>');
-		Campus.ajax = $.ajax({
-			url: Campus.urls.search + '.list',
-			data: {q:q},
-			success: function(html){
-				//show results
-				$("#search ul").html(html);
-				//attach event to open info window
-				$('#search li:not(.more)').click(function(event){
-					event.preventDefault();
-					var pk = $(this).find('a').attr('data-pk');
-					$('#search li').removeClass('hover');
-					$(this).addClass('hover');
-					Campus.info(pk, true);
+		function _do_search() {
+			if(q.length > 2) {
+				search.find('ul').html('<li><a data-pk="searching">Searching&hellip;</a></li>');
+				Campus.ajax = $.ajax({
+					url: Campus.urls.search + '.list',
+					data: {q:q},
+					success: function(html){
+						//show results
+						$("#search ul").html(html);
+						//attach event to open info window
+						$('#search li:not(.more)').click(function(event){
+							event.preventDefault();
+							var pk = $(this).find('a').attr('data-pk');
+							$('#search li').removeClass('hover');
+							$(this).addClass('hover');
+							Campus.info(pk, true);
+						});
+					}
 				});
+			} else {
+				search.find('ul').html('<li><a data-pk="longer-search-term">Longer search term required</a></li>');
 			}
-		});
+		}
+		
+		clearTimeout(search_timer);
+		search_timer = setTimeout(_do_search,search_typing_timeout);
 
 	});//keyup
 	
