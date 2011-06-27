@@ -840,7 +840,7 @@ Campus.search = function(){
 		}
 		
 		function _do_search() {
-			if(q.length > 2) {
+			if(q.length > 3) {
 				search.find('ul').html('<li><a data-pk="searching">Searching&hellip;</a></li>');
 				Campus.ajax = $.ajax({
 					url: Campus.urls.search + '.list',
@@ -859,7 +859,7 @@ Campus.search = function(){
 					}
 				});
 			} else {
-				search.find('ul').html('<li><a data-pk="longer-search-term">Longer search term required</a></li>');
+				search.find('ul').html('<li><a data-pk="longer-search-term">A longer search term is required</a></li>');
 			}
 		}
 		
