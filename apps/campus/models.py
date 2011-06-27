@@ -84,6 +84,7 @@ class CommonLocation(models.Model):
 		abstract = True
 
 class Location(CommonLocation):
+	''' I don't like this name.  I want to change it to something else '''
 	slug              = models.SlugField(max_length=255, primary_key=True, help_text='<strong class="caution">Caution</strong>: changing may break external resources (used for links and images)')
 	
 	class Meta:
