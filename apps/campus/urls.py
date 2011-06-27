@@ -4,7 +4,6 @@ import settings
 urlpatterns = patterns('campus.views',
 	url(r'^(\.(?P<format>json|txt))?$', 'home', { 'points' : True }, name="home"),
 	url(r'^buildings/(\.(?P<format>json|kml))?$', 'buildings', name="buildings"),
-	url(r'^search/(\.(?P<format>json|list))?$', 'search', name="search"),
 	url(r'^sidewalks/(\.(?P<format>json|kml|txt))?$', 'sidewalks', name="sidewalks"),
 	url(r'^bikeracks/(\.(?P<format>json|txt))?$', 'bikeracks', name="bikeracks"),
 	url(r'^emergency-phones/(\.(?P<format>json|txt))?$', 'emergency_phones', name="emergency_phones"),

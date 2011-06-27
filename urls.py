@@ -14,6 +14,10 @@ urlpatterns = patterns('',
 	# django-tinymce
 	(r'^tinymce/', include('tinymce.urls')),
 	
+	# search
+	url(r'^search/(\.(?P<format>json|list))?$', 'views.search', name="search"),
+	
+	# org individual page and org profile pages
 	url(r'^organizations/(\.(?P<format>json|txt))?$', 'views.organizations', name="organizations"),
 	url(r'^organization/(?P<id>\d+)/([^/]+/)?(\.(?P<format>json|txt))?$', 'views.organization', name="org"),
 	
