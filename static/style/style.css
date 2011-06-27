@@ -187,6 +187,12 @@ footer dd { padding:8px 0 0 8px; margin:0; }
 #menu .more-menu a.next { text-align:right; }
 #menu .more-menu a:hover { color:#C30202; }
 
+.info-window h3 { margin:0; padding:0; }
+.info-window ul { list-style:none; margin:0; padding:0; }
+.info-window ul li { font-size:11px; list-style:none; padding-bottom:4px; }
+.info-window ul li a { border-bottom:0; line-height:11px;  }
+.info-window ul li a:hover { border-bottom:1px dotted; }
+
 /******************************************************************************\
     Weather (width is set in template tag)
 \******************************************************************************/

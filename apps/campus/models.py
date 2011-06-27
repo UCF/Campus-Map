@@ -124,6 +124,26 @@ class Building(CommonLocation):
 		# change all numbers to be lowercase
 		self.number = self.number.lower()
 	
+	def _orgs(self):
+		''' retruns a subset of orgs '''
+		from apps.views import get_orgs
+		building_orgs = []
+		count    = 0
+		overflow = False
+		for o in get_orgs()['results']:
+			if self.pk == o['bldg_id']:
+				building_orgs.append(o)
+				count += 1
+			if(count >= 5):
+				overflow = True
+				break
+		return {
+			"results" : building_orgs,
+			"overflow": overflow
+		}
+	orgs = property(_orgs)
+	
+	
 	class Meta:
 		ordering = ("name",)
 

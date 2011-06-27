@@ -10,6 +10,20 @@
 				{# <p><a href="{% url admin:app_list 'campus'%}building/{{location.pk}}/">add a description</a></p> #}
 			{% endif %}
 		{% endif %}
+		
+		{% if location.orgs.results %}
+			<h3>Organizations</h3>
+			<ul>
+			{% for o in location.orgs.results %}
+				<li><a href="{% url org o.id %}{{o.name|lower|slugify}}/">{{o.name}}</a></li>
+			{% endfor %}
+			{% if location.orgs.overflow %}
+				<li><a href="">More...</a></li>
+			{% endif %}
+			</ul>
+		{% endif %}
+		
+		
 	</div>
 </div>
 {% endif %}
