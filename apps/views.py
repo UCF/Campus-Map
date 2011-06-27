@@ -1,7 +1,7 @@
 from django.http      import HttpResponse, Http404
 from django.views.generic.simple import direct_to_template as render
 from django.template import TemplateDoesNotExist
-
+from django.core.urlresolvers import reverse
 from django.core.cache import cache
 import settings, urllib, json, re
 
