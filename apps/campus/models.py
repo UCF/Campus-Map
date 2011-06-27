@@ -2,6 +2,8 @@ from django.db import models
 from tinymce import models as tinymce_models
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes import generic
+from django.core.urlresolvers import reverse
+from django.template.defaultfilters import slugify
 
 class CommonLocation(models.Model):
 	name              = models.CharField(max_length=255)
@@ -112,11 +114,14 @@ class Building(CommonLocation):
 	title = property(_title)
 	
 	def _link(self):
-		from django.core.urlresolvers import reverse
-		from django.template.defaultfilters import slugify
 		url = reverse('location', kwargs={'loc':self.number})
 		return '<a href="%s%s/" data-pk="%s">%s</a>' % (url, slugify(self.title), self.number, self.title)
 	link = property(_link)
+	
+	def _profile_link(self):
+		url = reverse('location', kwargs={'loc':self.number})
+		return '%s%s/' % (url, slugify(self.title))
+	profile_link = property(_profile_link)
 	
 	def clean(self, *args, **kwargs):
 		super(Building, self).clean(*args, **kwargs)

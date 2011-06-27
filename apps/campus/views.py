@@ -289,7 +289,7 @@ def emergency_phones(request, format=None):
 	return home(request, emergency_phones=True, phone_geo=obj)
 
 
-def location_html(loc, request):
+def location_html(loc, request, orgs=True):
 	'''
 	TODO
 	This really should be a model method, but it's time to go home
@@ -305,6 +305,7 @@ def location_html(loc, request):
 	t = get_template(template)
 	c = Context({
 		'location'  : loc,
+		'orgs'      : orgs,
 		'base_url'  : base_url,
 		'debug'     : settings.DEBUG,
 		'MEDIA_URL' : settings.MEDIA_URL })
@@ -316,7 +317,6 @@ def location(request, loc, format=None):
 	and organizations, maybe even people too
 	'''
 	from campus.models import Building, Location
-	
 	try:
 		location = Building.objects.get(pk=loc)
 	except Building.DoesNotExist:
@@ -325,12 +325,14 @@ def location(request, loc, format=None):
 		except Location.DoesNotExist:
 			raise Http404()
 	
+	location_type = location.__class__.__name__
 	html = location_html(location, request)
 	location = location.json()
 	location['info'] = html
 	base_url = request.build_absolute_uri('/')[:-1]
 	location['marker'] = base_url + settings.MEDIA_URL + 'images/markers/yellow.png'
 	
+	# API views
 	if format == 'bubble':
 		return render(request, template, context)
 	
@@ -343,7 +345,14 @@ def location(request, loc, format=None):
 		response['Content-type'] = 'application/json'
 		return response
 	
-	return home(request, location=location)
+	# HTML view
+	if location_type == "Building":
+		# show building profile
+		context = { 'location' : location }
+		return render(request, 'campus/building.djt', context)
+	else:
+		# show location on the map
+		return home(request, location=location)
 	
 def regional_campuses(request, campus=None, format=None):
 	from campus.models import RegionalCampus
