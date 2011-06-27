@@ -1,0 +1,20 @@
+{% extends "base.djt"%}
+
+{% block wrap %}
+
+<div id="location-profile">
+	
+	<h2>{{ location.name }}</h2>
+	<div class="span-12">
+		Coming Soon... building profile.
+		Show on map...
+	</div>
+	<div class="span-10">
+		
+		<!-- right -->
+		
+	</div>
+	<div class="clear"></div>
+	
+</div><!--/location-->
+{% endblock %}
