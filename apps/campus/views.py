@@ -311,6 +311,21 @@ def location_html(loc, request, orgs=True):
 		'MEDIA_URL' : settings.MEDIA_URL })
 	return t.render(c)
 
+def backward_location(request):
+	'''
+	Wraps location view to enable backwards compatibility with old campus
+	map URLs.
+	Example: http://campusmap.ucf.edu/flash/index.php?select=b_8118
+	'''
+	
+	select = request.GET.get('select', None)
+	
+	if select is not None:
+		match = re.search('b_(\d+)', select)
+		if match is not None:
+			return location(request, match.groups()[0])
+	raise Http404()
+			
 def location(request, loc, format=None):
 	'''
 	Will one day be a wrapper for all data models, searching over all locations
