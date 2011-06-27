@@ -16,8 +16,8 @@ a:active, a:focus { outline:0; }
 h1 { font-family:"Adobe Caslon Pro", "Adobe Caslon", "Caslon Pro", caslon, georgia, serif;}
 h1 a { text-decoration:none; color:black; }
 h1 a:hover { color:#D10020; }
-h2 { font-size:23px; color:#FF7700; font-family: "Arial Black", arial, sans-serif; margin:5px 0 15px; }
-h3 { font-family: "Arial Black", arial, sans-serif; }
+h2 { font-size:23px; color:#FF7700; font-family: 'Helvetica Neue Light', 'Helvetica Light', 'HelveticaLight', 'Helvetica-Light', "Helvetica Neue", Helvetica; font-weight:200; letter-spacing:1px; margin:5px 0 10px; }
+h3 { font-family: Helvetica, sans-serif; }
 h3 a { text-decoration:none; }
 h4 { font-family: "Trebuchet MS", sans-serif; }
 
