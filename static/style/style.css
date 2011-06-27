@@ -99,6 +99,8 @@ footer dd { padding:8px 0 0 8px; margin:0; }
 \******************************************************************************/
 #org ul li { padding-bottom:10px; }
 #org-building h2 { font-size:14px; color:black; margin:0; padding:0 0 8px; }
+#locations h2 a { color:#FF7700; text-decoration:none; border-bottom:1px dotted #FFAF6B; }
+#locations h2 a:hover { color:#F30; border-bottom:1px solid #FF6748; }
 
 
 /******************************************************************************\

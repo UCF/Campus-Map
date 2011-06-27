@@ -1,0 +1,77 @@
+{% extends "base.djt"%}
+
+{% block wrap %}
+	
+	<div class="span-12">
+		
+		<h2> Buildings </h2>
+
+		{% if buildings %}
+			<ul>
+			{% for b in buildings %}
+				<li>{{b.link|safe}}</li>
+			{% endfor %}
+			</ul>
+		{% else %} 
+			<p>No buildings found.</p>
+		{% endif %}
+		
+		
+	</div>
+	<div class="span-10" id="locations">
+		
+		<h2>Greater UCF</h2>
+		{% if locations %}
+			<ul>
+			{% for l in locations %}
+				<li>{{l}}</li>
+			{% endfor %}
+			</ul>
+		{% else %} 
+			<p>No locations found.</p>
+		{% endif %}
+		
+		
+		<h2> Groups </h2>
+		{% if groups %}
+			<ul>
+			{% for g in groups %}
+				<li>{{g}}</li>
+			{% endfor %}
+			</ul>
+		{% else %} 
+			<p>No groups found.</p>
+		{% endif %}
+		
+		<h2><a href="{% url regional %}">Regional Campuses</a></h2>
+		{% if campuses %}
+			<ul>
+			{% for c in campuses %}
+				<li><a href="{% url regional %}{{c.slug}}/">{{c.name}}</a></li>
+			{% endfor %}
+			</ul>
+		{% else %} 
+			<p>No campuses found.</p>
+		{% endif %}
+		
+		
+		<h2>Miscellaneous</h2>
+		<ul>
+			<li><a href="{% url parking %}">Parking</a></li>
+			<li><a href="{% url bikeracks %}">Bike Racks</a></li>
+			<li><a href="{% url emergency_phones %}">Blue Light Emergency Phones</a></li>
+			<li><a href="{% url sidewalks %}">Walking Paths</a></li>
+			
+			
+			
+			
+		</ul>
+		
+	</div>
+	<div class="clear"></div>
+	
+		
+	
+	
+	
+{% endblock %}
