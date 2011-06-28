@@ -1,4 +1,4 @@
-<!DOCTYPE HTML>
+{% load weather %}<!DOCTYPE HTML>
 <html>
 	<head>
 		
@@ -52,6 +52,7 @@
 	
 	<header>
 		<h1><a href="{% url home %}">UCF Campus Map</a></h1>
+		{% weather %}
 		{% block nav %}
 		<nav>
 			<ol>

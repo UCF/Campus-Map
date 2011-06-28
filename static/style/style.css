@@ -16,8 +16,8 @@ a:active, a:focus { outline:0; }
 h1 { font-family:"Adobe Caslon Pro", "Adobe Caslon", "Caslon Pro", caslon, georgia, serif;}
 h1 a { text-decoration:none; color:black; }
 h1 a:hover { color:#D10020; }
-h2 { font-size:23px; color:#FF7700; font-family: "Arial Black", arial, sans-serif; margin:5px 0 15px; }
-h3 { font-family: "Arial Black", arial, sans-serif; }
+h2 { font-size:23px; color:#FF7700; font-family: 'Helvetica Neue Light', 'Helvetica Light', 'HelveticaLight', 'Helvetica-Light', "Helvetica Neue", Helvetica; font-weight:200; letter-spacing:1px; margin:5px 0 10px; }
+h3 { font-family: Helvetica, sans-serif; }
 h3 a { text-decoration:none; }
 h4 { font-family: "Trebuchet MS", sans-serif; }
 
@@ -58,7 +58,7 @@ a.button { vertical-align:middle; text-decoration:none; color:#333; font-size:12
 .ie6 .clear { height:1px; font-size:1px; }
 
 
-header { width:932px; padding:0 9px; margin:0 auto; }
+header { width:932px; padding:0 9px; margin:0 auto; position:relative; }
 header h1 { font-weight:normal; border-bottom:1px dotted black; padding-bottom:10px; margin:20px 0 10px; font-size:28px; }
 nav ol { list-style:none; margin:0; color:#6d6e71; padding:0;  }
 nav ol li { display:inline-block; float:left; margin-right:10px; }
@@ -95,13 +95,20 @@ footer dd { padding:8px 0 0 8px; margin:0; }
 
 
 /******************************************************************************\
-    Dept / Org
+    Organizations and Location
 \******************************************************************************/
-#org ul li { padding-bottom:10px; }
-#org-building h2 { font-size:14px; color:black; margin:0; padding:0 0 8px; }
 #locations h2 a { color:#FF7700; text-decoration:none; border-bottom:1px dotted #FFAF6B; }
 #locations h2 a:hover { color:#F30; border-bottom:1px solid #FF6748; }
-
+#profile ul li { padding-bottom:10px; }
+#profile ul.grey { color:#A0A0A0; }
+#profile ul.grey li { padding-bottom:4px; }
+#profile ul.grey li a { border-bottom:1px dotted #A0A0A0; }
+#profile ul.grey li a:hover { border-bottom:1px dotted #C30202; }
+#profile p { line-height:1.4; }
+#profile h2 { font-size:28px; text-transform:uppercase; padding-bottom:10px; }
+#profile h2 span { display:block; font-weight:10px; color:#919191; font-weight:bold; font-size:16px; line-height:18px; text-transform:capitalize; letter-spacing:0; }
+#profile h3 { margin-top:0; }
+#canvas { width:100%; height:300px; margin-top:15px; }
 
 /******************************************************************************\
     Search
@@ -189,6 +196,7 @@ footer dd { padding:8px 0 0 8px; margin:0; }
 #menu .more-menu a.next { text-align:right; }
 #menu .more-menu a:hover { color:#C30202; }
 
+.info-window h2 { font-weight:bold; }
 .info-window h3 { margin:0; padding:0; }
 .info-window ul { list-style:none; margin:0; padding:0; }
 .info-window ul li { font-size:11px; list-style:none; padding-bottom:4px; }
@@ -198,7 +206,8 @@ footer dd { padding:8px 0 0 8px; margin:0; }
 /******************************************************************************\
     Weather (width is set in template tag)
 \******************************************************************************/
-#weather { position:absolute; top:18px; right:0; }
+#weather { position:absolute; top:0; right:0; }
+#map #weather { top:19px; }
 #weather div { background-repeat:no-repeat; }
 .ie8 #weather .navweatherimage { background:transparent !important; }
 #weather .navweatherimage { width:61px; overflow:hidden; display:block; height:34px; float:left; }
