@@ -70,11 +70,11 @@ def home(request, format=None, **kwargs):
 	version = 15 # clears google's cache
 	# TODO: https://groups.google.com/group/kml-support-getting-started/browse_thread/thread/757295a81285c8c5
 	if settings.GOOGLE_CAN_SEE_ME:
-		buildings_kml = "%s.kml?v=%s" % (request.build_absolute_uri(reverse('buildings')), version)
+		buildings_kml = "%s.kml?v=%s" % (request.build_absolute_uri(reverse('locations')), version)
 		sidewalks_kml = "%s.kml?v=%s" % (request.build_absolute_uri(reverse('sidewalks')), version)
 		parking_kml   = "%s.kml?v=%s" % (request.build_absolute_uri(reverse('parking')), version)
 	else:
-		buildings_kml = "%s%s.kml?v=%s" % (settings.GOOGLE_LOOK_HERE, reverse('buildings'), version)
+		buildings_kml = "%s%s.kml?v=%s" % (settings.GOOGLE_LOOK_HERE, reverse('locations'), version)
 		sidewalks_kml = "%s%s.kml?v=%s" % (settings.GOOGLE_LOOK_HERE, reverse('sidewalks'), version)
 		parking_kml    = "%s%s.kml?v=%s" % (settings.GOOGLE_LOOK_HERE, reverse('parking'), version)
 	loc = "%s.json" % reverse('location', kwargs={'loc':'foo'})
@@ -93,10 +93,13 @@ def home(request, format=None, **kwargs):
 	return render(request, 'campus/base.djt', context)
 
 
-def buildings(request, format=None):
+def locations(request, format=None):
 	
-	from campus.models import Building
+	from campus.models import Building, Location, RegionalCampus, Group
 	buildings = Building.objects.exclude(googlemap_point__isnull=True)
+	locations = Location.objects.all()
+	campuses  = RegionalCampus.objects.all()
+	groups    = Group.objects.all()
 	
 	if format == 'json':
 		arr = []
@@ -133,8 +136,13 @@ def buildings(request, format=None):
 		response['Content-type'] = 'application/vnd.google-earth.kml+xml'
 		return response
 	
-	context = { 'buildings' : buildings }
-	return render(request, 'campus/buildings.djt', context)
+	context = { 
+		'buildings' : buildings,
+		'locations' : locations,
+		'campuses'  : campuses,
+		'groups'    : groups
+	}
+	return render(request, 'campus/locations.djt', context)
 
 def parking(request, format=None):
 	
@@ -364,7 +372,7 @@ def location(request, loc, format=None):
 	if location_type == "Building":
 		# show building profile
 		context = { 'location' : location }
-		return render(request, 'campus/building.djt', context)
+		return render(request, 'campus/location.djt', context)
 	else:
 		# show location on the map
 		return home(request, location=location)

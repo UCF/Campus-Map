@@ -10,7 +10,7 @@
 				{# <p><a href="{% url admin:app_list 'campus'%}building/{{location.pk}}/">add a description</a></p> #}
 			{% endif %}
 		{% endif %}
-		<p><a href="{{location.profile_link}}">Building Profile</a></p>
+		<p><a href="{{location.profile_link}}">Location Profile</a></p>
 		
 		{% if orgs %}
 			{% if location.orgs.results %}

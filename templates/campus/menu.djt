@@ -26,8 +26,8 @@
 			<div class="item" id="item-desc">
 				<img src="{{MEDIA_URL}}images/buildings/_home.jpg">
 			</div>
-			<a class="item" href="{% url buildings %}">Building list</a>
-			<a class="item" href="{% url organizations %}">Dept/Organizations</a>
+			<a class="item" href="{% url locations %}">Locations &amp; Buildings</a>
+			<a class="item" href="{% url organizations %}">Organizations &amp; Depts</a>
 			
 			<label><input type="checkbox" id="parking"> Parking</label>
 			<label class="disabled"><input type="checkbox" disabled="disabled"> Entrances/Exits</label>
