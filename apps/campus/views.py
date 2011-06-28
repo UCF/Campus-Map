@@ -346,7 +346,6 @@ def location(request, loc, format=None):
 	try:
 		location = Building.objects.get(pk=loc)
 		location_orgs = location._orgs(limit=-1)['results']
-		print location_orgs
 	except Building.DoesNotExist:
 		try:
 			location = Location.objects.get(pk=loc)
