@@ -18,12 +18,12 @@ USE_I18N          = False
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
-	'django.template.loaders.filesystem.load_template_source',
+	'django.template.loaders.filesystem.Loader',
 	'django.template.loaders.app_directories.load_template_source',
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
-	"django.core.context_processors.auth",
+	"django.contrib.auth.context_processors.auth",
 	"django.core.context_processors.debug",
 	"django.core.context_processors.i18n",
 	"django.core.context_processors.media",
@@ -63,6 +63,62 @@ TINYMCE_DEFAULT_CONFIG = {
 	'theme_advanced_toolbar_align' : "left",
 	'theme_advanced_statusbar_location' : "bottom",
 	'theme_advanced_resizing' : True,
+}
+
+
+LOGGING = {
+	'version':1,
+	'disable_existing_loggers':True,
+	'filters': {
+		'require_debug_true': {
+			'()': 'logs.RequiredDebugTrue',
+		},
+		'require_debug_false': {
+			'()': 'logs.RequiredDebugFalse',
+		}
+	},
+	'formatters': {
+		'talkative': {
+			'format':'%(levelname)s: %(asctime)s %(module)s %(funcName)s %(message)s'
+		},
+		'concise': {
+			'format':'%(levelname)s: %(message)s (%(asctime)s)'
+		}
+	},
+	'handlers': {
+		'discard': {
+			'level':'DEBUG',
+			'class':'django.utils.log.NullHandler'
+		},
+		'console': {
+			'level':'DEBUG',
+			'class':'logging.StreamHandler',
+			'formatter':'concise',
+			'filters': ['require_debug_true']
+		},
+		'file': {
+			'level': 'INFO',
+			'class':'logging.FileHandler',
+			'filename':'logs/application.log',
+			'formatter':'concise',
+			'filters': ['require_debug_false']
+		}
+	},
+	'loggers': {
+		'django': {
+			'handlers':['discard'],
+			'propogate': True,
+			'level':'INFO'
+		},
+		'campus.views': {
+			'handlers':['console', 'file'],
+			'level':'DEBUG'
+		},
+		'views': {
+			'handlers':['console', 'file'],
+			'level':'DEBUG'
+		}
+	}
 }
 
 try:
