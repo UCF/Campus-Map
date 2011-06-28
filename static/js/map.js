@@ -876,9 +876,9 @@ Campus.search = function(){
 								// Highlight the query term
 								$.each(bldgs, function(index, bldg) {
 									//var params = extract_a_params(bldg.link);
-									var matches = bldg.link.match(/<a([^>]+)>/);
+									var matches = bldg.link.match(/<a([^>]+)>([^<]*<\/a>)/);
 									if(matches != null) {
-										bldg.link = '<a' + matches[1] + '>' + highlight_term(bldg.name, query) + '</a>';
+										bldg.link = '<a' + matches[1] + '>' + highlight_term(matches[2], query) + '</a>';
 									}
 								})
 												
