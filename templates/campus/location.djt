@@ -2,16 +2,27 @@
 
 {% block wrap %}
 
-<div id="location-profile">
+<div id="profile">
 	
-	<h2>{{ location.name }}</h2>
+	<h2><span>Location</span> {{ location.name }}</h2>
 	<div class="span-12">
-		Coming Soon... building profile.
-		Show on map...
-	</div>
-	<div class="span-10">
+	
+	<h3>Organizations</h3>
+	{% if orgs %}
+		<ul class="grey">
+		{% for o in orgs %}
+			<li><a href="{% url org o.id %}{{o.name|lower|slugify}}/">{{o.name}}</a></li>
+		{% endfor %}
+		</ul>
+	{% else %}
+		<p>This location does not have any organizations.</p>
+	{% endif %}
 		
-		<!-- right -->
+	</div>
+	<div class="span-10" id="profile-right">
+		
+		{% if location.image %}<img src="{{MEDIA_URL}}images/buildings/{{ location.image }}">{%else%}<img src="{{ base_url }}{{MEDIA_URL}}images/buildings/_no_image.jpg">{% endif %}
+		
 		
 	</div>
 	<div class="clear"></div>

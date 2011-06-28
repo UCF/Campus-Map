@@ -95,13 +95,20 @@ footer dd { padding:8px 0 0 8px; margin:0; }
 
 
 /******************************************************************************\
-    Dept / Org
+    Organizations and Location
 \******************************************************************************/
-#org ul li { padding-bottom:10px; }
-#org-building h2 { font-size:14px; color:black; margin:0; padding:0 0 8px; }
 #locations h2 a { color:#FF7700; text-decoration:none; border-bottom:1px dotted #FFAF6B; }
 #locations h2 a:hover { color:#F30; border-bottom:1px solid #FF6748; }
-
+#profile ul li { padding-bottom:10px; }
+#profile ul.grey { color:#A0A0A0; }
+#profile ul.grey li { padding-bottom:4px; }
+#profile ul.grey li a { border-bottom:1px dotted #A0A0A0; }
+#profile ul.grey li a:hover { border-bottom:1px dotted #C30202; }
+#profile p { line-height:1.4; }
+#profile h2 { font-size:34px; text-transform:uppercase; }
+#profile h2 span { display:block; font-weight:10px; color:#919191; font-weight:bold; font-size:18px; line-height:18px; text-transform:capitalize;}
+#profile-right { padding-top:16px; }
+#profile-right h2 { font-size:14px; color:black; margin:0; padding:0 0 8px; text-transform:none; }
 
 /******************************************************************************\
     Search
@@ -189,6 +196,7 @@ footer dd { padding:8px 0 0 8px; margin:0; }
 #menu .more-menu a.next { text-align:right; }
 #menu .more-menu a:hover { color:#C30202; }
 
+.info-window h2 { font-weight:bold; }
 .info-window h3 { margin:0; padding:0; }
 .info-window ul { list-style:none; margin:0; padding:0; }
 .info-window ul li { font-size:11px; list-style:none; padding-bottom:4px; }

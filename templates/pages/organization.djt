@@ -2,15 +2,17 @@
 
 {% block wrap %}
 
-<div id="org">
+<div id="profile">
 
-	<h2>{{ org.name }}</h2>
+	<h2><span>Organization</span> {{ org.name }}</h2>
 	
 	<div class="span-12">
 		
-		{{org.name}}<br>
-		{{org.phone}}<br>
-		{{org.building}} room {{org.room}}
+		<p>
+			{{org.name}}<br>
+			{{org.phone}}<br>
+			{{org.building}} room {{org.room}}
+		</p>
 	
 		{% if org.departments %}
 			<h3>Departments</h3>
@@ -25,8 +27,15 @@
 			</ul>
 		{% endif %}
 	</div>
-	<div class="span-10" id="org-building">
-		{{ building_html }}
+	<div class="span-10" id="profile-right">
+		
+		{% if building %}
+		<h3>Location</h3>
+		<h4>{{ building.link|safe}}</h4>
+		<div id="canvas"></div>
+		
+		{% endif %}
+		
 	</div>
 	<div class="clear"></div>
 </div><!--/org-->

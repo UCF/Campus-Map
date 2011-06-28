@@ -36,12 +36,9 @@ def organization(request, id, format=None):
 	try:
 		from campus.models import Building
 		building = Building.objects.get(pk=org['bldg_id'])
-		from campus.views import location_html
-		# TODO: make this a model method
-		building_html = location_html(building, request, orgs=False)
 	except Building.DoesNotExist:
 		pass
-	context = {'org': org, 'building':building, 'building_html': building_html }
+	context = {'org': org, 'building':building }
 	return render(request, "pages/organization.djt", context)
 
 

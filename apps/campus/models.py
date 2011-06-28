@@ -134,7 +134,7 @@ class Building(CommonLocation):
 		# change all numbers to be lowercase
 		self.number = self.number.lower()
 	
-	def _orgs(self):
+	def _orgs(self, limit=5):
 		''' retruns a subset of orgs '''
 		from apps.views import get_orgs
 		building_orgs = []
@@ -144,7 +144,7 @@ class Building(CommonLocation):
 			if self.pk == o['bldg_id']:
 				building_orgs.append(o)
 				count += 1
-			if(count >= 5):
+			if(limit > 0 and count >= limit):
 				overflow = True
 				break
 		return {

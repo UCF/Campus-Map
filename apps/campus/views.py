@@ -340,8 +340,13 @@ def location(request, loc, format=None):
 	and organizations, maybe even people too
 	'''
 	from campus.models import Building, Location
+	
+	
+	location_orgs = []
 	try:
 		location = Building.objects.get(pk=loc)
+		location_orgs = location._orgs(limit=-1)['results']
+		print location_orgs
 	except Building.DoesNotExist:
 		try:
 			location = Location.objects.get(pk=loc)
@@ -371,7 +376,10 @@ def location(request, loc, format=None):
 	# HTML view
 	if location_type == "Building":
 		# show building profile
-		context = { 'location' : location }
+		context = { 
+			'location' : location,
+			'orgs'     : location_orgs
+		}
 		return render(request, 'campus/location.djt', context)
 	else:
 		# show location on the map
