@@ -840,37 +840,102 @@ Campus.search = function(){
 		}
 		
 		function _do_search() {
-			if(q.length > 3) {
+			if(q.length > 2) {
 				search.find('ul').html('<li><a data-pk="searching">Searching&hellip;</a></li>');
 				Campus.ajax = $.ajax({
 					url: Campus.urls.search + '.json',
 					data: {q:q},
 					success: function(response, status){
 						
+						function highlight_term(string, term) {
+							// Wraps a specified term with start and end wraps. Preserves capitalization
+							var low_sub  = string.toLowerCase();
+							var term_loc = low_sub.indexOf(term.toLowerCase());
+							if(term_loc > - 1) {
+								return string.substr(0, term_loc) + '<span class="highlight">' + string.substr(term_loc, term.length) + '</span>' + string.substr(term_loc+ term.length);
+							} else {
+								return string;
+							}
+						}
+						
 						$('#search > ul').empty()
 						
-						var buildings = response.results
+						if (response.results != undefined && response.results.buildings != undefined) {
+							// Treat buildings as the top level element
+							var bldgs  = response.results.buildings,
+								orgs   = response.results.organizations,
+								phones = response.results.phonebook,
+								query  = response.query;
 						
-						if(buildings.length == 0) {
-							$('#search > ul').append('<li><a data-pk="null">No results</a></li>')
-						} else {
-							$.each(buildings, function(index, building) {
-								$('#search > ul').append('<li>' + building.link + '</li>');
-								if((index + 1) > 9) {
-									$('#search > ul').append('<li class="more"><a href="' + response.results_page_url + '" data-pk="more-results">More results &hellip;</a></li>');
-									return false;
-								}
+							// TODO: Implement people output
+						
+							if(bldgs.length == 0 && orgs.length == 0) {
+								$('#search > ul').append('<li><a data-pk="null">No results</a></li>')
+							} else {
+								
+								// Highlight the query term
+								$.each(bldgs, function(index, bldg) {
+									//var params = extract_a_params(bldg.link);
+									var matches = bldg.link.match(/<a([^>]+)>/);
+									if(matches != null) {
+										bldg.link = '<a' + matches[1] + '>' + highlight_term(bldg.name, query) + '</a>';
+									}
+								})
+												
+								// Associate organizations with their buildings
+								$.each(orgs, function(index, org) {
+									
+									// Highlight query term
+									org.name = highlight_term(org.name, query);
+									
+									var bldg_index = null;
+									$.each(bldgs, function(_index, bldg) {
+										if(bldg.id == org.bldg_id) {
+											bldg_index = _index;
+											return false;
+										}
+									});
+									if(bldg_index != null) {									
+										if(bldgs[bldg_index].orgs == undefined) {
+											bldgs[bldg_index].orgs = []
+										}
+										bldgs[bldg_index].orgs.push(org);
+									}
+								});
+							
+								// Buildings with org matches are shown first
+								$.each(bldgs, function(index, bldg) {
+									if(bldg.orgs != undefined) {
+										var org_string = '';
+										$.each(bldg.orgs, function(_index, org) {
+											org_string += '<li>' + org.name + '</li>'
+										})
+										$('#search > ul').append('<li>' + bldg.link + '<ul>' + org_string + '</ul></li>');
+									}
+								});
+							
+								// Balance of the buildings without organizations
+								$.each(bldgs, function(index, bldg) {
+									if(bldg.orgs == undefined) {
+										
+										$('#search > ul').append('<li>' + bldg.link + '</li>');
+										if((index + 1) > 9) {
+											$('#search > ul').append('<li class="more"><a href="' + response.results_page_url + '" data-pk="more-results">More results &hellip;</a></li>');
+											return false;
+										}
+									}
+								});
+							}
+								
+							//attach event to open info window
+							$('#search li:not(.more)').click(function(event){
+								event.preventDefault();
+								var pk = $(this).find('a').attr('data-pk');
+								$('#search li').removeClass('hover');
+								$(this).addClass('hover');
+								Campus.info(pk, true);
 							});
 						}
-								
-						//attach event to open info window
-						$('#search li:not(.more)').click(function(event){
-							event.preventDefault();
-							var pk = $(this).find('a').attr('data-pk');
-							$('#search li').removeClass('hover');
-							$(this).addClass('hover');
-							Campus.info(pk, true);
-						});
 					}
 				});
 			} else {
