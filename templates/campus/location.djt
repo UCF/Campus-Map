@@ -47,6 +47,11 @@
 		var latlng = new google.maps.LatLng(coords[0], coords[1]);
 		
 		var options = Campus.maps.imap_options;
+		options.panControl        = false;
+		options.zoomControl       = false;
+		options.streetViewControl = false;
+		options.mapTypeControl    = false;
+		
 		var map     = new google.maps.Map(this, options);
 		map.mapTypes.set('illustrated',Campus.maps.imap_type);
 		map.setCenter(latlng);
