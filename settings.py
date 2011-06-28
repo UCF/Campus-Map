@@ -121,6 +121,23 @@ LOGGING = {
 	}
 }
 
+
+# For Google to render KML layers, it needs to import the map data.  If working
+# locally or behind a firewall, this will not be possible.  If GOOGLE_CAN_SEE_ME
+# if false, will fall back to GOOGLE_LOOK_HERE (leave off trailing slash)
+GOOGLE_CAN_SEE_ME = True
+GOOGLE_LOOK_HERE  = "http://map.ucf.edu"
+
+# TODO: open all data to be indexed by a real search engine, otherwise
+# search returns a very basic (nearly useless) keymatch result
+SEARCH_ENGINE = None
+
+# Phonebook search service url
+PHONEBOOK = "http://webcom.dev.smca.ucf.edu/people/service.php"
+
+# Organization search service URL
+ORGANIZATION_SEARCH_URL = 'http://webcom.dev.smca.ucf.edu/search/webroot/service.php'
+
 try:
 	from settings_local import *
 except ImportError:
