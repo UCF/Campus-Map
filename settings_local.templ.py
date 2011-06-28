@@ -48,3 +48,6 @@ SEARCH_ENGINE = None
 
 # Phonebook search service url
 PHONEBOOK = "http://webcom.dev.smca.ucf.edu/people/service.php"
+
+# Organization search service URL
+ORGANIZATION_SEARCH_URL = 'http://webcom.dev.smca.ucf.edu/search/webroot/service.php'
