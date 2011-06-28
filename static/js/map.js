@@ -843,11 +843,26 @@ Campus.search = function(){
 			if(q.length > 3) {
 				search.find('ul').html('<li><a data-pk="searching">Searching&hellip;</a></li>');
 				Campus.ajax = $.ajax({
-					url: Campus.urls.search + '.list',
+					url: Campus.urls.search + '.json',
 					data: {q:q},
-					success: function(html){
-						//show results
-						$("#search ul").html(html);
+					success: function(response, status){
+						
+						$('#search > ul').empty()
+						
+						var buildings = response.results
+						
+						if(buildings.length == 0) {
+							$('#search > ul').append('<li><a data-pk="null">No results</a></li>')
+						} else {
+							$.each(buildings, function(index, building) {
+								$('#search > ul').append('<li>' + building.link + '</li>');
+								if((index + 1) > 9) {
+									$('#search > ul').append('<li class="more"><a href="' + response.results_page_url + '" data-pk="more-results">More results &hellip;</a></li>');
+									return false;
+								}
+							});
+						}
+								
 						//attach event to open info window
 						$('#search li:not(.more)').click(function(event){
 							event.preventDefault();

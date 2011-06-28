@@ -3,7 +3,9 @@ from django.views.generic.simple import direct_to_template as render
 from django.template import TemplateDoesNotExist
 from django.core.urlresolvers import reverse
 from django.core.cache import cache
-import settings, urllib, json, re
+import settings, urllib, json, re, logging
+
+logger = logging.getLogger(__name__)
 
 def pages(request, page=None, format=None):
 	'''
@@ -43,8 +45,7 @@ def organization(request, id, format=None):
 		pass
 	context = {'org': org, 'building':building, 'building_html': building_html }
 	return render(request, "pages/organization.djt", context)
-
-
+		
 def get_orgs():
 	orgs = cache.get('organizations')
 	if orgs is None:
@@ -99,50 +100,33 @@ def search(request, format=None):
 	'''
 	from campus.models import Building
 	
-	query_string = ''
-	bldgs = None
-	if ('q' in request.GET) and request.GET['q'].strip():
-		query_string = request.GET['q']
+	query_string = request.GET.get('q', '').strip()
+		
+	# Building Search
+	bldgs = []
+	if bool(query_string):
 		entry_query = get_query(query_string, ['name',])		
 		bldgs = Building.objects.filter(entry_query).order_by('name')
-		
-	if format == 'list':
-		''' used with the search ajax '''
-		
-		if settings.DEBUG:
-			# otherwise too many/too fast, gives browser a sad
-			import time
-			time.sleep(.5)
-		
-		response = ''
-		if len(bldgs) < 1:
-			response = '<li><a data-pk="null">No results</a></li>'
-			return HttpResponse(response)
-		count = 0
-		for item in bldgs:
-			response += '<li>%s</li>' % (item.link)
-			count += 1
-			if(count > 9):
-				response += '<li class="more"><a href="%s?q=%s" data-pk="more-results">More results &hellip;</a></li>' % (
-					reverse('search'), query_string)
-				return HttpResponse(response)
-		return HttpResponse(response)
 	
+	# TODO: Text API format
+				
 	if format == 'json':
 		def clean(item):
 			return {
 				'type' : str(item.__class__.__name__),
 				'name' : item.name,
-				'id'   : item.pk }
+				'id'   : item.pk,
+				'link' : item.link}
 		search = {
-			"query"   : query_string,
-			"results" : map(clean, bldgs)
+			'query'            : query_string,
+			'results'          : map(clean, bldgs),
+			'results_page_url' : '%s?q=%s' % (reverse('search'), query_string)
 		}
 		response = HttpResponse(json.dumps(search))
 		response['Content-type'] = 'application/json'
 		return response
 	
-	from apps.views import phonebook_search
+	# Phonebook Search
 	phonebook = phonebook_search(query_string)
 	
 	found_entries = {

@@ -9,7 +9,7 @@ urlpatterns = patterns('campus.views',
 	url(r'^emergency-phones/(\.(?P<format>json|txt))?$', 'emergency_phones', name="emergency_phones"),
 	url(r'^parking/(\.(?P<format>json|kml|txt))?$', 'parking', name="parking"),
 	url(r'^location/(?P<loc>[\w-]+)/([^/]+/)?(\.(?P<format>json|bubble))?$', 'location', name="location"),
-	url(r'^regional-campuses/((?P<campus>[\w-]+)/)?(\.(?P<format>json|txt))?$', 'regional_campuses', name="regional"),
+	url(r'^regional-campuses/((?P<campus>[\w-]+)/)?(\.(?P<format>json))?$', 'regional_campuses', name="regional"),
 	
 	# Backward compatibiilty will old campus map URL structure
 	# Example: http://campusmap.ucf.edu/flash/index.php?select=b_8118
