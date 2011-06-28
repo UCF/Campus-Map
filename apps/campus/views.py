@@ -14,7 +14,14 @@ def home(request, format=None, **kwargs):
 	'''
 	from time import time
 	date = int(time())
-		
+	
+	
+	# process query string
+	loc_id = request.GET.get('show', False)
+	if loc_id:
+		loc = location(request, loc=loc_id, return_obj=True)
+		kwargs['location'] = loc
+	
 	if format == 'json':
 		from campus.templatetags.weather import weather
 		campus = { 
@@ -334,7 +341,7 @@ def backward_location(request):
 			return location(request, match.groups()[0])
 	raise Http404()
 			
-def location(request, loc, format=None):
+def location(request, loc, format=None, return_obj=False):
 	'''
 	Will one day be a wrapper for all data models, searching over all locations
 	and organizations, maybe even people too
@@ -372,9 +379,10 @@ def location(request, loc, format=None):
 		response['Content-type'] = 'application/json'
 		return response
 	
-	# HTML view
-	if location_type == "Building":
-		# show building profile
+	if return_obj:
+		return location
+	elif location_type == "Building":
+		# show location profile
 		context = { 
 			'location' : location,
 			'orgs'     : location_orgs

@@ -19,7 +19,7 @@ urlpatterns = patterns('',
 	
 	# org individual page and org profile pages
 	url(r'^organizations/(\.(?P<format>json|txt))?$', 'views.organizations', name="organizations"),
-	url(r'^organization/(?P<id>\d+)/([^/]+/)?(\.(?P<format>json|txt))?$', 'views.organization', name="org"),
+	url(r'^organizations/(?P<id>\d+)/([^/]+/)?(\.(?P<format>json|txt))?$', 'views.organization', name="org"),
 	
 	# admin
 	(r'^admin/', include(admin.site.urls)),
