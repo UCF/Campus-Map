@@ -181,6 +181,12 @@ footer dd { padding:8px 0 0 8px; margin:0; }
 #menu-pages a { display:block; float:left; width:20px; height:20px; background:transparent url('img/menu-dots.png') 0 -20px; text-indent:-50px; overflow:hidden; }
 #menu-pages a.active, #menu-pages a.active:hover { background-position:0 0; }
 #menu-pages a:hover { background-position: 0 -40px; }
+#menu-icons { position:absolute; top:28px; right:0; }
+#menu-icons a { display:block; float:left; background:green; height:20px; width:24px; background: transparent url('img/menu-icons.png'); text-indent:-50px; overflow:hidden; }
+#menu-icons #email:hover { background-position:0 -1px; }
+#menu-icons #permalink { background-position:-25px 0;}
+#menu-icons #permalink:hover { background-position:-25px -1px; }
+
 
 #menu-window { width:2000px; position:relative; margin-left:-246px;  }
 #menu .slide { padding:8px 8px 23px 8px; width:214px; float:left; position:relative; }

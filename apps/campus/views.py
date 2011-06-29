@@ -94,7 +94,8 @@ def home(request, format=None, **kwargs):
 		'buildings_kml' : buildings_kml,
 		'sidewalks_kml' : sidewalks_kml,
 		'parking_kml'   : parking_kml,
-		'loc_url'       : loc
+		'loc_url'       : loc,
+		'base_url'      : request.build_absolute_uri(reverse('home'))
 	}
 	
 	return render(request, 'campus/base.djt', context)

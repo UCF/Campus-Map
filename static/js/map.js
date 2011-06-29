@@ -214,6 +214,10 @@ Campus.controls = function(){
 		Campus.infoMaker.setPosition(latlng);
 		$('#item-title').html(loc.name);
 		$('#item-desc').html(loc.info);
+		var permalink = Campus.permalink.replace("%s", loc.number);
+		$('#permalink').attr('href', permalink).show();
+		var mailto = Campus.mailto(loc.name, permalink);
+		$('#email').attr('href', mailto).show();
 	}
 	
 	// Checkboxes:
@@ -268,14 +272,25 @@ Campus.menuInit = function(){
 	Campus.label      = $('#menu-label-main');
 	Campus.labelStage = $('#menu-label-stage');
 	Campus.menuPages  = $('#menu-pages');
-
+	
+	// upper-right action icons (permalink and email)
+	Campus.menuIcons  = $('#menu-icons');
+	Campus.permalink  = Campus.urls.base_url + '?show=%s';
+	Campus.mailto     = function(title, link){
+		title   = escape(title);
+		link    = escape(link);
+		subject = escape("UCF Campus Map - ") + title;
+		body    = title + escape("\n") + link;
+		return "mailto:?subject=" + subject + "&body=" + body;
+	}
+	
 	Campus.label.click(function(){
 		Campus.menu.show('main');
 	});
 	Campus.labelStage.click(function(){
 		Campus.menu.show($(this).html());
 	});
-
+	
 	Campus.menu.show = function(label){
 		if(label==='main'){
 			Campus.stageNext.animate({"width" : 0 }, 300);
@@ -283,6 +298,7 @@ Campus.menuInit = function(){
 			Campus.label.removeClass('inactive');
 			Campus.labelStage.addClass('inactive');
 			Campus.menuPages.animate({"top" : 2 }, 300);
+			Campus.menuIcons.animate({"top" : 28 }, 300);
 		} else {
 			Campus.stageNext.animate({"width" : 230 }, 300);
 			Campus.menuWin.animate({"margin-left" : -246 }, 300);
@@ -291,6 +307,7 @@ Campus.menuInit = function(){
 			Campus.labelStage.animate({"padding-left" : 68 }, 300);
 			Campus.label.addClass('inactive');
 			Campus.menuPages.animate({"top" : -26 }, 300);
+			Campus.menuIcons.animate({"top" :  2  }, 300);
 		}
 	};
 
@@ -657,9 +674,14 @@ Campus.info = function(id, pan){
 	if(Campus.ajax){ Campus.ajax.abort(); }
 	var title = $('#item-title');
 	var desc  = $('#item-desc');
+	var email = $('#email');
+	var link  = $('#permalink');
+	
 	title.html("Loading...");
 	desc.html("");
 	desc.addClass('load');
+	email.hide()
+	link.hide()
 	
 	var url = Campus.urls.location.replace("%s", id);
 	
@@ -672,6 +694,12 @@ Campus.info = function(id, pan){
 			title.html(name);
 			desc.html(data.info);
 			desc.removeClass('load');
+			
+			var permalink = Campus.permalink.replace("%s", id);
+			link.attr('href', permalink).show();
+			var mailto = Campus.mailto(name, permalink);
+			email.attr('href', mailto).show();
+			
 			var point = (Campus.map.mapTypeId === 'illustrated') ? 'illustrated_point' : 'googlemap_point';
 			var latlng = new google.maps.LatLng(data[point][0], data[point][1]);
 			Campus.infoMaker.setPosition(latlng);

@@ -9,6 +9,10 @@
 			<a id="nav-2" data-nav="2" title="Menu Two" class="nav">2</a>
 			<a id="nav-3" data-nav="3" title="Menu Three" class="nav">3</a>
 		</div>
+		<div id="menu-icons">
+			<a href="" id="email" title="Share this Location">email</a>
+			<a href="" id="permalink" title="Permalink to this location">link</a>
+		</div>
 	</div>
 	
 	<div id="menu-window">
