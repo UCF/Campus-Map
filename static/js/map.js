@@ -206,12 +206,20 @@ Campus.controls = function(){
 	}
 	
 	// looking at a location (very similar to regional campus)
+	// not using Campus.info() because that uses an ajax reqeust to load location (already delivered here)
 	if(Campus.settings.location){
 		loc = Campus.settings.location;
 		latlng = new google.maps.LatLng(loc.googlemap_point[0], loc.googlemap_point[1]);
 		Campus.map.panTo(latlng);
 		Campus.info();
-		Campus.infoMarker.setPosition(latlng);
+		Campus.infoBox.setContent($('<div class="iBox">' + loc.name + '</div>')[0]);
+		Campus.infoBox.setPosition(latlng);
+		Campus.infoBox.open(Campus.map);
+		console.log(Campus.infoBox.div_);
+		console.log(Campus.infoBox['div_']);
+		console.log(Campus.infoBox.content_.offsetWidth);
+		
+		
 		$('#item-title').html(loc.name);
 		$('#item-desc').html(loc.info);
 		var permalink = Campus.permalink.replace("%s", loc.number);
@@ -644,6 +652,7 @@ Campus.layers = {
  Locaiton Information
 \******************************************************************************/
 Campus.infoMarker = false;
+Campus.infoBox    = false;
 Campus.info = function(id, pan){
 	
 	// init infoMarker
@@ -665,6 +674,24 @@ Campus.info = function(id, pan){
 			icon: image
 		});
 		Campus.infoMarker = marker;
+	}
+	
+	// init infoBox
+	if(!Campus.infoBox){
+		var box = document.createElement("div");
+		$(box).attr('id', 'info-box');
+		box.innerHTML = "Campus Map InfoBox";
+		var options = {
+			content:     box,
+			alignBottom: true,
+			pixelOffset: new google.maps.Size(-18, -3),
+			maxWidth:    0,
+			closeBoxURL: "",
+			pane:        "floatPane",
+			infoBoxClearance: new google.maps.Size(1, 1),
+			enableEventPropagation: false
+		};
+		Campus.infoBox = new InfoBox(options);
 	}
 	
 	// show in menu

@@ -230,6 +230,13 @@ footer dd { padding:8px 0 0 8px; margin:0; }
 .info-window ul li a { border-bottom:0; line-height:11px;  }
 .info-window ul li a:hover { border-bottom:1px dotted; }
 
+.infoBox  { background:url('img/infobox-tip.png') no-repeat bottom left; color:white; padding-bottom:13px; }
+.iBox     { 
+	-moz-border-radius: 5px; -webkit-border-radius:3px; border-radius:3px; padding:3px;
+	background: black; background: rgba(0,0,0,.71); padding:5px; text-align:center; font-weight:bold; } 
+.ie .iBox { background:transparent; filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#B4000000',endColorstr='#B4000000'); zoom: 1; }
+
+
 /******************************************************************************\
     Weather (width is set in template tag)
 \******************************************************************************/
