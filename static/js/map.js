@@ -694,6 +694,10 @@ Campus.info = function(id, pan){
 				var width = testBox.offsetWidth + "px";
 				iBox.style.width = width;
 				Campus.infoBox.setContent(iBox);
+				if($.browser.name === "msie"){
+					// IE sucks hard
+					$(Campus.infoBox.content_).html(txt);
+				}
 			});
 		}
 		Campus.infoBox.show = function(txt, loc){
@@ -726,6 +730,11 @@ Campus.info = function(id, pan){
 		dataType: 'json',
 		success: function(data){
 			var name = data.name;
+			var point = (Campus.map.mapTypeId === 'illustrated') ? 'illustrated_point' : 'googlemap_point';
+			var latlng = new google.maps.LatLng(data[point][0], data[point][1]);
+			console.log('yo: ', name);
+			Campus.infoBox.show(name, latlng);
+			
 			if(data.abbreviation){ name += ' (' + data.abbreviation + ')'; }
 			title.html(name);
 			desc.html(data.info);
@@ -736,9 +745,6 @@ Campus.info = function(id, pan){
 			var mailto = Campus.mailto(name, permalink);
 			email.attr('href', mailto).show();
 			
-			var point = (Campus.map.mapTypeId === 'illustrated') ? 'illustrated_point' : 'googlemap_point';
-			var latlng = new google.maps.LatLng(data[point][0], data[point][1]);
-			Campus.infoBox.show(name, latlng);
 			if(pan){ Campus.map.panTo(latlng);  }
 		},
 		error: function(){
