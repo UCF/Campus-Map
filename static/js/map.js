@@ -200,7 +200,7 @@ Campus.controls = function(){
 		latlng = new google.maps.LatLng(rc.googlemap_point[0], rc.googlemap_point[1]);
 		Campus.map.panTo(latlng);
 		Campus.info(); //inits info marker
-		Campus.infoMaker.setPosition(latlng);
+		Campus.infoMarker.setPosition(latlng);
 		$('#item-title').html(rc.description);
 		$('#item-desc').html(rc.html);
 	}
@@ -211,7 +211,7 @@ Campus.controls = function(){
 		latlng = new google.maps.LatLng(loc.googlemap_point[0], loc.googlemap_point[1]);
 		Campus.map.panTo(latlng);
 		Campus.info();
-		Campus.infoMaker.setPosition(latlng);
+		Campus.infoMarker.setPosition(latlng);
 		$('#item-title').html(loc.name);
 		$('#item-desc').html(loc.info);
 		var permalink = Campus.permalink.replace("%s", loc.number);
@@ -643,11 +643,11 @@ Campus.layers = {
 /******************************************************************************\
  Locaiton Information
 \******************************************************************************/
-Campus.infoMaker = false;
+Campus.infoMarker = false;
 Campus.info = function(id, pan){
 	
-	// init infoMaker
-	if(!Campus.infoMaker){
+	// init infoMarker
+	if(!Campus.infoMarker){
 		var image = new google.maps.MarkerImage(
 				(Campus.urls['static'] + 'images/markers/gold-with-dot.png'),
 				new google.maps.Size(32, 32),  // dimensions
@@ -664,7 +664,7 @@ Campus.info = function(id, pan){
 			clickable: false,
 			icon: image
 		});
-		Campus.infoMaker = marker;
+		Campus.infoMarker = marker;
 	}
 	
 	// show in menu
@@ -702,7 +702,7 @@ Campus.info = function(id, pan){
 			
 			var point = (Campus.map.mapTypeId === 'illustrated') ? 'illustrated_point' : 'googlemap_point';
 			var latlng = new google.maps.LatLng(data[point][0], data[point][1]);
-			Campus.infoMaker.setPosition(latlng);
+			Campus.infoMarker.setPosition(latlng);
 			if(pan){ Campus.map.panTo(latlng);  }
 		},
 		error: function(){
