@@ -252,6 +252,7 @@ footer dd { padding:8px 0 0 8px; margin:0; }
 #weather .discription a { color:#666; }
 #weather .discription span { font-size:18px; font-weight:bold; color:black; }
 #weather .discription abbr { border:0; }
+#weather .floatleft { white-space:nowrap; font-size:11px; }
 
 
 /******************************************************************************\
