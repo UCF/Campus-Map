@@ -901,15 +901,10 @@ Campus.search = function(){
 								$('#search > ul').append('<li><a data-pk="null">No results</a></li>')
 							} else {
 								
-								// Highlight the query term
-								$.each(bldgs, function(index, bldg) {
-									//var params = extract_a_params(bldg.link);
-									var matches = bldg.link.match(/<a([^>]+)>([^<]*<\/a>)/);
-									if(matches != null) {
-										bldg.link = '<a' + matches[1] + '>' + highlight_term(matches[2], query) + '</a>';
-									}
-								})
-												
+								var bldg_org_matches = [],
+									org_matches      = [],
+									bldg_matches     = [];
+								
 								// Associate organizations with their buildings
 								$.each(orgs, function(index, org) {
 									
@@ -931,37 +926,42 @@ Campus.search = function(){
 									}
 								});
 								
-								var count = 0;
-								
-								// Buildings with org matches are shown first
+								// Highlight the query term
 								$.each(bldgs, function(index, bldg) {
+									
+									var matches          = bldg.link.match(/<a([^>]+)>([^<]*)<\/a>/),
+										original_link    = bldg.link;
+									if(matches != null) {
+										bldg.link = '<a' + matches[1] + '>' +  highlight_term(matches[2], query) + '</a>';
+									}
+									if(bldg.orgs != undefined && original_link.length != bldg.link.length) {
+										bldg_org_matches.push(bldg);
+									} else if(bldg.orgs != undefined && original_link.length == original_link.length) {
+										org_matches.push(bldg);
+									} else {
+										bldg_matches.push(bldg);
+									}	
+								});
+								
+								var count = 0;
+								$.each(bldg_org_matches.concat(org_matches, bldg_matches), function(index, bldg) {
 									if(bldg.orgs != undefined) {
 										var org_string = '';
 										$.each(bldg.orgs, function(_index, org) {
 											org_string += '<li>' + org.name + '</li>'
 											count += 1
-										})
+										});
 										$('#search > ul').append('<li>' + bldg.link + '<ul>' + org_string + '</ul></li>');
-										count += 1
-										if(count  > 11) {
-											$('#search > ul').append('<li class="more"><a href="' + response.results_page_url + '" data-pk="more-results">More results &hellip;</a></li>');
-											return false;
-										}
-										
-									}
-								});
-							
-								// Balance of the buildings without organizations
-								$.each(bldgs, function(index, bldg) {
-									if(bldg.orgs == undefined) {
+									} else {
 										$('#search > ul').append('<li>' + bldg.link + '</li>');
-										count += 1;
-										if(count > 11) {
-											$('#search > ul').append('<li class="more"><a href="' + response.results_page_url + '" data-pk="more-results">More results &hellip;</a></li>');
-											return false;
-										}
+									}
+									count += 1
+									if(count  > 11) {
+										$('#search > ul').append('<li class="more"><a href="' + response.results_page_url + '" data-pk="more-results">More results &hellip;</a></li>');
+										return false;
 									}
 								});
+								
 							}
 								
 							//attach event to open info window
