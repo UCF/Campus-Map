@@ -930,24 +930,33 @@ Campus.search = function(){
 										bldgs[bldg_index].orgs.push(org);
 									}
 								});
-							
+								
+								var count = 0;
+								
 								// Buildings with org matches are shown first
 								$.each(bldgs, function(index, bldg) {
 									if(bldg.orgs != undefined) {
 										var org_string = '';
 										$.each(bldg.orgs, function(_index, org) {
 											org_string += '<li>' + org.name + '</li>'
+											count += 1
 										})
 										$('#search > ul').append('<li>' + bldg.link + '<ul>' + org_string + '</ul></li>');
+										count += 1
+										if(count  > 11) {
+											$('#search > ul').append('<li class="more"><a href="' + response.results_page_url + '" data-pk="more-results">More results &hellip;</a></li>');
+											return false;
+										}
+										
 									}
 								});
 							
 								// Balance of the buildings without organizations
 								$.each(bldgs, function(index, bldg) {
 									if(bldg.orgs == undefined) {
-										
 										$('#search > ul').append('<li>' + bldg.link + '</li>');
-										if((index + 1) > 9) {
+										count += 1;
+										if(count > 11) {
 											$('#search > ul').append('<li class="more"><a href="' + response.results_page_url + '" data-pk="more-results">More results &hellip;</a></li>');
 											return false;
 										}
