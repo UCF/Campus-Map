@@ -132,7 +132,7 @@ footer dd { padding:8px 0 0 8px; margin:0; }
 	-moz-border-radius-bottomright: 6px; -webkit-border-bottom-right-radius: 6px; border-bottom-right-radius:6px;
 	padding:7px 0 8px 0; margin:0 10px 0 0; position:absolute; top:30px; left:5px;
 	background:black; background: rgba(0, 0, 0, 0.8); width:253px; }
-.ie #search ul { filter: alpha(opacity = 80); }
+.ie #search > ul { background:transparent; filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#CC000000',endColorstr='#CC000000'); zoom: 1; }
 #search > ul li { margin:0; padding:0; list-style:none; height:auto; }
 #search > ul li a { float:none; display:block; height:auto; background:none; padding:3px 8px 3px 12px; text-decoration:none; border-bottom:0; line-height:1.1; }
 #search > ul > li { padding:3px 0; border-left:2px solid transparent; }
