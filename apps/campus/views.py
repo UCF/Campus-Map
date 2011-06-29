@@ -5,7 +5,7 @@ from django.core.urlresolvers import reverse
 
 import settings, json, re
 
-def home(request, format=None, **kwargs):
+def home(request, **kwargs):
 	'''
 	Renders the main google map.
 	One thing that seems to be working well so far, json encoding kwargs and
@@ -101,7 +101,7 @@ def home(request, format=None, **kwargs):
 	return render(request, 'campus/base.djt', context)
 
 
-def locations(request, format=None):
+def locations(request):
 	
 	from campus.models import Building, Location, RegionalCampus, Group
 	buildings = Building.objects.exclude(googlemap_point__isnull=True)
@@ -109,7 +109,7 @@ def locations(request, format=None):
 	campuses  = RegionalCampus.objects.all()
 	groups    = Group.objects.all()
 	
-	if format == 'json':
+	if request.is_json():
 		arr = []
 		for b in buildings:
 			arr.append(b.json())
@@ -117,7 +117,7 @@ def locations(request, format=None):
 		response['Content-type'] = 'application/json'
 		return response
 		
-	if format == 'kml':
+	if request.is_kml():
 		# helpful:
 		# http://code.google.com/apis/kml/documentation/kml_tut.html#network_links
 		
@@ -152,12 +152,12 @@ def locations(request, format=None):
 	}
 	return render(request, 'campus/locations.djt', context)
 
-def parking(request, format=None):
+def parking(request):
 	
 	from campus.models import ParkingLot
 	lots = ParkingLot.objects.all()
 	
-	if format == 'kml':
+	if request.is_kml():
 		response = render_to_response('api/parking.kml', { 'parking':lots })
 		response['Content-type'] = 'application/vnd.google-earth.kml+xml'
 		return response
@@ -165,7 +165,7 @@ def parking(request, format=None):
 	return home(request, parking=True)
 	
 	
-def sidewalks(request, format=None):
+def sidewalks(request):
 	'''
 	Mostly an API wrapper
 	'''
@@ -174,12 +174,12 @@ def sidewalks(request, format=None):
 	
 	url = request.build_absolute_uri(reverse('sidewalks'))
 	
-	if format == 'kml':
+	if request.is_kml():
 		response = render_to_response('api/sidewalks.kml', { 'sidewalks':sidewalks })
 		response['Content-type'] = 'application/vnd.google-earth.kml+xml'
 		return response
 	
-	if format == 'json':
+	if request.is_json():
 		# trying to stick to the  geojson spec: http://geojson.org/geojson-spec.html
 		arr = []
 		for s in sidewalks:
@@ -202,7 +202,7 @@ def sidewalks(request, format=None):
 		response['Content-type'] = 'application/json'
 		return response
 	
-	if format == 'txt':
+	if request.is_txt():
 		text = "University of Central Florida\nCampus Map: Sidewalks\n%s\n%s\n" % (
 					url + ".txt",
 					"-"*78)
@@ -214,7 +214,7 @@ def sidewalks(request, format=None):
 	
 	return home(request, sidewalks=True)
 
-def bikeracks(request, format=None):
+def bikeracks(request):
 	'''
 	Mostly an API wrapper
 	'''
@@ -242,12 +242,12 @@ def bikeracks(request, format=None):
 		"features" : arr
 	}
 	
-	if format == 'json':
+	if request.is_json():
 		response = HttpResponse(json.dumps(obj, indent=4))
 		response['Content-type'] = 'application/json'
 		return response
 	
-	if format == 'txt':
+	if request.is_txt():
 		text = "University of Central Florida\nCampus Map: Bike Racks\n%s\n%s\n" % (
 					url + ".txt",
 					"-"*78)
@@ -259,7 +259,7 @@ def bikeracks(request, format=None):
 	
 	return home(request, bikeracks=True, bikeracks_geo=obj)
 
-def emergency_phones(request, format=None):
+def emergency_phones(request):
 	'''
 	Mostly an API wrapper (very similar to bike racks, probably shoudl abstract this a bit)
 	'''
@@ -287,12 +287,12 @@ def emergency_phones(request, format=None):
 		"features" : arr
 	}
 	
-	if format == 'json':
+	if request.is_json():
 		response = HttpResponse(json.dumps(obj, indent=4))
 		response['Content-type'] = 'application/json'
 		return response
 	
-	if format == 'txt':
+	if request.is_txt():
 		text = "University of Central Florida\nCampus Map: Emergency Phones\n%s\n%s\n" % (
 					url + ".txt",
 					"-"*78)
@@ -342,7 +342,7 @@ def backward_location(request):
 			return location(request, match.groups()[0])
 	raise Http404()
 			
-def location(request, loc, format=None, return_obj=False):
+def location(request, loc, return_obj=False):
 	'''
 	Will one day be a wrapper for all data models, searching over all locations
 	and organizations, maybe even people too
@@ -368,10 +368,10 @@ def location(request, loc, format=None, return_obj=False):
 	location['marker'] = base_url + settings.MEDIA_URL + 'images/markers/yellow.png'
 	
 	# API views
-	if format == 'bubble':
+	if request.is_bubble():
 		return render(request, template, context)
 	
-	if format == 'json':
+	if request.is_json():
 		if settings.DEBUG:
 			import time
 			time.sleep(.5)
@@ -393,16 +393,16 @@ def location(request, loc, format=None, return_obj=False):
 		# show location on the map
 		return home(request, location=location)
 	
-def regional_campuses(request, campus=None, format=None):
+def regional_campuses(request, campus=None):
 	from campus.models import RegionalCampus
 	
 	# TODO - regional campuses API
-	if format == 'json':
+	if request.is_json():
 		response = HttpResponse(json.dumps("API not available for Regional Campuses"))
 		response['Content-type'] = 'application/json'
 		return response
 	
-	if format == 'txt':
+	if request.is_txt():
 		response = HttpResponse("API not available for Regional Campuses")
 		response['Content-type'] = 'text/plain; charset=utf-8'
 		return response

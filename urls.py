@@ -15,17 +15,17 @@ urlpatterns = patterns('',
 	(r'^tinymce/', include('tinymce.urls')),
 	
 	# search
-	url(r'^search/(\.(?P<format>json|list))?$', 'views.search', name="search"),
+	url(r'^search/(?:\..+)?$', 'views.search', name="search"),
 	
 	# org individual page and org profile pages
-	url(r'^organizations/(\.(?P<format>json|txt))?$', 'views.organizations', name="organizations"),
-	url(r'^organizations/(?P<id>\d+)/([^/]+/)?(\.(?P<format>json|txt))?$', 'views.organization', name="org"),
+	url(r'^organizations/?$', 'views.organizations', name="organizations"),
+	url(r'^organizations/(?P<id>\d+)/([^/]+/)?$', 'views.organization', name="org"),
 	
 	# admin
 	(r'^admin/', include(admin.site.urls)),
 	
 	# catch-all for individual pages
-	url(r'^(?P<page>[\w-]+)/(\.(?P<format>json|txt))?$', 'views.pages', name="page"),
+	url(r'^(?P<page>[\w-]+)/(?:\..+)?$', 'views.pages', name="page"),
 )
 
 if settings.DEBUG:

@@ -8,7 +8,7 @@ import settings, urllib, json, re, logging
 
 logger = logging.getLogger(__name__)
 
-def pages(request, page=None, format=None):
+def pages(request, page=None):
 	'''
 	static pages with API placeholders
 	'''
@@ -29,11 +29,11 @@ def pages(request, page=None, format=None):
 		raise Http404()
 
 
-def organizations(request, format=None):
+def organizations(request):
 	context = {'organizations': get_orgs() }
 	return render(request, "pages/organizations.djt", context)
 
-def organization(request, id, format=None):
+def organization(request, id):
 	org = get_org(id)
 	building = None
 	try:
@@ -104,7 +104,7 @@ def phonebook_search(q):
 		print "Issue with phonebook search service"
 		return None
 
-def search(request, format=None):
+def search(request):
 	'''
 	one day will search over all data available
 	'''
@@ -139,7 +139,7 @@ def search(request, format=None):
 	
 	# TODO: Text API format
 	
-	if format == 'json':
+	if request.is_json():
 		def clean(item): 
 			return {
 				'type':item.__class__.__name__,
