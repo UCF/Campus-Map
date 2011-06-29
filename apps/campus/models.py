@@ -38,10 +38,12 @@ class CommonLocation(models.Model):
 					obj[f[0]] = json.loads(str(obj[f[0]]))
 				continue
 			
-			# super dumb:
-			# http://code.djangoproject.com/ticket/3324
-			if not hasattr(f[1], '__type__') or f[1].__type__ != "unicode":
-				obj[f[0]] = f[1].__str__()
+			if isinstance(f[1], unicode):
+				continue
+			
+			# super dumb, concerning floats http://code.djangoproject.com/ticket/3324
+			obj[f[0]] = f[1].__str__()
+			
 		return obj
 	
 	def clean(self, *args, **kwargs):

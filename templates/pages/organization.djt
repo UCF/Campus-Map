@@ -30,9 +30,8 @@
 	<div class="span-10" id="profile-right">
 		
 		{% if building %}
-		<h3>Location</h3>
-		<h4>{{ building.link|safe}}</h4>
-		<div id="canvas"></div>
+		<h3>{{ building.link|safe}}</h3>
+		<div id="cwrap"><div id="canvas"></div></div>
 		{% endif %}
 		
 	</div>
