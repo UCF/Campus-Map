@@ -212,13 +212,7 @@ Campus.controls = function(){
 		latlng = new google.maps.LatLng(loc.googlemap_point[0], loc.googlemap_point[1]);
 		Campus.map.panTo(latlng);
 		Campus.info();
-		Campus.infoBox.setContent($('<div class="iBox">' + loc.name + '</div>')[0]);
-		Campus.infoBox.setPosition(latlng);
-		Campus.infoBox.open(Campus.map);
-		console.log(Campus.infoBox.div_);
-		console.log(Campus.infoBox['div_']);
-		console.log(Campus.infoBox.content_.offsetWidth);
-		
+		Campus.infoBox.show(loc.name, latlng);
 		
 		$('#item-title').html(loc.name);
 		$('#item-desc').html(loc.info);
@@ -656,6 +650,7 @@ Campus.infoBox    = false;
 Campus.info = function(id, pan){
 	
 	// init infoMarker
+	// poor marker, not really being used anymore now that we have the infobox
 	if(!Campus.infoMarker){
 		var image = new google.maps.MarkerImage(
 				(Campus.urls['static'] + 'images/markers/gold-with-dot.png'),
@@ -692,6 +687,20 @@ Campus.info = function(id, pan){
 			enableEventPropagation: false
 		};
 		Campus.infoBox = new InfoBox(options);
+		Campus.infoBox.content = function(txt){
+			var testBox = $('<div id="testBox" class="iBox">' + txt + '</div>')[0];
+			$('body').append(testBox).each(function(){
+				var iBox = $('<div class="iBox">' + txt + '</div>')[0];
+				var width = testBox.offsetWidth + "px";
+				iBox.style.width = width;
+				Campus.infoBox.setContent(iBox);
+			});
+		}
+		Campus.infoBox.show = function(txt, loc){
+			Campus.infoBox.content(txt);
+			Campus.infoBox.setPosition(loc);
+			Campus.infoBox.open(Campus.map);
+		}
 	}
 	
 	// show in menu
@@ -729,7 +738,7 @@ Campus.info = function(id, pan){
 			
 			var point = (Campus.map.mapTypeId === 'illustrated') ? 'illustrated_point' : 'googlemap_point';
 			var latlng = new google.maps.LatLng(data[point][0], data[point][1]);
-			Campus.infoMarker.setPosition(latlng);
+			Campus.infoBox.show(name, latlng);
 			if(pan){ Campus.map.panTo(latlng);  }
 		},
 		error: function(){
