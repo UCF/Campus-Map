@@ -5,7 +5,23 @@ import settings
 from django.contrib import admin
 admin.autodiscover()
 
-urlpatterns = patterns('',
+urlpatterns = []
+
+if settings.DEBUG:
+	urlpatterns = patterns('',
+		(r'^%s(?P<path>.*)$' % settings.MEDIA_URL[1:],
+			'django.views.static.serve',
+			{
+				'document_root': settings.MEDIA_ROOT,
+				'show_indexes' : True,
+			}
+		),
+	)
+
+urlpatterns += patterns('',
+
+	url(r'^(?P<url>.+)\.(.+)?', 'views.api'),
+
 	(r'^', include('campus.urls')),
 	#url(r'^$', direct_to_template, {'template':'base.djt'}, name='home'),
 	(r'^favicon\.ico$', 'django.views.generic.simple.redirect_to', {'url': '/media/images/favicon.ico'}),
@@ -15,7 +31,7 @@ urlpatterns = patterns('',
 	(r'^tinymce/', include('tinymce.urls')),
 	
 	# search
-	url(r'^search/(?:\..+)?$', 'views.search', name="search"),
+	url(r'^search/?$', 'views.search', name="search"),
 	
 	# org individual page and org profile pages
 	url(r'^organizations/?$', 'views.organizations', name="organizations"),
@@ -25,16 +41,6 @@ urlpatterns = patterns('',
 	(r'^admin/', include(admin.site.urls)),
 	
 	# catch-all for individual pages
-	url(r'^(?P<page>[\w-]+)/(?:\..+)?$', 'views.pages', name="page"),
+	url(r'^(?P<page>[\w-]+)/$', 'views.pages', name="page"),
 )
 
-if settings.DEBUG:
-	urlpatterns += patterns('',
-		(r'^%s(?P<path>.*)$' % settings.MEDIA_URL[1:],
-			'django.views.static.serve',
-			{
-				'document_root': settings.MEDIA_ROOT,
-				'show_indexes' : True,
-			}
-		),
-	)

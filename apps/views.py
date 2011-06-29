@@ -1,13 +1,22 @@
 from django.http      import HttpResponse, Http404
 from django.views.generic.simple import direct_to_template as render
 from django.template import TemplateDoesNotExist
-from django.core.urlresolvers import reverse
+from django.core.urlresolvers import reverse, resolve
 from django.core.cache import cache
 from django.db.models import Q
 import settings, urllib, json, re, logging
 
 logger = logging.getLogger(__name__)
 
+
+def api(request, url):
+	'''
+	API for detecting format without dirtying the urls file
+	'''
+	view, args, kwargs = resolve('/' + url)
+	kwargs['request'] = request
+	return view(*args, **kwargs)
+	
 def pages(request, page=None):
 	'''
 	static pages with API placeholders
