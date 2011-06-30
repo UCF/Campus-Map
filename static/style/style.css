@@ -137,27 +137,18 @@ footer dd { padding:8px 0 0 8px; margin:0; }
 .ie #search > ul { background:transparent; filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#CC000000',endColorstr='#CC000000'); zoom: 1; }
 #search > ul li { margin:0; padding:0; list-style:none; height:auto; }
 #search > ul li a { float:none; display:block; height:auto; background:none; padding:3px 8px 3px 12px; text-decoration:none; border-bottom:0; line-height:1.1; }
-#search > ul > li { padding:3px 0; border-left:2px solid transparent; }
-#search > ul > li.hover,
-#search > ul > li:hover { 
-	border-left:2px solid #FFC907;
-	/* http://www.colorzilla.com/gradient-editor/#000000+0,131313+99&1+0,1+50,0+100;Custom */
-	background: -moz-linear-gradient(left, rgba(0,0,0,1) 0%, rgba(10,10,10,1) 50%, rgba(19,19,19,0.02) 99%, rgba(19,19,19,0) 100%); /* FF3.6+ */
-	background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(0,0,0,1)), color-stop(50%,rgba(10,10,10,1)), color-stop(99%,rgba(19,19,19,0.02)), color-stop(100%,rgba(19,19,19,0))); /* Chrome,Safari4+ */
-	background: -webkit-linear-gradient(left, rgba(0,0,0,1) 0%,rgba(10,10,10,1) 50%,rgba(19,19,19,0.02) 99%,rgba(19,19,19,0) 100%); /* Chrome10+,Safari5.1+ */
-	background: -o-linear-gradient(left, rgba(0,0,0,1) 0%,rgba(10,10,10,1) 50%,rgba(19,19,19,0.02) 99%,rgba(19,19,19,0) 100%); /* Opera11.10+ */
-	background: -ms-linear-gradient(left, rgba(0,0,0,1) 0%,rgba(10,10,10,1) 50%,rgba(19,19,19,0.02) 99%,rgba(19,19,19,0) 100%); /* IE10+ */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#00131313',GradientType=1 ); /* IE6-9 */
-	background: linear-gradient(left, rgba(0,0,0,1) 0%,rgba(10,10,10,1) 50%,rgba(19,19,19,0.02) 99%,rgba(19,19,19,0) 100%); /* W3C */
-}
+#search > ul > li { padding:3px 0; }
 #search > ul li > ul {margin:0 0 0 28px;}
-#search > ul li > ul > li {color: #AAA;list-style-type:disc;margin-left:4px;}
+#search > ul li li {color: #AAA;list-style-type:disc; margin-left:4px; padding-left:4px; }
 #search li .highlight {color: #A2BCD7;}
 #search li li .highlight {color: #7B90A4;}
 #search li li { line-height:1.1; padding-bottom:2px; }
-/*#search > ul li .highlight {color: #f2b520;}*/
 #search a:active { border:0; outline:none; }
 #search a:focus { border:0; outline:none; }
+#search > ul > li.hover, #search > ul > li:hover { background:rgba(255,255,255,.2); }
+#search > ul > li.hover li, #search > ul > li:hover li { color: #B5B5B5; }
+#search a { -moz-transition: none; -webkit-transition:none; -o-transition:none; transition:none; }
+
 .ie #search { width:258px; }
 .ie #search > ul { margin-right:0; width:250px }
 .ie6 #search { width:255px;  }
