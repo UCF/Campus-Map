@@ -47,7 +47,7 @@ def home(request, **kwargs):
 		return response
 	
 	# points on the map (will have to be extended with more data added)
-	if 'points' in kwargs and kwargs['points']:
+	if kwargs.get('points', False):
 		from campus.models import Building
 		buildings = Building.objects.all()
 		points = {}
@@ -63,7 +63,7 @@ def home(request, **kwargs):
 		q =  (q1 | q2 | q3)
 		points = Building.objects.exclude( q )
 		
-		
+		# keeping this code around because q=Q() was not necessarily intuitive
 		buildings = ["union", "millican"];
 		q = Q()
 		for name in buildings:
@@ -87,6 +87,11 @@ def home(request, **kwargs):
 	loc = "%s.json" % reverse('location', kwargs={'loc':'foo'})
 	loc = loc.replace('foo', '%s')
 	kwargs['map'] = 'gmap';
+	
+	error = kwargs.get('error', None)
+	if error:
+		kwargs.pop('error')
+
 	context = {
 		'options'       : json.dumps(kwargs), 
 		'points'        : json.dumps(points), 
@@ -95,7 +100,8 @@ def home(request, **kwargs):
 		'sidewalks_kml' : sidewalks_kml,
 		'parking_kml'   : parking_kml,
 		'loc_url'       : loc,
-		'base_url'      : request.build_absolute_uri(reverse('home'))
+		'base_url'      : request.build_absolute_uri(reverse('home')),
+		'error'         : error,
 	}
 	
 	return render(request, 'campus/base.djt', context)
@@ -358,7 +364,7 @@ def location(request, loc, return_obj=False):
 		try:
 			location = Location.objects.get(pk=loc)
 		except Location.DoesNotExist:
-			raise Http404()
+			raise Http404("Location ID <code>%s</code> could not be found" % (loc))
 	
 	location_type = location.__class__.__name__
 	html = location_html(location, request)

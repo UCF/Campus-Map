@@ -59,7 +59,7 @@ a.button { vertical-align:middle; text-decoration:none; color:#333; font-size:12
 
 
 header { width:932px; padding:0 9px; margin:0 auto; position:relative; }
-header h1 { font-weight:normal; border-bottom:1px dotted black; padding-bottom:10px; margin:20px 0 10px; font-size:28px; }
+header h1 { font-weight:normal; border-bottom:1px dotted black; padding-bottom:10px; margin:20px 0 10px; font-size:28px; z-index:3; position:relative; }
 nav ol { list-style:none; margin:0; color:#6d6e71; padding:0;  }
 nav ol li { display:inline-block; float:left; margin-right:10px; }
 nav ol li:after { content:"\2022"; margin-left:5px; }
@@ -81,7 +81,9 @@ footer dt:first-of-type { padding-top:0; }
 footer dd { padding:8px 0 0 8px; margin:0; }
 
 #logo { text-align:left; text-indent:-500px; display:block; width:150px; height:75px; background:url('img/logo.png') no-repeat; float:right; overflow:hidden; margin:12px 0; border-bottom:0; }
-
+#error { position:absolute; top:15px; width:100%; text-align:center; z-index:2; }
+#error p { display:inline-block; padding:10px; margin:0 250px; border:1px solid red; -moz-border-radius: 5px; -webkit-border-radius: 5x; border-radius:5px; background:#FFCED0; }
+.ie6 #error p, .ie7 #error p { width:400px; display:block; margin: 0 auto; }
 
 /******************************************************************************\
     Google Map
@@ -243,7 +245,7 @@ footer dd { padding:8px 0 0 8px; margin:0; }
 /******************************************************************************\
     Weather (width is set in template tag)
 \******************************************************************************/
-#weather { position:absolute; top:0; right:0; }
+#weather { position:absolute; top:0; right:0; z-index:2; }
 #map #weather { top:19px; }
 #weather div { background-repeat:no-repeat; }
 .ie8 #weather .navweatherimage { background:transparent !important; }

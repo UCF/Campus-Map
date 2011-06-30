@@ -8,6 +8,38 @@ import settings, urllib, json, re, logging
 
 logger = logging.getLogger(__name__)
 
+def page_not_found(request, **kwargs):
+	from django.http import HttpResponseNotFound
+	from campus.views import home
+	import sys, json
+	
+	# from conover: exc_class, exc, traceback = sys.exc_info()
+	error = sys.exc_value
+	
+	if len(error.args):
+		error = error.args[0]
+	if hasattr(error, 'get'):
+		 error = "<code>%s</code> could not be found." % (error.get('path', request.path))
+	if not isinstance(error, unicode):
+		error = error.__unicode__()
+	if not bool(error):
+		error = "<code>%s</code> could not be found." % (request.path)
+	
+	request.GET ={} # must clear query string
+	html = home(request, points=True, error=error)
+	return HttpResponseNotFound(html)
+
+def server_error(request, **kwargs):
+	from django.http import HttpResponseServerError
+	from django.conf import settings
+	from django.template import Context, loader
+	
+	#import sys
+	#print sys.exc_info()
+	
+	t = loader.get_template('pages/500.djt')
+	context = { 'MEDIA_URL': settings.MEDIA_URL }
+	return HttpResponseServerError(t.render(Context(context)))
 
 def api(request, url):
 	'''
@@ -16,7 +48,7 @@ def api(request, url):
 	view, args, kwargs = resolve('/' + url)
 	kwargs['request'] = request
 	return view(*args, **kwargs)
-	
+
 def pages(request, page=None):
 	'''
 	static pages with API placeholders

@@ -44,3 +44,5 @@ urlpatterns += patterns('',
 	url(r'^(?P<page>[\w-]+)/$', 'views.pages', name="page"),
 )
 
+handler404 = 'views.page_not_found'
+handler500 = 'views.server_error'
