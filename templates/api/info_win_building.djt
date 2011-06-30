@@ -20,7 +20,7 @@
 					<li><a href="{% url org o.id %}{{o.name|lower|slugify}}/">{{o.name}}</a></li>
 				{% endfor %}
 				{% if location.orgs.overflow %}
-					<li><a href="">More...</a></li>
+					<li><a href="{{location.profile_link}}">More...</a></li>
 				{% endif %}
 				</ul>
 			{% endif %}

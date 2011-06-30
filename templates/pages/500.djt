@@ -1,0 +1,9 @@
+{% extends "base.djt"%}
+
+{% block wrap %}
+	
+	<h2>Server Error</h2>
+	<p>Bummer.</p>
+	<p>We've logged the error but <a href="mailto:webcom@ucf.edu?subject=Campus Map Error">any help</a> you can give us is greatly appreciated.</p>
+	
+{% endblock %}
