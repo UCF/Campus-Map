@@ -43,7 +43,11 @@ class CommonLocation(models.Model):
 			
 			# super dumb, concerning floats http://code.djangoproject.com/ticket/3324
 			obj[f[0]] = f[1].__str__()
-			
+		
+		# add profile link
+		if hasattr(self, 'profile_link'):
+			obj['profile_link'] = str(self.profile_link)
+		
 		return obj
 	
 	def clean(self, *args, **kwargs):

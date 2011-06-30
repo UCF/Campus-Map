@@ -20,6 +20,8 @@ def home(request, **kwargs):
 	loc_id = request.GET.get('show', False)
 	if loc_id:
 		loc = location(request, loc=loc_id, return_obj=True)
+		loc.pop('profile')
+		loc.pop('poly_coords')
 		kwargs['location'] = loc
 	
 	if format == 'json':

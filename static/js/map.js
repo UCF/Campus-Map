@@ -212,7 +212,7 @@ Campus.controls = function(){
 		latlng = new google.maps.LatLng(loc.googlemap_point[0], loc.googlemap_point[1]);
 		Campus.map.panTo(latlng);
 		Campus.info();
-		Campus.infoBox.show(loc.name, latlng);
+		Campus.infoBox.show(loc.name, latlng, loc.profile_link);
 		
 		$('#item-title').html(loc.name);
 		$('#item-desc').html(loc.info);
@@ -687,7 +687,8 @@ Campus.info = function(id, pan){
 			enableEventPropagation: false
 		};
 		Campus.infoBox = new InfoBox(options);
-		Campus.infoBox.content = function(txt){
+		Campus.infoBox.content = function(txt, link){
+			if(link) txt = '<a href="' + link + '">' + txt + '</a>';
 			var testBox = $('<div id="testBox" class="iBox">' + txt + '</div>')[0];
 			$('body').append(testBox).each(function(){
 				var iBox = $('<div class="iBox">' + txt + '</div>')[0];
@@ -700,8 +701,8 @@ Campus.info = function(id, pan){
 				}
 			});
 		}
-		Campus.infoBox.show = function(txt, loc){
-			Campus.infoBox.content(txt);
+		Campus.infoBox.show = function(txt, loc, link){
+			Campus.infoBox.content(txt, link);
 			Campus.infoBox.setPosition(loc);
 			Campus.infoBox.open(Campus.map);
 		}
@@ -733,7 +734,7 @@ Campus.info = function(id, pan){
 			var point = (Campus.map.mapTypeId === 'illustrated') ? 'illustrated_point' : 'googlemap_point';
 			var latlng = new google.maps.LatLng(data[point][0], data[point][1]);
 			console.log('yo: ', name);
-			Campus.infoBox.show(name, latlng);
+			Campus.infoBox.show(name, latlng, data.profile_link);
 			
 			if(data.abbreviation){ name += ' (' + data.abbreviation + ')'; }
 			title.html(name);
