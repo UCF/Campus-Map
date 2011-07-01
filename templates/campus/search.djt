@@ -1,32 +1,42 @@
 {% extends "base.djt"%}
+{% load util %}
 
 {% block wrap %}
-	
+<div id="flat_search">
 	<h2>Search</h2>
-	
-	<div style="padding:20px 20px 10px">
-		
-		<form method="get" action="{% url search %}">
-			<input type="text" name="q" value="{{query}}">
-			<input type="submit">
-		</form>
-	
-	</div>
+	<form method="get" action="{% url search %}">
+		<input type="text" name="q" value="{{query}}">
+		<input type="submit">
+	</form>
 	
 	{% if query %}
-	<div style="padding:10px 20px;">
+	<div id="results">
 		<h3 style="color:#FF7700;">Results</h3>
-		
+		{% with results.buildings as bldgs %}
+		{% with results.organizations as orgs %}
 		{% if results.buildings %}
 		<ul>
-			{% for loc in results.buildings %}
-			<li>{{loc.link|safe}}</li>
+			{% for bldg in bldgs %}
+			<li>
+				<a href="{% url location bldg.pk%}{{bldg.title|slugify}}" data-pk="{{bldg.pk}}">
+					{{bldg.title|highlight_term:query|safe}}
+				</a>
+				<ul>
+				{% for org in orgs %}
+					{% if org.bldg_id == bldg.pk %}
+						<li>{{org.name|highlight_term:query|safe}}</li>
+					{% endif %}
+				{% endfor %}
+				</ul>
+			</li>
 			{% endfor %}
 		</ul>
 		{% else %}
 		<p class="no-results">No Results</p>
 		{% endif %}
-		
+		{% endwith %}
+		{% endwith %}
 	</div>
 	{% endif %}
+</div>
 {% endblock %}

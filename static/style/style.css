@@ -155,6 +155,14 @@ footer dd { padding:8px 0 0 8px; margin:0; }
 .ie7 #search > ul li a { display:block; overflow:hidden; }
 .no-results { padding:10px 0 0 12px; }
 
+#flat_search > form > input[type="text"] {border: 1px solid #CCC;padding: 5px; font-size: 110%;}
+#flat_search > form > input[type="submit"] {}
+#flat_search #results > h3 {font-size: 120%;}
+#flat_search #results > ul {margin-left: 0;font-size: 110%;}
+#flat_search #results > ul > li {list-style-type:none;margin-left:0;}
+#flat_search #results > ul > li > ul {margin-left: 20px;margin-top:5px;}
+#flat_search #results > ul > li > ul > li {}
+#flat_search #results > ul .highlight {background-color: #FFFF3D;}
 
 /******************************************************************************\
     Menu

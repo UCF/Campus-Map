@@ -199,7 +199,27 @@ def search(request):
 		response['Content-type'] = 'application/json'
 		return response
 	else:
-	
+		# Do some sorting here to ease the pain in the template
+		_bldgs = []
+		
+		for bldg in found_entries['buildings']:
+			query_match = bldg.name.lower().find(query_string.lower())
+			for org in found_entries['organizations']:
+				if org['bldg_id'] == bldg.pk and query_match != -1:
+					_bldgs.append(bldg)
+					break
+
+		for bldg in found_entries['buildings']:
+			for org in found_entries['organizations']:
+				if org['bldg_id'] == bldg.pk and bldg not in _bldgs:
+					_bldgs.append(bldg)
+					break
+		for bldg in found_entries['buildings']:
+			if bldg not in _bldgs:
+				_bldgs.append(bldg)
+		
+		found_entries['buildings'] = _bldgs
+		
 		context = {'search':True, 'query':query_string, 'results':found_entries }
 		return render(request, 'campus/search.djt', context)
 	
