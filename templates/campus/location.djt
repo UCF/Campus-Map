@@ -6,7 +6,10 @@
 	
 	<h2>
 		{{ location.name }}
-		<div class="sub">Abbreviation: <span>{{location.abbreviation}}</span>  Number: <span>{{location.number}}</span></div>
+		<div class="sub">
+			{% if location.abbreviation %}Abbreviation: <span>{{location.abbreviation}}</span>{% endif %}
+			{% if location.number %} Number: <span>{{location.number}}</span>{% endif %}
+		</div>
 	</h2>
 	
 	
@@ -16,13 +19,16 @@
 			{% if location.profile != "None" %}
 				{{location.profile|safe}}
 			{% else %}
+				{% if location.image %}
+				<img src="{{MEDIA_URL}}images/buildings/{{ location.image }}"><br><br>
+				{% endif %}
 				This location needs a profile, <a href="mailto:webcom@ucf.edu?subject=Campus Map Location Profile&amp;Body={{location.name}}">do you have one?</a>
 			{% endif %}
 		</div>
 		{% endif %}
 		
-		<h3>Organizations</h3>
 		{% if orgs %}
+			<h3>Organizations</h3>
 			<ul class="grey">
 			{% for o in orgs %}
 				<li>
@@ -37,14 +43,12 @@
 				</li>
 			{% endfor %}
 			</ul>
-		{% else %}
-			<p>This location does not have any organizations.</p>
 		{% endif %}
 		
 	</div>
-	<div class="span-10" id="profile-right">
+	<div class="span-11 last" id="profile-right">
 		
-		{% if location.image %}
+		{% if location.image and location.profile != "None" %}
 		<div id="profile-image">
 			<img src="{{MEDIA_URL}}images/buildings/{{ location.image }}">
 		</div>

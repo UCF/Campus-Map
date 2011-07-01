@@ -103,7 +103,7 @@ footer dd { padding:8px 0 0 8px; margin:0; }
 #locations h2 a:hover { color:#F30; border-bottom:1px solid #FF6748; }
 #profile ul li { padding-bottom:10px; }
 #profile ul.grey { color:#A0A0A0; }
-#profile ul.grey li { padding-bottom:4px; }
+#profile ul.grey li { padding:0 10px 4px 0; }
 #profile ul.grey li a { border-bottom:1px dotted #A0A0A0; }
 #profile ul.grey li a:hover { border-bottom:1px dotted #C30202; }
 #profile p { line-height:1.4; }
