@@ -1,25 +1,12 @@
 import re
 from django.http import HttpRequest
+from django.conf import settings
 
-class RequestAPIFormatMixin():
-	'''Mixin to provide detection for format type here instead of in URLs'''
-	
-	def is_json(self):
-		return False if re.search('\.json$', self.path) is None else True
-	
-	def is_txt(self):
-		return False if re.search('\.txt$', self.path) is None else True
-	
-	def is_xml(self):
-		return False if re.search('\.xml$', self.path) is None else True
-	
-	def is_bxml(self):
-		return False if re.search('\.bxml$', self.path) is None else True
-		
-	def is_kml(self):
-		return False if re.search('\.kxml$', self.path) is None else True
-	
-	def is_bubble(self):
-		return False if re.search('\.bubble$', self.path) is None else True
-	
-HttpRequest.__bases__ += (RequestAPIFormatMixin,)
+# Define is_<format> methods on the HttpRequest class
+for format in settings.FORMATS:
+	code = """def is_%s(self): 
+				import re 
+				return False if re.search('\.%s$', self.path) is None else True""" % (format, format)
+	scope = {}
+	exec code in scope
+	setattr(HttpRequest, 'is_%s' % format, scope['is_%s' % format])

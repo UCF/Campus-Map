@@ -121,6 +121,7 @@ LOGGING = {
 	}
 }
 
+FORMATS = ('json', 'txt', 'kml', 'xml', 'bml', 'bubble')
 
 # For Google to render KML layers, it needs to import the map data.  If working
 # locally or behind a firewall, this will not be possible.  If GOOGLE_CAN_SEE_ME

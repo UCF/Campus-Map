@@ -19,8 +19,12 @@ if settings.DEBUG:
 	)
 
 urlpatterns += patterns('',
-
-	url(r'^(?P<url>.+)\.(.+)?', 'views.api'),
+	
+	# Backward compatibiilty will old campus map URL structure
+	# Example: http://campusmap.ucf.edu/flash/index.php?select=b_8118
+	url(r'^flash/index\.php', 'campus.views.backward_location'),
+	
+	url('^(?P<url>.+)\.(%s)?' % '|'.join(settings.FORMATS), 'views.api'),
 
 	(r'^', include('campus.urls')),
 	#url(r'^$', direct_to_template, {'template':'base.djt'}, name='home'),
