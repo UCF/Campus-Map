@@ -34,11 +34,11 @@
 				<li>
 					<a class="org" data-pk="{{ o.id }}" data-link="{% url org o.id %}" href="?org={{o.id}}">{{o.name}}</a>
 				{% if o.id == org.id %}
-					<div class="org-info" id="org-{{o.id}}">
+					<div class="org-info open" id="org-{{o.id}}">
 						{% include 'api/organization.djt' %}
 					</div>
 				{% else %}
-					<div class="org-info closed" id="org-{{o.id}}"></div>
+					<div class="org-info" id="org-{{o.id}}"></div>
 				{% endif %}
 				</li>
 			{% endfor %}
