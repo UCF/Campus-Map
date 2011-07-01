@@ -17,7 +17,6 @@
 	<div style="padding:10px 20px;">
 		<h3 style="color:#FF7700;">Results</h3>
 		
-		<h4>Buildings:</h4>
 		{% if results.buildings %}
 		<ul>
 			{% for loc in results.buildings %}
@@ -26,17 +25,6 @@
 		</ul>
 		{% else %}
 		<p class="no-results">No Results</p>
-		{% endif %}
-		
-		<h4>Phonebook:</h4>
-		{% if results.phonebook %}
-		<ul>
-			{% for e in results.phonebook %}
-			<li>{{e.name}}</li>
-			{% endfor %}
-		</ul>
-		{% else %}
-		<p>No Results</p>
 		{% endif %}
 		
 	</div>
