@@ -107,6 +107,8 @@
 			var scroll = $(org).offset().top - 26;
 			$('html,body').animate({scrollTop: scroll}, 'slow');
 		}
+		//preload spinner
+		var img = new Image(); img.src = "{{MEDIA_URL}}style/img/spinner.gif";
 	});
 	
 	
@@ -116,13 +118,15 @@
 	$('.org').click(function(e){
 		var link = $(this).attr('data-link') + ".ajax";
 		e.preventDefault();
-		
 		var info = $('#org-' + $(this).attr('data-pk'));
-		info.toggleClass('closed');
+		
+		// close current window, or open a new (and close all others)
+		if(info.hasClass('open')){ info.removeClass('open'); return; }
+		$('.open').removeClass('open'); info.addClass('open');
+		
+		// load org info
 		if(info.hasClass('loaded')) return;
 		info.addClass('loading');
-		
-		
 		Campus.ajax = $.ajax({
 			url: link,
 			dataType: 'html',
@@ -130,7 +134,6 @@
 				info.html(data);
 				info.removeClass('loading');
 				info.addClass('loaded');
-				
 			}
 		});
 		
