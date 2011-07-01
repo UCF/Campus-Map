@@ -108,7 +108,7 @@ footer dd { padding:8px 0 0 8px; margin:0; }
 #profile ul.grey li a:hover { border-bottom:1px dotted #C30202; }
 #profile p { line-height:1.4; }
 #profile h2 { font-size:28px; text-transform:uppercase; padding-bottom:10px; }
-#profile h2 .sub { padding-top:4px; font-weight:10px; color:#919191; font-weight:bold; font-size:16px; line-height:18px; text-transform:capitalize; letter-spacing:0; }
+#profile h2 .sub { padding-top:4px; font-weight:10px; color:#919191; font-size:16px; line-height:18px; text-transform:capitalize; letter-spacing:0; }
 #profile h2 .sub span { color:#21759B; font-family:monospace; margin-right:10px; }
 #profile h3 { margin-top:0; }
 #profile-image { padding-bottom:15px; }
