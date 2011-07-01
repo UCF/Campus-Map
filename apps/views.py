@@ -176,7 +176,7 @@ def search(request):
 	'''
 	from campus.models import Building
 	
-	orgs, blgds, phones = ([],[],[])
+	orgs, bldgs, phones = ([],[],[])
 	
 	query_string = request.GET.get('q', '').strip()
 	
