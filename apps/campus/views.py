@@ -376,7 +376,7 @@ def location(request, loc, return_obj=False):
 	location['marker'] = base_url + settings.MEDIA_URL + 'images/markers/yellow.png'
 	
 	# API views
-	if request.is_bubble():
+	if request.is_ajax():
 		return render(request, template, context)
 	
 	if request.is_json():

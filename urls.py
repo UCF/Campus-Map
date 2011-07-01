@@ -24,6 +24,7 @@ urlpatterns += patterns('',
 	# Example: http://campusmap.ucf.edu/flash/index.php?select=b_8118
 	url(r'^flash/index\.php', 'campus.views.backward_location'),
 	
+	# Be careful. Because of the string replace, this is no longer a raw string
 	url('^(?P<url>.+)\.(%s)?' % '|'.join(settings.FORMATS), 'views.api'),
 
 	(r'^', include('campus.urls')),
