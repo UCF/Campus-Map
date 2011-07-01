@@ -17,9 +17,12 @@ class RequestAPIFormatMixin():
 		return False if re.search('\.bxml$', self.path) is None else True
 		
 	def is_kml(self):
-		return False if re.search('\.kxml$', self.path) is None else True
+		return False if re.search('\.kml$', self.path) is None else True
 	
 	def is_bubble(self):
 		return False if re.search('\.bubble$', self.path) is None else True
+	
+	def is_ajax(self):
+		return False if re.search('\.ajax$', self.path) is None else True
 	
 HttpRequest.__bases__ += (RequestAPIFormatMixin,)
