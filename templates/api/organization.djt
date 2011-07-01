@@ -1,0 +1,17 @@
+<p>
+	{{org.phone}}<br>
+	{{org.building}} room {{org.room}}
+</p>
+
+{% if org.departments %}
+	<h3>Departments</h3>
+	<ul>
+	{% for d in org.departments %}
+		<li>
+			{{d.name}}<br>
+			{{d.phone}}<br>
+			{{d.building}} room {{d.room}}
+		</li>
+	{% endfor %}
+	</ul>
+{% endif %}

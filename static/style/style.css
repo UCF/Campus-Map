@@ -115,6 +115,11 @@ footer dd { padding:8px 0 0 8px; margin:0; }
 #cwrap  { padding:5px; position:relative; height:300px; width:100%; -webkit-box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 6px; -moz-box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 6px; background-color: white; -moz-border-radius: 5px; -webkit-border-radius: 5x; border-radius:5px;  }
 .ie #cwrap { border:1px solid #CCC; }
 #canvas { width:100%; height:300px; }
+#profile .closed { display:none; }
+#profile .org-info { color:#1F1F1F; margin:5px; padding:5px 5px 5px 15px; border-left:2px solid #A8C4E9; }
+#profile .org-info ul { margin-bottom:0; }
+#profile .loading { padding:30px; background-image:url('img/spinner.gif'); background-repeat:no-repeat; background-position:50px 10px; }
+
 
 /******************************************************************************\
     Search

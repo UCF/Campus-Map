@@ -383,10 +383,14 @@ def location(request, loc, return_obj=False):
 		if settings.DEBUG:
 			import time
 			time.sleep(.5)
-		
 		response = HttpResponse(json.dumps(location))
 		response['Content-type'] = 'application/json'
 		return response
+	
+	org = None
+	if request.GET.get('org', None):
+		from apps.views import get_org
+		org = get_org(request.GET['org'])
 	
 	if return_obj:
 		return location
@@ -394,7 +398,8 @@ def location(request, loc, return_obj=False):
 		# show location profile
 		context = { 
 			'location' : location,
-			'orgs'     : location_orgs
+			'orgs'     : location_orgs,
+			'org'      : org
 		}
 		return render(request, 'campus/location.djt', context)
 	else:

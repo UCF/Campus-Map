@@ -1,16 +1,26 @@
 {% extends "base.djt"%}
 
 {% block wrap %}
-	
+
 	<h2> Organizations </h2>
-	{% if organizations %}
+	{% if error %}
+		<div class="error">{{error}}</div>
+	{% else %}
+	<div class="span-12">
 		<ul>
-		{% for o in organizations.results %}
-			<li><a href="{% url org o.id %}{{o.name|lower|slugify}}/">{{o.name}}</a></li>
+		{% for o in orgs_one %}
+			<li><a href="{% url locations %}/{{o.bldg_id}}/{{o.building|slugify}}/?org={{o.id}}">{{o.name}}</a></li>
 		{% endfor %}
 		</ul>
-	{% else %} 
-		<p>No organizations available.</p>
+	</div>
+	<div class="span-11 last">
+		<ul>
+		{% for o in orgs_two %}
+			<li><a href="{% url locations %}/{{o.bldg_id}}/{{o.building|slugify}}/?org={{o.id}}">{{o.name}}</a></li>
+		{% endfor %}
+		</ul>
+	</div>
+	<div class="clear"></div>
 	{% endif %}
 	
 {% endblock %}

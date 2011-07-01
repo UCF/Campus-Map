@@ -12,12 +12,21 @@
 			{{location.profile|safe}}
 		</div>
 		{% endif %}
-	
+		
 		<h3>Organizations</h3>
 		{% if orgs %}
 			<ul class="grey">
 			{% for o in orgs %}
-				<li><a href="{% url org o.id %}{{o.name|lower|slugify}}/">{{o.name}}</a></li>
+				<li>
+					<a class="org" data-pk="{{ o.id }}" data-link="{% url org o.id %}" href="?org={{o.id}}">{{o.name}}</a>
+				{% if o.id == org.id %}
+					<div class="org-info" id="org-{{o.id}}">
+						{% include 'api/organization.djt' %}
+					</div>
+				{% else %}
+					<div class="org-info closed" id="org-{{o.id}}"></div>
+				{% endif %}
+				</li>
 			{% endfor %}
 			</ul>
 		{% else %}
@@ -49,7 +58,7 @@
 
 	/**************************************************************************\
 		Mini Illustrated Map
-	\*************************************************************************/
+	\**************************************************************************/
 	$('#canvas').each(function(){
 		
 		var coords = {{location.illustrated_point}};
@@ -76,5 +85,46 @@
 		Campus.infoBox.show(link, latlng);
 		
 	});
+	
+	/**************************************************************************\
+		Scroll to Org
+	\**************************************************************************/
+	$(document).ready(function(){
+		var org = $('#org-' + '{{org.id|default:"null"}}');
+		if(org.length){
+			var scroll = $(org).offset().top - 26;
+			$('html,body').animate({scrollTop: scroll}, 'slow');
+		}
+	});
+	
+	
+	/**************************************************************************\
+		Display Org Info
+	\**************************************************************************/
+	$('.org').click(function(e){
+		var link = $(this).attr('data-link') + ".ajax";
+		e.preventDefault();
+		
+		var info = $('#org-' + $(this).attr('data-pk'));
+		info.toggleClass('closed');
+		if(info.hasClass('loaded')) return;
+		info.addClass('loading');
+		
+		
+		Campus.ajax = $.ajax({
+			url: link,
+			dataType: 'html',
+			success: function(data){
+				info.html(data);
+				info.removeClass('loading');
+				info.addClass('loaded');
+				
+			}
+		});
+		
+		return false;
+	});
+	
+	
 </script>
 {% endblock %}

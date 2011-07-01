@@ -72,9 +72,21 @@ def pages(request, page=None):
 
 def organizations(request):
 	context = {'organizations': get_orgs() }
+	orgs = get_orgs()['results']
+	half = len(orgs) / 2
+	error = None
+	if not orgs:
+		error = "Issue with phonebook search service"
+	context = {
+		'error'    : error,
+		'orgs_one' : orgs[0:half],
+		'orgs_two' : orgs[half:]
+	}
 	return render(request, "pages/organizations.djt", context)
 
 def organization(request, id):
+	from django.template.loader import get_template
+	from django.template import Context
 	org = get_org(id)
 	building = None
 	try:
@@ -83,6 +95,19 @@ def organization(request, id):
 	except Building.DoesNotExist:
 		pass
 	context = {'org': org, 'building':building }
+	
+	if request.is_json():
+		context = {'org': org, 'building':building.json() }
+		response = HttpResponse(json.dumps(context))
+		response['Content-type'] = 'application/json'
+		return response
+	
+	if request.is_ajax():
+		if settings.DEBUG:
+			import time
+			time.sleep(1)
+		return render(request, "api/organization.djt", context)
+	
 	return render(request, "pages/organization.djt", context)
 
 def organization_search(q):

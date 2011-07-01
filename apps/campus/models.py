@@ -126,7 +126,7 @@ class Building(CommonLocation):
 	
 	def _link(self):
 		url = reverse('location', kwargs={'loc':self.number})
-		return '<a href="%s%s/" data-pk="%s">%s</a>' % (url, slugify(self.title), self.number, self.title)
+		return '<a href="%s%s/" data-pk="%s">%s</a>' % (url, slugify(self.name), self.number, self.title)
 	link = property(_link)
 	
 	def _profile_link(self):
