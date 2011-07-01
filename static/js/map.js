@@ -733,7 +733,6 @@ Campus.info = function(id, pan){
 			var name = data.name;
 			var point = (Campus.map.mapTypeId === 'illustrated') ? 'illustrated_point' : 'googlemap_point';
 			var latlng = new google.maps.LatLng(data[point][0], data[point][1]);
-			console.log('yo: ', name);
 			Campus.infoBox.show(name, latlng, data.profile_link);
 			
 			if(data.abbreviation){ name += ' (' + data.abbreviation + ')'; }

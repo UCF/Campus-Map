@@ -4,12 +4,20 @@
 
 <div id="profile">
 	
-	<h2>{{ location.name }} <span>Location</span></h2>
+	<h2>
+		{{ location.name }}
+		<div class="sub">Abbreviation: <span>{{location.abbreviation}}</span>  Number: <span>{{location.number}}</span></div>
+	</h2>
+	
 	
 	<div class="span-12">
 		{% if location.profile %}
 		<div id="profile-copy">
-			{{location.profile|safe}}
+			{% if location.profile != "None" %}
+				{{location.profile|safe}}
+			{% else %}
+				This location needs a profile, <a href="mailto:webcom@ucf.edu?subject=Campus Map Location Profile&amp;Body={{location.name}}">do you have one?</a>
+			{% endif %}
 		</div>
 		{% endif %}
 		

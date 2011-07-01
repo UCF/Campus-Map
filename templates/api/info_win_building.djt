@@ -1,7 +1,6 @@
 {% if not location %}null{% else %}
 <div id="location-{{location.pk}}">
 	<div class="info-window">
-		<h2>{{location.name}} {% if location.abbreviation %}({{ location.abbreviation }}){%endif%}</h2>
 		{% if location.image %}<img src="{{ base_url }}{{MEDIA_URL}}images/buildings/{{ location.image }}">{%else%}<img src="{{ base_url }}{{MEDIA_URL}}images/buildings/_no_image.jpg">{% endif %}
 		{% if location.description %}
 			<p>{{ location.description }}</p>
@@ -10,14 +9,13 @@
 				{# <p><a href="{% url admin:app_list 'campus'%}building/{{location.pk}}/">add a description</a></p> #}
 			{% endif %}
 		{% endif %}
-		<p><a href="{{location.profile_link}}">Location Profile</a></p>
 		
 		{% if orgs %}
 			{% if location.orgs.results %}
 				<h3>Organizations</h3>
 				<ul>
 				{% for o in location.orgs.results %}
-					<li><a href="{% url org o.id %}{{o.name|lower|slugify}}/">{{o.name}}</a></li>
+					<li><a href="{% url locations %}/{{o.bldg_id}}/{{o.building|slugify}}/?org={{o.id}}">{{o.name}}</a></li>
 				{% endfor %}
 				{% if location.orgs.overflow %}
 					<li><a href="{{location.profile_link}}">More...</a></li>
