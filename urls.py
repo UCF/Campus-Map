@@ -1,5 +1,5 @@
 from django.conf.urls.defaults import *
-from django.views.generic.simple import direct_to_template
+from django.views.generic.simple import direct_to_template, redirect_to
 import settings
 
 from django.contrib import admin
@@ -23,6 +23,8 @@ urlpatterns += patterns('',
 	# Backward compatibiilty will old campus map URL structure
 	# Example: http://campusmap.ucf.edu/flash/index.php?select=b_8118
 	url(r'^flash/index\.php', 'campus.views.backward_location'),
+	('^printmap', redirect_to, {'url': '/printable/'}),
+	('^address\.php', redirect_to, {'url': '/directions/'}),
 	
 	# Be careful. Because of the string replace, this is no longer a raw string
 	url('^(?P<url>.+)\.(%s)?' % '|'.join(settings.FORMATS), 'views.api'),
