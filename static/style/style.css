@@ -13,7 +13,7 @@ a {
 a:hover { cursor:pointer; color:#C30202; }
 a:active, a:focus { outline:0; }
 
-h1 { font-family:"Adobe Caslon Pro", "Adobe Caslon", "Caslon Pro", caslon, georgia, serif; width:300px; }
+h1 { font-family:"Adobe Caslon Pro", "Adobe Caslon", "Caslon Pro", caslon, georgia, serif; }
 h1 a { text-decoration:none; color:black; }
 h1 a:hover { color:#D10020; }
 h2 { font-size:23px; color:#FF7700; font-family: 'Helvetica Neue Light', 'Helvetica Light', 'HelveticaLight', 'Helvetica-Light', "Helvetica Neue", Helvetica; font-weight:200; letter-spacing:1px; margin:5px 0 10px; }
@@ -69,7 +69,7 @@ nav ol li a:hover {  color:#ed1c24;  text-decoration: underline; }
 
 #map { padding:0 17px 17px; position:relative; min-width:556px; }
 #map header { margin:0; padding:0 0 3px 0; overflow:hidden; display:block; width:100%; position:relative; min-width:59px; }
-#map header h1 { border:0; padding:0 0 0 4px; }
+#map header h1 { border:0; padding:0 0 0 4px; width: 300px;}
 .ie #map * { zoom:1; }
 footer { background:black; margin:0; padding:8px 18px; color:white; display:block; overflow:hidden; clear:both; }
 footer a { color:white; text-decoration:none; border-bottom:1px dotted black; }
