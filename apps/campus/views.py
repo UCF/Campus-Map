@@ -1,5 +1,5 @@
 from django.shortcuts import render_to_response
-from django.http      import HttpResponse, HttpResponseNotFound, Http404
+from django.http      import HttpResponse, HttpResponseNotFound, Http404, HttpResponsePermanentRedirect
 from django.views.generic.simple import direct_to_template as render
 from django.core.urlresolvers import reverse
 
@@ -347,7 +347,8 @@ def backward_location(request):
 	if select is not None:
 		match = re.search('b_(\d+)', select)
 		if match is not None:
-			return location(request, match.groups()[0])
+			url = reverse('location', kwargs={'loc':match.groups()[0]})
+			return HttpResponsePermanentRedirect(url)
 	raise Http404()
 			
 def location(request, loc, return_obj=False):
