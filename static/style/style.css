@@ -13,7 +13,7 @@ a {
 a:hover { cursor:pointer; color:#C30202; }
 a:active, a:focus { outline:0; }
 
-h1 { font-family:"Adobe Caslon Pro", "Adobe Caslon", "Caslon Pro", caslon, georgia, serif;}
+h1 { font-family:"Adobe Caslon Pro", "Adobe Caslon", "Caslon Pro", caslon, georgia, serif; width:300px; }
 h1 a { text-decoration:none; color:black; }
 h1 a:hover { color:#D10020; }
 h2 { font-size:23px; color:#FF7700; font-family: 'Helvetica Neue Light', 'Helvetica Light', 'HelveticaLight', 'Helvetica-Light', "Helvetica Neue", Helvetica; font-weight:200; letter-spacing:1px; margin:5px 0 10px; }
@@ -82,8 +82,9 @@ footer dd { padding:8px 0 0 8px; margin:0; }
 
 #logo { text-align:left; text-indent:-500px; display:block; width:150px; height:75px; background:url('img/logo.png') no-repeat; float:right; overflow:hidden; margin:12px 0; border-bottom:0; }
 #error { position:absolute; top:15px; width:100%; text-align:center; z-index:2; }
-#error p { display:inline-block; padding:10px; margin:0 250px; border:1px solid red; -moz-border-radius: 5px; -webkit-border-radius: 5x; border-radius:5px; background:#FFCED0; }
+#error p { display:inline-block; position:relative; padding:10px; margin:0 250px; border:1px solid red; -moz-border-radius: 5px; -webkit-border-radius: 5x; border-radius:5px; background:#FFCED0; }
 .ie6 #error p, .ie7 #error p { width:400px; display:block; margin: 0 auto; }
+.error-close { display:block; width:19px; height:19px; background:url('img/close.png'); top:-7px; right:-8px; overflow:hidden; position:absolute; text-indent:-100px; }
 
 /******************************************************************************\
     Google Map

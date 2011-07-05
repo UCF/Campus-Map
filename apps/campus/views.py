@@ -56,22 +56,6 @@ def home(request, **kwargs):
 		for b in buildings:
 			b = b.json()
 			points[b['number']] = { 'gpoint' : b['googlemap_point'], 'ipoint' : b['illustrated_point'] }
-		
-		'''
-		from django.db.models import Q
-		q1 = Q(googlemap_point__isnull=True)
-		q2 = Q(googlemap_point__exact='')
-		q3 = Q(googlemap_point__contains='None')
-		q =  (q1 | q2 | q3)
-		points = Building.objects.exclude( q )
-		
-		# keeping this code around because q=Q() was not necessarily intuitive
-		buildings = ["union", "millican"];
-		q = Q()
-		for name in buildings:
-			q = q | Q(name__icontains = name)
-		points = Building.objects.filter( q )
-		'''
 	else:
 		points = None
 		
@@ -112,7 +96,7 @@ def home(request, **kwargs):
 def locations(request):
 	
 	from campus.models import Building, Location, RegionalCampus, Group
-	buildings = Building.objects.exclude(googlemap_point__isnull=True)
+	buildings = Building.objects.all()
 	locations = Location.objects.all()
 	campuses  = RegionalCampus.objects.all()
 	groups    = Group.objects.all()

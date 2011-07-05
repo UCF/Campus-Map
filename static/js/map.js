@@ -21,6 +21,15 @@ var Campus = {
 		buildings      : false,  // UCF's building data, remove google's
 		points         : false,  // Yellow markers for each location
 		traffic        : false
+	},
+	error  : function(str) {
+		var close = $('<a class="error-close">close</a>');
+		close.click(function(e){
+			e.preventDefault();
+			$('#error').hide().html('');
+		});
+		var err = $('<p>' + str + '</p>').append(close);
+		$('#error').append(err).show();
 	}
 };
 /*global window, document, Image, google, $ */
@@ -209,6 +218,11 @@ Campus.controls = function(){
 	// not using Campus.info() because that uses an ajax reqeust to load location (already delivered here)
 	if(Campus.settings.location){
 		loc = Campus.settings.location;
+		if(!loc.googlemap_point || !loc.googlemap_point.length){
+			var err = '<code>' + loc.name + '</code> does not have a map location';
+			Campus.error(err);
+			return;
+		}
 		latlng = new google.maps.LatLng(loc.googlemap_point[0], loc.googlemap_point[1]);
 		Campus.map.panTo(latlng);
 		Campus.info();
@@ -732,6 +746,14 @@ Campus.info = function(id, pan){
 		success: function(data){
 			var name = data.name;
 			var point = (Campus.map.mapTypeId === 'illustrated') ? 'illustrated_point' : 'googlemap_point';
+			if(!data[point] || !data[point].length){
+				title.html(name);
+				desc.html(data.info);
+				desc.removeClass('load');
+				var err = '<code>' + name + '</code> does not have a map location';
+				Campus.error(err);
+				return;
+			}
 			var latlng = new google.maps.LatLng(data[point][0], data[point][1]);
 			Campus.infoBox.show(name, latlng, data.profile_link);
 			

@@ -10,6 +10,8 @@
 		<div id="error">
 			<p>{{error|safe}}</p>
 		</div>
+		{% else %}
+		<div id="error" style="display:none;"></div>
 		{% endif %}
 		
 		{% weather %}
