@@ -172,8 +172,7 @@ Campus.maps.imap_type.bg = function(coord,zoom) {
 	}
 	
 	return 'url("' 
-		+ 'http://webcom.dev.smca.ucf.edu/media/map_old/' 
-		+ 'img/illustrated_tiles/' + tile + '")';
+		+ 'http://cdn.ucf.edu/map/tiles/' + tile + '")';
 };
 
 
