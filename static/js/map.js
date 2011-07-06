@@ -16,8 +16,6 @@
 \******************************************************************************/
 var Campus = {
 	settings : {
-		drawn_min_zoom : 12,
-		drawn_max_zoom : 17,
 		buildings      : false,  // UCF's building data, remove google's
 		points         : false,  // Yellow markers for each location
 		traffic        : false
@@ -98,7 +96,7 @@ Campus.maps = {
 	imap_type : {
 		tileSize : new google.maps.Size(256,256),
 		minZoom: 12,
-		maxZoom :19,
+		maxZoom :16, //can go up to 18
 		getTile : function(coord, zoom, ownerDocument) {
 		  var div = ownerDocument.createElement('div');
 		  div.style.width = this.tileSize.width + 'px';
