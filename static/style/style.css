@@ -125,7 +125,9 @@ footer dd { padding:8px 0 0 8px; margin:0; }
 #flickr h3 { font-size:16px; margin-bottom:12px; color:#21759B; font-family: 'Helvetica Neue Light', 'Helvetica Light', 'HelveticaLight', 'Helvetica-Light', "Helvetica Neue", Helvetica; font-weight:200; letter-spacing:1px; }
 #flickr p { margin:0; padding:0 0 0 5px; }
 #flickr img { margin:3px; }
-
+#jquery-lightbox h2 { font-size:16px; line-height:1.2; font-family: 'Helvetica Neue Light', 'Helvetica Light', 'HelveticaLight', 'Helvetica-Light', "Helvetica Neue", Helvetica; font-weight:200; letter-spacing:1px; }
+#jquery-lightbox h2 a { text-decoration:none; }
+#jquery-lightbox p { font-weight:normal; font-size:13px; }
 
 /******************************************************************************\
     Search

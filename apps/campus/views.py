@@ -206,6 +206,10 @@ def location(request, loc, return_obj=False):
 				ptags = set(p.tags.split(' ')).intersection(tags)
 				if(not bool(ptags)):
 					photos.remove(p)
+				else:
+					p.info = '<h2><a href="http://flickr.com/photos/universityofcentralflorida/%s/">%s</a></h2>' % (p.id, p.title)
+					if p.description.text:
+						p.info = "%s<p>%s</p>" % (p.info, p.description.text)
 		context = { 
 			'location' : location,
 			'orgs'     : location_orgs,

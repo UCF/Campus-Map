@@ -29,7 +29,7 @@ def get_photos(page=1):
 		return photos
 	
 	method = 'flickr.people.getPublicPhotos'
-	data = _doget(method, user_id=USER_ID, per_page=500, page=page, extras="tags,date_taken,o_dims,path_alias,url_t,url_sq,url_s,url_m,url_l")
+	data = _doget(method, user_id=USER_ID, per_page=500, page=page, extras="tags,description,date_taken,o_dims,path_alias,url_t,url_sq,url_s,url_m,url_l,url_z")
 	if hasattr(data.rsp.photos, "photo"): # Check if there are photos at all (may be been paging too far).
 		if isinstance(data.rsp.photos.photo, list):
 			for photo in data.rsp.photos.photo:
