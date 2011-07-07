@@ -144,6 +144,59 @@ def locations(request):
 	}
 	return render(request, 'campus/locations.djt', context)
 
+def location(request, loc, return_obj=False):
+	'''
+	Will one day be a wrapper for all data models, searching over all locations
+	and organizations, maybe even people too
+	'''
+	from campus.models import Building, Location
+	
+	
+	location_orgs = []
+	try:
+		location = Building.objects.get(pk=loc)
+		location_orgs = location._orgs(limit=-1)['results']
+	except Building.DoesNotExist:
+		try:
+			location = Location.objects.get(pk=loc)
+		except Location.DoesNotExist:
+			raise Http404("Location ID <code>%s</code> could not be found" % (loc))
+	
+	location_type = location.__class__.__name__
+	html = location_html(location, request)
+	location = location.json()
+	location['info'] = html
+	base_url = request.build_absolute_uri('/')[:-1]
+	location['marker'] = base_url + settings.MEDIA_URL + 'images/markers/yellow.png'
+	
+	# API views
+	if request.is_json():
+		if settings.DEBUG:
+			import time
+			time.sleep(.5)
+		response = HttpResponse(json.dumps(location))
+		response['Content-type'] = 'application/json'
+		return response
+	
+	org = None
+	if request.GET.get('org', None):
+		from apps.views import get_org
+		org = get_org(request.GET['org'])
+	
+	if return_obj:
+		return location
+	elif location_type == "Building":
+		# show location profile
+		context = { 
+			'location' : location,
+			'orgs'     : location_orgs,
+			'org'      : org
+		}
+		return render(request, 'campus/location.djt', context)
+	else:
+		# show location on the map
+		return home(request, location=location)
+
 def parking(request):
 	
 	from campus.models import ParkingLot
@@ -334,59 +387,6 @@ def backward_location(request):
 			url = reverse('location', kwargs={'loc':match.groups()[0]})
 			return HttpResponsePermanentRedirect(url)
 	raise Http404()
-			
-def location(request, loc, return_obj=False):
-	'''
-	Will one day be a wrapper for all data models, searching over all locations
-	and organizations, maybe even people too
-	'''
-	from campus.models import Building, Location
-	
-	
-	location_orgs = []
-	try:
-		location = Building.objects.get(pk=loc)
-		location_orgs = location._orgs(limit=-1)['results']
-	except Building.DoesNotExist:
-		try:
-			location = Location.objects.get(pk=loc)
-		except Location.DoesNotExist:
-			raise Http404("Location ID <code>%s</code> could not be found" % (loc))
-	
-	location_type = location.__class__.__name__
-	html = location_html(location, request)
-	location = location.json()
-	location['info'] = html
-	base_url = request.build_absolute_uri('/')[:-1]
-	location['marker'] = base_url + settings.MEDIA_URL + 'images/markers/yellow.png'
-	
-	# API views
-	if request.is_json():
-		if settings.DEBUG:
-			import time
-			time.sleep(.5)
-		response = HttpResponse(json.dumps(location))
-		response['Content-type'] = 'application/json'
-		return response
-	
-	org = None
-	if request.GET.get('org', None):
-		from apps.views import get_org
-		org = get_org(request.GET['org'])
-	
-	if return_obj:
-		return location
-	elif location_type == "Building":
-		# show location profile
-		context = { 
-			'location' : location,
-			'orgs'     : location_orgs,
-			'org'      : org
-		}
-		return render(request, 'campus/location.djt', context)
-	else:
-		# show location on the map
-		return home(request, location=location)
 	
 def regional_campuses(request, campus=None):
 	from campus.models import RegionalCampus
