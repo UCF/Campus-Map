@@ -187,10 +187,30 @@ def location(request, loc, return_obj=False):
 		return location
 	elif location_type == "Building":
 		# show location profile
+		
+		photos = None
+		if('flickr' in request.GET):
+			'''
+			Disable flickr until we want to roll it out, get var allows us to demo it
+			'''
+			import flickr
+			photos = flickr.get_photos()
+			tags = set()
+			if 'id' in location:
+				tags.add( 'map%s' % location['id'].lower() )
+			if 'abbreviation' in location:
+				tags.add( 'map%s' % location['abbreviation'].lower() )
+			if 'number' in location:
+				tags.add( 'map%s' % location['number'].lower() )
+			for p in list(photos):
+				ptags = set(p.tags.split(' ')).intersection(tags)
+				if(not bool(ptags)):
+					photos.remove(p)
 		context = { 
 			'location' : location,
 			'orgs'     : location_orgs,
-			'org'      : org
+			'org'      : org,
+			'photos'   : photos,
 		}
 		return render(request, 'campus/location.djt', context)
 	else:

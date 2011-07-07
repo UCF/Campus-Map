@@ -58,6 +58,17 @@
 		<div id="cwrap"><div id="canvas"></div></div>
 		{% endif %}
 		
+		{% if photos %}
+		<div id="flickr">
+			<h3>Photos on Flickr</h3>
+			<p>
+			{% for p in photos %}
+				<a href="http://www.flickr.com/photos/universityofcentralflorida/{{p.id}}/"><img src="{{p.url_sq}}"></a>
+			{% endfor %}
+			</p>
+		</div>
+		{% endif %}
+		
 	</div>
 	<div class="clear"></div>
 	

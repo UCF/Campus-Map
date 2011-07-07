@@ -5,7 +5,9 @@ http://code.google.com/p/flickrpy/
 
 from urllib import urlencode, urlopen
 from xml.dom import minidom
-from django.core import cache
+from django.core.cache import get_cache
+from settings import DEBUG, PROJECT_FOLDER
+import os
 
 USER_ID = "36226710@N08"
 API_KEY = '9782baf2f495f633d6ef9de6e48a243a'
@@ -18,13 +20,16 @@ def get_photos(page=1):
 	Returns list of Photo objects
 	http://www.flickr.com/services/api/flickr.people.getPublicPhotos.html
 	"""
-	
+	backend = 'file://%s' % os.path.join(PROJECT_FOLDER, 'cache')
+	cache = get_cache(backend)
 	photos = cache.get('photos')
 	if photos is not None:
+		if DEBUG: 
+			print "Flickr - photos cached :)"
 		return photos
 	
 	method = 'flickr.people.getPublicPhotos'
-	data = _doget(method, user_id=USER_ID, per_page=500, page=page, extras="tags,date_taken,o_dims,path_alias,url_t,url_s,url_m,url_l")
+	data = _doget(method, user_id=USER_ID, per_page=500, page=page, extras="tags,date_taken,o_dims,path_alias,url_t,url_sq,url_s,url_m,url_l")
 	if hasattr(data.rsp.photos, "photo"): # Check if there are photos at all (may be been paging too far).
 		if isinstance(data.rsp.photos.photo, list):
 			for photo in data.rsp.photos.photo:
@@ -47,13 +52,8 @@ def _doget(method, auth=False, **params):
 	url = '%s%s/?api_key=%s&method=%s&%s'% \
 		  (HOST, API, API_KEY, method, urlencode(params))
 
-	#another useful debug print statement
-	try:
-		from settings import debug
-	except:
-		debug = True
-	if debug:		
-		print "_doget", url
+	if DEBUG:
+		print "Pulling photos: ", url
 	
 	return _get_data(minidom.parse(urlopen(url)))
 

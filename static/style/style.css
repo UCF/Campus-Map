@@ -121,6 +121,10 @@ footer dd { padding:8px 0 0 8px; margin:0; }
 #profile .open { display:block; }
 #profile .org-info ul { margin-bottom:0; }
 #profile .loading { padding:30px; background-image:url('img/spinner.gif'); background-repeat:no-repeat; background-position:50px 10px; }
+#flickr { padding:35px 0 10px 5px; }
+#flickr h3 { font-size:16px; margin-bottom:12px; color:#21759B; font-family: 'Helvetica Neue Light', 'Helvetica Light', 'HelveticaLight', 'Helvetica-Light', "Helvetica Neue", Helvetica; font-weight:200; letter-spacing:1px; }
+#flickr p { margin:0; padding:0 0 0 5px; }
+#flickr img { margin:3px; }
 
 
 /******************************************************************************\

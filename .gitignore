@@ -1,6 +1,9 @@
 # Local Settings
 settings_local.py
 
+# Filesystem cache
+cache
+
 # Application, OS, and backup files
 *~
 *.pyc
