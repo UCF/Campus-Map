@@ -1,0 +1,12 @@
+{% if not location %}null{% else %}
+<div class="item">
+	<h2 class="light">{{location.name}}</h2>
+	<p>
+		{{location.img_tag|safe}}
+		{{location.profile|safe}}
+	</p>
+</div>
+
+<a href="{% url regional %}" class="item">More Regional Campuses</a>
+
+{% endif %}

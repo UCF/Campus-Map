@@ -123,9 +123,13 @@ Campus.maps = {
 			Campus.map = new google.maps.Map(document.getElementById("map-canvas"), options);
 			Campus.map.mapTypes.set('illustrated',Campus.maps.imap_type);
 			google.maps.event.addListener(Campus.map, 'maptypeid_changed', function() {
-				// TODO: fix building toggling so it doesn't change zoom
-				// TODO: this also breaks traffic
 				var type = Campus.map.mapTypeId;
+				var prev = Campus.prevMapType;
+				Campus.prevMapType = type;
+				if(prev !== 'illustrated' && type !== 'illustrated'){
+					//switching between compatible google maps
+					return;
+				}
 				var options = (type === 'illustrated') ? Campus.maps.imap_options : Campus.maps.gmap_options;
 				//Campus.map.setOptions(options); //super slow
 				Campus.map.setZoom(options.zoom);
@@ -199,35 +203,24 @@ Campus.controls = function(){
 	this.menuInit();
 	this.map.controls[google.maps.ControlPosition.RIGHT_TOP].push(this.menu[0]);
 		
-	var rc, loc, latlng;
-	// looking at a regional campus
-	if(Campus.settings.regional_campus){
-		rc = Campus.settings.regional_campus;
-		latlng = new google.maps.LatLng(rc.googlemap_point[0], rc.googlemap_point[1]);
-		Campus.map.panTo(latlng);
-		Campus.info(); //inits info marker
-		Campus.infoMarker.setPosition(latlng);
-		$('#item-title').html(rc.description);
-		$('#item-desc').html(rc.html);
-	}
-	
-	// looking at a location (very similar to regional campus)
+	// looking at a location
 	// not using Campus.info() because that uses an ajax reqeust to load location (already delivered here)
 	if(Campus.settings.location){
-		loc = Campus.settings.location;
+		var loc = Campus.settings.location;
 		if(!loc.googlemap_point || !loc.googlemap_point.length){
 			var err = '<code>' + loc.name + '</code> does not have a map location';
 			Campus.error(err);
 			return;
 		}
-		latlng = new google.maps.LatLng(loc.googlemap_point[0], loc.googlemap_point[1]);
+		var latlng = new google.maps.LatLng(loc.googlemap_point[0], loc.googlemap_point[1]);
 		Campus.map.panTo(latlng);
 		Campus.info();
 		Campus.infoBox.show(loc.name, latlng, loc.profile_link);
-		
 		Campus.stage.html(loc.info);
 		
-		if(loc.number){
+		if(!loc.number){
+			$('#permalink,#email').hide();
+		} else {
 			var permalink = Campus.permalink.replace("%s", loc.number);
 			$('#permalink').attr('href', permalink).show();
 			var mailto = Campus.mailto(loc.name, permalink);

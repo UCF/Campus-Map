@@ -432,10 +432,11 @@ def regional_campuses(request, campus=None):
 		except RegionalCampus.DoesNotExist:
 			raise Http404()
 		else:
+			html = location_html(rc, request, orgs=False)
 			img = rc.img_tag
 			rc = rc.json()
-			rc['html'] = img + '<a href="%s">More info...</a>' % (reverse('regional'))
-			return home(request, regional_campus=rc)
+			rc['info'] = html
+			return home(request, location=rc)
 	
 	campuses = RegionalCampus.objects.all()
 	context = { "campuses": campuses }
