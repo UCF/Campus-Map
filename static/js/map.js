@@ -714,10 +714,14 @@ Campus.info = function(id, pan){
 		}
 	}
 	
+	if(!id || id==="null" || id==="searching"){ 
+		// called empty, done to init
+		return; 
+	}
+	
 	// show in menu
 	Campus.menu.show('Location');
 	
-	if(!id || id==="null" || id==="searching"){ return; }
 	if(Campus.ajax){ Campus.ajax.abort(); }
 	Campus.stage.html('<div class="item load">Loading...</div>');
 	var email = $('#email');
@@ -823,6 +827,24 @@ Campus.search = function(){
 		search_typing_timeout = 400; // milliseconds
 	var input  = search.find('input');
 	
+	$.fn.mapBox = function() {
+		// a small jquery plugin to parse attributes and show map infobox
+		return this.each(function() {
+			Campus.info(); // ensure info box is init
+			var link = $(this).find('a');
+			var id = link.attr('data-pk');
+			if(!Campus.points || !Campus.points[id]) return;
+			var point = (Campus.map.mapTypeId === 'illustrated') ? 'ipoint' : 'gpoint';
+			var p = Campus.points[id][point];
+			if(!p || !p[0] || !p[1]) return;
+			var latlng = new google.maps.LatLng(p[0], p[1]);
+			var title = link.html();
+			var url = link.attr('href');
+			Campus.infoBox.disableAutoPan_=true;
+			Campus.infoBox.show(title, latlng, url);
+		});
+	}
+	
 	search.keydown(function(event){
 		//parse keycode
 		var keyCode =
@@ -848,7 +870,7 @@ Campus.search = function(){
 			Campus.info(pk, true);
 		}
 	});//keydown
-		
+	
 	search.keyup(function(event){
 		
 		//parse keycode
@@ -868,14 +890,14 @@ Campus.search = function(){
 			li = $('#search .hover');
 			
 			if(li.length < 1){
-				 $('#search li:first').addClass('hover');
+				 $('#search li:first').addClass('hover').mapBox();
 				 return;
 			}
 			
 			var next = li.next();
 			if(next.length > 0){
 				li.removeClass('hover');
-				li.next().addClass('hover');
+				li.next().addClass('hover').mapBox();
 			}
 			return;
 		}
@@ -885,7 +907,7 @@ Campus.search = function(){
 			li = $('#search .hover');
 			if(li.length < 1) { return; }
 			li.removeClass('hover');
-			li.prev().addClass('hover');
+			li.prev().addClass('hover').mapBox();
 			return;
 		}
 		
