@@ -840,7 +840,7 @@ Campus.search = function(){
 			var latlng = new google.maps.LatLng(p[0], p[1]);
 			var title = link.html();
 			var url = link.attr('href');
-			Campus.infoBox.disableAutoPan_=true;
+			//Campus.infoBox.disableAutoPan_=true;
 			Campus.infoBox.show(title, latlng, url);
 		});
 	}
