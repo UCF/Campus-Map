@@ -11,7 +11,7 @@
 		</div>
 		<div id="menu-icons">
 			<a href="" id="email" title="Share this Location">email</a>
-			<a href="" id="permalink" title="Permalink to this location">link</a>
+			<a href="" id="permalink" title="Permalink to this map">link</a>
 		</div>
 	</div>
 	
@@ -20,10 +20,9 @@
 		<div id="menu-stage-next" class="slide"></div>
 	
 		<div id="menu-stage" class="slide">
-			<div class="item" id="item-title">
+			<div class="item load">
 				Loading...
 			</div>
-			<div class="item" id="item-desc"></div>
 		</div>
 	
 		<div id="menu-1" class="slide">

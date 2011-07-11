@@ -225,12 +225,14 @@ Campus.controls = function(){
 		Campus.info();
 		Campus.infoBox.show(loc.name, latlng, loc.profile_link);
 		
-		$('#item-title').html(loc.name);
-		$('#item-desc').html(loc.info);
-		var permalink = Campus.permalink.replace("%s", loc.number);
-		$('#permalink').attr('href', permalink).show();
-		var mailto = Campus.mailto(loc.name, permalink);
-		$('#email').attr('href', mailto).show();
+		Campus.stage.html(loc.info);
+		
+		if(loc.number){
+			var permalink = Campus.permalink.replace("%s", loc.number);
+			$('#permalink').attr('href', permalink).show();
+			var mailto = Campus.mailto(loc.name, permalink);
+			$('#email').attr('href', mailto).show();
+		}
 	}
 	
 	// Checkboxes:
@@ -288,7 +290,7 @@ Campus.menuInit = function(){
 	
 	// upper-right action icons (permalink and email)
 	Campus.menuIcons  = $('#menu-icons');
-	Campus.permalink  = Campus.urls.base_url + '?show=%s';
+	Campus.permalink  = Campus.urls.base_url + '/?show=%s';
 	Campus.mailto     = function(title, link){
 		title   = escape(title);
 		link    = escape(link);
@@ -724,14 +726,10 @@ Campus.info = function(id, pan){
 	
 	if(!id || id==="null" || id==="searching"){ return; }
 	if(Campus.ajax){ Campus.ajax.abort(); }
-	var title = $('#item-title');
-	var desc  = $('#item-desc');
+	Campus.stage.html('<div class="item load">Loading...</div>');
 	var email = $('#email');
 	var link  = $('#permalink');
 	
-	title.html("Loading...");
-	desc.html("");
-	desc.addClass('load');
 	email.hide()
 	link.hide()
 	
@@ -743,21 +741,14 @@ Campus.info = function(id, pan){
 		success: function(data){
 			var name = data.name;
 			var point = (Campus.map.mapTypeId === 'illustrated') ? 'illustrated_point' : 'googlemap_point';
+			Campus.stage.html(data.info);
 			if(!data[point] || !data[point].length){
-				title.html(name);
-				desc.html(data.info);
-				desc.removeClass('load');
 				var err = '<code>' + name + '</code> does not have a map location';
 				Campus.error(err);
 				return;
 			}
 			var latlng = new google.maps.LatLng(data[point][0], data[point][1]);
 			Campus.infoBox.show(name, latlng, data.profile_link);
-			
-			if(data.abbreviation){ name += ' (' + data.abbreviation + ')'; }
-			title.html(name);
-			desc.html(data.info);
-			desc.removeClass('load');
 			
 			var permalink = Campus.permalink.replace("%s", id);
 			link.attr('href', permalink).show();
@@ -767,9 +758,7 @@ Campus.info = function(id, pan){
 			if(pan){ Campus.map.panTo(latlng);  }
 		},
 		error: function(){
-			title.html("Error");
-			desc.html("Request failed for building: " + id);
-			desc.removeClass('load');
+			Campus.stage.html('<div class="item">Error, request failed for building: ' + id + '</div>');
 		}
 	});
 };

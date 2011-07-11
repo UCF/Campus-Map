@@ -1,29 +1,45 @@
-{% if not location %}null{% else %}
-<div id="location-{{location.pk}}">
-	<div class="info-window">
-		{% if location.image %}<img src="{{ base_url }}{{MEDIA_URL}}images/buildings/{{ location.image }}">{%else%}<img src="{{ base_url }}{{MEDIA_URL}}images/buildings/_no_image.jpg">{% endif %}
-		{% if location.description %}
-			<p>{{ location.description }}</p>
-		{% else %}
-			{% if debug %}
-				{# <p><a href="{% url admin:app_list 'campus'%}building/{{location.pk}}/">add a description</a></p> #}
-			{% endif %}
-		{% endif %}
-		
-		{% if orgs %}
-			{% if location.orgs.results %}
-				<h3>Organizations</h3>
-				<ul>
-				{% for o in location.orgs.results %}
-					<li><a href="{% url locations %}/{{o.bldg_id}}/{{o.building|slugify}}/?org={{o.id}}">{{o.name}}</a></li>
-				{% endfor %}
-				{% if location.orgs.overflow %}
-					<li><a href="{{location.profile_link}}">More...</a></li>
-				{% endif %}
-				</ul>
-			{% endif %}
-		{% endif %}
-		
+{% if not location %}
+	
+	<div class="item" id="item-desc">
+		No Location
 	</div>
-</div>
+	
+{% else %}
+
+	<a href="{{location.profile_link}}" class="item">{{location.name}}</a>
+
+	<a class="item" href="{{location.profile_link}}">
+		{% if location.image %}<img src="{{ base_url }}{{MEDIA_URL}}images/buildings/{{ location.image }}">{%else%}<img src="{{ base_url }}{{MEDIA_URL}}images/buildings/_no_image.jpg">{% endif %}
+	</a>
+	
+	{% if location.description %}
+		<div class="item">{{ location.description }}</div>
+	{% endif %}
+	
+	{% if debug and not location.description %}
+		<a class="item" href="{% url admin:app_list 'campus'%}building/{{location.pk}}/">add a description</a>
+	{% endif %}
+	
+
+	{% if location.orgs.results %}
+	<div class="item">
+		<h3>Organizations</h3>
+		<ul>
+		{% for o in location.orgs.results %}
+			<li><a href="{% url locations %}/{{o.bldg_id}}/{{o.building|slugify}}/?org={{o.id}}">{{o.name}}</a></li>
+		{% endfor %}
+		{% if location.orgs.overflow %}
+			<li><a href="{{location.profile_link}}">More...</a></li>
+		{% endif %}
+		</ul>
+	</div>
+	{% endif %}
+	
+	{% if location.profile_link %}
+	<div class="item">
+		<h3>Permalink</h3>
+		<input type="text" value="{{base_url}}{{location.profile_link}}">
+	</div>
+	{% endif %}
+	
 {% endif %}

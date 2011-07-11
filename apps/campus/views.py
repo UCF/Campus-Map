@@ -77,7 +77,7 @@ def home(request, **kwargs):
 	error = kwargs.get('error', None)
 	if error:
 		kwargs.pop('error')
-
+	
 	context = {
 		'options'       : json.dumps(kwargs), 
 		'points'        : json.dumps(points), 
@@ -86,7 +86,7 @@ def home(request, **kwargs):
 		'sidewalks_kml' : sidewalks_kml,
 		'parking_kml'   : parking_kml,
 		'loc_url'       : loc,
-		'base_url'      : request.build_absolute_uri(reverse('home')),
+		'base_url'      : request.build_absolute_uri(reverse('home'))[:-1],
 		'error'         : error,
 	}
 	

@@ -140,7 +140,7 @@ class Building(CommonLocation):
 		# change all numbers to be lowercase
 		self.number = self.number.lower()
 	
-	def _orgs(self, limit=5):
+	def _orgs(self, limit=4):
 		''' retruns a subset of orgs '''
 		from apps.views import get_orgs
 		building_orgs = []
