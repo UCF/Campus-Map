@@ -4,17 +4,12 @@
 html { background:black; }
 body { background:white url(img/gradient.png) repeat-x; min-width:974px; }
 
-a { 
-	color:#990000;
-	-moz-transition: color 0.2s linear;
-	-webkit-transition: color 0.2s linear;
-	-o-transition: color 0.2s linear;
-	transition: color 0.2s linear; }
+a { color:#990000; }
 a:hover { cursor:pointer; color:#C30202; }
 a:active, a:focus { outline:0; }
 
 h1 { font-family:"Adobe Caslon Pro", "Adobe Caslon", "Caslon Pro", caslon, georgia, serif; }
-h1 a { text-decoration:none; color:black; }
+h1 a { text-decoration:none; color:black; -moz-transition: color 0.2s linear; -webkit-transition: color 0.2s linear; -o-transition: color 0.2s linear; transition: color 0.2s linear;}
 h1 a:hover { color:#D10020; }
 h2 { font-size:23px; color:#FF7700; font-family: 'Helvetica Neue Light', 'Helvetica Light', 'HelveticaLight', 'Helvetica-Light', "Helvetica Neue", Helvetica; font-weight:200; letter-spacing:1px; margin:5px 0 10px; }
 h3 { font-family: Helvetica, sans-serif; }
@@ -47,6 +42,7 @@ code a:hover { border-bottom:1px solid #7DA4C2; color:#21759B; }
 ul li a { text-decoration:none; border-bottom:1px dotted #CE353B; line-height:1.5; }
 a.button { vertical-align:middle; text-decoration:none; color:#333; font-size:12px; background:white; padding:2px 4px; margin:0 0 0 2px; border:1px solid #aaa; border-radius:4px; -moz-border-radius: 4px; -webkit-border-radius: 4px; }
 .light {  font-family: 'Helvetica Neue Light', 'Helvetica Light', 'HelveticaLight', 'Helvetica-Light', "Helvetica Neue", Helvetica; font-weight:200; letter-spacing:1px; }
+
 
 /******************************************************************************\
     Layout
@@ -86,6 +82,7 @@ footer dd { padding:8px 0 0 8px; margin:0; }
 #error p { display:inline-block; position:relative; padding:10px; margin:0 250px; border:1px solid red; -moz-border-radius: 5px; -webkit-border-radius: 5x; border-radius:5px; background:#FFCED0; }
 .ie6 #error p, .ie7 #error p { width:400px; display:block; margin: 0 auto; }
 .error-close { display:block; width:19px; height:19px; background:url('img/close.png'); top:-7px; right:-8px; overflow:hidden; position:absolute; text-indent:-100px; }
+
 
 /******************************************************************************\
     Google Map
@@ -130,6 +127,11 @@ footer dd { padding:8px 0 0 8px; margin:0; }
 #jquery-lightbox h2 a { text-decoration:none; }
 #jquery-lightbox p { font-weight:normal; font-size:13px; }
 #lightbox-image-details { padding-bottom:5px; }
+.orgs { margin-top:0; }
+.orgs li { padding:2px 0; }
+.orgs li a { border-bottom-width:0; }
+.orgs li a:hover { border-bottom-width:1px; }
+
 
 /******************************************************************************\
     Search
@@ -162,7 +164,6 @@ footer dd { padding:8px 0 0 8px; margin:0; }
 #search a:focus { border:0; outline:none; }
 #search > ul > li.hover, #search > ul > li:hover { background:rgba(255,255,255,.2); }
 #search > ul > li.hover li, #search > ul > li:hover li { color: #B5B5B5; }
-#search a { -moz-transition: none; -webkit-transition:none; -o-transition:none; transition:none; }
 
 .ie #search { width:258px; }
 .ie #search > ul { margin-right:0; width:250px }
@@ -178,6 +179,7 @@ footer dd { padding:8px 0 0 8px; margin:0; }
 #flat_search #results > ul > li > ul {margin-left: 20px;margin-top:5px;}
 #flat_search #results > ul > li > ul > li {}
 #flat_search #results > ul .highlight {background-color: #FFFF3D;}
+
 
 /******************************************************************************\
     Menu
@@ -223,7 +225,6 @@ footer dd { padding:8px 0 0 8px; margin:0; }
 #menu-icons #email:hover { background-position:0 -1px; }
 #menu-icons #permalink { background-position:-25px 0;}
 #menu-icons #permalink:hover { background-position:-25px -1px; }
-
 
 #menu-window { width:2000px; position:relative; margin-left:-246px;  }
 #menu .slide { padding:8px 8px 23px 8px; width:214px; float:left; position:relative; }
@@ -283,13 +284,11 @@ footer dd { padding:8px 0 0 8px; margin:0; }
 #regional-campuses .rc-clear { clear:both; }
 
 
-
 /******************************************************************************\
     Misc back pages
 \******************************************************************************/
 .pdf { display:inline-block; line-height:18px; background:url(img/document-pdf-text.png) right top no-repeat; padding:0 20px 5px 0; overflow:hidden; }
 #printable h3 { clear:both; padding:20px 0 10px; margin:0; font-size:18px; }
-
 
 
 /******************************************************************************\
@@ -309,7 +308,6 @@ footer dd { padding:8px 0 0 8px; margin:0; }
 #UCFHBHeader #UCFHBSearch_ucf input.submit { margin-top:1px; }
 .ie #UCFHBHeader #UCFHBSearch_ucf input.submit { margin-top:3px; }
 */
-
 
 
 /******************************************************************************\
