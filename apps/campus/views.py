@@ -188,28 +188,24 @@ def location(request, loc, return_obj=False):
 	elif location_type == "Building":
 		# show location profile
 		
-		photos = None
-		if('flickr' in request.GET):
-			'''
-			Disable flickr until we want to roll it out, get var allows us to demo it
-			'''
-			import flickr
-			photos = flickr.get_photos()
-			tags = set()
-			if 'id' in location:
-				tags.add( 'map%s' % location['id'].lower() )
-			if 'abbreviation' in location:
-				tags.add( 'map%s' % location['abbreviation'].lower() )
-			if 'number' in location:
-				tags.add( 'map%s' % location['number'].lower() )
-			for p in list(photos):
-				ptags = set(p.tags.split(' ')).intersection(tags)
-				if(not bool(ptags)):
-					photos.remove(p)
-				else:
-					p.info = '<h2><a href="http://flickr.com/photos/universityofcentralflorida/%s/">%s</a></h2>' % (p.id, p.title)
-					if p.description.text:
-						p.info = "%s<p>%s</p>" % (p.info, p.description.text)
+		import flickr
+		photos = flickr.get_photos()
+		tags = set()
+		if 'id' in location:
+			tags.add( 'map%s' % location['id'].lower() )
+		if 'abbreviation' in location:
+			tags.add( 'map%s' % location['abbreviation'].lower() )
+		if 'number' in location:
+			tags.add( 'map%s' % location['number'].lower() )
+		for p in list(photos):
+			ptags = set(p.tags.split(' ')).intersection(tags)
+			if(not bool(ptags)):
+				photos.remove(p)
+			else:
+				p.info = '<h2><a href="http://flickr.com/photos/universityofcentralflorida/%s/">%s</a></h2>' % (p.id, p.title)
+				if p.description.text:
+					p.info = "%s<p>%s</p>" % (p.info, p.description.text)
+		
 		context = { 
 			'location' : location,
 			'orgs'     : location_orgs,
