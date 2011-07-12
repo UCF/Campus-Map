@@ -120,7 +120,7 @@ footer dd { padding:8px 0 0 8px; margin:0; }
 #profile .org-info ul { margin-bottom:0; }
 #profile .loading { padding:30px; background-image:url('img/spinner.gif'); background-repeat:no-repeat; background-position:50px 10px; }
 #flickr { padding:35px 0 10px 5px; }
-#flickr h3 { font-size:16px; margin-bottom:12px; color:#21759B; font-weight:200; }
+#flickr h3 { font-size:16px; margin-bottom:12px; color:#919191; font-weight:200; }
 #flickr p { margin:0; padding:0 0 0 5px; }
 #flickr img { margin:3px; }
 #sketchup { padding:36px 0 0; }
