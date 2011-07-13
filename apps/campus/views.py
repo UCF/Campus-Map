@@ -441,18 +441,18 @@ def regional_campuses(request, campus=None):
 
 def data_dump(request):
 	from django.core import serializers
-	from django.db.models import get_apps
+	from django.db.models import get_apps, get_app
 	from django.core.management.commands.dumpdata import sort_dependencies
 	from django.utils.datastructures import SortedDict
-	import campus
 	
 	if not request.user.is_authenticated() or not request.user.is_superuser:
 		response = HttpResponse(json.dumps({"Error": "Not Authorized"}))
 		response['Content-type'] = 'application/json'
 		return response
 	
-	app = campus
-	app_list = SortedDict([(app, None) for app in get_apps()])
+	#if wanted all apps, but only want campus
+	#app_list = SortedDict([(app, None) for app in get_apps()])
+	app_list = SortedDict([(get_app('campus'), None)])
 	
 	# Now collate the objects to be serialized.
 	objects = []
@@ -477,6 +477,3 @@ def data_dump(request):
 	response = HttpResponse(data)
 	response['Content-type'] = 'application/json'
 	return response
-	
-	
-	
