@@ -112,7 +112,7 @@ class RegionalCampus(CommonLocation):
 class Building(CommonLocation):
 	number            = models.CharField("Building Number", max_length=50, primary_key=True)
 	abbreviation      = models.CharField(max_length=50, blank=True)
-	#sketchup          = models.CharField(max_length=50, blank=True, help_text="E.g., http://sketchup.google.com/3dwarehouse/details?mid=<code>54b7f313bf315a3a85622796b26c9e66</code>&prevstart=0")
+	sketchup          = models.CharField(max_length=50, blank=True, help_text="E.g., http://sketchup.google.com/3dwarehouse/details?mid=<code>54b7f313bf315a3a85622796b26c9e66</code>&prevstart=0")
 	
 	def _title(self):
 		if self.abbreviation:
