@@ -287,3 +287,5 @@ class Group(models.Model):
 	locations = models.ManyToManyField(GroupedLocation, blank=True)
 	def __unicode__(self):
 		return self.name
+	class Meta:
+		ordering = ("name",)

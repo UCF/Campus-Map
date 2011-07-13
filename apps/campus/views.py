@@ -438,3 +438,30 @@ def regional_campuses(request, campus=None):
 	context = { "campuses": campuses }
 	
 	return render(request, 'campus/regional-campuses.djt', context)
+
+def data_dump(request):
+	from django.core import serializers
+	from django.db.models import get_apps
+	from django.core.management.commands.dumpdata import sort_dependencies
+	from django.utils.datastructures import SortedDict
+	import campus
+	
+	app = campus
+	app_list = SortedDict([(app, None) for app in get_apps()])
+	
+	# Now collate the objects to be serialized.
+	objects = []
+	for model in sort_dependencies(app_list.items()):
+		objects.extend(model.objects.all())
+	
+	try:
+		data = serializers.serialize('json', objects, indent=4)
+	except Exception, e:
+		data = serializers.serialize('json', "ERORR!")
+	
+	response = HttpResponse(data)
+	response['Content-type'] = 'application/json'
+	return response
+	
+	
+	
