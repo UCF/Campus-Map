@@ -84,7 +84,7 @@ class CommonLocation(models.Model):
 	
 	def __unicode__(self):
 		return u'%s' % (self.name)
-		
+	
 	class Meta:
 		ordering = ("name",)
 		abstract = True
@@ -96,9 +96,6 @@ class Location(CommonLocation):
 	I want to change it to something else, suggestions?
 	'''
 	slug              = models.SlugField(max_length=255, primary_key=True, help_text='<strong class="caution">Caution</strong>: changing may break external resources (used for links and images)')
-	
-	class Meta:
-		ordering = ("name",)
 
 class RegionalCampus(CommonLocation):
 	slug              = models.SlugField(max_length=255, primary_key=True, help_text='<strong class="caution">Caution</strong>: changing may break external resources (used for links and images)')
@@ -110,13 +107,12 @@ class RegionalCampus(CommonLocation):
 	img_tag = property(_img_tag)
 	
 	class Meta:
-		ordering = ("name",)
 		verbose_name_plural = "Regional Campuses"
 
 class Building(CommonLocation):
 	number            = models.CharField("Building Number", max_length=50, primary_key=True)
 	abbreviation      = models.CharField(max_length=50, blank=True)
-	sketchup          = models.CharField(max_length=50, blank=True, help_text="E.g., http://sketchup.google.com/3dwarehouse/details?mid=<code>54b7f313bf315a3a85622796b26c9e66</code>&prevstart=0")
+	#sketchup          = models.CharField(max_length=50, blank=True, help_text="E.g., http://sketchup.google.com/3dwarehouse/details?mid=<code>54b7f313bf315a3a85622796b26c9e66</code>&prevstart=0")
 	
 	def _title(self):
 		if self.abbreviation:
@@ -162,7 +158,7 @@ class Building(CommonLocation):
 	
 	
 	class Meta:
-		ordering = ("name",)
+		ordering = ("name", "number")
 
 class ParkingLot(CommonLocation):
 	permit_type = models.CharField(max_length=255, blank=True, null=True)
@@ -287,5 +283,3 @@ class Group(models.Model):
 	locations = models.ManyToManyField(GroupedLocation, blank=True)
 	def __unicode__(self):
 		return self.name
-	class Meta:
-		ordering = ("name",)

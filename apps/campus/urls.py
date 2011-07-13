@@ -12,6 +12,6 @@ urlpatterns = patterns('campus.views',
 	url(r'^regional-campuses/((?P<campus>[\w-]+)/)??$', 'regional_campuses', name="regional"),
 	
 	# campus admin views
-	(r'^admin/dump/', 'data_dump'),
+	url(r'^admin/dump/', 'data_dump', name="dump_data"),
 	
 )

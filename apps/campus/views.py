@@ -446,14 +446,29 @@ def data_dump(request):
 	from django.utils.datastructures import SortedDict
 	import campus
 	
+	if not request.user.is_authenticated() or not request.user.is_superuser:
+		response = HttpResponse(json.dumps({"Error": "Not Authorized"}))
+		response['Content-type'] = 'application/json'
+		return response
+	
 	app = campus
 	app_list = SortedDict([(app, None) for app in get_apps()])
 	
 	# Now collate the objects to be serialized.
 	objects = []
-	for model in sort_dependencies(app_list.items()):
-		objects.extend(model.objects.all())
 	
+	# Needed because sqllite doesn't use 
+	def ordering(self):
+		if hasattr(self, 'name'):
+			self.name.lower
+		elif hasattr(self, 'id'):
+			self.id
+		else:
+			self.pk
+	
+	for model in sort_dependencies(app_list.items()):
+		# make ordering case insensitive
+		objects.extend( sorted(model.objects.all(), key=ordering) )
 	try:
 		data = serializers.serialize('json', objects, indent=4)
 	except Exception, e:
