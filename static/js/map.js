@@ -835,14 +835,17 @@ Campus.search = function(){
 			Campus.info(); // ensure info box is init
 			var link = $(this).find('a');
 			var id = link.attr('data-pk');
-			if(!Campus.points || !Campus.points[id]) return;
+			if(!Campus.points || !Campus.points[id]){
+				Campus.infoBox.close();
+				return;
+			}
 			var point = (Campus.map.mapTypeId === 'illustrated') ? 'ipoint' : 'gpoint';
 			var p = Campus.points[id][point];
 			if(!p || !p[0] || !p[1]) return;
 			var latlng = new google.maps.LatLng(p[0], p[1]);
 			var title = link.html();
 			var url = link.attr('href');
-			//Campus.infoBox.disableAutoPan_=true;
+			Campus.infoBox.disableAutoPan_=true;
 			Campus.infoBox.show(title, latlng, url);
 		});
 	}
