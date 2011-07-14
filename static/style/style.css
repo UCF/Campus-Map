@@ -112,7 +112,7 @@ footer dd { padding:8px 0 0 8px; margin:0; }
 #profile h3 { margin-top:0; }
 #profile-image { padding-bottom:15px; }
 #profile-copy { padding:0 15px 15px 0; }
-#cwrap  { padding:5px; position:relative; height:300px; width:100%; -webkit-box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 6px; -moz-box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 6px; background-color: white; -moz-border-radius: 5px; -webkit-border-radius: 5x; border-radius:5px;  }
+#cwrap  { background:url('img/spinner.gif') no-repeat center white; padding:5px; position:relative; height:300px; width:100%; -webkit-box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 6px; -moz-box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 6px; -moz-border-radius: 5px; -webkit-border-radius: 5x; border-radius:5px;  }
 .ie #cwrap { border:1px solid #CCC; }
 #canvas { width:100%; height:300px; }
 #profile .org-info { display:none; color:#1F1F1F; margin:5px; padding:5px 5px 5px 15px; border-left:2px solid #A8C4E9; }
