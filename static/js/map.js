@@ -32,6 +32,10 @@ var Campus = {
 };
 /*global window, document, Image, google, $ */
 
+
+try{ google; } // things have gone very wrong... where is google?!!!
+catch(e){ Campus.error('Google Maps API is currently unavailable'); }
+
 Campus.init = function(){
 	this.resize();
 	
