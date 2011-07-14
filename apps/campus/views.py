@@ -60,7 +60,7 @@ def home(request, **kwargs):
 		points = None
 		
 	# urls
-	version = 16 # clears google's cache
+	version = 17 # clears google's cache
 	# TODO: https://groups.google.com/group/kml-support-getting-started/browse_thread/thread/757295a81285c8c5
 	if settings.GOOGLE_CAN_SEE_ME:
 		buildings_kml = "%s.kml?v=%s" % (request.build_absolute_uri(reverse('locations')), version)
