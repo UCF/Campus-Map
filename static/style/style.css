@@ -170,7 +170,7 @@ footer dd { padding:8px 0 0 8px; margin:0; }
 #search li li { line-height:1.1; padding-bottom:2px; }
 #search a:active { border:0; outline:none; }
 #search a:focus { border:0; outline:none; }
-#search > ul > li.hover, #search > ul > li:hover { background:rgba(255,255,255,.2); }
+#search > ul > li.hover, #search > ul > li:hover { background:#555; background:rgba(255,255,255,.2); }
 #search > ul > li.hover li, #search > ul > li:hover li { color: #B5B5B5; }
 
 .ie #search { width:258px; }
@@ -197,7 +197,6 @@ footer dd { padding:8px 0 0 8px; margin:0; }
 	border-radius:2px; -moz-border-radius: 2px; -webkit-border-radius: 2px;
 	box-shadow:2px 2px 3px rgba(0, 0, 0, 0.25); -moz-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.25); -webkit-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.25); 
 	width:230px; margin:2px 5px 0 0; padding:0 0 6px 0; border:1px solid #3b3b39; border:1px solid rgba(0,0,0,0.6); background: rgb(255, 255, 255); background: rgba(255, 255, 255, 0.6); }
-.ie #menu { margin-top:0; }
 .safari #menu { margin-top:0; }
 #menu h2 { margin:0; padding:0; color:white; text-align: left; line-height:13px; }
 #menu h2 a {
@@ -228,11 +227,9 @@ footer dd { padding:8px 0 0 8px; margin:0; }
 #menu-pages a { display:block; float:left; width:20px; height:20px; background:transparent url('img/menu-dots.png') 0 -20px; text-indent:-50px; overflow:hidden; }
 #menu-pages a.active, #menu-pages a.active:hover { background-position:0 0; }
 #menu-pages a:hover { background-position: 0 -40px; }
-#menu-icons { position:absolute; top:28px; right:0; }
+#menu-icons { position:absolute; top:28px; right:5px; }
 #menu-icons a { display:block; float:left; background:green; height:20px; width:24px; background: transparent url('img/menu-icons.png'); text-indent:-50px; overflow:hidden; }
 #menu-icons #email:hover { background-position:0 -1px; }
-#menu-icons #permalink { background-position:-25px 0;}
-#menu-icons #permalink:hover { background-position:-25px -1px; }
 
 #menu-window { width:2000px; position:relative; margin-left:-246px;  }
 #menu .slide { padding:8px 8px 23px 8px; width:214px; float:left; position:relative; }
@@ -247,6 +244,9 @@ footer dd { padding:8px 0 0 8px; margin:0; }
 .closed #menu #menu-window { display:none; }
 .closed #menu-hide { background-position:center -12px; }
 .closed #menu #menu-screen { display:block; position:absolute; top:0; left:0; height:30px; width:230px; z-index:10; }
+
+#menu #permalink { display:inline-block; background: transparent url('img/menu-link.png') top right no-repeat; padding-right:18px; padding-top:1px; }
+.ie7 #menu #permalink { padding-right:0; background:none; display:block; }
 
 #menu .more-menu { padding:0 0 4px; font-size:11px; position:absolute; width:230px; height:15px; overflow:hidden; bottom:0; left:0; }
 #menu .more-menu span { display:block; width:104px; padding:0 5px; float:left; }

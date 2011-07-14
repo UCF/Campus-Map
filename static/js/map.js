@@ -225,10 +225,9 @@ Campus.controls = function(){
 		
 		
 		if(!loc.number){
-			$('#permalink,#email').hide();
+			$('#email').hide();
 		} else {
 			var permalink = Campus.permalink.replace("%s", loc.number);
-			$('#permalink').attr('href', permalink).show();
 			var mailto = Campus.mailto(loc.name, permalink);
 			$('#email').attr('href', mailto).show();
 		}
@@ -287,7 +286,7 @@ Campus.menuInit = function(){
 	Campus.labelStage = $('#menu-label-stage');
 	Campus.menuPages  = $('#menu-pages');
 	
-	// upper-right action icons (permalink and email)
+	// upper-right email icon
 	Campus.menuIcons  = $('#menu-icons');
 	Campus.permalink  = Campus.urls.base_url + '/?show=%s';
 	Campus.mailto     = function(title, link){
@@ -730,12 +729,7 @@ Campus.info = function(id, pan){
 	
 	if(Campus.ajax){ Campus.ajax.abort(); }
 	Campus.stage.html('<div class="item load">Loading...</div>');
-	var email = $('#email');
-	var link  = $('#permalink');
-	
-	email.hide()
-	link.hide()
-	
+	$('#email').hide()
 	var url = Campus.urls.location.replace("%s", id);
 	
 	Campus.ajax = $.ajax({
@@ -754,9 +748,8 @@ Campus.info = function(id, pan){
 			Campus.infoBox.show(name, latlng, data.profile_link);
 			
 			var permalink = Campus.permalink.replace("%s", id);
-			link.attr('href', permalink).show();
 			var mailto = Campus.mailto(name, permalink);
-			email.attr('href', mailto).show();
+			$('#email').attr('href', mailto).show();
 			
 			if(pan){ Campus.map.panTo(latlng);  }
 		},
