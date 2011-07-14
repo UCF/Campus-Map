@@ -838,7 +838,10 @@ Campus.search = function(){
 			}
 			var point = (Campus.map.mapTypeId === 'illustrated') ? 'ipoint' : 'gpoint';
 			var p = Campus.points[id][point];
-			if(!p || !p[0] || !p[1]) return;
+			if(!p || !p[0] || !p[1]){
+				Campus.infoBox.close();
+				return;
+			}
 			var latlng = new google.maps.LatLng(p[0], p[1]);
 			var title = link.html();
 			var url = link.attr('href');
