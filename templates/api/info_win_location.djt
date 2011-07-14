@@ -1,7 +1,7 @@
 {% if not location %}null{% else %}
 <div id="location-{{location.pk}}" class="item">
 	<h2 class="light">{{location.name}}</h2>
-	<div><img src="{{ base_url }}{{MEDIA_URL}}images/locations/{{ location.slug }}.jpg"></div>
+	<div><img src="{{MEDIA_URL}}images/locations/{{ location.slug }}.jpg"></div>
 	{% if location.description %}
 		<p>{{ location.description }}</p>
 	{% endif %}
