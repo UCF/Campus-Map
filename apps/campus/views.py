@@ -166,7 +166,7 @@ def location(request, loc, return_obj=False):
 	html = location_html(location, request)
 	location = location.json()
 	location['info'] = html
-	base_url = request.build_absolute_uri('/')[:-1]
+	base_url = request.build_absolute_uri(reverse('home'))[:-1]
 	location['marker'] = base_url + settings.MEDIA_URL + 'images/markers/yellow.png'
 	
 	# API views
@@ -377,7 +377,7 @@ def location_html(loc, request, orgs=True):
 	'''
 	from django.template.loader import get_template
 	from django.template import Context
-	base_url = request.build_absolute_uri('/')[:-1]
+	base_url = request.build_absolute_uri(reverse('home'))[:-1]
 	context  = { 'location':loc, 'base_url':base_url }
 	location_type = loc.__class__.__name__.lower()
 	template = 'api/info_win_%s.djt' % (location_type)
