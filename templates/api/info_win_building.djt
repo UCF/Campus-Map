@@ -38,7 +38,7 @@
 	{% if location.profile_link %}
 	<div class="item">
 		<h3>Permalink</h3>
-		<input type="text" value="{{base_url}}{{location.profile_link}}">
+		<input type="text" value="{{base_url}}/?show={{location.number}}">
 	</div>
 	{% endif %}
 	
