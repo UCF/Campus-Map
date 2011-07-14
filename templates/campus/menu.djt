@@ -33,7 +33,7 @@
 			<a class="item" href="{% url organizations %}">Organizations &amp; Depts</a>
 			
 			<label><input type="checkbox" id="parking"> Parking</label>
-			<label class="disabled"><input type="checkbox" disabled="disabled"> Entrances/Exits</label>
+			<label><input type="checkbox" id="traffic"> Traffic</label>
 			<label><input type="checkbox" id="buildings"> Buildings</label>
 			<label><input type="checkbox" id="sidewalks"> Walking Paths</label>
 			
@@ -51,7 +51,7 @@
 			<label><input type="checkbox" id="emergency_phones"> Emergency Assistance</label>
 		
 			<h3>Coming Soon:</h3>
-			<label><input type="checkbox" id="traffic"> Traffic</label>
+			<label class="disabled"><input type="checkbox" disabled="disabled"> Entrances/Exits</label>
 			<label class="disabled"><input type="checkbox" disabled="disabled"> Food</label>
 			<label class="disabled"><input type="checkbox" disabled="disabled"> Housing</label>
 			<label class="disabled"><input type="checkbox" disabled="disabled"> Shuttle Routes</label>
