@@ -388,11 +388,10 @@ Campus.layers = {
 				this.layer = new google.maps.KmlLayer(Campus.urls.buildings_kml, { preserveViewport : true, suppressInfoWindows: true, clickable: false });
 				this.loaded = true;
 			}
-			if(Campus.map.mapTypeId === 'naked'){
-				this.layer.setMap(Campus.map);
-			} else {
+			if(Campus.map.mapTypeId !== 'naked'){
 				Campus.map.setMapTypeId('naked');
 			}
+			this.layer.setMap(Campus.map);
 		},
 		unload : function() {
 			if(!this.loaded){ return; }
@@ -403,7 +402,6 @@ Campus.layers = {
 		update : function(){
 			if(Campus.map.mapTypeId === 'illustrated'){ return; }
 			var on = Campus.settings.buildings;
-			if(on){ this.load(); } else { this.unload(); }
 			
 			if(!this.naked){
 				// create naked map type, strip map of google elements
@@ -417,6 +415,8 @@ Campus.layers = {
 				var naked = new google.maps.StyledMapType( styles, { name : "Naked" } );
 				Campus.map.mapTypes.set('naked', naked);
 			}
+			
+			if(on){ this.load(); } else { this.unload(); }
 			
 		}
 	},
