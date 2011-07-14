@@ -460,11 +460,11 @@ def data_dump(request):
 	# Needed because sqllite doesn't use 
 	def ordering(self):
 		if hasattr(self, 'name'):
-			self.name.lower
+			return self.name.lower()
 		elif hasattr(self, 'id'):
-			self.id
+			return self.id
 		else:
-			self.pk
+			return self.pk
 	
 	for model in sort_dependencies(app_list.items()):
 		# make ordering case insensitive
