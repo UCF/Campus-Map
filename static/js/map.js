@@ -217,6 +217,8 @@ Campus.controls = function(){
 		Campus.info();
 		Campus.infoBox.show(loc.name, latlng, loc.profile_link);
 		Campus.stage.html(loc.info);
+		Campus.menu.show('location');
+		
 		
 		if(!loc.number){
 			$('#permalink,#email').hide();
