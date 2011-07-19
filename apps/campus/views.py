@@ -3,7 +3,7 @@ from django.http      import HttpResponse, HttpResponseNotFound, Http404, HttpRe
 from django.views.generic.simple import direct_to_template as render
 from django.core.urlresolvers import reverse
 
-import settings, json, re
+import settings, json, re, urllib
 
 def home(request, **kwargs):
 	'''
@@ -405,11 +405,9 @@ def backward_location(request):
 	
 	select = request.GET.get('select', None)
 	
-	if select is not None:
-		match = re.search('b_(\d+)', select)
-		if match is not None:
-			url = reverse('location', kwargs={'loc':match.groups()[0]})
-			return HttpResponsePermanentRedirect(url)
+	if select is not None and select.startswith('b_') and len(select) > 2:
+		url = '?'.join([reverse('home'), urllib.urlencode({'show':select[2:]})])
+		return HttpResponsePermanentRedirect(url)
 	raise Http404()
 	
 def regional_campuses(request, campus=None):
