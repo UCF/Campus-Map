@@ -32,6 +32,10 @@ var Campus = {
 };
 /*global window, document, Image, google, $ */
 
+
+try{ google; } // things have gone very wrong... where is google?!!!
+catch(e){ Campus.error('Google Maps API is currently unavailable'); }
+
 Campus.init = function(){
 	this.resize();
 	
@@ -123,9 +127,13 @@ Campus.maps = {
 			Campus.map = new google.maps.Map(document.getElementById("map-canvas"), options);
 			Campus.map.mapTypes.set('illustrated',Campus.maps.imap_type);
 			google.maps.event.addListener(Campus.map, 'maptypeid_changed', function() {
-				// TODO: fix building toggling so it doesn't change zoom
-				// TODO: this also breaks traffic
 				var type = Campus.map.mapTypeId;
+				var prev = Campus.prevMapType;
+				Campus.prevMapType = type;
+				if(prev !== 'illustrated' && type !== 'illustrated'){
+					//switching between compatible google maps
+					return;
+				}
 				var options = (type === 'illustrated') ? Campus.maps.imap_options : Campus.maps.gmap_options;
 				//Campus.map.setOptions(options); //super slow
 				Campus.map.setZoom(options.zoom);
@@ -199,38 +207,30 @@ Campus.controls = function(){
 	this.menuInit();
 	this.map.controls[google.maps.ControlPosition.RIGHT_TOP].push(this.menu[0]);
 		
-	var rc, loc, latlng;
-	// looking at a regional campus
-	if(Campus.settings.regional_campus){
-		rc = Campus.settings.regional_campus;
-		latlng = new google.maps.LatLng(rc.googlemap_point[0], rc.googlemap_point[1]);
-		Campus.map.panTo(latlng);
-		Campus.info(); //inits info marker
-		Campus.infoMarker.setPosition(latlng);
-		$('#item-title').html(rc.description);
-		$('#item-desc').html(rc.html);
-	}
-	
-	// looking at a location (very similar to regional campus)
+	// looking at a location
 	// not using Campus.info() because that uses an ajax reqeust to load location (already delivered here)
 	if(Campus.settings.location){
-		loc = Campus.settings.location;
+		var loc = Campus.settings.location;
 		if(!loc.googlemap_point || !loc.googlemap_point.length){
 			var err = '<code>' + loc.name + '</code> does not have a map location';
 			Campus.error(err);
 			return;
 		}
-		latlng = new google.maps.LatLng(loc.googlemap_point[0], loc.googlemap_point[1]);
+		var latlng = new google.maps.LatLng(loc.googlemap_point[0], loc.googlemap_point[1]);
 		Campus.map.panTo(latlng);
 		Campus.info();
 		Campus.infoBox.show(loc.name, latlng, loc.profile_link);
+		Campus.stage.html(loc.info);
+		Campus.menu.show('location');
 		
-		$('#item-title').html(loc.name);
-		$('#item-desc').html(loc.info);
-		var permalink = Campus.permalink.replace("%s", loc.number);
-		$('#permalink').attr('href', permalink).show();
-		var mailto = Campus.mailto(loc.name, permalink);
-		$('#email').attr('href', mailto).show();
+		
+		if(!loc.number){
+			$('#email').hide();
+		} else {
+			var permalink = Campus.permalink.replace("%s", loc.number);
+			var mailto = Campus.mailto(loc.name, permalink);
+			$('#email').attr('href', mailto).show();
+		}
 	}
 	
 	// Checkboxes:
@@ -286,9 +286,9 @@ Campus.menuInit = function(){
 	Campus.labelStage = $('#menu-label-stage');
 	Campus.menuPages  = $('#menu-pages');
 	
-	// upper-right action icons (permalink and email)
+	// upper-right email icon
 	Campus.menuIcons  = $('#menu-icons');
-	Campus.permalink  = Campus.urls.base_url + '?show=%s';
+	Campus.permalink  = Campus.urls.base_url + '/?show=%s';
 	Campus.mailto     = function(title, link){
 		title   = escape(title);
 		link    = escape(link);
@@ -391,11 +391,10 @@ Campus.layers = {
 				this.layer = new google.maps.KmlLayer(Campus.urls.buildings_kml, { preserveViewport : true, suppressInfoWindows: true, clickable: false });
 				this.loaded = true;
 			}
-			if(Campus.map.mapTypeId === 'naked'){
-				this.layer.setMap(Campus.map);
-			} else {
+			if(Campus.map.mapTypeId !== 'naked'){
 				Campus.map.setMapTypeId('naked');
 			}
+			this.layer.setMap(Campus.map);
 		},
 		unload : function() {
 			if(!this.loaded){ return; }
@@ -406,7 +405,6 @@ Campus.layers = {
 		update : function(){
 			if(Campus.map.mapTypeId === 'illustrated'){ return; }
 			var on = Campus.settings.buildings;
-			if(on){ this.load(); } else { this.unload(); }
 			
 			if(!this.naked){
 				// create naked map type, strip map of google elements
@@ -420,6 +418,8 @@ Campus.layers = {
 				var naked = new google.maps.StyledMapType( styles, { name : "Naked" } );
 				Campus.map.mapTypes.set('naked', naked);
 			}
+			
+			if(on){ this.load(); } else { this.unload(); }
 			
 		}
 	},
@@ -719,22 +719,17 @@ Campus.info = function(id, pan){
 		}
 	}
 	
+	if(!id || id==="null" || id==="searching"){ 
+		// called empty, done to init
+		return; 
+	}
+	
 	// show in menu
 	Campus.menu.show('Location');
 	
-	if(!id || id==="null" || id==="searching"){ return; }
 	if(Campus.ajax){ Campus.ajax.abort(); }
-	var title = $('#item-title');
-	var desc  = $('#item-desc');
-	var email = $('#email');
-	var link  = $('#permalink');
-	
-	title.html("Loading...");
-	desc.html("");
-	desc.addClass('load');
-	email.hide()
-	link.hide()
-	
+	Campus.stage.html('<div class="item load">Loading...</div>');
+	$('#email').hide()
 	var url = Campus.urls.location.replace("%s", id);
 	
 	Campus.ajax = $.ajax({
@@ -743,10 +738,8 @@ Campus.info = function(id, pan){
 		success: function(data){
 			var name = data.name;
 			var point = (Campus.map.mapTypeId === 'illustrated') ? 'illustrated_point' : 'googlemap_point';
+			Campus.stage.html(data.info);
 			if(!data[point] || !data[point].length){
-				title.html(name);
-				desc.html(data.info);
-				desc.removeClass('load');
 				var err = '<code>' + name + '</code> does not have a map location';
 				Campus.error(err);
 				return;
@@ -754,22 +747,14 @@ Campus.info = function(id, pan){
 			var latlng = new google.maps.LatLng(data[point][0], data[point][1]);
 			Campus.infoBox.show(name, latlng, data.profile_link);
 			
-			if(data.abbreviation){ name += ' (' + data.abbreviation + ')'; }
-			title.html(name);
-			desc.html(data.info);
-			desc.removeClass('load');
-			
 			var permalink = Campus.permalink.replace("%s", id);
-			link.attr('href', permalink).show();
 			var mailto = Campus.mailto(name, permalink);
-			email.attr('href', mailto).show();
+			$('#email').attr('href', mailto).show();
 			
 			if(pan){ Campus.map.panTo(latlng);  }
 		},
 		error: function(){
-			title.html("Error");
-			desc.html("Request failed for building: " + id);
-			desc.removeClass('load');
+			Campus.stage.html('<div class="item">Error, request failed for building: ' + id + '</div>');
 		}
 	});
 };
@@ -841,6 +826,30 @@ Campus.search = function(){
 		search_typing_timeout = 400; // milliseconds
 	var input  = search.find('input');
 	
+	$.fn.mapBox = function() {
+		// a small jquery plugin to parse attributes and show map infobox
+		return this.each(function() {
+			Campus.info(); // ensure info box is init
+			var link = $(this).find('a');
+			var id = link.attr('data-pk');
+			if(!Campus.points || !Campus.points[id]){
+				Campus.infoBox.close();
+				return;
+			}
+			var point = (Campus.map.mapTypeId === 'illustrated') ? 'ipoint' : 'gpoint';
+			var p = Campus.points[id][point];
+			if(!p || !p[0] || !p[1]){
+				Campus.infoBox.close();
+				return;
+			}
+			var latlng = new google.maps.LatLng(p[0], p[1]);
+			var title = link.html();
+			var url = link.attr('href');
+			Campus.infoBox.disableAutoPan_=true;
+			Campus.infoBox.show(title, latlng, url);
+		});
+	}
+	
 	search.keydown(function(event){
 		//parse keycode
 		var keyCode =
@@ -866,7 +875,7 @@ Campus.search = function(){
 			Campus.info(pk, true);
 		}
 	});//keydown
-		
+	
 	search.keyup(function(event){
 		
 		//parse keycode
@@ -886,14 +895,14 @@ Campus.search = function(){
 			li = $('#search .hover');
 			
 			if(li.length < 1){
-				 $('#search li:first').addClass('hover');
+				 $('#search li:first').addClass('hover').mapBox();
 				 return;
 			}
 			
 			var next = li.next();
 			if(next.length > 0){
 				li.removeClass('hover');
-				li.next().addClass('hover');
+				li.next().addClass('hover').mapBox();
 			}
 			return;
 		}
@@ -903,7 +912,7 @@ Campus.search = function(){
 			li = $('#search .hover');
 			if(li.length < 1) { return; }
 			li.removeClass('hover');
-			li.prev().addClass('hover');
+			li.prev().addClass('hover').mapBox();
 			return;
 		}
 		

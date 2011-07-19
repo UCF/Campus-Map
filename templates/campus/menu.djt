@@ -11,7 +11,6 @@
 		</div>
 		<div id="menu-icons">
 			<a href="" id="email" title="Share this Location">email</a>
-			<a href="" id="permalink" title="Permalink to this location">link</a>
 		</div>
 	</div>
 	
@@ -20,10 +19,9 @@
 		<div id="menu-stage-next" class="slide"></div>
 	
 		<div id="menu-stage" class="slide">
-			<div class="item" id="item-title">
+			<div class="item load">
 				Loading...
 			</div>
-			<div class="item" id="item-desc"></div>
 		</div>
 	
 		<div id="menu-1" class="slide">
@@ -34,7 +32,7 @@
 			<a class="item" href="{% url organizations %}">Organizations &amp; Depts</a>
 			
 			<label><input type="checkbox" id="parking"> Parking</label>
-			<label class="disabled"><input type="checkbox" disabled="disabled"> Entrances/Exits</label>
+			<label><input type="checkbox" id="traffic"> Traffic</label>
 			<label><input type="checkbox" id="buildings"> Buildings</label>
 			<label><input type="checkbox" id="sidewalks"> Walking Paths</label>
 			
@@ -52,7 +50,7 @@
 			<label><input type="checkbox" id="emergency_phones"> Emergency Assistance</label>
 		
 			<h3>Coming Soon:</h3>
-			<label><input type="checkbox" id="traffic"> Traffic</label>
+			<label class="disabled"><input type="checkbox" disabled="disabled"> Entrances/Exits</label>
 			<label class="disabled"><input type="checkbox" disabled="disabled"> Food</label>
 			<label class="disabled"><input type="checkbox" disabled="disabled"> Housing</label>
 			<label class="disabled"><input type="checkbox" disabled="disabled"> Shuttle Routes</label>

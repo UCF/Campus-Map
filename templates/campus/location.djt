@@ -14,18 +14,18 @@
 	
 	
 	<div class="span-12">
-		{% if location.profile %}
+		
 		<div id="profile-copy">
-			{% if location.profile != "None" %}
-				{{location.profile|safe}}
-			{% else %}
-				{% if location.image %}
-				<img src="{{MEDIA_URL}}images/buildings/{{ location.image }}"><br><br>
-				{% endif %}
-				This location needs a profile, <a href="mailto:webcom@ucf.edu?subject=Campus Map Location Profile&amp;Body={{location.name}}">do you have one?</a>
+		{% if not location.profile or location.profile == "None" %}
+		{# if no profile, display image on the left #}
+			{% if location.image %}
+			<img src="{{MEDIA_URL}}images/buildings/{{ location.image }}"><br><br>
 			{% endif %}
-		</div>
+			This location needs a profile, <a href="mailto:webcom@ucf.edu?subject=Campus Map Location Profile&amp;Body={{location.name}}">do you have one?</a>
+		{% else %}
+			{{location.profile|safe}}
 		{% endif %}
+		</div>
 		
 		{% if orgs %}
 			<h3>Organizations</h3>
@@ -48,7 +48,7 @@
 	</div>
 	<div class="span-11 last" id="profile-right">
 		
-		{% if location.image and location.profile != "None" %}
+		{% if location.profile and location.profile != "None" %}
 		<div id="profile-image">
 			<img src="{{MEDIA_URL}}images/buildings/{{ location.image }}">
 		</div>
@@ -60,12 +60,25 @@
 		
 		{% if photos %}
 		<div id="flickr">
-			<h3>Photos on Flickr</h3>
+			<h3><a href="http://www.flickr.com/photos/universityofcentralflorida/">Photos on Flickr</a></h3>
 			<p>
 			{% for p in photos %}
 				<a href="{{p.url_z}}" title="{{p.info}}"><img src="{{p.url_sq}}" alt="{{p.title}}"></a>
 			{% endfor %}
 			</p>
+		</div>
+		{% endif %}
+		
+		{% if location.sketchup %}
+		
+		<div id="sketchup">
+			{% comment %}
+			<h3 class="light"><a href="http://sketchup.google.com/3dwarehouse/details?mid={{location.sketchup}}">3D Model</a></h3>
+			<p><a href="http://sketchup.google.com/3dwarehouse/details?mid={{location.sketchup}}"><img src="http://sketchup.google.com/3dwarehouse/download?mid={{location.sketchup}}&amp;rtyp=lt&amp;ctyp=other" alt="{{location.name}}"></a></p>
+			{% endcomment %}
+			<div id="model">
+				<iframe scrolling="no" src="http://sketchup.google.com/3dwarehouse/mini?etyp=sw&amp;tb=auto&amp;width=430&amp;height=300&amp;logo=false&amp;mid={{location.sketchup}}"></iframe>
+			</div>
 		</div>
 		{% endif %}
 		

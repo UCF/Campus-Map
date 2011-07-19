@@ -14,3 +14,12 @@
 {% block extrahead %}
 <link rel="stylesheet" type="text/css" href="{{MEDIA_URL}}style/admin.css" media="all">
 {% endblock %}
+
+
+{% block footer %}
+<div id="footer">
+	{% if user.is_superuser %}
+	Download Data: <a href="{% url dump_data %}UCF Campus Map {%now "Y-m-d" %}.json">Campus Map Data {% now "Y-m-d" %}.json</a>
+	{% endif %}
+</div>
+{% endblock %}

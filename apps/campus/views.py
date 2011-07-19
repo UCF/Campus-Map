@@ -60,7 +60,7 @@ def home(request, **kwargs):
 		points = None
 		
 	# urls
-	version = 16 # clears google's cache
+	version = 17 # clears google's cache
 	# TODO: https://groups.google.com/group/kml-support-getting-started/browse_thread/thread/757295a81285c8c5
 	if settings.GOOGLE_CAN_SEE_ME:
 		buildings_kml = "%s.kml?v=%s" % (request.build_absolute_uri(reverse('locations')), version)
@@ -77,7 +77,7 @@ def home(request, **kwargs):
 	error = kwargs.get('error', None)
 	if error:
 		kwargs.pop('error')
-
+	
 	context = {
 		'options'       : json.dumps(kwargs), 
 		'points'        : json.dumps(points), 
@@ -86,7 +86,7 @@ def home(request, **kwargs):
 		'sidewalks_kml' : sidewalks_kml,
 		'parking_kml'   : parking_kml,
 		'loc_url'       : loc,
-		'base_url'      : request.build_absolute_uri(reverse('home')),
+		'base_url'      : request.build_absolute_uri(reverse('home'))[:-1],
 		'error'         : error,
 	}
 	
@@ -166,7 +166,7 @@ def location(request, loc, return_obj=False):
 	html = location_html(location, request)
 	location = location.json()
 	location['info'] = html
-	base_url = request.build_absolute_uri('/')[:-1]
+	base_url = request.build_absolute_uri(reverse('home'))[:-1]
 	location['marker'] = base_url + settings.MEDIA_URL + 'images/markers/yellow.png'
 	
 	# API views
@@ -188,28 +188,24 @@ def location(request, loc, return_obj=False):
 	elif location_type == "Building":
 		# show location profile
 		
-		photos = None
-		if('flickr' in request.GET):
-			'''
-			Disable flickr until we want to roll it out, get var allows us to demo it
-			'''
-			import flickr
-			photos = flickr.get_photos()
-			tags = set()
-			if 'id' in location:
-				tags.add( 'map%s' % location['id'].lower() )
-			if 'abbreviation' in location:
-				tags.add( 'map%s' % location['abbreviation'].lower() )
-			if 'number' in location:
-				tags.add( 'map%s' % location['number'].lower() )
-			for p in list(photos):
-				ptags = set(p.tags.split(' ')).intersection(tags)
-				if(not bool(ptags)):
-					photos.remove(p)
-				else:
-					p.info = '<h2><a href="http://flickr.com/photos/universityofcentralflorida/%s/">%s</a></h2>' % (p.id, p.title)
-					if p.description.text:
-						p.info = "%s<p>%s</p>" % (p.info, p.description.text)
+		import flickr
+		photos = flickr.get_photos()
+		tags = set()
+		if 'id' in location:
+			tags.add( 'map%s' % location['id'].lower() )
+		if 'abbreviation' in location:
+			tags.add( 'map%s' % location['abbreviation'].lower() )
+		if 'number' in location:
+			tags.add( 'map%s' % location['number'].lower() )
+		for p in list(photos):
+			ptags = set(p.tags.split(' ')).intersection(tags)
+			if(not bool(ptags)):
+				photos.remove(p)
+			else:
+				p.info = '<h2><a href="http://flickr.com/photos/universityofcentralflorida/%s/">%s</a></h2>' % (p.id, p.title)
+				if p.description.text:
+					p.info = "%s<p>%s</p>" % (p.info, p.description.text)
+		
 		context = { 
 			'location' : location,
 			'orgs'     : location_orgs,
@@ -381,7 +377,7 @@ def location_html(loc, request, orgs=True):
 	'''
 	from django.template.loader import get_template
 	from django.template import Context
-	base_url = request.build_absolute_uri('/')[:-1]
+	base_url = request.build_absolute_uri(reverse('home'))[:-1]
 	context  = { 'location':loc, 'base_url':base_url }
 	location_type = loc.__class__.__name__.lower()
 	template = 'api/info_win_%s.djt' % (location_type)
@@ -430,12 +426,52 @@ def regional_campuses(request, campus=None):
 		except RegionalCampus.DoesNotExist:
 			raise Http404()
 		else:
+			html = location_html(rc, request, orgs=False)
 			img = rc.img_tag
 			rc = rc.json()
-			rc['html'] = img + '<a href="%s">More info...</a>' % (reverse('regional'))
-			return home(request, regional_campus=rc)
+			rc['info'] = html
+			return home(request, location=rc)
 	
 	campuses = RegionalCampus.objects.all()
 	context = { "campuses": campuses }
 	
 	return render(request, 'campus/regional-campuses.djt', context)
+
+def data_dump(request):
+	from django.core import serializers
+	from django.db.models import get_apps, get_app
+	from django.core.management.commands.dumpdata import sort_dependencies
+	from django.utils.datastructures import SortedDict
+	
+	if not request.user.is_authenticated() or not request.user.is_superuser:
+		response = HttpResponse(json.dumps({"Error": "Not Authorized"}))
+		response['Content-type'] = 'application/json'
+		return response
+	
+	#if wanted all apps, but only want campus
+	#app_list = SortedDict([(app, None) for app in get_apps()])
+	app_list = SortedDict([(get_app('campus'), None)])
+	
+	# Now collate the objects to be serialized.
+	objects = []
+	
+	# Needed because sqllite doesn't use 
+	def ordering(self):
+		if hasattr(self, 'name'):
+			return self.name.lower()
+		elif hasattr(self, 'id'):
+			return self.id
+		else:
+			return self.pk
+	
+	for model in sort_dependencies(app_list.items()):
+		# make ordering case insensitive
+		objects.extend( sorted(model.objects.all(), key=ordering) )
+	try:
+		data = serializers.serialize('json', objects, indent=4)
+	except Exception, e:
+		data = serializers.serialize('json', "ERORR!")
+	
+	response = HttpResponse(data)
+	response['Content-type'] = 'application/json'
+	return response
