@@ -160,7 +160,7 @@ Campus.maps = {
 	it easier to chop the map and do the math to determine bounds
 \******************************************************************************/
 Campus.maps.imap_type.bg = function(coord,zoom) {
-	var tile = "zoom_" + zoom + "/" + zoom + "_" + coord.x + "_" + coord.y + ".jpg";
+	var tile = "zoom-" + zoom + "/" + zoom + "-" + coord.x + "-" + coord.y + ".jpg";
 	var nope = "white.png";
 
 	// check to see if requested tile for this zoom is within bounds,
@@ -179,8 +179,7 @@ Campus.maps.imap_type.bg = function(coord,zoom) {
 		if( coord.x >= wide*factor || coord.y >= tall*factor){ tile = nope; }
 	}
 	
-	return 'url("' 
-		+ 'http://cdn.ucf.edu/map/tiles/' + tile + '")';
+	return 'url("http://cdn.ucf.edu/map/tiles/' +tile+'")';
 };
 
 
