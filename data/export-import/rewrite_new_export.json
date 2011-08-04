@@ -1,0 +1,1454 @@
+{
+    "type": "FeatureCollection", 
+    "features": [
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "MH", 
+                "Num": "1", 
+                "Id": 0, 
+                "Name": "Millican Hall"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "OSH", 
+                "Num": "10", 
+                "Id": 0, 
+                "Name": "Osceola Hall"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "PRS", 
+                "Num": "100", 
+                "Id": 0, 
+                "Name": "Burnett House"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "AV1", 
+                "Num": "101", 
+                "Id": 0, 
+                "Name": "Academic Village I - Nike"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "AV2", 
+                "Num": "102", 
+                "Id": 0, 
+                "Name": "Academic Village I - Nike"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "AV3", 
+                "Num": "103", 
+                "Id": 0, 
+                "Name": "Academic Village I - Nike"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "AV4", 
+                "Num": "104", 
+                "Id": 0, 
+                "Name": "Academic Village I - Nike"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "AV5", 
+                "Num": "105", 
+                "Id": 0, 
+                "Name": "Academic Village I - Nike"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "AV6", 
+                "Num": "106", 
+                "Id": 0, 
+                "Name": "Academic Village I - Nike"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "AV7", 
+                "Num": "107", 
+                "Id": 0, 
+                "Name": "Academic Village I - Nike"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "AV08", 
+                "Num": "108", 
+                "Id": 0, 
+                "Name": "Academic Village II - Hercules"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "AV09", 
+                "Num": "109", 
+                "Id": 0, 
+                "Name": "Academic Village II - Hercules"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "POH", 
+                "Num": "11", 
+                "Id": 0, 
+                "Name": "Polk Hall"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "AV10", 
+                "Num": "110", 
+                "Id": 0, 
+                "Name": "Academic Village II - Hercules"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "AV11", 
+                "Num": "111", 
+                "Id": 0, 
+                "Name": "Academic Village II - Hercules"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "AV12", 
+                "Num": "112", 
+                "Id": 0, 
+                "Name": "Academic Village II - Hercules"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "AV13", 
+                "Num": "113", 
+                "Id": 0, 
+                "Name": "Academic Village II - Hercules"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "AV14", 
+                "Num": "114", 
+                "Id": 0, 
+                "Name": "Academic Village II - Hercules"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "AV15", 
+                "Num": "115", 
+                "Id": 0, 
+                "Name": "Academic Village II - Hercules"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "HEC", 
+                "Num": "116", 
+                "Id": 0, 
+                "Name": "Harris Corporation Engineering Center"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "WAF", 
+                "Num": "117", 
+                "Id": 0, 
+                "Name": "UCF Wild Animal Facility"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "LPS", 
+                "Num": "118", 
+                "Id": 0, 
+                "Name": "Leisure Pool Services"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "MAP", 
+                "Num": "12", 
+                "Id": 0, 
+                "Name": "Math & Physics"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "PS", 
+                "Num": "121", 
+                "Id": 0, 
+                "Name": "Physical Sciences"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "BTG", 
+                "Num": "124", 
+                "Id": 0, 
+                "Name": "Biological Transgenic Greenhouse"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "SBS", 
+                "Num": "125", 
+                "Id": 0, 
+                "Name": "Softball Stadium"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "FAI", 
+                "Num": "126", 
+                "Id": 0, 
+                "Name": "Fairwinds Alumni Center"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "HC", 
+                "Num": "127", 
+                "Id": 0, 
+                "Name": "Health Center"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "NFH", 
+                "Num": "128", 
+                "Id": 0, 
+                "Name": "Nicholson Fieldhouse"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "T1", 
+                "Num": "129", 
+                "Id": 0, 
+                "Name": "Tower 1"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "CC1", 
+                "Num": "13", 
+                "Id": 0, 
+                "Name": "Computer Center I"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "T2", 
+                "Num": "130", 
+                "Id": 0, 
+                "Name": "Tower 2"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "PG-G", 
+                "Num": "131", 
+                "Id": 0, 
+                "Name": "Parking Garage G"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "T3", 
+                "Num": "132", 
+                "Id": 0, 
+                "Name": "Tower 3"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "T4", 
+                "Num": "133", 
+                "Id": 0, 
+                "Name": "Tower 4"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "PG-E", 
+                "Num": "134", 
+                "Id": 0, 
+                "Name": "Parking Garage E"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "BHNS", 
+                "Num": "135", 
+                "Id": 0, 
+                "Name": "Brighthouse Network Stadium"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "KP1", 
+                "Num": "137", 
+                "Id": 0, 
+                "Name": "Knights Plaza 1"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "PH", 
+                "Num": "14", 
+                "Id": 0, 
+                "Name": "Howard Phillips Hall"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "CSEL", 
+                "Num": "140", 
+                "Id": 0, 
+                "Name": "Career Services and Experiential Learning"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "PG-F", 
+                "Num": "141", 
+                "Id": 0, 
+                "Name": "Parking Garage F"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "PG-A", 
+                "Num": "147", 
+                "Id": 0, 
+                "Name": "Parking Garage A"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "PSB", 
+                "Num": "150", 
+                "Id": 0, 
+                "Name": "Public Safety Building (Police)"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "VPI", 
+                "Num": "153", 
+                "Id": 0, 
+                "Name": "Visitor and Parking Information"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "FSC", 
+                "Num": "16", 
+                "Id": 0, 
+                "Name": "Facilities and Safety"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "CNH", 
+                "Num": "18", 
+                "Id": 0, 
+                "Name": "Colbourn Hall"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "RH", 
+                "Num": "19", 
+                "Id": 0, 
+                "Name": "Rehearsal Hall"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "LR", 
+                "Num": "2", 
+                "Id": 0, 
+                "Name": "Library"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "BL", 
+                "Num": "20", 
+                "Id": 0, 
+                "Name": "Biological Sciences"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "ED", 
+                "Num": "21", 
+                "Id": 0, 
+                "Name": "Education"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "PRNT", 
+                "Num": "22", 
+                "Id": 0, 
+                "Name": "Print Shop"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "CRSC", 
+                "Num": "24", 
+                "Id": 0, 
+                "Name": "Creative School for Children"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "JTWC", 
+                "Num": "26", 
+                "Id": 0, 
+                "Name": "John T. Washington Center"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "COUN", 
+                "Num": "27", 
+                "Id": 0, 
+                "Name": "Counseling Center"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "ECC", 
+                "Num": "28", 
+                "Id": 0, 
+                "Name": "Early Childhood Center"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "CC2", 
+                "Num": "29", 
+                "Id": 0, 
+                "Name": "Computer Center II"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "UTI", 
+                "Num": "3", 
+                "Id": 0, 
+                "Name": "Utility Plant /HVAC"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "BREV", 
+                "Num": "30", 
+                "Id": 0, 
+                "Name": "Brevard Hall"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "ORNG", 
+                "Num": "31", 
+                "Id": 0, 
+                "Name": "Orange Hall"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "KSK", 
+                "Num": "310", 
+                "Id": 0, 
+                "Name": "Reflections Kiosk"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "SEMN", 
+                "Num": "32", 
+                "Id": 0, 
+                "Name": "Seminole Hall"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "NRP", 
+                "Num": "326", 
+                "Id": 0, 
+                "Name": "Natural Resources Pavilion"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "RC", 
+                "Num": "327", 
+                "Id": 0, 
+                "Name": "Recycling Center"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "COMN", 
+                "Num": "33", 
+                "Id": 0, 
+                "Name": "Commons"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "WDI", 
+                "Num": "38", 
+                "Id": 0, 
+                "Name": "Wayne Densch Center I"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "WDII", 
+                "Num": "39", 
+                "Id": 0, 
+                "Name": "Wayne Densch Center II"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "SWRL", 
+                "Num": "4", 
+                "Id": 0, 
+                "Name": "Storm Water Research Lab"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "ENGR", 
+                "Num": "40", 
+                "Id": 0, 
+                "Name": "Engineering I"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "ZETA", 
+                "Num": "401", 
+                "Id": 0, 
+                "Name": "Zeta Tau Alpha - Sorority- Greek Park"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "BPW", 
+                "Num": "402", 
+                "Id": 0, 
+                "Name": "BPW Scholarship House"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "TRID", 
+                "Num": "403", 
+                "Id": 0, 
+                "Name": "Delta Delta Delta"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "AXD", 
+                "Num": "404", 
+                "Id": 0, 
+                "Name": "Alpha Xi Delta - Sorority - Greek Park"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "PIBP", 
+                "Num": "405", 
+                "Id": 0, 
+                "Name": "Pi Beta Phi - Sorority - Greek Park"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "ADLT", 
+                "Num": "406", 
+                "Id": 0, 
+                "Name": "Alpha Delta Pi - Sorority - Greek Park"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "KDLT", 
+                "Num": "407", 
+                "Id": 0, 
+                "Name": "Kappa Delta Sorority - Greek Park"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "SAEP", 
+                "Num": "409", 
+                "Id": 0, 
+                "Name": "Sigma Alpha Epsilon - Fraternity - Greek Park"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "ATO", 
+                "Num": "410", 
+                "Id": 0, 
+                "Name": "Alpha Tau Omega - Fraternity - Greek Park"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "SPE", 
+                "Num": "411", 
+                "Id": 0, 
+                "Name": "Sigma Phi Epsilon - Fraternity - Greek Park"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "SCHI", 
+                "Num": "412", 
+                "Id": 0, 
+                "Name": "Sigma Chi - Fraternity - Greek Park"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "KSIG", 
+                "Num": "413", 
+                "Id": 0, 
+                "Name": "Kappa Sigma - Fraternity - Greek Park"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "EFL", 
+                "Num": "44", 
+                "Id": 0, 
+                "Name": "Engineering Field Lab"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "BA", 
+                "Num": "45", 
+                "Id": 0, 
+                "Name": "Business Administration"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "EOC", 
+                "Num": "49", 
+                "Id": 0, 
+                "Name": "Emergency Operation Center"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "CH", 
+                "Num": "5", 
+                "Id": 0, 
+                "Name": "Chemistry"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "ARNA", 
+                "Num": "50", 
+                "Id": 0, 
+                "Name": "Arena"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "ROTC", 
+                "Num": "501", 
+                "Id": 0, 
+                "Name": "ROTC"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "KTRS", 
+                "Num": "50b", 
+                "Id": 0, 
+                "Name": "Knightro's"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "VAB", 
+                "Num": "51", 
+                "Id": 0, 
+                "Name": "Visual Arts Building"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "PL", 
+                "Num": "514", 
+                "Id": 0, 
+                "Name": "Physics Lab"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "STUN", 
+                "Num": "52", 
+                "Id": 0, 
+                "Name": "Student Union"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "TR25", 
+                "Num": "525", 
+                "Id": 0, 
+                "Name": "Environmental Initiative Office"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "CRTR", 
+                "Num": "529", 
+                "Id": 0, 
+                "Name": "Creative School"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "CROL", 
+                "Num": "53", 
+                "Id": 0, 
+                "Name": "CREOL"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "CS", 
+                "Num": "54", 
+                "Id": 0, 
+                "Name": "College of Science"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "TR40", 
+                "Num": "540", 
+                "Id": 0, 
+                "Name": "Creative School"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "TR41", 
+                "Num": "541", 
+                "Id": 0, 
+                "Name": "Center for Humanities and Digital Research"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "T546", 
+                "Num": "546", 
+                "Id": 0, 
+                "Name": "Orange County School System"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "SA55", 
+                "Num": "55", 
+                "Id": 0, 
+                "Name": "Aquarius Courtyard #55"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "SA56", 
+                "Num": "56", 
+                "Id": 0, 
+                "Name": "Aquarius Courtyard #56"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "SA57", 
+                "Num": "57", 
+                "Id": 0, 
+                "Name": "Aquarius Courtyard #57"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "SA58", 
+                "Num": "58", 
+                "Id": 0, 
+                "Name": "Aquarius Courtyard #58"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "SA59", 
+                "Num": "59", 
+                "Id": 0, 
+                "Name": "Aquarius Courtyard #59"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "TH", 
+                "Num": "6", 
+                "Id": 0, 
+                "Name": "Theatre"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "SA60", 
+                "Num": "60", 
+                "Id": 0, 
+                "Name": "Pegasus Courtyard #60"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "LS01", 
+                "Num": "601", 
+                "Id": 0, 
+                "Name": "Bio Molecular Meeting Portable"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "MOD7", 
+                "Num": "607", 
+                "Id": 0, 
+                "Name": "CAS Faculty Offices"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "MOD8", 
+                "Num": "608", 
+                "Id": 0, 
+                "Name": "Writing Center"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "MOD3", 
+                "Num": "609", 
+                "Id": 0, 
+                "Name": "CAS Faculty Offices"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "SA61", 
+                "Num": "61", 
+                "Id": 0, 
+                "Name": "Pegasus Courtyard #61"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "MOD4", 
+                "Num": "610", 
+                "Id": 0, 
+                "Name": "Faculty Offices"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "LS14", 
+                "Num": "614", 
+                "Id": 0, 
+                "Name": "Restrooms"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "SA62", 
+                "Num": "62", 
+                "Id": 0, 
+                "Name": "Pegasus Courtyard #62"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "SA62", 
+                "Num": "62", 
+                "Id": 0, 
+                "Name": "Pegasus Courtyard #62"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "MO12", 
+                "Num": "629", 
+                "Id": 0, 
+                "Name": "Diversity Initiatives"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "SA63", 
+                "Num": "63", 
+                "Id": 0, 
+                "Name": "Pegasus Courtyard #63"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "SA64", 
+                "Num": "64", 
+                "Id": 0, 
+                "Name": "Pegasus Courtyard #64"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "SA65", 
+                "Num": "65", 
+                "Id": 0, 
+                "Name": "Commons"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "SA66", 
+                "Num": "66", 
+                "Id": 0, 
+                "Name": "Gemini Courtyard #66"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "SA67", 
+                "Num": "67", 
+                "Id": 0, 
+                "Name": "Gemini Courtyard #67"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "SA68", 
+                "Num": "68", 
+                "Id": 0, 
+                "Name": "Gemini Courtyard #68"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "SA69", 
+                "Num": "69", 
+                "Id": 0, 
+                "Name": "Gemini Courtyard #69"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "SA70", 
+                "Num": "70", 
+                "Id": 0, 
+                "Name": "Gemini Courtyard #70"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "BYC", 
+                "Num": "71", 
+                "Id": 0, 
+                "Name": "Barbara Ying Center"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "HAB", 
+                "Num": "73", 
+                "Id": 0, 
+                "Name": "Housing Administration"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "OBSV", 
+                "Num": "74", 
+                "Id": 0, 
+                "Name": "Observatory/Astro Lab"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "COMM", 
+                "Num": "75", 
+                "Id": 0, 
+                "Name": "Communications Building"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "ERL", 
+                "Num": "76", 
+                "Id": 0, 
+                "Name": "Engine Research Lab"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "WDSC", 
+                "Num": "77", 
+                "Id": 0, 
+                "Name": "Wayne Densch Sports Center"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "PG-H", 
+                "Num": "78", 
+                "Id": 0, 
+                "Name": "Parking Garage H"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "CL1", 
+                "Num": "79", 
+                "Id": 0, 
+                "Name": "Classroom Building I"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "FC-D", 
+                "Num": "7aa", 
+                "Id": 0, 
+                "Name": "Marketplace Dining Hall"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "FC-A", 
+                "Num": "7ab", 
+                "Id": 0, 
+                "Name": "Live Oak Ballroom/Garden Room"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "FC-B", 
+                "Num": "7b", 
+                "Id": 0, 
+                "Name": "Student Disabilities"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "FC-C", 
+                "Num": "7c", 
+                "Id": 0, 
+                "Name": "Office of Student Rights and Responsibilities"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "FC-E", 
+                "Num": "7e", 
+                "Id": 0, 
+                "Name": "SRC Auditorium - Ferrell Commons"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "FC-F", 
+                "Num": "7f", 
+                "Id": 0, 
+                "Name": "Career Services"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "FC-G", 
+                "Num": "7g", 
+                "Id": 0, 
+                "Name": "Experiential Learning & Pre-Professional Advising"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "FC-A", 
+                "Num": "7h", 
+                "Id": 0, 
+                "Name": "Activities Center"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "VOH", 
+                "Num": "8", 
+                "Id": 0, 
+                "Name": "Volusia Hall"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "HPA", 
+                "Num": "80", 
+                "Id": 0, 
+                "Name": "Health & Public Affairs I"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "MMC", 
+                "Num": "81", 
+                "Id": 0, 
+                "Name": "Center for Multilingual Multicultural Studies"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "JBF", 
+                "Num": "82", 
+                "Id": 0, 
+                "Name": "Jay Bergman Field - Baseball Stadium"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "PG-C", 
+                "Num": "83", 
+                "Id": 0, 
+                "Name": "Parking Garage C"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "SUH", 
+                "Num": "84", 
+                "Id": 0, 
+                "Name": "Sumter Hall"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "CIH", 
+                "Num": "85", 
+                "Id": 0, 
+                "Name": "Citrus Hall"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "FLH", 
+                "Num": "86", 
+                "Id": 0, 
+                "Name": "Flagler Hall"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "CAH", 
+                "Num": "87", 
+                "Id": 0, 
+                "Name": "College of Arts & Humanities"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "RWC", 
+                "Num": "88", 
+                "Id": 0, 
+                "Name": "Recreation and Wellness Center"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "PG-B", 
+                "Num": "89", 
+                "Id": 0, 
+                "Name": "Parking Garage B"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "LAH", 
+                "Num": "9", 
+                "Id": 0, 
+                "Name": "Lake Hall"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "HPA2", 
+                "Num": "90", 
+                "Id": 0, 
+                "Name": "Health & Public Affairs II"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "ENG2", 
+                "Num": "91", 
+                "Id": 0, 
+                "Name": "Engineering II"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "BFRC", 
+                "Num": "92", 
+                "Id": 0, 
+                "Name": "Biology Field Research Center"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "TA", 
+                "Num": "93", 
+                "Id": 0, 
+                "Name": "Teaching Academy"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "BA2", 
+                "Num": "94", 
+                "Id": 0, 
+                "Name": "Business Administration II"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "BAH", 
+                "Num": "95", 
+                "Id": 0, 
+                "Name": "Burnett Honors College"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "UWC", 
+                "Num": "96", 
+                "Id": 0, 
+                "Name": "Progress Energy Welcome Center"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "PG-D", 
+                "Num": "97", 
+                "Id": 0, 
+                "Name": "Parking Garage D\r\n\r\n"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "PSY", 
+                "Num": "99", 
+                "Id": 0, 
+                "Name": "Psychology Building"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "PAC", 
+                "Num": "M119", 
+                "Id": 0, 
+                "Name": "Performing Arts Center Music"
+            }
+        }, 
+        {
+            "type": "Feature", 
+            "properties": {
+                "Abrev": "PAC", 
+                "Num": "T119", 
+                "Id": 0, 
+                "Name": "Performing Arts Center Theatre"
+            }
+        }
+    ]
+}

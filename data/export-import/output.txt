@@ -1,0 +1,213 @@
+------------------------------------------------------------------------------
+  Updated Buildings 
+------------------------------------------------------------------------------
+{u'Abrev': u'OSH', u'Num': u'10', u'Id': 0, u'Name': u'Osceola Hall - Apollo Community'}
+{u'Abrev': u'OSH', u'Num': u'10', u'Id': 0, u'Name': u'Osceola Hall'}
+
+{u'Abrev': u'POH', u'Num': u'11', u'Id': 0, u'Name': u'Polk Hall - Apollo Community'}
+{u'Abrev': u'POH', u'Num': u'11', u'Id': 0, u'Name': u'Polk Hall'}
+
+{u'Abrev': u'', u'Num': u'117', u'Id': 0, u'Name': u'Animal Research Center'}
+{u'Abrev': u'WAF', u'Num': u'117', u'Id': 0, u'Name': u'UCF Wild Animal Facility'}
+
+{u'Abrev': u'', u'Num': u'124', u'Id': 0, u'Name': u'Greenhouse'}
+{u'Abrev': u'BTG', u'Num': u'124', u'Id': 0, u'Name': u'Biological Transgenic Greenhouse'}
+
+{u'Abrev': u'', u'Num': u'128', u'Id': 0, u'Name': u'Nicholson Fieldhouse'}
+{u'Abrev': u'NFH', u'Num': u'128', u'Id': 0, u'Name': u'Nicholson Fieldhouse'}
+
+{u'Abrev': u'CC1', u'Num': u'13', u'Id': 0, u'Name': u'Computer CenterI'}
+{u'Abrev': u'CC1', u'Num': u'13', u'Id': 0, u'Name': u'Computer Center I'}
+
+{u'Abrev': u'', u'Num': u'26', u'Id': 0, u'Name': u'John T. Washington Center'}
+{u'Abrev': u'JTWC', u'Num': u'26', u'Id': 0, u'Name': u'John T. Washington Center'}
+
+{u'Abrev': u'BREV', u'Num': u'30', u'Id': 0, u'Name': u'Brevard Hall - Libra Community'}
+{u'Abrev': u'BREV', u'Num': u'30', u'Id': 0, u'Name': u'Brevard Hall'}
+
+{u'Abrev': u'ORNG', u'Num': u'31', u'Id': 0, u'Name': u'Orange Hall - Libra Community'}
+{u'Abrev': u'ORNG', u'Num': u'31', u'Id': 0, u'Name': u'Orange Hall'}
+
+{u'Abrev': u'SEMN', u'Num': u'32', u'Id': 0, u'Name': u'Seminole Hall - Libra Community'}
+{u'Abrev': u'SEMN', u'Num': u'32', u'Id': 0, u'Name': u'Seminole Hall'}
+
+{u'Abrev': u'COMN', u'Num': u'33', u'Id': 0, u'Name': u'Commons - Libra Community'}
+{u'Abrev': u'COMN', u'Num': u'33', u'Id': 0, u'Name': u'Commons'}
+
+{u'Abrev': u'WDII', u'Num': u'38', u'Id': 0, u'Name': u'Wayne Densch Center II'}
+{u'Abrev': u'WDI', u'Num': u'38', u'Id': 0, u'Name': u'Wayne Densch Center I'}
+
+{u'Abrev': u'WDI', u'Num': u'39', u'Id': 0, u'Name': u'Wayne Densch Center I'}
+{u'Abrev': u'WDII', u'Num': u'39', u'Id': 0, u'Name': u'Wayne Densch Center II'}
+
+{u'Abrev': u'CPOL', u'Num': u'49', u'Id': 0, u'Name': u'University Police Station'}
+{u'Abrev': u'EOC', u'Num': u'49', u'Id': 0, u'Name': u'Emergency Operation Center'}
+
+{u'Abrev': u'SA55', u'Num': u'55', u'Id': 0, u'Name': u'Aquarius Courtyard #55 - Lake Claire Apartments'}
+{u'Abrev': u'SA55', u'Num': u'55', u'Id': 0, u'Name': u'Aquarius Courtyard #55'}
+
+{u'Abrev': u'SA56', u'Num': u'56', u'Id': 0, u'Name': u'Aquarius Courtyard #56 - Lake Claire Apartments'}
+{u'Abrev': u'SA56', u'Num': u'56', u'Id': 0, u'Name': u'Aquarius Courtyard #56'}
+
+{u'Abrev': u'SA57', u'Num': u'57', u'Id': 0, u'Name': u'Aquarius Courtyard #57 - Lake Claire Apartments'}
+{u'Abrev': u'SA57', u'Num': u'57', u'Id': 0, u'Name': u'Aquarius Courtyard #57'}
+
+{u'Abrev': u'SA58', u'Num': u'58', u'Id': 0, u'Name': u'Aquarius Courtyard #58 - Lake Claire Apartments'}
+{u'Abrev': u'SA58', u'Num': u'58', u'Id': 0, u'Name': u'Aquarius Courtyard #58'}
+
+{u'Abrev': u'SA59', u'Num': u'59', u'Id': 0, u'Name': u'Aquarius Courtyard #59 - Lake Claire Apartments'}
+{u'Abrev': u'SA59', u'Num': u'59', u'Id': 0, u'Name': u'Aquarius Courtyard #59'}
+
+{u'Abrev': u'SA60', u'Num': u'60', u'Id': 0, u'Name': u'Pegasus Courtyard #60 - Lake Claire Apartments'}
+{u'Abrev': u'SA60', u'Num': u'60', u'Id': 0, u'Name': u'Pegasus Courtyard #60'}
+
+{u'Abrev': u'', u'Num': u'601', u'Id': 0, u'Name': u''}
+{u'Abrev': u'LS01', u'Num': u'601', u'Id': 0, u'Name': u'Bio Molecular Meeting Portable'}
+
+{u'Abrev': u'SA61', u'Num': u'61', u'Id': 0, u'Name': u'Pegasus Courtyard #61 - Lake Claire Apartments'}
+{u'Abrev': u'SA61', u'Num': u'61', u'Id': 0, u'Name': u'Pegasus Courtyard #61'}
+
+{u'Abrev': u'SA62', u'Num': u'62', u'Id': 0, u'Name': u'Pegasus Courtyard #62 - Lake Claire Apartments'}
+{u'Abrev': u'SA62', u'Num': u'62', u'Id': 0, u'Name': u'Pegasus Courtyard #62'}
+
+{u'Abrev': u'SA62', u'Num': u'62', u'Id': 0, u'Name': u'Pegasus Courtyard #62 - Lake Claire Apartments'}
+{u'Abrev': u'SA62', u'Num': u'62', u'Id': 0, u'Name': u'Pegasus Courtyard #62'}
+
+{u'Abrev': u'SA63', u'Num': u'63', u'Id': 0, u'Name': u'Pegasus Courtyard #63 - Lake Claire Apartments'}
+{u'Abrev': u'SA63', u'Num': u'63', u'Id': 0, u'Name': u'Pegasus Courtyard #63'}
+
+{u'Abrev': u'SA64', u'Num': u'64', u'Id': 0, u'Name': u'Pegasus Courtyard #64 - Lake Claire Apartments'}
+{u'Abrev': u'SA64', u'Num': u'64', u'Id': 0, u'Name': u'Pegasus Courtyard #64'}
+
+{u'Abrev': u'SA65', u'Num': u'65', u'Id': 0, u'Name': u'Commons - Lake Claire Apartments'}
+{u'Abrev': u'SA65', u'Num': u'65', u'Id': 0, u'Name': u'Commons'}
+
+{u'Abrev': u'SA66', u'Num': u'66', u'Id': 0, u'Name': u'Gemini Courtyard #66 - Lake Claire Apartments'}
+{u'Abrev': u'SA66', u'Num': u'66', u'Id': 0, u'Name': u'Gemini Courtyard #66'}
+
+{u'Abrev': u'SA67', u'Num': u'67', u'Id': 0, u'Name': u'Gemini Courtyard #67 - Lake Claire Apartments'}
+{u'Abrev': u'SA67', u'Num': u'67', u'Id': 0, u'Name': u'Gemini Courtyard #67'}
+
+{u'Abrev': u'SA68', u'Num': u'68', u'Id': 0, u'Name': u'Gemini Courtyard #68 - Lake Claire Apartments'}
+{u'Abrev': u'SA68', u'Num': u'68', u'Id': 0, u'Name': u'Gemini Courtyard #68'}
+
+{u'Abrev': u'SA69', u'Num': u'69', u'Id': 0, u'Name': u'Gemini Courtyard #69 - Lake Claire Apartments'}
+{u'Abrev': u'SA69', u'Num': u'69', u'Id': 0, u'Name': u'Gemini Courtyard #69'}
+
+{u'Abrev': u'SA70', u'Num': u'70', u'Id': 0, u'Name': u'Gemini Courtyard #70 - Lake Claire Apartments'}
+{u'Abrev': u'SA70', u'Num': u'70', u'Id': 0, u'Name': u'Gemini Courtyard #70'}
+
+{u'Abrev': u'', u'Num': u'77', u'Id': 0, u'Name': u'Wayne Densch Sports Center'}
+{u'Abrev': u'WDSC', u'Num': u'77', u'Id': 0, u'Name': u'Wayne Densch Sports Center'}
+
+{u'Abrev': u'VOH', u'Num': u'8', u'Id': 0, u'Name': u'Volusia Hall - Apollo Community'}
+{u'Abrev': u'VOH', u'Num': u'8', u'Id': 0, u'Name': u'Volusia Hall'}
+
+{u'Abrev': u'', u'Num': u'82', u'Id': 0, u'Name': u'Baseball Stadium'}
+{u'Abrev': u'JBF', u'Num': u'82', u'Id': 0, u'Name': u'Jay Bergman Field - Baseball Stadium'}
+
+{u'Abrev': u'SUH', u'Num': u'84', u'Id': 0, u'Name': u'Sumter Hall - Libra Community'}
+{u'Abrev': u'SUH', u'Num': u'84', u'Id': 0, u'Name': u'Sumter Hall'}
+
+{u'Abrev': u'CIH', u'Num': u'85', u'Id': 0, u'Name': u'Citrus Hall - Libra Community'}
+{u'Abrev': u'CIH', u'Num': u'85', u'Id': 0, u'Name': u'Citrus Hall'}
+
+{u'Abrev': u'FLH', u'Num': u'86', u'Id': 0, u'Name': u'Flagler Hall - Libra Community'}
+{u'Abrev': u'FLH', u'Num': u'86', u'Id': 0, u'Name': u'Flagler Hall'}
+
+{u'Abrev': u'RCW', u'Num': u'88', u'Id': 0, u'Name': u'Rec and Wellness Center'}
+{u'Abrev': u'RWC', u'Num': u'88', u'Id': 0, u'Name': u'Recreation and Wellness Center'}
+
+{u'Abrev': u'LAH', u'Num': u'9', u'Id': 0, u'Name': u'Lake Hall- Apollo Community'}
+{u'Abrev': u'LAH', u'Num': u'9', u'Id': 0, u'Name': u'Lake Hall'}
+
+{u'Abrev': u'UWC', u'Num': u'96', u'Id': 0, u'Name': u'Welcome Center, Progress Energy University'}
+{u'Abrev': u'UWC', u'Num': u'96', u'Id': 0, u'Name': u'Progress Energy Welcome Center'}
+
+
+------------------------------------------------------------------------------
+  New Buildings 
+------------------------------------------------------------------------------
+{u'Abrev': u'PS', u'Num': u'121', u'Id': 0, u'Name': u'Physical Sciences'}
+{u'Abrev': u'SBS', u'Num': u'125', u'Id': 0, u'Name': u'Softball Stadium'}
+{u'Abrev': u'PG-G', u'Num': u'131', u'Id': 0, u'Name': u'Parking Garage G'}
+{u'Abrev': u'PG-E', u'Num': u'134', u'Id': 0, u'Name': u'Parking Garage E'}
+{u'Abrev': u'BHNS', u'Num': u'135', u'Id': 0, u'Name': u'Brighthouse Network Stadium'}
+{u'Abrev': u'CSEL', u'Num': u'140', u'Id': 0, u'Name': u'Career Services and Experiential Learning'}
+{u'Abrev': u'PG-F', u'Num': u'141', u'Id': 0, u'Name': u'Parking Garage F'}
+{u'Abrev': u'PG-A', u'Num': u'147', u'Id': 0, u'Name': u'Parking Garage A'}
+{u'Abrev': u'PSB', u'Num': u'150', u'Id': 0, u'Name': u'Public Safety Building (Police)'}
+{u'Abrev': u'VPI', u'Num': u'153', u'Id': 0, u'Name': u'Visitor and Parking Information'}
+{u'Abrev': u'KSK', u'Num': u'310', u'Id': 0, u'Name': u'Reflections Kiosk'}
+{u'Abrev': u'NRP', u'Num': u'326', u'Id': 0, u'Name': u'Natural Resources Pavilion'}
+{u'Abrev': u'RC', u'Num': u'327', u'Id': 0, u'Name': u'Recycling Center'}
+{u'Abrev': u'SWRL', u'Num': u'4', u'Id': 0, u'Name': u'Storm Water Research Lab'}
+{u'Abrev': u'KTRS', u'Num': u'50b', u'Id': 0, u'Name': u"Knightro's"}
+{u'Abrev': u'PL', u'Num': u'514', u'Id': 0, u'Name': u'Physics Lab'}
+{u'Abrev': u'TR41', u'Num': u'541', u'Id': 0, u'Name': u'Center for Humanities and Digital Research'}
+{u'Abrev': u'T546', u'Num': u'546', u'Id': 0, u'Name': u'Orange County School System'}
+{u'Abrev': u'MOD7', u'Num': u'607', u'Id': 0, u'Name': u'CAS Faculty Offices'}
+{u'Abrev': u'MOD8', u'Num': u'608', u'Id': 0, u'Name': u'Writing Center'}
+{u'Abrev': u'MOD3', u'Num': u'609', u'Id': 0, u'Name': u'CAS Faculty Offices'}
+{u'Abrev': u'MOD4', u'Num': u'610', u'Id': 0, u'Name': u'Faculty Offices'}
+{u'Abrev': u'LS14', u'Num': u'614', u'Id': 0, u'Name': u'Restrooms'}
+{u'Abrev': u'MO12', u'Num': u'629', u'Id': 0, u'Name': u'Diversity Initiatives'}
+{u'Abrev': u'PG-H', u'Num': u'78', u'Id': 0, u'Name': u'Parking Garage H'}
+{u'Abrev': u'FC-D', u'Num': u'7aa', u'Id': 0, u'Name': u'Marketplace Dining Hall'}
+{u'Abrev': u'FC-A', u'Num': u'7ab', u'Id': 0, u'Name': u'Live Oak Ballroom/Garden Room'}
+{u'Abrev': u'FC-B', u'Num': u'7b', u'Id': 0, u'Name': u'Student Disabilities'}
+{u'Abrev': u'FC-C', u'Num': u'7c', u'Id': 0, u'Name': u'Office of Student Rights and Responsibilities'}
+{u'Abrev': u'FC-E', u'Num': u'7e', u'Id': 0, u'Name': u'SRC Auditorium - Ferrell Commons'}
+{u'Abrev': u'FC-F', u'Num': u'7f', u'Id': 0, u'Name': u'Career Services'}
+{u'Abrev': u'FC-G', u'Num': u'7g', u'Id': 0, u'Name': u'Experiential Learning & Pre-Professional Advising'}
+{u'Abrev': u'FC-A', u'Num': u'7h', u'Id': 0, u'Name': u'Activities Center'}
+{u'Abrev': u'PG-C', u'Num': u'83', u'Id': 0, u'Name': u'Parking Garage C'}
+{u'Abrev': u'PG-B', u'Num': u'89', u'Id': 0, u'Name': u'Parking Garage B'}
+{u'Abrev': u'PG-D', u'Num': u'97', u'Id': 0, u'Name': u'Parking Garage D\r\n\r\n'}
+{u'Abrev': u'PAC', u'Num': u'M119', u'Id': 0, u'Name': u'Performing Arts Center Music'}
+{u'Abrev': u'PAC', u'Num': u'T119', u'Id': 0, u'Name': u'Performing Arts Center Theatre'}
+
+
+------------------------------------------------------------------------------
+  Deleted Buildings 
+------------------------------------------------------------------------------
+{u'Abrev': u'', u'Num': u'', u'Id': 0, u'Name': u''}
+{u'Abrev': u'', u'Num': u'', u'Id': 0, u'Name': u''}
+{u'Abrev': u'', u'Num': u'0', u'Id': 0, u'Name': u''}
+{u'Abrev': u'', u'Num': u'0', u'Id': 0, u'Name': u''}
+{u'Abrev': u'', u'Num': u'0', u'Id': 0, u'Name': u''}
+{u'Abrev': u'', u'Num': u'0', u'Id': 0, u'Name': u''}
+{u'Abrev': u'', u'Num': u'0', u'Id': 0, u'Name': u''}
+{u'Abrev': u'', u'Num': u'0', u'Id': 0, u'Name': u''}
+{u'Abrev': u'WT', u'Num': u'0', u'Id': 0, u'Name': u'Water Tower'}
+{u'Abrev': u'', u'Num': u'0', u'Id': 0, u'Name': u''}
+{u'Abrev': u'', u'Num': u'0', u'Id': 0, u'Name': u''}
+{u'Abrev': u'', u'Num': u'0', u'Id': 0, u'Name': u''}
+{u'Abrev': u'RS', u'Num': u'15', u'Id': 0, u'Name': u'Recreational Services'}
+{u'Abrev': u'BL', u'Num': u'20', u'Id': 0, u'Name': u'Biological Sciences'}
+{u'Abrev': u'UCFH', u'Num': u'408', u'Id': 0, u'Name': u'UCF House - Greek Park'}
+{u'Abrev': u'', u'Num': u'42', u'Id': 0, u'Name': u''}
+{u'Abrev': u'', u'Num': u'48', u'Id': 0, u'Name': u''}
+{u'Abrev': u'LS605', u'Num': u'502', u'Id': 0, u'Name': u"Visitor's Center (temporary)"}
+{u'Abrev': u'', u'Num': u'72', u'Id': 0, u'Name': u''}
+{u'Abrev': u'', u'Num': u'7A', u'Id': 0, u'Name': u'Live Oak Ballroom/Garden Room- Ferrell Commons'}
+{u'Abrev': u'', u'Num': u'7B', u'Id': 0, u'Name': u'Student Disabilities'}
+{u'Abrev': u'', u'Num': u'7C', u'Id': 0, u'Name': u'Office of Student Rights and Responsibilities - Ferrell Commons'}
+{u'Abrev': u'', u'Num': u'7D', u'Id': 0, u'Name': u'Marketplace Dining Hall- Ferrell Commons'}
+{u'Abrev': u'', u'Num': u'7E', u'Id': 0, u'Name': u'SRC Auditorium - Ferrell Commons'}
+{u'Abrev': u'', u'Num': u'7F', u'Id': 0, u'Name': u'Career Services and Experiential Learning - Ferrell Commons'}
+{u'Abrev': u'', u'Num': u'7G', u'Id': 0, u'Name': u'Career Services and Experiential Learning - Ferrell Commons'}
+{u'Abrev': u'', u'Num': u'7H', u'Id': 0, u'Name': u'Activities Center - Ferrell Commons'}
+{u'Abrev': u'LS14', u'Num': u'LS14', u'Id': 0, u'Name': u'Restrooms'}
+{u'Abrev': u'MO12', u'Num': u'M012', u'Id': 0, u'Name': u'Diversity Initiatives'}
+{u'Abrev': u'MOD3', u'Num': u'MOD3', u'Id': 0, u'Name': u'CAS Faculty Offices'}
+{u'Abrev': u'MOD4', u'Num': u'MOD4', u'Id': 0, u'Name': u'Faculty Offices'}
+{u'Abrev': u'MOD7', u'Num': u'MOD7', u'Id': 0, u'Name': u'CAS Faculty Offices'}
+{u'Abrev': u'MOD8', u'Num': u'MOD8', u'Id': 0, u'Name': u'Writing Center'}
+{u'Abrev': u'T534', u'Num': u'T534', u'Id': 0, u'Name': u'Theatre'}
+{u'Abrev': u'T537\r\nT537', u'Num': u'T537', u'Id': 0, u'Name': u'Theater'}
+{u'Abrev': u'T538', u'Num': u'T538', u'Id': 0, u'Name': u'ICA Office'}
+{u'Abrev': u'T546', u'Num': u'T546', u'Id': 0, u'Name': u'Orange County School System'}
+{u'Abrev': u'', u'Num': u'TR533', u'Id': 0, u'Name': u''}
+{u'Abrev': u'PL', u'Num': u'TR541', u'Id': 0, u'Name': u'Physcs Lab'}
+{u'Abrev': u'TR41', u'Num': u'TR541', u'Id': 0, u'Name': u'Copy Center'}
