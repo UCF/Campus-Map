@@ -45,7 +45,7 @@ def prompt():
 def map_url(coords):
 	import urllib
 	if coords == None or coords == "null":
-		return None
+		return "None"
 	
 	def flat(l):
 		# recursive function to flatten array and create a a list of coordinates separated by a space
@@ -69,7 +69,10 @@ for ab in arcgis[:]:
 	# look for it campus map
 	for cb in cmap:
 		if ab['properties']['Num'] == cb.number:
-			'''
+			
+			print ab
+			print cb.json()
+			
 			# update name
 			if not ab['properties']['Name'] == cb.name:
 				print "%s [id: %s, abbr: %s]\n%s" % (cb.name, cb.number, cb.abbreviation, '-'*50)
@@ -81,8 +84,8 @@ for ab in arcgis[:]:
 					b.name = ab['properties']['Name']
 					b.save()
 				else:
-					changes_rejected.append("Name Change")
-					changes_rejected.append(cb)
+					changes_rejected.append("Name Change Rejected")
+					changes_rejected.append(cb.json())
 					changes_rejected.append(ab)
 					
 			#update abbreviation
@@ -96,20 +99,19 @@ for ab in arcgis[:]:
 					b.abbreviation = ab['properties']['Abrev']
 					b.save()
 				else:
-					changes_rejected.append("Abbreviation Change")
-					changes_rejected.append(cb)
+					changes_rejected.append("Abbreviation Change Rejected")
+					changes_rejected.append(cb.json())
 					changes_rejected.append(ab)
-			'''
 			
 			#update coords
 			ab_coords = ab['geometry']['coordinates'] if bool(ab['geometry']) else None
 			ab_coords = unicode(json.dumps(ab_coords, ensure_ascii=False ))
 			if not ab_coords == cb.poly_coords:
 				print "%s [id: %s, abbr: %s]\n%s" % (cb.name, cb.number, cb.abbreviation, '-'*50)
-				print "Coordinates changed.  Use the two URLs below to view difference:"
-				print "  - Old Coords: ", map_url(cb.poly_coords)
-				print "  - New Coords: ", map_url(ab_coords)
-				print
+				print "Coordinates changeded from/to:"
+				print type(map_url(cb.poly_coords))
+				print ' - Old Coords:', map_url(cb.poly_coords)
+				print ' - New Coords:', map_url(ab_coords)
 				if(prompt()):
 					# update coords
 					b = Building.objects.get( pk=ab['properties']['Num'] )
@@ -122,52 +124,31 @@ for ab in arcgis[:]:
 							"Unable to save building.\nError: %s\nBuilding: %s\nGeometry: %s\n\n" % (e.messages[0], ab['properties'], ab['geometry']['coordinates'])
 						)
 				else:
-					changes_rejected.append("Coordinates")
-					changes_rejected.append(cb)
+					changes_rejected.append("New Coordinates Rejected")
+					changes_rejected.append(cb.json())
 					changes_rejected.append(ab)
 			
-				
-
-
-exit()
-
-'''		
-		
-		if ab['properties']['Num'] == cb['Number']:
-			
-			p
-			
-			
-			# check to see if they're the same
-			for k,v in nb['properties'].items():
-				if not ob['properties'][k] == nb['properties'][k]:
-					changed.append(ob['properties'])
-					changed.append(nb['properties'])
-					break
-			
 			# item exists in old data, remove from both
-			new['features'].remove(nb)
-			old['features'].remove(ob)
-			break
+			arcgis.remove(ab)
+			cmap.remove(cb)
 
-print "{0}\n  Updated Buildings \n{0}".format("-"*78)
-for i in range(0, len(changed), 2):
-	print changed[i]
-	print changed[i+1]
-	print
 
 print "\n{0}\n  New Buildings \n{0}".format("-"*78)
-for nb in new['features']:
-	print nb['properties']
+for ab in arcgis[:]:
+	print ab['properties']
 
 print "\n\n{0}\n  Deleted Buildings \n{0}".format("-"*78)
-for ob in old['features']:
-	print ob['properties']
+for ob in cmap:
+	print ob
 
 
-for b in arcgis[:]:
-	
-'''
+print "{0}\n  Rejected Changes \n{0}".format("-"*78)
+for i in range(0, len(changes_rejected), 3):
+	print changes_rejected[i]
+	print " ", changes_rejected[i+1]
+	print " ", changes_rejected[i+2]
+	print
+
 	
 
 
