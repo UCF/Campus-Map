@@ -17,7 +17,7 @@ class CommonLocation(models.Model):
 	def json(self):
 		"""Returns a json serializable object for this instance"""
 		import json
-		obj = self.__dict__
+		obj = dict(self.__dict__)
 		
 		for f in obj.items():
 			
