@@ -24,8 +24,8 @@ arcgis = json.loads(txt)['features']
 arcgis = sorted(arcgis, key=lambda i:i['properties']['Num'])
 cmap   = list(Building.objects.all())
 
-changed = []
-changes_rejected = []
+changes = []
+rejected = []
 deleted_new = []
 deleted_old = []
 errors      = []
@@ -70,9 +70,6 @@ for ab in arcgis[:]:
 	for cb in cmap:
 		if ab['properties']['Num'] == cb.number:
 			
-			print ab
-			print cb.json()
-			
 			# update name
 			if not ab['properties']['Name'] == cb.name:
 				print "%s [id: %s, abbr: %s]\n%s" % (cb.name, cb.number, cb.abbreviation, '-'*50)
@@ -83,10 +80,11 @@ for ab in arcgis[:]:
 					b = Building.objects.get( pk=ab['properties']['Num'] )
 					b.name = ab['properties']['Name']
 					b.save()
+					changes.append('Name Change [id %s]: %s > %s' % (b.id, cb.name, b.name))
 				else:
-					changes_rejected.append("Name Change Rejected")
-					changes_rejected.append(cb.json())
-					changes_rejected.append(ab)
+					rejected.append("Name Change Rejected")
+					rejected.append(cb.json())
+					rejected.append(ab)
 					
 			#update abbreviation
 			if not ab['properties']['Abrev'] == cb.abbreviation:
@@ -98,10 +96,11 @@ for ab in arcgis[:]:
 					b = Building.objects.get( pk=ab['properties']['Num'] )
 					b.abbreviation = ab['properties']['Abrev']
 					b.save()
+					changes.append('Abbr Change [id %s]: %s > %s' % (b.id, cb.abbreviation, b.abbreviation))
 				else:
-					changes_rejected.append("Abbreviation Change Rejected")
-					changes_rejected.append(cb.json())
-					changes_rejected.append(ab)
+					rejected.append("Abbreviation Change Rejected")
+					rejected.append(cb.json())
+					rejected.append(ab)
 			
 			#update coords
 			ab_coords = ab['geometry']['coordinates'] if bool(ab['geometry']) else None
@@ -119,103 +118,76 @@ for ab in arcgis[:]:
 					try:
 						b.clean()
 						b.save()
+						changes.append('Coord Changes for [id %s]: %s' % (b.id, b.name))
 					except ValidationError as e:
 						errors.append(
 							"Unable to save building.\nError: %s\nBuilding: %s\nGeometry: %s\n\n" % (e.messages[0], ab['properties'], ab['geometry']['coordinates'])
 						)
 				else:
-					changes_rejected.append("New Coordinates Rejected")
-					changes_rejected.append(cb.json())
-					changes_rejected.append(ab)
+					rejected.append("New Coordinates Rejected")
+					rejected.append(cb.json())
+					rejected.append(ab)
 			
 			# item exists in old data, remove from both
 			arcgis.remove(ab)
 			cmap.remove(cb)
 
-
 print "\n{0}\n  New Buildings \n{0}".format("-"*78)
-for ab in arcgis[:]:
-	print ab['properties']
 
-print "\n\n{0}\n  Deleted Buildings \n{0}".format("-"*78)
-for ob in cmap:
-	print ob
-
-
-print "{0}\n  Rejected Changes \n{0}".format("-"*78)
-for i in range(0, len(changes_rejected), 3):
-	print changes_rejected[i]
-	print " ", changes_rejected[i+1]
-	print " ", changes_rejected[i+2]
-	print
-
+for b in arcgis[:]:
 	
-
-
-'''
-building_nums = []
-for b in buildings['features']:
-	# ignore bad numbers, names, geometry, and duplicates
-	if b['properties']['Num']==None or b['properties']['Num']=='0' or b['properties']['Num'].strip()=='':
-		print "Invalid number.  Skipped:\n  Items: {0}\n  Geometry: {1}\n\n".format(b['properties'], b['geometry']['coordinates'])
+	print "New Building: %s, %s" % (b['properties']['Num'], b['properties']['Name'])
+	if(not prompt()):
 		continue
-	else:
-		# fix building numbers to all be lowercase
-		b['properties']['Num'] = b['properties']['Num'].lower()
-	if b['properties']['Name']==None or b['properties']['Name'].strip()=='':
-		print "Invalid name.  Skipped:\n  Items: {0}\n  Geometry: {1}\n\n".format(b['properties'], b['geometry']['coordinates'])
-		continue
-	if b['properties']['Num'] in building_nums:
-		print "Duplicate Buildings.  Using only the first:"
-		for temp in buildings['features']:
-			if temp['properties']['Num'] == b['properties']['Num']:
-				print "  Old Building {0}".format(temp['properties'])
-		print "\n"
-		continue
-	if b['geometry'] is None:
-		print "No Geometry. Skipped:\n  Items: {0}\n\n".format(b['properties'])
-		continue
+	
 	try:
 		building_nums.append( b['properties']['Num'] )
 		building = Building.objects.get( pk=b['properties']['Num'] )
 	except Building.DoesNotExist:
-		new = {}
-		new['number']        = b['properties']['Num']
-		new['name']          = b['properties']['Name']
-		new['abbreviation']  = b['properties']['Abrev']
-		new['poly_coords']   = b['geometry']['coordinates']
-		new = Building.objects.create(**new)
-		print "Created new building {0}, {1}\n\n".format(new.name, new.number)
+		pass
 	else:
-		before_update = building.json()
-		building = Building.objects.get( pk=b['properties']['Num'] )
-		building.name         = b['properties']['Name']
-		building.abbreviation = b['properties']['Abrev']
-		building.poly_coords  = b['geometry']['coordinates']
-		try:
-			building.clean()
-			building.save()
-		except ValidationError as e:
-			print "Unable to save building: {0} Skipped:\n  Items: {1}\n  Geometry: {1}\n\n".format(e.messages[0], b['properties'], b['geometry']['coordinates'])
-			continue
+		print "ERROR: How did I get here? This building should not exist: %s" % b
+		exit()
+	
+	new = {}
+	new['number']        = b['properties']['Num']
+	new['name']          = b['properties']['Name']
+	new['abbreviation']  = b['properties']['Abrev']
+	new['poly_coords']   = b['geometry']['coordinates']
+	new = Building.objects.create(**new)
+	try:
+		building.clean()
+		building.save()
+	except ValidationError as e:
+		print "Unable to save building: {0} Skipped:\n  Items: {1}\n  Geometry: {1}\n\n".format(e.messages[0], b['properties'], b['geometry']['coordinates'])
+		continue
+	else:
+		arcgis.remove(b)
+		changes.append("Created new building {0}, {1}\n\n".format(new.name, new.number))
 
-		building = Building.objects.get( pk=b['properties']['Num'] )
-		if before_update != building.json():
-			print "Updated {0}:".format(building)
-			for f in building.json().items():
-				if f[1] != before_update[f[0]]:
-					print "  From: [{0}] {1}".format(f[0], before_update[f[0]])
-					print "    To: [{0}] {1}".format(f[0], f[1])
-			print "\n"
 
-# Print orphaned buildings
-# building in the database but not in the authoritative source
-orphans_detected = False
-buildings = Building.objects.all()
-for b in buildings:
-	if not b.number in building_nums:
-		if not orphans_detected:
-			print "{0}\n  Detected buildings not present in the authoritative source \n{0}".format("-"*78)
-			orphans_detected = True
-		print "{0} #{1}".format(b.name, b.number)
-'''
+f = open('import-results.txt', 'w')
+f.write("{0}\n  Changes Made \n{0}".format("-"*78))
+for i in range(len(changes)):
+	f.write(changes[i])
+
+f.write("\n{0}\n  New Buildings Rejected \n{0}".format("-"*78))
+for b in arcgis[:]:
+	f.write(b['properties'])
+
+f.write("\n\n{0}\n  Buildings orphaned/missing/deleted \n{0}".format("-"*78))
+for b in cmap:
+	f.write(b.json())
+
+f.write("{0}\n  Rejected Changes \n{0}".format("-"*78))
+for i in range(0, len(rejected), 3):
+	f.write("%s\n  %s\n  %s" % (rejected[i], rejected[i+1], rejected[i+2]))
+f.close()
+
+print "Results printed to 'import-results.txt'"
+print
+print "Summary:"
+print " %s changes" % len(changes)
+print " %s rejections" % (len(rejected)/3 + len(arcgis))
+print " %s orphans" % len(cmap)
+
