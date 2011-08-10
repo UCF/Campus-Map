@@ -80,7 +80,7 @@ for ab in arcgis[:]:
 					b = Building.objects.get( pk=ab['properties']['Num'] )
 					b.name = ab['properties']['Name']
 					b.save()
-					changes.append('Name Change [id %s]: %s > %s' % (b.id, cb.name, b.name))
+					changes.append('Name Change [id %s]: %s > %s' % (b.number, cb.name, b.name))
 				else:
 					rejected.append("Name Change Rejected")
 					rejected.append(cb.json())
@@ -96,7 +96,7 @@ for ab in arcgis[:]:
 					b = Building.objects.get( pk=ab['properties']['Num'] )
 					b.abbreviation = ab['properties']['Abrev']
 					b.save()
-					changes.append('Abbr Change [id %s]: %s > %s' % (b.id, cb.abbreviation, b.abbreviation))
+					changes.append('Abbr Change [id %s]: %s > %s' % (b.number, cb.abbreviation, b.abbreviation))
 				else:
 					rejected.append("Abbreviation Change Rejected")
 					rejected.append(cb.json())
@@ -118,7 +118,7 @@ for ab in arcgis[:]:
 					try:
 						b.clean()
 						b.save()
-						changes.append('Coord Changes for [id %s]: %s' % (b.id, b.name))
+						changes.append('Coord Changes for [id %s]: %s' % (b.number, b.name))
 					except ValidationError as e:
 						errors.append(
 							"Unable to save building.\nError: %s\nBuilding: %s\nGeometry: %s\n\n" % (e.messages[0], ab['properties'], ab['geometry']['coordinates'])
@@ -165,6 +165,12 @@ for b in arcgis[:]:
 		arcgis.remove(b)
 		changes.append("Created new building {0}, {1}\n\n".format(new.name, new.number))
 
+print "\n{0}\n  Orphaned Buildings \n{0}".format("-"*78)
+for b in cmap:
+	print b.json()
+	print "Keep building?"
+	if(not prompt()):
+		Building.objects.get( pk=b.number ).delete()
 
 f = open('import-results.txt', 'w')
 f.write("{0}\n  Changes Made \n{0}".format("-"*78))
