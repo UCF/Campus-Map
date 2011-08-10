@@ -262,7 +262,20 @@ class BikeRack(CommonLocation):
 class EmergencyPhone(CommonLocation):
 	pass
 
+
+'''
+	This shit should be built into the exporter.  When looking at the groups
+	in the export, fucking thing makes no sense wihtout this manager
+'''
+class GroupedLocationManager(models.Manager):
+	def get_by_natural_key(self, content_type, object_pk):
+		app_label, model = content_type.split(".")
+		content_type = ContentType.objects.get(app_label=app_label, model=model)
+		return self.get(content_type=content_type.pk, object_pk=object_pk)
+
 class GroupedLocation(models.Model):
+	objects      = GroupedLocationManager()
+	
 	object_pk    = models.CharField(max_length=255)
 	content_type = models.ForeignKey(ContentType)
 	content_object = generic.GenericForeignKey('content_type', 'object_pk')
@@ -277,6 +290,14 @@ class GroupedLocation(models.Model):
 			loc_name = "{0} | {1}".format(loc_name, loc.number)
 		loc_class = loc.__class__.__name__
 		return "{0} | {1}".format(loc_class, loc_name)
+	
+	def natural_key(self):
+		content_type = ".".join(self.content_type.natural_key())
+		return (content_type, self.object_pk)
+	natural_key.dependencies = ['contenttypes.contenttype']
+	
+	class Meta:
+		unique_together = (('object_pk', 'content_type'),)
 
 class Group(models.Model):
 	name = models.CharField(max_length=80, unique=True)

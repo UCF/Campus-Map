@@ -468,7 +468,7 @@ def data_dump(request):
 		# make ordering case insensitive
 		objects.extend( sorted(model.objects.all(), key=ordering) )
 	try:
-		data = serializers.serialize('json', objects, indent=4)
+		data = serializers.serialize('json', objects, indent=4, use_natural_keys=True)
 	except Exception, e:
 		data = serializers.serialize('json', "ERORR!")
 	
