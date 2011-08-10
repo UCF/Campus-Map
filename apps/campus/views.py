@@ -442,6 +442,7 @@ def data_dump(request):
 	from django.db.models import get_apps, get_app
 	from django.core.management.commands.dumpdata import sort_dependencies
 	from django.utils.datastructures import SortedDict
+	import campus
 	
 	if not request.user.is_authenticated() or not request.user.is_superuser:
 		response = HttpResponse(json.dumps({"Error": "Not Authorized"}))
@@ -465,10 +466,13 @@ def data_dump(request):
 			return self.pk
 	
 	for model in sort_dependencies(app_list.items()):
+		# skip groupedlocation model (not needed since Group uses natural keys)
+		if model == campus.models.GroupedLocation:
+			continue
 		# make ordering case insensitive
 		objects.extend( sorted(model.objects.all(), key=ordering) )
 	try:
-		data = serializers.serialize('json', objects, indent=4)
+		data = serializers.serialize('json', objects, indent=4, use_natural_keys=True)
 	except Exception, e:
 		data = serializers.serialize('json', "ERORR!")
 	
