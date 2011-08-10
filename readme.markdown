@@ -15,7 +15,8 @@ The `data` command is a custom management command that imports all fixtures (and
 
 ## Export data
     python manage.py dumpdata --indent 4 campus.building > apps/campus/fixtures/buildings.json  
-    python manage.py dumpdata --indent 4 campus.reiongalcampus > apps/campus/fixtures/regional_campuses.json 
+    python manage.py dumpdata --indent 4 campus.regionalcampus > apps/campus/fixtures/campuses.json 
+    python manage.py dumpdata --indent 4 campus.location > apps/campus/fixtures/locations.json 
     python manage.py dumpdata --indent 4 --natural campus.group > apps/campus/fixtures/groups.json
 
 if there is updated campus data from the authoritative source, read `data/export-import/readme.markdown`
