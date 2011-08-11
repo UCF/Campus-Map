@@ -14,6 +14,13 @@ class CommonLocation(models.Model):
 	illustrated_point = models.CharField(max_length=255, null=True, blank=True)
 	poly_coords       = models.TextField(blank=True, null=True)
 	
+	def _title(self):
+		if (self.name):
+			return self.name
+		else:
+			return self.__repr__()
+	title = property(_title)
+	
 	def json(self):
 		"""Returns a json serializable object for this instance"""
 		import json
