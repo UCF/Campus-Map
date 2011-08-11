@@ -64,11 +64,11 @@ def map_url(coords):
 
 def coords(obj):
 	if isinstance(obj, Building):
-		return str(cb.poly_coords)
+		return str(obj.poly_coords)
 	else:
-		try: ab_coords = obj['geometry']['coordinates']
-		except: ab_coords = None
-		return unicode(json.dumps(ab_coords, ensure_ascii=False ))
+		try: obj_coords = obj['geometry']['coordinates']
+		except: obj_coords = None
+		return unicode(json.dumps(obj_coords, ensure_ascii=False ))
 
 def abbr(obj):
 	if isinstance(obj, Building):
@@ -91,7 +91,7 @@ for a in arcgis[:]:
 	if len(duplicates) > 1:
 		printo("\n{0}\n  Found Duplicates \n{0}".format("-"*78))
 		for i,d in enumerate(duplicates):
-			printo("#%s\n  %s [%s]\n  %s\n" % (i, d['properties']['Name'], d['properties']['Num'], coords(d)))
+			printo("#%s\n  %s [%s]\n  %s\n" % (i+1, d['properties']['Name'], d['properties']['Num'], coords(d)))
 		
 		select = raw_input("Select which to keep (1-%s, 0 for none): " % len(duplicates))
 		try: select = int(select)
@@ -99,12 +99,12 @@ for a in arcgis[:]:
 		print
 		
 		for i,d in enumerate(duplicates):
-			if i == select:
+			if (i+1) == select:
 				continue
 			arcgis.remove(d)
 
 
-printo("\n{0}\n  Inspecting Updates \n{0}".format("-"*78))
+printo("\n{0}\n  Inspecting Updates \n{0}\n".format("-"*78))
 
 for ab in arcgis[:]:
 	
@@ -114,7 +114,7 @@ for ab in arcgis[:]:
 			
 			# update name
 			if not ab['properties']['Name'] == cb.name:
-				print "%s [id: %s, abbr: %s]\n%s" % (cb.name, cb.number, cb.abbreviation, '-'*50)
+				print "%s [id: %s]\n%s" % (cb.name, cb.number, '-'*50)
 				print "Name change (from/to):"
 				print ' ', cb.name
 				print ' ', ab['properties']['Name']
@@ -130,7 +130,7 @@ for ab in arcgis[:]:
 					
 			#update abbreviation
 			if not ab['properties']['Abrev'] == cb.abbreviation:
-				print "%s [id: %s, abbr: %s]\n%s" % (cb.name, cb.number, cb.abbreviation, '-'*50)
+				print "%s [id: %s]\n%s" % (cb.name, cb.number, '-'*50)
 				print "Abreviation change from/to:"
 				print ' ', abbr(cb)
 				print ' ', abbr(ab)
@@ -149,7 +149,7 @@ for ab in arcgis[:]:
 			except: ab_coords = None
 			ab_coords = unicode(json.dumps(ab_coords, ensure_ascii=False ))
 			if not ab_coords == cb.poly_coords:
-				print "%s [id: %s, abbr: %s]\n%s" % (cb.name, cb.number, cb.abbreviation, '-'*50)
+				print "%s [id: %s]\n%s" % (cb.name, cb.number, '-'*50)
 				print "Coordinates changeded from/to:"
 				print ' - Old Coords:', map_url(cb.poly_coords)
 				print ' - New Coords:', map_url(ab_coords)
@@ -179,11 +179,13 @@ for ab in arcgis[:]:
 			out.flush()
 
 
-print "\n{0}\n  New Buildings \n{0}".format("-"*78)
-
+print "\n{0}\n  New Buildings \n{0}\n".format("-"*78)
+if not len(arcgis):
+	print("  None.\n")
 for b in arcgis[:]:
 	
 	print "New Building: %s, %s" % (b['properties']['Num'], b['properties']['Name'])
+	print "  coords: %s" % map_url(coords(b))
 	if(not prompt()):
 		continue
 	
@@ -215,14 +217,20 @@ for b in arcgis[:]:
 	out.flush()
 
 
-print "\n{0}\n  Orphaned Buildings \n{0}".format("-"*78)
-for b in cmap[:]:
-	print b.json()
-	print "Keep building?"
-	if(not prompt()):
+printo("\n\n{0}\n  Buildings Orphaned \n{0}\n".format("-"*78))
+if not len(cmap):
+	printo("  None.\n")
+for b in cmap:
+	print "%s" % b.name
+	print"  number: %s\n  abbreviation: %s\n  coords: %s" % (b.number, abbr(b), coords(b))
+	print "Keep building? ",
+	if(prompt()):
+		out.write("%s\n" % b.name)
+		out.write("  number: %s\n  abbreviation: %s\n  coords: %s\n\n" % (b.number, abbr(b), coords(b)))
+	else:
 		Building.objects.get( pk=b.number ).delete()
 		out.write("Deleted Building:\n")
-		out.write("  %s\n\n" % str(b))
+		out.write("  %s [id: %s]" % (b.name, b.number))
 		cmap.remove(b)
 	out.flush()
 
@@ -232,12 +240,6 @@ if not len(arcgis):
 	out.write("  None.\n\n")
 for b in arcgis:
 	out.write("%s\n\n" % b['properties'])
-
-out.write("\n\n{0}\n  Buildings orphaned/missing/deleted \n{0}\n\n".format("-"*78))
-if not len(cmap):
-	out.write("  None.\n\n")
-for b in cmap:
-	out.write("%s\n\n" % str(b.json()))
 
 
 print "Results printed 'import-results.txt'"
