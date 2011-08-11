@@ -226,7 +226,7 @@ def search(request):
 				'id':item.pk,
 				'link':item.link}
 				
-		found_entries['locations'] = map(clean, found_entries['buildings'])
+		found_entries['locations'] = map(clean, found_entries['locations'])
 		
 		search = {
 			'query'            : query_string,
