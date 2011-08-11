@@ -124,6 +124,45 @@
 {u'Abrev': u'UWC', u'Num': u'96', u'Id': 0, u'Name': u'Welcome Center, Progress Energy University'}
 {u'Abrev': u'UWC', u'Num': u'96', u'Id': 0, u'Name': u'Progress Energy Welcome Center'}
 
+------------------------------------------------------------------------------
+  Needs Merging 
+------------------------------------------------------------------------------
+Orange County School System
+  {u'Abrev': u'T546', u'Num': u'T546', u'Id': 0, u'Name': u'Orange County School System'}
+  {u'Abrev': u'T546', u'Num': u'546', u'Id': 0, u'Name': u'Orange County School System'}
+
+CAS Faculty Offices
+  {u'Abrev': u'MOD3', u'Num': u'MOD3', u'Id': 0, u'Name': u'CAS Faculty Offices'}
+  {u'Abrev': u'MOD7', u'Num': u'607', u'Id': 0, u'Name': u'CAS Faculty Offices'}
+
+Writing Center
+  {u'Abrev': u'MOD8', u'Num': u'MOD8', u'Id': 0, u'Name': u'Writing Center'}
+  {u'Abrev': u'MOD8', u'Num': u'608', u'Id': 0, u'Name': u'Writing Center'}
+
+CAS Faculty Offices
+  {u'Abrev': u'MOD7', u'Num': u'MOD7', u'Id': 0, u'Name': u'CAS Faculty Offices'}
+  {u'Abrev': u'MOD3', u'Num': u'609', u'Id': 0, u'Name': u'CAS Faculty Offices'}
+
+Faculty Offices
+  {u'Abrev': u'MOD4', u'Num': u'MOD4', u'Id': 0, u'Name': u'Faculty Offices'}
+  {u'Abrev': u'MOD4', u'Num': u'610', u'Id': 0, u'Name': u'Faculty Offices'}
+
+Restrooms
+  {u'Abrev': u'LS14', u'Num': u'LS14', u'Id': 0, u'Name': u'Restrooms'}
+  {u'Abrev': u'LS14', u'Num': u'614', u'Id': 0, u'Name': u'Restrooms'}
+
+Diversity Initiatives
+  {u'Abrev': u'MO12', u'Num': u'M012', u'Id': 0, u'Name': u'Diversity Initiatives'}
+  {u'Abrev': u'MO12', u'Num': u'629', u'Id': 0, u'Name': u'Diversity Initiatives'}
+
+Student Disabilities
+  {u'Abrev': u'', u'Num': u'7B', u'Id': 0, u'Name': u'Student Disabilities'}
+  {u'Abrev': u'FC-B', u'Num': u'7b', u'Id': 0, u'Name': u'Student Disabilities'}
+
+SRC Auditorium - Ferrell Commons
+  {u'Abrev': u'', u'Num': u'7E', u'Id': 0, u'Name': u'SRC Auditorium - Ferrell Commons'}
+  {u'Abrev': u'FC-E', u'Num': u'7e', u'Id': 0, u'Name': u'SRC Auditorium - Ferrell Commons'}
+
 
 ------------------------------------------------------------------------------
   New Buildings 
@@ -145,19 +184,10 @@
 {u'Abrev': u'KTRS', u'Num': u'50b', u'Id': 0, u'Name': u"Knightro's"}
 {u'Abrev': u'PL', u'Num': u'514', u'Id': 0, u'Name': u'Physics Lab'}
 {u'Abrev': u'TR41', u'Num': u'541', u'Id': 0, u'Name': u'Center for Humanities and Digital Research'}
-{u'Abrev': u'T546', u'Num': u'546', u'Id': 0, u'Name': u'Orange County School System'}
-{u'Abrev': u'MOD7', u'Num': u'607', u'Id': 0, u'Name': u'CAS Faculty Offices'}
-{u'Abrev': u'MOD8', u'Num': u'608', u'Id': 0, u'Name': u'Writing Center'}
-{u'Abrev': u'MOD3', u'Num': u'609', u'Id': 0, u'Name': u'CAS Faculty Offices'}
-{u'Abrev': u'MOD4', u'Num': u'610', u'Id': 0, u'Name': u'Faculty Offices'}
-{u'Abrev': u'LS14', u'Num': u'614', u'Id': 0, u'Name': u'Restrooms'}
-{u'Abrev': u'MO12', u'Num': u'629', u'Id': 0, u'Name': u'Diversity Initiatives'}
 {u'Abrev': u'PG-H', u'Num': u'78', u'Id': 0, u'Name': u'Parking Garage H'}
 {u'Abrev': u'FC-D', u'Num': u'7aa', u'Id': 0, u'Name': u'Marketplace Dining Hall'}
 {u'Abrev': u'FC-A', u'Num': u'7ab', u'Id': 0, u'Name': u'Live Oak Ballroom/Garden Room'}
-{u'Abrev': u'FC-B', u'Num': u'7b', u'Id': 0, u'Name': u'Student Disabilities'}
 {u'Abrev': u'FC-C', u'Num': u'7c', u'Id': 0, u'Name': u'Office of Student Rights and Responsibilities'}
-{u'Abrev': u'FC-E', u'Num': u'7e', u'Id': 0, u'Name': u'SRC Auditorium - Ferrell Commons'}
 {u'Abrev': u'FC-F', u'Num': u'7f', u'Id': 0, u'Name': u'Career Services'}
 {u'Abrev': u'FC-G', u'Num': u'7g', u'Id': 0, u'Name': u'Experiential Learning & Pre-Professional Advising'}
 {u'Abrev': u'FC-A', u'Num': u'7h', u'Id': 0, u'Name': u'Activities Center'}
@@ -191,23 +221,14 @@
 {u'Abrev': u'LS605', u'Num': u'502', u'Id': 0, u'Name': u"Visitor's Center (temporary)"}
 {u'Abrev': u'', u'Num': u'72', u'Id': 0, u'Name': u''}
 {u'Abrev': u'', u'Num': u'7A', u'Id': 0, u'Name': u'Live Oak Ballroom/Garden Room- Ferrell Commons'}
-{u'Abrev': u'', u'Num': u'7B', u'Id': 0, u'Name': u'Student Disabilities'}
 {u'Abrev': u'', u'Num': u'7C', u'Id': 0, u'Name': u'Office of Student Rights and Responsibilities - Ferrell Commons'}
 {u'Abrev': u'', u'Num': u'7D', u'Id': 0, u'Name': u'Marketplace Dining Hall- Ferrell Commons'}
-{u'Abrev': u'', u'Num': u'7E', u'Id': 0, u'Name': u'SRC Auditorium - Ferrell Commons'}
 {u'Abrev': u'', u'Num': u'7F', u'Id': 0, u'Name': u'Career Services and Experiential Learning - Ferrell Commons'}
 {u'Abrev': u'', u'Num': u'7G', u'Id': 0, u'Name': u'Career Services and Experiential Learning - Ferrell Commons'}
 {u'Abrev': u'', u'Num': u'7H', u'Id': 0, u'Name': u'Activities Center - Ferrell Commons'}
-{u'Abrev': u'LS14', u'Num': u'LS14', u'Id': 0, u'Name': u'Restrooms'}
-{u'Abrev': u'MO12', u'Num': u'M012', u'Id': 0, u'Name': u'Diversity Initiatives'}
-{u'Abrev': u'MOD3', u'Num': u'MOD3', u'Id': 0, u'Name': u'CAS Faculty Offices'}
-{u'Abrev': u'MOD4', u'Num': u'MOD4', u'Id': 0, u'Name': u'Faculty Offices'}
-{u'Abrev': u'MOD7', u'Num': u'MOD7', u'Id': 0, u'Name': u'CAS Faculty Offices'}
-{u'Abrev': u'MOD8', u'Num': u'MOD8', u'Id': 0, u'Name': u'Writing Center'}
 {u'Abrev': u'T534', u'Num': u'T534', u'Id': 0, u'Name': u'Theatre'}
 {u'Abrev': u'T537\r\nT537', u'Num': u'T537', u'Id': 0, u'Name': u'Theater'}
 {u'Abrev': u'T538', u'Num': u'T538', u'Id': 0, u'Name': u'ICA Office'}
-{u'Abrev': u'T546', u'Num': u'T546', u'Id': 0, u'Name': u'Orange County School System'}
 {u'Abrev': u'', u'Num': u'TR533', u'Id': 0, u'Name': u''}
 {u'Abrev': u'PL', u'Num': u'TR541', u'Id': 0, u'Name': u'Physcs Lab'}
 {u'Abrev': u'TR41', u'Num': u'TR541', u'Id': 0, u'Name': u'Copy Center'}

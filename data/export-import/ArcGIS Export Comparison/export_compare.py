@@ -41,6 +41,18 @@ for i in range(0, len(changed), 2):
 	print changed[i+1]
 	print
 
+print "{0}\n  Needs Merging \n{0}".format("-"*78)
+for nb in new['features'][:]:
+	for ob in old['features']:
+		if ob['properties']['Name'] == nb['properties']['Name']:
+			print ob['properties']['Name']
+			print " ", ob['properties']
+			print " ", nb['properties']
+			print
+			old['features'].remove(ob)
+			new['features'].remove(nb)
+			break
+
 print "\n{0}\n  New Buildings \n{0}".format("-"*78)
 for nb in new['features']:
 	print nb['properties']
