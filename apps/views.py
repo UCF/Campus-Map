@@ -204,12 +204,16 @@ def search(request):
 			phones = phones_response['results']
 			
 		# Group search
-		groups = group_search(query_string)
+		groups          = group_search(query_string)
+		group_locations = list()
 		if groups is not None:
-			group_locations = reduce(lambda a, b: a + b, map(
-				lambda g: g.locations.all(), groups
-			))
-			group_locations = map(lambda l: l.content_object, group_locations)
+			groups = filter(lambda g : g.locations.count() > 0, groups)
+			
+			if groups:
+				group_locations = reduce(lambda a, b: a + b, map(
+					lambda g: g.locations.all(), groups
+				))
+				group_locations = map(lambda l: l.content_object, group_locations)
 	
 	found_entries = {
 		'locations'     : group_locations + list(bldgs),

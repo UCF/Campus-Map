@@ -943,7 +943,6 @@ Campus.search = function(){
 					url: Campus.urls.search + '.json',
 					data: {q:q},
 					success: function(response, status){
-						
 						function highlight_term(string, term) {
 							// Wraps a specified term with start and end wraps. Preserves capitalization
 							var low_sub  = string.toLowerCase();
@@ -957,22 +956,22 @@ Campus.search = function(){
 						
 						$('#search > ul').empty()
 						
-						if (response.results != undefined && response.results.buildings != undefined) {
+						if (response.results != undefined && response.results.locations != undefined) {
 							// Treat buildings as the top level element
-							var bldgs  = response.results.buildings,
+							var locs   = response.results.locations,
 								orgs   = response.results.organizations,
 								phones = response.results.phonebook,
 								query  = response.query;
 						
 							// TODO: Implement people output
 						
-							if(bldgs.length == 0 && orgs.length == 0) {
+							if(locs.length == 0 && orgs.length == 0) {
 								$('#search > ul').append('<li><a data-pk="null">No results</a></li>')
 							} else {
 								
-								var bldg_org_matches = [],
-									org_matches      = [],
-									bldg_matches     = [];
+								var loc_org_matches = [],
+									org_matches     = [],
+									loc_matches     = [];
 								
 								// Associate organizations with their buildings
 								$.each(orgs, function(index, org) {
@@ -980,49 +979,49 @@ Campus.search = function(){
 									// Highlight query term
 									org.name = highlight_term(org.name, query);
 									
-									var bldg_index = null;
-									$.each(bldgs, function(_index, bldg) {
-										if(bldg.id == org.bldg_id) {
-											bldg_index = _index;
+									var loc_index = null;
+									$.each(locs, function(_index, loc) {
+										if(loc.id == org.bldg_id) {
+											loc_index = _index;
 											return false;
 										}
 									});
-									if(bldg_index != null) {
-										if(bldgs[bldg_index].orgs == undefined) {
-											bldgs[bldg_index].orgs = []
+									if(loc_index != null) {
+										if(locs[loc_index].orgs == undefined) {
+											locs[loc_index].orgs = []
 										}
-										bldgs[bldg_index].orgs.push(org);
+										locs[loc_index].orgs.push(org);
 									}
 								});
 								
 								// Highlight the query term
-								$.each(bldgs, function(index, bldg) {
+								$.each(locs, function(index, loc) {
 									
-									var matches          = bldg.link.match(/<a([^>]+)>([^<]*)<\/a>/),
-										original_link    = bldg.link;
+									var matches          = loc.link.match(/<a([^>]+)>([^<]*)<\/a>/),
+										original_link    = loc.link;
 									if(matches != null) {
-										bldg.link = '<a' + matches[1] + '>' +  highlight_term(matches[2], query) + '</a>';
+										loc.link = '<a' + matches[1] + '>' +  highlight_term(matches[2], query) + '</a>';
 									}
-									if(bldg.orgs != undefined && original_link.length != bldg.link.length) {
-										bldg_org_matches.push(bldg);
-									} else if(bldg.orgs != undefined && original_link.length == original_link.length) {
-										org_matches.push(bldg);
+									if(loc.orgs != undefined && original_link.length != loc.link.length) {
+										loc_org_matches.push(loc);
+									} else if(loc.orgs != undefined && original_link.length == original_link.length) {
+										org_matches.push(loc);
 									} else {
-										bldg_matches.push(bldg);
+										loc_matches.push(loc);
 									}	
 								});
 								
 								var count = 0;
-								$.each(bldg_org_matches.concat(org_matches, bldg_matches), function(index, bldg) {
-									if(bldg.orgs != undefined) {
+								$.each(loc_org_matches.concat(org_matches, loc_matches), function(index, loc) {
+									if(loc.orgs != undefined) {
 										var org_string = '';
-										$.each(bldg.orgs, function(_index, org) {
+										$.each(loc.orgs, function(_index, org) {
 											org_string += '<li>' + org.name + '</li>'
 											count += 1
 										});
-										$('#search > ul').append('<li>' + bldg.link + '<ul>' + org_string + '</ul></li>');
+										$('#search > ul').append('<li>' + loc.link + '<ul>' + org_string + '</ul></li>');
 									} else {
-										$('#search > ul').append('<li>' + bldg.link + '</li>');
+										$('#search > ul').append('<li>' + loc.link + '</li>');
 									}
 									count += 1
 									if(count  > 11) {
