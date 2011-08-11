@@ -937,7 +937,7 @@ Campus.search = function(){
 		}
 		
 		function _do_search() {
-			if(q.length > 2) {
+			if(q.length > 1) {
 				search.find('ul').html('<li><a data-pk="searching">Searching&hellip;</a></li>');
 				Campus.ajax = $.ajax({
 					url: Campus.urls.search + '.json',
@@ -987,7 +987,7 @@ Campus.search = function(){
 											return false;
 										}
 									});
-									if(bldg_index != null) {									
+									if(bldg_index != null) {
 										if(bldgs[bldg_index].orgs == undefined) {
 											bldgs[bldg_index].orgs = []
 										}
