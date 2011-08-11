@@ -187,7 +187,7 @@ def search(request):
 			orgs = org_response['results']
 		
 		# Building Search
-		entry_query = get_query(query_string, ['name',])
+		entry_query = get_query(query_string, ['name', 'abbreviation',])
 		## Make sure any found organization's buildings are in the building list
 		for org in orgs: entry_query = entry_query | Q(pk = org['bldg_id'])
 		bldgs = Building.objects.filter(entry_query).order_by('name')
