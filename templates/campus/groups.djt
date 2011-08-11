@@ -1,0 +1,16 @@
+{% extends "base.djt"%}
+
+{% block wrap %}
+<div class="span-24 last">
+	<h2>Groups</h2>
+	{% if groups %}
+	<ul>
+	{% for group in groups %}
+		<li><a href="{%url group group_id=group.id%}{{group.name|slugify}}/">{{group}}</a></li>
+	{% endfor %}
+	</ul>
+	{%else%}
+	<p>No groups currently exist.</p>
+	{% endif %}
+</div>
+{% endblock %}

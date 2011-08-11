@@ -1,0 +1,14 @@
+{% extends "base.djt"%}
+
+{% block wrap %}
+<div class="span-24 last">
+	<h2>{{group.name}}</h2>
+	{% if locations %}
+	<ul>
+	{% for location in locations %}
+		<li>{{location.link|safe}}</li>
+	{% endfor %}
+	</ul>
+	{% endif %}
+</div>
+{% endblock %}

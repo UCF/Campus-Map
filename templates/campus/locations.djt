@@ -36,7 +36,7 @@
 		{% if groups %}
 			<ul>
 			{% for g in groups %}
-				<li>{{g}}</li>
+				<li><a href="{% url group group_id=g.id %}{{g.name|slugify}}/">{{g}}</a></li>
 			{% endfor %}
 			</ul>
 		{% else %} 

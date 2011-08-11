@@ -273,6 +273,7 @@ class GroupedLocation(models.Model):
 	object_pk    = models.CharField(max_length=255)
 	content_type = models.ForeignKey(ContentType)
 	content_object = generic.GenericForeignKey('content_type', 'object_pk')
+	
 	def __unicode__(self):
 		loc      = self.content_object
 		loc_name = str(loc)
@@ -288,5 +289,12 @@ class GroupedLocation(models.Model):
 class Group(models.Model):
 	name = models.CharField(max_length=80, unique=True)
 	locations = models.ManyToManyField(GroupedLocation, blank=True)
+	
+	def json(self):
+		obj = dict(self.__dict__)
+		obj.pop('_state')
+		obj['locations'] = map(lambda l : l.content_object.json(), self.locations.all())
+		return obj
+	
 	def __unicode__(self):
 		return self.name
