@@ -55,7 +55,11 @@ def home(request, **kwargs):
 		points = {}
 		for b in buildings:
 			b = b.json()
-			points[b['number']] = { 'gpoint' : b['googlemap_point'], 'ipoint' : b['illustrated_point'] }
+			points[b['number']] = {
+				'name'   : b['name'],
+				'gpoint' : b['googlemap_point'],
+				'ipoint' : b['illustrated_point'],
+			}
 	else:
 		points = None
 		

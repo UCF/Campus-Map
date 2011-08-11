@@ -842,7 +842,7 @@ Campus.search = function(){
 				return;
 			}
 			var latlng = new google.maps.LatLng(p[0], p[1]);
-			var title = link.html();
+			var title = Campus.points[id]['name'];
 			var url = link.attr('href');
 			Campus.infoBox.disableAutoPan_=true;
 			Campus.infoBox.show(title, latlng, url);
