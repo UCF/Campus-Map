@@ -27,7 +27,7 @@ var Campus = {
 			$('#error').hide().html('');
 		});
 		var err = $('<p>' + str + '</p>').append(close);
-		$('#error').append(err).show();
+		$('#error').html(err).show();
 	}
 };
 /*global window, document, Image, google, $ */
