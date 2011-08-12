@@ -176,7 +176,7 @@ class ParkingLot(CommonLocation):
 			str = ""
 			for i in l:
 				if type(i[0]) == type([]):
-					return flat(i)
+					str += flat(i)
 				else:
 					str += ("%.6f,%.6f ")  % (i[0], i[1])
 			return str

@@ -51,7 +51,7 @@ def map_url(coords):
 		str = ""
 		for i in l:
 			if type(i[0]) == type([]):
-				return flat(i)
+				str += flat(i)
 			else:
 				str += ("%.6f,%.6f\n")  % (i[0], i[1])
 		return str
