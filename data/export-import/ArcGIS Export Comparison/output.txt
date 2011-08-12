@@ -132,7 +132,7 @@ Orange County School System
   {u'Abrev': u'T546', u'Num': u'546', u'Id': 0, u'Name': u'Orange County School System'}
 
 CAS Faculty Offices
-  {u'Abrev': u'MOD3', u'Num': u'MOD3', u'Id': 0, u'Name': u'CAS Faculty Offices'}
+  {u'Abrev': u'MOD7', u'Num': u'MOD7', u'Id': 0, u'Name': u'CAS Faculty Offices'}
   {u'Abrev': u'MOD7', u'Num': u'607', u'Id': 0, u'Name': u'CAS Faculty Offices'}
 
 Writing Center
@@ -140,7 +140,7 @@ Writing Center
   {u'Abrev': u'MOD8', u'Num': u'608', u'Id': 0, u'Name': u'Writing Center'}
 
 CAS Faculty Offices
-  {u'Abrev': u'MOD7', u'Num': u'MOD7', u'Id': 0, u'Name': u'CAS Faculty Offices'}
+  {u'Abrev': u'MOD3', u'Num': u'MOD3', u'Id': 0, u'Name': u'CAS Faculty Offices'}
   {u'Abrev': u'MOD3', u'Num': u'609', u'Id': 0, u'Name': u'CAS Faculty Offices'}
 
 Faculty Offices

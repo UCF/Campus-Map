@@ -217,21 +217,89 @@ for b in arcgis[:]:
 	out.flush()
 
 
+def merge(new, old):
+	# none of these attributes should be set on the new building
+	if (bool(new.profile)
+		  or bool(new.image)
+		  or bool(new.sketchup)
+		  or bool(new.illustrated_point)
+		  or bool(new.googlemap_point)
+		  or bool(new.description)):
+		print "New building has some valued filled and is not ready for merge"
+		print new.json()
+		return False
+	
+	# make sure that we aren't loosing data
+	if bool(old.poly_coords) and not bool(new.poly_coords):
+		print "Loosing data with poly_coords, not sure if this is intentional"
+		return False
+	
+	if bool(old.name) and not bool(new.name):
+		print "New name is blank, that's not good"
+		return False
+	
+	if bool(old.abbreviation) and not bool(new.abbreviation):
+		print "Loosing data abbreviation, not sure if this is intentional"
+		return False
+	
+	
+	old_json = old.json()
+	
+	# merge simpson
+	new.profile           = old.profile
+	new.image             = old.image
+	new.sketchup          = old.sketchup
+	new.illustrated_point = old.illustrated_point
+	new.googlemap_point   = old.googlemap_point
+	new.description       = old.description
+	
+	print "New and Old (will be deleted):"
+	print "  %s" % str(new.json())
+	print "  %s" % str(old.json())
+	
+	if(prompt()):
+		new.save()
+		old.delete()
+		printo("Merged and Deleted :\n")
+		printo("  %s" % str(new.json()))
+		printo("  %s" % str(old.json()))
+		return True
+	else:
+		return False
+
+
 printo("\n\n{0}\n  Buildings Orphaned \n{0}\n".format("-"*78))
 if not len(cmap):
 	printo("  None.\n")
 for b in cmap:
 	print "%s" % b.name
 	print"  number: %s\n  abbreviation: %s\n  coords: %s" % (b.number, abbr(b), coords(b))
-	print "Keep building? ",
-	if(prompt()):
-		out.write("%s\n" % b.name)
-		out.write("  number: %s\n  abbreviation: %s\n  coords: %s\n\n" % (b.number, abbr(b), coords(b)))
-	else:
-		Building.objects.get( pk=b.number ).delete()
-		out.write("Deleted Building:\n")
-		out.write("  %s [id: %s]" % (b.name, b.number))
-		cmap.remove(b)
+	while(True):
+		i = raw_input("Keep [k], Delete [d], or Merge [m] ? ")
+		if(i == 'k'): 
+			out.write("%s\n" % b.name)
+			out.write("  number: %s\n  abbreviation: %s\n  coords: %s\n\n" % (b.number, abbr(b), coords(b)))
+			break
+		elif(i == 'd'): 
+			Building.objects.get( pk=b.number ).delete()
+			out.write("Deleted Building:\n")
+			out.write("  %s [id: %s]" % (b.name, b.number))
+			cmap.remove(b)
+			break
+		elif(i == 'm'):
+			go = True
+			while(go):
+				pk = raw_input("Building number to merge with? ")
+				try:
+					new = Building.objects.get( pk=pk )
+				except Building.DoesNotExist:
+					print "Building not found."
+				finally:
+					go = merge(new, b)
+			break
+		else: 
+			print "what?"
+	print "\n"
 	out.flush()
 
 
