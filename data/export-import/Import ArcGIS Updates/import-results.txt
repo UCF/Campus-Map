@@ -1,14 +1,14 @@
->>>>>>>>>>>>>>>>>>>> Thursday August 11, 2011 16:30
+>>>>>>>>>>>>>>>>>>>> Friday August 12, 2011 16:51
 
 
 ------------------------------------------------------------------------------
   Found Duplicates 
 ------------------------------------------------------------------------------
-#0
+#1
   Pegasus Courtyard #62 [62]
   null
 
-#1
+#2
   Pegasus Courtyard #62 [62]
   [[[-81.204375999999996, 28.604633], [-81.204300000000003, 28.604633], [-81.204300000000003, 28.604645999999999], [-81.204257999999996, 28.604645999999999], [-81.204257999999996, 28.604633], [-81.204212999999996, 28.604633], [-81.204212999999996, 28.604668], [-81.204171000000002, 28.604668], [-81.204171000000002, 28.604655000000001], [-81.204094999999995, 28.604655000000001], [-81.204094999999995, 28.604623], [-81.204080000000005, 28.604623], [-81.204080000000005, 28.604558999999998], [-81.204094999999995, 28.604558999999998], [-81.204094999999995, 28.604527000000001], [-81.204170000000005, 28.604527000000001], [-81.204170000000005, 28.604514000000002], [-81.204211999999998, 28.604513000000001], [-81.204211999999998, 28.604527000000001], [-81.204257999999996, 28.604527000000001], [-81.204256999999998, 28.604489000000001], [-81.204300000000003, 28.604489000000001], [-81.204300000000003, 28.604503000000001], [-81.204374999999999, 28.604502], [-81.204374999999999, 28.604537000000001], [-81.204390000000004, 28.604537000000001], [-81.204391000000001, 28.604597999999999], [-81.204375999999996, 28.604597999999999], [-81.204375999999996, 28.604633]]]
 
@@ -16,6 +16,7 @@
 ------------------------------------------------------------------------------
   Inspecting Updates 
 ------------------------------------------------------------------------------
+
 --- Updated Name, ID:10 ---
   Osceola Hall - Apollo Community
   Osceola Hall
@@ -172,10 +173,6 @@ XXXXX Rejected Abbreviation Change, Wayne Densch Center II XXXXX
   None
   [[[-81.202312000000006, 28.604264000000001], [-81.202167000000003, 28.604355999999999], [-81.201999999999998, 28.604150000000001], [-81.202044999999998, 28.604132], [-81.202037000000004, 28.604119000000001], [-81.202151000000001, 28.604063], [-81.202312000000006, 28.604261999999999], [-81.202309999999997, 28.604264000000001], [-81.202312000000006, 28.604264000000001]]]
 
---- Updated Coordinates, Orange County School System ---
-  None
-  [[[-81.202032000000003, 28.604426], [-81.201964000000004, 28.604339], [-81.202031000000005, 28.604298], [-81.202090999999996, 28.604395], [-81.202032000000003, 28.604426]]]
-
 --- Updated Name, ID:55 ---
   Aquarius Courtyard #55 - Lake Claire Apartments
   Aquarius Courtyard #55
@@ -200,29 +197,9 @@ XXXXX Rejected Abbreviation Change, Wayne Densch Center II XXXXX
   Pegasus Courtyard #60 - Lake Claire Apartments
   Pegasus Courtyard #60
 
---- Updated Coordinates, CAS Faculty Offices ---
-  None
-  [[[-81.201935000000006, 28.604301], [-81.201921999999996, 28.604310000000002], [-81.201784000000004, 28.604130999999999], [-81.201866999999993, 28.604081000000001], [-81.202001999999993, 28.604263], [-81.201935000000006, 28.604301]]]
-
---- Updated Coordinates, Writing Center ---
-  None
-  [[[-81.201910999999996, 28.604545000000002], [-81.201808999999997, 28.604419], [-81.201897000000002, 28.604361999999998], [-81.201999999999998, 28.604492], [-81.201910999999996, 28.604545000000002]]]
-
---- Updated Coordinates, CAS Faculty Offices ---
-  None
-  [[[-81.201334000000003, 28.604195000000001], [-81.201283000000004, 28.604120000000002], [-81.201379000000003, 28.604077], [-81.201436000000001, 28.604157000000001], [-81.201334000000003, 28.604195000000001]]]
-
 --- Updated Name, ID:61 ---
   Pegasus Courtyard #61 - Lake Claire Apartments
   Pegasus Courtyard #61
-
---- Updated Coordinates, Faculty Offices ---
-  None
-  [[[-81.201250999999999, 28.604130999999999], [-81.201301999999998, 28.604216999999998], [-81.201194999999998, 28.604257], [-81.201145999999994, 28.604178999999998], [-81.201250999999999, 28.604130999999999]]]
-
---- Updated Coordinates, Restrooms ---
-  None
-  [[[-81.200961000000007, 28.604302000000001], [-81.200890999999999, 28.604185999999999], [-81.200940000000003, 28.60417], [-81.201002000000003, 28.604282999999999], [-81.200961000000007, 28.604302000000001]]]
 
 --- Updated Name, ID:62 ---
   Pegasus Courtyard #62 - Lake Claire Apartments
@@ -232,10 +209,6 @@ XXXXX Rejected Abbreviation Change, Wayne Densch Center II XXXXX
   M012
   MO12
 
---- Updated Coordinates, Diversity Initiatives ---
-  None
-  [[[-81.200822000000002, 28.604194], [-81.200614999999999, 28.604234000000002], [-81.200575000000001, 28.604040000000001], [-81.200776000000005, 28.604004], [-81.200822000000002, 28.604194]]]
-
 --- Updated Name, ID:63 ---
   Pegasus Courtyard #63 - Lake Claire Apartments
   Pegasus Courtyard #63
@@ -244,7 +217,7 @@ XXXXX Rejected Abbreviation Change, Wayne Densch Center II XXXXX
   Pegasus Courtyard #64 - Lake Claire Apartments
   Pegasus Courtyard #64
 
---- Updated Name, ID:65 ---
+XXXXX Rejected Name Change, ID:65 XXXXX
   Commons - Lake Claire Apartments
   Commons
 
@@ -296,14 +269,6 @@ XXXXX Rejected Abbreviation Change, Parking Garage I XXXXX
   None
   [[[-81.200154999999995, 28.597708999999998], [-81.200235000000006, 28.597705000000001], [-81.200243999999998, 28.597757000000001], [-81.200356999999997, 28.597757000000001], [-81.200379999999996, 28.598005000000001], [-81.200198999999998, 28.598013000000002], [-81.200199999999995, 28.598020000000002], [-81.200173000000007, 28.598016000000001], [-81.200151000000005, 28.597715999999998], [-81.200154999999995, 28.597708999999998]]]
 
-XXXXX Rejected Name Change, ID:7b XXXXX
-  Student Disability Services
-  Student Disabilities
-
---- Updated Abbreviation, Student Disability Services ---
-  FC
-  FC-B
-
 --- Updated Name, ID:7c ---
   Office of Student Rights and Responsibilities - Ferrell Commons
   Office of Student Rights and Responsibilities
@@ -311,10 +276,6 @@ XXXXX Rejected Name Change, ID:7b XXXXX
 --- Updated Abbreviation, Office of Student Rights and Responsibilities ---
   (none)
   FC-C
-
---- Updated Abbreviation, SRC Auditorium - Ferrell Commons ---
-  (none)
-  FC-E
 
 XXXXX Rejected Name Change, ID:7f XXXXX
   Ferrell Commons
@@ -397,17 +358,18 @@ XXXXX Rejected Name Change, ID:97 XXXXX
 Created New Building:
   {'profile': 'None', 'poly_coords': [[[[-81.195745000000002, 28.591804], [-81.195744000000005, 28.591805000000001], [-81.195742999999993, 28.591804], [-81.195745000000002, 28.591804]]], [[[-81.195744000000005, 28.591805000000001], [-81.196105000000003, 28.592120999999999], [-81.195958000000005, 28.592248999999999], [-81.195564000000005, 28.591898], [-81.195659000000006, 28.591826999999999], [-81.195695999999998, 28.591857999999998], [-81.195744000000005, 28.591805000000001]]]], 'name': u'Public Safety Building (Police)', 'image': '', 'number': u'150', 'abbreviation': u'PSB', 'sketchup': '', 'illustrated_point': None, 'googlemap_point': None, 'description': ''}
 
->>>>>>>>>>>>>>>>>>>> Thursday August 11, 2011 16:58
+
+>>>>>>>>>>>>>>>>>>>> Friday August 12, 2011 17:29
 
 
 ------------------------------------------------------------------------------
   Found Duplicates 
 ------------------------------------------------------------------------------
-#0
+#1
   Pegasus Courtyard #62 [62]
   null
 
-#1
+#2
   Pegasus Courtyard #62 [62]
   [[[-81.204375999999996, 28.604633], [-81.204300000000003, 28.604633], [-81.204300000000003, 28.604645999999999], [-81.204257999999996, 28.604645999999999], [-81.204257999999996, 28.604633], [-81.204212999999996, 28.604633], [-81.204212999999996, 28.604668], [-81.204171000000002, 28.604668], [-81.204171000000002, 28.604655000000001], [-81.204094999999995, 28.604655000000001], [-81.204094999999995, 28.604623], [-81.204080000000005, 28.604623], [-81.204080000000005, 28.604558999999998], [-81.204094999999995, 28.604558999999998], [-81.204094999999995, 28.604527000000001], [-81.204170000000005, 28.604527000000001], [-81.204170000000005, 28.604514000000002], [-81.204211999999998, 28.604513000000001], [-81.204211999999998, 28.604527000000001], [-81.204257999999996, 28.604527000000001], [-81.204256999999998, 28.604489000000001], [-81.204300000000003, 28.604489000000001], [-81.204300000000003, 28.604503000000001], [-81.204374999999999, 28.604502], [-81.204374999999999, 28.604537000000001], [-81.204390000000004, 28.604537000000001], [-81.204391000000001, 28.604597999999999], [-81.204375999999996, 28.604597999999999], [-81.204375999999996, 28.604633]]]
 
@@ -415,6 +377,7 @@ Created New Building:
 ------------------------------------------------------------------------------
   Inspecting Updates 
 ------------------------------------------------------------------------------
+
 XXXXX Rejected Name Change, ID:135 XXXXX
   Bright House Networks Stadium
   Brighthouse Network Stadium
@@ -431,6 +394,10 @@ XXXXX Rejected Abbreviation Change, Wayne Densch Center II XXXXX
   WD2
   WDII
 
+XXXXX Rejected Name Change, ID:65 XXXXX
+  Commons - Lake Claire Apartments
+  Commons
+
 XXXXX Rejected Name Change, ID:78 XXXXX
   Parking Garage I
   Parking Garage H
@@ -438,10 +405,6 @@ XXXXX Rejected Name Change, ID:78 XXXXX
 XXXXX Rejected Abbreviation Change, Parking Garage I XXXXX
   PG-I
   PG-H
-
-XXXXX Rejected Name Change, ID:7b XXXXX
-  Student Disability Services
-  Student Disabilities
 
 XXXXX Rejected Name Change, ID:7f XXXXX
   Ferrell Commons
@@ -467,27 +430,526 @@ Created New Building:
 Created New Building:
   {'profile': 'None', 'poly_coords': [[[-81.199241000000001, 28.599978], [-81.199160000000006, 28.599996999999998], [-81.199126000000007, 28.599896000000001], [-81.199207000000001, 28.599879999999999], [-81.199241000000001, 28.599978]]], 'name': u'Bio Molecular Meeting Portable', 'image': '', 'number': u'601', 'abbreviation': u'LS01', 'sketchup': '', 'illustrated_point': None, 'googlemap_point': None, 'description': ''}
 
-Created New Building:
-  {'profile': 'None', 'poly_coords': [[[-81.204892000000001, 28.602249], [-81.204769999999996, 28.602264999999999], [-81.204768000000001, 28.602224], [-81.204127, 28.602153000000001], [-81.204155, 28.601958], [-81.204040000000006, 28.601942999999999], [-81.204042000000001, 28.601906], [-81.204877999999994, 28.601980000000001], [-81.204847999999998, 28.602186], [-81.204888999999994, 28.602186], [-81.204886999999999, 28.602246999999998], [-81.204892000000001, 28.602249]]], 'name': u'Performing Arts Center Music', 'image': '', 'number': u'm119', 'abbreviation': u'PAC', 'sketchup': '', 'illustrated_point': None, 'googlemap_point': None, 'description': ''}
+>>>>>>>>>>>>>>>>>>>> Friday August 12, 2011 17:33
+
+
+------------------------------------------------------------------------------
+  Found Duplicates 
+------------------------------------------------------------------------------
+#1
+  Pegasus Courtyard #62 [62]
+  null
+
+#2
+  Pegasus Courtyard #62 [62]
+  [[[-81.204375999999996, 28.604633], [-81.204300000000003, 28.604633], [-81.204300000000003, 28.604645999999999], [-81.204257999999996, 28.604645999999999], [-81.204257999999996, 28.604633], [-81.204212999999996, 28.604633], [-81.204212999999996, 28.604668], [-81.204171000000002, 28.604668], [-81.204171000000002, 28.604655000000001], [-81.204094999999995, 28.604655000000001], [-81.204094999999995, 28.604623], [-81.204080000000005, 28.604623], [-81.204080000000005, 28.604558999999998], [-81.204094999999995, 28.604558999999998], [-81.204094999999995, 28.604527000000001], [-81.204170000000005, 28.604527000000001], [-81.204170000000005, 28.604514000000002], [-81.204211999999998, 28.604513000000001], [-81.204211999999998, 28.604527000000001], [-81.204257999999996, 28.604527000000001], [-81.204256999999998, 28.604489000000001], [-81.204300000000003, 28.604489000000001], [-81.204300000000003, 28.604503000000001], [-81.204374999999999, 28.604502], [-81.204374999999999, 28.604537000000001], [-81.204390000000004, 28.604537000000001], [-81.204391000000001, 28.604597999999999], [-81.204375999999996, 28.604597999999999], [-81.204375999999996, 28.604633]]]
+
+
+------------------------------------------------------------------------------
+  Inspecting Updates 
+------------------------------------------------------------------------------
+
+XXXXX Rejected Name Change, ID:135 XXXXX
+  Bright House Networks Stadium
+  Brighthouse Network Stadium
+
+XXXXX Rejected Name Change, ID:153 XXXXX
+  Visitor and Parking Information Center
+  Visitor and Parking Information
+
+XXXXX Rejected Abbreviation Change, Wayne Densch Center I XXXXX
+  WD1
+  WDI
+
+XXXXX Rejected Abbreviation Change, Wayne Densch Center II XXXXX
+  WD2
+  WDII
+
+XXXXX Rejected Name Change, ID:65 XXXXX
+  Commons - Lake Claire Apartments
+  Commons
+
+XXXXX Rejected Name Change, ID:78 XXXXX
+  Parking Garage I
+  Parking Garage H
+
+XXXXX Rejected Abbreviation Change, Parking Garage I XXXXX
+  PG-I
+  PG-H
+
+XXXXX Rejected Name Change, ID:7b XXXXX
+  Student Disability Services
+  Student Disabilities
+
+XXXXX Rejected Abbreviation Change, Student Disability Services XXXXX
+  FC
+  FC-B
+
+XXXXX Rejected Name Change, ID:7f XXXXX
+  Ferrell Commons
+  Career Services
+
+XXXXX Rejected Abbreviation Change, Ferrell Commons XXXXX
+  FC
+  FC-F
+
+XXXXX Rejected Name Change, ID:7g XXXXX
+  Ferrell Commons - G
+  Experiential Learning & Pre-Professional Advising
+
+XXXXX Rejected Name Change, ID:97 XXXXX
+  Parking Garage D
+  Parking Garage D
+
+
+
+>>>>>>>>>>>>>>>>>>>> Friday August 12, 2011 17:37
+
+
+------------------------------------------------------------------------------
+  Found Duplicates 
+------------------------------------------------------------------------------
+#1
+  Pegasus Courtyard #62 [62]
+  null
+
+#2
+  Pegasus Courtyard #62 [62]
+  [[[-81.204375999999996, 28.604633], [-81.204300000000003, 28.604633], [-81.204300000000003, 28.604645999999999], [-81.204257999999996, 28.604645999999999], [-81.204257999999996, 28.604633], [-81.204212999999996, 28.604633], [-81.204212999999996, 28.604668], [-81.204171000000002, 28.604668], [-81.204171000000002, 28.604655000000001], [-81.204094999999995, 28.604655000000001], [-81.204094999999995, 28.604623], [-81.204080000000005, 28.604623], [-81.204080000000005, 28.604558999999998], [-81.204094999999995, 28.604558999999998], [-81.204094999999995, 28.604527000000001], [-81.204170000000005, 28.604527000000001], [-81.204170000000005, 28.604514000000002], [-81.204211999999998, 28.604513000000001], [-81.204211999999998, 28.604527000000001], [-81.204257999999996, 28.604527000000001], [-81.204256999999998, 28.604489000000001], [-81.204300000000003, 28.604489000000001], [-81.204300000000003, 28.604503000000001], [-81.204374999999999, 28.604502], [-81.204374999999999, 28.604537000000001], [-81.204390000000004, 28.604537000000001], [-81.204391000000001, 28.604597999999999], [-81.204375999999996, 28.604597999999999], [-81.204375999999996, 28.604633]]]
+
+
+------------------------------------------------------------------------------
+  Inspecting Updates 
+------------------------------------------------------------------------------
+
+XXXXX Rejected Name Change, ID:135 XXXXX
+  Bright House Networks Stadium
+  Brighthouse Network Stadium
+
+XXXXX Rejected Name Change, ID:153 XXXXX
+  Visitor and Parking Information Center
+  Visitor and Parking Information
+
+XXXXX Rejected Abbreviation Change, Wayne Densch Center I XXXXX
+  WD1
+  WDI
+
+XXXXX Rejected Abbreviation Change, Wayne Densch Center II XXXXX
+  WD2
+  WDII
+
+XXXXX Rejected Name Change, ID:65 XXXXX
+  Commons - Lake Claire Apartments
+  Commons
+
+XXXXX Rejected Name Change, ID:78 XXXXX
+  Parking Garage I
+  Parking Garage H
+
+XXXXX Rejected Abbreviation Change, Parking Garage I XXXXX
+  PG-I
+  PG-H
+
+XXXXX Rejected Name Change, ID:7b XXXXX
+  Student Disability Services
+  Student Disabilities
+
+XXXXX Rejected Abbreviation Change, Student Disability Services XXXXX
+  FC
+  FC-B
+
+XXXXX Rejected Abbreviation Change, SRC Auditorium - Ferrell Commons XXXXX
+  (none)
+  FC-E
+
+XXXXX Rejected Name Change, ID:7f XXXXX
+  Ferrell Commons
+  Career Services
+
+XXXXX Rejected Abbreviation Change, Ferrell Commons XXXXX
+  FC
+  FC-F
+
+XXXXX Rejected Name Change, ID:7g XXXXX
+  Ferrell Commons - G
+  Experiential Learning & Pre-Professional Advising
+
+XXXXX Rejected Name Change, ID:97 XXXXX
+  Parking Garage D
+  Parking Garage D
+
+
+
+>>>>>>>>>>>>>>>>>>>> Friday August 12, 2011 17:40
+
+
+------------------------------------------------------------------------------
+  Found Duplicates 
+------------------------------------------------------------------------------
+#1
+  Pegasus Courtyard #62 [62]
+  null
+
+#2
+  Pegasus Courtyard #62 [62]
+  [[[-81.204375999999996, 28.604633], [-81.204300000000003, 28.604633], [-81.204300000000003, 28.604645999999999], [-81.204257999999996, 28.604645999999999], [-81.204257999999996, 28.604633], [-81.204212999999996, 28.604633], [-81.204212999999996, 28.604668], [-81.204171000000002, 28.604668], [-81.204171000000002, 28.604655000000001], [-81.204094999999995, 28.604655000000001], [-81.204094999999995, 28.604623], [-81.204080000000005, 28.604623], [-81.204080000000005, 28.604558999999998], [-81.204094999999995, 28.604558999999998], [-81.204094999999995, 28.604527000000001], [-81.204170000000005, 28.604527000000001], [-81.204170000000005, 28.604514000000002], [-81.204211999999998, 28.604513000000001], [-81.204211999999998, 28.604527000000001], [-81.204257999999996, 28.604527000000001], [-81.204256999999998, 28.604489000000001], [-81.204300000000003, 28.604489000000001], [-81.204300000000003, 28.604503000000001], [-81.204374999999999, 28.604502], [-81.204374999999999, 28.604537000000001], [-81.204390000000004, 28.604537000000001], [-81.204391000000001, 28.604597999999999], [-81.204375999999996, 28.604597999999999], [-81.204375999999996, 28.604633]]]
+
+
+------------------------------------------------------------------------------
+  Inspecting Updates 
+------------------------------------------------------------------------------
+
+XXXXX Rejected Name Change, ID:135 XXXXX
+  Bright House Networks Stadium
+  Brighthouse Network Stadium
+
+XXXXX Rejected Name Change, ID:153 XXXXX
+  Visitor and Parking Information Center
+  Visitor and Parking Information
+
+XXXXX Rejected Abbreviation Change, Wayne Densch Center I XXXXX
+  WD1
+  WDI
+
+XXXXX Rejected Abbreviation Change, Wayne Densch Center II XXXXX
+  WD2
+  WDII
+
+XXXXX Rejected Name Change, ID:65 XXXXX
+  Commons - Lake Claire Apartments
+  Commons
+
+XXXXX Rejected Name Change, ID:78 XXXXX
+  Parking Garage I
+  Parking Garage H
+
+XXXXX Rejected Abbreviation Change, Parking Garage I XXXXX
+  PG-I
+  PG-H
+
+XXXXX Rejected Name Change, ID:7b XXXXX
+  Student Disability Services
+  Student Disabilities
+
+XXXXX Rejected Abbreviation Change, Student Disability Services XXXXX
+  FC
+  FC-B
+
+XXXXX Rejected Abbreviation Change, SRC Auditorium - Ferrell Commons XXXXX
+  (none)
+  FC-E
+
+XXXXX Rejected Name Change, ID:7f XXXXX
+  Ferrell Commons
+  Career Services
+
+XXXXX Rejected Abbreviation Change, Ferrell Commons XXXXX
+  FC
+  FC-F
+
+XXXXX Rejected Name Change, ID:7g XXXXX
+  Ferrell Commons - G
+  Experiential Learning & Pre-Professional Advising
+
+XXXXX Rejected Name Change, ID:97 XXXXX
+  Parking Garage D
+  Parking Garage D
+
+
+
+>>>>>>>>>>>>>>>>>>>> Friday August 12, 2011 17:43
+
+
+------------------------------------------------------------------------------
+  Found Duplicates 
+------------------------------------------------------------------------------
+#1
+  Pegasus Courtyard #62 [62]
+  null
+
+#2
+  Pegasus Courtyard #62 [62]
+  [[[-81.204375999999996, 28.604633], [-81.204300000000003, 28.604633], [-81.204300000000003, 28.604645999999999], [-81.204257999999996, 28.604645999999999], [-81.204257999999996, 28.604633], [-81.204212999999996, 28.604633], [-81.204212999999996, 28.604668], [-81.204171000000002, 28.604668], [-81.204171000000002, 28.604655000000001], [-81.204094999999995, 28.604655000000001], [-81.204094999999995, 28.604623], [-81.204080000000005, 28.604623], [-81.204080000000005, 28.604558999999998], [-81.204094999999995, 28.604558999999998], [-81.204094999999995, 28.604527000000001], [-81.204170000000005, 28.604527000000001], [-81.204170000000005, 28.604514000000002], [-81.204211999999998, 28.604513000000001], [-81.204211999999998, 28.604527000000001], [-81.204257999999996, 28.604527000000001], [-81.204256999999998, 28.604489000000001], [-81.204300000000003, 28.604489000000001], [-81.204300000000003, 28.604503000000001], [-81.204374999999999, 28.604502], [-81.204374999999999, 28.604537000000001], [-81.204390000000004, 28.604537000000001], [-81.204391000000001, 28.604597999999999], [-81.204375999999996, 28.604597999999999], [-81.204375999999996, 28.604633]]]
+
+
+------------------------------------------------------------------------------
+  Inspecting Updates 
+------------------------------------------------------------------------------
+
+XXXXX Rejected Name Change, ID:135 XXXXX
+  Bright House Networks Stadium
+  Brighthouse Network Stadium
+
+XXXXX Rejected Name Change, ID:153 XXXXX
+  Visitor and Parking Information Center
+  Visitor and Parking Information
+
+XXXXX Rejected Abbreviation Change, Wayne Densch Center I XXXXX
+  WD1
+  WDI
+
+XXXXX Rejected Abbreviation Change, Wayne Densch Center II XXXXX
+  WD2
+  WDII
+
+XXXXX Rejected Name Change, ID:65 XXXXX
+  Commons - Lake Claire Apartments
+  Commons
+
+XXXXX Rejected Name Change, ID:78 XXXXX
+  Parking Garage I
+  Parking Garage H
+
+XXXXX Rejected Abbreviation Change, Parking Garage I XXXXX
+  PG-I
+  PG-H
+
+XXXXX Rejected Name Change, ID:7b XXXXX
+  Student Disability Services
+  Student Disabilities
+
+XXXXX Rejected Abbreviation Change, Student Disability Services XXXXX
+  FC
+  FC-B
+
+XXXXX Rejected Abbreviation Change, SRC Auditorium - Ferrell Commons XXXXX
+  (none)
+  FC-E
+
+XXXXX Rejected Name Change, ID:7f XXXXX
+  Ferrell Commons
+  Career Services
+
+XXXXX Rejected Abbreviation Change, Ferrell Commons XXXXX
+  FC
+  FC-F
+
+XXXXX Rejected Name Change, ID:7g XXXXX
+  Ferrell Commons - G
+  Experiential Learning & Pre-Professional Advising
+
+XXXXX Rejected Name Change, ID:97 XXXXX
+  Parking Garage D
+  Parking Garage D
+
+
+
+>>>>>>>>>>>>>>>>>>>> Friday August 12, 2011 17:44
+
+
+------------------------------------------------------------------------------
+  Found Duplicates 
+------------------------------------------------------------------------------
+#1
+  Pegasus Courtyard #62 [62]
+  null
+
+#2
+  Pegasus Courtyard #62 [62]
+  [[[-81.204375999999996, 28.604633], [-81.204300000000003, 28.604633], [-81.204300000000003, 28.604645999999999], [-81.204257999999996, 28.604645999999999], [-81.204257999999996, 28.604633], [-81.204212999999996, 28.604633], [-81.204212999999996, 28.604668], [-81.204171000000002, 28.604668], [-81.204171000000002, 28.604655000000001], [-81.204094999999995, 28.604655000000001], [-81.204094999999995, 28.604623], [-81.204080000000005, 28.604623], [-81.204080000000005, 28.604558999999998], [-81.204094999999995, 28.604558999999998], [-81.204094999999995, 28.604527000000001], [-81.204170000000005, 28.604527000000001], [-81.204170000000005, 28.604514000000002], [-81.204211999999998, 28.604513000000001], [-81.204211999999998, 28.604527000000001], [-81.204257999999996, 28.604527000000001], [-81.204256999999998, 28.604489000000001], [-81.204300000000003, 28.604489000000001], [-81.204300000000003, 28.604503000000001], [-81.204374999999999, 28.604502], [-81.204374999999999, 28.604537000000001], [-81.204390000000004, 28.604537000000001], [-81.204391000000001, 28.604597999999999], [-81.204375999999996, 28.604597999999999], [-81.204375999999996, 28.604633]]]
+
+
+------------------------------------------------------------------------------
+  Inspecting Updates 
+------------------------------------------------------------------------------
+
+XXXXX Rejected Name Change, ID:135 XXXXX
+  Bright House Networks Stadium
+  Brighthouse Network Stadium
+
+>>>>>>>>>>>>>>>>>>>> Friday August 12, 2011 17:45
+
+
+------------------------------------------------------------------------------
+  Found Duplicates 
+------------------------------------------------------------------------------
+#1
+  Pegasus Courtyard #62 [62]
+  null
+
+#2
+  Pegasus Courtyard #62 [62]
+  [[[-81.204375999999996, 28.604633], [-81.204300000000003, 28.604633], [-81.204300000000003, 28.604645999999999], [-81.204257999999996, 28.604645999999999], [-81.204257999999996, 28.604633], [-81.204212999999996, 28.604633], [-81.204212999999996, 28.604668], [-81.204171000000002, 28.604668], [-81.204171000000002, 28.604655000000001], [-81.204094999999995, 28.604655000000001], [-81.204094999999995, 28.604623], [-81.204080000000005, 28.604623], [-81.204080000000005, 28.604558999999998], [-81.204094999999995, 28.604558999999998], [-81.204094999999995, 28.604527000000001], [-81.204170000000005, 28.604527000000001], [-81.204170000000005, 28.604514000000002], [-81.204211999999998, 28.604513000000001], [-81.204211999999998, 28.604527000000001], [-81.204257999999996, 28.604527000000001], [-81.204256999999998, 28.604489000000001], [-81.204300000000003, 28.604489000000001], [-81.204300000000003, 28.604503000000001], [-81.204374999999999, 28.604502], [-81.204374999999999, 28.604537000000001], [-81.204390000000004, 28.604537000000001], [-81.204391000000001, 28.604597999999999], [-81.204375999999996, 28.604597999999999], [-81.204375999999996, 28.604633]]]
+
+
+------------------------------------------------------------------------------
+  Inspecting Updates 
+------------------------------------------------------------------------------
+
+XXXXX Rejected Name Change, ID:135 XXXXX
+  Bright House Networks Stadium
+  Brighthouse Network Stadium
+
+XXXXX Rejected Name Change, ID:153 XXXXX
+  Visitor and Parking Information Center
+  Visitor and Parking Information
+
+XXXXX Rejected Abbreviation Change, Wayne Densch Center I XXXXX
+  WD1
+  WDI
+
+XXXXX Rejected Abbreviation Change, Wayne Densch Center II XXXXX
+  WD2
+  WDII
+
+XXXXX Rejected Name Change, ID:65 XXXXX
+  Lake Claire Commons
+  Commons
+
+XXXXX Rejected Name Change, ID:78 XXXXX
+  Parking Garage I
+  Parking Garage H
+
+XXXXX Rejected Abbreviation Change, Parking Garage I XXXXX
+  PG-I
+  PG-H
+
+XXXXX Rejected Name Change, ID:7b XXXXX
+  Student Disability Services
+  Student Disabilities
+
+XXXXX Rejected Abbreviation Change, Student Disability Services XXXXX
+  FC
+  FC-B
+
+XXXXX Rejected Abbreviation Change, SRC Auditorium - Ferrell Commons XXXXX
+  (none)
+  FC-E
+
+XXXXX Rejected Name Change, ID:7f XXXXX
+  Ferrell Commons
+  Career Services
+
+XXXXX Rejected Abbreviation Change, Ferrell Commons XXXXX
+  FC
+  FC-F
+
+XXXXX Rejected Name Change, ID:7g XXXXX
+  Ferrell Commons - G
+  Experiential Learning & Pre-Professional Advising
+
+XXXXX Rejected Name Change, ID:97 XXXXX
+  Parking Garage D
+  Parking Garage D
+
+
+
+>>>>>>>>>>>>>>>>>>>> Friday August 12, 2011 17:49
+
+
+------------------------------------------------------------------------------
+  Found Duplicates 
+------------------------------------------------------------------------------
+#1
+  Pegasus Courtyard #62 [62]
+  null
+
+#2
+  Pegasus Courtyard #62 [62]
+  [[[-81.204375999999996, 28.604633], [-81.204300000000003, 28.604633], [-81.204300000000003, 28.604645999999999], [-81.204257999999996, 28.604645999999999], [-81.204257999999996, 28.604633], [-81.204212999999996, 28.604633], [-81.204212999999996, 28.604668], [-81.204171000000002, 28.604668], [-81.204171000000002, 28.604655000000001], [-81.204094999999995, 28.604655000000001], [-81.204094999999995, 28.604623], [-81.204080000000005, 28.604623], [-81.204080000000005, 28.604558999999998], [-81.204094999999995, 28.604558999999998], [-81.204094999999995, 28.604527000000001], [-81.204170000000005, 28.604527000000001], [-81.204170000000005, 28.604514000000002], [-81.204211999999998, 28.604513000000001], [-81.204211999999998, 28.604527000000001], [-81.204257999999996, 28.604527000000001], [-81.204256999999998, 28.604489000000001], [-81.204300000000003, 28.604489000000001], [-81.204300000000003, 28.604503000000001], [-81.204374999999999, 28.604502], [-81.204374999999999, 28.604537000000001], [-81.204390000000004, 28.604537000000001], [-81.204391000000001, 28.604597999999999], [-81.204375999999996, 28.604597999999999], [-81.204375999999996, 28.604633]]]
+
+
+------------------------------------------------------------------------------
+  Inspecting Updates 
+------------------------------------------------------------------------------
+
+>>>>>>>>>>>>>>>>>>>> Friday August 12, 2011 17:51
+
+
+------------------------------------------------------------------------------
+  Found Duplicates 
+------------------------------------------------------------------------------
+#1
+  Pegasus Courtyard #62 [62]
+  null
+
+#2
+  Pegasus Courtyard #62 [62]
+  [[[-81.204375999999996, 28.604633], [-81.204300000000003, 28.604633], [-81.204300000000003, 28.604645999999999], [-81.204257999999996, 28.604645999999999], [-81.204257999999996, 28.604633], [-81.204212999999996, 28.604633], [-81.204212999999996, 28.604668], [-81.204171000000002, 28.604668], [-81.204171000000002, 28.604655000000001], [-81.204094999999995, 28.604655000000001], [-81.204094999999995, 28.604623], [-81.204080000000005, 28.604623], [-81.204080000000005, 28.604558999999998], [-81.204094999999995, 28.604558999999998], [-81.204094999999995, 28.604527000000001], [-81.204170000000005, 28.604527000000001], [-81.204170000000005, 28.604514000000002], [-81.204211999999998, 28.604513000000001], [-81.204211999999998, 28.604527000000001], [-81.204257999999996, 28.604527000000001], [-81.204256999999998, 28.604489000000001], [-81.204300000000003, 28.604489000000001], [-81.204300000000003, 28.604503000000001], [-81.204374999999999, 28.604502], [-81.204374999999999, 28.604537000000001], [-81.204390000000004, 28.604537000000001], [-81.204391000000001, 28.604597999999999], [-81.204375999999996, 28.604597999999999], [-81.204375999999996, 28.604633]]]
+
+
+------------------------------------------------------------------------------
+  Inspecting Updates 
+------------------------------------------------------------------------------
+
+
+
+XXXXX Rejected Name Change, ID:135 XXXXX
+  Bright House Networks Stadium
+  Brighthouse Network Stadium
+
+XXXXX Rejected Name Change, ID:153 XXXXX
+  Visitor and Parking Information Center
+  Visitor and Parking Information
+
+XXXXX Rejected Abbreviation Change, Wayne Densch Center I XXXXX
+  WD1
+  WDI
+
+XXXXX Rejected Abbreviation Change, Wayne Densch Center II XXXXX
+  WD2
+  WDII
+
+XXXXX Rejected Name Change, ID:65 XXXXX
+  Lake Claire Commons
+  Commons
+
+XXXXX Rejected Name Change, ID:78 XXXXX
+  Parking Garage I
+  Parking Garage H
+
+XXXXX Rejected Abbreviation Change, Parking Garage I XXXXX
+  PG-I
+  PG-H
+
+XXXXX Rejected Name Change, ID:7b XXXXX
+  Student Disability Services
+  Student Disabilities
+
+XXXXX Rejected Abbreviation Change, Student Disability Services XXXXX
+  FC
+  FC-B
+
+XXXXX Rejected Abbreviation Change, SRC Auditorium - Ferrell Commons XXXXX
+  (none)
+  FC-E
+
+XXXXX Rejected Name Change, ID:7f XXXXX
+  Ferrell Commons
+  Career Services
+
+XXXXX Rejected Abbreviation Change, Ferrell Commons XXXXX
+  FC
+  FC-F
+
+XXXXX Rejected Name Change, ID:7g XXXXX
+  Ferrell Commons - G
+  Experiential Learning & Pre-Professional Advising
+
+XXXXX Rejected Name Change, ID:97 XXXXX
+  Parking Garage D
+  Parking Garage D
+
+
+
+--- Updated Name, ID:m119 ---
+  Performing Arts Center
+  Performing Arts Center Music
+
+--- Updated Coordinates, Performing Arts Center Music ---
+  None
+  [[[-81.204892000000001, 28.602249], [-81.204769999999996, 28.602264999999999], [-81.204768000000001, 28.602224], [-81.204127, 28.602153000000001], [-81.204155, 28.601958], [-81.204040000000006, 28.601942999999999], [-81.204042000000001, 28.601906], [-81.204877999999994, 28.601980000000001], [-81.204847999999998, 28.602186], [-81.204888999999994, 28.602186], [-81.204886999999999, 28.602246999999998], [-81.204892000000001, 28.602249]]]
 
 Created New Building:
   {'profile': 'None', 'poly_coords': [[[-81.204887999999997, 28.602730000000001], [-81.204155, 28.602791], [-81.204141000000007, 28.602712], [-81.204211999999998, 28.602712], [-81.204194999999999, 28.602547000000001], [-81.204719999999995, 28.602501], [-81.204728000000003, 28.602525], [-81.204746999999998, 28.602525], [-81.204746999999998, 28.602499000000002], [-81.204843999999994, 28.602494], [-81.204841999999999, 28.602512999999998], [-81.204874000000004, 28.602512999999998], [-81.204880000000003, 28.602587], [-81.204869000000002, 28.602587], [-81.204887999999997, 28.602725], [-81.204887999999997, 28.602730000000001]]], 'name': u'Performing Arts Center Theatre', 'image': '', 'number': u't119', 'abbreviation': u'PAC', 'sketchup': '', 'illustrated_point': None, 'googlemap_point': None, 'description': ''}
 
->>>>>>>>>>>>>>>>>>>> Thursday August 11, 2011 17:02
 
 
 ------------------------------------------------------------------------------
-  Found Duplicates 
+  Buildings Orphaned 
 ------------------------------------------------------------------------------
-#0
-  Pegasus Courtyard #62 [62]
-  null
 
-#1
-  Pegasus Courtyard #62 [62]
-  [[[-81.204375999999996, 28.604633], [-81.204300000000003, 28.604633], [-81.204300000000003, 28.604645999999999], [-81.204257999999996, 28.604645999999999], [-81.204257999999996, 28.604633], [-81.204212999999996, 28.604633], [-81.204212999999996, 28.604668], [-81.204171000000002, 28.604668], [-81.204171000000002, 28.604655000000001], [-81.204094999999995, 28.604655000000001], [-81.204094999999995, 28.604623], [-81.204080000000005, 28.604623], [-81.204080000000005, 28.604558999999998], [-81.204094999999995, 28.604558999999998], [-81.204094999999995, 28.604527000000001], [-81.204170000000005, 28.604527000000001], [-81.204170000000005, 28.604514000000002], [-81.204211999999998, 28.604513000000001], [-81.204211999999998, 28.604527000000001], [-81.204257999999996, 28.604527000000001], [-81.204256999999998, 28.604489000000001], [-81.204300000000003, 28.604489000000001], [-81.204300000000003, 28.604503000000001], [-81.204374999999999, 28.604502], [-81.204374999999999, 28.604537000000001], [-81.204390000000004, 28.604537000000001], [-81.204391000000001, 28.604597999999999], [-81.204375999999996, 28.604597999999999], [-81.204375999999996, 28.604633]]]
-
->>>>>>>>>>>>>>>>>>>> Thursday August 11, 2011 17:07
+>>>>>>>>>>>>>>>>>>>> Friday August 12, 2011 17:55
 
 
 ------------------------------------------------------------------------------
@@ -505,6 +967,9 @@ Created New Building:
 ------------------------------------------------------------------------------
   Inspecting Updates 
 ------------------------------------------------------------------------------
+
+
+
 XXXXX Rejected Name Change, ID:135 XXXXX
   Bright House Networks Stadium
   Brighthouse Network Stadium
@@ -521,6 +986,10 @@ XXXXX Rejected Abbreviation Change, Wayne Densch Center II XXXXX
   WD2
   WDII
 
+XXXXX Rejected Name Change, ID:65 XXXXX
+  Lake Claire Commons
+  Commons
+
 XXXXX Rejected Name Change, ID:78 XXXXX
   Parking Garage I
   Parking Garage H
@@ -532,6 +1001,14 @@ XXXXX Rejected Abbreviation Change, Parking Garage I XXXXX
 XXXXX Rejected Name Change, ID:7b XXXXX
   Student Disability Services
   Student Disabilities
+
+XXXXX Rejected Abbreviation Change, Student Disability Services XXXXX
+  FC
+  FC-B
+
+XXXXX Rejected Abbreviation Change, SRC Auditorium - Ferrell Commons XXXXX
+  (none)
+  FC-E
 
 XXXXX Rejected Name Change, ID:7f XXXXX
   Ferrell Commons
@@ -551,7 +1028,7 @@ XXXXX Rejected Name Change, ID:97 XXXXX
 
 
 
->>>>>>>>>>>>>>>>>>>> Thursday August 11, 2011 17:10
+>>>>>>>>>>>>>>>>>>>> Friday August 12, 2011 17:56
 
 
 ------------------------------------------------------------------------------
@@ -569,6 +1046,9 @@ XXXXX Rejected Name Change, ID:97 XXXXX
 ------------------------------------------------------------------------------
   Inspecting Updates 
 ------------------------------------------------------------------------------
+
+
+
 XXXXX Rejected Name Change, ID:135 XXXXX
   Bright House Networks Stadium
   Brighthouse Network Stadium
@@ -585,6 +1065,10 @@ XXXXX Rejected Abbreviation Change, Wayne Densch Center II XXXXX
   WD2
   WDII
 
+XXXXX Rejected Name Change, ID:65 XXXXX
+  Lake Claire Commons
+  Commons
+
 XXXXX Rejected Name Change, ID:78 XXXXX
   Parking Garage I
   Parking Garage H
@@ -597,133 +1081,13 @@ XXXXX Rejected Name Change, ID:7b XXXXX
   Student Disability Services
   Student Disabilities
 
-XXXXX Rejected Name Change, ID:7f XXXXX
-  Ferrell Commons
-  Career Services
-
-XXXXX Rejected Abbreviation Change, Ferrell Commons XXXXX
+XXXXX Rejected Abbreviation Change, Student Disability Services XXXXX
   FC
-  FC-F
+  FC-B
 
-XXXXX Rejected Name Change, ID:7g XXXXX
-  Ferrell Commons - G
-  Experiential Learning & Pre-Professional Advising
-
-XXXXX Rejected Name Change, ID:97 XXXXX
-  Parking Garage D
-  Parking Garage D
-
-
-
->>>>>>>>>>>>>>>>>>>> Thursday August 11, 2011 17:12
-
-
-------------------------------------------------------------------------------
-  Found Duplicates 
-------------------------------------------------------------------------------
-#1
-  Pegasus Courtyard #62 [62]
-  null
-
-#2
-  Pegasus Courtyard #62 [62]
-  [[[-81.204375999999996, 28.604633], [-81.204300000000003, 28.604633], [-81.204300000000003, 28.604645999999999], [-81.204257999999996, 28.604645999999999], [-81.204257999999996, 28.604633], [-81.204212999999996, 28.604633], [-81.204212999999996, 28.604668], [-81.204171000000002, 28.604668], [-81.204171000000002, 28.604655000000001], [-81.204094999999995, 28.604655000000001], [-81.204094999999995, 28.604623], [-81.204080000000005, 28.604623], [-81.204080000000005, 28.604558999999998], [-81.204094999999995, 28.604558999999998], [-81.204094999999995, 28.604527000000001], [-81.204170000000005, 28.604527000000001], [-81.204170000000005, 28.604514000000002], [-81.204211999999998, 28.604513000000001], [-81.204211999999998, 28.604527000000001], [-81.204257999999996, 28.604527000000001], [-81.204256999999998, 28.604489000000001], [-81.204300000000003, 28.604489000000001], [-81.204300000000003, 28.604503000000001], [-81.204374999999999, 28.604502], [-81.204374999999999, 28.604537000000001], [-81.204390000000004, 28.604537000000001], [-81.204391000000001, 28.604597999999999], [-81.204375999999996, 28.604597999999999], [-81.204375999999996, 28.604633]]]
-
-
-------------------------------------------------------------------------------
-  Inspecting Updates 
-------------------------------------------------------------------------------
-XXXXX Rejected Name Change, ID:135 XXXXX
-  Bright House Networks Stadium
-  Brighthouse Network Stadium
-
-XXXXX Rejected Name Change, ID:153 XXXXX
-  Visitor and Parking Information Center
-  Visitor and Parking Information
-
-XXXXX Rejected Abbreviation Change, Wayne Densch Center I XXXXX
-  WD1
-  WDI
-
-XXXXX Rejected Abbreviation Change, Wayne Densch Center II XXXXX
-  WD2
-  WDII
-
-XXXXX Rejected Name Change, ID:78 XXXXX
-  Parking Garage I
-  Parking Garage H
-
-XXXXX Rejected Abbreviation Change, Parking Garage I XXXXX
-  PG-I
-  PG-H
-
-XXXXX Rejected Name Change, ID:7b XXXXX
-  Student Disability Services
-  Student Disabilities
-
-XXXXX Rejected Name Change, ID:7f XXXXX
-  Ferrell Commons
-  Career Services
-
-XXXXX Rejected Abbreviation Change, Ferrell Commons XXXXX
-  FC
-  FC-F
-
-XXXXX Rejected Name Change, ID:7g XXXXX
-  Ferrell Commons - G
-  Experiential Learning & Pre-Professional Advising
-
-XXXXX Rejected Name Change, ID:97 XXXXX
-  Parking Garage D
-  Parking Garage D
-
-
-
->>>>>>>>>>>>>>>>>>>> Thursday August 11, 2011 17:26
-
-
-------------------------------------------------------------------------------
-  Found Duplicates 
-------------------------------------------------------------------------------
-#1
-  Pegasus Courtyard #62 [62]
-  null
-
-#2
-  Pegasus Courtyard #62 [62]
-  [[[-81.204375999999996, 28.604633], [-81.204300000000003, 28.604633], [-81.204300000000003, 28.604645999999999], [-81.204257999999996, 28.604645999999999], [-81.204257999999996, 28.604633], [-81.204212999999996, 28.604633], [-81.204212999999996, 28.604668], [-81.204171000000002, 28.604668], [-81.204171000000002, 28.604655000000001], [-81.204094999999995, 28.604655000000001], [-81.204094999999995, 28.604623], [-81.204080000000005, 28.604623], [-81.204080000000005, 28.604558999999998], [-81.204094999999995, 28.604558999999998], [-81.204094999999995, 28.604527000000001], [-81.204170000000005, 28.604527000000001], [-81.204170000000005, 28.604514000000002], [-81.204211999999998, 28.604513000000001], [-81.204211999999998, 28.604527000000001], [-81.204257999999996, 28.604527000000001], [-81.204256999999998, 28.604489000000001], [-81.204300000000003, 28.604489000000001], [-81.204300000000003, 28.604503000000001], [-81.204374999999999, 28.604502], [-81.204374999999999, 28.604537000000001], [-81.204390000000004, 28.604537000000001], [-81.204391000000001, 28.604597999999999], [-81.204375999999996, 28.604597999999999], [-81.204375999999996, 28.604633]]]
-
-
-------------------------------------------------------------------------------
-  Inspecting Updates 
-------------------------------------------------------------------------------
-XXXXX Rejected Name Change, ID:135 XXXXX
-  Bright House Networks Stadium
-  Brighthouse Network Stadium
-
-XXXXX Rejected Name Change, ID:153 XXXXX
-  Visitor and Parking Information Center
-  Visitor and Parking Information
-
-XXXXX Rejected Abbreviation Change, Wayne Densch Center I XXXXX
-  WD1
-  WDI
-
-XXXXX Rejected Abbreviation Change, Wayne Densch Center II XXXXX
-  WD2
-  WDII
-
-XXXXX Rejected Name Change, ID:78 XXXXX
-  Parking Garage I
-  Parking Garage H
-
-XXXXX Rejected Abbreviation Change, Parking Garage I XXXXX
-  PG-I
-  PG-H
-
-XXXXX Rejected Name Change, ID:7b XXXXX
-  Student Disability Services
-  Student Disabilities
+XXXXX Rejected Abbreviation Change, SRC Auditorium - Ferrell Commons XXXXX
+  (none)
+  FC-E
 
 XXXXX Rejected Name Change, ID:7f XXXXX
   Ferrell Commons
@@ -749,22 +1113,7 @@ XXXXX Rejected Name Change, ID:97 XXXXX
   Buildings Orphaned 
 ------------------------------------------------------------------------------
 
-AT&T Wireless Services
-  number: 12150
-  abbreviation: (none)
-  coords: None
-
-Ampac
-  number: 152
-  abbreviation: (none)
-  coords: None
-
-Art Gallery
-  number: 51a
-  abbreviation: VAB
-  coords: None
-
->>>>>>>>>>>>>>>>>>>> Thursday August 11, 2011 17:30
+>>>>>>>>>>>>>>>>>>>> Friday August 12, 2011 17:57
 
 
 ------------------------------------------------------------------------------
@@ -782,6 +1131,9 @@ Art Gallery
 ------------------------------------------------------------------------------
   Inspecting Updates 
 ------------------------------------------------------------------------------
+
+
+
 XXXXX Rejected Name Change, ID:135 XXXXX
   Bright House Networks Stadium
   Brighthouse Network Stadium
@@ -798,70 +1150,9 @@ XXXXX Rejected Abbreviation Change, Wayne Densch Center II XXXXX
   WD2
   WDII
 
-XXXXX Rejected Coordinates, Pegasus Courtyard #62 XXXXX
-  [[[-81.204375999999996, 28.604633], [-81.204300000000003, 28.604633], [-81.204300000000003, 28.604645999999999], [-81.204257999999996, 28.604645999999999], [-81.204257999999996, 28.604633], [-81.204212999999996, 28.604633], [-81.204212999999996, 28.604668], [-81.204171000000002, 28.604668], [-81.204171000000002, 28.604655000000001], [-81.204094999999995, 28.604655000000001], [-81.204094999999995, 28.604623], [-81.204080000000005, 28.604623], [-81.204080000000005, 28.604558999999998], [-81.204094999999995, 28.604558999999998], [-81.204094999999995, 28.604527000000001], [-81.204170000000005, 28.604527000000001], [-81.204170000000005, 28.604514000000002], [-81.204211999999998, 28.604513000000001], [-81.204211999999998, 28.604527000000001], [-81.204257999999996, 28.604527000000001], [-81.204256999999998, 28.604489000000001], [-81.204300000000003, 28.604489000000001], [-81.204300000000003, 28.604503000000001], [-81.204374999999999, 28.604502], [-81.204374999999999, 28.604537000000001], [-81.204390000000004, 28.604537000000001], [-81.204391000000001, 28.604597999999999], [-81.204375999999996, 28.604597999999999], [-81.204375999999996, 28.604633]]]
-  null
-
->>>>>>>>>>>>>>>>>>>> Thursday August 11, 2011 17:30
-
-
-------------------------------------------------------------------------------
-  Found Duplicates 
-------------------------------------------------------------------------------
-#1
-  Pegasus Courtyard #62 [62]
-  null
-
-#2
-  Pegasus Courtyard #62 [62]
-  [[[-81.204375999999996, 28.604633], [-81.204300000000003, 28.604633], [-81.204300000000003, 28.604645999999999], [-81.204257999999996, 28.604645999999999], [-81.204257999999996, 28.604633], [-81.204212999999996, 28.604633], [-81.204212999999996, 28.604668], [-81.204171000000002, 28.604668], [-81.204171000000002, 28.604655000000001], [-81.204094999999995, 28.604655000000001], [-81.204094999999995, 28.604623], [-81.204080000000005, 28.604623], [-81.204080000000005, 28.604558999999998], [-81.204094999999995, 28.604558999999998], [-81.204094999999995, 28.604527000000001], [-81.204170000000005, 28.604527000000001], [-81.204170000000005, 28.604514000000002], [-81.204211999999998, 28.604513000000001], [-81.204211999999998, 28.604527000000001], [-81.204257999999996, 28.604527000000001], [-81.204256999999998, 28.604489000000001], [-81.204300000000003, 28.604489000000001], [-81.204300000000003, 28.604503000000001], [-81.204374999999999, 28.604502], [-81.204374999999999, 28.604537000000001], [-81.204390000000004, 28.604537000000001], [-81.204391000000001, 28.604597999999999], [-81.204375999999996, 28.604597999999999], [-81.204375999999996, 28.604633]]]
-
-
-------------------------------------------------------------------------------
-  Inspecting Updates 
-------------------------------------------------------------------------------
-XXXXX Rejected Name Change, ID:135 XXXXX
-  Bright House Networks Stadium
-  Brighthouse Network Stadium
-
-XXXXX Rejected Name Change, ID:153 XXXXX
-  Visitor and Parking Information Center
-  Visitor and Parking Information
-
->>>>>>>>>>>>>>>>>>>> Thursday August 11, 2011 17:31
-
-
-------------------------------------------------------------------------------
-  Found Duplicates 
-------------------------------------------------------------------------------
-#1
-  Pegasus Courtyard #62 [62]
-  null
-
-#2
-  Pegasus Courtyard #62 [62]
-  [[[-81.204375999999996, 28.604633], [-81.204300000000003, 28.604633], [-81.204300000000003, 28.604645999999999], [-81.204257999999996, 28.604645999999999], [-81.204257999999996, 28.604633], [-81.204212999999996, 28.604633], [-81.204212999999996, 28.604668], [-81.204171000000002, 28.604668], [-81.204171000000002, 28.604655000000001], [-81.204094999999995, 28.604655000000001], [-81.204094999999995, 28.604623], [-81.204080000000005, 28.604623], [-81.204080000000005, 28.604558999999998], [-81.204094999999995, 28.604558999999998], [-81.204094999999995, 28.604527000000001], [-81.204170000000005, 28.604527000000001], [-81.204170000000005, 28.604514000000002], [-81.204211999999998, 28.604513000000001], [-81.204211999999998, 28.604527000000001], [-81.204257999999996, 28.604527000000001], [-81.204256999999998, 28.604489000000001], [-81.204300000000003, 28.604489000000001], [-81.204300000000003, 28.604503000000001], [-81.204374999999999, 28.604502], [-81.204374999999999, 28.604537000000001], [-81.204390000000004, 28.604537000000001], [-81.204391000000001, 28.604597999999999], [-81.204375999999996, 28.604597999999999], [-81.204375999999996, 28.604633]]]
-
-
-------------------------------------------------------------------------------
-  Inspecting Updates 
-------------------------------------------------------------------------------
-
-XXXXX Rejected Name Change, ID:135 XXXXX
-  Bright House Networks Stadium
-  Brighthouse Network Stadium
-
-XXXXX Rejected Name Change, ID:153 XXXXX
-  Visitor and Parking Information Center
-  Visitor and Parking Information
-
-XXXXX Rejected Abbreviation Change, Wayne Densch Center I XXXXX
-  WD1
-  WDI
-
-XXXXX Rejected Abbreviation Change, Wayne Densch Center II XXXXX
-  WD2
-  WDII
+XXXXX Rejected Name Change, ID:65 XXXXX
+  Lake Claire Commons
+  Commons
 
 XXXXX Rejected Name Change, ID:78 XXXXX
   Parking Garage I
@@ -874,6 +1165,14 @@ XXXXX Rejected Abbreviation Change, Parking Garage I XXXXX
 XXXXX Rejected Name Change, ID:7b XXXXX
   Student Disability Services
   Student Disabilities
+
+XXXXX Rejected Abbreviation Change, Student Disability Services XXXXX
+  FC
+  FC-B
+
+XXXXX Rejected Abbreviation Change, SRC Auditorium - Ferrell Commons XXXXX
+  (none)
+  FC-E
 
 XXXXX Rejected Name Change, ID:7f XXXXX
   Ferrell Commons
@@ -899,7 +1198,7 @@ XXXXX Rejected Name Change, ID:97 XXXXX
   Buildings Orphaned 
 ------------------------------------------------------------------------------
 
->>>>>>>>>>>>>>>>>>>> Thursday August 11, 2011 17:32
+>>>>>>>>>>>>>>>>>>>> Friday August 12, 2011 17:57
 
 
 ------------------------------------------------------------------------------
@@ -918,6 +1217,8 @@ XXXXX Rejected Name Change, ID:97 XXXXX
   Inspecting Updates 
 ------------------------------------------------------------------------------
 
+
+
 XXXXX Rejected Name Change, ID:135 XXXXX
   Bright House Networks Stadium
   Brighthouse Network Stadium
@@ -934,6 +1235,10 @@ XXXXX Rejected Abbreviation Change, Wayne Densch Center II XXXXX
   WD2
   WDII
 
+XXXXX Rejected Name Change, ID:65 XXXXX
+  Lake Claire Commons
+  Commons
+
 XXXXX Rejected Name Change, ID:78 XXXXX
   Parking Garage I
   Parking Garage H
@@ -945,6 +1250,14 @@ XXXXX Rejected Abbreviation Change, Parking Garage I XXXXX
 XXXXX Rejected Name Change, ID:7b XXXXX
   Student Disability Services
   Student Disabilities
+
+XXXXX Rejected Abbreviation Change, Student Disability Services XXXXX
+  FC
+  FC-B
+
+XXXXX Rejected Abbreviation Change, SRC Auditorium - Ferrell Commons XXXXX
+  (none)
+  FC-E
 
 XXXXX Rejected Name Change, ID:7f XXXXX
   Ferrell Commons
@@ -969,165 +1282,4 @@ XXXXX Rejected Name Change, ID:97 XXXXX
 ------------------------------------------------------------------------------
   Buildings Orphaned 
 ------------------------------------------------------------------------------
-
-AT&T Wireless Services
-  number: 12150
-  abbreviation: (none)
-  coords: None
-
-Ampac
-  number: 152
-  abbreviation: (none)
-  coords: None
-
-Art Gallery
-  number: 51a
-  abbreviation: VAB
-  coords: None
-
-Athletic Development
-  number: 625
-  abbreviation: LS25
-  coords: None
-
-Band Storage
-  number: 630
-  abbreviation: LS30
-  coords: None
-
-Baseball Field
-  number: basefield
-  abbreviation: (none)
-  coords: None
-
-Bennett Research II
-  number: 3251
-  abbreviation: (none)
-  coords: None
-
-Biomolecular Research Annex
-  number: 8114
-  abbreviation: BMRA
-  coords: None
-
-CAS Faculty Offices
-  number: mod3
-  abbreviation: MOD3
-  coords: [[[-81.201334000000003, 28.604195000000001], [-81.201283000000004, 28.604120000000002], [-81.201379000000003, 28.604077], [-81.201436000000001, 28.604157000000001], [-81.201334000000003, 28.604195000000001]]]
-
-CAS Faculty Offices
-  number: mod7
-  abbreviation: MOD7
-  coords: [[[-81.201935000000006, 28.604301], [-81.201921999999996, 28.604310000000002], [-81.201784000000004, 28.604130999999999], [-81.201866999999993, 28.604081000000001], [-81.202001999999993, 28.604263], [-81.201935000000006, 28.604301]]]
-
->>>>>>>>>>>>>>>>>>>> Thursday August 11, 2011 17:34
-
-
-------------------------------------------------------------------------------
-  Found Duplicates 
-------------------------------------------------------------------------------
-#1
-  Pegasus Courtyard #62 [62]
-  null
-
-#2
-  Pegasus Courtyard #62 [62]
-  [[[-81.204375999999996, 28.604633], [-81.204300000000003, 28.604633], [-81.204300000000003, 28.604645999999999], [-81.204257999999996, 28.604645999999999], [-81.204257999999996, 28.604633], [-81.204212999999996, 28.604633], [-81.204212999999996, 28.604668], [-81.204171000000002, 28.604668], [-81.204171000000002, 28.604655000000001], [-81.204094999999995, 28.604655000000001], [-81.204094999999995, 28.604623], [-81.204080000000005, 28.604623], [-81.204080000000005, 28.604558999999998], [-81.204094999999995, 28.604558999999998], [-81.204094999999995, 28.604527000000001], [-81.204170000000005, 28.604527000000001], [-81.204170000000005, 28.604514000000002], [-81.204211999999998, 28.604513000000001], [-81.204211999999998, 28.604527000000001], [-81.204257999999996, 28.604527000000001], [-81.204256999999998, 28.604489000000001], [-81.204300000000003, 28.604489000000001], [-81.204300000000003, 28.604503000000001], [-81.204374999999999, 28.604502], [-81.204374999999999, 28.604537000000001], [-81.204390000000004, 28.604537000000001], [-81.204391000000001, 28.604597999999999], [-81.204375999999996, 28.604597999999999], [-81.204375999999996, 28.604633]]]
-
-
-------------------------------------------------------------------------------
-  Inspecting Updates 
-------------------------------------------------------------------------------
-
-XXXXX Rejected Name Change, ID:135 XXXXX
-  Bright House Networks Stadium
-  Brighthouse Network Stadium
-
-XXXXX Rejected Name Change, ID:153 XXXXX
-  Visitor and Parking Information Center
-  Visitor and Parking Information
-
-XXXXX Rejected Abbreviation Change, Wayne Densch Center I XXXXX
-  WD1
-  WDI
-
-XXXXX Rejected Abbreviation Change, Wayne Densch Center II XXXXX
-  WD2
-  WDII
-
-XXXXX Rejected Name Change, ID:78 XXXXX
-  Parking Garage I
-  Parking Garage H
-
-XXXXX Rejected Abbreviation Change, Parking Garage I XXXXX
-  PG-I
-  PG-H
-
-XXXXX Rejected Name Change, ID:7b XXXXX
-  Student Disability Services
-  Student Disabilities
-
-XXXXX Rejected Name Change, ID:7f XXXXX
-  Ferrell Commons
-  Career Services
-
-XXXXX Rejected Abbreviation Change, Ferrell Commons XXXXX
-  FC
-  FC-F
-
-XXXXX Rejected Name Change, ID:7g XXXXX
-  Ferrell Commons - G
-  Experiential Learning & Pre-Professional Advising
-
-XXXXX Rejected Name Change, ID:97 XXXXX
-  Parking Garage D
-  Parking Garage D
-
-
-
-
-
-------------------------------------------------------------------------------
-  Buildings Orphaned 
-------------------------------------------------------------------------------
-
-AT&T Wireless Services
-  number: 12150
-  abbreviation: (none)
-  coords: None
-
-Ampac
-  number: 152
-  abbreviation: (none)
-  coords: None
-
-Art Gallery
-  number: 51a
-  abbreviation: VAB
-  coords: None
-
-Athletic Development
-  number: 625
-  abbreviation: LS25
-  coords: None
-
-Band Storage
-  number: 630
-  abbreviation: LS30
-  coords: None
-
-Baseball Field
-  number: basefield
-  abbreviation: (none)
-  coords: None
-
-Bennett Research II
-  number: 3251
-  abbreviation: (none)
-  coords: None
-
-Biomolecular Research Annex
-  number: 8114
-  abbreviation: BMRA
-  coords: None
 

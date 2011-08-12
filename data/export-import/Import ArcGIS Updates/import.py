@@ -106,6 +106,14 @@ for a in arcgis[:]:
 
 printo("\n{0}\n  Inspecting Updates \n{0}\n".format("-"*78))
 
+# check for invalid numbers
+for i,b in enumerate(arcgis[:]):
+	if b['properties']['Num'] != b['properties']['Num'].lower():
+		print "Uppercase Number: %s, %s" % (b['properties']['Name'], b['properties']['Num'])
+		arcgis[i]['properties']['Num'] = b['properties']['Num'].lower()
+		
+printo('\n')
+
 for ab in arcgis[:]:
 	
 	# look for it campus map
@@ -178,6 +186,15 @@ for ab in arcgis[:]:
 			cmap.remove(cb)
 			out.flush()
 
+if len(arcgis):
+	# print preview list
+	print "\n{0}\n  New Buildings \n{0}\n".format("-"*78)
+	for b in arcgis[:]:
+		print b['properties']['Name']
+		print " Num: ", b['properties']['Num']
+		print " Abbrev: ", abbr(b)
+		print " Coords: ", coords(b)
+		print
 
 print "\n{0}\n  New Buildings \n{0}\n".format("-"*78)
 if not len(arcgis):
@@ -266,6 +283,17 @@ def merge(new, old):
 		return True
 	else:
 		return False
+
+
+if len(cmap):
+	# print preview list
+	print "\n\n{0}\n  Buildings Orphaned \n{0}\n".format("-"*78)
+	for b in cmap:
+		print b.name
+		print " Num: ", b.number
+		print " Abbrev: ", abbr(b)
+		print " Coords: ", map_url(coords(b))
+		print
 
 
 printo("\n\n{0}\n  Buildings Orphaned \n{0}\n".format("-"*78))
