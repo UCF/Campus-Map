@@ -682,7 +682,7 @@
             "abbreviation": "MOD7", 
             "name": "CAS Faculty Offices", 
             "image": "", 
-            "poly_coords": null, 
+            "poly_coords": "[[[-81.201935000000006, 28.604301], [-81.201921999999996, 28.604310000000002], [-81.201784000000004, 28.604130999999999], [-81.201866999999993, 28.604081000000001], [-81.202001999999993, 28.604263], [-81.201935000000006, 28.604301]]]", 
             "sketchup": "", 
             "illustrated_point": "[85.045024913791720, -179.939545373667360]", 
             "googlemap_point": "[28.604105614065570, -81.201876872947680]", 
@@ -697,40 +697,10 @@
             "abbreviation": "MOD3", 
             "name": "CAS Faculty Offices", 
             "image": "", 
-            "poly_coords": null, 
+            "poly_coords": "[[[-81.201334000000003, 28.604195000000001], [-81.201283000000004, 28.604120000000002], [-81.201379000000003, 28.604077], [-81.201436000000001, 28.604157000000001], [-81.201334000000003, 28.604195000000001]]]", 
             "sketchup": "", 
             "illustrated_point": "[85.045332562156260, -179.938601236094120]", 
             "googlemap_point": "[28.604100904381800, -81.201372617652880]", 
-            "description": ""
-        }
-    }, 
-    {
-        "pk": "mod3", 
-        "model": "campus.building", 
-        "fields": {
-            "profile": null, 
-            "abbreviation": "MOD3", 
-            "name": "CAS Faculty Offices", 
-            "image": "", 
-            "poly_coords": "[[[-81.201334000000003, 28.604195000000001], [-81.201283000000004, 28.604120000000002], [-81.201379000000003, 28.604077], [-81.201436000000001, 28.604157000000001], [-81.201334000000003, 28.604195000000001]]]", 
-            "sketchup": "", 
-            "illustrated_point": null, 
-            "googlemap_point": null, 
-            "description": ""
-        }
-    }, 
-    {
-        "pk": "mod7", 
-        "model": "campus.building", 
-        "fields": {
-            "profile": null, 
-            "abbreviation": "MOD7", 
-            "name": "CAS Faculty Offices", 
-            "image": "", 
-            "poly_coords": "[[[-81.201935000000006, 28.604301], [-81.201921999999996, 28.604310000000002], [-81.201784000000004, 28.604130999999999], [-81.201866999999993, 28.604081000000001], [-81.202001999999993, 28.604263], [-81.201935000000006, 28.604301]]]", 
-            "sketchup": "", 
-            "illustrated_point": null, 
-            "googlemap_point": null, 
             "description": ""
         }
     }, 
@@ -1192,25 +1162,10 @@
             "abbreviation": "M012", 
             "name": "Diversity Initiatives", 
             "image": "b629.jpg", 
-            "poly_coords": null, 
+            "poly_coords": "[[[-81.200822000000002, 28.604194], [-81.200614999999999, 28.604234000000002], [-81.200575000000001, 28.604040000000001], [-81.200776000000005, 28.604004], [-81.200822000000002, 28.604194]]]", 
             "sketchup": "", 
             "illustrated_point": "[85.045636485203000, -179.937528352488160]", 
             "googlemap_point": "[28.604077355959706, -81.200702065399160]", 
-            "description": ""
-        }
-    }, 
-    {
-        "pk": "m012", 
-        "model": "campus.building", 
-        "fields": {
-            "profile": null, 
-            "abbreviation": "MO12", 
-            "name": "Diversity Initiatives", 
-            "image": "", 
-            "poly_coords": "[[[-81.200822000000002, 28.604194], [-81.200614999999999, 28.604234000000002], [-81.200575000000001, 28.604040000000001], [-81.200776000000005, 28.604004], [-81.200822000000002, 28.604194]]]", 
-            "sketchup": "", 
-            "illustrated_point": null, 
-            "googlemap_point": null, 
             "description": ""
         }
     }, 
@@ -1372,24 +1327,9 @@
             "abbreviation": "MOD4", 
             "name": "Faculty Offices", 
             "image": "", 
-            "poly_coords": null, 
-            "sketchup": "", 
-            "illustrated_point": "[85.045408544661430, -179.939137677897100]", 
-            "googlemap_point": null, 
-            "description": ""
-        }
-    }, 
-    {
-        "pk": "mod4", 
-        "model": "campus.building", 
-        "fields": {
-            "profile": null, 
-            "abbreviation": "MOD4", 
-            "name": "Faculty Offices", 
-            "image": "", 
             "poly_coords": "[[[-81.201250999999999, 28.604130999999999], [-81.201301999999998, 28.604216999999998], [-81.201194999999998, 28.604257], [-81.201145999999994, 28.604178999999998], [-81.201250999999999, 28.604130999999999]]]", 
             "sketchup": "", 
-            "illustrated_point": null, 
+            "illustrated_point": "[85.045408544661430, -179.939137677897100]", 
             "googlemap_point": null, 
             "description": ""
         }
@@ -2122,25 +2062,10 @@
             "abbreviation": "T546", 
             "name": "Orange County School System", 
             "image": "b546.jpg", 
-            "poly_coords": null, 
+            "poly_coords": "[[[-81.202032000000003, 28.604426], [-81.201964000000004, 28.604339], [-81.202031000000005, 28.604298], [-81.202090999999996, 28.604395], [-81.202032000000003, 28.604426]]]", 
             "sketchup": "", 
             "illustrated_point": "[85.045036033944090, -179.942635278452500]", 
             "googlemap_point": "[28.604332856057646, -81.202032441070540]", 
-            "description": ""
-        }
-    }, 
-    {
-        "pk": "t546", 
-        "model": "campus.building", 
-        "fields": {
-            "profile": null, 
-            "abbreviation": "T546", 
-            "name": "Orange County School System", 
-            "image": "", 
-            "poly_coords": "[[[-81.202032000000003, 28.604426], [-81.201964000000004, 28.604339], [-81.202031000000005, 28.604298], [-81.202090999999996, 28.604395], [-81.202032000000003, 28.604426]]]", 
-            "sketchup": "", 
-            "illustrated_point": null, 
-            "googlemap_point": null, 
             "description": ""
         }
     }, 
@@ -2872,25 +2797,10 @@
             "abbreviation": "LS14", 
             "name": "Restrooms", 
             "image": "", 
-            "poly_coords": null, 
+            "poly_coords": "[[[-81.200961000000007, 28.604302000000001], [-81.200890999999999, 28.604185999999999], [-81.200940000000003, 28.60417], [-81.201002000000003, 28.604282999999999], [-81.200961000000007, 28.604302000000001]]]", 
             "sketchup": "", 
             "illustrated_point": "[85.045523442827290, -179.938772897471070]", 
             "googlemap_point": "[28.604225710930880, -81.200997108390800]", 
-            "description": ""
-        }
-    }, 
-    {
-        "pk": "ls14", 
-        "model": "campus.building", 
-        "fields": {
-            "profile": null, 
-            "abbreviation": "LS14", 
-            "name": "Restrooms", 
-            "image": "", 
-            "poly_coords": "[[[-81.200961000000007, 28.604302000000001], [-81.200890999999999, 28.604185999999999], [-81.200940000000003, 28.60417], [-81.201002000000003, 28.604282999999999], [-81.200961000000007, 28.604302000000001]]]", 
-            "sketchup": "", 
-            "illustrated_point": null, 
-            "googlemap_point": null, 
             "description": ""
         }
     }, 
@@ -2910,7 +2820,7 @@
         }
     }, 
     {
-        "pk": "7e", 
+        "pk": "7E", 
         "model": "campus.building", 
         "fields": {
             "profile": null, 
@@ -3045,22 +2955,7 @@
         }
     }, 
     {
-        "pk": "7b", 
-        "model": "campus.building", 
-        "fields": {
-            "profile": "", 
-            "abbreviation": "FC", 
-            "name": "Student Disability Services", 
-            "image": "b7b.jpg", 
-            "poly_coords": "[[[-81.200231000000002, 28.598386000000001], [-81.200031999999993, 28.598406000000001], [-81.200004000000007, 28.598185999999998], [-81.200198999999998, 28.598165999999999], [-81.200231000000002, 28.598386000000001]]]", 
-            "sketchup": "", 
-            "illustrated_point": "[85.045981155909100, -179.891437272776240]", 
-            "googlemap_point": "[28.59821834453934, -81.20007979290767]", 
-            "description": ""
-        }
-    }, 
-    {
-        "pk": "fc-7", 
+        "pk": "7B", 
         "model": "campus.building", 
         "fields": {
             "profile": "", 
@@ -3592,25 +3487,10 @@
             "abbreviation": "MOD8", 
             "name": "Writing Center", 
             "image": "b608.jpg", 
-            "poly_coords": null, 
+            "poly_coords": "[[[-81.201910999999996, 28.604545000000002], [-81.201808999999997, 28.604419], [-81.201897000000002, 28.604361999999998], [-81.201999999999998, 28.604492], [-81.201910999999996, 28.604545000000002]]]", 
             "sketchup": "", 
             "illustrated_point": "[85.045032327229360, -179.942506532419800]", 
             "googlemap_point": "[28.604392904377608, -81.201898330619800]", 
-            "description": ""
-        }
-    }, 
-    {
-        "pk": "mod8", 
-        "model": "campus.building", 
-        "fields": {
-            "profile": null, 
-            "abbreviation": "MOD8", 
-            "name": "Writing Center", 
-            "image": "", 
-            "poly_coords": "[[[-81.201910999999996, 28.604545000000002], [-81.201808999999997, 28.604419], [-81.201897000000002, 28.604361999999998], [-81.201999999999998, 28.604492], [-81.201910999999996, 28.604545000000002]]]", 
-            "sketchup": "", 
-            "illustrated_point": null, 
-            "googlemap_point": null, 
             "description": ""
         }
     }, 
