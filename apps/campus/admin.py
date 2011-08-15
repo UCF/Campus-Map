@@ -30,6 +30,24 @@ class LocationAdmin(admin.ModelAdmin):
 	change_form_template = 'admin/maps_point_selector.djt';
 admin.site.register(Location, LocationAdmin)
 
+
+def create_groupable_locations():
+	''' ensure all campus locations are groupable '''
+	for ct in ContentType.objects.filter(app_label="campus"):
+		model = models.get_model("campus", ct.model)
+		if not issubclass(model, campus.models.CommonLocation):
+			continue
+		for loc in model.objects.all():
+			loc_type = ContentType.objects.get_for_model(loc)
+			gl = GroupedLocation.objects.filter(content_type__pk=loc_type.pk, object_pk=loc.pk)
+			if not gl:
+				gl = GroupedLocation(content_type=loc_type, object_pk=loc.pk)
+				gl.save()
+	''' clean up any deleted locations '''
+	for gl in GroupedLocation.objects.all():
+		if not gl.content_object:
+			gl.delete()
+
 class GroupAdmin(admin.ModelAdmin):
 	search_fields = ('name',)
 	#exclude = ('googlemap_point', 'illustrated_point',)
@@ -39,23 +57,6 @@ class GroupAdmin(admin.ModelAdmin):
 	actions = None
 	
 	def get_form(self, request, obj=None, **kwargs):
-		
-		''' ensure all campus locations are groupable '''
-		for ct in ContentType.objects.filter(app_label="campus"):
-			model = models.get_model("campus", ct.model)
-			if not issubclass(model, campus.models.CommonLocation):
-				continue
-			for loc in model.objects.all():
-				loc_type = ContentType.objects.get_for_model(loc)
-				gl = GroupedLocation.objects.filter(content_type__pk=loc_type.pk, object_pk=loc.pk)
-				if not gl:
-					gl = GroupedLocation(content_type=loc_type, object_pk=loc.pk)
-					gl.save()
-		
-		''' clean up any deleted locations '''
-		for gl in GroupedLocation.objects.all():
-			if not gl.content_object:
-				gl.delete()
-		
+		create_groupable_locations()
 		return admin.ModelAdmin.get_form(self, request, obj, **kwargs)
 admin.site.register(Group, GroupAdmin)
