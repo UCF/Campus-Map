@@ -4,6 +4,7 @@ from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes import generic
 from django.core.urlresolvers import reverse
 from django.template.defaultfilters import slugify
+from django.db.models.signals import m2m_changed
 
 class CommonLocation(models.Model):
 	name              = models.CharField(max_length=255)
@@ -286,15 +287,36 @@ class GroupedLocation(models.Model):
 		loc_class = loc.__class__.__name__
 		return "{0} | {1}".format(loc_class, loc_name)
 
-class Group(models.Model):
-	name = models.CharField(max_length=80, unique=True)
+class Group(CommonLocation):
 	locations = models.ManyToManyField(GroupedLocation, blank=True)
+	slug      = models.CharField(max_length=80, unique=True)
 	
-	def json(self):
-		obj = dict(self.__dict__)
-		obj.pop('_state')
-		obj['locations'] = map(lambda l : l.content_object.json(), self.locations.all())
-		return obj
+	@classmethod
+	def update_coordinates(cls, **kwargs):
+		sender = kwargs['instance']
+		sender.googlemap_point   = sender.midpoint('googlemap_point')
+		sender.illustrated_point = sender.midpoint('illustration_point')
+		sender.save()
+	
+	def midpoint(self, coordinates_field):
+		import json
+		midpoint_func = lambda a, b: [((a[0] + b[0])/2), ((a[1] + b[1])/2)]
+		
+		points = [p.content_object for p in self.locations.all()]
+		points = [getattr(p, coordinates_field, None) for p in points]
+		points = [json.loads(p) for p in points if p is not None]
+		
+		if len(points) < 1:
+			return None
+		if len(points) < 2:
+			return json.dumps(points[0])
+		
+		midpoint = reduce(midpoint_func, points)
+		for p in points: print p
+		midpoint = json.dumps(midpoint)
+		return midpoint
 	
 	def __unicode__(self):
 		return self.name
+
+m2m_changed.connect(Group.update_coordinates, sender=Group.locations.through)

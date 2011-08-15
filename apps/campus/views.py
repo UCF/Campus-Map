@@ -111,8 +111,8 @@ def group(request, group_id):
 	group     = get_object_or_404(Group, pk=group_id)
 	locations = map(lambda l: l.content_object, group.locations.all())
 	if request.is_json():
-		
 		return HttpResponse(json.dumps(group.json()))
+	
 	return render(request, 'campus/group.djt', {
 		'group'     : group,
 		'locations' : locations,
@@ -175,7 +175,7 @@ def location(request, loc, return_obj=False):
 	Will one day be a wrapper for all data models, searching over all locations
 	and organizations, maybe even people too
 	'''
-	from campus.models import Building, Location
+	from campus.models import Building, Location, Group
 	
 	
 	location_orgs = []
@@ -186,7 +186,10 @@ def location(request, loc, return_obj=False):
 		try:
 			location = Location.objects.get(pk=loc)
 		except Location.DoesNotExist:
-			raise Http404("Location ID <code>%s</code> could not be found" % (loc))
+			try:
+				location = Group.objects.get(slug=loc)
+			except:
+				raise Http404("Location ID <code>%s</code> could not be found" % (loc))
 	
 	location_type = location.__class__.__name__
 	html = location_html(location, request)
@@ -212,8 +215,7 @@ def location(request, loc, return_obj=False):
 	if return_obj:
 		return location
 	elif location_type == "Building":
-		# show location profile
-		
+		# show location profile	
 		import flickr
 		photos = flickr.get_photos()
 		tags = set()
