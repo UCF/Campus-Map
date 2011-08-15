@@ -182,7 +182,7 @@ def search(request):
 	'''
 	from campus.models import Building
 	
-	orgs, bldgs, phones = ([],[],[])
+	orgs, bldgs, phones, group_locations = ([],[],[],[])
 	
 	query_string = request.GET.get('q', '').strip()
 	
@@ -204,8 +204,7 @@ def search(request):
 			phones = phones_response['results']
 			
 		# Group search
-		groups          = group_search(query_string)
-		group_locations = list()
+		groups = group_search(query_string)
 		if groups is not None:
 			groups = filter(lambda g : g.locations.count() > 0, groups)
 			
