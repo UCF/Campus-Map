@@ -1,9 +1,275 @@
 [
     {
+        "pk": 2, 
+        "model": "campus.group", 
+        "fields": {
+            "profile": "", 
+            "name": "Apollo Community", 
+            "image": "", 
+            "locations": [
+                [
+                    "campus.building", 
+                    "9"
+                ], 
+                [
+                    "campus.building", 
+                    "10"
+                ], 
+                [
+                    "campus.building", 
+                    "11"
+                ], 
+                [
+                    "campus.building", 
+                    "8"
+                ]
+            ], 
+            "slug": "apollo-community", 
+            "poly_coords": null, 
+            "illustrated_point": null, 
+            "googlemap_point": "[28.598162560122319, -81.200970453938709]", 
+            "description": ""
+        }
+    }, 
+    {
+        "pk": 5, 
+        "model": "campus.group", 
+        "fields": {
+            "profile": "", 
+            "name": "Ferrell Commons", 
+            "image": "b7f.jpg", 
+            "locations": [
+                [
+                    "campus.building", 
+                    "7h"
+                ], 
+                [
+                    "campus.building", 
+                    "7f"
+                ], 
+                [
+                    "campus.building", 
+                    "7g"
+                ], 
+                [
+                    "campus.building", 
+                    "7ab"
+                ], 
+                [
+                    "campus.building", 
+                    "7aa"
+                ], 
+                [
+                    "campus.building", 
+                    "7c"
+                ], 
+                [
+                    "campus.building", 
+                    "7e"
+                ], 
+                [
+                    "campus.building", 
+                    "7b"
+                ]
+            ], 
+            "slug": "7", 
+            "poly_coords": null, 
+            "illustrated_point": null, 
+            "googlemap_point": "[28.598048116282854, -81.199845979718717]", 
+            "description": ""
+        }
+    }, 
+    {
+        "pk": 6, 
+        "model": "campus.group", 
+        "fields": {
+            "profile": "", 
+            "name": "Greek Park", 
+            "image": "", 
+            "locations": [
+                [
+                    "campus.building", 
+                    "406"
+                ], 
+                [
+                    "campus.building", 
+                    "410"
+                ], 
+                [
+                    "campus.building", 
+                    "404"
+                ], 
+                [
+                    "campus.building", 
+                    "407"
+                ], 
+                [
+                    "campus.building", 
+                    "413"
+                ], 
+                [
+                    "campus.building", 
+                    "405"
+                ], 
+                [
+                    "campus.building", 
+                    "409"
+                ], 
+                [
+                    "campus.building", 
+                    "412"
+                ], 
+                [
+                    "campus.building", 
+                    "411"
+                ], 
+                [
+                    "campus.building", 
+                    "408"
+                ], 
+                [
+                    "campus.building", 
+                    "401"
+                ]
+            ], 
+            "slug": "greek-park", 
+            "poly_coords": null, 
+            "illustrated_point": null, 
+            "googlemap_point": "[28.605658694859155, -81.206043946586789]", 
+            "description": ""
+        }
+    }, 
+    {
+        "pk": 4, 
+        "model": "campus.group", 
+        "fields": {
+            "profile": "", 
+            "name": "Lake Claire Apartments", 
+            "image": "", 
+            "locations": [
+                [
+                    "campus.building", 
+                    "55"
+                ], 
+                [
+                    "campus.building", 
+                    "56"
+                ], 
+                [
+                    "campus.building", 
+                    "57"
+                ], 
+                [
+                    "campus.building", 
+                    "58"
+                ], 
+                [
+                    "campus.building", 
+                    "59"
+                ], 
+                [
+                    "campus.building", 
+                    "66"
+                ], 
+                [
+                    "campus.building", 
+                    "67"
+                ], 
+                [
+                    "campus.building", 
+                    "68"
+                ], 
+                [
+                    "campus.building", 
+                    "69"
+                ], 
+                [
+                    "campus.building", 
+                    "70"
+                ], 
+                [
+                    "campus.building", 
+                    "65"
+                ], 
+                [
+                    "campus.building", 
+                    "60"
+                ], 
+                [
+                    "campus.building", 
+                    "61"
+                ], 
+                [
+                    "campus.building", 
+                    "62"
+                ], 
+                [
+                    "campus.building", 
+                    "63"
+                ], 
+                [
+                    "campus.building", 
+                    "64"
+                ]
+            ], 
+            "slug": "lake-claire", 
+            "poly_coords": null, 
+            "illustrated_point": null, 
+            "googlemap_point": "[28.604306775791038, -81.203847649104347]", 
+            "description": ""
+        }
+    }, 
+    {
+        "pk": 3, 
+        "model": "campus.group", 
+        "fields": {
+            "profile": "", 
+            "name": "Libra Community", 
+            "image": "", 
+            "locations": [
+                [
+                    "campus.building", 
+                    "30"
+                ], 
+                [
+                    "campus.building", 
+                    "85"
+                ], 
+                [
+                    "campus.building", 
+                    "86"
+                ], 
+                [
+                    "campus.building", 
+                    "33"
+                ], 
+                [
+                    "campus.building", 
+                    "31"
+                ], 
+                [
+                    "campus.building", 
+                    "32"
+                ], 
+                [
+                    "campus.building", 
+                    "84"
+                ]
+            ], 
+            "slug": "libra-community", 
+            "poly_coords": null, 
+            "illustrated_point": null, 
+            "googlemap_point": "[28.598459551738355, -81.198321604898439]", 
+            "description": ""
+        }
+    }, 
+    {
         "pk": 1, 
         "model": "campus.group", 
         "fields": {
+            "profile": "", 
             "name": "Residence Halls", 
+            "image": "", 
             "locations": [
                 [
                     "campus.building", 
@@ -79,15 +345,15 @@
                 ], 
                 [
                     "campus.building", 
-                    "33"
-                ], 
-                [
-                    "campus.building", 
                     "86"
                 ], 
                 [
                     "campus.building", 
                     "9"
+                ], 
+                [
+                    "campus.building", 
+                    "33"
                 ], 
                 [
                     "campus.building", 
@@ -149,236 +415,12 @@
                     "campus.building", 
                     "8"
                 ]
-            ]
-        }
-    }, 
-    {
-        "pk": 2, 
-        "model": "campus.group", 
-        "fields": {
-            "name": "Apollo Community", 
-            "locations": [
-                [
-                    "campus.building", 
-                    "9"
-                ], 
-                [
-                    "campus.building", 
-                    "10"
-                ], 
-                [
-                    "campus.building", 
-                    "11"
-                ], 
-                [
-                    "campus.building", 
-                    "8"
-                ]
-            ]
-        }
-    }, 
-    {
-        "pk": 3, 
-        "model": "campus.group", 
-        "fields": {
-            "name": "Libra Community", 
-            "locations": [
-                [
-                    "campus.building", 
-                    "30"
-                ], 
-                [
-                    "campus.building", 
-                    "85"
-                ], 
-                [
-                    "campus.building", 
-                    "33"
-                ], 
-                [
-                    "campus.building", 
-                    "86"
-                ], 
-                [
-                    "campus.building", 
-                    "31"
-                ], 
-                [
-                    "campus.building", 
-                    "32"
-                ], 
-                [
-                    "campus.building", 
-                    "84"
-                ]
-            ]
-        }
-    }, 
-    {
-        "pk": 4, 
-        "model": "campus.group", 
-        "fields": {
-            "name": "Lake Claire Apartments", 
-            "locations": [
-                [
-                    "campus.building", 
-                    "55"
-                ], 
-                [
-                    "campus.building", 
-                    "56"
-                ], 
-                [
-                    "campus.building", 
-                    "57"
-                ], 
-                [
-                    "campus.building", 
-                    "58"
-                ], 
-                [
-                    "campus.building", 
-                    "59"
-                ], 
-                [
-                    "campus.building", 
-                    "65"
-                ], 
-                [
-                    "campus.building", 
-                    "66"
-                ], 
-                [
-                    "campus.building", 
-                    "67"
-                ], 
-                [
-                    "campus.building", 
-                    "68"
-                ], 
-                [
-                    "campus.building", 
-                    "69"
-                ], 
-                [
-                    "campus.building", 
-                    "70"
-                ], 
-                [
-                    "campus.building", 
-                    "60"
-                ], 
-                [
-                    "campus.building", 
-                    "61"
-                ], 
-                [
-                    "campus.building", 
-                    "62"
-                ], 
-                [
-                    "campus.building", 
-                    "63"
-                ], 
-                [
-                    "campus.building", 
-                    "64"
-                ]
-            ]
-        }
-    }, 
-    {
-        "pk": 5, 
-        "model": "campus.group", 
-        "fields": {
-            "name": "Ferrell Commons", 
-            "locations": [
-                [
-                    "campus.building", 
-                    "7h"
-                ], 
-                [
-                    "campus.building", 
-                    "7f"
-                ], 
-                [
-                    "campus.building", 
-                    "7g"
-                ], 
-                [
-                    "campus.building", 
-                    "7ab"
-                ], 
-                [
-                    "campus.building", 
-                    "7aa"
-                ], 
-                [
-                    "campus.building", 
-                    "7c"
-                ], 
-                [
-                    "campus.building", 
-                    "7e"
-                ], 
-                [
-                    "campus.building", 
-                    "7b"
-                ]
-            ]
-        }
-    }, 
-    {
-        "pk": 6, 
-        "model": "campus.group", 
-        "fields": {
-            "name": "Greek Park", 
-            "locations": [
-                [
-                    "campus.building", 
-                    "406"
-                ], 
-                [
-                    "campus.building", 
-                    "410"
-                ], 
-                [
-                    "campus.building", 
-                    "404"
-                ], 
-                [
-                    "campus.building", 
-                    "407"
-                ], 
-                [
-                    "campus.building", 
-                    "413"
-                ], 
-                [
-                    "campus.building", 
-                    "405"
-                ], 
-                [
-                    "campus.building", 
-                    "409"
-                ], 
-                [
-                    "campus.building", 
-                    "412"
-                ], 
-                [
-                    "campus.building", 
-                    "411"
-                ], 
-                [
-                    "campus.building", 
-                    "408"
-                ], 
-                [
-                    "campus.building", 
-                    "401"
-                ]
-            ]
+            ], 
+            "slug": "residence-halls", 
+            "poly_coords": null, 
+            "illustrated_point": null, 
+            "googlemap_point": "[28.602258438411337, -81.198629923440819]", 
+            "description": ""
         }
     }
 ]
