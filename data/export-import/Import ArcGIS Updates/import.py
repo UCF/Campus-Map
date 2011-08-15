@@ -43,7 +43,7 @@ def prompt():
 
 def map_url(coords):
 	import urllib
-	if coords == None or coords == "null":
+	if coords == None or coords == "null" or coords == "None":
 		return "None"
 	
 	def flat(l):
@@ -196,7 +196,7 @@ if len(arcgis):
 		print " Coords: ", coords(b)
 		print
 
-print "\n{0}\n  New Buildings \n{0}\n".format("-"*78)
+print "\n{0}\n  New Buildings\nCreate Points as they're created (easiest way) \n{0}\n".format("-"*78)
 if not len(arcgis):
 	print("  None.\n")
 for b in arcgis[:]:
@@ -285,15 +285,18 @@ def merge(new, old):
 		return False
 
 
+orphans = open("orphans.txt", "a")
 if len(cmap):
 	# print preview list
-	print "\n\n{0}\n  Buildings Orphaned \n{0}\n".format("-"*78)
+	orphans.write("\n\n{0}\n  Buildings Orphaned \n{0}\n".format("-"*78))
 	for b in cmap:
-		print b.name
-		print " Num: ", b.number
-		print " Abbrev: ", abbr(b)
-		print " Coords: ", map_url(coords(b))
-		print
+		orphans.write("%s" % b.name)
+		orphans.write("  Num: %s" % b.number)
+		orphans.write("  Abbrev: %s" % abbr(b))
+		orphans.write("  Coords: %s" % map_url(coords(b)))
+		orphans.write("\n")
+orphans.close()
+print "Orphans preview written to orphans.txt"
 
 
 printo("\n\n{0}\n  Buildings Orphaned \n{0}\n".format("-"*78))
