@@ -521,7 +521,7 @@ Campus.layers = {
 					var rack = this.geo.features[i];
 					if(rack.geometry && rack.geometry.coordinates){
 						var point = rack.geometry.coordinates;
-						var latlng = new google.maps.LatLng(point[1],point[0]);
+						var latlng = new google.maps.LatLng(point[0],point[1]);
 						this.markers.push(
 							new google.maps.Marker({
 								clickable: false,
@@ -599,7 +599,7 @@ Campus.layers = {
 					var phone = this.geo.features[f];
 					if(phone.geometry && phone.geometry.coordinates){
 						var point = phone.geometry.coordinates;
-						var latlng = new google.maps.LatLng(point[1],point[0]);
+						var latlng = new google.maps.LatLng(point[0],point[1]);
 						this.markers.push(
 							new google.maps.Marker({
 								icon:icon,
