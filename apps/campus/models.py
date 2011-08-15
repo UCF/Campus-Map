@@ -333,7 +333,6 @@ class Group(CommonLocation):
 			return json.dumps(points[0])
 		
 		midpoint = reduce(midpoint_func, points)
-		for p in points: print p
 		midpoint = json.dumps(midpoint)
 		return midpoint
 	
