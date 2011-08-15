@@ -285,15 +285,16 @@ def merge(new, old):
 		return False
 
 
-orphans = open("orphans.txt", "a")
+orphans = open("orphans.txt", "w")
 if len(cmap):
 	# print preview list
 	orphans.write("\n\n{0}\n  Buildings Orphaned \n{0}\n".format("-"*78))
 	for b in cmap:
 		orphans.write("%s" % b.name)
-		orphans.write("  Num: %s" % b.number)
-		orphans.write("  Abbrev: %s" % abbr(b))
-		orphans.write("  Coords: %s" % map_url(coords(b)))
+		orphans.write("  Num: %s\n" % b.number)
+		orphans.write("  Abbrev: %s\n" % abbr(b))
+		orphans.write("  Coords: %s\n" % coords(b))
+		orphans.write("  Preview Coords: %s\n" % map_url(coords(b)))
 		orphans.write("\n")
 orphans.close()
 print "Orphans preview written to orphans.txt"

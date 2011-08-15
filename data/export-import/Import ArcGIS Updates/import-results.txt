@@ -670,3 +670,1417 @@ Soccer Practice Field
   abbreviation: (none)
   coords: None
 
+>>>>>>>>>>>>>>>>>>>> Monday August 15, 2011 10:55
+
+
+------------------------------------------------------------------------------
+  Found Duplicates 
+------------------------------------------------------------------------------
+#1
+  Pegasus Courtyard #62 [62]
+  null
+
+#2
+  Pegasus Courtyard #62 [62]
+  [[[-81.204375999999996, 28.604633], [-81.204300000000003, 28.604633], [-81.204300000000003, 28.604645999999999], [-81.204257999999996, 28.604645999999999], [-81.204257999999996, 28.604633], [-81.204212999999996, 28.604633], [-81.204212999999996, 28.604668], [-81.204171000000002, 28.604668], [-81.204171000000002, 28.604655000000001], [-81.204094999999995, 28.604655000000001], [-81.204094999999995, 28.604623], [-81.204080000000005, 28.604623], [-81.204080000000005, 28.604558999999998], [-81.204094999999995, 28.604558999999998], [-81.204094999999995, 28.604527000000001], [-81.204170000000005, 28.604527000000001], [-81.204170000000005, 28.604514000000002], [-81.204211999999998, 28.604513000000001], [-81.204211999999998, 28.604527000000001], [-81.204257999999996, 28.604527000000001], [-81.204256999999998, 28.604489000000001], [-81.204300000000003, 28.604489000000001], [-81.204300000000003, 28.604503000000001], [-81.204374999999999, 28.604502], [-81.204374999999999, 28.604537000000001], [-81.204390000000004, 28.604537000000001], [-81.204391000000001, 28.604597999999999], [-81.204375999999996, 28.604597999999999], [-81.204375999999996, 28.604633]]]
+
+
+------------------------------------------------------------------------------
+  Inspecting Updates 
+------------------------------------------------------------------------------
+
+
+
+XXXXX Rejected Name Change, ID:135 XXXXX
+  Bright House Networks Stadium
+  Brighthouse Network Stadium
+
+--- Updated Coordinates, Bright House Networks Stadium ---
+  None
+  [[[-81.192983999999996, 28.609331000000001], [-81.192269999999994, 28.609338999999999], [-81.192082999999997, 28.609289], [-81.191976999999994, 28.609182000000001], [-81.191862999999998, 28.609052999999999], [-81.191794000000002, 28.608816000000001], [-81.191777999999999, 28.608640999999999], [-81.191772999999998, 28.608483], [-81.191768999999994, 28.608274999999999], [-81.191772999999998, 28.608042000000001], [-81.191805000000002, 28.607810000000001], [-81.191821000000004, 28.607662999999999], [-81.191913999999997, 28.607541000000001], [-81.192068000000006, 28.607426], [-81.192194000000001, 28.607365000000001], [-81.192295000000001, 28.607329], [-81.192533999999995, 28.607336], [-81.192736999999994, 28.607334999999999], [-81.192957000000007, 28.607341999999999], [-81.193061999999998, 28.607371000000001], [-81.193172000000004, 28.607406000000001], [-81.193245000000005, 28.607478], [-81.193347000000003, 28.607589000000001], [-81.193396000000007, 28.607710999999998], [-81.193428999999995, 28.607865], [-81.193453000000005, 28.608044], [-81.193558999999993, 28.608046999999999], [-81.193543000000005, 28.608377000000001], [-81.193584000000001, 28.608387], [-81.193575999999993, 28.608526999999999], [-81.193539000000001, 28.608526999999999], [-81.193530999999993, 28.608678000000001], [-81.193430000000006, 28.608649], [-81.193414000000004, 28.608782000000001], [-81.193405999999996, 28.608938999999999], [-81.193349999999995, 28.609072000000001], [-81.193259999999995, 28.609172000000001], [-81.193130999999994, 28.609269000000001], [-81.192993000000001, 28.60933], [-81.192983999999996, 28.609331000000001]]]
+
+XXXXX Rejected Name Change, ID:153 XXXXX
+  Visitor and Parking Information Center
+  Visitor and Parking Information
+
+XXXXX Rejected Name Change, ID:33 XXXXX
+  Libra Commons
+  Commons
+
+XXXXX Rejected Abbreviation Change, Wayne Densch Center I XXXXX
+  WD1
+  WDI
+
+XXXXX Rejected Abbreviation Change, Wayne Densch Center II XXXXX
+  WD2
+  WDII
+
+XXXXX Rejected Name Change, ID:65 XXXXX
+  Lake Claire Commons
+  Commons
+
+XXXXX Rejected Name Change, ID:78 XXXXX
+  Parking Garage I
+  Parking Garage H
+
+XXXXX Rejected Abbreviation Change, Parking Garage I XXXXX
+  PG-I
+  PG-H
+
+XXXXX Rejected Name Change, ID:7b XXXXX
+  Student Disability Services
+  Student Disabilities
+
+--- Updated Abbreviation, Student Disability Services ---
+  FC
+  FC-B
+
+XXXXX Rejected Name Change, ID:7e XXXXX
+  SRC Auditorium
+  SRC Auditorium - Ferrell Commons
+
+--- Updated Abbreviation, SRC Auditorium ---
+  (none)
+  FC-E
+
+XXXXX Rejected Name Change, ID:7f XXXXX
+  Ferrell Commons - F
+  Career Services
+
+XXXXX Rejected Name Change, ID:7g XXXXX
+  Ferrell Commons - G
+  Experiential Learning & Pre-Professional Advising
+
+XXXXX Rejected Name Change, ID:97 XXXXX
+  Parking Garage D
+  Parking Garage D
+
+
+
+
+
+------------------------------------------------------------------------------
+  Buildings Orphaned 
+------------------------------------------------------------------------------
+
+AT&T Wireless Services
+  number: 12150
+  abbreviation: (none)
+  coords: None
+
+Ampac
+  number: 152
+  abbreviation: (none)
+  coords: None
+
+Art Gallery
+  number: 51a
+  abbreviation: VAB
+  coords: None
+
+Athletic Development
+  number: 625
+  abbreviation: LS25
+  coords: None
+
+Band Storage
+  number: 630
+  abbreviation: LS30
+  coords: None
+
+Baseball Field
+  number: basefield
+  abbreviation: (none)
+  coords: None
+
+Bennett Research II
+  number: 3251
+  abbreviation: (none)
+  coords: None
+
+Biomolecular Research Annex
+  number: 8114
+  abbreviation: BMRA
+  coords: None
+
+CREOL Gradute Study Office
+  number: 622
+  abbreviation: LS22
+  coords: None
+
+Center for Public Safety/Security
+  number: 8111
+  abbreviation: CPS
+  coords: None
+
+Challenge Course
+  number: u4
+  abbreviation: (none)
+  coords: None
+
+Classroom
+  number: 611
+  abbreviation: MOD5
+  coords: None
+
+Classroom
+  number: 612
+  abbreviation: MOD1
+  coords: None
+
+Classroom
+  number: 613
+  abbreviation: MOD2
+  coords: None
+
+Classroom
+  number: 626
+  abbreviation: M009
+  coords: None
+
+Classroom
+  number: 627
+  abbreviation: M010
+  coords: None
+
+Classroom
+  number: 628
+  abbreviation: M011
+  coords: None
+
+Disc Golf Course
+  number: dgc
+  abbreviation: (none)
+  coords: None
+
+Emergency Services Training Facility
+  number: 350
+  abbreviation: EST
+  coords: None
+
+Engineering Research Pavilion
+  number: 319
+  abbreviation: ENP
+  coords: None
+
+Fire Station #62
+  number: 351
+  abbreviation: FS65
+  coords: None
+
+Football Practice Field
+  number: footpracfld
+  abbreviation: (none)
+  coords: None
+
+ICA Office
+  number: 538
+  abbreviation: T538
+  coords: None
+
+ICA Office
+  number: t538
+  abbreviation: T538
+  coords: [[[-81.195414, 28.591097999999999], [-81.195499999999996, 28.591097999999999], [-81.195498999999998, 28.590986000000001], [-81.195413000000002, 28.590986000000001], [-81.195414, 28.591097999999999]]]
+
+IN VIVO Research
+  number: 12601
+  abbreviation: (none)
+  coords: None
+
+IST Technology Development Center
+  number: 12423
+  abbreviation: (none)
+  coords: None
+
+Institute for Simulation and Training
+  number: 8112
+  abbreviation: BNT
+  coords: None
+
+L3 Communications
+  number: 12351
+  abbreviation: (none)
+  coords: None
+
+La Quinta Inn
+  number: 11805
+  abbreviation: (none)
+  coords: None
+
+Marketplace Dining Hall- Ferrell Commons
+  number: 7d
+  abbreviation: (none)
+  coords: [[[-81.200154999999995, 28.597708999999998], [-81.200151000000005, 28.597715999999998], [-81.200173000000007, 28.598016000000001], [-81.200199999999995, 28.598020000000002], [-81.200208000000003, 28.598117999999999], [-81.199749999999995, 28.598141999999999], [-81.199736000000001, 28.598022], [-81.199658999999997, 28.598022], [-81.199635999999998, 28.597809999999999], [-81.199658999999997, 28.597785999999999], [-81.199708999999999, 28.597774000000001], [-81.199690000000004, 28.597626000000002], [-81.200135000000003, 28.597588999999999], [-81.200153, 28.597708999999998], [-81.200154999999995, 28.597708999999998]]]
+
+Memory Mall
+  number: memorymall
+  abbreviation: (none)
+  coords: None
+
+Memory Mall
+  number: u5
+  abbreviation: (none)
+  coords: None
+
+Morgridge International Reading Center
+  number: 122
+  abbreviation: MIRC
+  coords: None
+
+Nature Pavilion
+  number: 329
+  abbreviation: NRP
+  coords: None
+
+Orlando Tech Center - Bldg. 300
+  number: 8113
+  abbreviation: OTC3
+  coords: None
+
+Orlando Tech Center - Bldg. 500
+  number: 8120
+  abbreviation: OTC5
+  coords: None
+
+Orlando Tech Center - Bldg. 600
+  number: 8121
+  abbreviation: OTC6
+  coords: None
+
+Parking & Transportation Services
+  number: u1
+  abbreviation: (none)
+  coords: None
+
+Parking Garage H
+  number: 151
+  abbreviation: PG-H
+  coords: [[-81.200989,28.604561,0.000000],
+[-81.200844,28.604584,0.000000],
+[-81.200699,28.604610,0.000000],
+[-81.200722,28.604691,0.000000],
+[-81.200348,28.604750,0.000000],
+[-81.200516,28.605482,0.000000],
+[-81.201584,28.605318,0.000000],
+[-81.201408,28.604572,0.000000],
+[-81.201012,28.604647,0.000000],
+[-81.200989,28.604561,0.000000]]
+
+Partnership II
+  number: 8119
+  abbreviation: P2
+  coords: None
+
+Pegasus Landing
+  number: pl
+  abbreviation: (none)
+  coords: None
+
+Pegasus Point
+  number: pp
+  abbreviation: (none)
+  coords: None
+
+Performing Arts Center
+  number: 119
+  abbreviation: PAC
+  coords: None
+
+Physical Education Support
+  number: 25
+  abbreviation: PESP
+  coords: None
+
+ROTC 2
+  number: 503
+  abbreviation: (none)
+  coords: None
+
+ROTC 3
+  number: 504
+  abbreviation: (none)
+  coords: None
+
+ROTC 4
+  number: 505
+  abbreviation: (none)
+  coords: None
+
+RWC Park
+  number: u3
+  abbreviation: (none)
+  coords: None
+
+Rec Field Maintenance
+  number: 321
+  abbreviation: RFM
+  coords: None
+
+Rec Serv Field Restroom
+  number: 320
+  abbreviation: RSFR
+  coords: None
+
+Rec Serv Pavilion
+  number: 318
+  abbreviation: RSP
+  coords: None
+
+Rec Serv Soccer Field Pavilion
+  number: 317
+  abbreviation: RSSP
+  coords: None
+
+Recreational Services
+  number: 15
+  abbreviation: RS
+  coords: [[[-81.199620999999993, 28.596017], [-81.199600000000004, 28.595849999999999], [-81.199922999999998, 28.595821000000001], [-81.199933999999999, 28.595991000000001], [-81.199620999999993, 28.596017]]]
+
+Reflecting Pond
+  number: pond
+  abbreviation: (none)
+  coords: None
+
+Research Pavilion
+  number: 8102
+  abbreviation: PVL
+  coords: None
+
+Retirement Planning & Investments / Athletics
+  number: 623
+  abbreviation: LS23
+  coords: None
+
+Simulation, Training and Technology Center
+  number: 8125
+  abbreviation: STTC
+  coords: None
+
+Soccer Practice Field
+  number: socpracfld
+  abbreviation: (none)
+  coords: None
+
+TR533
+  number: 533
+  abbreviation: (none)
+  coords: None
+
+TR535
+  number: 535
+  abbreviation: (none)
+  coords: None
+
+Technology Incubator
+  number: 3259
+  abbreviation: IRIF
+  coords: None
+
+Technology Incubator
+  number: 3267
+  abbreviation: IRIF
+  coords: None
+
+The Venue
+  number: 50c
+  abbreviation: (none)
+  coords: None
+
+Theater
+  number: t537
+  abbreviation: T537
+T537
+  coords: [[[-81.195513000000005, 28.591078], [-81.195590999999993, 28.591078], [-81.195590999999993, 28.590975], [-81.195513000000005, 28.590975], [-81.195513000000005, 28.591078]]]
+
+Theatre
+  number: 534
+  abbreviation: T534
+  coords: None
+
+Theatre
+  number: 537
+  abbreviation: T537
+  coords: None
+
+Theatre
+  number: t534
+  abbreviation: T534
+  coords: [[[-81.195809999999994, 28.591079000000001], [-81.195929000000007, 28.591078], [-81.195926999999998, 28.590893999999999], [-81.195651999999995, 28.590896000000001], [-81.195654000000005, 28.591080000000002], [-81.195772000000005, 28.591079000000001], [-81.195772000000005, 28.591093000000001], [-81.195809999999994, 28.591092], [-81.195809999999994, 28.591079000000001]]]
+
+Three Resource Square
+  number: 12001
+  abbreviation: (none)
+  coords: None
+
+Track & Soccer Field
+  number: 142
+  abbreviation: TS
+  coords: None
+
+Two Resource Square
+  number: 12000
+  abbreviation: (none)
+  coords: None
+
+UCF House - Greek Park
+  number: 408
+  abbreviation: UCFH
+  coords: [[[-81.206830999999994, 28.604196000000002], [-81.206818999999996, 28.604192000000001], [-81.206789000000001, 28.604258000000002], [-81.206781000000007, 28.604255999999999], [-81.206770000000006, 28.604282000000001], [-81.206676000000002, 28.60425], [-81.206688, 28.604223000000001], [-81.206680000000006, 28.604220999999999], [-81.206709000000004, 28.604154000000001], [-81.206699999999998, 28.604151000000002], [-81.206716999999998, 28.604112000000001], [-81.206693999999999, 28.604104], [-81.206739999999996, 28.603998000000001], [-81.206764000000007, 28.604005999999998], [-81.206782000000004, 28.603966], [-81.206789999999998, 28.603968999999999], [-81.206818999999996, 28.603902999999999], [-81.206827000000004, 28.603905999999998], [-81.206839000000002, 28.60388], [-81.206933000000006, 28.603912000000001], [-81.206920999999994, 28.603939], [-81.206929000000002, 28.603940999999999], [-81.206900000000005, 28.604008], [-81.206911000000005, 28.604012000000001], [-81.206830999999994, 28.604196000000002]]]
+
+University Tech Center
+  number: 8110
+  abbreviation: UTC
+  coords: None
+
+University Tower
+  number: 8118
+  abbreviation: UTWR
+  coords: None
+
+Visitor's Center (temporary)
+  number: 502
+  abbreviation: LS605
+  coords: [[[-81.203249, 28.596712], [-81.203190000000006, 28.596679999999999], [-81.203266999999997, 28.596568000000001], [-81.203326000000004, 28.596599999999999], [-81.203249, 28.596712]]]
+
+Water Tower
+  number: 301
+  abbreviation: WT
+  coords: None
+
+
+------------------------------------------------------------------------------
+  New Buildings Rejected 
+------------------------------------------------------------------------------
+
+  None.
+
+>>>>>>>>>>>>>>>>>>>> Monday August 15, 2011 11:19
+
+
+------------------------------------------------------------------------------
+  Found Duplicates 
+------------------------------------------------------------------------------
+#1
+  Pegasus Courtyard #62 [62]
+  null
+
+#2
+  Pegasus Courtyard #62 [62]
+  [[[-81.204375999999996, 28.604633], [-81.204300000000003, 28.604633], [-81.204300000000003, 28.604645999999999], [-81.204257999999996, 28.604645999999999], [-81.204257999999996, 28.604633], [-81.204212999999996, 28.604633], [-81.204212999999996, 28.604668], [-81.204171000000002, 28.604668], [-81.204171000000002, 28.604655000000001], [-81.204094999999995, 28.604655000000001], [-81.204094999999995, 28.604623], [-81.204080000000005, 28.604623], [-81.204080000000005, 28.604558999999998], [-81.204094999999995, 28.604558999999998], [-81.204094999999995, 28.604527000000001], [-81.204170000000005, 28.604527000000001], [-81.204170000000005, 28.604514000000002], [-81.204211999999998, 28.604513000000001], [-81.204211999999998, 28.604527000000001], [-81.204257999999996, 28.604527000000001], [-81.204256999999998, 28.604489000000001], [-81.204300000000003, 28.604489000000001], [-81.204300000000003, 28.604503000000001], [-81.204374999999999, 28.604502], [-81.204374999999999, 28.604537000000001], [-81.204390000000004, 28.604537000000001], [-81.204391000000001, 28.604597999999999], [-81.204375999999996, 28.604597999999999], [-81.204375999999996, 28.604633]]]
+
+
+------------------------------------------------------------------------------
+  Inspecting Updates 
+------------------------------------------------------------------------------
+
+
+
+XXXXX Rejected Name Change, ID:135 XXXXX
+  Bright House Networks Stadium
+  Brighthouse Network Stadium
+
+XXXXX Rejected Name Change, ID:153 XXXXX
+  Visitor and Parking Information Center
+  Visitor and Parking Information
+
+XXXXX Rejected Name Change, ID:33 XXXXX
+  Libra Commons
+  Commons
+
+XXXXX Rejected Abbreviation Change, Wayne Densch Center I XXXXX
+  WD1
+  WDI
+
+XXXXX Rejected Abbreviation Change, Wayne Densch Center II XXXXX
+  WD2
+  WDII
+
+XXXXX Rejected Name Change, ID:65 XXXXX
+  Lake Claire Commons
+  Commons
+
+XXXXX Rejected Name Change, ID:78 XXXXX
+  Parking Garage I
+  Parking Garage H
+
+XXXXX Rejected Abbreviation Change, Parking Garage I XXXXX
+  PG-I
+  PG-H
+
+XXXXX Rejected Name Change, ID:7b XXXXX
+  Student Disability Services
+  Student Disabilities
+
+XXXXX Rejected Name Change, ID:7e XXXXX
+  SRC Auditorium
+  SRC Auditorium - Ferrell Commons
+
+XXXXX Rejected Name Change, ID:7f XXXXX
+  Ferrell Commons - F
+  Career Services
+
+XXXXX Rejected Name Change, ID:7g XXXXX
+  Ferrell Commons - G
+  Experiential Learning & Pre-Professional Advising
+
+XXXXX Rejected Name Change, ID:97 XXXXX
+  Parking Garage D
+  Parking Garage D
+
+
+
+
+
+------------------------------------------------------------------------------
+  Buildings Orphaned 
+------------------------------------------------------------------------------
+
+AT&T Wireless Services
+  number: 12150
+  abbreviation: (none)
+  coords: None
+
+Ampac
+  number: 152
+  abbreviation: (none)
+  coords: None
+
+Art Gallery
+  number: 51a
+  abbreviation: VAB
+  coords: None
+
+Athletic Development
+  number: 625
+  abbreviation: LS25
+  coords: None
+
+Band Storage
+  number: 630
+  abbreviation: LS30
+  coords: None
+
+Baseball Field
+  number: basefield
+  abbreviation: (none)
+  coords: None
+
+Bennett Research II
+  number: 3251
+  abbreviation: (none)
+  coords: None
+
+Biomolecular Research Annex
+  number: 8114
+  abbreviation: BMRA
+  coords: None
+
+CREOL Gradute Study Office
+  number: 622
+  abbreviation: LS22
+  coords: None
+
+Center for Public Safety/Security
+  number: 8111
+  abbreviation: CPS
+  coords: None
+
+Challenge Course
+  number: u4
+  abbreviation: (none)
+  coords: None
+
+Classroom
+  number: 611
+  abbreviation: MOD5
+  coords: None
+
+Classroom
+  number: 612
+  abbreviation: MOD1
+  coords: None
+
+Classroom
+  number: 613
+  abbreviation: MOD2
+  coords: None
+
+Classroom
+  number: 626
+  abbreviation: M009
+  coords: None
+
+Classroom
+  number: 627
+  abbreviation: M010
+  coords: None
+
+Classroom
+  number: 628
+  abbreviation: M011
+  coords: None
+
+Disc Golf Course
+  number: dgc
+  abbreviation: (none)
+  coords: None
+
+Emergency Services Training Facility
+  number: 350
+  abbreviation: EST
+  coords: None
+
+Engineering Research Pavilion
+  number: 319
+  abbreviation: ENP
+  coords: None
+
+Fire Station #62
+  number: 351
+  abbreviation: FS65
+  coords: None
+
+Football Practice Field
+  number: footpracfld
+  abbreviation: (none)
+  coords: None
+
+ICA Office
+  number: 538
+  abbreviation: T538
+  coords: None
+
+ICA Office
+  number: t538
+  abbreviation: T538
+  coords: [[[-81.195414, 28.591097999999999], [-81.195499999999996, 28.591097999999999], [-81.195498999999998, 28.590986000000001], [-81.195413000000002, 28.590986000000001], [-81.195414, 28.591097999999999]]]
+
+IN VIVO Research
+  number: 12601
+  abbreviation: (none)
+  coords: None
+
+IST Technology Development Center
+  number: 12423
+  abbreviation: (none)
+  coords: None
+
+Institute for Simulation and Training
+  number: 8112
+  abbreviation: BNT
+  coords: None
+
+L3 Communications
+  number: 12351
+  abbreviation: (none)
+  coords: None
+
+La Quinta Inn
+  number: 11805
+  abbreviation: (none)
+  coords: None
+
+Marketplace Dining Hall- Ferrell Commons
+  number: 7d
+  abbreviation: (none)
+  coords: [[[-81.200154999999995, 28.597708999999998], [-81.200151000000005, 28.597715999999998], [-81.200173000000007, 28.598016000000001], [-81.200199999999995, 28.598020000000002], [-81.200208000000003, 28.598117999999999], [-81.199749999999995, 28.598141999999999], [-81.199736000000001, 28.598022], [-81.199658999999997, 28.598022], [-81.199635999999998, 28.597809999999999], [-81.199658999999997, 28.597785999999999], [-81.199708999999999, 28.597774000000001], [-81.199690000000004, 28.597626000000002], [-81.200135000000003, 28.597588999999999], [-81.200153, 28.597708999999998], [-81.200154999999995, 28.597708999999998]]]
+
+Memory Mall
+  number: memorymall
+  abbreviation: (none)
+  coords: None
+
+Memory Mall
+  number: u5
+  abbreviation: (none)
+  coords: None
+
+Morgridge International Reading Center
+  number: 122
+  abbreviation: MIRC
+  coords: None
+
+Nature Pavilion
+  number: 329
+  abbreviation: NRP
+  coords: None
+
+Orlando Tech Center - Bldg. 300
+  number: 8113
+  abbreviation: OTC3
+  coords: None
+
+Orlando Tech Center - Bldg. 500
+  number: 8120
+  abbreviation: OTC5
+  coords: None
+
+Orlando Tech Center - Bldg. 600
+  number: 8121
+  abbreviation: OTC6
+  coords: None
+
+Parking & Transportation Services
+  number: u1
+  abbreviation: (none)
+  coords: None
+
+Parking Garage H
+  number: 151
+  abbreviation: PG-H
+  coords: [[-81.200989,28.604561,0.000000],
+[-81.200844,28.604584,0.000000],
+[-81.200699,28.604610,0.000000],
+[-81.200722,28.604691,0.000000],
+[-81.200348,28.604750,0.000000],
+[-81.200516,28.605482,0.000000],
+[-81.201584,28.605318,0.000000],
+[-81.201408,28.604572,0.000000],
+[-81.201012,28.604647,0.000000],
+[-81.200989,28.604561,0.000000]]
+
+Partnership II
+  number: 8119
+  abbreviation: P2
+  coords: None
+
+Pegasus Landing
+  number: pl
+  abbreviation: (none)
+  coords: None
+
+Pegasus Point
+  number: pp
+  abbreviation: (none)
+  coords: None
+
+Performing Arts Center
+  number: 119
+  abbreviation: PAC
+  coords: None
+
+Physical Education Support
+  number: 25
+  abbreviation: PESP
+  coords: None
+
+ROTC 2
+  number: 503
+  abbreviation: (none)
+  coords: None
+
+ROTC 3
+  number: 504
+  abbreviation: (none)
+  coords: None
+
+ROTC 4
+  number: 505
+  abbreviation: (none)
+  coords: None
+
+RWC Park
+  number: u3
+  abbreviation: (none)
+  coords: None
+
+Rec Field Maintenance
+  number: 321
+  abbreviation: RFM
+  coords: None
+
+Rec Serv Field Restroom
+  number: 320
+  abbreviation: RSFR
+  coords: None
+
+Rec Serv Pavilion
+  number: 318
+  abbreviation: RSP
+  coords: None
+
+Rec Serv Soccer Field Pavilion
+  number: 317
+  abbreviation: RSSP
+  coords: None
+
+Recreational Services
+  number: 15
+  abbreviation: RS
+  coords: [[[-81.199620999999993, 28.596017], [-81.199600000000004, 28.595849999999999], [-81.199922999999998, 28.595821000000001], [-81.199933999999999, 28.595991000000001], [-81.199620999999993, 28.596017]]]
+
+Reflecting Pond
+  number: pond
+  abbreviation: (none)
+  coords: None
+
+Research Pavilion
+  number: 8102
+  abbreviation: PVL
+  coords: None
+
+Retirement Planning & Investments / Athletics
+  number: 623
+  abbreviation: LS23
+  coords: None
+
+Simulation, Training and Technology Center
+  number: 8125
+  abbreviation: STTC
+  coords: None
+
+Soccer Practice Field
+  number: socpracfld
+  abbreviation: (none)
+  coords: None
+
+TR533
+  number: 533
+  abbreviation: (none)
+  coords: None
+
+TR535
+  number: 535
+  abbreviation: (none)
+  coords: None
+
+Technology Incubator
+  number: 3259
+  abbreviation: IRIF
+  coords: None
+
+Technology Incubator
+  number: 3267
+  abbreviation: IRIF
+  coords: None
+
+The Venue
+  number: 50c
+  abbreviation: (none)
+  coords: None
+
+Theatre
+  number: 534
+  abbreviation: T534
+  coords: None
+
+Theatre
+  number: 537
+  abbreviation: T537
+  coords: None
+
+Theatre
+  number: t534
+  abbreviation: T534
+  coords: [[[-81.195809999999994, 28.591079000000001], [-81.195929000000007, 28.591078], [-81.195926999999998, 28.590893999999999], [-81.195651999999995, 28.590896000000001], [-81.195654000000005, 28.591080000000002], [-81.195772000000005, 28.591079000000001], [-81.195772000000005, 28.591093000000001], [-81.195809999999994, 28.591092], [-81.195809999999994, 28.591079000000001]]]
+
+Three Resource Square
+  number: 12001
+  abbreviation: (none)
+  coords: None
+
+Track & Soccer Field
+  number: 142
+  abbreviation: TS
+  coords: None
+
+Two Resource Square
+  number: 12000
+  abbreviation: (none)
+  coords: None
+
+UCF House - Greek Park
+  number: 408
+  abbreviation: UCFH
+  coords: [[[-81.206830999999994, 28.604196000000002], [-81.206818999999996, 28.604192000000001], [-81.206789000000001, 28.604258000000002], [-81.206781000000007, 28.604255999999999], [-81.206770000000006, 28.604282000000001], [-81.206676000000002, 28.60425], [-81.206688, 28.604223000000001], [-81.206680000000006, 28.604220999999999], [-81.206709000000004, 28.604154000000001], [-81.206699999999998, 28.604151000000002], [-81.206716999999998, 28.604112000000001], [-81.206693999999999, 28.604104], [-81.206739999999996, 28.603998000000001], [-81.206764000000007, 28.604005999999998], [-81.206782000000004, 28.603966], [-81.206789999999998, 28.603968999999999], [-81.206818999999996, 28.603902999999999], [-81.206827000000004, 28.603905999999998], [-81.206839000000002, 28.60388], [-81.206933000000006, 28.603912000000001], [-81.206920999999994, 28.603939], [-81.206929000000002, 28.603940999999999], [-81.206900000000005, 28.604008], [-81.206911000000005, 28.604012000000001], [-81.206830999999994, 28.604196000000002]]]
+
+University Tech Center
+  number: 8110
+  abbreviation: UTC
+  coords: None
+
+University Tower
+  number: 8118
+  abbreviation: UTWR
+  coords: None
+
+Visitor's Center (temporary)
+  number: 502
+  abbreviation: LS605
+  coords: [[[-81.203249, 28.596712], [-81.203190000000006, 28.596679999999999], [-81.203266999999997, 28.596568000000001], [-81.203326000000004, 28.596599999999999], [-81.203249, 28.596712]]]
+
+Water Tower
+  number: 301
+  abbreviation: WT
+  coords: None
+
+
+------------------------------------------------------------------------------
+  New Buildings Rejected 
+------------------------------------------------------------------------------
+
+  None.
+
+>>>>>>>>>>>>>>>>>>>> Monday August 15, 2011 13:38
+
+
+------------------------------------------------------------------------------
+  Found Duplicates 
+------------------------------------------------------------------------------
+#1
+  Pegasus Courtyard #62 [62]
+  null
+
+#2
+  Pegasus Courtyard #62 [62]
+  [[[-81.204375999999996, 28.604633], [-81.204300000000003, 28.604633], [-81.204300000000003, 28.604645999999999], [-81.204257999999996, 28.604645999999999], [-81.204257999999996, 28.604633], [-81.204212999999996, 28.604633], [-81.204212999999996, 28.604668], [-81.204171000000002, 28.604668], [-81.204171000000002, 28.604655000000001], [-81.204094999999995, 28.604655000000001], [-81.204094999999995, 28.604623], [-81.204080000000005, 28.604623], [-81.204080000000005, 28.604558999999998], [-81.204094999999995, 28.604558999999998], [-81.204094999999995, 28.604527000000001], [-81.204170000000005, 28.604527000000001], [-81.204170000000005, 28.604514000000002], [-81.204211999999998, 28.604513000000001], [-81.204211999999998, 28.604527000000001], [-81.204257999999996, 28.604527000000001], [-81.204256999999998, 28.604489000000001], [-81.204300000000003, 28.604489000000001], [-81.204300000000003, 28.604503000000001], [-81.204374999999999, 28.604502], [-81.204374999999999, 28.604537000000001], [-81.204390000000004, 28.604537000000001], [-81.204391000000001, 28.604597999999999], [-81.204375999999996, 28.604597999999999], [-81.204375999999996, 28.604633]]]
+
+
+------------------------------------------------------------------------------
+  Inspecting Updates 
+------------------------------------------------------------------------------
+
+
+
+XXXXX Rejected Name Change, ID:135 XXXXX
+  Bright House Networks Stadium
+  Brighthouse Network Stadium
+
+XXXXX Rejected Name Change, ID:153 XXXXX
+  Visitor and Parking Information Center
+  Visitor and Parking Information
+
+XXXXX Rejected Name Change, ID:33 XXXXX
+  Libra Commons
+  Commons
+
+XXXXX Rejected Abbreviation Change, Wayne Densch Center I XXXXX
+  WD1
+  WDI
+
+XXXXX Rejected Abbreviation Change, Wayne Densch Center II XXXXX
+  WD2
+  WDII
+
+XXXXX Rejected Name Change, ID:401 XXXXX
+  Zeta Tau Alpha - Sorority
+  Zeta Tau Alpha - Sorority- Greek Park
+
+XXXXX Rejected Name Change, ID:404 XXXXX
+  Alpha Xi Delta - Sorority
+  Alpha Xi Delta - Sorority - Greek Park
+
+XXXXX Rejected Name Change, ID:405 XXXXX
+  Pi Beta Phi - Sorority
+  Pi Beta Phi - Sorority - Greek Park
+
+XXXXX Rejected Name Change, ID:406 XXXXX
+  Alpha Delta Pi - Sorority
+  Alpha Delta Pi - Sorority - Greek Park
+
+XXXXX Rejected Name Change, ID:407 XXXXX
+  Kappa Delta Sorority
+  Kappa Delta Sorority - Greek Park
+
+XXXXX Rejected Name Change, ID:409 XXXXX
+  Sigma Alpha Epsilon - Fraternity
+  Sigma Alpha Epsilon - Fraternity - Greek Park
+
+XXXXX Rejected Name Change, ID:410 XXXXX
+  Alpha Tau Omega - Fraternity
+  Alpha Tau Omega - Fraternity - Greek Park
+
+XXXXX Rejected Name Change, ID:411 XXXXX
+  Sigma Phi Epsilon - Fraternity
+  Sigma Phi Epsilon - Fraternity - Greek Park
+
+XXXXX Rejected Name Change, ID:412 XXXXX
+  Sigma Chi - Fraternity
+  Sigma Chi - Fraternity - Greek Park
+
+XXXXX Rejected Name Change, ID:413 XXXXX
+  Kappa Sigma - Fraternity
+  Kappa Sigma - Fraternity - Greek Park
+
+XXXXX Rejected Name Change, ID:65 XXXXX
+  Lake Claire Commons
+  Commons
+
+XXXXX Rejected Name Change, ID:78 XXXXX
+  Parking Garage I
+  Parking Garage H
+
+XXXXX Rejected Abbreviation Change, Parking Garage I XXXXX
+  PG-I
+  PG-H
+
+XXXXX Rejected Name Change, ID:7b XXXXX
+  Student Disability Services
+  Student Disabilities
+
+XXXXX Rejected Name Change, ID:7e XXXXX
+  SRC Auditorium
+  SRC Auditorium - Ferrell Commons
+
+XXXXX Rejected Name Change, ID:7f XXXXX
+  Ferrell Commons - F
+  Career Services
+
+XXXXX Rejected Name Change, ID:7g XXXXX
+  Ferrell Commons - G
+  Experiential Learning & Pre-Professional Advising
+
+XXXXX Rejected Name Change, ID:97 XXXXX
+  Parking Garage D
+  Parking Garage D
+
+
+
+
+
+------------------------------------------------------------------------------
+  Buildings Orphaned 
+------------------------------------------------------------------------------
+
+AT&T Wireless Services
+  number: 12150
+  abbreviation: (none)
+  coords: None
+
+Ampac
+  number: 152
+  abbreviation: (none)
+  coords: None
+
+Art Gallery
+  number: 51a
+  abbreviation: VAB
+  coords: None
+
+Athletic Development
+  number: 625
+  abbreviation: LS25
+  coords: None
+
+Band Storage
+  number: 630
+  abbreviation: LS30
+  coords: None
+
+Baseball Field
+  number: basefield
+  abbreviation: (none)
+  coords: None
+
+Bennett Research II
+  number: 3251
+  abbreviation: (none)
+  coords: None
+
+Biomolecular Research Annex
+  number: 8114
+  abbreviation: BMRA
+  coords: None
+
+CREOL Gradute Study Office
+  number: 622
+  abbreviation: LS22
+  coords: None
+
+Center for Public Safety/Security
+  number: 8111
+  abbreviation: CPS
+  coords: None
+
+Challenge Course
+  number: u4
+  abbreviation: (none)
+  coords: None
+
+Classroom
+  number: 611
+  abbreviation: MOD5
+  coords: None
+
+Classroom
+  number: 612
+  abbreviation: MOD1
+  coords: None
+
+Classroom
+  number: 613
+  abbreviation: MOD2
+  coords: None
+
+Classroom
+  number: 626
+  abbreviation: M009
+  coords: None
+
+Classroom
+  number: 627
+  abbreviation: M010
+  coords: None
+
+Classroom
+  number: 628
+  abbreviation: M011
+  coords: None
+
+Disc Golf Course
+  number: dgc
+  abbreviation: (none)
+  coords: None
+
+Emergency Services Training Facility
+  number: 350
+  abbreviation: EST
+  coords: None
+
+Engineering Research Pavilion
+  number: 319
+  abbreviation: ENP
+  coords: None
+
+Fire Station #62
+  number: 351
+  abbreviation: FS65
+  coords: None
+
+Football Practice Field
+  number: footpracfld
+  abbreviation: (none)
+  coords: None
+
+IN VIVO Research
+  number: 12601
+  abbreviation: (none)
+  coords: None
+
+IST Technology Development Center
+  number: 12423
+  abbreviation: (none)
+  coords: None
+
+Institute for Simulation and Training
+  number: 8112
+  abbreviation: BNT
+  coords: None
+
+L3 Communications
+  number: 12351
+  abbreviation: (none)
+  coords: None
+
+La Quinta Inn
+  number: 11805
+  abbreviation: (none)
+  coords: None
+
+Memory Mall
+  number: memorymall
+  abbreviation: (none)
+  coords: None
+
+Memory Mall
+  number: u5
+  abbreviation: (none)
+  coords: None
+
+Morgridge International Reading Center
+  number: 122
+  abbreviation: MIRC
+  coords: None
+
+Nature Pavilion
+  number: 329
+  abbreviation: NRP
+  coords: None
+
+Orlando Tech Center - Bldg. 300
+  number: 8113
+  abbreviation: OTC3
+  coords: None
+
+Orlando Tech Center - Bldg. 500
+  number: 8120
+  abbreviation: OTC5
+  coords: None
+
+Orlando Tech Center - Bldg. 600
+  number: 8121
+  abbreviation: OTC6
+  coords: None
+
+Parking & Transportation Services
+  number: u1
+  abbreviation: (none)
+  coords: None
+
+Parking Garage H
+  number: 151
+  abbreviation: PG-H
+  coords: [[-81.200989,28.604561,0.000000],
+[-81.200844,28.604584,0.000000],
+[-81.200699,28.604610,0.000000],
+[-81.200722,28.604691,0.000000],
+[-81.200348,28.604750,0.000000],
+[-81.200516,28.605482,0.000000],
+[-81.201584,28.605318,0.000000],
+[-81.201408,28.604572,0.000000],
+[-81.201012,28.604647,0.000000],
+[-81.200989,28.604561,0.000000]]
+
+Partnership II
+  number: 8119
+  abbreviation: P2
+  coords: None
+
+Pegasus Landing
+  number: pl
+  abbreviation: (none)
+  coords: None
+
+Pegasus Point
+  number: pp
+  abbreviation: (none)
+  coords: None
+
+Performing Arts Center
+  number: 119
+  abbreviation: PAC
+  coords: None
+
+Physical Education Support
+  number: 25
+  abbreviation: PESP
+  coords: None
+
+ROTC 2
+  number: 503
+  abbreviation: (none)
+  coords: None
+
+ROTC 3
+  number: 504
+  abbreviation: (none)
+  coords: None
+
+ROTC 4
+  number: 505
+  abbreviation: (none)
+  coords: None
+
+RWC Park
+  number: u3
+  abbreviation: (none)
+  coords: None
+
+Rec Field Maintenance
+  number: 321
+  abbreviation: RFM
+  coords: None
+
+Rec Serv Field Restroom
+  number: 320
+  abbreviation: RSFR
+  coords: None
+
+Rec Serv Pavilion
+  number: 318
+  abbreviation: RSP
+  coords: None
+
+Rec Serv Soccer Field Pavilion
+  number: 317
+  abbreviation: RSSP
+  coords: None
+
+Reflecting Pond
+  number: pond
+  abbreviation: (none)
+  coords: None
+
+Research Pavilion
+  number: 8102
+  abbreviation: PVL
+  coords: None
+
+Retirement Planning & Investments / Athletics
+  number: 623
+  abbreviation: LS23
+  coords: None
+
+Simulation, Training and Technology Center
+  number: 8125
+  abbreviation: STTC
+  coords: None
+
+Soccer Practice Field
+  number: socpracfld
+  abbreviation: (none)
+  coords: None
+
+TR535
+  number: 535
+  abbreviation: (none)
+  coords: None
+
+Technology Incubator
+  number: 3259
+  abbreviation: IRIF
+  coords: None
+
+Technology Incubator
+  number: 3267
+  abbreviation: IRIF
+  coords: None
+
+The Venue
+  number: 50c
+  abbreviation: (none)
+  coords: None
+
+Three Resource Square
+  number: 12001
+  abbreviation: (none)
+  coords: None
+
+Track & Soccer Field
+  number: 142
+  abbreviation: TS
+  coords: None
+
+Two Resource Square
+  number: 12000
+  abbreviation: (none)
+  coords: None
+
+UCF House
+  number: 408
+  abbreviation: UCFH
+  coords: [[[-81.206830999999994, 28.604196000000002], [-81.206818999999996, 28.604192000000001], [-81.206789000000001, 28.604258000000002], [-81.206781000000007, 28.604255999999999], [-81.206770000000006, 28.604282000000001], [-81.206676000000002, 28.60425], [-81.206688, 28.604223000000001], [-81.206680000000006, 28.604220999999999], [-81.206709000000004, 28.604154000000001], [-81.206699999999998, 28.604151000000002], [-81.206716999999998, 28.604112000000001], [-81.206693999999999, 28.604104], [-81.206739999999996, 28.603998000000001], [-81.206764000000007, 28.604005999999998], [-81.206782000000004, 28.603966], [-81.206789999999998, 28.603968999999999], [-81.206818999999996, 28.603902999999999], [-81.206827000000004, 28.603905999999998], [-81.206839000000002, 28.60388], [-81.206933000000006, 28.603912000000001], [-81.206920999999994, 28.603939], [-81.206929000000002, 28.603940999999999], [-81.206900000000005, 28.604008], [-81.206911000000005, 28.604012000000001], [-81.206830999999994, 28.604196000000002]]]
+
+University Tech Center
+  number: 8110
+  abbreviation: UTC
+  coords: None
+
+University Tower
+  number: 8118
+  abbreviation: UTWR
+  coords: None
+
+Water Tower
+  number: 301
+  abbreviation: WT
+  coords: None
+
+
+------------------------------------------------------------------------------
+  New Buildings Rejected 
+------------------------------------------------------------------------------
+
+  None.
+

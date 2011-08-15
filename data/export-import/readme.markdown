@@ -44,3 +44,28 @@ and if you want all the output to a file:
 or
     python create_update_buildings.py destroy > ~/Desktop/output.txt
 
+
+
+# New Process
+
+## Analyze differences in the Land & Man. Data
+1. Create json export of new data
+1. Rename `ArcGIS Export Comparison/new_shp_export.json` to `old...`
+1. Using `ArcGIS Export Comparison/export_compare.py` create output
+1. Reconcile Merges through the admin
+1. Look for missing merges in the "new building" and "old buildings" list
+
+## Import Data
+1. Copy the shp exports to `Import ArcGIS Updates`
+1. run `Import ArcGIS Updates/import.py`
+1. note, it's OK to exit the import script at any time and start again, changes are written to the results file
+
+## Review
+1. look at output again to make sure merges went well
+1. scan building list for any unintentional duplicates
+
+Sources of errors:
+* capitalization of building names
+* and building number change is viewed as a "new" and "lost" building
+
+## Give any needed feedback back to land and management
