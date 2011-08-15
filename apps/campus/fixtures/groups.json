@@ -151,5 +151,177 @@
                 ]
             ]
         }
+    }, 
+    {
+        "pk": 2, 
+        "model": "campus.group", 
+        "fields": {
+            "name": "Apollo Community", 
+            "locations": [
+                [
+                    "campus.building", 
+                    "9"
+                ], 
+                [
+                    "campus.building", 
+                    "10"
+                ], 
+                [
+                    "campus.building", 
+                    "11"
+                ], 
+                [
+                    "campus.building", 
+                    "8"
+                ]
+            ]
+        }
+    }, 
+    {
+        "pk": 3, 
+        "model": "campus.group", 
+        "fields": {
+            "name": "Libra Community", 
+            "locations": [
+                [
+                    "campus.building", 
+                    "30"
+                ], 
+                [
+                    "campus.building", 
+                    "85"
+                ], 
+                [
+                    "campus.building", 
+                    "33"
+                ], 
+                [
+                    "campus.building", 
+                    "86"
+                ], 
+                [
+                    "campus.building", 
+                    "31"
+                ], 
+                [
+                    "campus.building", 
+                    "32"
+                ], 
+                [
+                    "campus.building", 
+                    "84"
+                ]
+            ]
+        }
+    }, 
+    {
+        "pk": 4, 
+        "model": "campus.group", 
+        "fields": {
+            "name": "Lake Claire Apartments", 
+            "locations": [
+                [
+                    "campus.building", 
+                    "55"
+                ], 
+                [
+                    "campus.building", 
+                    "56"
+                ], 
+                [
+                    "campus.building", 
+                    "57"
+                ], 
+                [
+                    "campus.building", 
+                    "58"
+                ], 
+                [
+                    "campus.building", 
+                    "59"
+                ], 
+                [
+                    "campus.building", 
+                    "65"
+                ], 
+                [
+                    "campus.building", 
+                    "66"
+                ], 
+                [
+                    "campus.building", 
+                    "67"
+                ], 
+                [
+                    "campus.building", 
+                    "68"
+                ], 
+                [
+                    "campus.building", 
+                    "69"
+                ], 
+                [
+                    "campus.building", 
+                    "70"
+                ], 
+                [
+                    "campus.building", 
+                    "60"
+                ], 
+                [
+                    "campus.building", 
+                    "61"
+                ], 
+                [
+                    "campus.building", 
+                    "62"
+                ], 
+                [
+                    "campus.building", 
+                    "63"
+                ], 
+                [
+                    "campus.building", 
+                    "64"
+                ]
+            ]
+        }
+    }, 
+    {
+        "pk": 5, 
+        "model": "campus.group", 
+        "fields": {
+            "name": "Ferrell Commons", 
+            "locations": [
+                [
+                    "campus.building", 
+                    "7h"
+                ], 
+                [
+                    "campus.building", 
+                    "7f"
+                ], 
+                [
+                    "campus.building", 
+                    "7g"
+                ], 
+                [
+                    "campus.building", 
+                    "7d"
+                ], 
+                [
+                    "campus.building", 
+                    "7c"
+                ], 
+                [
+                    "campus.building", 
+                    "7e"
+                ], 
+                [
+                    "campus.building", 
+                    "7b"
+                ]
+            ]
+        }
     }
 ]
