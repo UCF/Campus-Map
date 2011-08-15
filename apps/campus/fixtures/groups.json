@@ -307,7 +307,11 @@
                 ], 
                 [
                     "campus.building", 
-                    "7d"
+                    "7ab"
+                ], 
+                [
+                    "campus.building", 
+                    "7aa"
                 ], 
                 [
                     "campus.building", 
@@ -320,6 +324,59 @@
                 [
                     "campus.building", 
                     "7b"
+                ]
+            ]
+        }
+    }, 
+    {
+        "pk": 6, 
+        "model": "campus.group", 
+        "fields": {
+            "name": "Greek Park", 
+            "locations": [
+                [
+                    "campus.building", 
+                    "406"
+                ], 
+                [
+                    "campus.building", 
+                    "410"
+                ], 
+                [
+                    "campus.building", 
+                    "404"
+                ], 
+                [
+                    "campus.building", 
+                    "407"
+                ], 
+                [
+                    "campus.building", 
+                    "413"
+                ], 
+                [
+                    "campus.building", 
+                    "405"
+                ], 
+                [
+                    "campus.building", 
+                    "409"
+                ], 
+                [
+                    "campus.building", 
+                    "412"
+                ], 
+                [
+                    "campus.building", 
+                    "411"
+                ], 
+                [
+                    "campus.building", 
+                    "408"
+                ], 
+                [
+                    "campus.building", 
+                    "401"
                 ]
             ]
         }
