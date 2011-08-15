@@ -181,7 +181,7 @@ footer dd { padding:8px 0 0 8px; margin:0; }
 
 #flat_search > form > input[type="text"] {border: 1px solid #CCC;padding: 5px; font-size: 110%;}
 #flat_search > form > input[type="submit"] {}
-#flat_search #results > h3 {font-size: 120%;}
+#flat_search #results > h3 {font-size: 120%; color: #FF7700;}
 #flat_search #results > ul {margin-left: 0;font-size: 110%;}
 #flat_search #results > ul > li {list-style-type:none;margin-left:0;}
 #flat_search #results > ul > li > ul {margin-left: 20px;margin-top:5px;}

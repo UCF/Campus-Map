@@ -32,9 +32,12 @@ admin.site.register(Location, LocationAdmin)
 
 class GroupAdmin(admin.ModelAdmin):
 	search_fields = ('name',)
+	#exclude = ('googlemap_point', 'illustrated_point',)
+	prepopulated_fields = {'slug' : ('name',)}
 	ordering = ('name',)
 	filter_horizontal = ('locations',)
 	actions = None
+	
 	def get_form(self, request, obj=None, **kwargs):
 		
 		''' ensure all campus locations are groupable '''
@@ -55,5 +58,4 @@ class GroupAdmin(admin.ModelAdmin):
 				gl.delete()
 		
 		return admin.ModelAdmin.get_form(self, request, obj, **kwargs)
-
 admin.site.register(Group, GroupAdmin)

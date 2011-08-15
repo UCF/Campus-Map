@@ -11,19 +11,19 @@
 	
 	{% if query %}
 	<div id="results">
-		<h3 style="color:#FF7700;">Results</h3>
-		{% with results.buildings as bldgs %}
+		<h3>Results</h3>
+		{% with results.locations as locations %}
 		{% with results.organizations as orgs %}
-		{% if results.buildings %}
+		{% if results.locations %}
 		<ul>
-			{% for bldg in bldgs %}
+			{% for loc in locations %}
 			<li>
-				<a href="{% url location bldg.pk%}{{bldg.title|slugify}}" data-pk="{{bldg.pk}}">
-					{{bldg.title|highlight_term:query|safe}}
+				<a href="{% url location loc.pk%}{{loc.title|slugify}}" data-pk="{{loc.pk}}">
+					{{loc.title|highlight_term:query|safe}}
 				</a>
 				<ul>
 				{% for org in orgs %}
-					{% if org.bldg_id == bldg.pk %}
+					{% if org.bldg_id == loc.pk %}
 						<li>{{org.name|highlight_term:query|safe}}</li>
 					{% endif %}
 				{% endfor %}

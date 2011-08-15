@@ -4,6 +4,7 @@ from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes import generic
 from django.core.urlresolvers import reverse
 from django.template.defaultfilters import slugify
+from django.db.models.signals import m2m_changed
 
 class CommonLocation(models.Model):
 	name              = models.CharField(max_length=255)
@@ -13,6 +14,13 @@ class CommonLocation(models.Model):
 	googlemap_point   = models.CharField(max_length=255, null=True, blank=True, help_text='E.g., <code>[28.6017, -81.2005]</code>')
 	illustrated_point = models.CharField(max_length=255, null=True, blank=True)
 	poly_coords       = models.TextField(blank=True, null=True)
+	
+	def _title(self):
+		if (self.name):
+			return self.name
+		else:
+			return self.__repr__()
+	title = property(_title)
 	
 	def json(self):
 		"""Returns a json serializable object for this instance"""
@@ -279,6 +287,7 @@ class GroupedLocation(models.Model):
 	object_pk    = models.CharField(max_length=255)
 	content_type = models.ForeignKey(ContentType)
 	content_object = generic.GenericForeignKey('content_type', 'object_pk')
+	
 	def __unicode__(self):
 		loc      = self.content_object
 		loc_name = str(loc)
@@ -299,8 +308,36 @@ class GroupedLocation(models.Model):
 	class Meta:
 		unique_together = (('object_pk', 'content_type'),)
 
-class Group(models.Model):
-	name = models.CharField(max_length=80, unique=True)
+class Group(CommonLocation):
 	locations = models.ManyToManyField(GroupedLocation, blank=True)
+	slug      = models.CharField(max_length=80, unique=True)
+	
+	@classmethod
+	def update_coordinates(cls, **kwargs):
+		sender = kwargs['instance']
+		sender.googlemap_point   = sender.midpoint('googlemap_point')
+		sender.illustrated_point = sender.midpoint('illustration_point')
+		sender.save()
+	
+	def midpoint(self, coordinates_field):
+		import json
+		midpoint_func = lambda a, b: [((a[0] + b[0])/2), ((a[1] + b[1])/2)]
+		
+		points = [p.content_object for p in self.locations.all()]
+		points = [getattr(p, coordinates_field, None) for p in points]
+		points = [json.loads(p) for p in points if p is not None]
+		
+		if len(points) < 1:
+			return None
+		if len(points) < 2:
+			return json.dumps(points[0])
+		
+		midpoint = reduce(midpoint_func, points)
+		for p in points: print p
+		midpoint = json.dumps(midpoint)
+		return midpoint
+	
 	def __unicode__(self):
 		return self.name
+
+m2m_changed.connect(Group.update_coordinates, sender=Group.locations.through)

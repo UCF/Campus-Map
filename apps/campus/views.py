@@ -1,4 +1,4 @@
-from django.shortcuts import render_to_response
+from django.shortcuts import render_to_response, get_object_or_404
 from django.http      import HttpResponse, HttpResponseNotFound, Http404, HttpResponsePermanentRedirect
 from django.views.generic.simple import direct_to_template as render
 from django.core.urlresolvers import reverse
@@ -55,7 +55,11 @@ def home(request, **kwargs):
 		points = {}
 		for b in buildings:
 			b = b.json()
-			points[b['number']] = { 'gpoint' : b['googlemap_point'], 'ipoint' : b['illustrated_point'] }
+			points[b['number']] = {
+				'name'   : b['name'],
+				'gpoint' : b['googlemap_point'],
+				'ipoint' : b['illustrated_point'],
+			}
 	else:
 		points = None
 		
@@ -91,6 +95,28 @@ def home(request, **kwargs):
 	}
 	
 	return render(request, 'campus/base.djt', context)
+
+
+def groups(request):
+	from campus.models import Group
+	groups = Group.objects.all()
+	if request.is_json():
+		groups = map(lambda g: g.json(), groups)
+		return HttpResponse(json.dumps(groups))
+	return render(request, 'campus/groups.djt', {'groups' : groups,})
+
+
+def group(request, group_id):
+	from campus.models import Group
+	group     = get_object_or_404(Group, pk=group_id)
+	locations = map(lambda l: l.content_object, group.locations.all())
+	if request.is_json():
+		return HttpResponse(json.dumps(group.json()))
+	
+	return render(request, 'campus/group.djt', {
+		'group'     : group,
+		'locations' : locations,
+	})
 
 
 def locations(request):
@@ -149,7 +175,7 @@ def location(request, loc, return_obj=False):
 	Will one day be a wrapper for all data models, searching over all locations
 	and organizations, maybe even people too
 	'''
-	from campus.models import Building, Location
+	from campus.models import Building, Location, Group
 	
 	
 	location_orgs = []
@@ -160,7 +186,10 @@ def location(request, loc, return_obj=False):
 		try:
 			location = Location.objects.get(pk=loc)
 		except Location.DoesNotExist:
-			raise Http404("Location ID <code>%s</code> could not be found" % (loc))
+			try:
+				location = Group.objects.get(slug=loc)
+			except:
+				raise Http404("Location ID <code>%s</code> could not be found" % (loc))
 	
 	location_type = location.__class__.__name__
 	html = location_html(location, request)
@@ -186,8 +215,7 @@ def location(request, loc, return_obj=False):
 	if return_obj:
 		return location
 	elif location_type == "Building":
-		# show location profile
-		
+		# show location profile	
 		import flickr
 		photos = flickr.get_photos()
 		tags = set()

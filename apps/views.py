@@ -170,6 +170,12 @@ def phonebook_search(q):
 		print "Issue with phonebook search service"
 		return None
 
+
+def group_search(q):
+	from campus.models import Group
+	groups = Group.objects.filter(name__icontains=q)
+	return groups
+
 def search(request):
 	'''
 	one day will search over all data available
@@ -187,7 +193,7 @@ def search(request):
 			orgs = org_response['results']
 		
 		# Building Search
-		entry_query = get_query(query_string, ['name',])
+		entry_query = get_query(query_string, ['name', 'abbreviation',])
 		## Make sure any found organization's buildings are in the building list
 		for org in orgs: entry_query = entry_query | Q(pk = org['bldg_id'])
 		bldgs = Building.objects.filter(entry_query).order_by('name')
@@ -195,16 +201,27 @@ def search(request):
 		# Phonebook Search
 		phones_response = phonebook_search(query_string)
 		if phones_response is not None:
-			phones = phones_response['results'] 
+			phones = phones_response['results']
+			
+		# Group search
+		groups          = group_search(query_string)
+		group_locations = list()
+		if groups is not None:
+			groups = filter(lambda g : g.locations.count() > 0, groups)
+			
+			if groups:
+				group_locations = reduce(lambda a, b: a + b, map(
+					lambda g: g.locations.all(), groups
+				))
+				group_locations = map(lambda l: l.content_object, group_locations)
 	
 	found_entries = {
-		'buildings'     : bldgs,
+		'locations'     : group_locations + list(bldgs),
 		'phonebook'     : phones,
-		'organizations' : orgs
+		'organizations' : orgs,
 	}
 	
 	# TODO: Text API format
-	
 	if request.is_json():
 		def clean(item): 
 			return {
@@ -213,7 +230,7 @@ def search(request):
 				'id':item.pk,
 				'link':item.link}
 				
-		found_entries['buildings']    = map(clean, found_entries['buildings'])
+		found_entries['locations'] = map(clean, found_entries['locations'])
 		
 		search = {
 			'query'            : query_string,
@@ -225,25 +242,26 @@ def search(request):
 		return response
 	else:
 		# Do some sorting here to ease the pain in the template
-		_bldgs = []
+		_locations = []
 		
-		for bldg in found_entries['buildings']:
-			query_match = bldg.name.lower().find(query_string.lower())
+		for loc in found_entries['locations']:
+			query_match = loc.name.lower().find(query_string.lower())
 			for org in found_entries['organizations']:
-				if org['bldg_id'] == bldg.pk and query_match != -1:
-					_bldgs.append(bldg)
+				if org['bldg_id'] == loc.pk and query_match != -1:
+					_locations.append(loc)
 					break
 
-		for bldg in found_entries['buildings']:
+		for loc in found_entries['locations']:
 			for org in found_entries['organizations']:
-				if org['bldg_id'] == bldg.pk and bldg not in _bldgs:
-					_bldgs.append(bldg)
+				if org['bldg_id'] == loc.pk and loc not in _locations:
+					_locations.append(loc)
 					break
-		for bldg in found_entries['buildings']:
-			if bldg not in _bldgs:
-				_bldgs.append(bldg)
 		
-		found_entries['buildings'] = _bldgs
+		for loc in found_entries['locations']:
+			if loc not in _locations:
+				_locations.append(loc)
+		
+		found_entries['locations'] = _locations
 		
 		context = {'search':True, 'query':query_string, 'results':found_entries }
 		return render(request, 'campus/search.djt', context)

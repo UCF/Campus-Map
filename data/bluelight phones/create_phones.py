@@ -25,7 +25,7 @@ for o in objects['features']:
 		print "No Geometry. Skipped"
 		continue
 	new = {}
-	new['googlemap_point'] = "[%f, %f]" % (o['geometry']['coordinates'][0], o['geometry']['coordinates'][1])
+	new['googlemap_point'] = "[%f, %f]" % (o['geometry']['coordinates'][1], o['geometry']['coordinates'][0])
 	new = EmergencyPhone.objects.create(**new)
 	count += 1
 
