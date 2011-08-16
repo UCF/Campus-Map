@@ -2,23 +2,34 @@
 
 {% block wrap %}
 	
-	<div class="span-12">
+	<div class="span-13 append-1">
 		
 		<h2> Buildings </h2>
 
 		{% if buildings %}
-			<ul>
-			{% for b in buildings %}
-				<li>{{b.link|safe}}</li>
-			{% endfor %}
-			</ul>
+			<table id="buildings" class="tablesorter">
+				<thead>
+				<tr>
+					<th class="first"><abbr title="Abbreviation">Abbr</abbr></th>
+					<th>Name</th>
+					<th class="last"><abbr title="Building Number">Num</abbr></th>
+				</tr>
+				</thead>
+				{% for b in buildings %}
+				<tr>
+					<td class="mono">{{b.abbreviation|default:"&mdash;"}}</td>
+					<td>{{b.link|safe}}</td>
+					<td class="mono">{{b.number|default:"-"}}</td>
+				</tr>
+				{% endfor %}
+			</table>
 		{% else %} 
 			<p>No buildings found.</p>
 		{% endif %}
 		
 		
 	</div>
-	<div class="span-10" id="locations">
+	<div class="span-8 last" id="locations">
 		
 		<h2>Greater UCF</h2>
 		{% if locations %}
@@ -74,4 +85,19 @@
 	
 	
 	
+{% endblock %}
+
+{% block head %}
+<link href="{{MEDIA_URL}}-/jquery.plugins/tablesorter/themes/green/style.css" rel="stylesheet" />
+{% endblock %}
+
+
+{% block js %}
+<script src="{{MEDIA_URL}}-/jquery.plugins/tablesorter/jquery.tablesorter.min.js"></script>
+<script>
+	$("#buildings").tablesorter();
+	// preload header bgs
+	var bg1 = new Image(); bg1.src = "{{MEDIA_URL}}-/jquery.plugins/tablesorter/themes/green/asc.png";
+	var bg2 = new Image(); bg2.src = "{{MEDIA_URL}}-/jquery.plugins/tablesorter/themes/green/desc.png";
+</script>
 {% endblock %}
