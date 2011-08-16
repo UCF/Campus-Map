@@ -1,12 +1,13 @@
 {% extends "base.djt"%}
 
 {% block wrap %}
+<div id="directions">
 	<h2>Google Directions</h2>
 	
 	<p>What is your address?</p>
 	<form method="get" action="http://maps.google.com/maps">
 		<input type="text" name="saddr">
-		<input type="hidden" name="daddr" value="4000 Central Florida Blvd Orlando, FL 32816">
+		<input type="hidden" name="daddr" value="UCF Progress Energy Welcome Center 32816-3551">
 		<input type="submit" value="get directions">
 	</form>
 	
@@ -33,10 +34,10 @@
 	
 	<h3>Directions to the UCF Main Campus:</h3>
 	
-	<div class="span-16">
+	<div class="span-16 routes">
 		<h4>From Orlando International Airport:</h4>
 		<p>Go east on 528 to 417 north. Take 417 North to University Blvd. Exit east onto University Blvd. Continue east on University Blvd. for approximately two miles and it will take you to the main entrance to the campus. Make a right turn at the first light, Gemini Blvd. Follow the signs to the Visitor’s Information Center.</p>
-	
+
 		<h4>From Orlando Sanford Airport:</h4>
 		<p>Take Lake Mary Blvd. to 417 South. Take 417 South to the University Blvd. exit. Exit east onto University Blvd. Continue east on University Blvd. for approximately two miles and it will take you to the main entrance to the campus. Make a right turn at the first light, Gemini Blvd. At the first stop sign you will see directions to the visitor’s information booth.</p>
 	
@@ -56,4 +57,6 @@
 		<p>Take I-4 east to 408 east toward Titusville. Take 408 to 417 North toward Sanford. Exit off of 417 at University Blvd.East. Continue going on University Blvd and it will take you to the main entrance of the campus. Make a right turn at the first light, Gemini Blvd. Follow the signs to the Visitor’s Information Center.</p>
 	</div>
 	<div class="clear"></div>
+
+</div>
 {% endblock %}
