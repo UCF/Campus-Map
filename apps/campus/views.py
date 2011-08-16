@@ -24,7 +24,7 @@ def home(request, **kwargs):
 		loc.pop('poly_coords')
 		kwargs['location'] = loc
 	
-	if format == 'json':
+	if request.is_json():
 		from campus.templatetags.weather import weather
 		campus = { 
 			"name"    : "UCF Campus Map",
@@ -33,6 +33,8 @@ def home(request, **kwargs):
 		
 		response = HttpResponse(json.dumps(campus))
 		response['Content-type'] = 'application/json'
+		response['Content-Disposition'] = 'attachment; filename=UCF-Campus-Map-Locations.json'
+		
 		return response
 	
 	if format == 'txt':
@@ -432,7 +434,7 @@ def backward_location(request):
 	if select is not None and select.startswith('b_') and len(select) > 2:
 		url = '?'.join([reverse('home'), urllib.urlencode({'show':select[2:]})])
 		return HttpResponsePermanentRedirect(url)
-	raise Http404()
+	return HttpResponsePermanentRedirect(reverse('home'))
 	
 def regional_campuses(request, campus=None):
 	from campus.models import RegionalCampus

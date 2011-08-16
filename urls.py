@@ -38,10 +38,10 @@ urlpatterns += patterns('',
 	(r'^tinymce/', include('tinymce.urls')),
 	
 	# search
-	url(r'^search/?$', 'views.search', name="search"),
+	url(r'^search/$', 'views.search', name="search"),
 	
 	# org individual page and org profile pages
-	url(r'^organizations/?$', 'views.organizations', name="organizations"),
+	url(r'^organizations/$', 'views.organizations', name="organizations"),
 	url(r'^organizations/(?P<id>\d+)/([^/]+/)?$', 'views.organization', name="org"),
 	
 	# admin
