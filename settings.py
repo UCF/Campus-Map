@@ -139,6 +139,9 @@ PHONEBOOK = "http://webcom.dev.smca.ucf.edu/people/service.php"
 # Organization search service URL
 ORGANIZATION_SEARCH_URL = 'http://webcom.dev.smca.ucf.edu/search/webroot/service.php'
 
+# Allows for debug to be false in dev
+SERVE_STATIC_FILES = False
+
 try:
 	from settings_local import *
 except ImportError:

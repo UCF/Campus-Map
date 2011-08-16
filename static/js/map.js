@@ -20,8 +20,8 @@ var Campus = {
 		points         : false,  // Yellow markers for each location
 		traffic        : false
 	},
-	error  : function(str) {
-		var close = $('<a class="error-close">close</a>');
+	error : function(str) {
+		var close = $('<a id="error-close">close</a>');
 		close.click(function(e){
 			e.preventDefault();
 			$('#error').hide().html('');
@@ -43,6 +43,13 @@ Campus.init = function(){
 	var spin = new Image(); spin.src = Campus.urls['static'] + 'style/img/spinner.gif';
 	var mark = new Image(); mark.src = Campus.urls['static'] + 'images/markers/gold-with-dot.png';
 	var shad = new Image(); shad.src = Campus.urls['static'] + 'images/markers/shadow.png';
+	
+	// check for errors
+	$('#error-close').click(function(e){
+		e.preventDefault();
+		console.log('what?');
+		$('#error').hide().html('');
+	});
 	
 	// register illustrated map and create map
 	Campus.maps[this.settings.map]();

@@ -1,6 +1,7 @@
-DEBUG          = True
-TEMPLATE_DEBUG = DEBUG
-TEMPLATE_STRING_IF_INVALID = 'halp!'
+DEBUG                      = False    # REMOVE THIS IN PRODUCTION
+SERVE_STATIC_FILES         = True     # REMOVE THIS IN PRODUCTION
+TEMPLATE_DEBUG             = DEBUG    # REMOVE THIS IN PRODUCTION
+TEMPLATE_STRING_IF_INVALID = 'halp!'  # REMOVE THIS IN PRODUCTION
 
 ADMINS         = (
 	#('Your Name', 'your_email@domain.com'),

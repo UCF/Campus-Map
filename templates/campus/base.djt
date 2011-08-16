@@ -8,7 +8,7 @@
 		
 		{% if error %}
 		<div id="error">
-			<p>{{error|safe}}</p>
+			<p>{{error|safe}} <a id="error-close">close</a></p>
 		</div>
 		{% else %}
 		<div id="error" style="display:none;"></div>

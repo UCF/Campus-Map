@@ -7,7 +7,7 @@ admin.autodiscover()
 
 urlpatterns = []
 
-if settings.DEBUG:
+if settings.DEBUG or settings.SERVE_STATIC_FILES:
 	urlpatterns = patterns('',
 		(r'^%s(?P<path>.*)$' % settings.MEDIA_URL[1:],
 			'django.views.static.serve',
