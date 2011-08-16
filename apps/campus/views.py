@@ -30,14 +30,11 @@ def home(request, **kwargs):
 			"name"    : "UCF Campus Map",
 			"weather" : weather(json_request=True) 
 		}
-		
 		response = HttpResponse(json.dumps(campus))
 		response['Content-type'] = 'application/json'
-		response['Content-Disposition'] = 'attachment; filename=UCF-Campus-Map-Locations.json'
-		
 		return response
 	
-	if format == 'txt':
+	if request.is_txt():
 		from campus.templatetags.weather import weather
 		text = u"UCF Campus Map - %s\n%s\n\n# Campus Address\n%s\n\n# Weather\n%s" % (
 				request.build_absolute_uri(reverse('home')),

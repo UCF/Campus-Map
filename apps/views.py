@@ -1,7 +1,7 @@
 from django.http      import HttpResponse, Http404
 from django.views.generic.simple import direct_to_template as render
 from django.template import TemplateDoesNotExist
-from django.core.urlresolvers import reverse, resolve
+from django.core.urlresolvers import reverse, resolve, Resolver404
 from django.core.cache import cache
 from django.db.models import Q
 import settings, urllib, json, re, logging
@@ -45,7 +45,10 @@ def api(request, url):
 	'''
 	API for detecting format without dirtying the urls file
 	'''
-	view, args, kwargs = resolve('/' + url)
+	try:
+		view, args, kwargs = resolve('/' + url)
+	except Resolver404:
+		view, args, kwargs = resolve('/' + url + '/')
 	kwargs['request'] = request
 	return view(*args, **kwargs)
 
@@ -53,17 +56,16 @@ def pages(request, page=None):
 	'''
 	static pages with API placeholders
 	'''
-	if format == 'json':
+	if request.is_json():
 		import json
 		response = HttpResponse(json.dumps('Not this page silly!'))
 		response['Content-type'] = 'application/json'
 		return response
 	
-	if format == 'txt':
+	if request.is_txt():
 		response = HttpResponse('Not this page silly!')
 		response['Content-type'] = 'text/plain; charset=utf-8'
 		return response
-	
 	try:
 		return render(request, "pages/%s.djt" % page, { 'page' : page })
 	except TemplateDoesNotExist:

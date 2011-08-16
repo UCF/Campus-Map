@@ -27,7 +27,7 @@ urlpatterns += patterns('',
 	('^address\.php', redirect_to, {'url': '/directions/'}),
 	
 	# Be careful. Because of the string replace, this is no longer a raw string
-	url('^(?P<url>.+)\.(%s)?' % '|'.join(settings.FORMATS), 'views.api'),
+	url('^(?P<url>.*)\.(%s)' % '|'.join(settings.FORMATS), 'views.api'),
 
 	(r'^', include('campus.urls')),
 	#url(r'^$', direct_to_template, {'template':'base.djt'}, name='home'),
