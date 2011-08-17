@@ -35,7 +35,7 @@ def create_groupable_locations():
 	''' ensure all campus locations are groupable '''
 	for ct in ContentType.objects.filter(app_label="campus"):
 		model = models.get_model("campus", ct.model)
-		if not issubclass(model, campus.models.CommonLocation):
+		if not issubclass(model, campus.models.MapObj):
 			continue
 		for loc in model.objects.all():
 			loc_type = ContentType.objects.get_for_model(loc)

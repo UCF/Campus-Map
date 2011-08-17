@@ -6,7 +6,8 @@ from django.core.urlresolvers import reverse
 from django.template.defaultfilters import slugify
 from django.db.models.signals import m2m_changed
 
-class CommonLocation(models.Model):
+class MapObj(models.Model):
+	id                = models.CharField(max_length=80, primary_key=True, help_text='<strong class="caution">Caution</strong>: changing may break external resources (used for links and images)')
 	name              = models.CharField(max_length=255)
 	image             = models.CharField(max_length=50,  blank=True, help_text='Don&rsquo;t forget to append a file extension')
 	description       = models.CharField(max_length=255, blank=True)
@@ -88,39 +89,37 @@ class CommonLocation(models.Model):
 			except ValueError:
 				raise ValidationError("Invalid Google Map Point (not json serializable)")
 		
-		super(CommonLocation, self).clean(*args, **kwargs)
+		super(MapObj, self).clean(*args, **kwargs)
 	
 	def __unicode__(self):
 		return u'%s' % (self.name)
 	
 	class Meta:
 		ordering = ("name",)
-		abstract = True
 
-class Location(CommonLocation):
+class Location(MapObj):
 	'''
-	I don't like this name.  There should never be a specific instance of "Location"
-	Throughout this project, the words "location" and "locations" should be abstract over every instance of CommonLocation
-	I want to change it to something else, suggestions?
+	I don't like this name.  Maybe "miscellaneous locations" or "greater ucf"
 	'''
-	slug              = models.SlugField(max_length=255, primary_key=True, help_text='<strong class="caution">Caution</strong>: changing may break external resources (used for links and images)')
+	pass
 
-class RegionalCampus(CommonLocation):
-	slug              = models.SlugField(max_length=255, primary_key=True, help_text='<strong class="caution">Caution</strong>: changing may break external resources (used for links and images)')
-	
+class RegionalCampus(MapObj):
 	def _img_tag(self):
 		import settings
-		image_url = settings.MEDIA_URL + 'images/regional-campuses/' + self.slug + '.jpg'
+		image_url = settings.MEDIA_URL + 'images/regional-campuses/' + self.id + '.jpg'
 		return '<img src="%s" alt="%s">' % (image_url, self.description)
 	img_tag = property(_img_tag)
 	
 	class Meta:
 		verbose_name_plural = "Regional Campuses"
 
-class Building(CommonLocation):
-	number            = models.CharField("Building Number", max_length=50, primary_key=True)
+class Building(MapObj):
 	abbreviation      = models.CharField(max_length=50, blank=True)
 	sketchup          = models.CharField(max_length=50, blank=True, help_text="E.g., http://sketchup.google.com/3dwarehouse/details?mid=<code>54b7f313bf315a3a85622796b26c9e66</code>&prevstart=0")
+	
+	def _number(self):
+		return self.id
+	number = property(_number)
 	
 	def _title(self):
 		if self.abbreviation:
@@ -166,9 +165,9 @@ class Building(CommonLocation):
 	
 	
 	class Meta:
-		ordering = ("name", "number")
+		ordering = ("name", "id")
 
-class ParkingLot(CommonLocation):
+class ParkingLot(MapObj):
 	permit_type = models.CharField(max_length=255, blank=True, null=True)
 	number      = models.CharField(max_length=50, blank=True, null=True)
 	
@@ -264,10 +263,10 @@ class Sidewalk(models.Model):
 		
 		super(Sidewalk, self).clean(*args, **kwargs)
 
-class BikeRack(CommonLocation):
+class BikeRack(MapObj):
 	pass
 
-class EmergencyPhone(CommonLocation):
+class EmergencyPhone(MapObj):
 	pass
 
 
@@ -308,9 +307,8 @@ class GroupedLocation(models.Model):
 	class Meta:
 		unique_together = (('object_pk', 'content_type'),)
 
-class Group(CommonLocation):
+class Group(MapObj):
 	locations = models.ManyToManyField(GroupedLocation, blank=True)
-	slug      = models.CharField(max_length=80, unique=True)
 	
 	@classmethod
 	def update_coordinates(cls, **kwargs):

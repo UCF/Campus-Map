@@ -1,6 +1,6 @@
 [
     {
-        "pk": 2, 
+        "pk": "apollo-community", 
         "model": "campus.group", 
         "fields": {
             "profile": "", 
@@ -23,8 +23,7 @@
                     "campus.building", 
                     "8"
                 ]
-            ], 
-            "slug": "apollo-community", 
+            ],
             "poly_coords": null, 
             "illustrated_point": null, 
             "googlemap_point": "[28.598162560122319, -81.200970453938709]", 
@@ -32,7 +31,7 @@
         }
     }, 
     {
-        "pk": 5, 
+        "pk": "7", 
         "model": "campus.group", 
         "fields": {
             "profile": "", 
@@ -72,7 +71,6 @@
                     "7b"
                 ]
             ], 
-            "slug": "7", 
             "poly_coords": null, 
             "illustrated_point": null, 
             "googlemap_point": "[28.598048116282854, -81.199845979718717]", 
@@ -80,7 +78,7 @@
         }
     }, 
     {
-        "pk": 6, 
+        "pk": "greek-park", 
         "model": "campus.group", 
         "fields": {
             "profile": "", 
@@ -132,7 +130,6 @@
                     "401"
                 ]
             ], 
-            "slug": "greek-park", 
             "poly_coords": null, 
             "illustrated_point": null, 
             "googlemap_point": "[28.605658694859155, -81.206043946586789]", 
@@ -140,7 +137,7 @@
         }
     }, 
     {
-        "pk": 4, 
+        "pk": "lake-claire",
         "model": "campus.group", 
         "fields": {
             "profile": "", 
@@ -212,7 +209,6 @@
                     "64"
                 ]
             ], 
-            "slug": "lake-claire", 
             "poly_coords": null, 
             "illustrated_point": null, 
             "googlemap_point": "[28.604306775791038, -81.203847649104347]", 
@@ -220,7 +216,7 @@
         }
     }, 
     {
-        "pk": 3, 
+        "pk": "libra-community", 
         "model": "campus.group", 
         "fields": {
             "profile": "", 
@@ -256,7 +252,6 @@
                     "84"
                 ]
             ], 
-            "slug": "libra-community", 
             "poly_coords": null, 
             "illustrated_point": null, 
             "googlemap_point": "[28.598459551738355, -81.198321604898439]", 
@@ -264,7 +259,7 @@
         }
     }, 
     {
-        "pk": 1, 
+        "pk": "residence-halls", 
         "model": "campus.group", 
         "fields": {
             "profile": "", 
@@ -416,7 +411,6 @@
                     "8"
                 ]
             ], 
-            "slug": "residence-halls", 
             "poly_coords": null, 
             "illustrated_point": null, 
             "googlemap_point": "[28.602258438411337, -81.198629923440819]", 
