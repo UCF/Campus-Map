@@ -28,7 +28,7 @@ class Command(BaseCommand):
 			transaction.rollback_unless_managed()
 			raise CommandError("Error: couldn't reset campus.  Full error: %s" % e)
 		transaction.commit_unless_managed()
-		
+
 		# load all the data from fixtures
 		path = os.path.join(os.path.dirname(campus.__file__), 'fixtures')
 		for f in os.listdir(path):
