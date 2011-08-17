@@ -1,6 +1,6 @@
 from django.core.management.base import BaseCommand
 import os, campus, json
-from apps.campus.models import Building, RegionalCampus, Location, Group
+from apps.campus.models import Building, RegionalCampus, Location, Group, GroupedLocation
 from campus.admin import create_groupable_locations
 
 class Command(BaseCommand):
@@ -47,8 +47,13 @@ class Command(BaseCommand):
 		txt = f.read()
 		f.close()
 		objects = json.loads(txt)
-		for o in objects:
+		for o in objects[:]:
 			o['fields']['id'] = o['pk']
+			locations = o['fields'].pop('locations')
 			new = Group.objects.create(**o['fields'])
 			print new.id
-		
+			for l in locations:
+				print "adding %s" % l, 
+				gl = GroupedLocation.objects.get_by_natural_key(l[0], l[1])
+				print gl
+				new.locations.add(gl)
