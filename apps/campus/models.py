@@ -60,7 +60,7 @@ class MapQuerySet(QuerySet):
 		# execute query over leaf instances of MapObj
 		# return queryset containing MapObj's
 		from django.db.models import Q
-		map_query = Q()
+		map_query = Q(pk="~~~ no results ~~~")
 		for m in self.campus_models:
 			try:
 				qs = m.objects.filter(*args, **kwargs)
@@ -70,11 +70,7 @@ class MapQuerySet(QuerySet):
 				continue
 		
 		# return a QuerySet of MapObj's
-		if str(map_query)==str(Q()):
-			# query hasn't been extended, no results
-			return QuerySet.none(self)
-		else:
-			return QuerySet.filter(self, map_query)
+		return QuerySet.filter(self, map_query)
 
 class MapManager(models.Manager):
 	def get_query_set(self):
@@ -91,20 +87,6 @@ class MapObj(models.Model):
 	googlemap_point   = models.CharField(max_length=255, null=True, blank=True, help_text='E.g., <code>[28.6017, -81.2005]</code>')
 	illustrated_point = models.CharField(max_length=255, null=True, blank=True)
 	poly_coords       = models.TextField(blank=True, null=True)
-	
-	def lets_get_nuts(self, query):
-		
-		map_obj_query = Q()
-		
-		try:
-			results = Building.objects.filter(query)
-			print "works"
-			print results
-			
-		except FieldError:
-			print "not good"
-			return MapObj.objects.none()
-		
 	
 	def _title(self):
 		if (self.name):
@@ -163,6 +145,17 @@ class MapObj(models.Model):
 			obj[key] = val.__str__()
 		
 		return obj
+	
+	def _link(self):
+		url = reverse('location', kwargs={'loc':self.id})
+		return '<a href="%s%s/" data-pk="%s">%s</a>' % (url, slugify(self.name), self.id, self.title)
+	link = property(_link)
+
+	def _profile_link(self):
+		url = reverse('location', kwargs={'loc':self.id})
+		return '%s%s/' % (url, slugify(self.title))
+	profile_link = property(_profile_link)
+	
 	
 	def clean(self, *args, **kwargs):
 		from django.core.exceptions import ValidationError
@@ -244,16 +237,6 @@ class Building(MapObj):
 		else:
 			return self.name
 	title = property(_title)
-	
-	def _link(self):
-		url = reverse('location', kwargs={'loc':self.number})
-		return '<a href="%s%s/" data-pk="%s">%s</a>' % (url, slugify(self.name), self.number, self.title)
-	link = property(_link)
-	
-	def _profile_link(self):
-		url = reverse('location', kwargs={'loc':self.number})
-		return '%s%s/' % (url, slugify(self.title))
-	profile_link = property(_profile_link)
 	
 	def clean(self, *args, **kwargs):
 		super(Building, self).clean(*args, **kwargs)

@@ -174,21 +174,14 @@ def location(request, loc, return_obj=False):
 	Will one day be a wrapper for all data models, searching over all locations
 	and organizations, maybe even people too
 	'''
-	from campus.models import Building, Location, Group
-	
+	from campus.models import MapObj
 	
 	location_orgs = []
 	try:
-		location = Building.objects.get(pk=loc)
+		location = MapObj.objects.get(pk=loc)
 		location_orgs = location._orgs(limit=-1)['results']
-	except Building.DoesNotExist:
-		try:
-			location = Location.objects.get(pk=loc)
-		except Location.DoesNotExist:
-			try:
-				location = Group.objects.get(slug=loc)
-			except:
-				raise Http404("Location ID <code>%s</code> could not be found" % (loc))
+	except MapObj.DoesNotExist:
+		raise Http404("Location ID <code>%s</code> could not be found" % (loc))
 	
 	location_type = location.__class__.__name__
 	html = location_html(location, request)
