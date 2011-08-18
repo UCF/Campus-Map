@@ -1,12 +1,88 @@
 from django.db import models
 from tinymce import models as tinymce_models
 from django.contrib.contenttypes.models import ContentType
+from django.db.models.query import QuerySet
 from django.contrib.contenttypes import generic
 from django.core.urlresolvers import reverse
 from django.template.defaultfilters import slugify
 from django.db.models.signals import m2m_changed
+from django.core.exceptions import FieldError
+
+
+class MapQuerySet(QuerySet):
+	'''
+	Model inheritance with content type and inheritance-aware manager
+	thanks: http://djangosnippets.org/snippets/1034/
+	'''
+	
+	campus_models = False
+	
+	def __getitem__(self, k):
+		result = super(MapQuerySet, self).__getitem__(k)
+		if isinstance(result, models.Model):
+			return result.as_leaf_class()
+		else:
+			return result
+	def __iter__(self):
+		for item in super(MapQuerySet, self).__iter__():
+			yield item.as_leaf_class()
+	
+	def get(self, *args, **kwargs):
+		# same as getitem, idk why getitem isn't called when this is used
+		result = QuerySet.get(self, *args, **kwargs)
+		if isinstance(result, models.Model):
+			return result.as_leaf_class()
+		else:
+			return result
+	
+	def filter(self, *args, **kwargs):
+		'''
+		allows to query over all MapObj's incliding child specfic fields.
+		The queryset returned has only MapObj's in it, yet when each one is
+		pulled, __getitem__ converts back to original object, creating a
+		pseudo heterogenous queryset
+		ex:
+			can now do
+				MapObj.objects.filter(abbreviation="MAP")
+				MapObj.objects.filter(permit_type="Greek Row")
+			yet these attributes are not apart of MapObj
+		'''
+		
+		# grab all the models that extend MapObj
+		if not MapQuerySet.campus_models:
+			import campus
+			MapQuerySet.campus_models = []
+			for ct in ContentType.objects.filter(app_label="campus"):
+				model = models.get_model("campus", ct.model)
+				if issubclass(model, campus.models.MapObj):
+					MapQuerySet.campus_models.append(model)
+		
+		# execute query over leaf instances of MapObj
+		# return queryset containing MapObj's
+		from django.db.models import Q
+		map_query = Q()
+		for m in self.campus_models:
+			try:
+				qs = m.objects.filter(*args, **kwargs)
+				for o in qs:
+					map_query = map_query | Q(id=o.mapobj_ptr_id)
+			except FieldError:
+				continue
+		
+		# return a QuerySet of MapObj's
+		if str(map_query)==str(Q()):
+			# query hasn't been extended, no results
+			return QuerySet.none(self)
+		else:
+			return QuerySet.filter(self, map_query)
+
+class MapManager(models.Manager):
+	def get_query_set(self):
+		return MapQuerySet(self.model)
 
 class MapObj(models.Model):
+	objects           = MapManager()
+	content_type      = models.ForeignKey(ContentType,editable=False,null=True)
 	id                = models.CharField(max_length=80, primary_key=True, help_text='<strong class="caution">Caution</strong>: changing may break external resources (used for links and images)')
 	name              = models.CharField(max_length=255)
 	image             = models.CharField(max_length=50,  blank=True, help_text='Don&rsquo;t forget to append a file extension')
@@ -16,6 +92,20 @@ class MapObj(models.Model):
 	illustrated_point = models.CharField(max_length=255, null=True, blank=True)
 	poly_coords       = models.TextField(blank=True, null=True)
 	
+	def lets_get_nuts(self, query):
+		
+		map_obj_query = Q()
+		
+		try:
+			results = Building.objects.filter(query)
+			print "works"
+			print results
+			
+		except FieldError:
+			print "not good"
+			return MapObj.objects.none()
+		
+	
 	def _title(self):
 		if (self.name):
 			return self.name
@@ -23,14 +113,33 @@ class MapObj(models.Model):
 			return self.__repr__()
 	title = property(_title)
 	
+	def _orgs(self, limit=4):
+		''' retruns a subset of orgs '''
+		from apps.views import get_orgs
+		building_orgs = []
+		count    = 0
+		overflow = False
+		for o in get_orgs()['results']:
+			if self.pk == o['bldg_id']:
+				building_orgs.append(o)
+				count += 1
+			if(limit > 0 and count >= limit):
+				overflow = True
+				break
+		return {
+			"results" : building_orgs,
+			"overflow": overflow
+		}
+	orgs = property(_orgs)
+	
 	def json(self):
 		"""Returns a json serializable object for this instance"""
 		import json
 		obj = dict(self.__dict__)
 		
-		for f in obj.items():
+		for key,val in obj.items():
 			
-			if f[0] == "_state":
+			if key == "_state":
 				# prevents object.save() function from being destroyed
 				# not sure how or why it does, but if object.json() is called
 				# first, object.save() will fail
@@ -38,24 +147,20 @@ class MapObj(models.Model):
 				continue
 			
 			# with the validator, hopefully this never causes an issue
-			if f[0] == "poly_coords":
+			if key == "poly_coords":
 				if obj["poly_coords"] != None:
 					obj["poly_coords"] = json.loads(str(obj["poly_coords"]))
 				continue
-			if f[0] == "illustrated_point" or f[0] == "googlemap_point":
-				if obj[f[0]] != None:
-					obj[f[0]] = json.loads(str(obj[f[0]]))
+			if key == "illustrated_point" or key == "googlemap_point":
+				if obj[key] != None:
+					obj[key] = json.loads(str(obj[key]))
 				continue
 			
-			if isinstance(f[1], unicode):
+			if isinstance(val, unicode):
 				continue
 			
 			# super dumb, concerning floats http://code.djangoproject.com/ticket/3324
-			obj[f[0]] = f[1].__str__()
-		
-		# add profile link
-		if hasattr(self, 'profile_link'):
-			obj['profile_link'] = str(self.profile_link)
+			obj[key] = val.__str__()
 		
 		return obj
 	
@@ -90,6 +195,18 @@ class MapObj(models.Model):
 				raise ValidationError("Invalid Google Map Point (not json serializable)")
 		
 		super(MapObj, self).clean(*args, **kwargs)
+	
+	def save(self, *args, **kwargs):
+		if(not self.content_type):
+			self.content_type = ContentType.objects.get_for_model(self.__class__)
+			super(MapObj, self).save(*args, **kwargs)
+
+	def as_leaf_class(self):
+		content_type = self.content_type
+		model = content_type.model_class()
+		if (model == MapObj):
+			return self
+		return model.objects.get(id=self.id)
 	
 	def __unicode__(self):
 		return u'%s' % (self.name)
@@ -144,25 +261,14 @@ class Building(MapObj):
 		# change all numbers to be lowercase
 		self.number = self.number.lower()
 	
-	def _orgs(self, limit=4):
-		''' retruns a subset of orgs '''
-		from apps.views import get_orgs
-		building_orgs = []
-		count    = 0
-		overflow = False
-		for o in get_orgs()['results']:
-			if self.pk == o['bldg_id']:
-				building_orgs.append(o)
-				count += 1
-			if(limit > 0 and count >= limit):
-				overflow = True
-				break
-		return {
-			"results" : building_orgs,
-			"overflow": overflow
-		}
-	orgs = property(_orgs)
-	
+	def json(self):
+		obj = MapObj.json(self)
+		obj['number'] = self.number
+		obj['profile_link'] = self.profile_link
+		obj['link'] = self.link
+		obj['title'] = self.title
+		obj['orgs'] = self.orgs
+		return obj
 	
 	class Meta:
 		ordering = ("name", "id")
