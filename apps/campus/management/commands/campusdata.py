@@ -1,12 +1,7 @@
-from django.core.management.base import AppCommand, BaseCommand, CommandError
-from django.core.management.commands import loaddata
-import os.path, re
-import campus
+import os.path, re, campus
+from django.core.management.base import BaseCommand
+from django.core.management import call_command
 from campus.admin import create_groupable_locations
-
-from django.core.management.color import no_style
-from django.core.management.sql import sql_reset
-from django.db import connections, transaction, DEFAULT_DB_ALIAS
 
 class Command(BaseCommand):
 	args = 'none'
@@ -14,20 +9,11 @@ class Command(BaseCommand):
 
 	def handle(self, *args, **options):
 		
-		# reset campus
-		using = options.get('database', DEFAULT_DB_ALIAS)
-		connection = connections[using]
-		self.style = no_style()
-		sql_list = sql_reset(campus.models, self.style, connection)
+		#syncdb,
+		call_command('syncdb', verbosity=0)
 		
-		try:
-			cursor = connection.cursor()
-			for sql in sql_list:
-				cursor.execute(sql)
-		except Exception, e:
-			transaction.rollback_unless_managed()
-			raise CommandError("Error: couldn't reset campus.  Full error: %s" % e)
-		transaction.commit_unless_managed()
+		# reset campus
+		call_command('reset', 'campus', interactive=False)
 
 		# load all the data from fixtures
 		path = os.path.join(os.path.dirname(campus.__file__), 'fixtures')
@@ -36,10 +22,12 @@ class Command(BaseCommand):
 			if m:
 				fixture = m.group('fixture')
 				if fixture == "groups":
-					# hold on groups
-					continue
-				loaddata.Command().execute(fixture)
+					continue # skip groups, must run last
+				call_command('loaddata', fixture)
 		
-		# process groups, must create Grouped Locations first
+		# Groups
+		#   for the m2m relation, create all GroupedLocation instances
+		#   had to wait until all locations and contenttypes initiated
 		create_groupable_locations()
-		loaddata.Command().execute("groups")
+		call_command('loaddata', 'groups')
+
