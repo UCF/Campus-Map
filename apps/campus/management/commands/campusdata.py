@@ -9,6 +9,8 @@ class Command(BaseCommand):
 
 	def handle(self, *args, **options):
 		
+		print "Crunching datas:"
+		
 		#syncdb,
 		call_command('syncdb', verbosity=0)
 		
@@ -23,11 +25,15 @@ class Command(BaseCommand):
 				fixture = m.group('fixture')
 				if fixture == "groups":
 					continue # skip groups, must run last
-				call_command('loaddata', fixture)
+				print "  Updating %s ..." % fixture
+				call_command('loaddata', fixture, verbosity=0)
 		
 		# Groups
 		#   for the m2m relation, create all GroupedLocation instances
 		#   had to wait until all locations and contenttypes initiated
+		print "  Updating content types..."
 		create_groupable_locations()
-		call_command('loaddata', 'groups')
-
+		print "  Updating groups ..."
+		call_command('loaddata', 'groups', verbosity=0)
+		
+		print "All done. The map nom'd all the data and is happy."
