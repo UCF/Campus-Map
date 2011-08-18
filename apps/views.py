@@ -211,7 +211,7 @@ def search(request):
 			groups = filter(lambda g : g.locations.count() > 0, groups)
 			
 			if groups:
-				group_locations = reduce(lambda a, b: a + b, map(
+				group_locations = reduce(lambda a, b: list(a) + list(b), map(
 					lambda g: g.locations.all(), groups
 				))
 				group_locations = map(lambda l: l.content_object, group_locations)
