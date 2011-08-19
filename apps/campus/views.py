@@ -247,7 +247,12 @@ def location(request, loc, return_obj=False):
 def parking(request):
 	
 	from campus.models import ParkingLot
-	lots = ParkingLot.objects.all()
+	lots = list(ParkingLot.objects.all())
+	
+	if request.is_json():
+		response = HttpResponse(json.dumps([l.json() for l in lots]))
+		response['Content-type'] = 'application/json'
+		return response
 	
 	if request.is_kml():
 		response = render_to_response('api/parking.kml', { 'parking':lots })
