@@ -48,9 +48,10 @@ class MapQuerySet(QuerySet):
 			yet these attributes are not apart of MapObj
 		'''
 		
+		import campus
+		
 		# grab all the models that extend MapObj
 		if not MapQuerySet.campus_models:
-			import campus
 			MapQuerySet.campus_models = []
 			for ct in ContentType.objects.filter(app_label="campus"):
 				model = models.get_model("campus", ct.model)
@@ -63,9 +64,14 @@ class MapQuerySet(QuerySet):
 		map_query = Q(pk="~~~ no results ~~~")
 		for m in self.campus_models:
 			try:
-				qs = m.objects.filter(*args, **kwargs)
-				for o in qs:
-					map_query = map_query | Q(id=o.mapobj_ptr_id)
+				qs = QuerySet(m)
+				results = qs.filter(*args, **kwargs)
+				if m == campus.models.MapObj:
+					for o in results:
+						map_query = map_query | Q(id=o.id)
+				else:
+					for o in results:
+						map_query = map_query | Q(id=o.mapobj_ptr_id)
 			except FieldError:
 				continue
 		

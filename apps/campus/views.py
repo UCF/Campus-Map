@@ -167,6 +167,7 @@ def locations(request):
 		'campuses'  : campuses,
 		'groups'    : groups
 	}
+	print "here?"
 	return render(request, 'campus/locations.djt', context)
 
 def location(request, loc, return_obj=False):
@@ -206,36 +207,33 @@ def location(request, loc, return_obj=False):
 	
 	if return_obj:
 		return location
-	elif location_type == "Building":
-		# show location profile	
-		import flickr
-		photos = flickr.get_photos()
-		tags = set()
-		if 'id' in location:
-			tags.add( 'map%s' % location['id'].lower() )
-		if 'abbreviation' in location:
-			tags.add( 'map%s' % location['abbreviation'].lower() )
-		if 'number' in location:
-			tags.add( 'map%s' % location['number'].lower() )
-		for p in list(photos):
-			ptags = set(p.tags.split(' ')).intersection(tags)
-			if(not bool(ptags)):
-				photos.remove(p)
-			else:
-				p.info = '<h2><a href="http://flickr.com/photos/universityofcentralflorida/%s/">%s</a></h2>' % (p.id, p.title)
-				if p.description.text:
-					p.info = "%s<p>%s</p>" % (p.info, p.description.text)
-		
-		context = { 
-			'location' : location,
-			'orgs'     : location_orgs,
-			'org'      : org,
-			'photos'   : photos,
-		}
-		return render(request, 'campus/location.djt', context)
-	else:
-		# show location on the map
-		return home(request, location=location)
+
+	# show location profile
+	import flickr
+	photos = flickr.get_photos()
+	tags = set()
+	if 'id' in location:
+		tags.add( 'map%s' % location['id'].lower() )
+	if 'abbreviation' in location:
+		tags.add( 'map%s' % location['abbreviation'].lower() )
+	if 'number' in location:
+		tags.add( 'map%s' % location['number'].lower() )
+	for p in list(photos):
+		ptags = set(p.tags.split(' ')).intersection(tags)
+		if(not bool(ptags)):
+			photos.remove(p)
+		else:
+			p.info = '<h2><a href="http://flickr.com/photos/universityofcentralflorida/%s/">%s</a></h2>' % (p.id, p.title)
+			if p.description.text:
+				p.info = "%s<p>%s</p>" % (p.info, p.description.text)
+	
+	context = { 
+		'location' : location,
+		'orgs'     : location_orgs,
+		'org'      : org,
+		'photos'   : photos,
+	}
+	return render(request, 'campus/location.djt', context)
 
 def parking(request):
 	
