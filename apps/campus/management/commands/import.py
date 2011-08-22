@@ -1,6 +1,6 @@
 from django.core.management.base import BaseCommand
 import os, campus, json
-from apps.campus.models import Building, RegionalCampus, ParkingLot, Location, Group, GroupedLocation
+from apps.campus.models import Building, RegionalCampus, ParkingLot, Location, Group, GroupedLocation, EmergencyPhone, BikeRack
 from campus.admin import create_groupable_locations
 
 class Command(BaseCommand):
@@ -49,8 +49,27 @@ class Command(BaseCommand):
 			o['fields']['id'] = "parkinglot-%s" % o['pk']
 			new = ParkingLot.objects.create(**o['fields'])
 			print new.id, new.name
-	
+
+		# emergency phones
+		f = open(os.path.join(path, 'phones.json'), 'r')
+		txt = f.read()
+		f.close()
+		objects = json.loads(txt)
+		for o in objects:
+			o['fields']['id'] = "phone-%s" % o['pk']
+			new = EmergencyPhone.objects.create(**o['fields'])
+			print new.id, new.name
 		
+		# bike racks
+		f = open(os.path.join(path, 'bikeracks.json'), 'r')
+		txt = f.read()
+		f.close()
+		objects = json.loads(txt)
+		for o in objects:
+			o['fields']['id'] = "bikerack-%s" % o['pk']
+			new = BikeRack.objects.create(**o['fields'])
+			print new.id, new.name
+	
 		create_groupable_locations()
 		
 		# Groups
