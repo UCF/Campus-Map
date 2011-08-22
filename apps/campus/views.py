@@ -190,6 +190,7 @@ def location(request, loc, return_obj=False):
 	location['info'] = html
 	base_url = request.build_absolute_uri(reverse('home'))[:-1]
 	location['marker'] = base_url + settings.MEDIA_URL + 'images/markers/yellow.png'
+	print location
 	
 	# API views
 	if request.is_json():

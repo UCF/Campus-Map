@@ -29,7 +29,7 @@
 		</div>
 		
 		{% if orgs %}
-			<h3>Organizations</h3>
+			<h3>Organizations:</h3>
 			<ul class="grey">
 			{% for o in orgs %}
 				<li>
@@ -57,6 +57,17 @@
 		
 		{% if location.illustrated_point %}
 		<div id="cwrap"><div id="canvas"></div></div>
+		{% endif %}
+		
+		{% if location.locations %}
+		<div id="group-locations">
+		 	<h3>Grouped in {{location.name}}:</h3>
+			<ul class="grey">
+				{% for l in location.locations %}
+				<li>{{l|safe}}</li>
+				{% endfor %}
+			</ul>
+		</div>
 		{% endif %}
 		
 		{% if photos %}

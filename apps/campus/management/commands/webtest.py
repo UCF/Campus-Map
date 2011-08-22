@@ -33,6 +33,7 @@ class Command(BaseCommand):
 			"sidewalks/.kml?v=17",
 			"bikeracks/.json",
 			"emergency-phones/.json",
+			"organizations/96/.ajax",
 		]
 		
 		for u in url_strings:

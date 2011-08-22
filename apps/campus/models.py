@@ -198,8 +198,8 @@ class MapObj(models.Model):
 	def save(self, *args, **kwargs):
 		if(not self.content_type):
 			self.content_type = ContentType.objects.get_for_model(self.__class__)
-			super(MapObj, self).save(*args, **kwargs)
-
+		super(MapObj, self).save(*args, **kwargs)
+	
 	def as_leaf_class(self):
 		content_type = self.content_type
 		model = content_type.model_class()
@@ -405,6 +405,15 @@ class GroupedLocation(models.Model):
 class Group(MapObj):
 	locations = models.ManyToManyField(GroupedLocation, blank=True)
 	
+	def json(self):
+		obj = super(Group, self).json()
+		locations = []
+		for l in self.locations.all():
+			locations.append(l.content_object.link)
+		if len(locations):
+			obj['locations'] = locations
+		return obj
+		
 	@classmethod
 	def update_coordinates(cls, **kwargs):
 		sender = kwargs['instance']
