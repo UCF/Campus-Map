@@ -47,7 +47,7 @@
 		{% if groups %}
 			<ul>
 			{% for g in groups %}
-				<li><a href="{% url group group_id=g.id %}{{g.name|slugify}}/">{{g}}</a></li>
+				<li><a href="{% url location loc=g.id %}">{{g}}</a></li>
 			{% endfor %}
 			</ul>
 		{% else %} 
@@ -58,7 +58,7 @@
 		{% if campuses %}
 			<ul>
 			{% for c in campuses %}
-				<li><a href="{% url regional %}{{c.slug}}/">{{c.name}}</a></li>
+				<li><a href="{% url regional %}{{c.id}}/">{{c.name}}</a></li>
 			{% endfor %}
 			</ul>
 		{% else %} 
