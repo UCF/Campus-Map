@@ -1,7 +1,8 @@
-import os.path, re, campus
+import os.path, re, json, campus
 from django.core.management.base import BaseCommand
 from django.core.management import call_command
 from campus.admin import create_groupable_locations
+from campus.models import Group
 
 class Command(BaseCommand):
 	args = 'none'
@@ -31,9 +32,27 @@ class Command(BaseCommand):
 		# Groups
 		#   for the m2m relation, create all GroupedLocation instances
 		#   had to wait until all locations and contenttypes initiated
+		print "  Updating groups...",
+		with open(os.path.join(path, 'groups.json'), 'r') as f: txt = f.read()
+		groups = json.loads(txt)
+		for g in groups[:]:
+			g['fields'].pop('locations')
+			new = Group.objects.create(**g['fields'])
+			print ".",
+		print
+		
 		print "  Updating content types..."
 		create_groupable_locations()
-		print "  Updating groups ..."
-		call_command('loaddata', 'groups', verbosity=0, interactive=False)
+		
+		print "  Updating m2m locations...",
+		for g in groups[:]:
+			locations = g['fields'].pop('locations')
+			for l in locations:
+				print "adding %s" % l, 
+				gl = GroupedLocation.objects.get_by_natural_key(l[0], l[1])
+				print gl
+				new.locations.add(gl)
+				print ".",
+		print
 		
 		print "All done. The map nom'd all the data and is happy."
