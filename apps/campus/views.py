@@ -2,6 +2,7 @@ from django.shortcuts import render_to_response, get_object_or_404
 from django.http      import HttpResponse, HttpResponseNotFound, Http404, HttpResponsePermanentRedirect
 from django.views.generic.simple import direct_to_template as render
 from django.core.urlresolvers import reverse
+from campus.models import MapObj
 
 import settings, json, re, urllib
 
@@ -49,15 +50,14 @@ def home(request, **kwargs):
 	
 	# points on the map (will have to be extended with more data added)
 	if kwargs.get('points', False):
-		from campus.models import Building
-		buildings = Building.objects.all()
+		mobs = MapObj.objects.all()
 		points = {}
-		for b in buildings:
-			b = b.json()
-			points[b['number']] = {
-				'name'   : b['name'],
-				'gpoint' : b['googlemap_point'],
-				'ipoint' : b['illustrated_point'],
+		for o in mobs:
+			o = o.json()
+			points[o['id']] = {
+				'name'   : o['name'],
+				'gpoint' : o['googlemap_point'],
+				'ipoint' : o['illustrated_point'],
 			}
 	else:
 		points = None
@@ -175,7 +175,6 @@ def location(request, loc, return_obj=False):
 	Will one day be a wrapper for all data models, searching over all locations
 	and organizations, maybe even people too
 	'''
-	from campus.models import MapObj
 	
 	location_orgs = []
 	try:
@@ -187,6 +186,7 @@ def location(request, loc, return_obj=False):
 	location_type = location.__class__.__name__
 	html = location_html(location, request)
 	location = location.json()
+	location['type'] = location_type
 	location['info'] = html
 	base_url = request.build_absolute_uri(reverse('home'))[:-1]
 	location['marker'] = base_url + settings.MEDIA_URL + 'images/markers/yellow.png'

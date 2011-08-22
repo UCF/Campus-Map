@@ -186,6 +186,7 @@ def search(request):
 	
 	locations = []
 	orgs      = []
+	phones    = []
 	
 	query_string = request.GET.get('q', '').strip()
 	

@@ -9,6 +9,7 @@
 		<div class="sub">
 			{% if location.number %}Location ID: <span>{{location.number}}</span>{% endif %}
 			{% if location.abbreviation %}Abbreviation: <span>{{location.abbreviation}}</span>{% endif %}
+			{% ifequal location.type 'Group' %}Group ID: <span>{{location.id}}</span>{% endifequal %}
 		</div>
 	</h2>
 	
