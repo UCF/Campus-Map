@@ -1,5 +1,10 @@
 {% extends "base.djt"%}
 
+{% block title %}
+ {{block.super}} | {{location.name}}
+{% endblock %}
+
+
 {% block wrap %}
 
 <div id="profile">
@@ -57,6 +62,7 @@
 		
 		{% if location.illustrated_point %}
 		<div id="cwrap"><div id="canvas"></div></div>
+		<div id="map-go"><a href="/?show={{location.id}}">show on map</a></div>
 		{% endif %}
 		
 		{% if location.locations %}
