@@ -167,7 +167,6 @@ def locations(request):
 		'campuses'  : campuses,
 		'groups'    : groups
 	}
-	print "here?"
 	return render(request, 'campus/locations.djt', context)
 
 def location(request, loc, return_obj=False):
@@ -190,7 +189,6 @@ def location(request, loc, return_obj=False):
 	location['info'] = html
 	base_url = request.build_absolute_uri(reverse('home'))[:-1]
 	location['marker'] = base_url + settings.MEDIA_URL + 'images/markers/yellow.png'
-	print location
 	
 	# API views
 	if request.is_json():
