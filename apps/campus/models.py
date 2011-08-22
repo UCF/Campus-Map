@@ -409,7 +409,7 @@ class Group(MapObj):
 	def update_coordinates(cls, **kwargs):
 		sender = kwargs['instance']
 		sender.googlemap_point   = sender.midpoint('googlemap_point')
-		sender.illustrated_point = sender.midpoint('illustration_point')
+		sender.illustrated_point = sender.midpoint('illustrated_point')
 		sender.save()
 	
 	def midpoint(self, coordinates_field):
