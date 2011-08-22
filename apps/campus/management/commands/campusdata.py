@@ -12,10 +12,10 @@ class Command(BaseCommand):
 		print "Crunching datas:"
 		
 		#syncdb,
-		call_command('syncdb', verbosity=0)
+		call_command('syncdb', verbosity=0, interactive=False)
 		
 		# reset campus
-		call_command('reset', 'campus', interactive=False)
+		call_command('reset', 'campus', verbosity=0, interactive=False)
 
 		# load all the data from fixtures
 		path = os.path.join(os.path.dirname(campus.__file__), 'fixtures')
@@ -26,7 +26,7 @@ class Command(BaseCommand):
 				if fixture == "groups":
 					continue # skip groups, must run last
 				print "  Updating %s ..." % fixture
-				call_command('loaddata', fixture, verbosity=0)
+				call_command('loaddata', fixture, verbosity=0, interactive=False)
 		
 		# Groups
 		#   for the m2m relation, create all GroupedLocation instances
@@ -34,6 +34,6 @@ class Command(BaseCommand):
 		print "  Updating content types..."
 		create_groupable_locations()
 		print "  Updating groups ..."
-		call_command('loaddata', 'groups', verbosity=0)
+		call_command('loaddata', 'groups', verbosity=0, interactive=False)
 		
 		print "All done. The map nom'd all the data and is happy."
