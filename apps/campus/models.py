@@ -316,7 +316,7 @@ class ParkingLot(MapObj):
 	color_line = property(_color_line)
 
 
-class HandicappedParking(CommonLocation):
+class HandicappedParking(MapObj):
 	class Meta:
 		verbose_name_plural = "Handicap Parking"
 
