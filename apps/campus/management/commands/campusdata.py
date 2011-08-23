@@ -2,7 +2,8 @@ import os.path, re, json, sys, campus
 from django.core.management.base import BaseCommand
 from django.core.management import call_command
 from campus.admin import create_groupable_locations
-from campus.models import Group, GroupedLocation
+from campus.models import Group, GroupedLocation, MapObj
+from django.db.models.query import QuerySet
 
 class Command(BaseCommand):
 	args = 'none'
@@ -32,16 +33,20 @@ class Command(BaseCommand):
 		# Groups
 		#   for the m2m relation, create all GroupedLocation instances
 		#   had to wait until all locations and contenttypes initiated
-		print "  Updating groups ...",
+		print "  Updating groups ..."
 		with open(os.path.join(path, 'groups.json'), 'r') as f: txt = f.read()
 		groups = json.loads(txt)
 		for g in groups[:]:
 			locations = g['fields'].pop('locations')
-			g['fields']['id'] = g['pk']
-			new = Group.objects.create(**g['fields'])
+			qs = QuerySet(MapObj)
+			mob = qs.get(id=g['pk']).json()
+			new = Group.objects.create(**mob)
+			'''
+			when / if groups get additional attributes, will have to extend importer here
+			for k,v in g['fields']:
+				setattr(new, k, v)
+			'''
 			g['fields']['locations'] = locations
-			
-		print
 		
 		sys.stdout.write("  Updating content types ")
 		create_groupable_locations(verbosity=1)
