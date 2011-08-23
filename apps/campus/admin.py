@@ -32,7 +32,10 @@ class LocationAdmin(admin.ModelAdmin):
 admin.site.register(Location, LocationAdmin)
 
 
-def create_groupable_locations():
+def create_groupable_locations(**kwargs):
+	import sys
+	verbosity = kwargs.get('verbosity', 0)
+	
 	''' ensure all campus locations are groupable '''
 	for ct in ContentType.objects.filter(app_label="campus"):
 		model = models.get_model("campus", ct.model)
@@ -44,6 +47,10 @@ def create_groupable_locations():
 			if not gl:
 				gl = GroupedLocation(content_type=loc_type, object_pk=loc.pk)
 				gl.save()
+		if verbosity > 0:
+			sys.stdout.write(".")
+			sys.stdout.flush()
+			
 	''' clean up any deleted locations '''
 	for gl in GroupedLocation.objects.all():
 		if not gl.content_object:
