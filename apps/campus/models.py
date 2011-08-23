@@ -317,9 +317,8 @@ class ParkingLot(MapObj):
 
 
 class HandicappedParking(MapObj):
-	
 	def save(self, **kwargs):
-		self.id = 'hp-' + slugify(self.name)
+		self.id = 'hp-' + slugify(self.label)
 		super(HandicappedParking, self).save(**kwargs)
 	
 	class Meta:

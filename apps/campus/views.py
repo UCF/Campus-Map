@@ -50,7 +50,11 @@ def home(request, **kwargs):
 	
 	# points on the map (will have to be extended with more data added)
 	if kwargs.get('points', False):
-		mobs = MapObj.objects.all()
+		from django.contrib.contenttypes.models import ContentType
+		from models import Building, Location, Group
+		# Filter home page locations to building, locations, and groups
+		show   = map(lambda c: ContentType.objects.get_for_model(c), (Building, Location, Group,))
+		mobs   = MapObj.objects.filter(content_type__in=map(lambda c: c.id, show))
 		points = {}
 		for o in mobs:
 			o = o.json()
