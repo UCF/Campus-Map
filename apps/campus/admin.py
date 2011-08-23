@@ -34,7 +34,7 @@ admin.site.register(Location, LocationAdmin)
 
 class HandicappedParkingAdmin(admin.ModelAdmin):
 	list_display         = ('name',)
-	fields               = ('name', 'googlemap_point',)
+	fields               = ('name', 'googlemap_point')
 	actions              = None
 	change_form_template = 'admin/maps_point_selector.djt'
 admin.site.register(HandicappedParking, HandicappedParkingAdmin)

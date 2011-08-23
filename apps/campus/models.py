@@ -317,6 +317,11 @@ class ParkingLot(MapObj):
 
 
 class HandicappedParking(MapObj):
+	
+	def save(self, **kwargs):
+		self.id = 'hp-' + slugify(self.name)
+		super(HandicappedParking, self).save(**kwargs)
+	
 	class Meta:
 		verbose_name_plural = "Handicap Parking"
 
