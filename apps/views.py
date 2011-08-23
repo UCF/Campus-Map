@@ -198,19 +198,13 @@ def search(request):
 			orgs = org_response['results']
 		
 		# populate locations by name, abbreviation, and orgs
-		q = get_query(query_string, ['name',])
-		results = list(MapObj.objects.filter(q))
-		locations.extend(results)
-		
-		q = get_query(query_string, ['abbreviation',])
-		results = list(MapObj.objects.filter(q))
-		locations.extend(results)
-		
-		q = Q(pk = "~~~ no results ~~~")
+		q1 = get_query(query_string, ['name',])
+		q2 = get_query(query_string, ['abbreviation',])
+		q3 = Q(pk = "~~~ no results ~~~")
 		for org in orgs:
-			q = q | Q(pk = org['bldg_id'])
-		results = MapObj.objects.filter(q)
-		locations.extend(results)
+			q3 = q3 | Q(pk = org['bldg_id'])
+		results = MapObj.objects.filter(q1|q2|q3)
+		locations = list(results)
 		
 		# Phonebook Search
 		phones_response = phonebook_search(query_string)
@@ -242,15 +236,12 @@ def search(request):
 		response = HttpResponse(json.dumps(search))
 		response['Content-type'] = 'application/json'
 		return response
+	
 	else:
 		# Do some sorting here to ease the pain in the template
 		_locations = []
 		
 		for loc in found_entries['locations']:
-			print loc
-			print "wat?"
-			print loc.name
-			
 			query_match = loc.name.lower().find(query_string.lower())
 			for org in found_entries['organizations']:
 				if org['bldg_id'] == loc.pk and query_match != -1:
