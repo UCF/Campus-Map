@@ -88,6 +88,7 @@ def home(request, **kwargs):
 		'buildings_kml' : buildings_kml,
 		'sidewalks_kml' : sidewalks_kml,
 		'parking_kml'   : parking_kml,
+		'parking_json'  : reverse('parking') + '.json',
 		'loc_url'       : loc,
 		'base_url'      : request.build_absolute_uri(reverse('home'))[:-1],
 		'error'         : error,
@@ -245,12 +246,18 @@ def location(request, loc, return_obj=False):
 		return home(request, location=location)
 
 def parking(request):
-	
-	from campus.models import ParkingLot
-	lots = list(ParkingLot.objects.all())
+	from campus.models import ParkingLot, HandicappedParking
+	lots     = list(ParkingLot.objects.all())
+	handicap = list(HandicappedParking.objects.all())
 	
 	if request.is_json():
-		response = HttpResponse(json.dumps([l.json() for l in lots]))
+		lots     = [l.json() for l in lots]
+		handicap = [h.json() for h in handicap]
+		
+		response = HttpResponse(json.dumps({
+			'lots'     : lots,
+			'handicap' : handicap,
+		}))
 		response['Content-type'] = 'application/json'
 		return response
 	

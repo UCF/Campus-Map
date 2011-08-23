@@ -222,8 +222,13 @@ class ParkingLot(CommonLocation):
 	color_line = property(_color_line)
 
 
+class HandicappedParking(CommonLocation):
+	class Meta:
+		verbose_name_plural = "Handicap Parking"
+
+
 class Sidewalk(models.Model):
-	poly_coords       = models.TextField(blank=True, null=True)
+	poly_coords = models.TextField(blank=True, null=True)
 	
 	def _kml_coords(self):
 		if self.poly_coords == None:

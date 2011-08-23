@@ -22,6 +22,7 @@ class RegionalAdmin(admin.ModelAdmin):
 	change_form_template = 'admin/maps_point_selector.djt';
 admin.site.register(RegionalCampus, RegionalAdmin)
 
+
 class LocationAdmin(admin.ModelAdmin):
 	list_display = ('name', 'slug')
 	prepopulated_fields = {'slug': ('name',)}
@@ -29,6 +30,14 @@ class LocationAdmin(admin.ModelAdmin):
 	actions = None
 	change_form_template = 'admin/maps_point_selector.djt';
 admin.site.register(Location, LocationAdmin)
+
+
+class HandicappedParkingAdmin(admin.ModelAdmin):
+	list_display         = ('name',)
+	fields               = ('name', 'googlemap_point',)
+	actions              = None
+	change_form_template = 'admin/maps_point_selector.djt'
+admin.site.register(HandicappedParking, HandicappedParkingAdmin)
 
 
 def create_groupable_locations():
