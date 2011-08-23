@@ -182,42 +182,43 @@ def search(request):
 	'''
 	one day will search over all data available
 	'''
-	from campus.models import Building
+	from campus.models import MapObj
 	
-	orgs, bldgs, phones, group_locations = ([],[],[],[])
+	locations = []
+	orgs      = []
+	phones    = []
 	
 	query_string = request.GET.get('q', '').strip()
 	
 	if bool(query_string):
+		
 		# Organization Search
 		org_response = organization_search(query_string)
 		if org_response is not None:
 			orgs = org_response['results']
 		
-		# Building Search
-		entry_query = get_query(query_string, ['name', 'abbreviation',])
-		## Make sure any found organization's buildings are in the building list
-		for org in orgs: entry_query = entry_query | Q(pk = org['bldg_id'])
-		bldgs = Building.objects.filter(entry_query).order_by('name')
+		# populate locations by name, abbreviation, and orgs
+		q = get_query(query_string, ['name',])
+		results = list(MapObj.objects.filter(q))
+		locations.extend(results)
+		
+		q = get_query(query_string, ['abbreviation',])
+		results = list(MapObj.objects.filter(q))
+		locations.extend(results)
+		
+		q = Q(pk = "~~~ no results ~~~")
+		for org in orgs:
+			q = q | Q(pk = org['bldg_id'])
+		results = MapObj.objects.filter(q)
+		locations.extend(results)
 		
 		# Phonebook Search
 		phones_response = phonebook_search(query_string)
 		if phones_response is not None:
 			phones = phones_response['results']
-			
-		# Group search
-		groups = group_search(query_string)
-		if groups is not None:
-			groups = filter(lambda g : g.locations.count() > 0, groups)
-			
-			if groups:
-				group_locations = reduce(lambda a, b: list(a) + list(b), map(
-					lambda g: g.locations.all(), groups
-				))
-				group_locations = map(lambda l: l.content_object, group_locations)
 	
 	found_entries = {
-		'locations'     : group_locations + list(bldgs),
+		'locations'     : list(locations),
 		'phonebook'     : phones,
 		'organizations' : orgs,
 	}
@@ -246,6 +247,10 @@ def search(request):
 		_locations = []
 		
 		for loc in found_entries['locations']:
+			print loc
+			print "wat?"
+			print loc.name
+			
 			query_match = loc.name.lower().find(query_string.lower())
 			for org in found_entries['organizations']:
 				if org['bldg_id'] == loc.pk and query_match != -1:

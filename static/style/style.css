@@ -102,7 +102,7 @@ footer dd { padding:8px 0 0 8px; margin:0; }
 #locations h2 a { color:#FF7700; text-decoration:none; border-bottom:1px dotted #FFAF6B; }
 #locations h2 a:hover { color:#F30; border-bottom:1px solid #FF6748; }
 #profile ul li { padding-bottom:10px; }
-#profile ul.grey { color:#A0A0A0; }
+#profile ul.grey { color:#A0A0A0; padding-bottom:6px; }
 #profile ul.grey li { padding:0 10px 4px 0; }
 #profile ul.grey li a { border-bottom:1px dotted #A0A0A0; }
 #profile ul.grey li a:hover { border-bottom:1px dotted #C30202; }
@@ -110,7 +110,7 @@ footer dd { padding:8px 0 0 8px; margin:0; }
 #profile h2 { font-size:28px; text-transform:uppercase; padding-bottom:10px; }
 #profile h2 .sub { padding-top:4px; font-weight:10px; color:#919191; font-size:16px; line-height:18px; text-transform:capitalize; letter-spacing:0; }
 #profile h2 .sub span { color:#21759B; font-family:monospace; margin-right:10px; }
-#profile h3 { margin-top:0; }
+#profile h3 { margin:5px 0 0; }
 #profile-image { padding-bottom:15px; }
 #profile-copy { padding:0 15px 15px 0; }
 #cwrap  { background:url('img/spinner.gif') no-repeat center white; padding:5px; position:relative; height:300px; width:100%; -webkit-box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 6px; -moz-box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 6px; -moz-border-radius: 5px; -webkit-border-radius: 5x; border-radius:5px;  }
@@ -136,6 +136,11 @@ footer dd { padding:8px 0 0 8px; margin:0; }
 #jquery-lightbox h2 a { text-decoration:none; }
 #jquery-lightbox p { font-weight:normal; font-size:13px; }
 #lightbox-image-details { padding-bottom:5px; }
+#map-go { text-align:right; padding:5px 0; font-size:14px; padding-right:22px; background:url('img/map_go.png') no-repeat right 8px; }
+#map-go a { border-bottom: 1px dotted #A0A0A0; text-decoration:none; }
+#map-go a:hover { border-bottom: 1px solid #C30202; }
+
+#group-locations { padding:25px 5px 0; }
 .orgs { margin-top:0; }
 .orgs li { padding:2px 0; }
 .orgs li a { border-bottom-width:0; }

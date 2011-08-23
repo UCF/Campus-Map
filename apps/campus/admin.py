@@ -5,28 +5,28 @@ import campus
 import inspect
 
 class BuildingAdmin(admin.ModelAdmin):
-	list_display = ('name', 'number', 'abbreviation')
-	search_fields = ['name', 'number', 'abbreviation']
-	prepopulated_fields = {'image':('name',)}
-	fields = ('name', 'number', 'abbreviation', 'image', 'description', 'profile', 'sketchup', 'googlemap_point', 'illustrated_point', 'poly_coords')
+	list_display = ('name', 'id', 'abbreviation')
+	search_fields = ['name', 'id', 'abbreviation']
+	prepopulated_fields = {'id':('name',)}
+	fields = ('name', 'id', 'abbreviation', 'image', 'description', 'profile', 'sketchup', 'googlemap_point', 'illustrated_point', 'poly_coords')
 	actions = None
 	change_form_template = 'admin/maps_point_selector.djt';
 admin.site.register(Building, BuildingAdmin)
 
 
 class RegionalAdmin(admin.ModelAdmin):
-	list_display = ('name', 'slug')
-	prepopulated_fields = {'slug': ('name',)}
-	fields = ('name', 'slug', 'description', 'profile', 'googlemap_point')
+	list_display = ('name', 'id')
+	prepopulated_fields = {'id': ('name',)}
+	fields = ('name', 'id', 'description', 'profile', 'googlemap_point')
 	actions = None
 	change_form_template = 'admin/maps_point_selector.djt';
 admin.site.register(RegionalCampus, RegionalAdmin)
 
 
 class LocationAdmin(admin.ModelAdmin):
-	list_display = ('name', 'slug')
-	prepopulated_fields = {'slug': ('name',)}
-	fields = ('name', 'slug', 'description', 'googlemap_point')
+	list_display = ('name', 'id')
+	prepopulated_fields = {'id': ('name',)}
+	fields = ('name', 'id', 'description', 'googlemap_point')
 	actions = None
 	change_form_template = 'admin/maps_point_selector.djt';
 admin.site.register(Location, LocationAdmin)
@@ -44,7 +44,7 @@ def create_groupable_locations():
 	''' ensure all campus locations are groupable '''
 	for ct in ContentType.objects.filter(app_label="campus"):
 		model = models.get_model("campus", ct.model)
-		if not issubclass(model, campus.models.CommonLocation):
+		if not issubclass(model, campus.models.MapObj):
 			continue
 		for loc in model.objects.all():
 			loc_type = ContentType.objects.get_for_model(loc)
@@ -60,8 +60,9 @@ def create_groupable_locations():
 class GroupAdmin(admin.ModelAdmin):
 	search_fields = ('name',)
 	#exclude = ('googlemap_point', 'illustrated_point',)
-	prepopulated_fields = {'slug' : ('name',)}
+	prepopulated_fields = {'id' : ('name',)}
 	ordering = ('name',)
+	fields = ('name', 'id', 'locations', 'image', 'description', 'profile', 'googlemap_point', 'illustrated_point', 'poly_coords')
 	filter_horizontal = ('locations',)
 	actions = None
 	
