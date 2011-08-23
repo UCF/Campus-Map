@@ -637,18 +637,75 @@ Campus.layers = {
 	
 	/* Display parking lots (much like sidewalks) */
 	parking : {
+		markers: [],
+		data   : null,
 		loaded : false,
 		layer  : { setMap:function(){} },
 		load   : function(){
+			var _this = this;
+			
+			// Corner case, first run, load assets and store
 			if(!this.loaded){
 				this.layer = new google.maps.KmlLayer(Campus.urls.parking_kml, { preserveViewport : true });
-				this.loaded = true;
+				
+				// pull down with ajax
+				Campus.ajax = $.ajax({
+					url: Campus.urls.parking_json,
+					dataType: 'json',
+					success: function(data){
+						_this.data   = data;
+						_this.loaded = true;
+						_this.load();
+					}
+				});
+				return;
 			}
-			this.layer.setMap(Campus.map);
+			
+			// Catch first run when markers haven't been generated
+			if(this.markers.length < 1){
+				// custom icon
+				var icon   = new google.maps.MarkerImage(Campus.urls['static'] + '/images/markers/disabled.png', new google.maps.Size(32, 32), new google.maps.Point(0, 0));
+				var shadow = new google.maps.MarkerImage(Campus.urls['static'] + '/images/markers/disabled.png', new google.maps.Size(32, 32), new google.maps.Point(0, 0), new google.maps.Point(0, 32));
+				
+				// create and place markers
+				for(var spot in this.data.handicap){
+					if(this.data.handicap.hasOwnProperty(spot)){
+						spot       = this.data.handicap[spot];
+						var point  = spot.googlemap_point;
+						var latlng = new google.maps.LatLng(
+							spot.googlemap_point[0],
+							spot.googlemap_point[1]
+						);
+						this.markers.push(
+							new google.maps.Marker({
+								icon:icon,
+								clickable: false,
+								position: latlng, 
+								map: Campus.map
+							})
+						);
+					}
+				}
+			}
+			
+			// Common case, display assets on map
+			this.layer.setMap(Campus.map); // Set parking lot kml layer
+			
+			// Set markers to visible
+			for(var i = 0; i < this.markers.length; i++){
+				var marker = this.markers[i];
+				if(marker.setVisible){ marker.setVisible(true);}
+			}
+			return;
 		},
 		unload : function() {
 			if(!this.loaded){ return; }
 			this.layer.setMap(null);
+			
+			for(var i = 0; i < this.markers.length; i++){
+				var marker = this.markers[i];
+				if(marker.setVisible){ marker.setVisible(false); }
+			}
 		},
 		update : function(){
 			var on = Campus.settings.parking;

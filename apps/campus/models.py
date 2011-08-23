@@ -316,8 +316,17 @@ class ParkingLot(MapObj):
 	color_line = property(_color_line)
 
 
+class HandicappedParking(MapObj):
+	def save(self, **kwargs):
+		self.id = 'hp-' + slugify(self.label)
+		super(HandicappedParking, self).save(**kwargs)
+	
+	class Meta:
+		verbose_name_plural = "Handicap Parking"
+
+
 class Sidewalk(models.Model):
-	poly_coords       = models.TextField(blank=True, null=True)
+	poly_coords = models.TextField(blank=True, null=True)
 	
 	def _kml_coords(self):
 		if self.poly_coords == None:

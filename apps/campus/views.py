@@ -50,7 +50,11 @@ def home(request, **kwargs):
 	
 	# points on the map (will have to be extended with more data added)
 	if kwargs.get('points', False):
-		mobs = MapObj.objects.all()
+		from django.contrib.contenttypes.models import ContentType
+		from models import Building, Location, Group
+		# Filter home page locations to building, locations, and groups
+		show   = map(lambda c: ContentType.objects.get_for_model(c), (Building, Location, Group,))
+		mobs   = MapObj.objects.filter(content_type__in=map(lambda c: c.id, show))
 		points = {}
 		for o in mobs:
 			o = o.json()
@@ -88,6 +92,7 @@ def home(request, **kwargs):
 		'buildings_kml' : buildings_kml,
 		'sidewalks_kml' : sidewalks_kml,
 		'parking_kml'   : parking_kml,
+		'parking_json'  : reverse('parking') + '.json',
 		'loc_url'       : loc,
 		'base_url'      : request.build_absolute_uri(reverse('home'))[:-1],
 		'error'         : error,
@@ -235,9 +240,20 @@ def location(request, loc, return_obj=False):
 	return render(request, 'campus/location.djt', context)
 
 def parking(request):
+	from campus.models import ParkingLot, HandicappedParking
+	lots     = list(ParkingLot.objects.all())
+	handicap = list(HandicappedParking.objects.all())
 	
-	from campus.models import ParkingLot
-	lots = ParkingLot.objects.all()
+	if request.is_json():
+		lots     = [l.json() for l in lots]
+		handicap = [h.json() for h in handicap]
+		
+		response = HttpResponse(json.dumps({
+			'lots'     : lots,
+			'handicap' : handicap,
+		}))
+		response['Content-type'] = 'application/json'
+		return response
 	
 	if request.is_kml():
 		response = render_to_response('api/parking.kml', { 'parking':lots })

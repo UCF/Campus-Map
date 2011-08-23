@@ -32,6 +32,14 @@ class LocationAdmin(admin.ModelAdmin):
 admin.site.register(Location, LocationAdmin)
 
 
+class HandicappedParkingAdmin(admin.ModelAdmin):
+	list_display         = ('name',)
+	fields               = ('name', 'googlemap_point')
+	actions              = None
+	change_form_template = 'admin/maps_point_selector.djt'
+admin.site.register(HandicappedParking, HandicappedParkingAdmin)
+
+
 def create_groupable_locations(**kwargs):
 	import sys
 	verbosity = kwargs.get('verbosity', 0)
