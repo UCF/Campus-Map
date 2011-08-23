@@ -3,9 +3,6 @@
         "pk": "apollo-community", 
         "model": "campus.group", 
         "fields": {
-            "profile": "", 
-            "name": "Apollo Community", 
-            "image": "", 
             "locations": [
                 [
                     "campus.building", 
@@ -23,20 +20,13 @@
                     "campus.building", 
                     "8"
                 ]
-            ],
-            "poly_coords": null, 
-            "illustrated_point": null, 
-            "googlemap_point": "[28.598162560122319, -81.200970453938709]", 
-            "description": ""
+            ]
         }
     }, 
     {
         "pk": "7", 
         "model": "campus.group", 
         "fields": {
-            "profile": "", 
-            "name": "Ferrell Commons", 
-            "image": "b7f.jpg", 
             "locations": [
                 [
                     "campus.building", 
@@ -70,20 +60,13 @@
                     "campus.building", 
                     "7b"
                 ]
-            ], 
-            "poly_coords": null, 
-            "illustrated_point": null, 
-            "googlemap_point": "[28.598048116282854, -81.199845979718717]", 
-            "description": ""
+            ]
         }
     }, 
     {
         "pk": "greek-park", 
         "model": "campus.group", 
         "fields": {
-            "profile": "", 
-            "name": "Greek Park", 
-            "image": "", 
             "locations": [
                 [
                     "campus.building", 
@@ -129,20 +112,13 @@
                     "campus.building", 
                     "401"
                 ]
-            ], 
-            "poly_coords": null, 
-            "illustrated_point": null, 
-            "googlemap_point": "[28.605658694859155, -81.206043946586789]", 
-            "description": ""
+            ]
         }
     }, 
     {
-        "pk": "lake-claire",
+        "pk": "lake-claire", 
         "model": "campus.group", 
         "fields": {
-            "profile": "", 
-            "name": "Lake Claire Apartments", 
-            "image": "", 
             "locations": [
                 [
                     "campus.building", 
@@ -208,20 +184,13 @@
                     "campus.building", 
                     "64"
                 ]
-            ], 
-            "poly_coords": null, 
-            "illustrated_point": null, 
-            "googlemap_point": "[28.604306775791038, -81.203847649104347]", 
-            "description": ""
+            ]
         }
     }, 
     {
         "pk": "libra-community", 
         "model": "campus.group", 
         "fields": {
-            "profile": "", 
-            "name": "Libra Community", 
-            "image": "", 
             "locations": [
                 [
                     "campus.building", 
@@ -251,20 +220,13 @@
                     "campus.building", 
                     "84"
                 ]
-            ], 
-            "poly_coords": null, 
-            "illustrated_point": null, 
-            "googlemap_point": "[28.598459551738355, -81.198321604898439]", 
-            "description": ""
+            ]
         }
     }, 
     {
         "pk": "residence-halls", 
         "model": "campus.group", 
         "fields": {
-            "profile": "", 
-            "name": "Residence Halls", 
-            "image": "", 
             "locations": [
                 [
                     "campus.building", 
@@ -410,11 +372,7 @@
                     "campus.building", 
                     "8"
                 ]
-            ], 
-            "poly_coords": null, 
-            "illustrated_point": null, 
-            "googlemap_point": "[28.602258438411337, -81.198629923440819]", 
-            "description": ""
+            ]
         }
     }
 ]

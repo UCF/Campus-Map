@@ -2,53 +2,21 @@
     {
         "pk": "college-of-medicine", 
         "model": "campus.location", 
-        "fields": {
-            "profile": null, 
-            "name": "College of Medicine", 
-            "image": "", 
-            "poly_coords": null, 
-            "illustrated_point": null, 
-            "googlemap_point": "[28.370003, -81.275876]", 
-            "description": ""
-        }
+        "fields": {}
     }, 
     {
         "pk": "downtown", 
         "model": "campus.location", 
-        "fields": {
-            "profile": null, 
-            "name": "Downtown", 
-            "image": "", 
-            "poly_coords": null, 
-            "illustrated_point": null, 
-            "googlemap_point": "[28.541141, -81.379800]", 
-            "description": ""
-        }
+        "fields": {}
     }, 
     {
         "pk": "main-campus", 
         "model": "campus.location", 
-        "fields": {
-            "profile": null, 
-            "name": "Main Campus", 
-            "image": "", 
-            "poly_coords": null, 
-            "illustrated_point": null, 
-            "googlemap_point": null, 
-            "description": ""
-        }
+        "fields": {}
     }, 
     {
         "pk": "rosen-college", 
         "model": "campus.location", 
-        "fields": {
-            "profile": null, 
-            "name": "Rosen College of Hospitality Management", 
-            "image": "", 
-            "poly_coords": null, 
-            "illustrated_point": null, 
-            "googlemap_point": "[28.432559, -81.443424]", 
-            "description": ""
-        }
+        "fields": {}
     }
 ]

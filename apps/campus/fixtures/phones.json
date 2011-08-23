@@ -1,496 +1,192 @@
 [
     {
-        "pk": 1, 
+        "pk": "phone-1", 
         "model": "campus.emergencyphone", 
-        "fields": {
-            "profile": null, 
-            "name": "", 
-            "image": "", 
-            "poly_coords": null, 
-            "illustrated_point": null, 
-            "googlemap_point": "[28.592718, -81.199417]", 
-            "description": ""
-        }
+        "fields": {}
     }, 
     {
-        "pk": 2, 
+        "pk": "phone-2", 
         "model": "campus.emergencyphone", 
-        "fields": {
-            "profile": null, 
-            "name": "", 
-            "image": "", 
-            "poly_coords": null, 
-            "illustrated_point": null, 
-            "googlemap_point": "[28.593450, -81.200239]", 
-            "description": ""
-        }
+        "fields": {}
     }, 
     {
-        "pk": 3, 
+        "pk": "phone-3", 
         "model": "campus.emergencyphone", 
-        "fields": {
-            "profile": null, 
-            "name": "", 
-            "image": "", 
-            "poly_coords": null, 
-            "illustrated_point": null, 
-            "googlemap_point": "[28.592550, -81.201373]", 
-            "description": ""
-        }
+        "fields": {}
     }, 
     {
-        "pk": 4, 
+        "pk": "phone-4", 
         "model": "campus.emergencyphone", 
-        "fields": {
-            "profile": null, 
-            "name": "", 
-            "image": "", 
-            "poly_coords": null, 
-            "illustrated_point": null, 
-            "googlemap_point": "[28.591919, -81.202086]", 
-            "description": ""
-        }
+        "fields": {}
     }, 
     {
-        "pk": 5, 
+        "pk": "phone-5", 
         "model": "campus.emergencyphone", 
-        "fields": {
-            "profile": null, 
-            "name": "", 
-            "image": "", 
-            "poly_coords": null, 
-            "illustrated_point": null, 
-            "googlemap_point": "[28.594599, -81.201793]", 
-            "description": ""
-        }
+        "fields": {}
     }, 
     {
-        "pk": 6, 
+        "pk": "phone-6", 
         "model": "campus.emergencyphone", 
-        "fields": {
-            "profile": null, 
-            "name": "", 
-            "image": "", 
-            "poly_coords": null, 
-            "illustrated_point": null, 
-            "googlemap_point": "[28.595196, -81.203140]", 
-            "description": ""
-        }
+        "fields": {}
     }, 
     {
-        "pk": 7, 
+        "pk": "phone-7", 
         "model": "campus.emergencyphone", 
-        "fields": {
-            "profile": null, 
-            "name": "", 
-            "image": "", 
-            "poly_coords": null, 
-            "illustrated_point": null, 
-            "googlemap_point": "[28.596322, -81.203124]", 
-            "description": ""
-        }
+        "fields": {}
     }, 
     {
-        "pk": 8, 
+        "pk": "phone-8", 
         "model": "campus.emergencyphone", 
-        "fields": {
-            "profile": null, 
-            "name": "", 
-            "image": "", 
-            "poly_coords": null, 
-            "illustrated_point": null, 
-            "googlemap_point": "[28.597371, -81.204051]", 
-            "description": ""
-        }
+        "fields": {}
     }, 
     {
-        "pk": 9, 
+        "pk": "phone-9", 
         "model": "campus.emergencyphone", 
-        "fields": {
-            "profile": null, 
-            "name": "", 
-            "image": "", 
-            "poly_coords": null, 
-            "illustrated_point": null, 
-            "googlemap_point": "[28.598107, -81.204359]", 
-            "description": ""
-        }
+        "fields": {}
     }, 
     {
-        "pk": 10, 
+        "pk": "phone-10", 
         "model": "campus.emergencyphone", 
-        "fields": {
-            "profile": null, 
-            "name": "", 
-            "image": "", 
-            "poly_coords": null, 
-            "illustrated_point": null, 
-            "googlemap_point": "[28.597026, -81.202212]", 
-            "description": ""
-        }
+        "fields": {}
     }, 
     {
-        "pk": 11, 
+        "pk": "phone-11", 
         "model": "campus.emergencyphone", 
-        "fields": {
-            "profile": null, 
-            "name": "", 
-            "image": "", 
-            "poly_coords": null, 
-            "illustrated_point": null, 
-            "googlemap_point": "[28.594865, -81.199166]", 
-            "description": ""
-        }
+        "fields": {}
     }, 
     {
-        "pk": 12, 
+        "pk": "phone-12", 
         "model": "campus.emergencyphone", 
-        "fields": {
-            "profile": null, 
-            "name": "", 
-            "image": "", 
-            "poly_coords": null, 
-            "illustrated_point": null, 
-            "googlemap_point": "[28.594774, -81.196802]", 
-            "description": ""
-        }
+        "fields": {}
     }, 
     {
-        "pk": 13, 
+        "pk": "phone-13", 
         "model": "campus.emergencyphone", 
-        "fields": {
-            "profile": null, 
-            "name": "", 
-            "image": "", 
-            "poly_coords": null, 
-            "illustrated_point": null, 
-            "googlemap_point": "[28.593786, -81.197274]", 
-            "description": ""
-        }
+        "fields": {}
     }, 
     {
-        "pk": 14, 
+        "pk": "phone-14", 
         "model": "campus.emergencyphone", 
-        "fields": {
-            "profile": null, 
-            "name": "", 
-            "image": "", 
-            "poly_coords": null, 
-            "illustrated_point": null, 
-            "googlemap_point": "[28.607366, -81.202960]", 
-            "description": ""
-        }
+        "fields": {}
     }, 
     {
-        "pk": 15, 
+        "pk": "phone-15", 
         "model": "campus.emergencyphone", 
-        "fields": {
-            "profile": null, 
-            "name": "", 
-            "image": "", 
-            "poly_coords": null, 
-            "illustrated_point": null, 
-            "googlemap_point": "[28.605259, -81.203856]", 
-            "description": ""
-        }
+        "fields": {}
     }, 
     {
-        "pk": 16, 
+        "pk": "phone-16", 
         "model": "campus.emergencyphone", 
-        "fields": {
-            "profile": null, 
-            "name": "", 
-            "image": "", 
-            "poly_coords": null, 
-            "illustrated_point": null, 
-            "googlemap_point": "[28.603407, -81.203830]", 
-            "description": ""
-        }
+        "fields": {}
     }, 
     {
-        "pk": 17, 
+        "pk": "phone-17", 
         "model": "campus.emergencyphone", 
-        "fields": {
-            "profile": null, 
-            "name": "", 
-            "image": "", 
-            "poly_coords": null, 
-            "illustrated_point": null, 
-            "googlemap_point": "[28.604178, -81.201673]", 
-            "description": ""
-        }
+        "fields": {}
     }, 
     {
-        "pk": 18, 
+        "pk": "phone-18", 
         "model": "campus.emergencyphone", 
-        "fields": {
-            "profile": null, 
-            "name": "", 
-            "image": "", 
-            "poly_coords": null, 
-            "illustrated_point": null, 
-            "googlemap_point": "[28.602838, -81.201421]", 
-            "description": ""
-        }
+        "fields": {}
     }, 
     {
-        "pk": 19, 
+        "pk": "phone-19", 
         "model": "campus.emergencyphone", 
-        "fields": {
-            "profile": null, 
-            "name": "", 
-            "image": "", 
-            "poly_coords": null, 
-            "illustrated_point": null, 
-            "googlemap_point": "[28.602444, -81.205504]", 
-            "description": ""
-        }
+        "fields": {}
     }, 
     {
-        "pk": 20, 
+        "pk": "phone-20", 
         "model": "campus.emergencyphone", 
-        "fields": {
-            "profile": null, 
-            "name": "", 
-            "image": "", 
-            "poly_coords": null, 
-            "illustrated_point": null, 
-            "googlemap_point": "[28.600939, -81.203536]", 
-            "description": ""
-        }
+        "fields": {}
     }, 
     {
-        "pk": 21, 
+        "pk": "phone-21", 
         "model": "campus.emergencyphone", 
-        "fields": {
-            "profile": null, 
-            "name": "", 
-            "image": "", 
-            "poly_coords": null, 
-            "illustrated_point": null, 
-            "googlemap_point": "[28.600275, -81.202130]", 
-            "description": ""
-        }
+        "fields": {}
     }, 
     {
-        "pk": 22, 
+        "pk": "phone-22", 
         "model": "campus.emergencyphone", 
-        "fields": {
-            "profile": null, 
-            "name": "", 
-            "image": "", 
-            "poly_coords": null, 
-            "illustrated_point": null, 
-            "googlemap_point": "[28.598996, -81.199995]", 
-            "description": ""
-        }
+        "fields": {}
     }, 
     {
-        "pk": 23, 
+        "pk": "phone-23", 
         "model": "campus.emergencyphone", 
-        "fields": {
-            "profile": null, 
-            "name": "", 
-            "image": "", 
-            "poly_coords": null, 
-            "illustrated_point": null, 
-            "googlemap_point": "[28.600068, -81.197442]", 
-            "description": ""
-        }
+        "fields": {}
     }, 
     {
-        "pk": 24, 
+        "pk": "phone-24", 
         "model": "campus.emergencyphone", 
-        "fields": {
-            "profile": null, 
-            "name": "", 
-            "image": "", 
-            "poly_coords": null, 
-            "illustrated_point": null, 
-            "googlemap_point": "[28.601624, -81.196703]", 
-            "description": ""
-        }
+        "fields": {}
     }, 
     {
-        "pk": 25, 
+        "pk": "phone-25", 
         "model": "campus.emergencyphone", 
-        "fields": {
-            "profile": null, 
-            "name": "", 
-            "image": "", 
-            "poly_coords": null, 
-            "illustrated_point": null, 
-            "googlemap_point": "[28.603081, -81.199255]", 
-            "description": ""
-        }
+        "fields": {}
     }, 
     {
-        "pk": 26, 
+        "pk": "phone-26", 
         "model": "campus.emergencyphone", 
-        "fields": {
-            "profile": null, 
-            "name": "", 
-            "image": "", 
-            "poly_coords": null, 
-            "illustrated_point": null, 
-            "googlemap_point": "[28.604337, -81.199523]", 
-            "description": ""
-        }
+        "fields": {}
     }, 
     {
-        "pk": 27, 
+        "pk": "phone-27", 
         "model": "campus.emergencyphone", 
-        "fields": {
-            "profile": null, 
-            "name": "", 
-            "image": "", 
-            "poly_coords": null, 
-            "illustrated_point": null, 
-            "googlemap_point": "[28.604970, -81.198165]", 
-            "description": ""
-        }
+        "fields": {}
     }, 
     {
-        "pk": 28, 
+        "pk": "phone-28", 
         "model": "campus.emergencyphone", 
-        "fields": {
-            "profile": null, 
-            "name": "", 
-            "image": "", 
-            "poly_coords": null, 
-            "illustrated_point": null, 
-            "googlemap_point": "[28.606651, -81.197348]", 
-            "description": ""
-        }
+        "fields": {}
     }, 
     {
-        "pk": 29, 
+        "pk": "phone-29", 
         "model": "campus.emergencyphone", 
-        "fields": {
-            "profile": null, 
-            "name": "", 
-            "image": "", 
-            "poly_coords": null, 
-            "illustrated_point": null, 
-            "googlemap_point": "[28.607755, -81.197665]", 
-            "description": ""
-        }
+        "fields": {}
     }, 
     {
-        "pk": 30, 
+        "pk": "phone-30", 
         "model": "campus.emergencyphone", 
-        "fields": {
-            "profile": null, 
-            "name": "", 
-            "image": "", 
-            "poly_coords": null, 
-            "illustrated_point": null, 
-            "googlemap_point": "[28.608032, -81.197804]", 
-            "description": ""
-        }
+        "fields": {}
     }, 
     {
-        "pk": 31, 
+        "pk": "phone-31", 
         "model": "campus.emergencyphone", 
-        "fields": {
-            "profile": null, 
-            "name": "", 
-            "image": "", 
-            "poly_coords": null, 
-            "illustrated_point": null, 
-            "googlemap_point": "[28.608709, -81.198170]", 
-            "description": ""
-        }
+        "fields": {}
     }, 
     {
-        "pk": 32, 
+        "pk": "phone-32", 
         "model": "campus.emergencyphone", 
-        "fields": {
-            "profile": null, 
-            "name": "", 
-            "image": "", 
-            "poly_coords": null, 
-            "illustrated_point": null, 
-            "googlemap_point": "[28.609066, -81.197977]", 
-            "description": ""
-        }
+        "fields": {}
     }, 
     {
-        "pk": 33, 
+        "pk": "phone-33", 
         "model": "campus.emergencyphone", 
-        "fields": {
-            "profile": null, 
-            "name": "", 
-            "image": "", 
-            "poly_coords": null, 
-            "illustrated_point": null, 
-            "googlemap_point": "[28.609563, -81.196882]", 
-            "description": ""
-        }
+        "fields": {}
     }, 
     {
-        "pk": 34, 
+        "pk": "phone-34", 
         "model": "campus.emergencyphone", 
-        "fields": {
-            "profile": null, 
-            "name": "", 
-            "image": "", 
-            "poly_coords": null, 
-            "illustrated_point": null, 
-            "googlemap_point": "[28.607540, -81.196547]", 
-            "description": ""
-        }
+        "fields": {}
     }, 
     {
-        "pk": 35, 
+        "pk": "phone-35", 
         "model": "campus.emergencyphone", 
-        "fields": {
-            "profile": null, 
-            "name": "", 
-            "image": "", 
-            "poly_coords": null, 
-            "illustrated_point": null, 
-            "googlemap_point": "[28.607152, -81.196597]", 
-            "description": ""
-        }
+        "fields": {}
     }, 
     {
-        "pk": 36, 
+        "pk": "phone-36", 
         "model": "campus.emergencyphone", 
-        "fields": {
-            "profile": null, 
-            "name": "", 
-            "image": "", 
-            "poly_coords": null, 
-            "illustrated_point": null, 
-            "googlemap_point": "[28.606263, -81.195841]", 
-            "description": ""
-        }
+        "fields": {}
     }, 
     {
-        "pk": 37, 
+        "pk": "phone-37", 
         "model": "campus.emergencyphone", 
-        "fields": {
-            "profile": null, 
-            "name": "", 
-            "image": "", 
-            "poly_coords": null, 
-            "illustrated_point": null, 
-            "googlemap_point": "[28.605812, -81.196441]", 
-            "description": ""
-        }
+        "fields": {}
     }, 
     {
-        "pk": 38, 
+        "pk": "phone-38", 
         "model": "campus.emergencyphone", 
-        "fields": {
-            "profile": null, 
-            "name": "", 
-            "image": "", 
-            "poly_coords": null, 
-            "illustrated_point": null, 
-            "googlemap_point": "[28.595093, -81.205690]", 
-            "description": ""
-        }
+        "fields": {}
     }
 ]
