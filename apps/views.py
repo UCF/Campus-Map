@@ -191,7 +191,6 @@ def search(request):
 	query_string = request.GET.get('q', '').strip()
 	
 	if bool(query_string):
-		from itertools import chain
 		
 		# Organization Search
 		org_response = organization_search(query_string)
@@ -199,16 +198,13 @@ def search(request):
 			orgs = org_response['results']
 		
 		# populate locations by name, abbreviation, and orgs
-		q = get_query(query_string, ['name',])
-		qs1 = MapObj.objects.filter(q)
-		q = get_query(query_string, ['abbreviation',])
-		qs2 = MapObj.objects.filter(q)
-		q = Q(pk = "~~~ no results ~~~")
+		q1 = get_query(query_string, ['name',])
+		q2 = get_query(query_string, ['abbreviation',])
+		q3 = Q(pk = "~~~ no results ~~~")
 		for org in orgs:
-			q = q | Q(pk = org['bldg_id'])
-		qs3 = MapObj.objects.filter(q)
-		locations = list(chain(qs1, qs2, qs3))
-		#MapObj.objects.filter(get_query(query_string, ['name',]) | get_query(query_string, ['abbreviation',]) | q)
+			q3 = q3 | Q(pk = org['bldg_id'])
+		results = MapObj.objects.filter(q1|q2|q3)
+		locations = list(results)
 		
 		# Phonebook Search
 		phones_response = phonebook_search(query_string)
