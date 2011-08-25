@@ -66,6 +66,7 @@ class MapQuerySet(QuerySet):
 			try:
 				qs = QuerySet(m)
 				results = qs.filter(*args, **kwargs)
+				#print str(args[0])
 				if m == campus.models.MapObj:
 					for o in results:
 						map_query = map_query | Q(id=o.id)

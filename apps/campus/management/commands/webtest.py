@@ -3,7 +3,7 @@
 	
 '''
 from django.core.management.base import BaseCommand
-import urllib2
+import urllib2, time
 class Command(BaseCommand):
 	def handle(self, *args, **options):
 		
@@ -38,6 +38,7 @@ class Command(BaseCommand):
 		
 		for u in url_strings:
 			try:
+				time.sleep(.5)
 				url = base+u
 				page = urllib2.urlopen(url)
 				print "%-60s OK" % url
