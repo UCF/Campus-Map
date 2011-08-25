@@ -18,10 +18,12 @@ class Command(BaseCommand):
 		
 		# reset campus
 		call_command('reset', 'campus', verbosity=0, interactive=False)
-
+		
 		# load all the data from fixtures
 		path = os.path.join(os.path.dirname(campus.__file__), 'fixtures')
-		for f in os.listdir(path):
+		fixtures = os.listdir(path)
+		fixtures.sort()
+		for f in fixtures:
 			m = re.match(r"(?P<fixture>\w+)\.json", f)
 			if m:
 				fixture = m.group('fixture')
