@@ -6,9 +6,19 @@ from django.core.management.base import BaseCommand
 import os, campus, json
 from apps.campus.models import MapObj, Group
 
+from django.db import connection, transaction
+from django.core.management import call_command
+import StringIO, sys
+
+
+
 class Command(BaseCommand):
 	def handle(self, *args, **options):
-		print MapObj.objects.get(pk="1")
-		print MapObj.objects.filter(abbreviation="MAP")
-		print MapObj.objects.filter(permit_type="Greek Row")
+		cursor = connection.cursor()
+		output = StringIO.StringIO()
+		sys.stdout = output
+		call_command('sqlclear', 'campus')
+		sys.stdout = sys.__stdout__
+		cursor.execute(output.getvalue())
+		transaction.commit()
 		
