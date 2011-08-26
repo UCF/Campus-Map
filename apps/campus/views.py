@@ -62,6 +62,7 @@ def home(request, **kwargs):
 				'name'   : o['name'],
 				'gpoint' : o['googlemap_point'],
 				'ipoint' : o['illustrated_point'],
+				'type'   : o['object_type'],
 			}
 	else:
 		points = None
@@ -191,7 +192,6 @@ def location(request, loc, return_obj=False):
 	location = location.json()
 	location['info'] = html
 	base_url = request.build_absolute_uri(reverse('home'))[:-1]
-	location['marker'] = base_url + settings.MEDIA_URL + 'images/markers/yellow.png'
 	
 	# API views
 	if request.is_json():

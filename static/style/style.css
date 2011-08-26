@@ -265,7 +265,8 @@ footer dd { padding:8px 0 0 8px; margin:0; }
 	background: black; background: rgba(0,0,0,.71); padding:5px 5px 6px; text-align:center; font-weight:bold;  } 
 .iBox a { color:white; text-decoration:none; border-bottom:1px dotted #B1B1B1; }
 .iBox a:hover  { border-bottom-style:solid; }
-
+a.iclose {display:block; text-decoration:none; border:0; width:11px; height:11px; background:red; position:absolute; top:-4px; right:-4px; background:url('img/infobox-close.png') top left; }
+a.iclose:hover { background-position:0 -11px; }
 #testBox { position:absolute; top:0; left:-1500px; display:inline; }
 .ie .iBox { background:transparent; filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#B4000000',endColorstr='#B4000000'); zoom: 1; }
 
