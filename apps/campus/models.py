@@ -180,6 +180,11 @@ class MapObj(models.Model):
 			# super dumb, concerning floats http://code.djangoproject.com/ticket/3324
 			obj[key] = val.__str__()
 		
+		
+		obj['profile_link'] = self.profile_link
+		obj.pop('content_type_id')
+		obj.pop('mapobj_ptr_id')
+		obj['object_type'] = self.__class__.__name__
 		return obj
 	
 	def _link(self):
@@ -283,7 +288,6 @@ class Building(MapObj):
 	def json(self):
 		obj = MapObj.json(self)
 		obj['number'] = self.number
-		obj['profile_link'] = self.profile_link
 		obj['link'] = self.link
 		obj['title'] = self.title
 		obj['orgs'] = self.orgs

@@ -47,7 +47,6 @@ Campus.init = function(){
 	// check for errors
 	$('#error-close').click(function(e){
 		e.preventDefault();
-		console.log('what?');
 		$('#error').hide().html('');
 	});
 	
@@ -778,7 +777,6 @@ Campus.info = function(id, pan){
 		Campus.infoBox.show = function(txt, loc, link){
 			Campus.infoBox.content(txt, link);
 			if(loc.length == 2) loc = new google.maps.LatLng(loc[0], loc[1]);
-			else console.log(loc);
 			Campus.infoBox.setPosition(loc);
 			Campus.infoBox.open(Campus.map);
 			return false;
