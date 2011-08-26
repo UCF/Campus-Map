@@ -19,6 +19,7 @@ class MapQuerySet(QuerySet):
 	campus_models = False
 	
 	def __getitem__(self, k):
+		''' making my querysets act a bit heterogenous'''
 		result = super(MapQuerySet, self).__getitem__(k)
 		if isinstance(result, models.Model):
 			return result.as_leaf_class()
@@ -276,8 +277,8 @@ class Building(MapObj):
 	def clean(self, *args, **kwargs):
 		super(Building, self).clean(*args, **kwargs)
 		
-		# change all numbers to be lowercase
-		self.number = self.number.lower()
+		# change all building id / numbers to be lowercase
+		self.id = self.id.lower()
 	
 	def json(self):
 		obj = MapObj.json(self)

@@ -1,11 +1,42 @@
-{% if not location %}null{% else %}
-<div id="location-{{location.pk}}" class="item">
-	<h2 class="light">{{location.name}}</h2>
-	{% if location.image %}<img src="{{MEDIA_URL}}images/buildings/{{ location.image }}">{%else%}<img src="{{ base_url }}{{MEDIA_URL}}images/buildings/_no_image.jpg">{% endif %}
+{% if not location %}
+	
+	<div class="item" id="item-desc">
+		No Location
+	</div>
+	
+{% else %}
+
+	<a href="{{location.profile_link}}" class="item">{{location.name}}</a>
+
+	<a class="item" href="{{location.profile_link}}">
+		{% if location.image %}<img src="{{MEDIA_URL}}images/buildings/{{ location.image }}">{%else%}<img src="{{ base_url }}{{MEDIA_URL}}images/buildings/_no_image.jpg">{% endif %}
+	</a>
+	
 	{% if location.description %}
-	<p>{{ location.description }}</p>
-	{% else %}
-	<p>No description available.</p>
+		<div class="item">{{ location.description }}</div>
 	{% endif %}
-</div>
+	
+	{% if debug and not location.description %}
+		<a class="item" href="{% url admin:app_list 'campus'%}building/{{location.pk}}/">add a description</a>
+	{% endif %}
+	
+
+	{% if group %}
+	<div class="item">
+		<h3>Grouped here:</h3>
+		<ul>
+		{% for l in group %}
+			<li><a href="{{base_url}}/?show={{l.id}}" onclick="return Campus.infoBox.show('{{l.name}}', {{l.googlemap_point}}, '{{l.profile_link}}');">{{l.name}}</a></li>
+		{% endfor %}
+		</ul>
+	</div>
+	{% endif %}
+	
+	{% if location.profile_link %}
+	<div class="item">
+		<h3 id="permalink">Permalink</h3>
+		<input type="text" value="{{base_url}}/?show={{location.id}}">
+	</div>
+	{% endif %}
+	
 {% endif %}
