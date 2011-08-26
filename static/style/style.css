@@ -140,7 +140,7 @@ footer dd { padding:8px 0 0 8px; margin:0; }
 #map-go a { border-bottom: 1px dotted #A0A0A0; text-decoration:none; }
 #map-go a:hover { border-bottom: 1px solid #C30202; }
 
-#group-locations { padding:25px 5px 0; }
+#group-locations { padding:10px 5px 0; }
 .orgs { margin-top:0; }
 .orgs li { padding:2px 0; }
 .orgs li a { border-bottom-width:0; }
