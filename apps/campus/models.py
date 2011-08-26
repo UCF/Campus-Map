@@ -8,16 +8,18 @@ from django.template.defaultfilters import slugify
 from django.db.models.signals import m2m_changed
 from django.core.exceptions import FieldError
 
+from django.db.models import Q
+import campus
 
 class MapQuerySet(QuerySet):
 	'''
 	Model inheritance with content type and inheritance-aware manager
 	thanks: http://djangosnippets.org/snippets/1034/
 	'''
-	
 	campus_models = False
 	
 	def __getitem__(self, k):
+		''' making my querysets act a bit heterogenous'''
 		result = super(MapQuerySet, self).__getitem__(k)
 		if isinstance(result, models.Model):
 			return result.as_leaf_class()
@@ -35,9 +37,10 @@ class MapQuerySet(QuerySet):
 		else:
 			return result
 	
+	
 	def filter(self, *args, **kwargs):
 		'''
-		allows to query over all MapObj's incliding child specfic fields.
+		allows to query over all MapObj's, incliding child specfic fields.
 		The queryset returned has only MapObj's in it, yet when each one is
 		pulled, __getitem__ converts back to original object, creating a
 		pseudo heterogenous queryset
@@ -48,8 +51,35 @@ class MapQuerySet(QuerySet):
 			yet these attributes are not apart of MapObj
 		'''
 		
-		import campus
+		# process the query
+		if len(args):
+			query = args[0]
+		else:
+			query = Q(**kwargs)
+		new_query   = Q(pk="~~~ no results ~~~")
+		if query.connector != "OR":
+			new_query = query
+		else:
+			for c in query.children:
+				# shoudl probably have some recurrsion here
+				# will fail with complex / nested queries
+				new_query = new_query | self.leaf_filter(Q(c))
 		
+		# return a QuerySet of MapObj's
+		return QuerySet.filter(self, new_query)
+	
+	def leaf_filter(self, query):
+		'''
+		Should not be called directly, use filter()
+		Executes a query over leaf instances of MapObj
+		allows for some complex / cross model queries
+		ex:
+			q1 = Q(name__icontains='commons')
+			q2 = Q(abbreviation__icontains='map')
+			MapObj.objects.filter(q1|q2)
+		returns: 
+			[<Group: Ferrell Commons>, <Building: Libra Commons>, <Building: Math & Physics>, ...]
+		'''
 		# grab all the models that extend MapObj
 		if not MapQuerySet.campus_models:
 			MapQuerySet.campus_models = []
@@ -58,26 +88,25 @@ class MapQuerySet(QuerySet):
 				if issubclass(model, campus.models.MapObj):
 					MapQuerySet.campus_models.append(model)
 		
-		# execute query over leaf instances of MapObj
 		# return queryset containing MapObj's
-		from django.db.models import Q
-		map_query = Q(pk="~~~ no results ~~~")
+		mob_query = Q(pk="~~~ no results ~~~")
 		for m in self.campus_models:
+			if m == campus.models.MapObj: continue
 			try:
 				qs = QuerySet(m)
-				results = qs.filter(*args, **kwargs)
-				#print str(args[0])
-				if m == campus.models.MapObj:
-					for o in results:
-						map_query = map_query | Q(id=o.id)
-				else:
-					for o in results:
-						map_query = map_query | Q(id=o.mapobj_ptr_id)
+				results = qs.filter(query)
+				for o in results:
+					mob_query = mob_query | Q(id=o.mapobj_ptr_id)
 			except FieldError:
 				continue
-		
-		# return a QuerySet of MapObj's
-		return QuerySet.filter(self, map_query)
+		return mob_query
+	
+	def mob_filter(self, *args, **kwargs):
+		'''
+		TODO: verify this works
+		'''
+		qs = QuerySet(campus.models.MapObj)
+		return qs.filter(*args, **kwargs)
 
 class MapManager(models.Manager):
 	def get_query_set(self):
@@ -151,6 +180,11 @@ class MapObj(models.Model):
 			# super dumb, concerning floats http://code.djangoproject.com/ticket/3324
 			obj[key] = val.__str__()
 		
+		
+		obj['profile_link'] = self.profile_link
+		obj.pop('content_type_id')
+		obj.pop('mapobj_ptr_id')
+		obj['object_type'] = self.__class__.__name__
 		return obj
 	
 	def _link(self):
@@ -248,13 +282,12 @@ class Building(MapObj):
 	def clean(self, *args, **kwargs):
 		super(Building, self).clean(*args, **kwargs)
 		
-		# change all numbers to be lowercase
-		self.number = self.number.lower()
+		# change all building id / numbers to be lowercase
+		self.id = self.id.lower()
 	
 	def json(self):
 		obj = MapObj.json(self)
 		obj['number'] = self.number
-		obj['profile_link'] = self.profile_link
 		obj['link'] = self.link
 		obj['title'] = self.title
 		obj['orgs'] = self.orgs

@@ -47,7 +47,6 @@ Campus.init = function(){
 	// check for errors
 	$('#error-close').click(function(e){
 		e.preventDefault();
-		console.log('what?');
 		$('#error').hide().html('');
 	});
 	
@@ -437,11 +436,18 @@ Campus.layers = {
 			if(!Campus.settings.points){ return; }
 			var map = Campus.map;
 			var points = Campus.points;
-			var image = new google.maps.MarkerImage(
-				(Campus.urls['static'] + 'images/markers/yellow.png'),
-				new google.maps.Size(19, 19),
-				new google.maps.Point(0,0),
-				new google.maps.Point(10,10));
+			var google_image = function(color) {
+				return new google.maps.MarkerImage(
+					(Campus.urls['static'] + 'images/markers/' + color + '.png'),
+					new google.maps.Size(19, 19),
+					new google.maps.Point(0,0), 
+					new google.maps.Point(10,10));
+			}
+			var images = {
+				"Building" : google_image('yellow'),
+				"Group"    : google_image('red'),
+				"Location" : google_image('blue')
+			}
 			var point = (Campus.map.mapTypeId === 'illustrated') ? 'ipoint' : 'gpoint';
 			var id;
 			for(id in points ) {
@@ -452,7 +458,7 @@ Campus.layers = {
 					var marker = new google.maps.Marker({
 						position: latLng,
 						map: map,
-						icon: image,
+						icon: images[points[id].type],
 						location: id
 					});
 					google.maps.event.addListener(marker, 'click', function(event) {
@@ -765,7 +771,10 @@ Campus.info = function(id, pan){
 			if(link) txt = '<a href="' + link + '">' + txt + '</a>';
 			var testBox = $('<div id="testBox" class="iBox">' + txt + '</div>')[0];
 			$('body').append(testBox).each(function(){
-				var iBox = $('<div class="iBox">' + txt + '</div>')[0];
+				var iBox = $('<div class="iBox">' + txt + '<a onclick="Campus.infoBox.x()" class="iclose"></a></div>');
+				var close = $('<a class="iclose"></a>').click(Campus.infoBox.x);
+				iBox = iBox.append(close);
+				iBox = iBox[0];
 				var width = testBox.offsetWidth + "px";
 				iBox.style.width = width;
 				Campus.infoBox.setContent(iBox);
@@ -777,8 +786,17 @@ Campus.info = function(id, pan){
 		}
 		Campus.infoBox.show = function(txt, loc, link){
 			Campus.infoBox.content(txt, link);
+			if(loc.length == 2) loc = new google.maps.LatLng(loc[0], loc[1]);
 			Campus.infoBox.setPosition(loc);
 			Campus.infoBox.open(Campus.map);
+			return false;
+		}
+		Campus.infoBox.x = function(e){
+			//close
+			e.preventDefault();
+			Campus.menu.show('main');
+			Campus.infoBox.close();
+			return false;
 		}
 	}
 	

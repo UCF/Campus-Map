@@ -62,6 +62,7 @@ def home(request, **kwargs):
 				'name'   : o['name'],
 				'gpoint' : o['googlemap_point'],
 				'ipoint' : o['illustrated_point'],
+				'type'   : o['object_type'],
 			}
 	else:
 		points = None
@@ -187,13 +188,10 @@ def location(request, loc, return_obj=False):
 	except MapObj.DoesNotExist:
 		raise Http404("Location ID <code>%s</code> could not be found" % (loc))
 	
-	location_type = location.__class__.__name__
 	html = location_html(location, request)
 	location = location.json()
-	location['type'] = location_type
 	location['info'] = html
 	base_url = request.build_absolute_uri(reverse('home'))[:-1]
-	location['marker'] = base_url + settings.MEDIA_URL + 'images/markers/yellow.png'
 	
 	# API views
 	if request.is_json():
@@ -414,12 +412,18 @@ def location_html(loc, request, orgs=True):
 	context  = { 'location':loc, 'base_url':base_url }
 	location_type = loc.__class__.__name__.lower()
 	template = 'api/info_win_%s.djt' % (location_type)
-	
+	group    = False
+	if location_type == 'group':
+		group = []
+		for gl in loc.locations.all():
+			group.append(gl.content_object)
+		
 	# create info HTML using template
 	t = get_template(template)
 	c = Context({
 		'location'  : loc,
 		'orgs'      : orgs,
+		'group'     : group,
 		'base_url'  : base_url,
 		'debug'     : settings.DEBUG,
 		'MEDIA_URL' : settings.MEDIA_URL })
