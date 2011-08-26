@@ -55,11 +55,12 @@ class Command(BaseCommand):
 		
 		sys.stdout.write("  Updating m2m locations ")
 		for g in groups[:]:
+			group     = Group.objects.get(id = g['pk'])
 			locations = g['fields']['locations']
 			count = 0
 			for l in locations:
 				gl = GroupedLocation.objects.get_by_natural_key(l[0], l[1])
-				new.locations.add(gl)
+				group.locations.add(gl)
 				
 				# too many dots, otherwise
 				if count % 3 == 0:
