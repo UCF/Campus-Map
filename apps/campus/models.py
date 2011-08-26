@@ -182,8 +182,8 @@ class MapObj(models.Model):
 		
 		
 		obj['profile_link'] = self.profile_link
-		obj.pop('content_type_id')
-		obj.pop('mapobj_ptr_id')
+		obj.pop('content_type_id', None)
+		obj.pop('mapobj_ptr_id', None)
 		obj['object_type'] = self.__class__.__name__
 		return obj
 	

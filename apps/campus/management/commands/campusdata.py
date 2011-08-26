@@ -41,8 +41,11 @@ class Command(BaseCommand):
 		for g in groups[:]:
 			locations = g['fields'].pop('locations')
 			qs = QuerySet(MapObj)
-			mob = qs.get(id=g['pk']).json()
-			new = Group.objects.create(**mob)
+			mob = qs.get(id=g['pk'])
+			mob = mob.__dict__
+			mob.pop('_state')
+			Group.objects.create(**mob)
+			
 			'''
 			when / if groups get additional attributes, will have to extend importer here
 			for k,v in g['fields']:
