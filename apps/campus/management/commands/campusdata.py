@@ -1,9 +1,10 @@
-import os.path, re, json, sys, campus
+import os.path, re, json, sys, campus, StringIO
 from django.core.management.base import BaseCommand
 from django.core.management import call_command
 from campus.admin import create_groupable_locations
 from campus.models import Group, GroupedLocation, MapObj
 from django.db.models.query import QuerySet
+from django.db import connection, transaction
 
 class Command(BaseCommand):
 	args = 'none'
@@ -13,11 +14,22 @@ class Command(BaseCommand):
 		
 		print "Crunching datas:"
 		
+		# reset campus
+		# "manage.py reset" has been woefull deprecated, executing sql manuall
+		# if only: call_command('reset', 'campus', verbosity=0, interactive=False)
+		output = StringIO.StringIO()
+		sys.stdout = output
+		call_command('sqlclear', 'campus')
+		sys.stdout = sys.__stdout__
+		sql = output.getvalue()
+		cursor = connection.cursor()
+		for l in sql.split("\n"):
+			if l.count('COMMIT'): continue
+			cursor.execute(l)
+		
 		#syncdb,
 		call_command('syncdb', verbosity=0, interactive=False)
 		
-		# reset campus
-		call_command('reset', 'campus', verbosity=0, interactive=False)
 		
 		# load all the data from fixtures
 		path = os.path.join(os.path.dirname(campus.__file__), 'fixtures')
