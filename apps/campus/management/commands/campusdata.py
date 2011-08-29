@@ -5,29 +5,53 @@ from campus.admin import create_groupable_locations
 from campus.models import Group, GroupedLocation, MapObj
 from django.db.models.query import QuerySet
 from django.db import connection, transaction
+from _mysql_exceptions import OperationalError 
+from django.db.utils import IntegrityError, DatabaseError
 
 class Command(BaseCommand):
 	args = 'none'
 	help = 'load all campus fixtures'
-
+	
+	def run_query(self, sql):
+		cursor = connection.cursor()
+		error = False
+		for l in sql.split("\n"):
+			if not l: continue
+			if l.count('COMMIT'): continue
+			try:
+				cursor.execute(l)
+			except (OperationalError,IntegrityError) as e:
+				error = e
+			except DatabaseError:
+				pass # "unknown table, happens on second pass"
+		return error
+		
 	def handle(self, *args, **options):
 		
 		print "Crunching datas:"
 		
-		# reset campus
-		# "manage.py reset" has been woefull deprecated, executing sql manuall
-		# if only: call_command('reset', 'campus', verbosity=0, interactive=False)
-		output = StringIO.StringIO()
-		sys.stdout = output
-		call_command('sqlclear', 'campus')
-		sys.stdout = sys.__stdout__
-		sql = output.getvalue()
-		cursor = connection.cursor()
-		for l in sql.split("\n"):
-			if not l: continue
-			if l.count('COMMIT'): continue
-			print "sql:", l
-			cursor.execute(l)
+		'''
+		Reset Campus
+		"manage.py reset" has been woefull deprecated, so no:
+		call_command('reset', 'campus', verbosity=0, interactive=False)
+		
+		Ran into issue with Windows
+		The SQL generated from sqlclear always failed (an issue with the names
+		of foriegn key constraints).  If the SQL is ran twice, the tables with 
+		dependencies will be removed first and independent tables removed second
+		'''
+		for i in range(2):
+			output = StringIO.StringIO()
+			sys.stdout = output
+			call_command('sqlclear', 'campus')
+			sys.stdout = sys.__stdout__
+			sql = output.getvalue()
+			error = self.run_query(sql)
+		if error:
+			print "Failed to update the db :("
+			print type(error)
+			print error
+			return
 		
 		#syncdb,
 		call_command('syncdb', verbosity=0, interactive=False)
