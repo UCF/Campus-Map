@@ -24,7 +24,9 @@ class Command(BaseCommand):
 		sql = output.getvalue()
 		cursor = connection.cursor()
 		for l in sql.split("\n"):
+			if not l: continue
 			if l.count('COMMIT'): continue
+			print "sql:", l
 			cursor.execute(l)
 		
 		#syncdb,
