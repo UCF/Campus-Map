@@ -43,10 +43,18 @@ def compare(mob, o):
 	for k,v in o['fields'].items():
 		try:
 			if not mob[k]==v:
-				print "Changes", mob['id']
-				print "  ", k, _(mob[k])
-				print "  ", k, _(v)
-				print
+				printo("%s [%s]" % (mob['name'], mob['id']))
+				printo("  %s %s" % (k, _(mob[k])))
+				printo("  %s %s" % (k, _(v)))
+				if prompt():
+					m = MapObj.objects.get(id=o['pk'])
+					setattr(m,k,v)
+					m.save()
+					printo('accepted')
+				else:
+					printo('rejected')
+				printo('')
+				
 		except KeyError:
 			print o['fields'].get('name'), o['model']
 			

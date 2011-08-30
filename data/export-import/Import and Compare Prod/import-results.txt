@@ -417,3 +417,254 @@
   Inspecting Updates 
 ------------------------------------------------------------------------------
 
+>>>>>>>>>>>>>>>>>>>> Tuesday August 30, 2011 16:22
+
+
+------------------------------------------------------------------------------
+  Inspecting Updates 
+------------------------------------------------------------------------------
+
+>>>>>>>>>>>>>>>>>>>> Tuesday August 30, 2011 16:24
+
+
+------------------------------------------------------------------------------
+  Inspecting Updates 
+------------------------------------------------------------------------------
+
+>>>>>>>>>>>>>>>>>>>> Tuesday August 30, 2011 16:27
+
+
+------------------------------------------------------------------------------
+  Inspecting Updates 
+------------------------------------------------------------------------------
+
+>>>>>>>>>>>>>>>>>>>> Tuesday August 30, 2011 16:27
+
+>>>>>>>>>>>>>>>>>>>> Tuesday August 30, 2011 16:28
+
+
+------------------------------------------------------------------------------
+  Inspecting Updates 
+------------------------------------------------------------------------------
+
+>>>>>>>>>>>>>>>>>>>> Tuesday August 30, 2011 16:28
+
+  profile (none)
+  profile (empty string)
+accepted
+>>>>>>>>>>>>>>>>>>>> Tuesday August 30, 2011 16:29
+
+
+------------------------------------------------------------------------------
+  Inspecting Updates 
+------------------------------------------------------------------------------
+
+>>>>>>>>>>>>>>>>>>>> Tuesday August 30, 2011 16:29
+
+  profile (none)
+  profile (empty string)
+accepted
+
+>>>>>>>>>>>>>>>>>>>> Tuesday August 30, 2011 16:29
+
+  name Activities Center
+  name Brooklyn Pizza
+accepted
+
+>>>>>>>>>>>>>>>>>>>> Tuesday August 30, 2011 16:29
+
+  profile (none)
+  profile (empty string)
+accepted
+
+>>>>>>>>>>>>>>>>>>>> Tuesday August 30, 2011 16:29
+
+  name College of Science
+  name College of Sciences
+accepted
+
+>>>>>>>>>>>>>>>>>>>> Tuesday August 30, 2011 16:29
+
+  profile (none)
+  profile (empty string)
+accepted
+
+>>>>>>>>>>>>>>>>>>>> Tuesday August 30, 2011 16:29
+
+  name Communications Building
+  name Nicholson School of Communication
+accepted
+
+>>>>>>>>>>>>>>>>>>>> Tuesday August 30, 2011 16:29
+
+  name Student Disability Services
+  name SDES Information Technology
+accepted
+
+>>>>>>>>>>>>>>>>>>>> Tuesday August 30, 2011 16:29
+
+  name Ferrell Commons - F
+  name Student Disability Services
+accepted
+
+>>>>>>>>>>>>>>>>>>>> Tuesday August 30, 2011 16:29
+
+  illustrated_point [85.04551602787717, -179.89068625425207]
+  illustrated_point (none)
+rejected
+
+>>>>>>>>>>>>>>>>>>>> Tuesday August 30, 2011 16:29
+
+  illustrated_point [85.046086264634596, -179.88970416342741]
+  illustrated_point (none)
+rejected
+
+>>>>>>>>>>>>>>>>>>>> Tuesday August 30, 2011 16:29
+
+  illustrated_point [85.042663932289656, -179.96120990610225]
+  illustrated_point (none)
+rejected
+
+>>>>>>>>>>>>>>>>>>>> Tuesday August 30, 2011 16:29
+
+  illustrated_point [85.043878257531048, -179.94695166914826]
+  illustrated_point (none)
+rejected
+
+>>>>>>>>>>>>>>>>>>>> Tuesday August 30, 2011 16:29
+
+  illustrated_point [85.046770471505013, -179.89162502736636]
+  illustrated_point (none)
+rejected
+
+>>>>>>>>>>>>>>>>>>>> Tuesday August 30, 2011 16:29
+
+  illustrated_point [85.046717867638506, -179.91926465915174]
+  illustrated_point (none)
+rejected
+
+>>>>>>>>>>>>>>>>>>>> Tuesday August 30, 2011 16:29
+
+
+------------------------------------------------------------------------------
+  Inspecting Updates 
+------------------------------------------------------------------------------
+
+>>>>>>>>>>>>>>>>>>>> Tuesday August 30, 2011 16:29
+
+  profile (none)
+  profile (empty string)
+>>>>>>>>>>>>>>>>>>>> Tuesday August 30, 2011 16:30
+
+
+------------------------------------------------------------------------------
+  Inspecting Updates 
+------------------------------------------------------------------------------
+
+Activities Center [7h]
+  profile (none)
+  profile (empty string)
+accepted
+
+Activities Center [7h]
+  name Activities Center
+  name Brooklyn Pizza
+accepted
+
+College of Science [54]
+  profile (none)
+  profile (empty string)
+accepted
+
+College of Science [54]
+  name College of Science
+  name College of Sciences
+accepted
+
+Communications Building [75]
+  profile (none)
+  profile (empty string)
+accepted
+
+Communications Building [75]
+  name Communications Building
+  name Nicholson School of Communication
+accepted
+
+Student Disability Services [7b]
+  name Student Disability Services
+  name SDES Information Technology
+accepted
+
+Ferrell Commons - F [7f]
+  name Ferrell Commons - F
+  name Student Disability Services
+accepted
+
+Apollo Community [apollo-community]
+  illustrated_point [85.04551602787717, -179.89068625425207]
+  illustrated_point (none)
+rejected
+
+Ferrell Commons [7]
+  illustrated_point [85.046086264634596, -179.88970416342741]
+  illustrated_point (none)
+rejected
+
+Greek Park [greek-park]
+  illustrated_point [85.042663932289656, -179.96120990610225]
+  illustrated_point (none)
+rejected
+
+Lake Claire Apartments [lake-claire]
+  illustrated_point [85.043878257531048, -179.94695166914826]
+  illustrated_point (none)
+rejected
+
+Libra Community [libra-community]
+  illustrated_point [85.046770471505013, -179.89162502736636]
+  illustrated_point (none)
+rejected
+
+Residence Halls [residence-halls]
+  illustrated_point [85.046717867638506, -179.91926465915174]
+  illustrated_point (none)
+rejected
+
+>>>>>>>>>>>>>>>>>>>> Tuesday August 30, 2011 16:31
+
+
+------------------------------------------------------------------------------
+  Inspecting Updates 
+------------------------------------------------------------------------------
+
+Apollo Community [apollo-community]
+  illustrated_point [85.04551602787717, -179.89068625425207]
+  illustrated_point (none)
+rejected
+
+Ferrell Commons [7]
+  illustrated_point [85.046086264634596, -179.88970416342741]
+  illustrated_point (none)
+rejected
+
+Greek Park [greek-park]
+  illustrated_point [85.042663932289656, -179.96120990610225]
+  illustrated_point (none)
+rejected
+
+Lake Claire Apartments [lake-claire]
+  illustrated_point [85.043878257531048, -179.94695166914826]
+  illustrated_point (none)
+rejected
+
+Libra Community [libra-community]
+  illustrated_point [85.046770471505013, -179.89162502736636]
+  illustrated_point (none)
+rejected
+
+Residence Halls [residence-halls]
+  illustrated_point [85.046717867638506, -179.91926465915174]
+  illustrated_point (none)
+rejected
+

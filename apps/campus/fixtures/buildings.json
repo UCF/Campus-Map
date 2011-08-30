@@ -128,14 +128,6 @@
         }
     }, 
     {
-        "pk": "7h", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "FC-A", 
-            "sketchup": ""
-        }
-    }, 
-    {
         "pk": "406", 
         "model": "campus.building", 
         "fields": {
@@ -324,6 +316,14 @@
         "model": "campus.building", 
         "fields": {
             "abbreviation": "BHNS", 
+            "sketchup": ""
+        }
+    }, 
+    {
+        "pk": "7h", 
+        "model": "campus.building", 
+        "fields": {
+            "abbreviation": "FC-A", 
             "sketchup": ""
         }
     }, 
@@ -528,14 +528,6 @@
         }
     }, 
     {
-        "pk": "75", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "COMM", 
-            "sketchup": ""
-        }
-    }, 
-    {
         "pk": "13", 
         "model": "campus.building", 
         "fields": {
@@ -708,14 +700,6 @@
         "model": "campus.building", 
         "fields": {
             "abbreviation": "FAI", 
-            "sketchup": ""
-        }
-    }, 
-    {
-        "pk": "7f", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "FC-F", 
             "sketchup": ""
         }
     }, 
@@ -1044,6 +1028,14 @@
         "model": "campus.building", 
         "fields": {
             "abbreviation": "NFH", 
+            "sketchup": ""
+        }
+    }, 
+    {
+        "pk": "75", 
+        "model": "campus.building", 
+        "fields": {
+            "abbreviation": "COMM", 
             "sketchup": ""
         }
     }, 
@@ -1488,6 +1480,14 @@
         }
     }, 
     {
+        "pk": "7b", 
+        "model": "campus.building", 
+        "fields": {
+            "abbreviation": "FC-B", 
+            "sketchup": ""
+        }
+    }, 
+    {
         "pk": "7e", 
         "model": "campus.building", 
         "fields": {
@@ -1560,10 +1560,10 @@
         }
     }, 
     {
-        "pk": "7b", 
+        "pk": "7f", 
         "model": "campus.building", 
         "fields": {
-            "abbreviation": "FC-B", 
+            "abbreviation": "FC-F", 
             "sketchup": ""
         }
     }, 
