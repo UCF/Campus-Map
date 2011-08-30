@@ -9,7 +9,7 @@
 	<SimpleField name="abbreviation" type="string"></SimpleField>
 </Schema>
 
-{% for b in buildings %}{% if b.poly_coords %}
+{% for b in buildings %}{% if b.kml_coords %}
 <Placemark>
 	<name>{{b.name}}</name>
 	<Style>
@@ -23,7 +23,7 @@
 		<SimpleData name="description">{{b.description}}</SimpleData>
 		<SimpleData name="abbreviation">{{b.abbreviation}}</SimpleData>
 	</SchemaData></ExtendedData>
-	<Polygon><outerBoundaryIs><LinearRing><coordinates>{{b.poly_coords}}</coordinates></LinearRing></outerBoundaryIs></Polygon>
+	<Polygon><outerBoundaryIs><LinearRing><coordinates>{{b.kml_coords}}</coordinates></LinearRing></outerBoundaryIs></Polygon>
 </Placemark>
 {% endif %}{% endfor %}
 

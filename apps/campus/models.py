@@ -10,6 +10,7 @@ from django.core.exceptions import FieldError
 
 from django.db.models import Q
 import campus
+import json
 
 class MapQuerySet(QuerySet):
 	'''
@@ -151,9 +152,8 @@ class MapObj(models.Model):
 		}
 	orgs = property(_orgs)
 	
-	def json(self):
+	def json(self, base_url=''):
 		"""Returns a json serializable object for this instance"""
-		import json
 		obj = dict(self.__dict__)
 		
 		for key,val in obj.items():
@@ -181,27 +181,41 @@ class MapObj(models.Model):
 			# super dumb, concerning floats http://code.djangoproject.com/ticket/3324
 			obj[key] = val.__str__()
 		
-		
-		obj['profile_link'] = self.profile_link
+		obj['profile_link'] = self._profile_link(base_url)
 		obj.pop('content_type_id', None)
 		obj.pop('mapobj_ptr_id', None)
 		obj['object_type'] = self.__class__.__name__
 		return obj
 	
+	def _kml_coords(self):
+		if self.poly_coords == None:
+			return None
+		def flat(l):
+			# recursive function to flatten array and create a a list of coordinates separated by a space
+			str = ""
+			for i in l:
+				if type(i[0]) == type([]):
+					str += flat(i)
+				else:
+					str += ("%.6f,%.6f ")  % (i[0], i[1])
+			return str
+		arr = json.loads(self.poly_coords)
+		return flat(arr)
+	kml_coords = property(_kml_coords)
+	
 	def _link(self):
 		url = reverse('location', kwargs={'loc':self.id})
 		return '<a href="%s%s/" data-pk="%s">%s</a>' % (url, slugify(self.name), self.id, self.title)
 	link = property(_link)
-
-	def _profile_link(self):
+	
+	def _profile_link(self, base_url=''):
 		url = reverse('location', kwargs={'loc':self.id})
-		return '%s%s/' % (url, slugify(self.title))
+		return '%s%s%s/' % (base_url, url, slugify(self.title))
 	profile_link = property(_profile_link)
 	
 	
 	def clean(self, *args, **kwargs):
 		from django.core.exceptions import ValidationError
-		import json
 		
 		# keep blanks out of coordinates
 		if self.poly_coords       == "": self.poly_coords       = None
@@ -286,8 +300,8 @@ class Building(MapObj):
 		# change all building id / numbers to be lowercase
 		self.id = self.id.lower()
 	
-	def json(self):
-		obj = MapObj.json(self)
+	def json(self, **kw):
+		obj = MapObj.json(self, **kw)
 		obj['number'] = self.number
 		obj['link'] = self.link
 		obj['title'] = self.title
@@ -300,29 +314,6 @@ class Building(MapObj):
 class ParkingLot(MapObj):
 	permit_type = models.CharField(max_length=255, blank=True, null=True)
 	number      = models.CharField(max_length=50, blank=True, null=True)
-	
-	def _kml_coords(self):
-		if self.poly_coords == None:
-			return None
-		
-		import json
-		def flat(l):
-			''' 
-			recursive function to flatten array and create a a list of coordinates separated by a space
-			'''
-			str = ""
-			for i in l:
-				if type(i[0]) == type([]):
-					str += flat(i)
-				else:
-					str += ("%.6f,%.6f ")  % (i[0], i[1])
-			return str
-		
-		
-		arr = json.loads(self.poly_coords)
-		return flat(arr)
-	kml_coords = property(_kml_coords)
-	
 	
 	def _color_fill(self):
 		
@@ -367,7 +358,6 @@ class Sidewalk(models.Model):
 		if self.poly_coords == None:
 			return None
 		
-		import json
 		def flat(l):
 			''' 
 			recursive function to flatten array and create a a list of coordinates separated by a space
@@ -385,10 +375,8 @@ class Sidewalk(models.Model):
 		return flat(arr)
 	kml_coords = property(_kml_coords)
 	
-	
 	def clean(self, *args, **kwargs):
 		from django.core.exceptions import ValidationError
-		import json
 		
 		# keep blanks out of coordinates
 		if self.poly_coords       == "": self.poly_coords       = None
@@ -402,8 +390,10 @@ class Sidewalk(models.Model):
 		
 		super(Sidewalk, self).clean(*args, **kwargs)
 
+
 class BikeRack(MapObj):
 	pass
+
 
 class EmergencyPhone(MapObj):
 	pass
@@ -449,8 +439,8 @@ class GroupedLocation(models.Model):
 class Group(MapObj):
 	locations = models.ManyToManyField(GroupedLocation, blank=True)
 	
-	def json(self):
-		obj = super(Group, self).json()
+	def json(self, **kw):
+		obj = super(Group, self).json(**kw)
 		locations = []
 		for l in self.locations.all():
 			locations.append(l.content_object.link)
@@ -466,7 +456,6 @@ class Group(MapObj):
 		sender.save()
 	
 	def midpoint(self, coordinates_field):
-		import json
 		midpoint_func = lambda a, b: [((a[0] + b[0])/2), ((a[1] + b[1])/2)]
 		
 		points = [p.content_object for p in self.locations.all()]

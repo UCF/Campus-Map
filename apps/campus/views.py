@@ -126,16 +126,14 @@ def group(request, group_id):
 
 def locations(request):
 	
-	from campus.models import Building, Location, RegionalCampus, Group
-	buildings = Building.objects.all()
-	locations = Location.objects.all()
-	campuses  = RegionalCampus.objects.all()
-	groups    = Group.objects.all()
+	from campus.models import MapObj
+	locations = MapObj.objects.all()
+	base_url = request.build_absolute_uri(reverse('home'))[:-1]
 	
 	if request.is_json():
 		arr = []
-		for b in buildings:
-			arr.append(b.json())
+		for l in locations:
+			arr.append(l.json(base_url=base_url))
 		response = HttpResponse(json.dumps(arr))
 		response['Content-type'] = 'application/json'
 		return response
@@ -143,31 +141,12 @@ def locations(request):
 	if request.is_kml():
 		# helpful:
 		# http://code.google.com/apis/kml/documentation/kml_tut.html#network_links
-		
-		def flat(l):
-			'''
-			TODO: move this into an abstract model
-			flatten array and create a a list of coordinates separated by a space
-			'''
-			str = ""
-			for i in l:
-				if type(i[0]) == type([]):
-					return flat(i)
-				else:
-					str += ("%.6f,%.6f ")  % (i[0], i[1])
-			return str
-		
-		for b in buildings:
-			if b.poly_coords != None:
-				arr = json.loads(b.poly_coords)
-				kml_string = flat(arr)
-				b.poly_coords = kml_string
-		
 		response = render_to_response('api/buildings.kml', { 'buildings':buildings })
 		response['Content-type'] = 'application/vnd.google-earth.kml+xml'
 		return response
 	
-	context = { 
+	context = {
+		# HALP
 		'buildings' : buildings,
 		'locations' : locations,
 		'campuses'  : campuses,
@@ -188,10 +167,10 @@ def location(request, loc, return_obj=False):
 	except MapObj.DoesNotExist:
 		raise Http404("Location ID <code>%s</code> could not be found" % (loc))
 	
-	html = location_html(location, request)
-	location = location.json()
-	location['info'] = html
 	base_url = request.build_absolute_uri(reverse('home'))[:-1]
+	html = location_html(location, request)
+	location = location.json(base_url=base_url)
+	location['info'] = html
 	
 	# API views
 	if request.is_json():
