@@ -412,12 +412,17 @@ def location_html(loc, request, orgs=True):
 	context  = { 'location':loc, 'base_url':base_url }
 	location_type = loc.__class__.__name__.lower()
 	template = 'api/info_win_%s.djt' % (location_type)
-	group    = False
+	group = { "overflow" : False, "locations" : False }
 	if location_type == 'group':
-		group = []
+		group['locations'] = []
+		count = 0
 		for gl in loc.locations.all():
-			group.append(gl.content_object)
-		
+			group['locations'].append(gl.content_object)
+			count += 1
+			if count == 4:
+				group['overflow'] = True
+				break
+	
 	# create info HTML using template
 	t = get_template(template)
 	c = Context({

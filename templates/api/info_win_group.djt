@@ -25,9 +25,12 @@
 	<div class="item">
 		<h3>Grouped here:</h3>
 		<ul>
-		{% for l in group %}
+		{% for l in group.locations %}
 			<li><a href="{{base_url}}/?show={{l.id}}" onclick="return Campus.infoBox.show('{{l.name}}', {{l.googlemap_point}}, '{{l.profile_link}}');">{{l.name}}</a></li>
 		{% endfor %}
+		{% if group.overflow %}
+			<li class="c"><a href="{{location.profile_link}}">-- View All --</a></li>
+		{% endif %}
 		</ul>
 	</div>
 	{% endif %}

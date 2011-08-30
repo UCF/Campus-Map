@@ -49,6 +49,18 @@
 				</li>
 			{% endfor %}
 			</ul>
+		{% else %}
+			{# same code as below, juggling locations to make page look balanced if no orgs #}
+			{% if location.locations %}
+			<div id="group-locations">
+			 	<h3>Grouped in {{location.name}}:</h3>
+				<ul class="grey">
+					{% for l in location.locations %}
+					<li>{{l|safe}}</li>
+					{% endfor %}
+				</ul>
+			</div>
+			{% endif %}
 		{% endif %}
 		
 	</div>
@@ -65,7 +77,7 @@
 		<div id="map-go"><a href="/?show={{location.id}}">show on map</a></div>
 		{% endif %}
 		
-		{% if location.locations %}
+		{% if orgs and location.locations %}
 		<div id="group-locations">
 		 	<h3>Grouped in {{location.name}}:</h3>
 			<ul class="grey">

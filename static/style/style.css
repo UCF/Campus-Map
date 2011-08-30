@@ -43,7 +43,9 @@ ul li a { text-decoration:none; border-bottom:1px dotted #CE353B; line-height:1.
 a.button { vertical-align:middle; text-decoration:none; color:#333; font-size:12px; background:white; padding:2px 4px; margin:0 0 0 2px; border:1px solid #aaa; border-radius:4px; -moz-border-radius: 4px; -webkit-border-radius: 4px; }
 .light {  font-family: 'Helvetica Neue Light', 'Helvetica Light', 'HelveticaLight', 'Helvetica-Light', "Helvetica Neue", Helvetica; font-weight:200; letter-spacing:1px; }
 .mono { color:#21759B; font-family:monospace; }
-
+.c { text-align:center; }
+.r { text-align:right; }
+li.r { padding-right:10px; }
 
 /******************************************************************************\
     Layout
