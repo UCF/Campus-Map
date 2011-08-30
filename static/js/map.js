@@ -445,7 +445,7 @@ Campus.layers = {
 			}
 			var images = {
 				"Building" : google_image('yellow'),
-				"Group"    : google_image('red'),
+				"Group"    : google_image('yellow2'),
 				"Location" : google_image('blue')
 			}
 			var point = (Campus.map.mapTypeId === 'illustrated') ? 'ipoint' : 'gpoint';
