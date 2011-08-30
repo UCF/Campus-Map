@@ -142,6 +142,16 @@ ORGANIZATION_SEARCH_URL = 'http://webcom.dev.smca.ucf.edu/search/webroot/service
 # Allows for debug to be false in dev
 SERVE_STATIC_FILES = False
 
+# Search Query Cache Prefix
+SEARCH_QUERY_CACHE_PREFIX = 'search_'
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.db.DatabaseCache',
+        'LOCATION': 'cache',
+    }
+}
+
 try:
 	from settings_local import *
 except ImportError:

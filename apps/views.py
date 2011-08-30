@@ -4,7 +4,7 @@ from django.template import TemplateDoesNotExist
 from django.core.urlresolvers import reverse, resolve, Resolver404
 from django.core.cache import cache
 from django.db.models import Q
-import settings, urllib, json, re, logging
+import settings, urllib, json, re, logging, hashlib
 
 logger = logging.getLogger(__name__)
 
@@ -184,38 +184,44 @@ def search(request):
 	'''
 	from campus.models import MapObj
 	
-	locations = []
-	orgs      = []
-	phones    = []
-	
-	query_string = request.GET.get('q', '').strip()
+	found_entries = {'locations':[],'phonebook':[],'organizations':[]}
+	query_string  = request.GET.get('q', '').strip()
 	
 	if bool(query_string):
 		
-		# Organization Search
-		org_response = organization_search(query_string)
-		if org_response is not None:
-			orgs = org_response['results']
+		cache_key  = settings.SEARCH_QUERY_CACHE_PREFIX + hashlib.md5(query_string).digest()
+		cache_data = cache.get(cache_key)
 		
-		# populate locations by name, abbreviation, and orgs
-		q1 = get_query(query_string, ['name',])
-		q2 = get_query(query_string, ['abbreviation',])
-		q3 = Q(pk = "~~~ no results ~~~")
-		for org in orgs:
-			q3 = q3 | Q(pk = org['bldg_id'])
-		results = MapObj.objects.filter(q1|q2|q3)
-		locations = list(results)
+		if cache_data is not None:
+			found_entries = cache_data
+		else:
+			orgs, locs, phones = ([],[],[])
+			
+			# Organization Search
+			org_response = organization_search(query_string)
+			if org_response is not None:
+				orgs = org_response['results']
 		
-		# Phonebook Search
-		phones_response = phonebook_search(query_string)
-		if phones_response is not None:
-			phones = phones_response['results']
-	
-	found_entries = {
-		'locations'     : list(locations),
-		'phonebook'     : phones,
-		'organizations' : orgs,
-	}
+			# populate locations by name, abbreviation, and orgs
+			q1 = get_query(query_string, ['name',])
+			q2 = get_query(query_string, ['abbreviation',])
+			q3 = Q(pk = "~~~ no results ~~~")
+			for org in orgs:
+				q3 = q3 | Q(pk = org['bldg_id'])
+			results = MapObj.objects.filter(q1|q2|q3)
+			locs = list(results)
+		
+			# Phonebook Search
+			phones_response = phonebook_search(query_string)
+			if phones_response is not None:
+				phones = phones_response['results']
+			
+			found_entries = {
+				'locations'     : locs,
+				'phonebook'     : phones,
+				'organizations' : orgs,
+			}
+			cache.set(cache_key, found_entries, 60 * 60 * 24 * 7 * 52 * 10)
 	
 	# TODO: Text API format
 	if request.is_json():

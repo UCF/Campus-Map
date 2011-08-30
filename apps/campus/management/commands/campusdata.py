@@ -1,4 +1,4 @@
-import os.path, re, json, sys, campus, StringIO
+import os.path, re, json, sys, campus, StringIO, warnings
 from django.core.management.base import BaseCommand
 from django.core.management import call_command
 from campus.admin import create_groupable_locations
@@ -7,6 +7,7 @@ from django.db.models.query import QuerySet
 from django.db import connection, transaction
 from _mysql_exceptions import OperationalError 
 from django.db.utils import IntegrityError, DatabaseError
+from django.conf import settings
 
 class Command(BaseCommand):
 	args = 'none'
@@ -56,6 +57,28 @@ class Command(BaseCommand):
 		#syncdb,
 		call_command('syncdb', verbosity=0, interactive=False)
 		
+		# drop the cache db tables. call the django createcachetable command to recreate them
+		try: settings.CACHES
+		except AttributeError: pass # Caching in general is not configured
+		else:
+			for name,details in settings.CACHES.items():
+				try: details['BACKEND']
+				except KeyError: pass # Cache not configured correctly
+				else:
+					if details['BACKEND'].split('.')[-1] == 'DatabaseCache':
+						try: details['LOCATION']
+						except KeyError: pass# Cache not configured correctly
+						else:
+							# Even with IF EXISTS, this DROP statement will produce a warning.
+							# Since we don't want that printed to the console, supress warnings
+							# for a moment. An alternate method of doing this would be to redirect
+							# stdout momentarily.
+							error = True
+							with warnings.catch_warnings():
+								warnings.simplefilter('ignore')
+								error = self.run_query('DROP TABLE IF EXISTS `%s`' % details['LOCATION'])
+							if not error:
+								call_command('createcachetable', details['LOCATION'], verbosity=0, interactive=False)
 		
 		# load all the data from fixtures
 		path = os.path.join(os.path.dirname(campus.__file__), 'fixtures')
