@@ -100,17 +100,18 @@ class MapQuerySet(QuerySet):
 			except FieldError:
 				continue
 		return mob_query
-	
-	def mob_filter(self, *args, **kwargs):
-		'''
-		TODO: verify this works
-		'''
-		qs = QuerySet(campus.models.MapObj)
-		return qs.filter(*args, **kwargs)
 
 class MapManager(models.Manager):
 	def get_query_set(self):
 		return MapQuerySet(self.model)
+	
+	def mob_filter(self, *args, **kwargs):
+		'''
+		Needed because plain 'filter' returns leaf class
+		'''
+		qs = QuerySet(campus.models.MapObj)
+		return qs.filter(*args, **kwargs)
+	
 
 class MapObj(models.Model):
 	objects           = MapManager()
