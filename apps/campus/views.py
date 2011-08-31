@@ -52,12 +52,12 @@ def home(request, **kwargs):
 	# points on the map (will have to be extended with more data added)
 	if kwargs.get('points', False):
 		from django.contrib.contenttypes.models import ContentType
-		from models import Building, Location, Group
+		from models import Building, Location, Group, ParkingLot
 		
 		# Filter home page locations to building, locations, and groups
 		points = cache.get('home_points')
 		if points is None:
-			show   = map(lambda c: ContentType.objects.get_for_model(c), (Building, Location, Group,))
+			show   = map(lambda c: ContentType.objects.get_for_model(c), (Building, Location, Group,ParkingLot))
 			mobs   = MapObj.objects.filter(content_type__in=map(lambda c: c.id, show))
 			points = {}
 			for o in mobs:
