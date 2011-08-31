@@ -3,6 +3,7 @@ from django.http      import HttpResponse, HttpResponseNotFound, Http404, HttpRe
 from django.views.generic.simple import direct_to_template as render
 from django.core.urlresolvers import reverse
 from campus.models import MapObj
+from django.core.cache import cache
 
 import settings, json, re, urllib
 
@@ -52,18 +53,22 @@ def home(request, **kwargs):
 	if kwargs.get('points', False):
 		from django.contrib.contenttypes.models import ContentType
 		from models import Building, Location, Group
+		
 		# Filter home page locations to building, locations, and groups
-		show   = map(lambda c: ContentType.objects.get_for_model(c), (Building, Location, Group,))
-		mobs   = MapObj.objects.filter(content_type__in=map(lambda c: c.id, show))
-		points = {}
-		for o in mobs:
-			o = o.json()
-			points[o['id']] = {
-				'name'   : o['name'],
-				'gpoint' : o['googlemap_point'],
-				'ipoint' : o['illustrated_point'],
-				'type'   : o['object_type'],
-			}
+		points = cache.get('home_points')
+		if points is None:
+			show   = map(lambda c: ContentType.objects.get_for_model(c), (Building, Location, Group,))
+			mobs   = MapObj.objects.filter(content_type__in=map(lambda c: c.id, show))
+			points = {}
+			for o in mobs:
+				o = o.json()
+				points[o['id']] = {
+					'name'   : o['name'],
+					'gpoint' : o['googlemap_point'],
+					'ipoint' : o['illustrated_point'],
+					'type'   : o['object_type'],
+				}
+			cache.set('home_points', points, 60 * 60)
 	else:
 		points = None
 		
@@ -125,10 +130,11 @@ def group(request, group_id):
 
 
 def locations(request):
-	
 	from campus.models import MapObj
+	
 	locations = MapObj.objects.all()
-	base_url = request.build_absolute_uri(reverse('home'))[:-1]
+	base_url  = request.build_absolute_uri(reverse('home'))[:-1]
+	
 	
 	if request.is_json():
 		arr = []
@@ -145,13 +151,27 @@ def locations(request):
 		response['Content-type'] = 'application/vnd.google-earth.kml+xml'
 		return response
 	
-	context = {
-		# HALP
-		'buildings' : filter(lambda l: l.object_type == 'Building', locations),
-		'locations' : filter(lambda l: l.object_type == 'Location', locations),
-		'campuses'  : filter(lambda l: l.object_type == 'RegionalCampus', locations),
-		'groups'    : filter(lambda l: l.object_type == 'Group', locations),
-	}
+	context = cache.get('locations_context')
+	if context is None:
+		context = {
+			'buildings' : list(),
+			'locations' : list(),
+			'campuses'  : list(),
+			'groups'    : list(),
+		}
+	
+		for l in locations:
+			if (l.object_type == 'Building'):
+				context['buildings'].append(l)
+			elif(l.object_type == 'Location'):
+				context['locations'].append(l)
+			elif(l.object_type == 'RegionalCampus'):
+				context['campuses'].append(l)
+			elif(l.object_type == 'Group'):
+				context['groups'].append(l)
+		
+		cache.set('locations_context', context, 60 * 60)
+	
 	return render(request, 'campus/locations.djt', context)
 
 def location(request, loc, return_obj=False):
