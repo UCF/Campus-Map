@@ -780,7 +780,7 @@ Campus.info = function(id, pan){
 				Campus.infoBox.setContent(iBox);
 				if($.browser.name === "msie"){
 					// IE sucks hard
-					$(Campus.infoBox.content_).html(txt);
+					$(Campus.infoBox.content_).html(txt + '<a onclick="Campus.infoBox.x()" class="iclose"></a>');
 				}
 			});
 		}
@@ -793,7 +793,9 @@ Campus.info = function(id, pan){
 		}
 		Campus.infoBox.x = function(e){
 			//close
-			e.preventDefault();
+			if ($.browser.name !== 'msie'){
+				e.preventDefault();
+			}
 			Campus.menu.show('main');
 			Campus.infoBox.close();
 			return false;
