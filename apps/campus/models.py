@@ -347,8 +347,21 @@ class ParkingLot(MapObj):
 		kml_color = "%x%s" % (opacity * 255, color[2:])
 		return kml_color
 	color_line = property(_color_line)
-
-
+	
+	def _title(self):
+		if self.abbreviation:
+			return "%s (%s)" % (self.name, self.abbreviation)
+		else:
+			return self.name
+	title = property(_title)
+	
+	def json(self, **kw):
+		obj = MapObj.json(self, **kw)
+		obj['number'] = self.number
+		obj['link'] = self.link
+		obj['title'] = self.title
+		return obj
+		
 class HandicappedParking(MapObj):
 	def save(self, **kwargs):
 		self.id = 'hp-' + slugify(self.label)
