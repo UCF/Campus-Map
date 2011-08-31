@@ -5,7 +5,10 @@ from campus.admin import create_groupable_locations
 from campus.models import Group, GroupedLocation, MapObj
 from django.db.models.query import QuerySet
 from django.db import connection, transaction
-from _mysql_exceptions import OperationalError 
+try:
+	from _mysql_exceptions import OperationalError 
+except ImportError:
+	class OperationalError: pass
 from django.db.utils import IntegrityError, DatabaseError
 from django.conf import settings
 
