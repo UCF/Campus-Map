@@ -34,10 +34,6 @@
                 ], 
                 [
                     "campus.building", 
-                    "7f"
-                ], 
-                [
-                    "campus.building", 
                     "7g"
                 ], 
                 [
@@ -54,11 +50,15 @@
                 ], 
                 [
                     "campus.building", 
+                    "7b"
+                ], 
+                [
+                    "campus.building", 
                     "7e"
                 ], 
                 [
                     "campus.building", 
-                    "7b"
+                    "7f"
                 ]
             ]
         }

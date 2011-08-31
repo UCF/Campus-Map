@@ -5,46 +5,6 @@
         "fields": {}
     }, 
     {
-        "pk": "bikerack-2", 
-        "model": "campus.bikerack", 
-        "fields": {}
-    }, 
-    {
-        "pk": "bikerack-3", 
-        "model": "campus.bikerack", 
-        "fields": {}
-    }, 
-    {
-        "pk": "bikerack-4", 
-        "model": "campus.bikerack", 
-        "fields": {}
-    }, 
-    {
-        "pk": "bikerack-5", 
-        "model": "campus.bikerack", 
-        "fields": {}
-    }, 
-    {
-        "pk": "bikerack-6", 
-        "model": "campus.bikerack", 
-        "fields": {}
-    }, 
-    {
-        "pk": "bikerack-7", 
-        "model": "campus.bikerack", 
-        "fields": {}
-    }, 
-    {
-        "pk": "bikerack-8", 
-        "model": "campus.bikerack", 
-        "fields": {}
-    }, 
-    {
-        "pk": "bikerack-9", 
-        "model": "campus.bikerack", 
-        "fields": {}
-    }, 
-    {
         "pk": "bikerack-10", 
         "model": "campus.bikerack", 
         "fields": {}
@@ -91,6 +51,11 @@
     }, 
     {
         "pk": "bikerack-19", 
+        "model": "campus.bikerack", 
+        "fields": {}
+    }, 
+    {
+        "pk": "bikerack-2", 
         "model": "campus.bikerack", 
         "fields": {}
     }, 
@@ -145,6 +110,11 @@
         "fields": {}
     }, 
     {
+        "pk": "bikerack-3", 
+        "model": "campus.bikerack", 
+        "fields": {}
+    }, 
+    {
         "pk": "bikerack-30", 
         "model": "campus.bikerack", 
         "fields": {}
@@ -191,6 +161,11 @@
     }, 
     {
         "pk": "bikerack-39", 
+        "model": "campus.bikerack", 
+        "fields": {}
+    }, 
+    {
+        "pk": "bikerack-4", 
         "model": "campus.bikerack", 
         "fields": {}
     }, 
@@ -245,6 +220,11 @@
         "fields": {}
     }, 
     {
+        "pk": "bikerack-5", 
+        "model": "campus.bikerack", 
+        "fields": {}
+    }, 
+    {
         "pk": "bikerack-50", 
         "model": "campus.bikerack", 
         "fields": {}
@@ -295,6 +275,11 @@
         "fields": {}
     }, 
     {
+        "pk": "bikerack-6", 
+        "model": "campus.bikerack", 
+        "fields": {}
+    }, 
+    {
         "pk": "bikerack-60", 
         "model": "campus.bikerack", 
         "fields": {}
@@ -326,6 +311,21 @@
     }, 
     {
         "pk": "bikerack-66", 
+        "model": "campus.bikerack", 
+        "fields": {}
+    }, 
+    {
+        "pk": "bikerack-7", 
+        "model": "campus.bikerack", 
+        "fields": {}
+    }, 
+    {
+        "pk": "bikerack-8", 
+        "model": "campus.bikerack", 
+        "fields": {}
+    }, 
+    {
+        "pk": "bikerack-9", 
         "model": "campus.bikerack", 
         "fields": {}
     }

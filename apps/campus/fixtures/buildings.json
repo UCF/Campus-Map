@@ -1,13 +1,5 @@
 [
     {
-        "pk": "12150", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "", 
-            "sketchup": ""
-        }
-    }, 
-    {
         "pk": "101", 
         "model": "campus.building", 
         "fields": {
@@ -216,18 +208,18 @@
         }
     }, 
     {
-        "pk": "625", 
+        "pk": "12150", 
         "model": "campus.building", 
         "fields": {
-            "abbreviation": "LS25", 
+            "abbreviation": "", 
             "sketchup": ""
         }
     }, 
     {
-        "pk": "402", 
+        "pk": "625", 
         "model": "campus.building", 
         "fields": {
-            "abbreviation": "BPW", 
+            "abbreviation": "LS25", 
             "sketchup": ""
         }
     }, 
@@ -304,6 +296,14 @@
         }
     }, 
     {
+        "pk": "402", 
+        "model": "campus.building", 
+        "fields": {
+            "abbreviation": "BPW", 
+            "sketchup": ""
+        }
+    }, 
+    {
         "pk": "30", 
         "model": "campus.building", 
         "fields": {
@@ -360,6 +360,14 @@
         }
     }, 
     {
+        "pk": "140", 
+        "model": "campus.building", 
+        "fields": {
+            "abbreviation": "CSEL", 
+            "sketchup": ""
+        }
+    }, 
+    {
         "pk": "607", 
         "model": "campus.building", 
         "fields": {
@@ -372,30 +380,6 @@
         "model": "campus.building", 
         "fields": {
             "abbreviation": "MOD3", 
-            "sketchup": ""
-        }
-    }, 
-    {
-        "pk": "53", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "CROL", 
-            "sketchup": ""
-        }
-    }, 
-    {
-        "pk": "622", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "LS22", 
-            "sketchup": ""
-        }
-    }, 
-    {
-        "pk": "140", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "CSEL", 
             "sketchup": ""
         }
     }, 
@@ -572,6 +556,22 @@
         "model": "campus.building", 
         "fields": {
             "abbreviation": "CRSC", 
+            "sketchup": ""
+        }
+    }, 
+    {
+        "pk": "53", 
+        "model": "campus.building", 
+        "fields": {
+            "abbreviation": "CROL", 
+            "sketchup": ""
+        }
+    }, 
+    {
+        "pk": "622", 
+        "model": "campus.building", 
+        "fields": {
+            "abbreviation": "LS22", 
             "sketchup": ""
         }
     }, 
@@ -832,18 +832,18 @@
         }
     }, 
     {
-        "pk": "12423", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "", 
-            "sketchup": ""
-        }
-    }, 
-    {
         "pk": "8112", 
         "model": "campus.building", 
         "fields": {
             "abbreviation": "BNT", 
+            "sketchup": ""
+        }
+    }, 
+    {
+        "pk": "12423", 
+        "model": "campus.building", 
+        "fields": {
+            "abbreviation": "", 
             "sketchup": ""
         }
     }, 
@@ -1112,70 +1112,6 @@
         }
     }, 
     {
-        "pk": "147", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "PG-A", 
-            "sketchup": ""
-        }
-    }, 
-    {
-        "pk": "89", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "PG-B", 
-            "sketchup": ""
-        }
-    }, 
-    {
-        "pk": "83", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "PG-C", 
-            "sketchup": ""
-        }
-    }, 
-    {
-        "pk": "97", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "PG-D", 
-            "sketchup": ""
-        }
-    }, 
-    {
-        "pk": "134", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "PG-E", 
-            "sketchup": ""
-        }
-    }, 
-    {
-        "pk": "141", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "PG-F", 
-            "sketchup": ""
-        }
-    }, 
-    {
-        "pk": "131", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "PG-G", 
-            "sketchup": ""
-        }
-    }, 
-    {
-        "pk": "151", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "PG-H", 
-            "sketchup": ""
-        }
-    }, 
-    {
         "pk": "78", 
         "model": "campus.building", 
         "fields": {
@@ -1344,46 +1280,6 @@
         }
     }, 
     {
-        "pk": "501", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "ROTC", 
-            "sketchup": ""
-        }
-    }, 
-    {
-        "pk": "503", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "", 
-            "sketchup": ""
-        }
-    }, 
-    {
-        "pk": "504", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "", 
-            "sketchup": ""
-        }
-    }, 
-    {
-        "pk": "505", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "", 
-            "sketchup": ""
-        }
-    }, 
-    {
-        "pk": "u3", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "", 
-            "sketchup": ""
-        }
-    }, 
-    {
         "pk": "321", 
         "model": "campus.building", 
         "fields": {
@@ -1480,18 +1376,50 @@
         }
     }, 
     {
-        "pk": "7b", 
+        "pk": "501", 
         "model": "campus.building", 
         "fields": {
-            "abbreviation": "FC-B", 
+            "abbreviation": "ROTC", 
             "sketchup": ""
         }
     }, 
     {
-        "pk": "7e", 
+        "pk": "503", 
         "model": "campus.building", 
         "fields": {
-            "abbreviation": "FC-E", 
+            "abbreviation": "", 
+            "sketchup": ""
+        }
+    }, 
+    {
+        "pk": "504", 
+        "model": "campus.building", 
+        "fields": {
+            "abbreviation": "", 
+            "sketchup": ""
+        }
+    }, 
+    {
+        "pk": "505", 
+        "model": "campus.building", 
+        "fields": {
+            "abbreviation": "", 
+            "sketchup": ""
+        }
+    }, 
+    {
+        "pk": "u3", 
+        "model": "campus.building", 
+        "fields": {
+            "abbreviation": "", 
+            "sketchup": ""
+        }
+    }, 
+    {
+        "pk": "7b", 
+        "model": "campus.building", 
+        "fields": {
+            "abbreviation": "FC-B", 
             "sketchup": ""
         }
     }, 
@@ -1552,6 +1480,14 @@
         }
     }, 
     {
+        "pk": "7e", 
+        "model": "campus.building", 
+        "fields": {
+            "abbreviation": "FC-E", 
+            "sketchup": ""
+        }
+    }, 
+    {
         "pk": "4", 
         "model": "campus.building", 
         "fields": {
@@ -1580,14 +1516,6 @@
         "model": "campus.building", 
         "fields": {
             "abbreviation": "SUH", 
-            "sketchup": ""
-        }
-    }, 
-    {
-        "pk": "535", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "", 
             "sketchup": ""
         }
     }, 
@@ -1668,6 +1596,14 @@
         "model": "campus.building", 
         "fields": {
             "abbreviation": "T4", 
+            "sketchup": ""
+        }
+    }, 
+    {
+        "pk": "535", 
+        "model": "campus.building", 
+        "fields": {
+            "abbreviation": "", 
             "sketchup": ""
         }
     }, 

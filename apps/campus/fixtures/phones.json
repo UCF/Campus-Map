@@ -5,46 +5,6 @@
         "fields": {}
     }, 
     {
-        "pk": "phone-2", 
-        "model": "campus.emergencyphone", 
-        "fields": {}
-    }, 
-    {
-        "pk": "phone-3", 
-        "model": "campus.emergencyphone", 
-        "fields": {}
-    }, 
-    {
-        "pk": "phone-4", 
-        "model": "campus.emergencyphone", 
-        "fields": {}
-    }, 
-    {
-        "pk": "phone-5", 
-        "model": "campus.emergencyphone", 
-        "fields": {}
-    }, 
-    {
-        "pk": "phone-6", 
-        "model": "campus.emergencyphone", 
-        "fields": {}
-    }, 
-    {
-        "pk": "phone-7", 
-        "model": "campus.emergencyphone", 
-        "fields": {}
-    }, 
-    {
-        "pk": "phone-8", 
-        "model": "campus.emergencyphone", 
-        "fields": {}
-    }, 
-    {
-        "pk": "phone-9", 
-        "model": "campus.emergencyphone", 
-        "fields": {}
-    }, 
-    {
         "pk": "phone-10", 
         "model": "campus.emergencyphone", 
         "fields": {}
@@ -91,6 +51,11 @@
     }, 
     {
         "pk": "phone-19", 
+        "model": "campus.emergencyphone", 
+        "fields": {}
+    }, 
+    {
+        "pk": "phone-2", 
         "model": "campus.emergencyphone", 
         "fields": {}
     }, 
@@ -145,6 +110,11 @@
         "fields": {}
     }, 
     {
+        "pk": "phone-3", 
+        "model": "campus.emergencyphone", 
+        "fields": {}
+    }, 
+    {
         "pk": "phone-30", 
         "model": "campus.emergencyphone", 
         "fields": {}
@@ -186,6 +156,36 @@
     }, 
     {
         "pk": "phone-38", 
+        "model": "campus.emergencyphone", 
+        "fields": {}
+    }, 
+    {
+        "pk": "phone-4", 
+        "model": "campus.emergencyphone", 
+        "fields": {}
+    }, 
+    {
+        "pk": "phone-5", 
+        "model": "campus.emergencyphone", 
+        "fields": {}
+    }, 
+    {
+        "pk": "phone-6", 
+        "model": "campus.emergencyphone", 
+        "fields": {}
+    }, 
+    {
+        "pk": "phone-7", 
+        "model": "campus.emergencyphone", 
+        "fields": {}
+    }, 
+    {
+        "pk": "phone-8", 
+        "model": "campus.emergencyphone", 
+        "fields": {}
+    }, 
+    {
+        "pk": "phone-9", 
         "model": "campus.emergencyphone", 
         "fields": {}
     }
