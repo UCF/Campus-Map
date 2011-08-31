@@ -19,30 +19,32 @@ class Command(BaseCommand):
 		
 		url_strings = [
 			'',
-			'search/',
-			'organizations/',
-			'locations/',
-			'printable/',
-			'locations/1/millican-hall/?org=354',
 			'.json',
 			'search/.json?q=commons',
+			'search/',
+			'organizations/',
+			'organizations/354/',
+			'organizations/354/.json',
+			'organizations/96/.ajax',
+			'locations/',
+			"locations/.kml?v=17",
 			'locations/.json',
 			"locations/52/.json",
+			'locations/1/millican-hall/?org=354',
+			'printable/',
 			"parking/.kml?v=17",
-			"locations/.kml?v=17",
 			"sidewalks/.kml?v=17",
 			"bikeracks/.json",
 			"emergency-phones/.json",
-			"organizations/96/.ajax",
 		]
 		
 		for u in url_strings:
 			try:
-				time.sleep(.5)
+				time.sleep(.75)
 				url = base+u
 				page = urllib2.urlopen(url)
-				print "%-60s OK" % url
+				print "%-75s OK" % url
 			except urllib2.URLError, e:
-				print "%-60s Fail: %s" % (url, e)
+				print "%-75s Fail: %s" % (url, e)
 			
 
