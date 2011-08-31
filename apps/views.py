@@ -4,6 +4,7 @@ from django.template import TemplateDoesNotExist
 from django.core.urlresolvers import reverse, resolve, Resolver404
 from django.core.cache import cache
 from django.db.models import Q
+from django.utils.html import strip_tags
 import settings, urllib, json, re, logging, hashlib
 
 logger = logging.getLogger(__name__)
@@ -24,6 +25,18 @@ def page_not_found(request, **kwargs):
 		error = error.__unicode__()
 	if not bool(error):
 		error = "<code>%s</code> could not be found." % (request.path)
+	
+	if request.is_json():
+		msg = { "error" : strip_tags(error) }
+		response = HttpResponseNotFound(json.dumps(msg))
+		response['Content-type'] = 'application/json'
+		return response
+	
+	if request.is_txt():
+		msg = "404 Not Found:\n%s" % strip_tags(error)
+		response = HttpResponseNotFound(msg)
+		response['Content-type'] = 'text/plain; charset=utf-8'
+		return response
 	
 	request.GET ={} # must clear query string
 	html = home(request, points=True, error=error)
@@ -57,7 +70,6 @@ def pages(request, page=None):
 	static pages with API placeholders
 	'''
 	if request.is_json():
-		import json
 		response = HttpResponse(json.dumps('Not this page silly!'))
 		response['Content-type'] = 'application/json'
 		return response
