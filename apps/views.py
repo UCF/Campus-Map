@@ -90,6 +90,8 @@ def organization(request, id):
 	from django.template.loader import get_template
 	from django.template import Context
 	org = get_org(id)
+	if not org:
+		raise Http404("Organization ID <code>%s</code> could not be found" % (id))
 	building = None
 	try:
 		from campus.models import Building
