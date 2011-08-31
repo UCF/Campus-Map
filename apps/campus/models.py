@@ -316,8 +316,11 @@ class Building(MapObj):
 		ordering = ("name", "id")
 
 class ParkingLot(MapObj):
-	permit_type = models.CharField(max_length=255, blank=True, null=True)
-	number      = models.CharField(max_length=50, blank=True, null=True)
+	permit_type  = models.CharField(max_length=255, blank=True, null=True)
+	number       = models.CharField(max_length=50, blank=True, null=True)
+	abbreviation = models.CharField(max_length=50, blank=True)
+	sketchup     = models.CharField(max_length=50, blank=True, help_text="E.g., http://sketchup.google.com/3dwarehouse/details?mid=<code>54b7f313bf315a3a85622796b26c9e66</code>&prevstart=0")
+	
 	
 	def _color_fill(self):
 		
