@@ -5,8 +5,9 @@ from django.db.models.query import QuerySet
 from django.contrib.contenttypes import generic
 from django.core.urlresolvers import reverse
 from django.template.defaultfilters import slugify
-from django.db.models.signals import m2m_changed
+from django.db.models.signals import m2m_changed, post_save
 from django.core.exceptions import FieldError
+from django.core.cache import cache
 
 from django.db.models import Q
 import campus
@@ -267,6 +268,7 @@ class MapObj(models.Model):
 	class Meta:
 		ordering = ("name",)
 
+
 class Location(MapObj):
 	'''
 	I don't like this name.  Maybe "miscellaneous locations" or "greater ucf"
@@ -364,7 +366,7 @@ class ParkingLot(MapObj):
 		
 class HandicappedParking(MapObj):
 	def save(self, **kwargs):
-		self.id = 'hp-' + slugify(self.label)
+		self.id = 'hp-' + slugify(self.name)
 		super(HandicappedParking, self).save(**kwargs)
 	
 	class Meta:

@@ -95,7 +95,13 @@
 {% block js %}
 <script src="{{MEDIA_URL}}-/jquery.plugins/tablesorter/jquery.tablesorter.min.js"></script>
 <script>
-	$("#buildings").tablesorter();
+	$("#buildings").tablesorter({
+		headers: {
+			2: {
+				sorter: 'text'
+			}
+		}
+	});
 	// preload header bgs
 	var bg1 = new Image(); bg1.src = "{{MEDIA_URL}}-/jquery.plugins/tablesorter/themes/green/asc.png";
 	var bg2 = new Image(); bg2.src = "{{MEDIA_URL}}-/jquery.plugins/tablesorter/themes/green/desc.png";
