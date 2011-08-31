@@ -481,4 +481,3 @@ class Group(MapObj):
 		return self.name
 
 m2m_changed.connect(Group.update_coordinates, sender=Group.locations.through)
-post_save.connect(lambda **kwargs: cache.clear())
