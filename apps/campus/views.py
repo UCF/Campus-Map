@@ -141,16 +141,16 @@ def locations(request):
 	if request.is_kml():
 		# helpful:
 		# http://code.google.com/apis/kml/documentation/kml_tut.html#network_links
-		response = render_to_response('api/buildings.kml', { 'buildings':buildings })
+		response = render_to_response('api/buildings.kml', { 'locations':locations })
 		response['Content-type'] = 'application/vnd.google-earth.kml+xml'
 		return response
 	
 	context = {
 		# HALP
-		'buildings' : buildings,
-		'locations' : locations,
-		'campuses'  : campuses,
-		'groups'    : groups
+		'buildings' : filter(lambda l: l.object_type == 'Building', locations),
+		'locations' : filter(lambda l: l.object_type == 'Location', locations),
+		'campuses'  : filter(lambda l: l.object_type == 'RegionalCampus', locations),
+		'groups'    : filter(lambda l: l.object_type == 'Group', locations),
 	}
 	return render(request, 'campus/locations.djt', context)
 

@@ -152,6 +152,10 @@ class MapObj(models.Model):
 		}
 	orgs = property(_orgs)
 	
+	def _object_type(self):
+		return self.__class__.__name__
+	object_type = property(_object_type)
+	
 	def json(self, base_url=''):
 		"""Returns a json serializable object for this instance"""
 		obj = dict(self.__dict__)
@@ -184,7 +188,7 @@ class MapObj(models.Model):
 		obj['profile_link'] = self._profile_link(base_url)
 		obj.pop('content_type_id', None)
 		obj.pop('mapobj_ptr_id', None)
-		obj['object_type'] = self.__class__.__name__
+		obj['object_type'] = self.object_type
 		return obj
 	
 	def _kml_coords(self):

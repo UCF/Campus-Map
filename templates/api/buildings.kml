@@ -9,21 +9,21 @@
 	<SimpleField name="abbreviation" type="string"></SimpleField>
 </Schema>
 
-{% for b in buildings %}{% if b.kml_coords %}
+{% for l in locations %}{% if l.kml_coords %}
 <Placemark>
-	<name>{{b.name}}</name>
+	<name>{{l.name}}</name>
 	<Style>
 		<LabelStyle><color>ffffffff</color></LabelStyle>
 		<LineStyle><color>ccb5b5b5</color><width>1</width></LineStyle>
 		<PolyStyle><color>59b0b0b0</color></PolyStyle>
 	</Style>
 	<ExtendedData><SchemaData schemaUrl="#building">
-		<SimpleData name="number">{{b.number}}</SimpleData>
-		<SimpleData name="name">{{b.name}}</SimpleData>
-		<SimpleData name="description">{{b.description}}</SimpleData>
-		<SimpleData name="abbreviation">{{b.abbreviation}}</SimpleData>
+		<SimpleData name="number">{{l.number}}</SimpleData>
+		<SimpleData name="name">{{l.name}}</SimpleData>
+		<SimpleData name="description">{{l.description}}</SimpleData>
+		<SimpleData name="abbreviation">{{l.abbreviation}}</SimpleData>
 	</SchemaData></ExtendedData>
-	<Polygon><outerBoundaryIs><LinearRing><coordinates>{{b.kml_coords}}</coordinates></LinearRing></outerBoundaryIs></Polygon>
+	<Polygon><outerBoundaryIs><LinearRing><coordinates>{{l.kml_coords}}</coordinates></LinearRing></outerBoundaryIs></Polygon>
 </Placemark>
 {% endif %}{% endfor %}
 
