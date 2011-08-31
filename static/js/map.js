@@ -444,9 +444,10 @@ Campus.layers = {
 					new google.maps.Point(10,10));
 			}
 			var images = {
-				"Building" : google_image('yellow'),
-				"Group"    : google_image('yellow2'),
-				"Location" : google_image('blue')
+				"Building"   : google_image('yellow'),
+				"ParkingLot" : google_image('yellow'),
+				"Group"      : google_image('yellow2'),
+				"Location"   : google_image('blue')
 			}
 			var point = (Campus.map.mapTypeId === 'illustrated') ? 'ipoint' : 'gpoint';
 			var id;
