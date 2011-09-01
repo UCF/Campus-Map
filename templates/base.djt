@@ -105,9 +105,9 @@
 		
 			<div class="right">
 				<a href="{% url page 'regional-campuses' %}">Regional Campuses</a> | 
-				<a href="{% url location 'college-of-medicine' %}">College of Medicine</a> | 
-				<a href="{% url page 'downtown' %}">Downtown</a> | 
-				<a href="{% url location 'rosen-college' %}">Rosen College</a>
+				<a href="{% url home %}?show=college-of-medicine">College of Medicine</a> | 
+				<a href="{% url home %}?show=downtown">Downtown</a> | 
+				<a href="{% url home %}?show=rosen-college">Rosen College</a>
 				
 				<a id="logo" href="http://www.ucf.edu/">UCF Stands For Opportunity</a>
 			</div>
