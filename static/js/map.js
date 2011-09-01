@@ -224,6 +224,8 @@ Campus.controls = function(){
 		var latlng = new google.maps.LatLng(loc.googlemap_point[0], loc.googlemap_point[1]);
 		Campus.map.panTo(latlng);
 		Campus.info();
+		if(loc.object_type == 'Location') loc.profile_link = false;
+		console.log(loc.object_type, loc.profile_link);		
 		Campus.infoBox.show(loc.name, latlng, loc.profile_link);
 		Campus.stage.html(loc.info);
 		Campus.menu.show('location');
