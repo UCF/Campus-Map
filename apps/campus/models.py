@@ -251,6 +251,10 @@ class MapObj(models.Model):
 		super(MapObj, self).clean(*args, **kwargs)
 	
 	def save(self, *args, **kwargs):
+		from django.core.cache import cache
+		# Forces cache reset once data changes
+		cache.clear()
+		
 		if(not self.content_type):
 			self.content_type = ContentType.objects.get_for_model(self.__class__)
 		super(MapObj, self).save(*args, **kwargs)

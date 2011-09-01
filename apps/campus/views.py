@@ -68,7 +68,7 @@ def home(request, **kwargs):
 					'ipoint' : o['illustrated_point'],
 					'type'   : o['object_type'],
 				}
-			cache.set('home_points', points, 60 * 60)
+			cache.set('home_points', points, 60 * 60 * 24)
 	else:
 		points = None
 		
@@ -170,7 +170,7 @@ def locations(request):
 			elif(l.object_type == 'Group'):
 				context['groups'].append(l)
 		
-		cache.set('locations_context', context, 60 * 60)
+		cache.set('locations_context', context, 60 * 60 * 24)
 	
 	return render(request, 'campus/locations.djt', context)
 
