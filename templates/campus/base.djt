@@ -41,7 +41,7 @@
 {% block js %}
 	<script src="http://maps.google.com/maps/api/js?sensor=false" type="text/javascript" ></script>
 	<script src="{{MEDIA_URL}}-/gmaps-infobox/infobox_packed.js"></script>
-	<script src="{{MEDIA_URL}}js/map.js?date={{date|format:'Ymd'}}" type="text/javascript"></script>
+	<script src="{{MEDIA_URL}}js/map.js?date={{date|date:'Ymd'}}" type="text/javascript"></script>
 	<script type="text/javascript">
 		Campus.urls = {
 			"static"        : "{{ MEDIA_URL }}",
