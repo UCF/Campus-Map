@@ -143,7 +143,7 @@ class MapObj(models.Model):
 			return self.__repr__()
 	title = property(_title)
 	
-	def _orgs(self, limit=4):
+	def _orgs(self):
 		''' retruns a subset of orgs '''
 		from apps.views import get_orgs
 		building_orgs = []
@@ -152,10 +152,6 @@ class MapObj(models.Model):
 		for o in get_orgs()['results']:
 			if self.pk == o['bldg_id']:
 				building_orgs.append(o)
-				count += 1
-			if(limit > 0 and count >= limit):
-				overflow = True
-				break
 		return {
 			"results" : building_orgs,
 			"overflow": overflow

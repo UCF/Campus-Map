@@ -183,7 +183,7 @@ def location(request, loc, return_obj=False):
 	location_orgs = []
 	try:
 		location = MapObj.objects.get(pk=loc)
-		location_orgs = location._orgs(limit=-1)['results']
+		location_orgs = location._orgs()['results']
 	except MapObj.DoesNotExist:
 		raise Http404("Location ID <code>%s</code> could not be found" % (loc))
 	
