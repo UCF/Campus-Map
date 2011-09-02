@@ -4,42 +4,35 @@
 '''
 from django.core.management.base import BaseCommand
 import os, campus, json
-from apps.campus.models import Building, ParkingLot
+from apps.campus.models import ParkingLot
 from django.core.management import call_command
 
+def prompt():
+	while(True):
+		i = raw_input("Accept? [y/n] ")
+		if(i == 'y'): 
+			print
+			return True
+		elif(i == 'n'): 
+			print
+			return False
+		else: 
+			print "what?"
+
 class Command(BaseCommand):
+	
 	def handle(self, *args, **options):
 		
-		STARTS_WITH_FILTER = 'Parking Garage'
-		
-		for building in Building.objects.filter(name__startswith = STARTS_WITH_FILTER):
-			print building.name
-			try:
-				parking_lot = ParkingLot.objects.get(name = building.name)
-			except ParkingLot.DoesNotExist:
-				print '>> No matching parking lot found'
-			else:
-				# Copy sketchup and abbreviation to parking lot and delete the building
-				building_dict = building.__dict__
-				building.delete()
+		for p in ParkingLot.objects.all():
+			
+			print p.id
+			
+			'''
+			if p.id != p.id.lower():
 				
-				del building_dict['_state']
-				del building_dict['_mapobj_ptr_cache']
-				
-				building_dict['permit_type'] = parking_lot.permit_type
-				building_dict['number'] = parking_lot.number
-				building_dict['content_type_id'] = 4
-				
-				# Reverse the poly coordinates
-				#new_poly_coords = []
-				#for coord in building_dict['poly_coords']:
-				#	new_poly_coords.append(coord[1], coord[0])
-				#building_dict['poly_coords'] = new_poly_coords
-				
-				parking_lot.delete()
-				
-				new_lot = ParkingLot(**building_dict)
-				
-				
-				
-				new_lot.save()
+				old_id = p.id
+				p.id = p.id.lower()
+				p.save()
+				old = ParkingLot.objects.get(id=old_id)
+				old.delete()
+			'''

@@ -1,275 +1,5 @@
 [
     {
-        "pk": "parkinglot-2", 
-        "model": "campus.parkinglot", 
-        "fields": {
-            "abbreviation": "", 
-            "sketchup": "", 
-            "number": "D2", 
-            "permit_type": "D Permits"
-        }
-    }, 
-    {
-        "pk": "parkinglot-3", 
-        "model": "campus.parkinglot", 
-        "fields": {
-            "abbreviation": "", 
-            "sketchup": "", 
-            "number": "D1", 
-            "permit_type": "D Permits"
-        }
-    }, 
-    {
-        "pk": "parkinglot-4", 
-        "model": "campus.parkinglot", 
-        "fields": {
-            "abbreviation": "", 
-            "sketchup": "", 
-            "number": "C1", 
-            "permit_type": "B Permits"
-        }
-    }, 
-    {
-        "pk": "parkinglot-5", 
-        "model": "campus.parkinglot", 
-        "fields": {
-            "abbreviation": "", 
-            "sketchup": "", 
-            "number": "C2", 
-            "permit_type": "B Permits"
-        }
-    }, 
-    {
-        "pk": "parkinglot-7", 
-        "model": "campus.parkinglot", 
-        "fields": {
-            "abbreviation": "", 
-            "sketchup": "", 
-            "number": "C3", 
-            "permit_type": "D Permits"
-        }
-    }, 
-    {
-        "pk": "parkinglot-8", 
-        "model": "campus.parkinglot", 
-        "fields": {
-            "abbreviation": "", 
-            "sketchup": "", 
-            "number": "B12", 
-            "permit_type": "D Permits"
-        }
-    }, 
-    {
-        "pk": "parkinglot-9", 
-        "model": "campus.parkinglot", 
-        "fields": {
-            "abbreviation": "", 
-            "sketchup": "", 
-            "number": "B15", 
-            "permit_type": "Housing Permits"
-        }
-    }, 
-    {
-        "pk": "parkinglot-10", 
-        "model": "campus.parkinglot", 
-        "fields": {
-            "abbreviation": "", 
-            "sketchup": "", 
-            "number": "B14", 
-            "permit_type": "D Permits"
-        }
-    }, 
-    {
-        "pk": "parkinglot-11", 
-        "model": "campus.parkinglot", 
-        "fields": {
-            "abbreviation": "", 
-            "sketchup": "", 
-            "number": "B17", 
-            "permit_type": "D Permits"
-        }
-    }, 
-    {
-        "pk": "parkinglot-12", 
-        "model": "campus.parkinglot", 
-        "fields": {
-            "abbreviation": "", 
-            "sketchup": "", 
-            "number": "B8", 
-            "permit_type": "Housing Permits"
-        }
-    }, 
-    {
-        "pk": "parkinglot-13", 
-        "model": "campus.parkinglot", 
-        "fields": {
-            "abbreviation": "", 
-            "sketchup": "", 
-            "number": "B7", 
-            "permit_type": "D Permits"
-        }
-    }, 
-    {
-        "pk": "parkinglot-14", 
-        "model": "campus.parkinglot", 
-        "fields": {
-            "abbreviation": "", 
-            "sketchup": "", 
-            "number": "B6", 
-            "permit_type": "D Permits"
-        }
-    }, 
-    {
-        "pk": "parkinglot-15", 
-        "model": "campus.parkinglot", 
-        "fields": {
-            "abbreviation": "", 
-            "sketchup": "", 
-            "number": "B4", 
-            "permit_type": "D Permits"
-        }
-    }, 
-    {
-        "pk": "parkinglot-16", 
-        "model": "campus.parkinglot", 
-        "fields": {
-            "abbreviation": "", 
-            "sketchup": "", 
-            "number": "B2", 
-            "permit_type": "B Permits"
-        }
-    }, 
-    {
-        "pk": "parkinglot-17", 
-        "model": "campus.parkinglot", 
-        "fields": {
-            "abbreviation": "", 
-            "sketchup": "", 
-            "number": "B1", 
-            "permit_type": "B Permits"
-        }
-    }, 
-    {
-        "pk": "parkinglot-18", 
-        "model": "campus.parkinglot", 
-        "fields": {
-            "abbreviation": "", 
-            "sketchup": "", 
-            "number": "B3", 
-            "permit_type": "C Permits"
-        }
-    }, 
-    {
-        "pk": "parkinglot-19", 
-        "model": "campus.parkinglot", 
-        "fields": {
-            "abbreviation": "", 
-            "sketchup": "", 
-            "number": "B5", 
-            "permit_type": "D Permits"
-        }
-    }, 
-    {
-        "pk": "parkinglot-22", 
-        "model": "campus.parkinglot", 
-        "fields": {
-            "abbreviation": "", 
-            "sketchup": "", 
-            "number": "H3", 
-            "permit_type": "B Permits"
-        }
-    }, 
-    {
-        "pk": "parkinglot-23", 
-        "model": "campus.parkinglot", 
-        "fields": {
-            "abbreviation": "", 
-            "sketchup": "", 
-            "number": "H1", 
-            "permit_type": "B Permits"
-        }
-    }, 
-    {
-        "pk": "parkinglot-24", 
-        "model": "campus.parkinglot", 
-        "fields": {
-            "abbreviation": "", 
-            "sketchup": "", 
-            "number": "H2", 
-            "permit_type": "C Permits"
-        }
-    }, 
-    {
-        "pk": "parkinglot-25", 
-        "model": "campus.parkinglot", 
-        "fields": {
-            "abbreviation": "", 
-            "sketchup": "", 
-            "number": "H4", 
-            "permit_type": "D Permits"
-        }
-    }, 
-    {
-        "pk": "parkinglot-26", 
-        "model": "campus.parkinglot", 
-        "fields": {
-            "abbreviation": "", 
-            "sketchup": "", 
-            "number": "H5", 
-            "permit_type": "D Permits"
-        }
-    }, 
-    {
-        "pk": "parkinglot-27", 
-        "model": "campus.parkinglot", 
-        "fields": {
-            "abbreviation": "", 
-            "sketchup": "", 
-            "number": "H8", 
-            "permit_type": "Housing Permits"
-        }
-    }, 
-    {
-        "pk": "parkinglot-28", 
-        "model": "campus.parkinglot", 
-        "fields": {
-            "abbreviation": "", 
-            "sketchup": "", 
-            "number": "H9", 
-            "permit_type": "Housing Permits"
-        }
-    }, 
-    {
-        "pk": "parkinglot-29", 
-        "model": "campus.parkinglot", 
-        "fields": {
-            "abbreviation": "", 
-            "sketchup": "", 
-            "number": "H6", 
-            "permit_type": "Housing Permits"
-        }
-    }, 
-    {
-        "pk": "parkinglot-30", 
-        "model": "campus.parkinglot", 
-        "fields": {
-            "abbreviation": "", 
-            "sketchup": "", 
-            "number": "H7", 
-            "permit_type": "Housing Permits"
-        }
-    }, 
-    {
-        "pk": "parkinglot-31", 
-        "model": "campus.parkinglot", 
-        "fields": {
-            "abbreviation": "", 
-            "sketchup": "", 
-            "number": "H10", 
-            "permit_type": "D Permits"
-        }
-    }, 
-    {
         "pk": "parkinglot-32", 
         "model": "campus.parkinglot", 
         "fields": {
@@ -400,212 +130,12 @@
         }
     }, 
     {
-        "pk": "parkinglot-48", 
-        "model": "campus.parkinglot", 
-        "fields": {
-            "abbreviation": "", 
-            "sketchup": "", 
-            "number": "E1", 
-            "permit_type": "B Permits"
-        }
-    }, 
-    {
-        "pk": "parkinglot-49", 
-        "model": "campus.parkinglot", 
-        "fields": {
-            "abbreviation": "", 
-            "sketchup": "", 
-            "number": "E2", 
-            "permit_type": "D Permits"
-        }
-    }, 
-    {
-        "pk": "parkinglot-50", 
-        "model": "campus.parkinglot", 
-        "fields": {
-            "abbreviation": "", 
-            "sketchup": "", 
-            "number": "E4", 
-            "permit_type": "D Permits"
-        }
-    }, 
-    {
-        "pk": "parkinglot-52", 
-        "model": "campus.parkinglot", 
-        "fields": {
-            "abbreviation": "", 
-            "sketchup": "", 
-            "number": "B9", 
-            "permit_type": "B Permits"
-        }
-    }, 
-    {
-        "pk": "parkinglot-53", 
-        "model": "campus.parkinglot", 
-        "fields": {
-            "abbreviation": "", 
-            "sketchup": "", 
-            "number": "B9", 
-            "permit_type": "C Permits"
-        }
-    }, 
-    {
-        "pk": "parkinglot-54", 
-        "model": "campus.parkinglot", 
-        "fields": {
-            "abbreviation": "", 
-            "sketchup": "", 
-            "number": "B9", 
-            "permit_type": "D Permits"
-        }
-    }, 
-    {
-        "pk": "parkinglot-55", 
-        "model": "campus.parkinglot", 
-        "fields": {
-            "abbreviation": "", 
-            "sketchup": "", 
-            "number": "B11", 
-            "permit_type": "C Permits"
-        }
-    }, 
-    {
-        "pk": "parkinglot-56", 
-        "model": "campus.parkinglot", 
-        "fields": {
-            "abbreviation": "", 
-            "sketchup": "", 
-            "number": "B8", 
-            "permit_type": "B Permits"
-        }
-    }, 
-    {
-        "pk": "parkinglot-57", 
-        "model": "campus.parkinglot", 
-        "fields": {
-            "abbreviation": "", 
-            "sketchup": "", 
-            "number": "B8", 
-            "permit_type": "C Permits"
-        }
-    }, 
-    {
-        "pk": "parkinglot-58", 
-        "model": "campus.parkinglot", 
-        "fields": {
-            "abbreviation": "", 
-            "sketchup": "", 
-            "number": "B16", 
-            "permit_type": "C Permits"
-        }
-    }, 
-    {
         "pk": "parkinglot-59", 
         "model": "campus.parkinglot", 
         "fields": {
             "abbreviation": "", 
             "sketchup": "", 
             "number": "", 
-            "permit_type": "D Permits"
-        }
-    }, 
-    {
-        "pk": "parkinglot-60", 
-        "model": "campus.parkinglot", 
-        "fields": {
-            "abbreviation": "", 
-            "sketchup": "", 
-            "number": "H2", 
-            "permit_type": "B Permits"
-        }
-    }, 
-    {
-        "pk": "parkinglot-61", 
-        "model": "campus.parkinglot", 
-        "fields": {
-            "abbreviation": "", 
-            "sketchup": "", 
-            "number": "D1", 
-            "permit_type": "B Permits"
-        }
-    }, 
-    {
-        "pk": "parkinglot-62", 
-        "model": "campus.parkinglot", 
-        "fields": {
-            "abbreviation": "", 
-            "sketchup": "", 
-            "number": "B17", 
-            "permit_type": "B Permits"
-        }
-    }, 
-    {
-        "pk": "parkinglot-63", 
-        "model": "campus.parkinglot", 
-        "fields": {
-            "abbreviation": "", 
-            "sketchup": "", 
-            "number": "H3", 
-            "permit_type": "C Permits"
-        }
-    }, 
-    {
-        "pk": "parkinglot-64", 
-        "model": "campus.parkinglot", 
-        "fields": {
-            "abbreviation": "", 
-            "sketchup": "", 
-            "number": "C1", 
-            "permit_type": "C Permits"
-        }
-    }, 
-    {
-        "pk": "parkinglot-65", 
-        "model": "campus.parkinglot", 
-        "fields": {
-            "abbreviation": "", 
-            "sketchup": "", 
-            "number": "C2", 
-            "permit_type": "C Permits"
-        }
-    }, 
-    {
-        "pk": "parkinglot-66", 
-        "model": "campus.parkinglot", 
-        "fields": {
-            "abbreviation": "", 
-            "sketchup": "", 
-            "number": "B7", 
-            "permit_type": "C Permits"
-        }
-    }, 
-    {
-        "pk": "parkinglot-67", 
-        "model": "campus.parkinglot", 
-        "fields": {
-            "abbreviation": "", 
-            "sketchup": "", 
-            "number": "B7", 
-            "permit_type": "B Permits"
-        }
-    }, 
-    {
-        "pk": "parkinglot-68", 
-        "model": "campus.parkinglot", 
-        "fields": {
-            "abbreviation": "", 
-            "sketchup": "", 
-            "number": "E1", 
-            "permit_type": "C Permits"
-        }
-    }, 
-    {
-        "pk": "parkinglot-69", 
-        "model": "campus.parkinglot", 
-        "fields": {
-            "abbreviation": "", 
-            "sketchup": "", 
-            "number": "B13", 
             "permit_type": "D Permits"
         }
     }, 
@@ -757,6 +287,346 @@
             "sketchup": "", 
             "number": "", 
             "permit_type": ""
+        }
+    }, 
+    {
+        "pk": "d2", 
+        "model": "campus.parkinglot", 
+        "fields": {
+            "abbreviation": "", 
+            "sketchup": "", 
+            "number": null, 
+            "permit_type": "D Permits"
+        }
+    }, 
+    {
+        "pk": "d1", 
+        "model": "campus.parkinglot", 
+        "fields": {
+            "abbreviation": "", 
+            "sketchup": "", 
+            "number": null, 
+            "permit_type": "B Permits"
+        }
+    }, 
+    {
+        "pk": "c1", 
+        "model": "campus.parkinglot", 
+        "fields": {
+            "abbreviation": "", 
+            "sketchup": "", 
+            "number": null, 
+            "permit_type": "C Permits"
+        }
+    }, 
+    {
+        "pk": "c2", 
+        "model": "campus.parkinglot", 
+        "fields": {
+            "abbreviation": "", 
+            "sketchup": "", 
+            "number": null, 
+            "permit_type": "C Permits"
+        }
+    }, 
+    {
+        "pk": "c3", 
+        "model": "campus.parkinglot", 
+        "fields": {
+            "abbreviation": "", 
+            "sketchup": "", 
+            "number": null, 
+            "permit_type": "D Permits"
+        }
+    }, 
+    {
+        "pk": "b12", 
+        "model": "campus.parkinglot", 
+        "fields": {
+            "abbreviation": "", 
+            "sketchup": "", 
+            "number": null, 
+            "permit_type": "D Permits"
+        }
+    }, 
+    {
+        "pk": "b15", 
+        "model": "campus.parkinglot", 
+        "fields": {
+            "abbreviation": "", 
+            "sketchup": "", 
+            "number": null, 
+            "permit_type": "Housing Permits"
+        }
+    }, 
+    {
+        "pk": "b14", 
+        "model": "campus.parkinglot", 
+        "fields": {
+            "abbreviation": "", 
+            "sketchup": "", 
+            "number": null, 
+            "permit_type": "D Permits"
+        }
+    }, 
+    {
+        "pk": "b17", 
+        "model": "campus.parkinglot", 
+        "fields": {
+            "abbreviation": "", 
+            "sketchup": "", 
+            "number": null, 
+            "permit_type": "B Permits"
+        }
+    }, 
+    {
+        "pk": "b8", 
+        "model": "campus.parkinglot", 
+        "fields": {
+            "abbreviation": "", 
+            "sketchup": "", 
+            "number": null, 
+            "permit_type": "C Permits"
+        }
+    }, 
+    {
+        "pk": "b7", 
+        "model": "campus.parkinglot", 
+        "fields": {
+            "abbreviation": "", 
+            "sketchup": "", 
+            "number": null, 
+            "permit_type": "B Permits"
+        }
+    }, 
+    {
+        "pk": "b6", 
+        "model": "campus.parkinglot", 
+        "fields": {
+            "abbreviation": "", 
+            "sketchup": "", 
+            "number": null, 
+            "permit_type": "D Permits"
+        }
+    }, 
+    {
+        "pk": "b4", 
+        "model": "campus.parkinglot", 
+        "fields": {
+            "abbreviation": "", 
+            "sketchup": "", 
+            "number": null, 
+            "permit_type": "D Permits"
+        }
+    }, 
+    {
+        "pk": "b2", 
+        "model": "campus.parkinglot", 
+        "fields": {
+            "abbreviation": "", 
+            "sketchup": "", 
+            "number": null, 
+            "permit_type": "B Permits"
+        }
+    }, 
+    {
+        "pk": "b1", 
+        "model": "campus.parkinglot", 
+        "fields": {
+            "abbreviation": "", 
+            "sketchup": "", 
+            "number": null, 
+            "permit_type": "B Permits"
+        }
+    }, 
+    {
+        "pk": "b3", 
+        "model": "campus.parkinglot", 
+        "fields": {
+            "abbreviation": "", 
+            "sketchup": "", 
+            "number": null, 
+            "permit_type": "C Permits"
+        }
+    }, 
+    {
+        "pk": "b5", 
+        "model": "campus.parkinglot", 
+        "fields": {
+            "abbreviation": "", 
+            "sketchup": "", 
+            "number": null, 
+            "permit_type": "D Permits"
+        }
+    }, 
+    {
+        "pk": "h3", 
+        "model": "campus.parkinglot", 
+        "fields": {
+            "abbreviation": "", 
+            "sketchup": "", 
+            "number": null, 
+            "permit_type": "C Permits"
+        }
+    }, 
+    {
+        "pk": "h1", 
+        "model": "campus.parkinglot", 
+        "fields": {
+            "abbreviation": "", 
+            "sketchup": "", 
+            "number": null, 
+            "permit_type": "B Permits"
+        }
+    }, 
+    {
+        "pk": "h2", 
+        "model": "campus.parkinglot", 
+        "fields": {
+            "abbreviation": "", 
+            "sketchup": "", 
+            "number": null, 
+            "permit_type": "B Permits"
+        }
+    }, 
+    {
+        "pk": "h4", 
+        "model": "campus.parkinglot", 
+        "fields": {
+            "abbreviation": "", 
+            "sketchup": "", 
+            "number": null, 
+            "permit_type": "D Permits"
+        }
+    }, 
+    {
+        "pk": "h5", 
+        "model": "campus.parkinglot", 
+        "fields": {
+            "abbreviation": "", 
+            "sketchup": "", 
+            "number": null, 
+            "permit_type": "D Permits"
+        }
+    }, 
+    {
+        "pk": "h8", 
+        "model": "campus.parkinglot", 
+        "fields": {
+            "abbreviation": "", 
+            "sketchup": "", 
+            "number": null, 
+            "permit_type": "Housing Permits"
+        }
+    }, 
+    {
+        "pk": "h9", 
+        "model": "campus.parkinglot", 
+        "fields": {
+            "abbreviation": "", 
+            "sketchup": "", 
+            "number": null, 
+            "permit_type": "Housing Permits"
+        }
+    }, 
+    {
+        "pk": "h6", 
+        "model": "campus.parkinglot", 
+        "fields": {
+            "abbreviation": "", 
+            "sketchup": "", 
+            "number": null, 
+            "permit_type": "Housing Permits"
+        }
+    }, 
+    {
+        "pk": "h7", 
+        "model": "campus.parkinglot", 
+        "fields": {
+            "abbreviation": "", 
+            "sketchup": "", 
+            "number": null, 
+            "permit_type": "Housing Permits"
+        }
+    }, 
+    {
+        "pk": "h10", 
+        "model": "campus.parkinglot", 
+        "fields": {
+            "abbreviation": "", 
+            "sketchup": "", 
+            "number": null, 
+            "permit_type": "D Permits"
+        }
+    }, 
+    {
+        "pk": "e1", 
+        "model": "campus.parkinglot", 
+        "fields": {
+            "abbreviation": "", 
+            "sketchup": "", 
+            "number": null, 
+            "permit_type": "C Permits"
+        }
+    }, 
+    {
+        "pk": "e2", 
+        "model": "campus.parkinglot", 
+        "fields": {
+            "abbreviation": "", 
+            "sketchup": "", 
+            "number": null, 
+            "permit_type": "D Permits"
+        }
+    }, 
+    {
+        "pk": "e4", 
+        "model": "campus.parkinglot", 
+        "fields": {
+            "abbreviation": "", 
+            "sketchup": "", 
+            "number": null, 
+            "permit_type": "D Permits"
+        }
+    }, 
+    {
+        "pk": "b9", 
+        "model": "campus.parkinglot", 
+        "fields": {
+            "abbreviation": "", 
+            "sketchup": "", 
+            "number": null, 
+            "permit_type": "D Permits"
+        }
+    }, 
+    {
+        "pk": "b11", 
+        "model": "campus.parkinglot", 
+        "fields": {
+            "abbreviation": "", 
+            "sketchup": "", 
+            "number": null, 
+            "permit_type": "C Permits"
+        }
+    }, 
+    {
+        "pk": "b16", 
+        "model": "campus.parkinglot", 
+        "fields": {
+            "abbreviation": "", 
+            "sketchup": "", 
+            "number": null, 
+            "permit_type": "C Permits"
+        }
+    }, 
+    {
+        "pk": "b13", 
+        "model": "campus.parkinglot", 
+        "fields": {
+            "abbreviation": "", 
+            "sketchup": "", 
+            "number": null, 
+            "permit_type": "D Permits"
         }
     }, 
     {
