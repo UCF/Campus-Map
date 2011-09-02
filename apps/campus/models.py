@@ -117,16 +117,25 @@ class MapManager(models.Manager):
 
 class MapObj(models.Model):
 	objects           = MapManager()
-	content_type      = models.ForeignKey(ContentType,editable=False,null=True)
+	content_type      = models.ForeignKey(ContentType, editable=False, null=True)
 	id                = models.CharField(max_length=80, primary_key=True, help_text='<strong class="caution">Caution</strong>: changing may break external resources (used for links and images)')
-	name              = models.CharField(max_length=255)
-	image             = models.CharField(max_length=50,  blank=True, help_text='Don&rsquo;t forget to append a file extension')
-	description       = models.CharField(max_length=255, blank=True)
-	profile           = tinymce_models.HTMLField(blank=True, null=True)
-	googlemap_point   = models.CharField(max_length=255, null=True, blank=True, help_text='E.g., <code>[28.6017, -81.2005]</code>')
-	illustrated_point = models.CharField(max_length=255, null=True, blank=True)
-	poly_coords       = models.TextField(blank=True, null=True)
+	name              = models.CharField(max_length=255, null=True)
+	image             = models.CharField(max_length=50, null=True, help_text='Don&rsquo;t forget to append a file extension')
+	description       = models.CharField(max_length=255, null=True)
+	profile           = tinymce_models.HTMLField(null=True)
+	googlemap_point   = models.CharField(max_length=255, null=True, help_text='E.g., <code>[28.6017, -81.2005]</code>')
+	illustrated_point = models.CharField(max_length=255, null=True)
+	poly_coords       = models.TextField(null=True)
 	
+	
+	def __init__(self, *args, **kwargs):
+		for k,v in kwargs.items():
+			if v in ('', "None", "none", "null"):
+				kwargs[k] = None # makes the API a bit uniform
+		if kwargs.get('id', False):
+			kwargs['id'] = kwargs['id'].lower()
+		super(MapObj, self).__init__(*args, **kwargs)
+		
 	def _title(self):
 		if (self.name):
 			return self.name
@@ -293,8 +302,8 @@ class RegionalCampus(MapObj):
 		verbose_name_plural = "Regional Campuses"
 
 class Building(MapObj):
-	abbreviation      = models.CharField(max_length=50, blank=True)
-	sketchup          = models.CharField(max_length=50, blank=True, help_text="E.g., http://sketchup.google.com/3dwarehouse/details?mid=<code>54b7f313bf315a3a85622796b26c9e66</code>&prevstart=0")
+	abbreviation      = models.CharField(max_length=50, null=True)
+	sketchup          = models.CharField(max_length=50, null=True, help_text="E.g., http://sketchup.google.com/3dwarehouse/details?mid=<code>54b7f313bf315a3a85622796b26c9e66</code>&prevstart=0")
 	
 	def _number(self):
 		return self.id
@@ -325,9 +334,9 @@ class Building(MapObj):
 		ordering = ("name", "id")
 
 class ParkingLot(MapObj):
-	permit_type  = models.CharField(max_length=255, blank=True, null=True)
-	abbreviation = models.CharField(max_length=50, blank=True)
-	sketchup     = models.CharField(max_length=50, blank=True, help_text="E.g., http://sketchup.google.com/3dwarehouse/details?mid=<code>54b7f313bf315a3a85622796b26c9e66</code>&prevstart=0")
+	permit_type  = models.CharField(max_length=255, null=True)
+	abbreviation = models.CharField(max_length=50, null=True)
+	sketchup     = models.CharField(max_length=50, null=True, help_text="E.g., http://sketchup.google.com/3dwarehouse/details?mid=<code>54b7f313bf315a3a85622796b26c9e66</code>&prevstart=0")
 	
 	def _number(self):
 		return self.id
@@ -383,7 +392,7 @@ class HandicappedParking(MapObj):
 
 
 class Sidewalk(models.Model):
-	poly_coords = models.TextField(blank=True, null=True)
+	poly_coords = models.TextField(null=True)
 	
 	def _kml_coords(self):
 		if self.poly_coords == None:
@@ -468,7 +477,7 @@ class GroupedLocation(models.Model):
 		unique_together = (('object_pk', 'content_type'),)
 
 class Group(MapObj):
-	locations = models.ManyToManyField(GroupedLocation, blank=True)
+	locations = models.ManyToManyField(GroupedLocation, null=True)
 	
 	def json(self, **kw):
 		obj = super(Group, self).json(**kw)
