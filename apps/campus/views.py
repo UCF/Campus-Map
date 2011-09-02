@@ -68,12 +68,12 @@ def home(request, **kwargs):
 					'ipoint' : o['illustrated_point'],
 					'type'   : o['object_type'],
 				}
-			cache.set('home_points', points, 60 * 60)
+			cache.set('home_points', points, 60 * 60 * 24)
 	else:
 		points = None
 		
 	# urls
-	version = 17 # clears google's cache
+	version = 18 # clears google's cache
 	# TODO: https://groups.google.com/group/kml-support-getting-started/browse_thread/thread/757295a81285c8c5
 	if settings.GOOGLE_CAN_SEE_ME:
 		buildings_kml = "%s.kml?v=%s" % (request.build_absolute_uri(reverse('locations')), version)
@@ -170,7 +170,7 @@ def locations(request):
 			elif(l.object_type == 'Group'):
 				context['groups'].append(l)
 		
-		cache.set('locations_context', context, 60 * 60)
+		cache.set('locations_context', context, 60 * 60 * 24)
 	
 	return render(request, 'campus/locations.djt', context)
 

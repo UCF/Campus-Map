@@ -29,7 +29,7 @@
 		<link href="http://www.ucf.edu/css/global.css" rel="stylesheet">
 		
 		<!-- UCF Web Communications -->		
-		<link href="{{MEDIA_URL}}style/style.css?v=1" rel="stylesheet">
+		<link href="{{MEDIA_URL}}style/style.css?date={% now "Y-m-d" %}" rel="stylesheet">
 		{% block head %}{% endblock %}
 		
 		{% if debug %}
@@ -105,9 +105,9 @@
 		
 			<div class="right">
 				<a href="{% url page 'regional-campuses' %}">Regional Campuses</a> | 
-				<a href="{% url location 'college-of-medicine' %}">College of Medicine</a> | 
-				<a href="{% url page 'downtown' %}">Downtown</a> | 
-				<a href="{% url location 'rosen-college' %}">Rosen College</a>
+				<a href="{% url home %}?show=college-of-medicine">College of Medicine</a> | 
+				<a href="{% url home %}?show=downtown">Downtown</a> | 
+				<a href="{% url home %}?show=rosen-college">Rosen College</a>
 				
 				<a id="logo" href="http://www.ucf.edu/">UCF Stands For Opportunity</a>
 			</div>

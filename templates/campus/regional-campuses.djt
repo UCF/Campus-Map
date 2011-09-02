@@ -11,8 +11,8 @@
 		
 		{% for c in campuses %}
 		<div class="rc {% cycle 'rc-clear' '' '' %}">
-			<h3><a href="{% url regional %}{{c.slug}}/">{{c.name}}</a></h3>
-			<p><a href="{% url regional %}{{c.slug}}/">{{c.img_tag|safe}}</a></p>
+			<h3><a href="{% url regional %}{{c.id}}/">{{c.name}}</a></h3>
+			<p><a href="{% url regional %}{{c.id}}/">{{c.img_tag|safe}}</a></p>
 			{{c.profile|safe}}
 		</div>
 		

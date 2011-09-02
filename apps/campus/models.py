@@ -247,6 +247,10 @@ class MapObj(models.Model):
 		super(MapObj, self).clean(*args, **kwargs)
 	
 	def save(self, *args, **kwargs):
+		from django.core.cache import cache
+		# Forces cache reset once data changes
+		cache.clear()
+		
 		if(not self.content_type):
 			self.content_type = ContentType.objects.get_for_model(self.__class__)
 		super(MapObj, self).save(*args, **kwargs)
@@ -315,10 +319,12 @@ class Building(MapObj):
 
 class ParkingLot(MapObj):
 	permit_type  = models.CharField(max_length=255, blank=True, null=True)
-	number       = models.CharField(max_length=50, blank=True, null=True)
 	abbreviation = models.CharField(max_length=50, blank=True)
 	sketchup     = models.CharField(max_length=50, blank=True, help_text="E.g., http://sketchup.google.com/3dwarehouse/details?mid=<code>54b7f313bf315a3a85622796b26c9e66</code>&prevstart=0")
 	
+	def _number(self):
+		return self.id
+	number = property(_number)
 	
 	def _color_fill(self):
 		
