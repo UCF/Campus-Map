@@ -1,8 +1,32 @@
 from models import *
 from django.db import models
 from django.contrib import admin
+from django.forms import ModelForm, CharField
+from tinymce.widgets import AdminTinyMCE
 import campus
 import inspect
+
+
+class MapObjForm(ModelForm):
+	def __init__(self, *args, **kwargs):
+		# extending field options to add "required=False"
+		# allows me to create models without "blank=True" everwhere, don't want blanks
+		for field,form_field in self.base_fields.items():
+			if field in ('name', 'id'):
+				continue
+			try:
+				form_field.required = False
+				#form_field.widget.attrs['required'] = "required"
+			except AttributeError: pass
+		super(MapObjForm, self).__init__(*args, **kwargs)
+		
+	class Meta:
+		model = MapObj
+
+
+class BuildingForm(MapObjForm):
+	class Meta:
+		model = Building
 
 class BuildingAdmin(admin.ModelAdmin):
 	list_display = ('name', 'id', 'abbreviation')
@@ -10,7 +34,8 @@ class BuildingAdmin(admin.ModelAdmin):
 	prepopulated_fields = {'id':('name',)}
 	fields = ('name', 'id', 'abbreviation', 'image', 'description', 'profile', 'sketchup', 'googlemap_point', 'illustrated_point', 'poly_coords')
 	actions = None
-	change_form_template = 'admin/maps_point_selector.djt';
+	change_form_template = 'admin/maps_point_selector.djt'
+	form = BuildingForm
 admin.site.register(Building, BuildingAdmin)
 
 
