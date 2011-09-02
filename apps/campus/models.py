@@ -229,39 +229,7 @@ class MapObj(models.Model):
 			return '%s%s' % (base_url, url)
 		return '%s%s%s/' % (base_url, url, slug)
 	profile_link = property(_profile_link)
-	
-	
-	def clean(self, *args, **kwargs):
-		from django.core.exceptions import ValidationError
-		
-		# keep blanks out of coordinates
-		if self.poly_coords       == "": self.poly_coords       = None
-		if self.illustrated_point == "": self.illustrated_point = None
-		if self.googlemap_point   == "": self.googlemap_point   = None
-		
-		# check poloy coordinates
-		if self.poly_coords != None: 
-			try:
-				json.loads("{0}".format(self.poly_coords))
-			except ValueError:
-				raise ValidationError("Invalid polygon coordinates (not json serializable)")
-		
-		# check illustrated point
-		if self.illustrated_point != None: 
-			try:
-				json.loads("{0}".format(self.illustrated_point))
-			except ValueError:
-				raise ValidationError("Invalid Illustrated Map Point (not json serializable)")
-			
-		# check google map point
-		if self.googlemap_point != None: 
-			try:
-				json.loads("{0}".format(self.googlemap_point))
-			except ValueError:
-				raise ValidationError("Invalid Google Map Point (not json serializable)")
-		
-		super(MapObj, self).clean(*args, **kwargs)
-	
+
 	def save(self, *args, **kwargs):
 		from django.core.cache import cache
 		# Forces cache reset once data changes
@@ -315,12 +283,6 @@ class Building(MapObj):
 		else:
 			return self.name
 	title = property(_title)
-	
-	def clean(self, *args, **kwargs):
-		super(Building, self).clean(*args, **kwargs)
-		
-		# change all building id / numbers to be lowercase
-		self.id = self.id.lower()
 	
 	def json(self, **kw):
 		obj = MapObj.json(self, **kw)

@@ -3,6 +3,7 @@ from django.db import models
 from django.contrib import admin
 from django.forms import ModelForm, CharField
 from tinymce.widgets import AdminTinyMCE
+from django.core.exceptions import ValidationError
 import campus
 import inspect
 
@@ -19,7 +20,40 @@ class MapObjForm(ModelForm):
 				#form_field.widget.attrs['required'] = "required"
 			except AttributeError: pass
 		super(MapObjForm, self).__init__(*args, **kwargs)
+	
+	def clean(self, *args, **kwargs):
+		# keep id / building numbers lowercase
+		self.cleaned_data['id'] = self.cleaned_data['id'].lower()
 		
+		# keep blanks out of data (makes the API more uniform)
+		for k,v in self.cleaned_data.items():
+			if v.strip() in (None, "", "None", "none", "null"):
+				self.cleaned_data[k] = None
+			
+		# check polly coordinates
+		try:
+			coords = self.cleaned_data['poly_coords']
+			if coords: json.loads(coords)
+		except ValueError:
+			raise ValidationError("Invalid polygon coordinates (not json serializable)")
+
+		# check illustrated point
+		try:
+			point = self.cleaned_data['illustrated_point']
+			if point: json.loads(point)
+		except ValueError:
+			raise ValidationError("Invalid Illustrated Map Point (not json serializable)")
+
+		# check google map point
+		try:
+			point = self.cleaned_data['googlemap_point']
+			if point: json.loads(point)
+		except ValueError:
+			raise ValidationError("Invalid Google Map Point (not json serializable)")
+		
+		return super(MapObjForm, self).clean(*args, **kwargs)
+	
+	
 	class Meta:
 		model = MapObj
 
