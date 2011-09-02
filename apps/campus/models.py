@@ -215,7 +215,10 @@ class MapObj(models.Model):
 	
 	def _profile_link(self, base_url=''):
 		url = reverse('location', kwargs={'loc':self.id})
-		return '%s%s%s/' % (base_url, url, slugify(self.title))
+		slug = slugify(self.title)
+		if slug in ("", None, False, "None", "none", "null") or slug == self.id:
+			return '%s%s' % (base_url, url)
+		return '%s%s%s/' % (base_url, url, slug)
 	profile_link = property(_profile_link)
 	
 	
