@@ -25,12 +25,15 @@
 	<div class="item">
 		<h3>Organizations</h3>
 		<ul>
+		{# limit the number of organizations displayed to 4 #}
 		{% for o in location.orgs.results %}
+			{% if forloop.counter < 5 %}
 			<li><a href="{% url locations %}/{{o.bldg_id}}/{{o.building|slugify}}/?org={{o.id}}">{{o.name}}</a></li>
+			{% endif %}
+			{% if forloop.counter == 5  %}
+				<li class="c"><a href="{{location.profile_link}}">-- View All --</a></li>
+			{% endif %}
 		{% endfor %}
-		{% if location.orgs.overflow %}
-			<li class="c"><a href="{{location.profile_link}}">-- View All --</a></li>
-		{% endif %}
 		</ul>
 	</div>
 	{% endif %}
