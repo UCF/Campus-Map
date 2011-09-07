@@ -140,7 +140,7 @@ class MapObj(models.Model):
 		if (self.name):
 			return self.name
 		else:
-			return self.__repr__()
+			return self.id
 	title = property(_title)
 	
 	def _orgs(self):

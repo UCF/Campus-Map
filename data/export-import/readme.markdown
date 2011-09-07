@@ -75,3 +75,13 @@ Sources of errors:
 * and building number change is viewed as a "new" and "lost" building
 
 ## Give any needed feedback back to land and management
+
+Export data as GeoJSON:
+
+    python manage.py geojson
+
+from the the desktop:
+
+    ogr2ogr -f 'ESRI Shapefile' campus_map.shp campus_map.geo.json -overwrite
+
+
