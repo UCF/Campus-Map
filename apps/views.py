@@ -235,7 +235,7 @@ def search(request):
 				'phonebook'     : phones,
 				'organizations' : orgs,
 			}
-			cache.set(cache_key, found_entries, 60 * 60 * 24 * 7 * 52 * 10)
+			cache.set(cache_key, found_entries, 60 * 60 * 24 * 7)
 	
 	# TODO: Text API format
 	if request.is_json():
