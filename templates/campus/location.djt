@@ -65,6 +65,32 @@
 			{% endif %}
 		{% endif %}
 		
+		{% if groups_orgs|length %}
+		<div id="group-organizations">
+			{% for group, orgs in groups_orgs %}
+			<h3>Located in {{group.name}}</h3>
+			
+			{% if orgs|length %}
+			<p>Organizations in {{group.name}}</p>
+			<ul class="grey">
+			{% for o in orgs %}
+				<li>
+					<a class="org" data-pk="{{ o.id }}" data-link="{% url org o.id %}" href="?org={{o.id}}">{{o.name}}</a>
+				{% if o.id == org.id %}
+					<div class="org-info open loaded" id="org-{{o.id}}">
+						{% include 'api/organization.djt' %}
+					</div>
+				{% else %}
+					<div class="org-info" id="org-{{o.id}}"></div>
+				{% endif %}
+				</li>
+			{% endfor %}
+			</ul>
+			{% endif %}
+			{% endfor %}
+		</div>
+		{% endif %}
+		
 	</div>
 	<div class="span-11 last" id="profile-right">
 		

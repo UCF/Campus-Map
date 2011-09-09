@@ -228,11 +228,43 @@ def location(request, loc, return_obj=False):
 			if p.description.text:
 				p.info = "%s<p>%s</p>" % (p.info, p.description.text)
 	
+	
+	# find organizations related to this location via the group it belongs to
+	from models import GroupedLocation
+	from django.contrib.contenttypes.models import ContentType
+	
+	location_ctype = ContentType.objects.get(
+		app_label="campus",
+		model=location['object_type'].lower()
+	)
+	location_pk       = location['id']
+	
+	# Find all groups this location is a member of
+	grouped_locations = GroupedLocation.objects.filter(
+		object_pk=location_pk,
+		content_type=location_ctype
+	)
+	groups = [gl.group_set.all() for gl in grouped_locations]
+	groups = reduce(lambda a, b: a + b, groups)
+	
+	# Find the union of all organizations between this group and its members
+	def group_orgs(g):
+		group_orgs = g._orgs()['results']
+		orgs = [gl.content_object._orgs()['results'] for gl in g.locations.all()]
+		orgs = reduce(lambda a, b: a + b, orgs) + group_orgs
+		return orgs
+	
+	# Attach org info to each group for this location
+	groups_orgs = list()
+	for g in groups:
+		groups_orgs.append((g, group_orgs(g)))
+	
 	context = { 
-		'location' : location,
-		'orgs'     : location_orgs,
-		'org'      : org,
-		'photos'   : photos,
+		'location'      : location,
+		'orgs'          : location_orgs,
+		'groups_orgs'   : groups_orgs,
+		'org'           : org,
+		'photos'        : photos,
 	}
 	return render(request, 'campus/location.djt', context)
 
