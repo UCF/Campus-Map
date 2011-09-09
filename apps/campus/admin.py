@@ -6,6 +6,7 @@ from tinymce.widgets import AdminTinyMCE
 from django.core.exceptions import ValidationError
 import campus
 import inspect
+from django.template.defaultfilters import slugify
 
 
 class MapObjForm(ModelForm):
@@ -24,7 +25,9 @@ class MapObjForm(ModelForm):
 	def clean(self, *args, **kwargs):
 		# keep id / building numbers lowercase
 		try:
-			self.cleaned_data['id'] = self.cleaned_data['id'].lower()
+			slugged = slugify(self.cleaned_data['id'])
+			if self.cleaned_data['id'] != slugged:
+				raise ValidationError("Invalid Location ID (allowed: lowercase alpha, numbers, dashes).  Suggestion: %s" % slugged)
 		except KeyError:
 			return super(MapObjForm, self).clean(*args, **kwargs)
 		
