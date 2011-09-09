@@ -1,5 +1,7 @@
 {% extends "base.djt"%}
 
+{% block pre_title %}Locations and Building - {% endblock %}
+
 {% block wrap %}
 	
 	<div class="span-13 append-1">

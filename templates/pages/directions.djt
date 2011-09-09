@@ -1,5 +1,7 @@
 {% extends "base.djt"%}
 
+{% block pre_title %}Directions - {% endblock %}
+
 {% block wrap %}
 <div id="directions">
 	<h2>Google Directions</h2>

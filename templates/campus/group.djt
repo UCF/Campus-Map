@@ -1,5 +1,7 @@
 {% extends "base.djt"%}
 
+{% block pre_title %}Locations Group - {% endblock %}
+
 {% block wrap %}
 <div class="span-24 last">
 	<h2>{{group.name}}</h2>

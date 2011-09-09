@@ -16,11 +16,33 @@ class Command(BaseCommand):
 		features = []
 		for m in MapObj.objects.all():
 			
-			properties = m.json()
+			properties = m.json(base_url='http://map.ucf.edu')
+			properties.pop('link', None)
 			coords = properties.pop('poly_coords', None)
+			if not coords:
+				coords = []
+			
+			# because keys can only be 10char long
+			shortened_key = {
+				'description'       : 'excerpt',
+				'object_type'       : 'obj_type',
+				'permit_type'       : 'perm_type',
+				'abbreviation'      : 'abbrev',
+				'illustrated_point' : 'ill_point',
+				'googlemap_point'   : 'gmap_point',
+				'profile_link'      : 'prof_link',
+			}
+			
 			for k,v in properties.items():
-				if v in (None, "", "None", "none", "null"):
-					properties[k] = None
+				properties[k] = str(v)
+				if v in ("", "None", "none", "null"):
+					v = None
+				if shortened_key.get(k, False):
+					del(properties[k])
+					k = shortened_key[k]
+				if v:
+					v = str(v)
+				properties[k] = v
 				
 			feature = {
 				"type": "Feature",
@@ -44,27 +66,5 @@ class Command(BaseCommand):
 		f = open(path, 'w')
 		f.write(geo)
 		f.close()
+		print "Exported to %s" % path
 		
-		
-		'''
-		path = os.path.join(os.path.dirname(campus.__file__), 'fixtures')
-		for model,file in model_file:
-			
-			print "dumping %s ..." % model
-			f = open(os.path.join(path, file), 'w')
-			output = StringIO.StringIO()
-			sys.stdout = output
-			call_command('dumpdata', 'campus.%s' % model, indent=4, use_natural_keys=True)
-			sys.stdout = sys.__stdout__
-			txt = output.getvalue()
-			f.write(txt)
-			f.close
-		
-		# mapobjects has to be done uniquely
-		print "dumping mapobjects ..."
-		mobs = MapObj.objects.mob_filter(Q())
-		f = open(os.path.join(path, '__mapobjects.json'), 'w')
-		txt = serializers.serialize('json', mobs, indent=4, use_natural_keys=True)
-		f.write(txt)
-		f.close()
-		'''

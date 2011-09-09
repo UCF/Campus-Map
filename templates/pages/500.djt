@@ -1,5 +1,7 @@
 {% extends "base.djt"%}
 
+{% block pre_title %}Server Error - {% endblock %}
+
 {% block wrap %}
 	
 	<h2>Server Error</h2>
