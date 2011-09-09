@@ -14,7 +14,7 @@
 				<tr>
 					<th class="first"><abbr title="Abbreviation">Abbr</abbr></th>
 					<th>Name</th>
-					<th class="last"><abbr title="Building Number">Num</abbr></th>
+					<th class="last"><abbr title="Building Number">ID</abbr></th>
 				</tr>
 				</thead>
 				{% for b in buildings %}

@@ -203,7 +203,7 @@ def search(request):
 	
 	if bool(query_string):
 		
-		cache_key  = settings.SEARCH_QUERY_CACHE_PREFIX + hashlib.md5(query_string).digest()
+		cache_key  = settings.SEARCH_QUERY_CACHE_PREFIX + hashlib.md5(query_string).hexdigest()
 		cache_data = cache.get(cache_key)
 		
 		if cache_data is not None:
