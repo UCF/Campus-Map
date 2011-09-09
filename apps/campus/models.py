@@ -185,10 +185,14 @@ class MapObj(models.Model):
 					obj[key] = json.loads(str(obj[key]))
 				continue
 			
-			if isinstance(val, unicode):
+			print type(val)
+			
+			
+			if isinstance(val, unicode) or isinstance(val, bool) or val==None:
 				continue
 			
 			# super dumb, concerning floats http://code.djangoproject.com/ticket/3324
+			# general catch-all for stuff that makes json cry like like jared's baby
 			obj[key] = val.__str__()
 		
 		obj['profile_link'] = self._profile_link(base_url)
@@ -439,11 +443,15 @@ class Group(MapObj):
 	
 	def json(self, **kw):
 		obj = super(Group, self).json(**kw)
-		locations = []
+		locations = {}
+		locations['count']   = self.locations.count()
+		locations['ids']     = []
+		locations['links']   = []
 		for l in self.locations.all():
-			locations.append(l.content_object.link)
-		if len(locations):
-			obj['locations'] = locations
+			if l.content_object:
+				locations['ids'].append(l.content_object.id)
+				locations['links'].append(l.content_object.link)
+		obj['locations'] = locations
 		return obj
 		
 	@classmethod

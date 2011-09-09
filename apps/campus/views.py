@@ -57,7 +57,7 @@ def home(request, **kwargs):
 		# Filter home page locations to building, locations, and groups
 		points = cache.get('home_points')
 		if points is None:
-			show   = map(lambda c: ContentType.objects.get_for_model(c), (Building, Location, Group,ParkingLot))
+			show   = map(lambda c: ContentType.objects.get_for_model(c), (Building, Location, Group, ParkingLot))
 			mobs   = MapObj.objects.filter(content_type__in=map(lambda c: c.id, show))
 			points = {}
 			for o in mobs:
@@ -105,28 +105,6 @@ def home(request, **kwargs):
 	}
 	
 	return render(request, 'campus/base.djt', context)
-
-
-def groups(request):
-	from campus.models import Group
-	groups = Group.objects.all()
-	if request.is_json():
-		groups = map(lambda g: g.json(), groups)
-		return HttpResponse(json.dumps(groups))
-	return render(request, 'campus/groups.djt', {'groups' : groups,})
-
-
-def group(request, group_id):
-	from campus.models import Group
-	group     = get_object_or_404(Group, pk=group_id)
-	locations = map(lambda l: l.content_object, group.locations.all())
-	if request.is_json():
-		return HttpResponse(json.dumps(group.json()))
-	
-	return render(request, 'campus/group.djt', {
-		'group'     : group,
-		'locations' : locations,
-	})
 
 
 def locations(request):
@@ -227,6 +205,9 @@ def location(request, loc, return_obj=False):
 			p.info = '<h2><a href="http://flickr.com/photos/universityofcentralflorida/%s/">%s</a></h2>' % (p.id, p.title)
 			if p.description.text:
 				p.info = "%s<p>%s</p>" % (p.info, p.description.text)
+	
+	print location['sketchup']
+	print type(location['sketchup'])
 	
 	context = { 
 		'location' : location,

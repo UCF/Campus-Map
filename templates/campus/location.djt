@@ -57,7 +57,7 @@
 			<div id="group-locations">
 			 	<h3>Grouped in {{location.name}}:</h3>
 				<ul class="grey">
-					{% for l in location.locations %}
+					{% for l in location.locations.links %}
 					<li>{{l|safe}}</li>
 					{% endfor %}
 				</ul>
@@ -83,7 +83,7 @@
 		<div id="group-locations">
 		 	<h3>Grouped in {{location.name}}:</h3>
 			<ul class="grey">
-				{% for l in location.locations %}
+				{% for l in location.locations.links %}
 				<li>{{l|safe}}</li>
 				{% endfor %}
 			</ul>
@@ -102,7 +102,6 @@
 		{% endif %}
 		
 		{% if location.sketchup %}
-		
 		<div id="sketchup">
 			{% comment %}
 			<h3 class="light"><a href="http://sketchup.google.com/3dwarehouse/details?mid={{location.sketchup}}">3D Model</a></h3>
