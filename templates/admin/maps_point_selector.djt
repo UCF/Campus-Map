@@ -25,7 +25,7 @@ $(document).ready(function(){
 		Location being updated
 	\**************************************************************************/
 	var location = {
-	{% if original %}
+	{% if original and original.googlemap_point %}
 		set  : true,
 		x    : {{original.googlemap_point}}[0],
 		y    : {{original.googlemap_point}}[1],
@@ -96,7 +96,7 @@ $(document).ready(function(){
 		See static/js/map.js for better documentation
 	\**************************************************************************/
 	var location = {
-	{% if original %}
+	{% if original and  original.illustrated_point %}
 		set  : true,
 		x    : {{original.illustrated_point}}[0],
 		y    : {{original.illustrated_point}}[1],
