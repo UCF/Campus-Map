@@ -1,5 +1,7 @@
 {% extends "base.djt"%}
 
+{% block pre_title %}Organization - {% endblock %}
+
 {% block wrap %}
 
 <div id="profile">

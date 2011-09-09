@@ -1,5 +1,7 @@
 {% extends "base.djt"%}
 
+{% block pre_title %}Location Profile - {% endblock %}
+
 {% block title %}
  {{block.super}} | {{location.name}}
 {% endblock %}

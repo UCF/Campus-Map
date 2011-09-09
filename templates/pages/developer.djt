@@ -1,5 +1,7 @@
 {% extends "base.djt"%}
 
+{% block pre_title %}Developer&rsquo;s Guide - {% endblock %}
+
 {% block wrap %}
 	
 	<h2>Developer&rsquo;s Guide</h2>

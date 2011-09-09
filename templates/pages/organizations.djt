@@ -1,5 +1,7 @@
 {% extends "base.djt"%}
 
+{% block pre_title %}Organizations - {% endblock %}
+
 {% block wrap %}
 
 	<h2> Organizations </h2>

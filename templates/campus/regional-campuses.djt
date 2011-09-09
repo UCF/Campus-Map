@@ -1,5 +1,7 @@
 {% extends "base.djt"%}
 
+{% block pre_title %}Regional Campuses - {% endblock %}
+
 {% block wrap %}
 <div id="regional-campuses">	
 	<h2>Regional Campuses</h2>

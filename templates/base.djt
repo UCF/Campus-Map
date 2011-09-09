@@ -2,7 +2,7 @@
 <html>
 	<head>
 		
-		<title>{% block title %}UCF Campus Map{% endblock %}</title>
+		<title>{% block pre_title %}{%endblock%}{% block title %}UCF Campus Map{% endblock %}</title>
 		<meta name="description" content="Google will often use this as its description of your page/site. Make it good." />
 		
 		<meta charset="utf-8">
