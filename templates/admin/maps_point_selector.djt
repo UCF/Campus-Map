@@ -25,21 +25,25 @@ $(document).ready(function(){
 		Location being updated
 	\**************************************************************************/
 	var location = {
-		x : {{original.googlemap_point|default:'[null,null]'}}[0],
-		y : {{original.googlemap_point|default:'[null,null]'}}[1],
+	{% if original %}
+		set  : true,
+		x    : {{original.googlemap_point}}[0],
+		y    : {{original.googlemap_point}}[1],
 		name : "{{original.name}}"
-	}; 
-
+	{% else %}
+		set  : false,
+		x    : 28.601669501975557,
+		y    : -81.200527721813230,
+		name : null
+	{% endif %}
+	};
 	
 	/**************************************************************************\
 		Create a google map
 		  - if set, center at Location
 		  - else center at Student Union Entrance
 	\**************************************************************************/	
-	var myLatlng = new google.maps.LatLng(28.601584019049238,-81.20095419304656);
-	if(location.x && location.y){
-		myLatlng = new google.maps.LatLng(location.x,location.y);
-	}
+	var myLatlng = new google.maps.LatLng(location.x,location.y);
 	
 	var myOptions = {
 	  zoom: 16,
@@ -54,14 +58,14 @@ $(document).ready(function(){
 		Create dummy marker
 	\**************************************************************************/
 	var marker = new google.maps.Marker({
-		position: myLatlng,
-		title:"Hello World!"
+		position: {% if original %}myLatlng{% else %}null{% endif %},
+		title:"Google Map Point"
 	});
 	
 	/**************************************************************************\
 		If location has coordinaties, update and place marker
 	\**************************************************************************/
-	if(location.x !== "None" && location.y !== "None"){
+	if(location.set){
 		marker.position = new google.maps.LatLng(location.x,location.y);
 		marker.title = location.name;
 		marker.setMap(map);
@@ -83,8 +87,8 @@ $(document).ready(function(){
 	google.maps.event.addListener(map, 'click', function(event) {
 		place_marker(event.latLng);
 		return;
-	 });
- });   
+	});
+});   
 
 /* Illustrated Map */	 
 $(document).ready(function(){
@@ -92,12 +96,18 @@ $(document).ready(function(){
 		See static/js/map.js for better documentation
 	\**************************************************************************/
 	var location = {
-		x : {{original.illustrated_point|default:'[null,null]'}}[0],
-		y : {{original.illustrated_point|default:'[null,null]'}}[1],
-		name : "{{original.name}}"
+	{% if original %}
+		set  : true,
+		x    : {{original.illustrated_point}}[0],
+		y    : {{original.illustrated_point}}[1],
+		name : "{{original.name|default:'Add Building'}}"
+	{% else %}
+		set  : false,
+		x    : 85.045714130897840,
+		y    : -179.917893864798690,
+		name : null
+	{% endif %}
 	};
-	
-	if(!location.x || !location.y) return;
 	
 	var CoordMapType= function(){};
 	
@@ -115,7 +125,7 @@ $(document).ready(function(){
 	};
 	
 	var getTileUrl = function(coord,zoom) {
-		var tile = "zoom_" + zoom + "/" + zoom + "_" + coord.x + "_" + coord.y + ".jpg";
+		var tile = "zoom-" + zoom + "/" + zoom + "-" + coord.x + "-" + coord.y + ".jpg";
 		var nope = "white.png"; //white tile
 		if(zoom < 12 || coord.y<0 || coord.x<0){
 			return nope;
@@ -155,9 +165,9 @@ $(document).ready(function(){
 	
 	var marker = new google.maps.Marker({
 		position: myLatlng,
-		title:"Hello World!"
+		title:"Illustrated Map Point"
 	});
-	if(location.x !== "None" && location.y !== "None"){
+	if(location.set){
 		marker.title = location.name;
 		marker.setMap(map);
 	}
