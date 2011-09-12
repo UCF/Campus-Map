@@ -149,6 +149,8 @@ for o in prod:
 			
 		except ObjectDoesNotExist:
 			printo("Missing Locally: %s %s %s" % (ct, o['pk'], o.get('name', '')))
+			if(results.get('Missing locally', False)): results['Missing locally'] += 1
+			else: results['Missing locally'] = 1
 
 printo("\n\nResults:")
 for k,v in results.items():
