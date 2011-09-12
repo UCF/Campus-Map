@@ -185,9 +185,6 @@ class MapObj(models.Model):
 					obj[key] = json.loads(str(obj[key]))
 				continue
 			
-			print type(val)
-			
-			
 			if isinstance(val, unicode) or isinstance(val, bool) or val==None:
 				continue
 			
