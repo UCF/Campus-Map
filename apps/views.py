@@ -69,6 +69,13 @@ def pages(request, page=None):
 	'''
 	static pages with API placeholders
 	'''
+	from django.template.loader import get_template
+	template = "pages/%s.djt" % page
+	try:
+		t = get_template(template)
+	except TemplateDoesNotExist:
+		raise Http404()
+	
 	if request.is_json():
 		response = HttpResponse(json.dumps('Not this page silly!'))
 		response['Content-type'] = 'application/json'
@@ -78,10 +85,8 @@ def pages(request, page=None):
 		response = HttpResponse('Not this page silly!')
 		response['Content-type'] = 'text/plain; charset=utf-8'
 		return response
-	try:
-		return render(request, "pages/%s.djt" % page, { 'page' : page })
-	except TemplateDoesNotExist:
-		raise Http404()
+	
+	return render(request, template, { 'page' : page })
 
 
 def organizations(request):
