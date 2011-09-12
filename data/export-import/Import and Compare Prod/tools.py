@@ -53,7 +53,7 @@ def printo(str, file=False):
 	
 	if(file):
 		out = open("import-results.txt", "a")
-		out.write("%s %s\n\n" % ('>'*20, datetime.now().strftime("%A %B %d, %Y %H:%M")))
+		out.write("\n\n%s %s\n\n" % ('>'*20, datetime.now().strftime("%A %B %d, %Y %H:%M")))
 		return
 	
 	print str
