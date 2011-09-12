@@ -509,7 +509,7 @@ def data_dump(request):
 	# Needed because sqllite doesn't use 
 	def ordering(self):
 		if hasattr(self, 'name'):
-			return self.name.lower()
+			return str(self.name).lower()
 		elif hasattr(self, 'id'):
 			return self.id
 		else:
@@ -519,8 +519,13 @@ def data_dump(request):
 		# skip groupedlocation model (not needed since Group uses natural keys)
 		if model == campus.models.GroupedLocation:
 			continue
-		# make ordering case insensitive
-		objects.extend( sorted(model.objects.all(), key=ordering) )
+		# - make ordering case insensitive
+		# - must also make special case for MapObj else the leaf class will be
+		#   serialized, not the actual MapObj itself
+		if model == campus.models.MapObj:
+			objects.extend( sorted(model.objects.mob_filter(), key=ordering) )
+		else:
+			objects.extend( sorted(model.objects.all(), key=ordering) )
 	try:
 		data = serializers.serialize('json', objects, indent=4, use_natural_keys=True)
 	except Exception, e:
