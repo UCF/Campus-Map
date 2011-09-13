@@ -3,7 +3,7 @@
 	<head>
 		
 		<title>{% block pre_title %}{%endblock%}{% block title %}UCF Campus Map{% endblock %}</title>
-		<meta name="description" content="Google will often use this as its description of your page/site. Make it good." />
+		<meta name="description" content="We can help you find what you're looking for. Use the UCF Campus Map to locate your classrooms, labs, housing and nearby parking; find buildings, locations, organizations and more at the University of Central Florida." />
 		
 		<meta charset="utf-8">
 		<meta name="google-site-verification" content="" />

@@ -77,13 +77,13 @@ def home(request, **kwargs):
 	version = 18 # clears google's cache
 	# TODO: https://groups.google.com/group/kml-support-getting-started/browse_thread/thread/757295a81285c8c5
 	if settings.GOOGLE_CAN_SEE_ME:
-		buildings_kml = "%s.kml?v=%s" % (request.build_absolute_uri(reverse('locations')), version)
-		sidewalks_kml = "%s.kml?v=%s" % (request.build_absolute_uri(reverse('sidewalks')), version)
-		parking_kml   = "%s.kml?v=%s" % (request.build_absolute_uri(reverse('parking')), version)
+		buildings_kml = "%s.kml?v=%s" % (request.build_absolute_uri(reverse('locations')[:-1]), version)
+		sidewalks_kml = "%s.kml?v=%s" % (request.build_absolute_uri(reverse('sidewalks')[:-1]), version)
+		parking_kml   = "%s.kml?v=%s" % (request.build_absolute_uri(reverse('parking')[:-1]), version)
 	else:
-		buildings_kml = "%s%s.kml?v=%s" % (settings.GOOGLE_LOOK_HERE, reverse('locations'), version)
-		sidewalks_kml = "%s%s.kml?v=%s" % (settings.GOOGLE_LOOK_HERE, reverse('sidewalks'), version)
-		parking_kml    = "%s%s.kml?v=%s" % (settings.GOOGLE_LOOK_HERE, reverse('parking'), version)
+		buildings_kml = "%s%s.kml?v=%s" % (settings.GOOGLE_LOOK_HERE, reverse('locations')[:-1], version)
+		sidewalks_kml = "%s%s.kml?v=%s" % (settings.GOOGLE_LOOK_HERE, reverse('sidewalks')[:-1], version)
+		parking_kml    = "%s%s.kml?v=%s" % (settings.GOOGLE_LOOK_HERE, reverse('parking')[:-1], version)
 	loc = "%s.json" % reverse('location', kwargs={'loc':'foo'})
 	loc = loc.replace('foo', '%s')
 	kwargs['map'] = 'gmap';
@@ -125,8 +125,11 @@ def locations(request):
 	if request.is_kml():
 		# helpful:
 		# http://code.google.com/apis/kml/documentation/kml_tut.html#network_links
-		response = render_to_response('api/buildings.kml', { 'locations':locations })
-		response['Content-type'] = 'application/vnd.google-earth.kml+xml'
+		response = cache.get('kml_response')
+		if response is None:
+			response = render_to_response('api/buildings.kml', { 'locations':locations })
+			response['Content-type'] = 'application/vnd.google-earth.kml+xml'
+			cache.set('kml_response', response, 60 * 60 * 24)
 		return response
 	
 	if request.is_bxml():
@@ -517,7 +520,7 @@ def data_dump(request):
 	# Needed because sqllite doesn't use 
 	def ordering(self):
 		if hasattr(self, 'name'):
-			return self.name.lower()
+			return str(self.name).lower()
 		elif hasattr(self, 'id'):
 			return self.id
 		else:
@@ -527,8 +530,13 @@ def data_dump(request):
 		# skip groupedlocation model (not needed since Group uses natural keys)
 		if model == campus.models.GroupedLocation:
 			continue
-		# make ordering case insensitive
-		objects.extend( sorted(model.objects.all(), key=ordering) )
+		# - make ordering case insensitive
+		# - must also make special case for MapObj else the leaf class will be
+		#   serialized, not the actual MapObj itself
+		if model == campus.models.MapObj:
+			objects.extend( sorted(model.objects.mob_filter(), key=ordering) )
+		else:
+			objects.extend( sorted(model.objects.all(), key=ordering) )
 	try:
 		data = serializers.serialize('json', objects, indent=4, use_natural_keys=True)
 	except Exception, e:

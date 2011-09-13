@@ -33,10 +33,11 @@ var Campus = {
 /*global window, document, Image, google, $ */
 
 
-try{ google; } // things have gone very wrong... where is google?!!!
-catch(e){ Campus.error('Google Maps API is currently unavailable'); }
-
 Campus.init = function(){
+	
+	try{ google; } // things have gone very wrong... where is google?!!!
+	catch(e){ Campus.error('Google Maps API is currently unavailable'); }
+	
 	this.resize();
 	
 	// preload images
@@ -44,14 +45,23 @@ Campus.init = function(){
 	var mark = new Image(); mark.src = Campus.urls['static'] + 'images/markers/gold-with-dot.png';
 	var shad = new Image(); shad.src = Campus.urls['static'] + 'images/markers/shadow.png';
 	
+	// load infobox extension
+	var script = document.createElement("script");
+	script.type = "text/javascript";
+	script.src = Campus.urls['static'] + '-/gmaps-infobox/infobox_packed.js';
+	document.body.appendChild(script);
+	
+	// register illustrated map and create map
+	Campus.layers.init();
+	Campus.maps.init();
+	Campus.maps[this.settings.map]();
+	
 	// check for errors
 	$('#error-close').click(function(e){
 		e.preventDefault();
 		$('#error').hide().html('');
 	});
 	
-	// register illustrated map and create map
-	Campus.maps[this.settings.map]();
 };
 
 /******************************************************************************\
@@ -76,52 +86,58 @@ Array.prototype.has=function(v){
 \******************************************************************************/
 Campus.maps = {
 	
-	// Map options for the default Google Map
-	gmap_options : {
-		zoom: 16,
-		center: new google.maps.LatLng(28.6018,-81.1995),
-		mapTypeId: google.maps.MapTypeId.ROADMAP,
-		panControl: true,
-		panControlOptions: {
-			position: google.maps.ControlPosition.LEFT_TOP
-		},
-		zoomControl: true,
-		zoomControlOptions: {
-			style: google.maps.ZoomControlStyle.LARGE,
-			position: google.maps.ControlPosition.LEFT_TOP
-		},
-		streetViewControl: true,
-		streetViewControlOptions: {
-			position: google.maps.ControlPosition.LEFT_TOP
-		},
-		mapTypeControlOptions: {
-			mapTypeIds: [google.maps.MapTypeId.ROADMAP, google.maps.MapTypeId.SATELLITE, 'illustrated']
-		}
-	},
+	init : function(){
+		
+		// Map options for the default Google Map
+		Campus.maps.gmap_options = {
+			zoom: 16,
+			center: new google.maps.LatLng(28.6018,-81.1995),
+			mapTypeId: google.maps.MapTypeId.ROADMAP,
+			panControl: true,
+			panControlOptions: {
+				position: google.maps.ControlPosition.LEFT_TOP
+			},
+			zoomControl: true,
+			zoomControlOptions: {
+				style: google.maps.ZoomControlStyle.LARGE,
+				position: google.maps.ControlPosition.LEFT_TOP
+			},
+			streetViewControl: true,
+			streetViewControlOptions: {
+				position: google.maps.ControlPosition.LEFT_TOP
+			},
+			mapTypeControlOptions: {
+				mapTypeIds: [google.maps.MapTypeId.ROADMAP, google.maps.MapTypeId.SATELLITE, 'illustrated']
+			}
+		};
 	
-	// Custom Map type for the Illustrated Map
-	// http://code.google.com/apis/maps/documentation/javascript/maptypes.html#BasicMapTypes
-	// note: this code looks a little different than the example because I'm simply
-	// creating an object instead of instantiating one with the "new" keyword
-	imap_type : {
-		tileSize : new google.maps.Size(256,256),
-		minZoom: 12,
-		maxZoom :16, //can go up to 18
-		getTile : function(coord, zoom, ownerDocument) {
-		  var div = ownerDocument.createElement('div');
-		  div.style.width = this.tileSize.width + 'px';
-		  div.style.height = this.tileSize.height + 'px';
-		  div.style.backgroundImage = this.bg(coord,zoom);
-		  return div;
-		},
-		name : "Illustrated",
-		alt : "Show illustrated map"
-	},
-	imap_options : {
-		zoom : 14,
-		center : new google.maps.LatLng(85.04591,-179.92189), // world's corner
-		mapTypeId : 'illustrated',
-		mapTypeControl : true
+		// Custom Map type for the Illustrated Map
+		// http://code.google.com/apis/maps/documentation/javascript/maptypes.html#BasicMapTypes
+		// note: this code looks a little different than the example because I'm simply
+		// creating an object instead of instantiating one with the "new" keyword
+		Campus.maps.imap_type = {
+			tileSize : new google.maps.Size(256,256),
+			minZoom: 12,
+			maxZoom :16, //can go up to 18
+			getTile : function(coord, zoom, ownerDocument) {
+			  var div = ownerDocument.createElement('div');
+			  div.style.width = this.tileSize.width + 'px';
+			  div.style.height = this.tileSize.height + 'px';
+			  div.style.backgroundImage = this.bg(coord,zoom);
+			  return div;
+			},
+			name : "Illustrated",
+			alt  : "Show illustrated map",
+			bg   : this.imap_type_bg
+		};
+		
+		Campus.maps.imap_options = {
+			zoom : 14,
+			center : new google.maps.LatLng(85.04591,-179.92189), // world's corner
+			mapTypeId : 'illustrated',
+			mapTypeControl : true
+		};
+		
 	},
 	
 	/* Called from Campus.init - make a map! */
@@ -165,7 +181,7 @@ Campus.maps = {
 	(latititude 85, longitude -180) so the first tile requested is #1.  Makes
 	it easier to chop the map and do the math to determine bounds
 \******************************************************************************/
-Campus.maps.imap_type.bg = function(coord,zoom) {
+Campus.maps.imap_type_bg = function(coord,zoom) {
 	var tile = "zoom-" + zoom + "/" + zoom + "-" + coord.x + "-" + coord.y + ".jpg";
 	var nope = "white.png";
 
@@ -365,6 +381,11 @@ Campus.menuInit = function(){
  Map Layers
 \******************************************************************************/
 Campus.layers = {
+	
+	init : function(){
+		this.traffic.layers = new google.maps.TrafficLayer();
+	},
+	
 	update : function(){
 		this.buildings.update();
 		this.points.update();
@@ -376,7 +397,7 @@ Campus.layers = {
 	
 	/* Google's traffic layer */
 	traffic : {
-		layer  : new google.maps.TrafficLayer(),
+		layer  : false,
 		update : function() {
 			var on = Campus.settings.traffic;
 			if(on){
