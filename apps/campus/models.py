@@ -8,7 +8,7 @@ from django.template.defaultfilters import slugify
 from django.db.models.signals import m2m_changed, post_save
 from django.core.exceptions import FieldError
 from django.core.cache import cache
-
+from django.conf import settings
 from django.db.models import Q
 import campus
 import json
@@ -227,7 +227,7 @@ class MapObj(models.Model):
 		return '%s%s%s/' % (base_url, url, slug)
 	profile_link = property(_profile_link)
 	
-	def _bxml(self):
+	def bxml(self, base_url = ''):
 		'''
 			Representation of this object in Blackbaord Mobile XML.
 			The documentation is lacking so assume that each element
@@ -253,7 +253,7 @@ class MapObj(models.Model):
 		if self.googlemap_point is not None:
 			lat.text, lon.text = self.googlemap_point[1:-1].replace(' ','').split(',')
 		if self.image is not None:
-			image.text = self.image # TODO - Is this absolute? Correct extension?
+			image.text = base_url + settings.MEDIA_URL + 'images/buildings/' + self.image
 		# TODO - handicap
 		# TODO - rooms
 		for org_data in self.orgs['results']:
@@ -273,7 +273,6 @@ class MapObj(models.Model):
 		location.append(orgs)
 		
 		return location
-	bxml = property(_bxml)
 	
 	def save(self, *args, **kwargs):
 		from django.core.cache import cache

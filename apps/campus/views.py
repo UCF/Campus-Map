@@ -134,7 +134,7 @@ def locations(request):
 	
 	if request.is_bxml():
 		xml_locations = ElementTree.Element('Locations')
-		for location in list(l.bxml for l in locations):
+		for location in list(l.bxml(base_url=base_url) for l in locations):
 			xml_locations.append(location)
 		response = HttpResponse(ElementTree.tostring(xml_locations,encoding='UTF-8'))
 		response['Content-type'] = 'application/xml'
