@@ -125,10 +125,10 @@ def locations(request):
 	if request.is_kml():
 		# helpful:
 		# http://code.google.com/apis/kml/documentation/kml_tut.html#network_links
-		response = cache.get('kml_response')
+		response = None #cache.get('kml_response')
 		if response is None:
-			response = render_to_response('api/buildings.kml', { 'locations':locations })
-			response['Content-type'] = 'application/vnd.google-earth.kml+xml'
+			response = render_to_response('api/locations.kml', { 'locations':locations, 'base_url':base_url })
+			#response['Content-type'] = 'application/vnd.google-earth.kml+xml'
 			cache.set('kml_response', response, 60 * 60 * 24)
 		return response
 	
@@ -202,11 +202,11 @@ def location(request, loc, return_obj=False):
 	import flickr
 	photos = flickr.get_photos()
 	tags = set()
-	if 'id' in location:
+	if location.get('id', False):
 		tags.add( 'map%s' % location['id'].lower() )
-	if 'abbreviation' in location:
+	if location.get('abbreviation', False):
 		tags.add( 'map%s' % location['abbreviation'].lower() )
-	if 'number' in location:
+	if location.get('number', False):
 		tags.add( 'map%s' % location['number'].lower() )
 	for p in list(photos):
 		ptags = set(p.tags.split(' ')).intersection(tags)

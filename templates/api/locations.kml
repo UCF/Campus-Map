@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+<Document><Folder><name>UCF Campus Map Locations</name>
+
+<Schema name="location" id="location">
+	<SimpleField name="link" type="string"></SimpleField>
+	<SimpleField name="object_type" type="string"></SimpleField>
+	<SimpleField name="perm_type" type="string"></SimpleField>
+	<SimpleField name="description" type="string"></SimpleField>
+	<SimpleField name="abbreviation" type="string"></SimpleField>
+</Schema>
+
+{% for l in locations %}{% if l.kml_coords %}
+<Placemark id="{{l.id}}">
+	<name>{{l.title}}</name>
+	<Style>
+		<LabelStyle><color>ffffffff</color></LabelStyle>
+		<LineStyle><color>ccb5b5b5</color><width>1</width></LineStyle>
+		<PolyStyle><color>59b0b0b0</color></PolyStyle>
+	</Style>
+	<ExtendedData><SchemaData schemaUrl="#location">
+		<SimpleField name="link" type="string">{{base_url}}{{l.profile_link}}</SimpleField>
+		<SimpleField name="object_type" type="string">{{l.object_type}}</SimpleField>{% if l.perm_type %}
+		<SimpleField name="perm_type" type="string"></SimpleField>{% endif %}{% if l.description %}
+		<SimpleField name="description" type="string"></SimpleField>{% endif %}{% if l.abbreviation %}
+		<SimpleField name="abbreviation" type="string"></SimpleField>{% endif %}
+	</SchemaData></ExtendedData>
+	<Polygon><outerBoundaryIs><LinearRing><coordinates>{{l.kml_coords}}</coordinates></LinearRing></outerBoundaryIs></Polygon>
+</Placemark>
+{% endif %}{% endfor %}
+
+</Folder></Document>
+</kml>
