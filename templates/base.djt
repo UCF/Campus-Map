@@ -2,7 +2,7 @@
 <html>
 	<head>
 		
-		<title>{% block pre_title %}{%endblock%}{% block title %}UCF Campus Map{% endblock %}</title>
+		<title>{% block title %}UCF Campus Map{% endblock %}</title>
 		<meta name="description" content="We can help you find what you're looking for. Use the UCF Campus Map to locate your classrooms, labs, housing and nearby parking; find buildings, locations, organizations and more at the University of Central Florida." />
 		
 		<meta charset="utf-8">

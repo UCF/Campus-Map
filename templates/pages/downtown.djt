@@ -1,6 +1,6 @@
 {% extends "base.djt"%}
 
-{% block pre_title %}Downtown - {% endblock %}
+{% block title %}Downtown - {{block.super}}{% endblock %}
 
 {% block wrap %}
 	

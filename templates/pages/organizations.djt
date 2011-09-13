@@ -1,6 +1,6 @@
 {% extends "base.djt"%}
 
-{% block pre_title %}Organizations - {% endblock %}
+{% block title %}Organizations - {{block.super}}{% endblock %}
 
 {% block wrap %}
 
