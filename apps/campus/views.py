@@ -128,7 +128,7 @@ def locations(request):
 		response = None #cache.get('kml_response')
 		if response is None:
 			response = render_to_response('api/locations.kml', { 'locations':locations, 'base_url':base_url })
-			#response['Content-type'] = 'application/vnd.google-earth.kml+xml'
+			response['Content-type'] = 'application/vnd.google-earth.kml+xml'
 			cache.set('kml_response', response, 60 * 60 * 24)
 		return response
 	
