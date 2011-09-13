@@ -133,7 +133,7 @@ def locations(request):
 		xml_locations = ElementTree.Element('Locations')
 		for location in list(l.bxml for l in locations):
 			xml_locations.append(location)
-		response = HttpResponse('<?xml version="1.0" encoding="UTF-8"?>' + ElementTree.tostring(xml_locations,encoding='utf-8'))
+		response = HttpResponse(ElementTree.tostring(xml_locations,encoding='UTF-8'))
 		response['Content-type'] = 'application/xml'
 		return response
 	
