@@ -5,6 +5,8 @@ from django.core.urlresolvers import reverse, resolve, Resolver404
 from django.core.cache import cache
 from django.db.models import Q
 from django.utils.html import strip_tags
+from xml.etree import ElementTree
+
 import settings, urllib, json, re, logging, hashlib
 
 logger = logging.getLogger(__name__)
@@ -242,6 +244,15 @@ def search(request):
 			}
 			cache.set(cache_key, found_entries, 60 * 60 * 24 * 7)
 	
+	if request.is_bxml():
+		base_url  = request.build_absolute_uri(reverse('home'))[:-1]
+		xml_locations = ElementTree.Element('Locations')
+		for location in list(l.bxml(base_url=base_url) for l in found_entries['locations']):
+			xml_locations.append(location);
+		response = HttpResponse(ElementTree.tostring(xml_locations,encoding="UTF-8"))
+		response['Content-type'] = 'application/xml'
+		return response
+		
 	# TODO: Text API format
 	if request.is_json():
 		def clean(item): 
