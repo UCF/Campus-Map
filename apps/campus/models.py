@@ -226,7 +226,55 @@ class MapObj(models.Model):
 			return '%s%s' % (base_url, url)
 		return '%s%s%s/' % (base_url, url, slug)
 	profile_link = property(_profile_link)
-
+	
+	def _bxml(self):
+		'''
+			Representation of this object in Blackbaord Mobile XML.
+			The documentation is lacking so assume that each element
+			is required and should be left blank if there is no information. 
+		'''
+		from xml.etree.ElementTree import Element
+		
+		location = Element('location') # Root 
+		
+		name     = Element('name')
+		loc_code = Element('location_code')
+		geocode  = Element('geocode')
+		lat      = Element('lat')
+		lon      = Element('lon')
+		image    = Element('image_url')
+		desc     = Element('description')
+		handicap = Element('handicap')
+		rooms    = Element('rooms')
+		orgs     = Element('organizations')
+		
+		name.text     = self.name
+		loc_code.text = self.id
+		if self.googlemap_point is not None:
+			lat.text, lon.text = self.googlemap_point[1:-1].replace(' ','').split(',')
+		if self.image is not None:
+			image.text = self.image # TODO - Is this absolute? Correct extension?
+		# TODO - handicap
+		# TODO - rooms
+		for org_data in self.orgs['results']:
+			org = Element('organization')
+			org.text = org_data['name']
+			orgs.append(org)
+		
+		location.append(name)
+		location.append(loc_code)
+		geocode.append(lat)
+		geocode.append(lon)
+		location.append(geocode)
+		location.append(image)
+		location.append(desc)
+		location.append(handicap)
+		location.append(rooms)
+		location.append(orgs)
+		
+		return location
+	bxml = property(_bxml)
+	
 	def save(self, *args, **kwargs):
 		from django.core.cache import cache
 		# Forces cache reset once data changes
