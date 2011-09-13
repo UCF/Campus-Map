@@ -248,7 +248,7 @@ class MapObj(models.Model):
 		rooms    = Element('rooms')
 		orgs     = Element('organizations')
 		
-		name.text     = self.name
+		name.text     = self.title
 		loc_code.text = self.id
 		if self.googlemap_point is not None:
 			lat.text, lon.text = self.googlemap_point[1:-1].replace(' ','').split(',')
