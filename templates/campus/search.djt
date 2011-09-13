@@ -1,7 +1,7 @@
 {% extends "base.djt"%}
 {% load util %}
 
-{% block pre_title %}Search - {% endblock %}
+{% block title %}Search - {{block.super}}{% endblock %}
 
 {% block wrap %}
 <div id="flat_search">

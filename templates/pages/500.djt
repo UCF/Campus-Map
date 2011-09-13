@@ -1,6 +1,6 @@
 {% extends "base.djt"%}
 
-{% block pre_title %}Server Error - {% endblock %}
+{% block title %}Server Error - {{block.super}}{% endblock %}
 
 {% block wrap %}
 	

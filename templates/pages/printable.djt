@@ -1,6 +1,6 @@
 {% extends "base.djt"%}
 
-{% block pre_title %}Printable Map - {% endblock %}
+{% block title %}Printable Map - {{block.super}}{% endblock %}
 
 {% block wrap %}
 <div id="printable">

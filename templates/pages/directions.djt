@@ -1,6 +1,6 @@
 {% extends "base.djt"%}
 
-{% block pre_title %}Directions - {% endblock %}
+{% block title %}Directions - {{block.super}}{% endblock %}
 
 {% block wrap %}
 <div id="directions">

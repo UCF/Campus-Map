@@ -1,6 +1,6 @@
 {% extends "base.djt"%}
 
-{% block pre_title %}Developer&rsquo;s Guide - {% endblock %}
+{% block title %}Developer's Guide - {{block.super}}{% endblock %}
 
 {% block wrap %}
 	
