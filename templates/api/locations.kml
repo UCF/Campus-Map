@@ -19,7 +19,6 @@
 {% for l in locations %}{% if l.kml_coords %}
 <Placemark id="{{l.id}}">
 	<name>{{l.title}}</name>
-	<atom:link href="{{base_url}}{{l.profile_link}}" />
 	<Style>
 		<LabelStyle><color>ffffffff</color></LabelStyle>
 		<LineStyle><color>ccb5b5b5</color><width>1</width></LineStyle>
