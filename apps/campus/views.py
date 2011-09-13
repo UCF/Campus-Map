@@ -4,6 +4,7 @@ from django.views.generic.simple import direct_to_template as render
 from django.core.urlresolvers import reverse
 from campus.models import MapObj
 from django.core.cache import cache
+from xml.etree import ElementTree
 
 import settings, json, re, urllib
 
@@ -113,7 +114,6 @@ def locations(request):
 	locations = MapObj.objects.all()
 	base_url  = request.build_absolute_uri(reverse('home'))[:-1]
 	
-	
 	if request.is_json():
 		arr = []
 		for l in locations:
@@ -127,6 +127,14 @@ def locations(request):
 		# http://code.google.com/apis/kml/documentation/kml_tut.html#network_links
 		response = render_to_response('api/buildings.kml', { 'locations':locations })
 		response['Content-type'] = 'application/vnd.google-earth.kml+xml'
+		return response
+	
+	if request.is_bxml():
+		xml_locations = ElementTree.Element('Locations')
+		for location in list(l.bxml for l in locations):
+			xml_locations.append(location)
+		response = HttpResponse('<?xml version="1.0" encoding="UTF-8"?>' + ElementTree.tostring(xml_locations,encoding='utf-8'))
+		response['Content-type'] = 'application/xml'
 		return response
 	
 	context = cache.get('locations_context')
