@@ -227,50 +227,57 @@ class MapObj(models.Model):
 		return '%s%s%s/' % (base_url, url, slug)
 	profile_link = property(_profile_link)
 	
-	def bxml(self, base_url = ''):
+	def bxml(self, *args, **kwargs):
 		'''
 			Representation of this object in Blackbaord Mobile XML.
-			The documentation is lacking so assume that each element
-			is required and should be left blank if there is no information. 
+			Listing only requires names.
+			Search requires name, unique building id, and geocode lat long in 
+			decimal format. Addtional attributes can also be included for search
 		'''
 		from xml.etree.ElementTree import Element
 		
+		base_url  = kwargs.pop('base_url', '')
+		name_only = kwargs.pop('name_only', False)
+		
 		location = Element('location') # Root 
 		
+		# Required Attributes
 		name     = Element('name')
 		loc_code = Element('location_code')
 		geocode  = Element('geocode')
 		lat      = Element('lat')
 		lon      = Element('lon')
-		image    = Element('image_url')
-		desc     = Element('description')
-		handicap = Element('handicap')
-		rooms    = Element('rooms')
-		orgs     = Element('organizations')
 		
 		name.text     = self.title
 		loc_code.text = self.id
 		if self.googlemap_point is not None:
 			lat.text, lon.text = self.googlemap_point[1:-1].replace(' ','').split(',')
-		if self.image is not None:
-			image.text = base_url + settings.MEDIA_URL + 'images/buildings/' + self.image
-		# TODO - handicap
-		# TODO - rooms
-		for org_data in self.orgs['results']:
-			org = Element('organization')
-			org.text = org_data['name']
-			orgs.append(org)
 		
 		location.append(name)
-		location.append(loc_code)
-		geocode.append(lat)
-		geocode.append(lon)
-		location.append(geocode)
-		location.append(image)
-		location.append(desc)
-		location.append(handicap)
-		location.append(rooms)
-		location.append(orgs)
+		if not name_only:
+			location.append(loc_code)
+			geocode.append(lat)
+			geocode.append(lon)
+			location.append(geocode)
+		
+			# Optional Attributes
+			if self.image is not None:
+				image    = Element('image_url')
+				image.text = base_url + settings.MEDIA_URL + 'images/buildings/' + self.image
+				location.append(image)
+			
+			if self.description is not None:
+				desc     = Element('description')
+				desc.text = self.description
+				location.append(desc)
+		
+			if len(self.orgs['results']) > 0:
+				orgs     = Element('organizations')
+				for org_data in self.orgs['results']:
+					org = Element('organization')
+					org.text = org_data['name']
+					orgs.append(org)
+				location.append(orgs)
 		
 		return location
 	
@@ -378,7 +385,10 @@ class ParkingLot(MapObj):
 		if self.abbreviation:
 			return "%s (%s)" % (self.name, self.abbreviation)
 		else:
-			return self.name
+			if self.name:
+				return self.name
+			else:
+				return self.id
 	title = property(_title)
 	
 	def json(self, **kw):
