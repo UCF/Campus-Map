@@ -27,9 +27,14 @@ class Command(BaseCommand):
 			'organizations/354/.json',
 			'organizations/96/.ajax',
 			'locations/',
+			"locations.kml",
 			"locations/.kml?v=17",
+			"locations.json",
 			'locations/.json',
 			"locations/52/.json",
+			"locations/52.json",
+			"locations/52/student-union/",
+			"locations/52/student-union.json",
 			'locations/1/millican-hall/?org=354',
 			'printable/',
 			"parking/.kml?v=17",
@@ -40,7 +45,7 @@ class Command(BaseCommand):
 		
 		for u in url_strings:
 			try:
-				time.sleep(.75)
+				time.sleep(1)
 				url = base+u
 				page = urllib2.urlopen(url)
 				print "%-75s OK" % url
