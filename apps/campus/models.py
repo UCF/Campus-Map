@@ -385,7 +385,10 @@ class ParkingLot(MapObj):
 		if self.abbreviation:
 			return "%s (%s)" % (self.name, self.abbreviation)
 		else:
-			return self.name
+			if self.name:
+				return self.name
+			else:
+				return self.id
 	title = property(_title)
 	
 	def json(self, **kw):
