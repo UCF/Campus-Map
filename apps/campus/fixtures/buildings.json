@@ -880,6 +880,14 @@
         }
     }, 
     {
+        "pk": "pl", 
+        "model": "campus.building", 
+        "fields": {
+            "abbreviation": null, 
+            "sketchup": null
+        }
+    }, 
+    {
         "pk": "50b", 
         "model": "campus.building", 
         "fields": {
@@ -1164,14 +1172,6 @@
         "model": "campus.building", 
         "fields": {
             "abbreviation": "SA64", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "pl", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": null, 
             "sketchup": null
         }
     }, 

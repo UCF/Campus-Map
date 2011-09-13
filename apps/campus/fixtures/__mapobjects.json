@@ -4828,6 +4828,23 @@
         }
     }, 
     {
+        "pk": "pl", 
+        "model": "campus.mapobj", 
+        "fields": {
+            "profile": null, 
+            "name": "Knight's Circle", 
+            "image": null, 
+            "poly_coords": null, 
+            "illustrated_point": null, 
+            "content_type": [
+                "campus", 
+                "building"
+            ], 
+            "googlemap_point": "[28.610331631412482, -81.208469742706280]", 
+            "description": null
+        }
+    }, 
+    {
         "pk": "50b", 
         "model": "campus.mapobj", 
         "fields": {
@@ -5674,23 +5691,6 @@
                 "building"
             ], 
             "googlemap_point": "[28.604190388337740, -81.203716868331900]", 
-            "description": null
-        }
-    }, 
-    {
-        "pk": "pl", 
-        "model": "campus.mapobj", 
-        "fields": {
-            "profile": null, 
-            "name": "Pegasus Landing", 
-            "image": "landing.jpg", 
-            "poly_coords": null, 
-            "illustrated_point": null, 
-            "content_type": [
-                "campus", 
-                "building"
-            ], 
-            "googlemap_point": "[28.610331631412482, -81.208469742706280]", 
             "description": null
         }
     }, 
