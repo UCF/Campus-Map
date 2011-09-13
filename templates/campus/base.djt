@@ -40,6 +40,7 @@
 
 {% block js %}
 	<script src="{{MEDIA_URL}}js/map.js?date={% now "Y-m-d" %}" type="text/javascript"></script>
+	<script src="{{MEDIA_URL}}-/gmaps-infobox/infobox_packed.js"></script>
 	<script type="text/javascript">
 		Campus.urls = {
 			"static"        : "{{ MEDIA_URL }}",
@@ -58,11 +59,7 @@
 		Campus.settings = {{options|safe}};
 		
 		$(document).ready(function(){
-			// http://code.google.com/apis/maps/documentation/javascript/basics.html#Async
-			var script = document.createElement("script");
-			script.type = "text/javascript";
-			script.src = "http://maps.googleapis.com/maps/api/js?sensor=false&callback=Campus.init";
-			document.body.appendChild(script);
+			Campus.scripts.google(); // fire off maps
 		});
 	</script>
 {% endblock %}

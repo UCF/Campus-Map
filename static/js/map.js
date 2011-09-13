@@ -33,6 +33,21 @@ var Campus = {
 /*global window, document, Image, google, $ */
 
 
+/******************************************************************************\
+ Load Google Maps
+ 	1- callback loads the InfoBox (from the google maps util library v3)
+	2- once loaded, InfoBox calls Campus.init
+\******************************************************************************/
+Campus.scripts = {
+	google : function(){
+		// http://code.google.com/apis/maps/documentation/javascript/basics.html#Async
+		var script = document.createElement("script");
+		script.type = "text/javascript";
+		script.src = "http://maps.googleapis.com/maps/api/js?sensor=false&callback=infobox_init";
+		document.body.appendChild(script);
+	},
+};
+
 Campus.init = function(){
 	
 	try{ google; } // things have gone very wrong... where is google?!!!
@@ -44,12 +59,6 @@ Campus.init = function(){
 	var spin = new Image(); spin.src = Campus.urls['static'] + 'style/img/spinner.gif';
 	var mark = new Image(); mark.src = Campus.urls['static'] + 'images/markers/gold-with-dot.png';
 	var shad = new Image(); shad.src = Campus.urls['static'] + 'images/markers/shadow.png';
-	
-	// load infobox extension
-	var script = document.createElement("script");
-	script.type = "text/javascript";
-	script.src = Campus.urls['static'] + '-/gmaps-infobox/infobox_packed.js';
-	document.body.appendChild(script);
 	
 	// register illustrated map and create map
 	Campus.layers.init();
@@ -241,7 +250,6 @@ Campus.controls = function(){
 		Campus.map.panTo(latlng);
 		Campus.info();
 		if(loc.object_type == 'Location') loc.profile_link = false;
-		console.log(loc.object_type, loc.profile_link);		
 		Campus.infoBox.show(loc.name, latlng, loc.profile_link);
 		Campus.stage.html(loc.info);
 		Campus.menu.show('location');
