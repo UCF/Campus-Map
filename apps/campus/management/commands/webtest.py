@@ -28,8 +28,8 @@ class Command(BaseCommand):
 			'organizations/96/.ajax',
 			'locations/',
 			"locations.kml",
+			'locations.json',
 			"locations/.kml?v=17",
-			"locations.json",
 			'locations/.json',
 			"locations/52/.json",
 			"locations/52.json",
@@ -45,11 +45,11 @@ class Command(BaseCommand):
 		
 		for u in url_strings:
 			try:
-				time.sleep(1)
 				url = base+u
-				page = urllib2.urlopen(url)
-				print "%-75s OK" % url
+				print "%-75s " % url,
+				page = urllib2.urlopen(url, None, 2)
+				print "OK"
+				page.close()
+				
 			except urllib2.URLError, e:
-				print "%-75s Fail: %s" % (url, e)
-			
-
+				print "Fail: %s" % str(e)

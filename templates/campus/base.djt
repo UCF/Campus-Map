@@ -39,8 +39,8 @@
 
 
 {% block js %}
-	<script src="{{MEDIA_URL}}js/map.js?date={% now "Y-m-d" %}" type="text/javascript"></script>
-	<script src="{{MEDIA_URL}}-/gmaps-infobox/infobox_packed.js"></script>
+	<script src="{{MEDIA_URL}}js/map.js?{{map_version}}" type="text/javascript"></script>
+	<script src="{{MEDIA_URL}}-/gmaps-infobox/infobox_packed.js?{{map_version}}"></script>
 	<script type="text/javascript">
 		Campus.urls = {
 			"static"        : "{{ MEDIA_URL }}",

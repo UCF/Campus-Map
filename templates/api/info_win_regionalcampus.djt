@@ -7,6 +7,6 @@
 	</p>
 </div>
 
-<a href="{% url regional %}" class="item">More Regional Campuses</a>
+<a href="{{base_url}}{% url regional %}" class="item">More Regional Campuses</a>
 
 {% endif %}

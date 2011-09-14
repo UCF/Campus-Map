@@ -6,10 +6,10 @@
 	
 {% else %}
 
-	<a href="{{location.profile_link}}" class="item">{{location.name}}</a>
+	<a href="{{base_url}}{{location.profile_link}}" class="item">{{location.name}}</a>
 
-	<a class="item" href="{{location.profile_link}}">
-		{% if location.image %}<img src="{{MEDIA_URL}}images/buildings/{{ location.image }}">{%else%}<img src="{{ base_url }}{{MEDIA_URL}}images/buildings/_no_image.jpg">{% endif %}
+	<a class="item" href="{{base_url}}{{location.profile_link}}">
+		{% if location.image %}<img src="{{static}}images/buildings/{{ location.image }}">{%else%}<img src="{{static}}images/buildings/_no_image.jpg">{% endif %}
 	</a>
 	
 	{% if location.description %}
@@ -17,7 +17,7 @@
 	{% endif %}
 	
 	{% if debug and not location.description %}
-		<a class="item" href="{% url admin:app_list 'campus'%}building/{{location.pk}}/">add a description</a>
+		<a class="item" href="{{base_url}}{% url admin:app_list 'campus'%}building/{{location.pk}}/">add a description</a>
 	{% endif %}
 	
 
@@ -28,10 +28,10 @@
 		{# limit the number of organizations displayed to 4 #}
 		{% for o in location.orgs.results %}
 			{% if forloop.counter < 5 %}
-			<li><a href="{% url locations %}/{{o.bldg_id}}/{{o.building|slugify}}/?org={{o.id}}">{{o.name}}</a></li>
+			<li><a href="{{base_url}}{% url locations %}/{{o.bldg_id}}/{{o.building|slugify}}/?org={{o.id}}">{{o.name}}</a></li>
 			{% endif %}
 			{% if forloop.counter == 5  %}
-				<li class="c"><a href="{{location.profile_link}}">-- View All --</a></li>
+				<li class="c"><a href="{{base_url}}{{location.profile_link}}">-- View All --</a></li>
 			{% endif %}
 		{% endfor %}
 		</ul>

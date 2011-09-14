@@ -4,6 +4,8 @@
 import os
 import sys
 
+MAP_VERSION       = "1.2"
+
 PROJECT_FOLDER    = os.path.dirname(os.path.abspath(__file__))
 APP_FOLDER        = os.path.join(PROJECT_FOLDER, 'apps')
 INC_FOLDER        = os.path.join(PROJECT_FOLDER, 'third-party')
@@ -23,6 +25,7 @@ TEMPLATE_LOADERS = (
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
+	"apps.map_context",
 	"django.contrib.auth.context_processors.auth",
 	"django.core.context_processors.debug",
 	"django.core.context_processors.i18n",

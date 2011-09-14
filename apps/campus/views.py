@@ -431,7 +431,7 @@ def location_html(loc, request, orgs=True):
 	This really should be a model method, but it's time to go home
 	'''
 	from django.template.loader import get_template
-	from django.template import Context
+	from django.template import RequestContext
 	base_url = request.build_absolute_uri(reverse('home'))[:-1]
 	context  = { 'location':loc, 'base_url':base_url }
 	location_type = loc.__class__.__name__.lower()
@@ -448,14 +448,11 @@ def location_html(loc, request, orgs=True):
 				break
 	
 	# create info HTML using template
+	d = {   'location'  : loc,
+			'orgs'      : orgs,
+			'group'     : group }
+	c = RequestContext(request, d)
 	t = get_template(template)
-	c = Context({
-		'location'  : loc,
-		'orgs'      : orgs,
-		'group'     : group,
-		'base_url'  : base_url,
-		'debug'     : settings.DEBUG,
-		'MEDIA_URL' : settings.MEDIA_URL })
 	return t.render(c)
 
 def backward_location(request):

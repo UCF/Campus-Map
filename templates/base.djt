@@ -29,7 +29,7 @@
 		<link href="http://www.ucf.edu/css/global.css" rel="stylesheet">
 		
 		<!-- UCF Web Communications -->		
-		<link href="{{MEDIA_URL}}style/style.css?date={% now "Y-m-d" %}" rel="stylesheet">
+		<link href="{{MEDIA_URL}}style/style.css?{{map_version}}" rel="stylesheet">
 		{% block head %}{% endblock %}
 		
 		{% if debug %}
