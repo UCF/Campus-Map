@@ -45,7 +45,7 @@ Campus.scripts = {
 		script.type = "text/javascript";
 		script.src = "http://maps.googleapis.com/maps/api/js?sensor=false&callback=infobox_init";
 		document.body.appendChild(script);
-	},
+	}
 };
 
 Campus.init = function(){

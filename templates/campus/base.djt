@@ -42,6 +42,7 @@
 	<script src="{{MEDIA_URL}}js/map.js?{{map_version}}" type="text/javascript"></script>
 	<script src="{{MEDIA_URL}}-/gmaps-infobox/infobox_packed.js?{{map_version}}"></script>
 	<script type="text/javascript">
+		
 		Campus.urls = {
 			"static"        : "{{ MEDIA_URL }}",
 			"search"        : "{% url search %}",
@@ -53,7 +54,7 @@
 			"bikeracks"     : "{% url bikeracks %}.json",
 			"phones"        : "{% url emergency_phones %}.json",
 			"base_url"      : "{{ base_url }}"
-		}
+		};
 		
 		Campus.points = {{ points|safe }};
 		Campus.settings = {{options|safe}};
