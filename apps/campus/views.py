@@ -147,8 +147,11 @@ def locations(request):
 	if request.is_kml():
 		# helpful:
 		# http://code.google.com/apis/kml/documentation/kml_tut.html#network_links
-		response = render_to_response('api/buildings.kml', { 'locations':locations })
-		response['Content-type'] = 'application/vnd.google-earth.kml+xml'
+		response = cache.get('kml_response')
+		if response is None:
+			response = render_to_response('api/buildings.kml', { 'locations':locations })
+			response['Content-type'] = 'application/vnd.google-earth.kml+xml'
+			cache.set('kml_response', response, 60 * 60 * 24 * 3)
 		return response
 	
 	context = cache.get('locations_context')
