@@ -19,3 +19,8 @@ def map_context(request):
 	context_extras['static'] = base_url + settings.MEDIA_URL
 	
 	return context_extras
+
+class DisableCSRF(object):
+	''' sad panda '''
+	def process_view(self, request, callback, callback_args, callback_kwargs):
+		setattr(request, '_dont_enforce_csrf_checks', True)
