@@ -33,6 +33,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 )
 
 MIDDLEWARE_CLASSES = (
+	'api.MapMiddleware',
 	'apps.DisableCSRF', # :(
 	'django.middleware.common.CommonMiddleware',
 	'django.contrib.sessions.middleware.SessionMiddleware',
@@ -124,8 +125,6 @@ LOGGING = {
 		}
 	}
 }
-
-FORMATS = ('json', 'txt', 'kml', 'xml', 'bxml', 'ajax')
 
 # For Google to render KML layers, it needs to import the map data.  If working
 # locally or behind a firewall, this will not be possible.  If GOOGLE_CAN_SEE_ME

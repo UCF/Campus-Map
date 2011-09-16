@@ -1,6 +1,7 @@
 from django.conf.urls.defaults import *
 from django.views.generic.simple import direct_to_template, redirect_to
 import settings
+from api import formats
 
 from django.contrib import admin
 admin.autodiscover()
@@ -27,7 +28,7 @@ urlpatterns += patterns('',
 	('^address\.php', redirect_to, {'url': '/directions/'}),
 	
 	# Be careful. Because of the string replace, this is no longer a raw string
-	url('^(?P<url>.*)\.(%s)' % '|'.join(settings.FORMATS), 'views.api'),
+	url('^(?P<url>.*)\.(%s)' % '|'.join(formats), 'api.handle_request'),
 
 	(r'^', include('campus.urls')),
 	#url(r'^$', direct_to_template, {'template':'base.djt'}, name='home'),

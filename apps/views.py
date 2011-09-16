@@ -1,7 +1,7 @@
 from django.http      import HttpResponse, Http404
 from django.views.generic.simple import direct_to_template as render
 from django.template import TemplateDoesNotExist
-from django.core.urlresolvers import reverse, resolve, Resolver404
+from django.core.urlresolvers import reverse, Resolver404
 from django.core.cache import cache
 from django.db.models import Q
 from django.utils.html import strip_tags
@@ -55,17 +55,6 @@ def server_error(request, **kwargs):
 	t = loader.get_template('pages/500.djt')
 	context = { 'MEDIA_URL': settings.MEDIA_URL }
 	return HttpResponseServerError(t.render(Context(context)))
-
-def api(request, url):
-	'''
-	API for detecting format without dirtying the urls file
-	'''
-	try:
-		view, args, kwargs = resolve('/' + url)
-	except Resolver404:
-		view, args, kwargs = resolve('/' + url + '/')
-	kwargs['request'] = request
-	return view(*args, **kwargs)
 
 def pages(request, page=None):
 	'''
