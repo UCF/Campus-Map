@@ -3,36 +3,38 @@ from django.conf import settings
 from django.core.urlresolvers import reverse, resolve
 from django.http import HttpResponse, HttpRequest
 
+
 formats = {
 	'json' : {
-		'mime_type'       : 'application/json',
-		'errror_response' : '',
+		'mimetype' : 'application/json',
+		'content'  : '{"error":"Not Implemented"}',
 		},
 	'txt'  : {
-		'mime_type'       : 'text/plain; charset=utf-8',
-		'errror_response' : '',
+		'mimetype' : 'text/plain; charset=utf-8',
+		'content'  : 'Not Implemented',
 		},
 	'kml'  : {
-		'mime_type'       : 'application/vnd.google-earth.kml+xml',
-		'errror_response' : '',
+		'mimetype' : 'application/vnd.google-earth.kml+xml',
+		'content'  : '<?xml version="1.0"?><kml xmlns="http://www.opengis.net/kml/2.2"></kml>',
 		},
 	'xml'  : {
-		'mime_type'       : 'text/xml',
-		'errror_response' : '',
+		'mimetype' : 'text/xml',
+		'content'  : '<?xml version="1.0"?><error>Not Implemented</error>',
 		},
 	'bxml' : {
-		'mime_type'       : 'application/xml',
-		'errror_response' : '',
+		'mimetype' : 'application/xml',
+		'content'  : '<?xml version="1.0"?><error>Not Implemented</error>',
 		},
 	'ajax' : {
-		'mime_type'       : 'text/html',
-		'errror_response' : '',
+		'mimetype' : 'text/html',
+		'content'  : 'Not Implemented',
 		},
 }
 
+
 class HttpResponseNotImplemented(HttpResponse):
 	status_code = 501
-	
+
 
 def MonkeyPatchHttpRequest():
 	'''
@@ -53,12 +55,14 @@ class MapMiddleware(object):
 		'''
 		Make sure reponses have right mime type and return Not Implemented server error when appropriate
 		'''
-		for f,o in formats.items():
-			is_api_call = getattr(request, 'is_%s' % f)
+		for format,spec in formats.items():
+			is_api_call = getattr(request, 'is_%s' % format)
 			if is_api_call():
-				if response['Content-type'] is not formats[f
-				print format, o
+				if response['Content-type'] != spec['mimetype']:
+					# view returned bad content type, assuming not implemented
+					return HttpResponseNotImplemented(**spec)
 		return response
+
 
 def handle_request(request, url):
 	'''
