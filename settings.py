@@ -39,11 +39,11 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 MIDDLEWARE_CLASSES = [
 	'api.MapMiddleware',
 	'apps.DisableCSRF', # :(
+	'django.contrib.sessions.middleware.SessionMiddleware',
+	'django.contrib.auth.middleware.AuthenticationMiddleware',
 	'django.middleware.cache.UpdateCacheMiddleware',
 	'django.middleware.common.CommonMiddleware',
 	'django.middleware.cache.FetchFromCacheMiddleware',
-	'django.contrib.sessions.middleware.SessionMiddleware',
-	'django.contrib.auth.middleware.AuthenticationMiddleware',
 ]
 
 TEMPLATE_DIRS = (TEMPL_FOLDER,)

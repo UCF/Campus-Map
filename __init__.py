@@ -1,2 +1,2 @@
-import api
+from apps import api
 api.MonkeyPatchHttpRequest()

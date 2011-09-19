@@ -1,7 +1,14 @@
-DEBUG                      = False    # REMOVE THIS IN PRODUCTION
-SERVE_STATIC_FILES         = True     # REMOVE THIS IN PRODUCTION
-TEMPLATE_DEBUG             = DEBUG    # REMOVE THIS IN PRODUCTION
-#TEMPLATE_STRING_IF_INVALID = 'halp!'  # REMOVE THIS IN PRODUCTION
+# production:
+#DEBUG                      = False
+#SERVE_STATIC_FILES         = False
+#TEMPLATE_DEBUG             = DEBUG
+
+# development
+DEBUG                      = True
+SERVE_STATIC_FILES         = True
+TEMPLATE_DEBUG             = DEBUG
+TEMPLATE_STRING_IF_INVALID = 'halp!'
+
 
 ADMINS         = (
 	#('Your Name', 'your_email@domain.com'),
@@ -19,6 +26,7 @@ MEDIA_URL = '/static/'
 ADMIN_MEDIA_PREFIX = '/adminmedia/'
 
 # Make this unique, and don't share it with anybody.
+# http://www.miniwebtool.com/django-secret-key-generator/
 SECRET_KEY = '**************************************************'
 
 DATABASES = {
