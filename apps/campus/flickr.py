@@ -5,8 +5,8 @@ http://code.google.com/p/flickrpy/
 
 from urllib import urlencode, urlopen
 from xml.dom import minidom
-from django.core.cache import get_cache
-from settings import DEBUG, PROJECT_FOLDER
+from django.core.cache import cache
+from settings import DEBUG
 import os
 
 USER_ID = "36226710@N08"
@@ -20,14 +20,12 @@ def get_photos(page=1):
 	Returns list of Photo objects
 	http://www.flickr.com/services/api/flickr.people.getPublicPhotos.html
 	"""
-	backend = 'file://%s' % os.path.join(PROJECT_FOLDER, 'cache')
-	cache = get_cache(backend)
 	photos = cache.get('photos')
 	if photos is not None:
-		if DEBUG: 
-			print "Flickr - photos cached :)"
+		if DEBUG: print "Flickr - photos cached"
 		return photos
 	
+	if DEBUG: print "Flickr - grabbing photos"
 	method = 'flickr.people.getPublicPhotos'
 	data = _doget(method, user_id=USER_ID, per_page=500, page=page, extras="tags,description,date_taken,o_dims,path_alias,url_t,url_sq,url_s,url_m,url_l,url_z")
 	if hasattr(data.rsp.photos, "photo"): # Check if there are photos at all (may be been paging too far).

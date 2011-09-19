@@ -32,13 +32,15 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 	"django.core.context_processors.media",
 )
 
-MIDDLEWARE_CLASSES = (
+MIDDLEWARE_CLASSES = [
 	'api.MapMiddleware',
 	'apps.DisableCSRF', # :(
+	'django.middleware.cache.UpdateCacheMiddleware',
 	'django.middleware.common.CommonMiddleware',
+	'django.middleware.cache.FetchFromCacheMiddleware',
 	'django.contrib.sessions.middleware.SessionMiddleware',
 	'django.contrib.auth.middleware.AuthenticationMiddleware',
-)
+]
 
 TEMPLATE_DIRS = (TEMPL_FOLDER,)
 
@@ -148,12 +150,10 @@ SERVE_STATIC_FILES = False
 # Search Query Cache Prefix
 SEARCH_QUERY_CACHE_PREFIX = 'search_'
 
-CACHES = {
-    'default': {
-        'BACKEND': 'django.core.cache.backends.db.DatabaseCache',
-        'LOCATION': 'cache',
-    }
-}
+CACHE_TIMEOUT   = 60*60*24
+CACHE_LOCATION  = os.path.join(PROJECT_FOLDER, 'cache')
+CACHE_BACKEND   = 'file://%s?timeout=%d' % (CACHE_LOCATION, CACHE_TIMEOUT)
+CACHE_MIDDLEWARE_ANONYMOUS_ONLY = True
 
 try:
 	from settings_local import *
@@ -163,4 +163,3 @@ except ImportError:
 		'Local settings file was not found. ' +
 		'Ensure settings_local.py exists in project root.'
 	)
-	
