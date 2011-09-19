@@ -13,6 +13,10 @@ TEMPL_FOLDER      = os.path.join(PROJECT_FOLDER, 'templates')
 ROOT_URLCONF      = os.path.basename(PROJECT_FOLDER) + '.urls'
 MEDIA_ROOT        = os.path.join(PROJECT_FOLDER, 'static')
 
+# Add local apps folder to python path
+sys.path.append(APP_FOLDER)
+sys.path.append(INC_FOLDER)
+
 TIME_ZONE         = 'America/New_York'
 LANGUAGE_CODE     = 'en-us'
 SITE_ID           = 1
@@ -44,9 +48,6 @@ MIDDLEWARE_CLASSES = [
 
 TEMPLATE_DIRS = (TEMPL_FOLDER,)
 
-# Add local apps folder to python path
-sys.path.append(APP_FOLDER)
-sys.path.append(INC_FOLDER)
 INSTALLED_APPS = (
 	'campus',
 	'django.contrib.admin',
