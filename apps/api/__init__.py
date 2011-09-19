@@ -1,34 +1,34 @@
 import re
 from django.conf import settings
-from django.core.urlresolvers import reverse, resolve
-from django.http import HttpResponse, HttpRequest
+from django.core.urlresolvers import reverse, resolve, Resolver404
+from django.http import HttpResponse, HttpRequest, HttpResponseNotFound, HttpResponseServerError
 from django.core.cache import cache
 from django.utils.cache import get_cache_key
 
 formats = {
 	'json' : {
 		'mimetype' : 'application/json',
-		'content'  : '{"error":"Not Implemented"}',
+		'content'  : '{"error":"%s"}',
 		},
 	'txt'  : {
 		'mimetype' : 'text/plain; charset=utf-8',
-		'content'  : 'Not Implemented',
+		'content'  : '%s',
 		},
 	'kml'  : {
 		'mimetype' : 'application/vnd.google-earth.kml+xml',
-		'content'  : '<?xml version="1.0"?><kml xmlns="http://www.opengis.net/kml/2.2"></kml>',
+		'content'  : '<?xml version="1.0"?><kml xmlns="http://www.opengis.net/kml/2.2"><Document><name>%s</name></Document></kml>',
 		},
 	'xml'  : {
 		'mimetype' : 'text/xml',
-		'content'  : '<?xml version="1.0"?><error>Not Implemented</error>',
+		'content'  : '<?xml version="1.0"?><error>%s</error>',
 		},
 	'bxml' : {
 		'mimetype' : 'application/xml',
-		'content'  : '<?xml version="1.0"?><error>Not Implemented</error>',
+		'content'  : '<?xml version="1.0"?><error>%s</error>',
 		},
 	'ajax' : {
-		'mimetype' : 'text/html',
-		'content'  : 'Not Implemented',
+		'mimetype' : 'text/html; charset=utf-8',
+		'content'  : '%s',
 		},
 }
 
@@ -61,7 +61,10 @@ class MapMiddleware(object):
 		for format,spec in formats.items():
 			is_api_call = getattr(request, 'is_%s' % format)
 			if is_api_call():
-				request.GET = None
+				request.GET = {}
+				if settings.DEBUG:
+					cache_key = get_cache_key(request)
+					print "API Cache Key: %s" % cache_key
 		
 	def process_response(self, request, response):
 		'''
@@ -70,9 +73,25 @@ class MapMiddleware(object):
 		for format,spec in formats.items():
 			is_api_call = getattr(request, 'is_%s' % format)
 			if is_api_call():
+				# view returned bad content type, assuming not implemented
 				if response['Content-type'] != spec['mimetype']:
-					# view returned bad content type, assuming not implemented
-					return HttpResponseNotImplemented(**spec)
+					if response.status_code == 200:
+						rsp = dict(spec)
+						rsp['content'] = spec['content'] % 'Not Implemented'
+						return HttpResponseNotImplemented(**rsp)
+					elif response.status_code == 404:
+						rsp = dict(spec)
+						rsp['content'] = spec['content'] % 'Not Found'
+						return HttpResponseNotFound(**rsp)
+					elif response.status_code == 500:
+						rsp = dict(spec)
+						rsp['content'] = spec['content'] % 'Server Error. Bummer'
+						return HttpResponseServerError(**rsp)
+					else:
+						msg = spec['content'] % ('Error %s' % response.status_code)
+						response['Content-Type'] = spec['mimetype']
+						response._container = [msg]
+					
 		return response
 
 

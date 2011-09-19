@@ -32,7 +32,7 @@ urlpatterns += patterns('',
 
 	(r'^', include('campus.urls')),
 	#url(r'^$', direct_to_template, {'template':'base.djt'}, name='home'),
-	(r'^favicon\.ico$', 'django.views.generic.simple.redirect_to', {'url': '/media/images/favicon.ico'}),
+	(r'^favicon\.ico$', 'django.views.generic.simple.redirect_to', {'url': '%simages/favicon.ico' % settings.MEDIA_URL}),
 	(r'^robots.txt$', direct_to_template, {'template':'robots.txt', 'mimetype':'text/plain'}),
 	
 	# django-tinymce

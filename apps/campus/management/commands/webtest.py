@@ -47,7 +47,7 @@ class Command(BaseCommand):
 			try:
 				url = base+u
 				print "%-75s " % url,
-				page = urllib2.urlopen(url, None, 2)
+				page = urllib2.urlopen(url, None, 10)
 				print "OK"
 				page.close()
 				
