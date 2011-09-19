@@ -2,7 +2,8 @@ import re
 from django.conf import settings
 from django.core.urlresolvers import reverse, resolve
 from django.http import HttpResponse, HttpRequest
-
+from django.core.cache import cache
+from django.utils.cache import get_cache_key
 
 formats = {
 	'json' : {
@@ -51,6 +52,17 @@ def MonkeyPatchHttpRequest():
 
 class MapMiddleware(object):
 	
+	def process_request(self, request):
+		'''
+		Caching
+		django ignores cache if query string is present.
+		GET vars not needed for api requests so just removing it to enable cache
+		'''
+		for format,spec in formats.items():
+			is_api_call = getattr(request, 'is_%s' % format)
+			if is_api_call():
+				request.GET = None
+		
 	def process_response(self, request, response):
 		'''
 		Make sure reponses have right mime type and return Not Implemented server error when appropriate
