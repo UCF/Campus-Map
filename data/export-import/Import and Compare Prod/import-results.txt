@@ -3142,3 +3142,1558 @@ Results:
   Accepted: 2    
   Rejected: 2    
   Missing locally: 94   
+
+
+>>>>>>>>>>>>>>>>>>>> Tuesday September 20, 2011 11:04
+
+Reading contents of "UCF Campus Map 2011-09-20.json" 
+
+
+------------------------------------------------------------------------------
+  Inspecting Updates 
+------------------------------------------------------------------------------
+
+Empty string: None [phone-1]
+Empty string: None [phone-1]
+Key Error: phone-1 campus.mapobj  |  o['content_type']: [u'campus', u'emergencyphone']  |  mob['content_type']: (key error)    
+Empty string: None [phone-1]
+Empty string: None [phone-2]
+Empty string: None [phone-2]
+Key Error: phone-2 campus.mapobj  |  o['content_type']: [u'campus', u'emergencyphone']  |  mob['content_type']: (key error)    
+Empty string: None [phone-2]
+Empty string: None [phone-3]
+Empty string: None [phone-3]
+Key Error: phone-3 campus.mapobj  |  o['content_type']: [u'campus', u'emergencyphone']  |  mob['content_type']: (key error)    
+Empty string: None [phone-3]
+Empty string: None [phone-4]
+Empty string: None [phone-4]
+Key Error: phone-4 campus.mapobj  |  o['content_type']: [u'campus', u'emergencyphone']  |  mob['content_type']: (key error)    
+Empty string: None [phone-4]
+Empty string: None [phone-5]
+Empty string: None [phone-5]
+Key Error: phone-5 campus.mapobj  |  o['content_type']: [u'campus', u'emergencyphone']  |  mob['content_type']: (key error)    
+Empty string: None [phone-5]
+Empty string: None [phone-6]
+Empty string: None [phone-6]
+Key Error: phone-6 campus.mapobj  |  o['content_type']: [u'campus', u'emergencyphone']  |  mob['content_type']: (key error)    
+Empty string: None [phone-6]
+Empty string: None [phone-7]
+Empty string: None [phone-7]
+Key Error: phone-7 campus.mapobj  |  o['content_type']: [u'campus', u'emergencyphone']  |  mob['content_type']: (key error)    
+Empty string: None [phone-7]
+Empty string: None [phone-8]
+Empty string: None [phone-8]
+Key Error: phone-8 campus.mapobj  |  o['content_type']: [u'campus', u'emergencyphone']  |  mob['content_type']: (key error)    
+Empty string: None [phone-8]
+Empty string: None [phone-9]
+Empty string: None [phone-9]
+Key Error: phone-9 campus.mapobj  |  o['content_type']: [u'campus', u'emergencyphone']  |  mob['content_type']: (key error)    
+Empty string: None [phone-9]
+Empty string: None [phone-10]
+Empty string: None [phone-10]
+Key Error: phone-10 campus.mapobj  |  o['content_type']: [u'campus', u'emergencyphone']  |  mob['content_type']: (key error)    
+Empty string: None [phone-10]
+Empty string: None [phone-11]
+Empty string: None [phone-11]
+Key Error: phone-11 campus.mapobj  |  o['content_type']: [u'campus', u'emergencyphone']  |  mob['content_type']: (key error)    
+Empty string: None [phone-11]
+Empty string: None [phone-12]
+Empty string: None [phone-12]
+Key Error: phone-12 campus.mapobj  |  o['content_type']: [u'campus', u'emergencyphone']  |  mob['content_type']: (key error)    
+Empty string: None [phone-12]
+Empty string: None [phone-13]
+Empty string: None [phone-13]
+Key Error: phone-13 campus.mapobj  |  o['content_type']: [u'campus', u'emergencyphone']  |  mob['content_type']: (key error)    
+Empty string: None [phone-13]
+Empty string: None [phone-14]
+Empty string: None [phone-14]
+Key Error: phone-14 campus.mapobj  |  o['content_type']: [u'campus', u'emergencyphone']  |  mob['content_type']: (key error)    
+Empty string: None [phone-14]
+Empty string: None [phone-15]
+Empty string: None [phone-15]
+Key Error: phone-15 campus.mapobj  |  o['content_type']: [u'campus', u'emergencyphone']  |  mob['content_type']: (key error)    
+Empty string: None [phone-15]
+Empty string: None [phone-16]
+Empty string: None [phone-16]
+Key Error: phone-16 campus.mapobj  |  o['content_type']: [u'campus', u'emergencyphone']  |  mob['content_type']: (key error)    
+Empty string: None [phone-16]
+Empty string: None [phone-17]
+Empty string: None [phone-17]
+Key Error: phone-17 campus.mapobj  |  o['content_type']: [u'campus', u'emergencyphone']  |  mob['content_type']: (key error)    
+Empty string: None [phone-17]
+Empty string: None [phone-18]
+Empty string: None [phone-18]
+Key Error: phone-18 campus.mapobj  |  o['content_type']: [u'campus', u'emergencyphone']  |  mob['content_type']: (key error)    
+Empty string: None [phone-18]
+Empty string: None [phone-19]
+Empty string: None [phone-19]
+Key Error: phone-19 campus.mapobj  |  o['content_type']: [u'campus', u'emergencyphone']  |  mob['content_type']: (key error)    
+Empty string: None [phone-19]
+Empty string: None [phone-20]
+Empty string: None [phone-20]
+Key Error: phone-20 campus.mapobj  |  o['content_type']: [u'campus', u'emergencyphone']  |  mob['content_type']: (key error)    
+Empty string: None [phone-20]
+Empty string: None [phone-21]
+Empty string: None [phone-21]
+Key Error: phone-21 campus.mapobj  |  o['content_type']: [u'campus', u'emergencyphone']  |  mob['content_type']: (key error)    
+Empty string: None [phone-21]
+Empty string: None [phone-22]
+Empty string: None [phone-22]
+Key Error: phone-22 campus.mapobj  |  o['content_type']: [u'campus', u'emergencyphone']  |  mob['content_type']: (key error)    
+Empty string: None [phone-22]
+Empty string: None [phone-23]
+Empty string: None [phone-23]
+Key Error: phone-23 campus.mapobj  |  o['content_type']: [u'campus', u'emergencyphone']  |  mob['content_type']: (key error)    
+Empty string: None [phone-23]
+Empty string: None [phone-24]
+Empty string: None [phone-24]
+Key Error: phone-24 campus.mapobj  |  o['content_type']: [u'campus', u'emergencyphone']  |  mob['content_type']: (key error)    
+Empty string: None [phone-24]
+Empty string: None [phone-25]
+Empty string: None [phone-25]
+Key Error: phone-25 campus.mapobj  |  o['content_type']: [u'campus', u'emergencyphone']  |  mob['content_type']: (key error)    
+Empty string: None [phone-25]
+Empty string: None [phone-26]
+Empty string: None [phone-26]
+Key Error: phone-26 campus.mapobj  |  o['content_type']: [u'campus', u'emergencyphone']  |  mob['content_type']: (key error)    
+Empty string: None [phone-26]
+Empty string: None [phone-27]
+Empty string: None [phone-27]
+Key Error: phone-27 campus.mapobj  |  o['content_type']: [u'campus', u'emergencyphone']  |  mob['content_type']: (key error)    
+Empty string: None [phone-27]
+Empty string: None [phone-28]
+Empty string: None [phone-28]
+Key Error: phone-28 campus.mapobj  |  o['content_type']: [u'campus', u'emergencyphone']  |  mob['content_type']: (key error)    
+Empty string: None [phone-28]
+Empty string: None [phone-29]
+Empty string: None [phone-29]
+Key Error: phone-29 campus.mapobj  |  o['content_type']: [u'campus', u'emergencyphone']  |  mob['content_type']: (key error)    
+Empty string: None [phone-29]
+Empty string: None [phone-30]
+Empty string: None [phone-30]
+Key Error: phone-30 campus.mapobj  |  o['content_type']: [u'campus', u'emergencyphone']  |  mob['content_type']: (key error)    
+Empty string: None [phone-30]
+Empty string: None [phone-31]
+Empty string: None [phone-31]
+Key Error: phone-31 campus.mapobj  |  o['content_type']: [u'campus', u'emergencyphone']  |  mob['content_type']: (key error)    
+Empty string: None [phone-31]
+Empty string: None [phone-32]
+Empty string: None [phone-32]
+Key Error: phone-32 campus.mapobj  |  o['content_type']: [u'campus', u'emergencyphone']  |  mob['content_type']: (key error)    
+Empty string: None [phone-32]
+Empty string: None [phone-33]
+Empty string: None [phone-33]
+Key Error: phone-33 campus.mapobj  |  o['content_type']: [u'campus', u'emergencyphone']  |  mob['content_type']: (key error)    
+Empty string: None [phone-33]
+Empty string: None [phone-34]
+Empty string: None [phone-34]
+Key Error: phone-34 campus.mapobj  |  o['content_type']: [u'campus', u'emergencyphone']  |  mob['content_type']: (key error)    
+Empty string: None [phone-34]
+Empty string: None [phone-35]
+Empty string: None [phone-35]
+Key Error: phone-35 campus.mapobj  |  o['content_type']: [u'campus', u'emergencyphone']  |  mob['content_type']: (key error)    
+Empty string: None [phone-35]
+Empty string: None [phone-36]
+Empty string: None [phone-36]
+Key Error: phone-36 campus.mapobj  |  o['content_type']: [u'campus', u'emergencyphone']  |  mob['content_type']: (key error)    
+Empty string: None [phone-36]
+Empty string: None [phone-37]
+Empty string: None [phone-37]
+Key Error: phone-37 campus.mapobj  |  o['content_type']: [u'campus', u'emergencyphone']  |  mob['content_type']: (key error)    
+Empty string: None [phone-37]
+Empty string: None [phone-38]
+Empty string: None [phone-38]
+Key Error: phone-38 campus.mapobj  |  o['content_type']: [u'campus', u'emergencyphone']  |  mob['content_type']: (key error)    
+Empty string: None [phone-38]
+Empty string: None [bikerack-1]
+Empty string: None [bikerack-1]
+Key Error: bikerack-1 campus.mapobj  |  o['content_type']: [u'campus', u'bikerack']  |  mob['content_type']: (key error)    
+Empty string: None [bikerack-1]
+Empty string: None [bikerack-2]
+Empty string: None [bikerack-2]
+Key Error: bikerack-2 campus.mapobj  |  o['content_type']: [u'campus', u'bikerack']  |  mob['content_type']: (key error)    
+Empty string: None [bikerack-2]
+Empty string: None [bikerack-3]
+Empty string: None [bikerack-3]
+Key Error: bikerack-3 campus.mapobj  |  o['content_type']: [u'campus', u'bikerack']  |  mob['content_type']: (key error)    
+Empty string: None [bikerack-3]
+Empty string: None [bikerack-4]
+Empty string: None [bikerack-4]
+Key Error: bikerack-4 campus.mapobj  |  o['content_type']: [u'campus', u'bikerack']  |  mob['content_type']: (key error)    
+Empty string: None [bikerack-4]
+Empty string: None [bikerack-5]
+Empty string: None [bikerack-5]
+Key Error: bikerack-5 campus.mapobj  |  o['content_type']: [u'campus', u'bikerack']  |  mob['content_type']: (key error)    
+Empty string: None [bikerack-5]
+Empty string: None [bikerack-6]
+Empty string: None [bikerack-6]
+Key Error: bikerack-6 campus.mapobj  |  o['content_type']: [u'campus', u'bikerack']  |  mob['content_type']: (key error)    
+Empty string: None [bikerack-6]
+Empty string: None [bikerack-7]
+Empty string: None [bikerack-7]
+Key Error: bikerack-7 campus.mapobj  |  o['content_type']: [u'campus', u'bikerack']  |  mob['content_type']: (key error)    
+Empty string: None [bikerack-7]
+Empty string: None [bikerack-8]
+Empty string: None [bikerack-8]
+Key Error: bikerack-8 campus.mapobj  |  o['content_type']: [u'campus', u'bikerack']  |  mob['content_type']: (key error)    
+Empty string: None [bikerack-8]
+Empty string: None [bikerack-9]
+Empty string: None [bikerack-9]
+Key Error: bikerack-9 campus.mapobj  |  o['content_type']: [u'campus', u'bikerack']  |  mob['content_type']: (key error)    
+Empty string: None [bikerack-9]
+Empty string: None [bikerack-10]
+Empty string: None [bikerack-10]
+Key Error: bikerack-10 campus.mapobj  |  o['content_type']: [u'campus', u'bikerack']  |  mob['content_type']: (key error)    
+Empty string: None [bikerack-10]
+Empty string: None [bikerack-11]
+Empty string: None [bikerack-11]
+Key Error: bikerack-11 campus.mapobj  |  o['content_type']: [u'campus', u'bikerack']  |  mob['content_type']: (key error)    
+Empty string: None [bikerack-11]
+Empty string: None [bikerack-12]
+Empty string: None [bikerack-12]
+Key Error: bikerack-12 campus.mapobj  |  o['content_type']: [u'campus', u'bikerack']  |  mob['content_type']: (key error)    
+Empty string: None [bikerack-12]
+Empty string: None [bikerack-13]
+Empty string: None [bikerack-13]
+Key Error: bikerack-13 campus.mapobj  |  o['content_type']: [u'campus', u'bikerack']  |  mob['content_type']: (key error)    
+Empty string: None [bikerack-13]
+Empty string: None [bikerack-14]
+Empty string: None [bikerack-14]
+Key Error: bikerack-14 campus.mapobj  |  o['content_type']: [u'campus', u'bikerack']  |  mob['content_type']: (key error)    
+Empty string: None [bikerack-14]
+Empty string: None [bikerack-15]
+Empty string: None [bikerack-15]
+Key Error: bikerack-15 campus.mapobj  |  o['content_type']: [u'campus', u'bikerack']  |  mob['content_type']: (key error)    
+Empty string: None [bikerack-15]
+Empty string: None [bikerack-16]
+Empty string: None [bikerack-16]
+Key Error: bikerack-16 campus.mapobj  |  o['content_type']: [u'campus', u'bikerack']  |  mob['content_type']: (key error)    
+Empty string: None [bikerack-16]
+Empty string: None [bikerack-17]
+Empty string: None [bikerack-17]
+Key Error: bikerack-17 campus.mapobj  |  o['content_type']: [u'campus', u'bikerack']  |  mob['content_type']: (key error)    
+Empty string: None [bikerack-17]
+Empty string: None [bikerack-18]
+Empty string: None [bikerack-18]
+Key Error: bikerack-18 campus.mapobj  |  o['content_type']: [u'campus', u'bikerack']  |  mob['content_type']: (key error)    
+Empty string: None [bikerack-18]
+Empty string: None [bikerack-19]
+Empty string: None [bikerack-19]
+Key Error: bikerack-19 campus.mapobj  |  o['content_type']: [u'campus', u'bikerack']  |  mob['content_type']: (key error)    
+Empty string: None [bikerack-19]
+Empty string: None [bikerack-20]
+Empty string: None [bikerack-20]
+Key Error: bikerack-20 campus.mapobj  |  o['content_type']: [u'campus', u'bikerack']  |  mob['content_type']: (key error)    
+Empty string: None [bikerack-20]
+Empty string: None [bikerack-21]
+Empty string: None [bikerack-21]
+Key Error: bikerack-21 campus.mapobj  |  o['content_type']: [u'campus', u'bikerack']  |  mob['content_type']: (key error)    
+Empty string: None [bikerack-21]
+Empty string: None [bikerack-22]
+Empty string: None [bikerack-22]
+Key Error: bikerack-22 campus.mapobj  |  o['content_type']: [u'campus', u'bikerack']  |  mob['content_type']: (key error)    
+Empty string: None [bikerack-22]
+Empty string: None [bikerack-23]
+Empty string: None [bikerack-23]
+Key Error: bikerack-23 campus.mapobj  |  o['content_type']: [u'campus', u'bikerack']  |  mob['content_type']: (key error)    
+Empty string: None [bikerack-23]
+Empty string: None [bikerack-24]
+Empty string: None [bikerack-24]
+Key Error: bikerack-24 campus.mapobj  |  o['content_type']: [u'campus', u'bikerack']  |  mob['content_type']: (key error)    
+Empty string: None [bikerack-24]
+Empty string: None [bikerack-25]
+Empty string: None [bikerack-25]
+Key Error: bikerack-25 campus.mapobj  |  o['content_type']: [u'campus', u'bikerack']  |  mob['content_type']: (key error)    
+Empty string: None [bikerack-25]
+Empty string: None [bikerack-26]
+Empty string: None [bikerack-26]
+Key Error: bikerack-26 campus.mapobj  |  o['content_type']: [u'campus', u'bikerack']  |  mob['content_type']: (key error)    
+Empty string: None [bikerack-26]
+Empty string: None [bikerack-27]
+Empty string: None [bikerack-27]
+Key Error: bikerack-27 campus.mapobj  |  o['content_type']: [u'campus', u'bikerack']  |  mob['content_type']: (key error)    
+Empty string: None [bikerack-27]
+Empty string: None [bikerack-28]
+Empty string: None [bikerack-28]
+Key Error: bikerack-28 campus.mapobj  |  o['content_type']: [u'campus', u'bikerack']  |  mob['content_type']: (key error)    
+Empty string: None [bikerack-28]
+Empty string: None [bikerack-29]
+Empty string: None [bikerack-29]
+Key Error: bikerack-29 campus.mapobj  |  o['content_type']: [u'campus', u'bikerack']  |  mob['content_type']: (key error)    
+Empty string: None [bikerack-29]
+Empty string: None [bikerack-30]
+Empty string: None [bikerack-30]
+Key Error: bikerack-30 campus.mapobj  |  o['content_type']: [u'campus', u'bikerack']  |  mob['content_type']: (key error)    
+Empty string: None [bikerack-30]
+Empty string: None [bikerack-31]
+Empty string: None [bikerack-31]
+Key Error: bikerack-31 campus.mapobj  |  o['content_type']: [u'campus', u'bikerack']  |  mob['content_type']: (key error)    
+Empty string: None [bikerack-31]
+Empty string: None [bikerack-32]
+Empty string: None [bikerack-32]
+Key Error: bikerack-32 campus.mapobj  |  o['content_type']: [u'campus', u'bikerack']  |  mob['content_type']: (key error)    
+Empty string: None [bikerack-32]
+Empty string: None [bikerack-33]
+Empty string: None [bikerack-33]
+Key Error: bikerack-33 campus.mapobj  |  o['content_type']: [u'campus', u'bikerack']  |  mob['content_type']: (key error)    
+Empty string: None [bikerack-33]
+Empty string: None [bikerack-34]
+Empty string: None [bikerack-34]
+Key Error: bikerack-34 campus.mapobj  |  o['content_type']: [u'campus', u'bikerack']  |  mob['content_type']: (key error)    
+Empty string: None [bikerack-34]
+Empty string: None [bikerack-35]
+Empty string: None [bikerack-35]
+Key Error: bikerack-35 campus.mapobj  |  o['content_type']: [u'campus', u'bikerack']  |  mob['content_type']: (key error)    
+Empty string: None [bikerack-35]
+Empty string: None [bikerack-36]
+Empty string: None [bikerack-36]
+Key Error: bikerack-36 campus.mapobj  |  o['content_type']: [u'campus', u'bikerack']  |  mob['content_type']: (key error)    
+Empty string: None [bikerack-36]
+Empty string: None [bikerack-37]
+Empty string: None [bikerack-37]
+Key Error: bikerack-37 campus.mapobj  |  o['content_type']: [u'campus', u'bikerack']  |  mob['content_type']: (key error)    
+Empty string: None [bikerack-37]
+Empty string: None [bikerack-38]
+Empty string: None [bikerack-38]
+Key Error: bikerack-38 campus.mapobj  |  o['content_type']: [u'campus', u'bikerack']  |  mob['content_type']: (key error)    
+Empty string: None [bikerack-38]
+Empty string: None [bikerack-39]
+Empty string: None [bikerack-39]
+Key Error: bikerack-39 campus.mapobj  |  o['content_type']: [u'campus', u'bikerack']  |  mob['content_type']: (key error)    
+Empty string: None [bikerack-39]
+Empty string: None [bikerack-40]
+Empty string: None [bikerack-40]
+Key Error: bikerack-40 campus.mapobj  |  o['content_type']: [u'campus', u'bikerack']  |  mob['content_type']: (key error)    
+Empty string: None [bikerack-40]
+Empty string: None [bikerack-41]
+Empty string: None [bikerack-41]
+Key Error: bikerack-41 campus.mapobj  |  o['content_type']: [u'campus', u'bikerack']  |  mob['content_type']: (key error)    
+Empty string: None [bikerack-41]
+Empty string: None [bikerack-42]
+Empty string: None [bikerack-42]
+Key Error: bikerack-42 campus.mapobj  |  o['content_type']: [u'campus', u'bikerack']  |  mob['content_type']: (key error)    
+Empty string: None [bikerack-42]
+Empty string: None [bikerack-43]
+Empty string: None [bikerack-43]
+Key Error: bikerack-43 campus.mapobj  |  o['content_type']: [u'campus', u'bikerack']  |  mob['content_type']: (key error)    
+Empty string: None [bikerack-43]
+Empty string: None [bikerack-44]
+Empty string: None [bikerack-44]
+Key Error: bikerack-44 campus.mapobj  |  o['content_type']: [u'campus', u'bikerack']  |  mob['content_type']: (key error)    
+Empty string: None [bikerack-44]
+Empty string: None [bikerack-45]
+Empty string: None [bikerack-45]
+Key Error: bikerack-45 campus.mapobj  |  o['content_type']: [u'campus', u'bikerack']  |  mob['content_type']: (key error)    
+Empty string: None [bikerack-45]
+Empty string: None [bikerack-46]
+Empty string: None [bikerack-46]
+Key Error: bikerack-46 campus.mapobj  |  o['content_type']: [u'campus', u'bikerack']  |  mob['content_type']: (key error)    
+Empty string: None [bikerack-46]
+Empty string: None [bikerack-47]
+Empty string: None [bikerack-47]
+Key Error: bikerack-47 campus.mapobj  |  o['content_type']: [u'campus', u'bikerack']  |  mob['content_type']: (key error)    
+Empty string: None [bikerack-47]
+Empty string: None [bikerack-48]
+Empty string: None [bikerack-48]
+Key Error: bikerack-48 campus.mapobj  |  o['content_type']: [u'campus', u'bikerack']  |  mob['content_type']: (key error)    
+Empty string: None [bikerack-48]
+Empty string: None [bikerack-49]
+Empty string: None [bikerack-49]
+Key Error: bikerack-49 campus.mapobj  |  o['content_type']: [u'campus', u'bikerack']  |  mob['content_type']: (key error)    
+Empty string: None [bikerack-49]
+Empty string: None [bikerack-50]
+Empty string: None [bikerack-50]
+Key Error: bikerack-50 campus.mapobj  |  o['content_type']: [u'campus', u'bikerack']  |  mob['content_type']: (key error)    
+Empty string: None [bikerack-50]
+Empty string: None [bikerack-51]
+Empty string: None [bikerack-51]
+Key Error: bikerack-51 campus.mapobj  |  o['content_type']: [u'campus', u'bikerack']  |  mob['content_type']: (key error)    
+Empty string: None [bikerack-51]
+Empty string: None [bikerack-52]
+Empty string: None [bikerack-52]
+Key Error: bikerack-52 campus.mapobj  |  o['content_type']: [u'campus', u'bikerack']  |  mob['content_type']: (key error)    
+Empty string: None [bikerack-52]
+Empty string: None [bikerack-53]
+Empty string: None [bikerack-53]
+Key Error: bikerack-53 campus.mapobj  |  o['content_type']: [u'campus', u'bikerack']  |  mob['content_type']: (key error)    
+Empty string: None [bikerack-53]
+Empty string: None [bikerack-54]
+Empty string: None [bikerack-54]
+Key Error: bikerack-54 campus.mapobj  |  o['content_type']: [u'campus', u'bikerack']  |  mob['content_type']: (key error)    
+Empty string: None [bikerack-54]
+Empty string: None [bikerack-55]
+Empty string: None [bikerack-55]
+Key Error: bikerack-55 campus.mapobj  |  o['content_type']: [u'campus', u'bikerack']  |  mob['content_type']: (key error)    
+Empty string: None [bikerack-55]
+Empty string: None [bikerack-56]
+Empty string: None [bikerack-56]
+Key Error: bikerack-56 campus.mapobj  |  o['content_type']: [u'campus', u'bikerack']  |  mob['content_type']: (key error)    
+Empty string: None [bikerack-56]
+Empty string: None [bikerack-57]
+Empty string: None [bikerack-57]
+Key Error: bikerack-57 campus.mapobj  |  o['content_type']: [u'campus', u'bikerack']  |  mob['content_type']: (key error)    
+Empty string: None [bikerack-57]
+Empty string: None [bikerack-58]
+Empty string: None [bikerack-58]
+Key Error: bikerack-58 campus.mapobj  |  o['content_type']: [u'campus', u'bikerack']  |  mob['content_type']: (key error)    
+Empty string: None [bikerack-58]
+Empty string: None [bikerack-59]
+Empty string: None [bikerack-59]
+Key Error: bikerack-59 campus.mapobj  |  o['content_type']: [u'campus', u'bikerack']  |  mob['content_type']: (key error)    
+Empty string: None [bikerack-59]
+Empty string: None [bikerack-60]
+Empty string: None [bikerack-60]
+Key Error: bikerack-60 campus.mapobj  |  o['content_type']: [u'campus', u'bikerack']  |  mob['content_type']: (key error)    
+Empty string: None [bikerack-60]
+Empty string: None [bikerack-61]
+Empty string: None [bikerack-61]
+Key Error: bikerack-61 campus.mapobj  |  o['content_type']: [u'campus', u'bikerack']  |  mob['content_type']: (key error)    
+Empty string: None [bikerack-61]
+Empty string: None [bikerack-62]
+Empty string: None [bikerack-62]
+Key Error: bikerack-62 campus.mapobj  |  o['content_type']: [u'campus', u'bikerack']  |  mob['content_type']: (key error)    
+Empty string: None [bikerack-62]
+Empty string: None [bikerack-63]
+Empty string: None [bikerack-63]
+Key Error: bikerack-63 campus.mapobj  |  o['content_type']: [u'campus', u'bikerack']  |  mob['content_type']: (key error)    
+Empty string: None [bikerack-63]
+Empty string: None [bikerack-64]
+Empty string: None [bikerack-64]
+Key Error: bikerack-64 campus.mapobj  |  o['content_type']: [u'campus', u'bikerack']  |  mob['content_type']: (key error)    
+Empty string: None [bikerack-64]
+Empty string: None [bikerack-65]
+Empty string: None [bikerack-65]
+Key Error: bikerack-65 campus.mapobj  |  o['content_type']: [u'campus', u'bikerack']  |  mob['content_type']: (key error)    
+Empty string: None [bikerack-65]
+Empty string: None [bikerack-66]
+Empty string: None [bikerack-66]
+Key Error: bikerack-66 campus.mapobj  |  o['content_type']: [u'campus', u'bikerack']  |  mob['content_type']: (key error)    
+Empty string: None [bikerack-66]
+Missing Locally: map obj parkinglot-2 
+Missing Locally: map obj parkinglot-3 
+Missing Locally: map obj parkinglot-4 
+Missing Locally: map obj parkinglot-5 
+Missing Locally: map obj parkinglot-7 
+Missing Locally: map obj parkinglot-8 
+Missing Locally: map obj parkinglot-9 
+Missing Locally: map obj parkinglot-10 
+Missing Locally: map obj parkinglot-11 
+Missing Locally: map obj parkinglot-12 
+Missing Locally: map obj parkinglot-13 
+Missing Locally: map obj parkinglot-14 
+Missing Locally: map obj parkinglot-15 
+Missing Locally: map obj parkinglot-16 
+Missing Locally: map obj parkinglot-17 
+Missing Locally: map obj parkinglot-18 
+Missing Locally: map obj parkinglot-19 
+Missing Locally: map obj parkinglot-22 
+Missing Locally: map obj parkinglot-23 
+Missing Locally: map obj parkinglot-24 
+Missing Locally: map obj parkinglot-25 
+Missing Locally: map obj parkinglot-26 
+Missing Locally: map obj parkinglot-27 
+Missing Locally: map obj parkinglot-28 
+Missing Locally: map obj parkinglot-29 
+Missing Locally: map obj parkinglot-30 
+Missing Locally: map obj parkinglot-31 
+Empty string: None [parkinglot-32]
+Empty string: None [parkinglot-32]
+Key Error: parkinglot-32 campus.mapobj  |  o['content_type']: [u'campus', u'parkinglot']  |  mob['content_type']: (key error)    
+Empty string: None [parkinglot-32]
+Empty string: None [parkinglot-33]
+Empty string: None [parkinglot-33]
+Key Error: parkinglot-33 campus.mapobj  |  o['content_type']: [u'campus', u'parkinglot']  |  mob['content_type']: (key error)    
+Empty string: None [parkinglot-33]
+Empty string: None [parkinglot-34]
+Empty string: None [parkinglot-34]
+Key Error: parkinglot-34 campus.mapobj  |  o['content_type']: [u'campus', u'parkinglot']  |  mob['content_type']: (key error)    
+Empty string: None [parkinglot-34]
+Empty string: None [parkinglot-35]
+Empty string: None [parkinglot-35]
+Key Error: parkinglot-35 campus.mapobj  |  o['content_type']: [u'campus', u'parkinglot']  |  mob['content_type']: (key error)    
+Empty string: None [parkinglot-35]
+Empty string: None [parkinglot-36]
+Empty string: None [parkinglot-36]
+Key Error: parkinglot-36 campus.mapobj  |  o['content_type']: [u'campus', u'parkinglot']  |  mob['content_type']: (key error)    
+Empty string: None [parkinglot-36]
+Empty string: None [parkinglot-37]
+Empty string: None [parkinglot-37]
+Key Error: parkinglot-37 campus.mapobj  |  o['content_type']: [u'campus', u'parkinglot']  |  mob['content_type']: (key error)    
+Empty string: None [parkinglot-37]
+Empty string: None [parkinglot-38]
+Empty string: None [parkinglot-38]
+Key Error: parkinglot-38 campus.mapobj  |  o['content_type']: [u'campus', u'parkinglot']  |  mob['content_type']: (key error)    
+Empty string: None [parkinglot-38]
+Empty string: None [parkinglot-39]
+Empty string: None [parkinglot-39]
+Key Error: parkinglot-39 campus.mapobj  |  o['content_type']: [u'campus', u'parkinglot']  |  mob['content_type']: (key error)    
+Empty string: None [parkinglot-39]
+Empty string: None [parkinglot-40]
+Empty string: None [parkinglot-40]
+Key Error: parkinglot-40 campus.mapobj  |  o['content_type']: [u'campus', u'parkinglot']  |  mob['content_type']: (key error)    
+Empty string: None [parkinglot-40]
+Empty string: None [parkinglot-41]
+Empty string: None [parkinglot-41]
+Key Error: parkinglot-41 campus.mapobj  |  o['content_type']: [u'campus', u'parkinglot']  |  mob['content_type']: (key error)    
+Empty string: None [parkinglot-41]
+Empty string: None [parkinglot-42]
+Empty string: None [parkinglot-42]
+Key Error: parkinglot-42 campus.mapobj  |  o['content_type']: [u'campus', u'parkinglot']  |  mob['content_type']: (key error)    
+Empty string: None [parkinglot-42]
+Empty string: None [parkinglot-43]
+Empty string: None [parkinglot-43]
+Key Error: parkinglot-43 campus.mapobj  |  o['content_type']: [u'campus', u'parkinglot']  |  mob['content_type']: (key error)    
+Empty string: None [parkinglot-43]
+Empty string: None [parkinglot-44]
+Empty string: None [parkinglot-44]
+Key Error: parkinglot-44 campus.mapobj  |  o['content_type']: [u'campus', u'parkinglot']  |  mob['content_type']: (key error)    
+Empty string: None [parkinglot-44]
+Missing Locally: map obj parkinglot-48 
+Missing Locally: map obj parkinglot-49 
+Missing Locally: map obj parkinglot-50 
+Missing Locally: map obj parkinglot-52 
+Missing Locally: map obj parkinglot-53 
+Missing Locally: map obj parkinglot-54 
+Missing Locally: map obj parkinglot-55 
+Missing Locally: map obj parkinglot-56 
+Missing Locally: map obj parkinglot-57 
+Missing Locally: map obj parkinglot-58 
+Empty string: None [parkinglot-59]
+Empty string: None [parkinglot-59]
+Key Error: parkinglot-59 campus.mapobj  |  o['content_type']: [u'campus', u'parkinglot']  |  mob['content_type']: (key error)    
+Empty string: None [parkinglot-59]
+Missing Locally: map obj parkinglot-60 
+Missing Locally: map obj parkinglot-61 
+Missing Locally: map obj parkinglot-62 
+Missing Locally: map obj parkinglot-63 
+Missing Locally: map obj parkinglot-64 
+Missing Locally: map obj parkinglot-65 
+Missing Locally: map obj parkinglot-66 
+Missing Locally: map obj parkinglot-67 
+Missing Locally: map obj parkinglot-68 
+Missing Locally: map obj parkinglot-69 
+Empty string: None [parkinglot-70]
+Empty string: None [parkinglot-70]
+Key Error: parkinglot-70 campus.mapobj  |  o['content_type']: [u'campus', u'parkinglot']  |  mob['content_type']: (key error)    
+Empty string: None [parkinglot-70]
+Empty string: None [parkinglot-71]
+Empty string: None [parkinglot-71]
+Key Error: parkinglot-71 campus.mapobj  |  o['content_type']: [u'campus', u'parkinglot']  |  mob['content_type']: (key error)    
+Empty string: None [parkinglot-71]
+Empty string: None [parkinglot-72]
+Empty string: None [parkinglot-72]
+Key Error: parkinglot-72 campus.mapobj  |  o['content_type']: [u'campus', u'parkinglot']  |  mob['content_type']: (key error)    
+Empty string: None [parkinglot-72]
+Empty string: None [parkinglot-73]
+Empty string: None [parkinglot-73]
+Key Error: parkinglot-73 campus.mapobj  |  o['content_type']: [u'campus', u'parkinglot']  |  mob['content_type']: (key error)    
+Empty string: None [parkinglot-73]
+Empty string: None [parkinglot-74]
+Empty string: None [parkinglot-74]
+Key Error: parkinglot-74 campus.mapobj  |  o['content_type']: [u'campus', u'parkinglot']  |  mob['content_type']: (key error)    
+Empty string: None [parkinglot-74]
+Empty string: None [parkinglot-75]
+Empty string: None [parkinglot-75]
+Key Error: parkinglot-75 campus.mapobj  |  o['content_type']: [u'campus', u'parkinglot']  |  mob['content_type']: (key error)    
+Empty string: None [parkinglot-75]
+Empty string: None [parkinglot-76]
+Empty string: None [parkinglot-76]
+Key Error: parkinglot-76 campus.mapobj  |  o['content_type']: [u'campus', u'parkinglot']  |  mob['content_type']: (key error)    
+Empty string: None [parkinglot-76]
+Empty string: None [parkinglot-77]
+Empty string: None [parkinglot-77]
+Key Error: parkinglot-77 campus.mapobj  |  o['content_type']: [u'campus', u'parkinglot']  |  mob['content_type']: (key error)    
+Empty string: None [parkinglot-77]
+Empty string: None [parkinglot-78]
+Empty string: None [parkinglot-78]
+Key Error: parkinglot-78 campus.mapobj  |  o['content_type']: [u'campus', u'parkinglot']  |  mob['content_type']: (key error)    
+Empty string: None [parkinglot-78]
+Empty string: None [parkinglot-79]
+Empty string: None [parkinglot-79]
+Key Error: parkinglot-79 campus.mapobj  |  o['content_type']: [u'campus', u'parkinglot']  |  mob['content_type']: (key error)    
+Empty string: None [parkinglot-79]
+Empty string: None [parkinglot-80]
+Empty string: None [parkinglot-80]
+Key Error: parkinglot-80 campus.mapobj  |  o['content_type']: [u'campus', u'parkinglot']  |  mob['content_type']: (key error)    
+Empty string: None [parkinglot-80]
+Empty string: None [parkinglot-81]
+Empty string: None [parkinglot-81]
+Key Error: parkinglot-81 campus.mapobj  |  o['content_type']: [u'campus', u'parkinglot']  |  mob['content_type']: (key error)    
+Empty string: None [parkinglot-81]
+Empty string: None [parkinglot-82]
+Empty string: None [parkinglot-82]
+Key Error: parkinglot-82 campus.mapobj  |  o['content_type']: [u'campus', u'parkinglot']  |  mob['content_type']: (key error)    
+Empty string: None [parkinglot-82]
+Empty string: None [parkinglot-83]
+Empty string: None [parkinglot-83]
+Key Error: parkinglot-83 campus.mapobj  |  o['content_type']: [u'campus', u'parkinglot']  |  mob['content_type']: (key error)    
+Empty string: None [parkinglot-83]
+Empty string: None [parkinglot-84]
+Empty string: None [parkinglot-84]
+Key Error: parkinglot-84 campus.mapobj  |  o['content_type']: [u'campus', u'parkinglot']  |  mob['content_type']: (key error)    
+Empty string: None [parkinglot-84]
+Key Error: 101 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Academic Village I - Nike [101]
+Key Error: 102 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Academic Village I - Nike [102]
+Empty string: Academic Village I - Nike [103]
+Key Error: 103 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Academic Village I - Nike [103]
+Key Error: 104 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Academic Village I - Nike [104]
+Key Error: 105 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Academic Village I - Nike [105]
+Key Error: 106 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Academic Village I - Nike [106]
+Key Error: 107 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Academic Village I - Nike [107]
+Key Error: 108 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Academic Village II - Hercules [108]
+Key Error: 109 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Academic Village II - Hercules [109]
+Key Error: 110 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Academic Village II - Hercules [110]
+Key Error: 111 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Academic Village II - Hercules [111]
+Key Error: 112 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Academic Village II - Hercules [112]
+Key Error: 113 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Academic Village II - Hercules [113]
+Key Error: 114 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Academic Village II - Hercules [114]
+Key Error: 115 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Academic Village II - Hercules [115]
+Empty string: Alpha Delta Pi - Sorority [406]
+Key Error: 406 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Alpha Delta Pi - Sorority [406]
+Empty string: Alpha Tau Omega - Fraternity [410]
+Key Error: 410 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Alpha Tau Omega - Fraternity [410]
+Empty string: Alpha Xi Delta - Sorority [404]
+Key Error: 404 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Alpha Xi Delta - Sorority [404]
+Key Error: 152 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Ampac [152]
+Empty string: Apollo Community [apollo-community]
+Empty string: Apollo Community [apollo-community]
+Key Error: apollo-community campus.mapobj  |  o['content_type']: [u'campus', u'group']  |  mob['content_type']: (key error)    
+Empty string: Apollo Community [apollo-community]
+Key Error: 55 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Aquarius Courtyard #55 [55]
+Key Error: 56 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Aquarius Courtyard #56 [56]
+Key Error: 57 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Aquarius Courtyard #57 [57]
+Key Error: 58 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Aquarius Courtyard #58 [58]
+Key Error: 59 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Aquarius Courtyard #59 [59]
+Empty string: Arena [50]
+Key Error: 50 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Arena [50]
+Key Error: 51a campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Art Gallery [51a]
+Key Error: 12150 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: AT&T Wireless Services [12150]
+Key Error: 625 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Athletic Development [625]
+Key Error: 630 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Band Storage [630]
+Key Error: 71 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Barbara Ying Center [71]
+Empty string: Baseball Field [basefield]
+Key Error: basefield campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Baseball Field [basefield]
+  googlemap_point [28.609413292930252, -81.196115487983690]
+  googlemap_point [28.609808885628485, -81.19545030014797]
+accepted
+
+Empty string: Baseball Field [basefield]
+Key Error: 3251 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Bennett Research II [3251]
+Empty string: Bio Molecular Meeting Portable [601]
+Empty string: Bio Molecular Meeting Portable [601]
+Key Error: 601 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Bio Molecular Meeting Portable [601]
+Key Error: 20 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Biological Sciences [20]
+Key Error: 124 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Biological Transgenic Greenhouse [124]
+Key Error: 92 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Biology Field Research Center [92]
+Key Error: 8114 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Biomolecular Research Annex [8114]
+Key Error: 402 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: BPW Scholarship House [402]
+Key Error: 30 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Brevard Hall [30]
+Key Error: 135 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Bright House Networks Stadium [135]
+Empty string: Brooklyn Pizza [7h]
+Key Error: 7h campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Brooklyn Pizza [7h]
+Key Error: 95 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Burnett Honors College [95]
+Key Error: 100 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Burnett House [100]
+Key Error: 45 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Business Administration [45]
+Key Error: 94 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Business Administration II [94]
+Empty string: Career Services and Experiential Learning [140]
+Empty string: Career Services and Experiential Learning [140]
+Key Error: 140 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Career Services and Experiential Learning [140]
+Empty string: CAS Faculty Offices [607]
+Key Error: 607 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: CAS Faculty Offices [607]
+Empty string: CAS Faculty Offices [609]
+Key Error: 609 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: CAS Faculty Offices [609]
+Key Error: 541 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Center for Humanities and Digital Research [541]
+Key Error: 81 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Center for Multilingual Multicultural Studies [81]
+Key Error: 8111 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Center for Public Safety/Security [8111]
+Key Error: u4 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Challenge Course [u4]
+Key Error: 5 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Chemistry [5]
+Empty string: Citrus Hall [85]
+Key Error: 85 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Citrus Hall [85]
+Empty string: Classroom [611]
+Key Error: 611 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Classroom [611]
+Empty string: Classroom [612]
+Key Error: 612 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Classroom [612]
+Empty string: Classroom [613]
+Key Error: 613 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Classroom [613]
+Empty string: Classroom [626]
+Key Error: 626 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Classroom [626]
+Empty string: Classroom [627]
+Key Error: 627 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Classroom [627]
+Empty string: Classroom [628]
+Key Error: 628 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Classroom [628]
+Key Error: 79 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Classroom Building I [79]
+Empty string: Cocoa [cocoa]
+Key Error: cocoa campus.mapobj  |  o['content_type']: [u'campus', u'regionalcampus']  |  mob['content_type']: (key error)    
+Key Error: 18 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Colbourn Hall [18]
+Key Error: 87 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: College of Arts & Humanities [87]
+Empty string: College of Medicine [college-of-medicine]
+Key Error: college-of-medicine campus.mapobj  |  o['content_type']: [u'campus', u'location']  |  mob['content_type']: (key error)    
+Empty string: College of Medicine [college-of-medicine]
+Empty string: College of Sciences [54]
+Key Error: 54 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: College of Sciences [54]
+Empty string: Computer Center I [13]
+Key Error: 13 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Computer Center I [13]
+Key Error: 29 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Computer Center II [29]
+Key Error: 27 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Counseling Center [27]
+Key Error: 529 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Creative School [529]
+Key Error: 540 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Creative School [540]
+Key Error: 24 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Creative School for Children [24]
+Key Error: 53 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: CREOL [53]
+Key Error: 622 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: CREOL Gradute Study Office [622]
+Empty string: Daytona Beach [daytona-beach]
+Key Error: daytona-beach campus.mapobj  |  o['content_type']: [u'campus', u'regionalcampus']  |  mob['content_type']: (key error)    
+Key Error: 403 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Delta Delta Delta [403]
+Key Error: dgc campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Disc Golf Course [dgc]
+Key Error: 629 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Diversity Initiatives [629]
+Empty string: Downtown [downtown]
+Key Error: downtown campus.mapobj  |  o['content_type']: [u'campus', u'location']  |  mob['content_type']: (key error)    
+Empty string: Downtown [downtown]
+Key Error: 28 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Early Childhood Center [28]
+Key Error: 21 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Education [21]
+Key Error: 49 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Emergency Operation Center [49]
+Key Error: 350 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Emergency Services Training Facility [350]
+Key Error: 76 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Engine Research Lab [76]
+Key Error: 44 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Engineering Field Lab [44]
+Key Error: 40 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Engineering I [40]
+Key Error: 91 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Engineering II [91]
+Key Error: 319 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Engineering Research Pavilion [319]
+Key Error: 525 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Environmental Initiative Office [525]
+Key Error: 16 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Facilities and Safety [16]
+Empty string: Faculty Offices [610]
+Key Error: 610 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Faculty Offices [610]
+Key Error: 126 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Fairwinds Alumni Center [126]
+Empty string: Ferrell Commons [7]
+Key Error: 7 campus.mapobj  |  o['content_type']: [u'campus', u'group']  |  mob['content_type']: (key error)    
+Empty string: Ferrell Commons [7]
+Empty string: Ferrell Commons - G [7g]
+Key Error: 7g campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Ferrell Commons - G [7g]
+Key Error: 351 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Fire Station #62 [351]
+Empty string: Flagler Hall [86]
+Key Error: 86 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Flagler Hall [86]
+Key Error: footpracfld campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Football Practice Field [footpracfld]
+Key Error: 66 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Gemini Courtyard #66 [66]
+Key Error: 67 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Gemini Courtyard #67 [67]
+Key Error: 68 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Gemini Courtyard #68 [68]
+Key Error: 69 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Gemini Courtyard #69 [69]
+Key Error: 70 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Gemini Courtyard #70 [70]
+Empty string: Greek Park [greek-park]
+Empty string: Greek Park [greek-park]
+Key Error: greek-park campus.mapobj  |  o['content_type']: [u'campus', u'group']  |  mob['content_type']: (key error)    
+Empty string: Greek Park [greek-park]
+Key Error: 116 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Harris Corporation Engineering Center [116]
+Key Error: 80 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Health & Public Affairs I [80]
+Key Error: 90 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Health & Public Affairs II [90]
+Key Error: 127 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Health Center [127]
+Key Error: 73 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Housing Administration [73]
+Key Error: 14 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Howard Phillips Hall [14]
+Key Error: 12601 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: IN VIVO Research [12601]
+Key Error: 8112 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Institute for Simulation and Training [8112]
+Key Error: 12423 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: IST Technology Development Center [12423]
+Empty string: Jay Bergman Field - Baseball Stadium [82]
+Key Error: 82 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Jay Bergman Field - Baseball Stadium [82]
+Key Error: 26 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: John T. Washington Center [26]
+Empty string: Kappa Delta Sorority [407]
+Key Error: 407 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Kappa Delta Sorority [407]
+Empty string: Kappa Sigma - Fraternity [413]
+Key Error: 413 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Kappa Sigma - Fraternity [413]
+Empty string: Knight's Circle [pl]
+Empty string: Knight's Circle [pl]
+Key Error: pl campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Knight's Circle [pl]
+Key Error: 50b campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Knightro's [50b]
+Key Error: 137 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Knights Plaza 1 [137]
+Key Error: 12351 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: L3 Communications [12351]
+Key Error: 11805 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: La Quinta Inn [11805]
+Empty string: Lake Claire Apartments [lake-claire]
+Empty string: Lake Claire Apartments [lake-claire]
+Key Error: lake-claire campus.mapobj  |  o['content_type']: [u'campus', u'group']  |  mob['content_type']: (key error)    
+Empty string: Lake Claire Apartments [lake-claire]
+Empty string: Lake Claire Commons [65]
+Key Error: 65 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Lake Claire Commons [65]
+Key Error: 9 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Lake Hall [9]
+Empty string: Leesburg [leesburg]
+Key Error: leesburg campus.mapobj  |  o['content_type']: [u'campus', u'regionalcampus']  |  mob['content_type']: (key error)    
+Key Error: 118 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Leisure Pool Services [118]
+Empty string: Libra Commons [33]
+Empty string: Libra Commons [33]
+Key Error: 33 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Libra Commons [33]
+Empty string: Libra Community [libra-community]
+Empty string: Libra Community [libra-community]
+Key Error: libra-community campus.mapobj  |  o['content_type']: [u'campus', u'group']  |  mob['content_type']: (key error)    
+Empty string: Libra Community [libra-community]
+Key Error: 2 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Library [2]
+Key Error: 7ab campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Live Oak Ballroom/Garden Room [7ab]
+Empty string: Main Campus [main-campus]
+Key Error: main-campus campus.mapobj  |  o['content_type']: [u'campus', u'location']  |  mob['content_type']: (key error)    
+Empty string: Main Campus [main-campus]
+Empty string: Marketplace Dining Hall [7aa]
+Key Error: 7aa campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Marketplace Dining Hall [7aa]
+Key Error: 12 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Math & Physics [12]
+Key Error: u5 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Memory Mall [u5]
+Key Error: memorymall campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Memory Mall [memorymall]
+Key Error: 1 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Millican Hall [1]
+Empty string: Morgridge International Reading Center [122]
+Empty string: Morgridge International Reading Center [122]
+Key Error: 122 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Morgridge International Reading Center [122]
+Empty string: Natural Resources Pavilion [326]
+Empty string: Natural Resources Pavilion [326]
+Key Error: 326 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Natural Resources Pavilion [326]
+Key Error: 329 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Nature Pavilion [329]
+Key Error: 128 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Nicholson Fieldhouse [128]
+Empty string: Nicholson School of Communication [75]
+Key Error: 75 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Nicholson School of Communication [75]
+Key Error: 74 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Observatory/Astro Lab [74]
+Empty string: Ocala [ocala]
+Key Error: ocala campus.mapobj  |  o['content_type']: [u'campus', u'regionalcampus']  |  mob['content_type']: (key error)    
+Key Error: 7c campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Office of Student Rights and Responsibilities [7c]
+Key Error: 546 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Orange County School System [546]
+Key Error: 31 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Orange Hall [31]
+Key Error: 8113 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Orlando Tech Center - Bldg. 300 [8113]
+Key Error: 8120 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Orlando Tech Center - Bldg. 500 [8120]
+Key Error: 8121 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Orlando Tech Center - Bldg. 600 [8121]
+Key Error: 10 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Osceola Hall [10]
+Empty string: Palm Bay [palm-bay]
+Key Error: palm-bay campus.mapobj  |  o['content_type']: [u'campus', u'regionalcampus']  |  mob['content_type']: (key error)    
+Key Error: u1 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Parking & Transportation Services [u1]
+Key Error: 147 campus.mapobj  |  o['content_type']: [u'campus', u'parkinglot']  |  mob['content_type']: (key error)    
+Empty string: Parking Garage A [147]
+Key Error: 89 campus.mapobj  |  o['content_type']: [u'campus', u'parkinglot']  |  mob['content_type']: (key error)    
+Empty string: Parking Garage B [89]
+Key Error: 83 campus.mapobj  |  o['content_type']: [u'campus', u'parkinglot']  |  mob['content_type']: (key error)    
+Empty string: Parking Garage C [83]
+Key Error: 97 campus.mapobj  |  o['content_type']: [u'campus', u'parkinglot']  |  mob['content_type']: (key error)    
+Empty string: Parking Garage D [97]
+Key Error: 134 campus.mapobj  |  o['content_type']: [u'campus', u'parkinglot']  |  mob['content_type']: (key error)    
+Empty string: Parking Garage E [134]
+Key Error: 141 campus.mapobj  |  o['content_type']: [u'campus', u'parkinglot']  |  mob['content_type']: (key error)    
+Empty string: Parking Garage F [141]
+Key Error: 131 campus.mapobj  |  o['content_type']: [u'campus', u'parkinglot']  |  mob['content_type']: (key error)    
+Empty string: Parking Garage G [131]
+Empty string: Parking Garage H [151]
+Empty string: Parking Garage H [151]
+Key Error: 151 campus.mapobj  |  o['content_type']: [u'campus', u'parkinglot']  |  mob['content_type']: (key error)    
+Empty string: Parking Garage H [151]
+Empty string: Parking Garage I [78]
+Key Error: 78 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Parking Garage I [78]
+Key Error: 8119 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Partnership II [8119]
+Key Error: 60 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Pegasus Courtyard #60 [60]
+Key Error: 61 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Pegasus Courtyard #61 [61]
+Key Error: 62 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Pegasus Courtyard #62 [62]
+Key Error: 63 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Pegasus Courtyard #63 [63]
+Key Error: 64 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Pegasus Courtyard #64 [64]
+Key Error: pp campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Pegasus Point [pp]
+Empty string: Performing Arts Center [119]
+Performing Arts Center [119]
+  image (none)
+  image performing-arts-center
+rejected
+
+Key Error: 119 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Performing Arts Center [119]
+Empty string: Performing Arts Center Music [m119]
+Empty string: Performing Arts Center Music [m119]
+Key Error: m119 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Performing Arts Center Music [m119]
+Empty string: Performing Arts Center Theatre [t119]
+Empty string: Performing Arts Center Theatre [t119]
+Key Error: t119 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Performing Arts Center Theatre [t119]
+Key Error: 25 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Physical Education Support [25]
+Key Error: 121 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Physical Sciences [121]
+Key Error: 514 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Physics Lab [514]
+Empty string: Pi Beta Phi - Sorority [405]
+Key Error: 405 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Pi Beta Phi - Sorority [405]
+Key Error: 11 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Polk Hall [11]
+Key Error: 22 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Print Shop [22]
+Key Error: 96 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Progress Energy Welcome Center [96]
+Key Error: 99 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Psychology Building [99]
+Empty string: Public Safety Building (Police) [150]
+Empty string: Public Safety Building (Police) [150]
+Key Error: 150 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Public Safety Building (Police) [150]
+Key Error: 321 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Rec Field Maintenance [321]
+Key Error: 320 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Rec Serv Field Restroom [320]
+Key Error: 318 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Rec Serv Pavilion [318]
+Key Error: 317 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Rec Serv Soccer Field Pavilion [317]
+Empty string: Recreation and Wellness Center [88]
+Key Error: 88 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Recreation and Wellness Center [88]
+Key Error: 327 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Recycling Center [327]
+Key Error: pond campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Reflecting Pond [pond]
+Key Error: 310 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Reflections Kiosk [310]
+Key Error: 19 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Rehearsal Hall [19]
+Key Error: 8102 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Research Pavilion [8102]
+Empty string: Residence Halls [residence-halls]
+Empty string: Residence Halls [residence-halls]
+Key Error: residence-halls campus.mapobj  |  o['content_type']: [u'campus', u'group']  |  mob['content_type']: (key error)    
+Empty string: Residence Halls [residence-halls]
+Empty string: Restrooms [614]
+Key Error: 614 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Restrooms [614]
+Key Error: 623 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Retirement Planning & Investments / Athletics [623]
+Empty string: Rosen College of Hospitality Management [rosen-college]
+Key Error: rosen-college campus.mapobj  |  o['content_type']: [u'campus', u'location']  |  mob['content_type']: (key error)    
+Empty string: Rosen College of Hospitality Management [rosen-college]
+Key Error: 501 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: ROTC [501]
+Key Error: 503 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: ROTC 2 [503]
+Key Error: 504 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: ROTC 3 [504]
+Key Error: 505 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: ROTC 4 [505]
+Key Error: u3 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: RWC Park [u3]
+Empty string: Sanford/Lake Mary [sanford-lake-mary]
+Key Error: sanford-lake-mary campus.mapobj  |  o['content_type']: [u'campus', u'regionalcampus']  |  mob['content_type']: (key error)    
+Empty string: SDES Information Technology [7b]
+Key Error: 7b campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: SDES Information Technology [7b]
+Key Error: 32 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Seminole Hall [32]
+Empty string: Sigma Alpha Epsilon - Fraternity [409]
+Key Error: 409 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Sigma Alpha Epsilon - Fraternity [409]
+Empty string: Sigma Chi - Fraternity [412]
+Key Error: 412 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Sigma Chi - Fraternity [412]
+Empty string: Sigma Phi Epsilon - Fraternity [411]
+Key Error: 411 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Sigma Phi Epsilon - Fraternity [411]
+Key Error: 8125 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Simulation, Training and Technology Center [8125]
+Key Error: socpracfld campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Soccer Practice Field [socpracfld]
+Key Error: 125 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Softball Stadium [125]
+Empty string: South Lake [south-lake]
+Key Error: south-lake campus.mapobj  |  o['content_type']: [u'campus', u'regionalcampus']  |  mob['content_type']: (key error)    
+Empty string: South Orlando [south-orlando]
+Key Error: south-orlando campus.mapobj  |  o['content_type']: [u'campus', u'regionalcampus']  |  mob['content_type']: (key error)    
+Empty string: SRC Auditorium [7e]
+Key Error: 7e campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: SRC Auditorium [7e]
+Key Error: 4 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Storm Water Research Lab [4]
+Empty string: Student Disability Services [7f]
+Key Error: 7f campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Student Disability Services [7f]
+Key Error: 52 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Student Union [52]
+Empty string: Sumter Hall [84]
+Key Error: 84 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Sumter Hall [84]
+Key Error: 93 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Teaching Academy [93]
+Key Error: 3259 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Technology Incubator [3259]
+Key Error: 3267 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Technology Incubator [3267]
+Key Error: 50c campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: The Venue [50c]
+Key Error: 6 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Theatre [6]
+Key Error: 12001 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Three Resource Square [12001]
+Key Error: 129 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Tower 1 [129]
+Key Error: 130 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Tower 2 [130]
+Key Error: 132 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Tower 3 [132]
+Key Error: 133 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Tower 4 [133]
+Empty string: TR535 [535]
+Key Error: 535 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: TR535 [535]
+Key Error: 142 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Track & Soccer Field [142]
+Key Error: 12000 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Two Resource Square [12000]
+Empty string: UCF House [408]
+Empty string: UCF House [408]
+Key Error: 408 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: UCF House [408]
+Key Error: 117 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: UCF Wild Animal Facility [117]
+Key Error: 8110 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: University Tech Center [8110]
+Key Error: 8118 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: University Tower [8118]
+Key Error: 3 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Utility Plant /HVAC [3]
+Empty string: Valencia Osceola [valencia-osceola]
+Key Error: valencia-osceola campus.mapobj  |  o['content_type']: [u'campus', u'regionalcampus']  |  mob['content_type']: (key error)    
+Empty string: Valencia West [valencia-west]
+Key Error: valencia-west campus.mapobj  |  o['content_type']: [u'campus', u'regionalcampus']  |  mob['content_type']: (key error)    
+Empty string: Visitor and Parking Information Center [153]
+Visitor and Parking Information Center [153]
+  image (none)
+  image visitor-and-parking-information-center
+rejected
+
+Key Error: 153 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Visitor and Parking Information Center [153]
+Key Error: 51 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Visual Arts Building [51]
+Key Error: 8 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Volusia Hall [8]
+Empty string: Water Tower [301]
+Key Error: 301 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Water Tower [301]
+Empty string: Wayne Densch Center I [38]
+Key Error: 38 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Wayne Densch Center I [38]
+Empty string: Wayne Densch Center II [39]
+Key Error: 39 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Wayne Densch Center II [39]
+Empty string: Wayne Densch Sports Center [77]
+Key Error: 77 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Wayne Densch Sports Center [77]
+Key Error: 608 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Writing Center [608]
+Empty string: Zeta Tau Alpha - Sorority [401]
+Key Error: 401 campus.mapobj  |  o['content_type']: [u'campus', u'building']  |  mob['content_type']: (key error)    
+Empty string: Zeta Tau Alpha - Sorority [401]
+Empty string: Academic Village I - Nike [101]
+Empty string: Academic Village I - Nike [102]
+Empty string: Academic Village I - Nike [103]
+Empty string: Academic Village I - Nike [104]
+Empty string: Academic Village I - Nike [105]
+Empty string: Academic Village I - Nike [106]
+Empty string: Academic Village I - Nike [107]
+Empty string: Academic Village II - Hercules [108]
+Empty string: Academic Village II - Hercules [109]
+Empty string: Academic Village II - Hercules [110]
+Empty string: Academic Village II - Hercules [111]
+Empty string: Academic Village II - Hercules [112]
+Empty string: Academic Village II - Hercules [113]
+Empty string: Academic Village II - Hercules [114]
+Empty string: Academic Village II - Hercules [115]
+Empty string: Alpha Delta Pi - Sorority [406]
+Empty string: Alpha Tau Omega - Fraternity [410]
+Empty string: Alpha Xi Delta - Sorority [404]
+Empty string: Ampac [152]
+Empty string: Ampac [152]
+Empty string: Aquarius Courtyard #55 [55]
+Empty string: Aquarius Courtyard #56 [56]
+Empty string: Aquarius Courtyard #57 [57]
+Empty string: Aquarius Courtyard #58 [58]
+Empty string: Aquarius Courtyard #59 [59]
+Empty string: Art Gallery [51a]
+Empty string: AT&T Wireless Services [12150]
+Empty string: AT&T Wireless Services [12150]
+Empty string: Athletic Development [625]
+Empty string: Band Storage [630]
+Empty string: Barbara Ying Center [71]
+Empty string: Baseball Field [basefield]
+Empty string: Baseball Field [basefield]
+Empty string: Bennett Research II [3251]
+Empty string: Bennett Research II [3251]
+Empty string: Bio Molecular Meeting Portable [601]
+Empty string: Biological Sciences [20]
+Empty string: Biological Transgenic Greenhouse [124]
+Empty string: Biology Field Research Center [92]
+Empty string: Biomolecular Research Annex [8114]
+Empty string: BPW Scholarship House [402]
+Empty string: Brevard Hall [30]
+Empty string: Bright House Networks Stadium [135]
+Empty string: Brooklyn Pizza [7h]
+Empty string: Burnett Honors College [95]
+Empty string: Burnett House [100]
+Empty string: Business Administration [45]
+Empty string: Business Administration II [94]
+Empty string: Career Services and Experiential Learning [140]
+Empty string: CAS Faculty Offices [607]
+Empty string: CAS Faculty Offices [609]
+Empty string: Center for Humanities and Digital Research [541]
+Empty string: Center for Multilingual Multicultural Studies [81]
+Empty string: Center for Public Safety/Security [8111]
+Empty string: Challenge Course [u4]
+Empty string: Challenge Course [u4]
+Empty string: Chemistry [5]
+Empty string: Citrus Hall [85]
+Empty string: Classroom [611]
+Empty string: Classroom [612]
+Empty string: Classroom [613]
+Empty string: Classroom [626]
+Empty string: Classroom [627]
+Empty string: Classroom [628]
+Empty string: Classroom Building I [79]
+Empty string: Colbourn Hall [18]
+Empty string: College of Arts & Humanities [87]
+Empty string: College of Sciences [54]
+Empty string: Computer Center I [13]
+Empty string: Computer Center II [29]
+Empty string: Counseling Center [27]
+Empty string: Creative School [529]
+Empty string: Creative School [540]
+Empty string: Creative School for Children [24]
+Empty string: CREOL [53]
+Empty string: CREOL Gradute Study Office [622]
+Empty string: Delta Delta Delta [403]
+Empty string: Disc Golf Course [dgc]
+Empty string: Disc Golf Course [dgc]
+Empty string: Diversity Initiatives [629]
+Empty string: Early Childhood Center [28]
+Empty string: Education [21]
+Empty string: Emergency Operation Center [49]
+Empty string: Emergency Services Training Facility [350]
+Empty string: Engine Research Lab [76]
+Empty string: Engineering Field Lab [44]
+Empty string: Engineering I [40]
+Empty string: Engineering II [91]
+Empty string: Engineering Research Pavilion [319]
+Empty string: Environmental Initiative Office [525]
+Empty string: Facilities and Safety [16]
+Empty string: Faculty Offices [610]
+Empty string: Fairwinds Alumni Center [126]
+Empty string: Ferrell Commons - G [7g]
+Empty string: Fire Station #62 [351]
+Empty string: Flagler Hall [86]
+Empty string: Football Practice Field [footpracfld]
+Empty string: Football Practice Field [footpracfld]
+Empty string: Gemini Courtyard #66 [66]
+Empty string: Gemini Courtyard #67 [67]
+Empty string: Gemini Courtyard #68 [68]
+Empty string: Gemini Courtyard #69 [69]
+Empty string: Gemini Courtyard #70 [70]
+Empty string: Harris Corporation Engineering Center [116]
+Empty string: Health & Public Affairs I [80]
+Empty string: Health & Public Affairs II [90]
+Empty string: Health Center [127]
+Empty string: Housing Administration [73]
+Empty string: Howard Phillips Hall [14]
+Empty string: IN VIVO Research [12601]
+Empty string: IN VIVO Research [12601]
+Empty string: Institute for Simulation and Training [8112]
+Empty string: IST Technology Development Center [12423]
+Empty string: IST Technology Development Center [12423]
+Empty string: Jay Bergman Field - Baseball Stadium [82]
+Empty string: John T. Washington Center [26]
+Empty string: Kappa Delta Sorority [407]
+Empty string: Kappa Sigma - Fraternity [413]
+Empty string: Knight's Circle [pl]
+Empty string: Knight's Circle [pl]
+Empty string: Knightro's [50b]
+Empty string: Knights Plaza 1 [137]
+Empty string: L3 Communications [12351]
+Empty string: L3 Communications [12351]
+Empty string: La Quinta Inn [11805]
+Empty string: La Quinta Inn [11805]
+Empty string: Lake Claire Commons [65]
+Empty string: Lake Hall [9]
+Empty string: Leisure Pool Services [118]
+Empty string: Libra Commons [33]
+Empty string: Library [2]
+Empty string: Live Oak Ballroom/Garden Room [7ab]
+Empty string: Marketplace Dining Hall [7aa]
+Empty string: Math & Physics [12]
+Empty string: Memory Mall [memorymall]
+Empty string: Memory Mall [memorymall]
+Empty string: Memory Mall [u5]
+Empty string: Memory Mall [u5]
+Empty string: Millican Hall [1]
+Empty string: Morgridge International Reading Center [122]
+Empty string: Natural Resources Pavilion [326]
+Empty string: Nature Pavilion [329]
+Empty string: Nicholson Fieldhouse [128]
+Empty string: Nicholson School of Communication [75]
+Empty string: Observatory/Astro Lab [74]
+Empty string: Office of Student Rights and Responsibilities [7c]
+Empty string: Orange County School System [546]
+Empty string: Orange Hall [31]
+Empty string: Orlando Tech Center - Bldg. 300 [8113]
+Empty string: Orlando Tech Center - Bldg. 500 [8120]
+Empty string: Orlando Tech Center - Bldg. 600 [8121]
+Empty string: Osceola Hall [10]
+Empty string: Parking & Transportation Services [u1]
+Empty string: Parking & Transportation Services [u1]
+Empty string: Parking Garage I [78]
+Empty string: Partnership II [8119]
+Empty string: Pegasus Courtyard #60 [60]
+Empty string: Pegasus Courtyard #61 [61]
+Empty string: Pegasus Courtyard #62 [62]
+Empty string: Pegasus Courtyard #63 [63]
+Empty string: Pegasus Courtyard #64 [64]
+Empty string: Pegasus Point [pp]
+Empty string: Pegasus Point [pp]
+Empty string: Performing Arts Center [119]
+Empty string: Performing Arts Center Music [m119]
+Empty string: Performing Arts Center Theatre [t119]
+Empty string: Physical Education Support [25]
+Empty string: Physical Sciences [121]
+Empty string: Physics Lab [514]
+Empty string: Pi Beta Phi - Sorority [405]
+Empty string: Polk Hall [11]
+Empty string: Print Shop [22]
+Empty string: Progress Energy Welcome Center [96]
+Empty string: Psychology Building [99]
+Empty string: Public Safety Building (Police) [150]
+Empty string: Rec Field Maintenance [321]
+Empty string: Rec Serv Field Restroom [320]
+Empty string: Rec Serv Pavilion [318]
+Empty string: Rec Serv Soccer Field Pavilion [317]
+Empty string: Recreation and Wellness Center [88]
+Empty string: Recycling Center [327]
+Empty string: Reflecting Pond [pond]
+Empty string: Reflecting Pond [pond]
+Empty string: Reflections Kiosk [310]
+Empty string: Rehearsal Hall [19]
+Empty string: Research Pavilion [8102]
+Empty string: Restrooms [614]
+Empty string: Retirement Planning & Investments / Athletics [623]
+Empty string: ROTC [501]
+Empty string: ROTC 2 [503]
+Empty string: ROTC 2 [503]
+Empty string: ROTC 3 [504]
+Empty string: ROTC 3 [504]
+Empty string: ROTC 4 [505]
+Empty string: ROTC 4 [505]
+Empty string: RWC Park [u3]
+Empty string: RWC Park [u3]
+Empty string: SDES Information Technology [7b]
+Empty string: Seminole Hall [32]
+Empty string: Sigma Alpha Epsilon - Fraternity [409]
+Empty string: Sigma Chi - Fraternity [412]
+Empty string: Sigma Phi Epsilon - Fraternity [411]
+Empty string: Simulation, Training and Technology Center [8125]
+Empty string: Soccer Practice Field [socpracfld]
+Empty string: Soccer Practice Field [socpracfld]
+Empty string: Softball Stadium [125]
+Empty string: SRC Auditorium [7e]
+Empty string: Storm Water Research Lab [4]
+Empty string: Student Disability Services [7f]
+Empty string: Student Union [52]
+Empty string: Sumter Hall [84]
+Empty string: Teaching Academy [93]
+Empty string: Technology Incubator [3259]
+Empty string: Technology Incubator [3267]
+Empty string: The Venue [50c]
+Empty string: The Venue [50c]
+Empty string: Theatre [6]
+Empty string: Three Resource Square [12001]
+Empty string: Three Resource Square [12001]
+Empty string: Tower 1 [129]
+Empty string: Tower 2 [130]
+Empty string: Tower 3 [132]
+Empty string: Tower 4 [133]
+Empty string: TR535 [535]
+Empty string: TR535 [535]
+Empty string: Track & Soccer Field [142]
+Empty string: Two Resource Square [12000]
+Empty string: Two Resource Square [12000]
+Empty string: UCF House [408]
+Empty string: UCF Wild Animal Facility [117]
+Empty string: University Tech Center [8110]
+Empty string: University Tower [8118]
+Empty string: Utility Plant /HVAC [3]
+Empty string: Visitor and Parking Information Center [153]
+Empty string: Visual Arts Building [51]
+Empty string: Volusia Hall [8]
+Empty string: Wayne Densch Center I [38]
+Empty string: Wayne Densch Center II [39]
+Empty string: Wayne Densch Sports Center [77]
+Empty string: Writing Center [608]
+Empty string: Zeta Tau Alpha - Sorority [401]
+Missing Locally: parking lot parkinglot-10 
+Missing Locally: parking lot parkinglot-11 
+Missing Locally: parking lot parkinglot-12 
+Missing Locally: parking lot parkinglot-13 
+Missing Locally: parking lot parkinglot-14 
+Missing Locally: parking lot parkinglot-15 
+Missing Locally: parking lot parkinglot-16 
+Missing Locally: parking lot parkinglot-17 
+Missing Locally: parking lot parkinglot-18 
+Missing Locally: parking lot parkinglot-19 
+Missing Locally: parking lot parkinglot-2 
+Missing Locally: parking lot parkinglot-22 
+Missing Locally: parking lot parkinglot-23 
+Missing Locally: parking lot parkinglot-24 
+Missing Locally: parking lot parkinglot-25 
+Missing Locally: parking lot parkinglot-26 
+Missing Locally: parking lot parkinglot-27 
+Missing Locally: parking lot parkinglot-28 
+Missing Locally: parking lot parkinglot-29 
+Missing Locally: parking lot parkinglot-3 
+Missing Locally: parking lot parkinglot-30 
+Missing Locally: parking lot parkinglot-31 
+Empty string: None [parkinglot-32]
+Empty string: None [parkinglot-32]
+Empty string: None [parkinglot-33]
+Empty string: None [parkinglot-33]
+Empty string: None [parkinglot-34]
+Empty string: None [parkinglot-34]
+Empty string: None [parkinglot-35]
+Empty string: None [parkinglot-35]
+Empty string: None [parkinglot-36]
+Empty string: None [parkinglot-36]
+Empty string: None [parkinglot-37]
+Empty string: None [parkinglot-37]
+Empty string: None [parkinglot-38]
+Empty string: None [parkinglot-38]
+Empty string: None [parkinglot-39]
+Empty string: None [parkinglot-39]
+Missing Locally: parking lot parkinglot-4 
+Empty string: None [parkinglot-40]
+Empty string: None [parkinglot-40]
+Empty string: None [parkinglot-41]
+Empty string: None [parkinglot-41]
+Empty string: None [parkinglot-42]
+Empty string: None [parkinglot-42]
+Empty string: None [parkinglot-43]
+Empty string: None [parkinglot-43]
+Empty string: None [parkinglot-44]
+Empty string: None [parkinglot-44]
+Missing Locally: parking lot parkinglot-48 
+Missing Locally: parking lot parkinglot-49 
+Missing Locally: parking lot parkinglot-5 
+Missing Locally: parking lot parkinglot-50 
+Missing Locally: parking lot parkinglot-52 
+Missing Locally: parking lot parkinglot-53 
+Missing Locally: parking lot parkinglot-54 
+Missing Locally: parking lot parkinglot-55 
+Missing Locally: parking lot parkinglot-56 
+Missing Locally: parking lot parkinglot-57 
+Missing Locally: parking lot parkinglot-58 
+Empty string: None [parkinglot-59]
+Empty string: None [parkinglot-59]
+Missing Locally: parking lot parkinglot-60 
+Missing Locally: parking lot parkinglot-61 
+Missing Locally: parking lot parkinglot-62 
+Missing Locally: parking lot parkinglot-63 
+Missing Locally: parking lot parkinglot-64 
+Missing Locally: parking lot parkinglot-65 
+Missing Locally: parking lot parkinglot-66 
+Missing Locally: parking lot parkinglot-67 
+Missing Locally: parking lot parkinglot-68 
+Missing Locally: parking lot parkinglot-69 
+Missing Locally: parking lot parkinglot-7 
+Empty string: None [parkinglot-70]
+Empty string: None [parkinglot-70]
+Empty string: None [parkinglot-70]
+Empty string: None [parkinglot-71]
+Empty string: None [parkinglot-71]
+Empty string: None [parkinglot-71]
+Empty string: None [parkinglot-72]
+Empty string: None [parkinglot-72]
+Empty string: None [parkinglot-72]
+Empty string: None [parkinglot-73]
+Empty string: None [parkinglot-73]
+Empty string: None [parkinglot-73]
+Empty string: None [parkinglot-74]
+Empty string: None [parkinglot-74]
+Empty string: None [parkinglot-74]
+Empty string: None [parkinglot-75]
+Empty string: None [parkinglot-75]
+Empty string: None [parkinglot-75]
+Empty string: None [parkinglot-76]
+Empty string: None [parkinglot-76]
+Empty string: None [parkinglot-76]
+Empty string: None [parkinglot-77]
+Empty string: None [parkinglot-77]
+Empty string: None [parkinglot-77]
+Empty string: None [parkinglot-78]
+Empty string: None [parkinglot-78]
+Empty string: None [parkinglot-78]
+Empty string: None [parkinglot-79]
+Empty string: None [parkinglot-79]
+Empty string: None [parkinglot-79]
+Missing Locally: parking lot parkinglot-8 
+Empty string: None [parkinglot-80]
+Empty string: None [parkinglot-80]
+Empty string: None [parkinglot-80]
+Empty string: None [parkinglot-81]
+Empty string: None [parkinglot-81]
+Empty string: None [parkinglot-81]
+Empty string: None [parkinglot-82]
+Empty string: None [parkinglot-82]
+Empty string: None [parkinglot-82]
+Empty string: None [parkinglot-83]
+Empty string: None [parkinglot-83]
+Empty string: None [parkinglot-83]
+Empty string: None [parkinglot-84]
+Empty string: None [parkinglot-84]
+Empty string: None [parkinglot-84]
+Missing Locally: parking lot parkinglot-9 
+Empty string: Parking Garage A [147]
+Empty string: Parking Garage B [89]
+Empty string: Parking Garage C [83]
+Empty string: Parking Garage D [97]
+Empty string: Parking Garage E [134]
+Empty string: Parking Garage F [141]
+Empty string: Parking Garage G [131]
+Empty string: Parking Garage H [151]
+
+
+Results:
+  Empty Strings: 1049 
+  Key Errors: 378  
+  Accepted: 1    
+  Rejected: 2    
+  Missing locally: 94   
