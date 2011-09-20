@@ -391,7 +391,7 @@ Campus.menuInit = function(){
 Campus.layers = {
 	
 	init : function(){
-		this.layers.traffic.layer = new google.maps.TrafficLayer();
+		this.traffic.layer = new google.maps.TrafficLayer();
 	},
 	
 	update : function(){
