@@ -58,6 +58,9 @@ class MapMiddleware(object):
 		django ignores cache if query string is present.
 		GET vars not needed for api requests so just removing it to enable cache
 		'''
+		if request.GET.get('q', False):
+			return
+		
 		for format,spec in formats.items():
 			is_api_call = getattr(request, 'is_%s' % format)
 			if is_api_call():
