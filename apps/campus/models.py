@@ -454,6 +454,8 @@ class BikeRack(MapObj):
 class EmergencyPhone(MapObj):
 	pass
 
+class DiningLocation(MapObj):
+	pass
 
 '''
 	This shit should be built into the exporter.  When looking at the groups
