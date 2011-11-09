@@ -2,7 +2,7 @@ from django.shortcuts import render_to_response, get_object_or_404
 from django.http      import HttpResponse, HttpResponseNotFound, Http404, HttpResponsePermanentRedirect
 from django.views.generic.simple import direct_to_template as render
 from django.core.urlresolvers import reverse
-from campus.models import MapObj
+from campus.models import MapObj, DiningLocation
 from django.core.cache import cache
 from xml.etree import ElementTree
 
@@ -99,6 +99,7 @@ def home(request, **kwargs):
 		'sidewalks_kml' : sidewalks_kml,
 		'parking_kml'   : parking_kml,
 		'parking_json'  : reverse('parking') + '.json',
+		'dining_json'   : reverse('dining') + '.json',
 		'loc_url'       : loc,
 		'base_url'      : request.build_absolute_uri(reverse('home'))[:-1],
 		'error'         : error,
@@ -423,6 +424,34 @@ def emergency_phones(request):
 	
 	return home(request, emergency_phones=True, phone_geo=obj)
 
+def dining(request):
+	'''
+	API wrapper for dining locations.
+	'''
+	dining_locations = DiningLocation.objects.all()
+	arr = []
+	for location in dining_locations:
+		if location.googlemap_point is not None:
+			arr.append(
+				{
+					'type'    :'Feature',
+					'geometry': {
+						'type'       : 'Point',
+						'coordinates': json.loads(str(location.googlemap_point))
+					} 
+				}
+			)
+	obj = {
+		'name'    :'UCF Dining Locations',
+		'source'  :'University of Central Florida',
+		'url'     :request.build_absolute_uri(reverse('dining')) + '.json',
+		'type'    :'FeatureCollection',
+		'features':arr
+		}
+	if request.is_json():
+		response = HttpResponse(json.dumps(obj, indent=4))
+		response['Content-type'] = 'application/json'
+		return response
 
 def location_html(loc, request, orgs=True):
 	'''
