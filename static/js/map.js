@@ -268,7 +268,14 @@ Campus.controls = function(){
 	//   the setting name and checkbox ID are the same
 	//   cycle through each and add onclick event to init appropriate layer
 	//   if layer is already turned on, "check" the checkbox
-	var checkboxes = ['buildings', 'sidewalks', 'bikeracks', 'emergency_phones', 'parking', 'traffic'];
+	var checkboxes = [
+		'buildings',
+		'sidewalks',
+		'bikeracks',
+		'emergency_phones',
+		'parking',
+		'traffic',
+		'dining'];
 	var i, id;
 	var make_onclick = function(layer){
 		return function(){
