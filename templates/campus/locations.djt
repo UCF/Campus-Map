@@ -97,10 +97,19 @@
 {% block js %}
 <script src="{{MEDIA_URL}}-/jquery.plugins/tablesorter/jquery.tablesorter.min.js"></script>
 <script>
+	$.tablesorter.addParser({
+		id: "MYSORTFUNCTIONTHINGWHOA",
+		is: function (s) {
+			return false;
+		}, format: function (s) {
+			return s.toLowerCase();
+		}, type: "text"
+	});
+
 	$("#buildings").tablesorter({
 		headers: {
 			2: {
-				sorter: 'text'
+				sorter: 'MYSORTFUNCTIONTHINGWHOA'
 			}
 		}
 	});

@@ -576,9 +576,7 @@
             }
 
             /* sorting methods */
-
             function multisort(table, sortList, cache) {
-
                 if (table.config.debug) {
                     var sortTime = new Date();
                 }
@@ -636,16 +634,38 @@
             function makeSortFunction(type, direction, index) {
                 var a = "a[" + index + "]",
                     b = "b[" + index + "]";
+
+				var text_compare = "\
+				(function(a, b){\
+							if (a == b){\
+								return 0;\
+							}\
+							var a_is_number = !isNaN(Number(a));\
+							var b_is_number = !isNaN(Number(b));\
+							\
+							if (a_is_number && !b_is_number){\
+								return -1;\
+							}\
+							if (!a_is_number && b_is_number){\
+								return 1;\
+							}\
+							if (a_is_number){\
+								return (Number(a) < Number(b)) ? -1 : 1;\
+							}else{\
+								return (a < b) ? -1 : 1;\
+							}\
+				})(" + a + ", " + b + ");";
                 if (type == 'text' && direction == 'asc') {
-                    return "(" + a + " == " + b + " ? 0 : (" + a + " === null ? Number.POSITIVE_INFINITY : (" + b + " === null ? Number.NEGATIVE_INFINITY : (" + a + " < " + b + ") ? -1 : 1 )));";
+                    return text_compare;
                 } else if (type == 'text' && direction == 'desc') {
-                    return "(" + a + " == " + b + " ? 0 : (" + a + " === null ? Number.POSITIVE_INFINITY : (" + b + " === null ? Number.NEGATIVE_INFINITY : (" + b + " < " + a + ") ? -1 : 1 )));";
+                    return "-" + text_compare;
                 } else if (type == 'numeric' && direction == 'asc') {
                     return "(" + a + " === null && " + b + " === null) ? 0 :(" + a + " === null ? Number.POSITIVE_INFINITY : (" + b + " === null ? Number.NEGATIVE_INFINITY : " + a + " - " + b + "));";
                 } else if (type == 'numeric' && direction == 'desc') {
                     return "(" + a + " === null && " + b + " === null) ? 0 :(" + a + " === null ? Number.POSITIVE_INFINITY : (" + b + " === null ? Number.NEGATIVE_INFINITY : " + b + " - " + a + "));";
                 }
             };
+			this.makeSortFunction = makeSortFunction;
 
             function makeSortText(i) {
                 return "((a[" + i + "] < b[" + i + "]) ? -1 : ((a[" + i + "] > b[" + i + "]) ? 1 : 0));";
