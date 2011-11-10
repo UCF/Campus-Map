@@ -807,9 +807,9 @@ Campus.layers = {
 				new google.maps.Point(16,32)); // anchor 
 			var shadow = new google.maps.MarkerImage(
 				Campus.urls['static'] + 'images/markers/knife-fork-shadow.png',
-				new google.maps.Size(47, 21),
+				new google.maps.Size(46, 22),
 				new google.maps.Point(0,0),
-				new google.maps.Point(10,20));
+				new google.maps.Point(10,25));
 			
 			// create and place markers
 			var ExistingPoint = function(lat, lon) {
