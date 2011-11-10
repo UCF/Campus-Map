@@ -268,7 +268,14 @@ Campus.controls = function(){
 	//   the setting name and checkbox ID are the same
 	//   cycle through each and add onclick event to init appropriate layer
 	//   if layer is already turned on, "check" the checkbox
-	var checkboxes = ['buildings', 'sidewalks', 'bikeracks', 'emergency_phones', 'parking', 'traffic'];
+	var checkboxes = [
+		'buildings',
+		'sidewalks',
+		'bikeracks',
+		'emergency_phones',
+		'parking',
+		'traffic',
+		'dining'];
 	var i, id;
 	var make_onclick = function(layer){
 		return function(){
@@ -749,7 +756,132 @@ Campus.layers = {
 			var on = Campus.settings.parking;
 			if(on){ this.load(); } else { this.unload(); }
 		}
-	}
+	},
+
+	dining : {
+		/* really similar to bikeracks (but with different icon), should probalby abstract this a bit */
+		loaded  : false,
+		geo     : false,
+		markers : [],
+		load    : function(){
+			var that = this;
+
+			// load geo location
+			if(!this.loaded){
+				// geoinfo delivered with request
+				if( Campus.settings.dining_geo !== undefined && Campus.settings.dining_geo.features) {
+					this.geo = Campus.settings.dining_geo;
+					this.loaded = true;
+				} 
+				// pull down with ajax
+				else {
+					
+					Campus.ajax = $.ajax({
+						url: Campus.urls.dining,
+						dataType: 'json',
+						success: function(data){
+							Campus.layers.dining.geo = data;
+							Campus.layers.dining.loaded = true;
+							Campus.layers.dining.load();
+						}
+					});
+					return;
+				}
+			}
+			
+			// markers have already been created, show them
+			if(this.markers.length > 0){
+				var i;
+				for(i=0; i<this.markers.length; i++){
+					var marker = this.markers[i];
+					if(marker.setVisible){ marker.setVisible(true); }
+				}
+				return;
+			}
+			
+			// custom icon
+			var icon = new google.maps.MarkerImage(
+				(Campus.urls['static'] + 'images/markers/knife-fork.png'),
+				new google.maps.Size(28, 28),  // dimensions
+				new google.maps.Point(0,0),  // origin
+				new google.maps.Point(16,32)); // anchor 
+			var shadow = new google.maps.MarkerImage(
+				Campus.urls['static'] + 'images/markers/knife-fork-shadow.png',
+				new google.maps.Size(46, 22),
+				new google.maps.Point(0,0),
+				new google.maps.Point(10,25));
+			
+			// create and place markers
+			var ExistingPoint = function(lat, lon) {
+				this.lat     = lat;
+				this.lon      = lon;
+				this.count    = 1;
+				this.odd_flip = true;
+			}
+			var randomInt = function() {return Math.round(Math.random() * 10) + Math.round(Math.random() * 10);}
+			var existing_points = [];
+			var ADJUSTMENT = 150000;
+			$.each(this.geo.features, function(index, feature) {
+				if(feature.geometry != undefined && feature.geometry.coordinates != undefined) {
+					var point  = feature.geometry.coordinates;
+
+					// Nudge points if they are on top of each other
+					var adjusted = false;
+					$.each(existing_points, function(_index, existing_point) {
+						if(point[0] == existing_point.lat && point[1] == existing_point.lon) {
+							var count = existing_point.count;
+							if( (count % 2) == 0) {
+								point[0] = point[0] + ((count + randomInt()) / ADJUSTMENT);
+								if( (count % 4) == 0) {
+									point[1] = point[1] + ((count + randomInt()) / ADJUSTMENT);
+								} else {
+									point[1] = point[1] - ((count + randomInt()) / ADJUSTMENT);
+								}
+							} else {
+								point[0] = point[0] - ((count + randomInt()) / ADJUSTMENT);
+								if(existing_point.odd_flip) {
+									point[1] = point[1] + ((count + randomInt()) / ADJUSTMENT);
+									existing_point.odd_flip = false;
+								} else {
+									point[1] = point[1] - ((count + randomInt()) / ADJUSTMENT);
+									existing_point.odd_flip = true;
+								}
+							}
+							adjusted = true;
+							existing_point.count += 1;
+							return false;
+						}
+					});
+					if(!adjusted) {
+						existing_points.push(new ExistingPoint(point[0],point[1]))
+					}
+
+					var latlng = new google.maps.LatLng(point[0], point[1]);
+					that.markers.push(
+						new google.maps.Marker({
+							icon     : icon,
+							shadow   : shadow,
+							clickable: false,
+							position : latlng,
+							map      : Campus.map
+						})
+					); 
+				}
+			});			
+		},
+		unload : function() {
+			if(!this.loaded){ return; }
+			var i;
+			for(i=0; i < this.markers.length; i++){
+				var marker = this.markers[i];
+				if(marker.setVisible){ marker.setVisible(false); }
+			}
+		},
+		update : function(){
+			var on = Campus.settings.dining;
+			if(on){ this.load(); } else { this.unload(); }
+		}
+	},
 	
 };
 

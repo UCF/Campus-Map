@@ -9,6 +9,7 @@ urlpatterns = patterns('campus.views',
 	url(r'^bikeracks/$', 'bikeracks', name="bikeracks"),
 	url(r'^emergency-phones/$', 'emergency_phones', name="emergency_phones"),
 	url(r'^parking/$', 'parking', name="parking"),
+	url(r'^dining/$', 'dining', name='dining'),
 	url(r'^regional-campuses/((?P<campus>[\w-]+)/)?$', 'regional_campuses', name="regional"),
 	
 	# campus admin views

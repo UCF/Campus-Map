@@ -1,0 +1,26 @@
+{% if not location %}
+	
+	<div class="item" id="item-desc">
+		No Location
+	</div>
+	
+{% else %}
+
+	<a href="{{base_url}}{{location.profile_link}}" class="item">{{location.name}}</a>
+
+	<a class="item" href="{{base_url}}{{location.profile_link}}">
+		{% if location.image %}<img src="{{static}}images/buildings/{{ location.image }}">{%else%}<img src="{{static}}images/buildings/_no_image.jpg">{% endif %}
+	</a>
+	
+	{% if location.description %}
+		<div class="item">{{ location.description }}</div>
+	{% endif %}
+	
+	{% if location.profile_link %}
+	<div class="item">
+		<h3 id="permalink">Permalink</h3>
+		<input type="text" value="{{base_url}}/?show={{location.number}}">
+	</div>
+	{% endif %}
+	
+{% endif %}
