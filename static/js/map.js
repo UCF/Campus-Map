@@ -801,15 +801,15 @@ Campus.layers = {
 			
 			// custom icon
 			var icon = new google.maps.MarkerImage(
-				(Campus.urls['static'] + 'images/markers/gold-with-dot.png'),
-				new google.maps.Size(32, 32),  // dimensions
+				(Campus.urls['static'] + 'images/markers/knife-fork.png'),
+				new google.maps.Size(28, 28),  // dimensions
 				new google.maps.Point(0,0),  // origin
 				new google.maps.Point(16,32)); // anchor 
 			var shadow = new google.maps.MarkerImage(
-				Campus.urls['static'] + 'images/markers/shadow.png',
-				new google.maps.Size(59, 32),
+				Campus.urls['static'] + 'images/markers/knife-fork-shadow.png',
+				new google.maps.Size(47, 21),
 				new google.maps.Point(0,0),
-				new google.maps.Point(15, 32));
+				new google.maps.Point(10,20));
 			
 			// create and place markers
 			var ExistingPoint = function(lat, lon) {
@@ -860,7 +860,7 @@ Campus.layers = {
 					that.markers.push(
 						new google.maps.Marker({
 							icon     : icon,
-							shadow   : null,
+							shadow   : shadow,
 							clickable: false,
 							position : latlng,
 							map      : Campus.map
