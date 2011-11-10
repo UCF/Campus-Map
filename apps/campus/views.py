@@ -58,7 +58,7 @@ def home(request, **kwargs):
 		# Filter home page locations to building, locations, and groups
 		points = cache.get('home_points')
 		if points is None:
-			show   = map(lambda c: ContentType.objects.get_for_model(c), (Building, Location, Group, ParkingLot))
+			show   = map(lambda c: ContentType.objects.get_for_model(c), (Building, Location, Group, ParkingLot, DiningLocation))
 			mobs   = MapObj.objects.filter(content_type__in=map(lambda c: c.id, show))
 			points = {}
 			for o in mobs:
@@ -92,17 +92,20 @@ def home(request, **kwargs):
 		kwargs.pop('error')
 	
 	context = {
-		'options'       : json.dumps(kwargs), 
-		'points'        : json.dumps(points), 
-		'date'          : date,
-		'buildings_kml' : buildings_kml,
-		'sidewalks_kml' : sidewalks_kml,
-		'parking_kml'   : parking_kml,
-		'parking_json'  : reverse('parking') + '.json',
-		'dining_json'   : reverse('dining') + '.json',
-		'loc_url'       : loc,
-		'base_url'      : request.build_absolute_uri(reverse('home'))[:-1],
-		'error'         : error,
+		'options'            : json.dumps(kwargs), 
+		'points'             : json.dumps(points), 
+		'date'               : date,
+		'buildings_kml'      : buildings_kml,
+		'sidewalks_kml'      : sidewalks_kml,
+		'parking_kml'        : parking_kml,
+		'parking_json'       : reverse('parking') + '.json',
+		'dining_json'        : reverse('dining') + '.json',
+		'loc_url'            : loc,
+		'base_url'           : request.build_absolute_uri(reverse('home'))[:-1],
+		'error'              : error,
+		# These points are not displayed on the base tempalte but they
+		# still need to be here to be available for searching infoboxes, etc.
+		'base_ignore_types'  : json.dumps(['DiningLocation'])
 	}
 	
 	return render(request, 'campus/base.djt', context)

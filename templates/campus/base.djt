@@ -59,6 +59,7 @@
 		
 		Campus.points = {{ points|safe }};
 		Campus.settings = {{options|safe}};
+		Campus.base_ignore_types = {{base_ignore_types|safe}};
 		
 		$(document).ready(function(){
 			Campus.scripts.google(); // fire off maps

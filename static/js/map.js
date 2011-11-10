@@ -482,27 +482,35 @@ Campus.layers = {
 					new google.maps.Point(10,10));
 			}
 			var images = {
-				"Building"   : google_image('yellow'),
-				"ParkingLot" : google_image('yellow'),
-				"Group"      : google_image('yellow2'),
-				"Location"   : google_image('blue')
+				"Building"       : google_image('yellow'),
+				"ParkingLot"     : google_image('yellow'),
+				"Group"          : google_image('yellow2'),
+				"Location"       : google_image('blue'),
 			}
 			var point = (Campus.map.mapTypeId === 'illustrated') ? 'ipoint' : 'gpoint';
 			var id;
 			for(id in points ) {
 				if(points.hasOwnProperty(id)){
-					var p = points[id][point];
-					if(!p || !p[0] || !p[1]){ continue; }
-					var latLng = new google.maps.LatLng(p[0], p[1]);
-					var marker = new google.maps.Marker({
-						position: latLng,
-						map: map,
-						icon: images[points[id].type],
-						location: id
+					var ignore = false;
+					$.each(Campus.base_ignore_types, function(index, type) {
+						if(type == points[id].type) {
+							ignore = true;
+						}
 					});
-					google.maps.event.addListener(marker, 'click', function(event) {
-						Campus.info(this.location, false);
-					});
+					if(!ignore) {
+						var p = points[id][point];
+						if(!p || !p[0] || !p[1]){ continue; }
+						var latLng = new google.maps.LatLng(p[0], p[1]);
+						var marker = new google.maps.Marker({
+							position: latLng,
+							map: map,
+							icon: images[points[id].type],
+							location: id
+						});
+						google.maps.event.addListener(marker, 'click', function(event) {
+							Campus.info(this.location, false);
+						});
+					}
 				}
 			}
 		}
@@ -965,7 +973,7 @@ Campus.info = function(id, pan){
 			return false;
 		}
 	}
-	
+	console.log('test', id);
 	if(!id || id==="null" || id==="searching"){ 
 		// called empty, done to init
 		return; 
