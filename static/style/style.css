@@ -256,6 +256,8 @@ footer dd { padding:8px 0 0 8px; margin:0; }
 #menu #permalink { display:inline-block; background: transparent url('img/menu-link.png') top right no-repeat; padding-right:18px; padding-top:1px; }
 .ie7 #menu #permalink { padding-right:0; background:none; display:block; }
 
+#menu-1 #layers {margin-bottom:20px;}
+
 #menu .more-menu { padding:0 0 4px; font-size:11px; position:absolute; width:230px; height:15px; overflow:hidden; bottom:0; left:0; }
 #menu .more-menu span { display:block; width:104px; padding:0 5px; float:left; }
 #menu .more-menu a { color:black; display:block; width:104px; padding:0 5px; height:15px; float:left; }
