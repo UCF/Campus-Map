@@ -23,7 +23,7 @@ class Command(BaseCommand):
 			params = {'in':'departments','search':org_id}
 
 			try:
-				url  = '?'.join([settings.ORGANIZATION_SEARCH_URL,urllib.urlencode(params)])
+				url  = '?'.join([settings.PHONEBOOK, urllib.urlencode(params)])
 				page = urllib.urlopen(url)
 			except Exception, e:
 				log.error('Unabe to open URL %s: %s' % (url, str(e)))

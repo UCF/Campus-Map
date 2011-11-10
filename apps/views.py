@@ -126,7 +126,7 @@ def organization_search(q):
 	params = {	'use':'tableSearch', 
 				'in':'organizations',
 				'search':q}
-	url = '?'.join([settings.ORGANIZATION_SEARCH_URL, urllib.urlencode(params)])
+	url = '?'.join([settings.PHONEBOOK, urllib.urlencode(params)])
 	try:
 		results = urllib.urlopen(url).read()
 		return json.loads(results)
