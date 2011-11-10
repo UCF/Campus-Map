@@ -452,6 +452,18 @@ def dining(request):
 		response = HttpResponse(json.dumps(obj, indent=4))
 		response['Content-type'] = 'application/json'
 		return response
+	
+	if request.is_txt():
+		text = "University of Central Florida\nCampus Map: Food\n%s\n%s\n" % (
+					url + ".txt",
+					"-"*78)
+		for d in dining_locations:
+			text += "\n%*d: %s" %(2, d.id, d.googlemap_point)
+		response = HttpResponse(text)
+		response['Content-type'] = 'text/plain; charset=utf-8'
+		return response
+	
+	return home(request, dining=True, dining_geo=obj)
 
 def location_html(loc, request, orgs=True):
 	'''
