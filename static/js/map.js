@@ -973,7 +973,7 @@ Campus.info = function(id, pan){
 			return false;
 		}
 	}
-	console.log('test', id);
+	
 	if(!id || id==="null" || id==="searching"){ 
 		// called empty, done to init
 		return; 
