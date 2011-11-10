@@ -30,13 +30,13 @@
 			</div>
 			<a class="item" href="{% url locations %}">Locations &amp; Buildings</a>
 			<a class="item" href="{% url organizations %}">Organizations &amp; Depts</a>
-			
-			<label><input type="checkbox" id="parking"> Parking</label>
-			<label><input type="checkbox" id="traffic"> Traffic</label>
-			<label><input type="checkbox" id="dining"> Food</label>
-			<label><input type="checkbox" id="bikeracks"> Bike Racks</label>
-			<label><input type="checkbox" id="emergency_phones"> Emergency Assistance</label>
-
+			<div id="layers" class="clearfix">
+				<label><input type="checkbox" id="parking"> Parking</label>
+				<label><input type="checkbox" id="traffic"> Traffic</label>
+				<label><input type="checkbox" id="dining"> Food</label>
+				<label><input type="checkbox" id="bikeracks"> Bike Racks</label>
+				<label><input type="checkbox" id="emergency_phones"> Emergency</label>
+			</div>
 			<div class="more-menu">
 				<span>&nbsp;</span>
 				<a class="next nav" data-nav="2">Next Menu &#9654;</a>
