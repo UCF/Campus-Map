@@ -33,10 +33,10 @@
 			
 			<label><input type="checkbox" id="parking"> Parking</label>
 			<label><input type="checkbox" id="traffic"> Traffic</label>
-			<label><input type="checkbox" id="buildings"> Buildings</label>
-			<label><input type="checkbox" id="sidewalks"> Walking Paths</label>
-			
-			
+			<label><input type="checkbox" id="dining"> Food</label>
+			<label><input type="checkbox" id="bikeracks"> Bike Racks</label>
+			<label><input type="checkbox" id="emergency_phones"> Emergency Assistance</label>
+
 			<div class="more-menu">
 				<span>&nbsp;</span>
 				<a class="next nav" data-nav="2">Next Menu &#9654;</a>
@@ -45,16 +45,19 @@
 		</div>
 	
 		<div id="menu-2" class="slide">
+
+			<a class="item" href="{% url page 'printable' %}">Printable Map</a>
+			<a class="item" href="{% url page 'directions' %}">Directions to UCF</a>
+			
 			<h3>Map view options:</h3>
-			<label><input type="checkbox" id="bikeracks"> Bike Racks</label>
-			<label><input type="checkbox" id="emergency_phones"> Emergency Assistance</label>
-			<label><input type="checkbox" id="dining"> Dining</label>
+			<label><input type="checkbox" id="buildings"> Buildings</label>
+			<label><input type="checkbox" id="sidewalks"> Walking Paths</label>
 
 			<h3>Coming Soon:</h3>
 			<label class="disabled"><input type="checkbox" disabled="disabled"> Entrances/Exits</label>
-			<label class="disabled"><input type="checkbox" disabled="disabled"> Food</label>
 			<label class="disabled"><input type="checkbox" disabled="disabled"> Housing</label>
 			<label class="disabled"><input type="checkbox" disabled="disabled"> Shuttle Routes</label>
+			
 			<div class="more-menu">
 				<a class="prev nav" data-nav="1">&#9664; Previous Menu</a>
 				<a class="next nav" data-nav="3">Next Menu &#9654;</a>
@@ -63,8 +66,6 @@
 		</div>
 	
 		<div id="menu-3" class="slide">
-			<a class="item" href="{% url page 'printable' %}">Printable Map</a>
-			<a class="item" href="{% url page 'directions' %}">Directions to UCF</a>
 			<a class="item" href="{% url page 'about' %}">About &amp; More</a>
 			
 			<div class="more-menu">
