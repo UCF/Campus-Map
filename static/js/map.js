@@ -485,7 +485,7 @@ Campus.layers = {
 				"Building"       : google_image('yellow'),
 				"ParkingLot"     : google_image('yellow'),
 				"Group"          : google_image('yellow2'),
-				"Location"       : google_image('blue'),
+				"Location"       : google_image('blue')
 			}
 			var point = (Campus.map.mapTypeId === 'illustrated') ? 'ipoint' : 'gpoint';
 			var id;
@@ -889,8 +889,7 @@ Campus.layers = {
 			var on = Campus.settings.dining;
 			if(on){ this.load(); } else { this.unload(); }
 		}
-	},
-	
+	}
 };
 
 
