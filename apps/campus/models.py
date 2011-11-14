@@ -12,6 +12,8 @@ from django.conf import settings
 from django.db.models import Q
 import campus
 import json
+import logging
+
 
 class MapQuerySet(QuerySet):
 	'''
@@ -455,7 +457,84 @@ class EmergencyPhone(MapObj):
 	pass
 
 class DiningLocation(MapObj):
-	pass
+
+	# Group definition that all DiningLocation objects should
+	# exist in
+	GROUP            = {'id':'food','name':'Restaurants & Eateries'}
+
+	# Teledata organizations that contain the DiningLocation information in the
+	# search service
+	ORGANIZATION_IDS = (509,) # RESTAURANTS & EATERIES
+
+	@classmethod
+	def refresh(cls):
+		''' 
+			- Fetch the DiningLocation information from the search service.
+			- Create/update corresponding DiningLocation objects.
+			- Create/update the DiningLocation group.
+		'''
+		import urllib
+
+		# Get or create the DiningLocation Group
+		try:
+			group = Group.objects.get(id=cls.GROUP['id'])
+		except Group.DoesNotExist:
+			group = Group(**cls.GROUP)
+			try:
+				group.save()
+			except Exception, e:
+				logging.error('Unable to save group: %s' % str(e))
+		
+		dining_loc_ctype = ContentType.objects.get(
+								app_label=DiningLocation._meta.app_label,
+								model=DiningLocation.__name__.lower())
+
+		# Talk to search service to get departments
+		for org_id in cls.ORGANIZATION_IDS:
+			params = {'in':'departments','search':org_id}
+			try:
+				url  = '?'.join([settings.PHONEBOOK, urllib.urlencode(params)])
+				page = urllib.urlopen(url)
+			except Exception, e:
+				logging.error('Unabe to open URL %s: %s' % (url, str(e)))
+			else:
+				try:
+					depts = json.loads(page.read())
+					depts['results']
+				except Exception, e:
+					log.error('Unable to parse JSON: %s' % str(e))
+				except KeyError:
+					logging.error('Malformed JSON response. Expecting `results` key.')
+				else:
+					for dept in depts['results']:
+						# Check existence
+						try:
+							dining_loc = cls.objects.get(id=dept['id'])
+						except DiningLocation.DoesNotExist:
+							dining_loc = cls(id=dept['id'])
+						
+						# Update name and building details
+						dining_loc.name = dept['name']
+
+						# Look up associated building to fill in coordinates
+						if dept['bldg_id'] is not None:
+							try:
+								building = Building.objects.get(id=dept['bldg_id'])
+							except Building.DoesNotExist:
+								# Assume the teledata is wrong
+								pass
+							else:
+								dining_loc.googlemap_point   = building.googlemap_point
+								dining_loc.illustrated_point = building.illustrated_point
+								dining_loc.poly_coords       = building.poly_coords
+						try:
+							dining_loc.save()
+						except Exception, e:
+							logging.error('Unable to save dining location: %s' % str(e))
+
+						created, grouped_location = GroupedLocation.objects.get_or_create(object_pk=dining_loc.pk,content_type=dining_loc_ctype)
+						if created:
+							group.locations.add(grouped_location)
 
 '''
 	This shit should be built into the exporter.  When looking at the groups
