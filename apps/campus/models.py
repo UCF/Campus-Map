@@ -15,6 +15,8 @@ import json
 import logging
 
 
+log = logging.getLogger(__name__)
+
 class MapQuerySet(QuerySet):
 	'''
 	Model inheritance with content type and inheritance-aware manager
@@ -483,7 +485,7 @@ class DiningLocation(MapObj):
 			try:
 				group.save()
 			except Exception, e:
-				logging.error('Unable to save group: %s' % str(e))
+				log.error('Unable to save group: %s' % str(e))
 		
 		dining_loc_ctype = ContentType.objects.get(
 								app_label=DiningLocation._meta.app_label,
@@ -496,7 +498,7 @@ class DiningLocation(MapObj):
 				url  = '?'.join([settings.PHONEBOOK, urllib.urlencode(params)])
 				page = urllib.urlopen(url)
 			except Exception, e:
-				logging.error('Unabe to open URL %s: %s' % (url, str(e)))
+				log.error('Unabe to open URL %s: %s' % (url, str(e)))
 			else:
 				try:
 					depts = json.loads(page.read())
@@ -504,7 +506,7 @@ class DiningLocation(MapObj):
 				except Exception, e:
 					log.error('Unable to parse JSON: %s' % str(e))
 				except KeyError:
-					logging.error('Malformed JSON response. Expecting `results` key.')
+					log.error('Malformed JSON response. Expecting `results` key.')
 				else:
 					for dept in depts['results']:
 						# Check existence
@@ -530,9 +532,9 @@ class DiningLocation(MapObj):
 						try:
 							dining_loc.save()
 						except Exception, e:
-							logging.error('Unable to save dining location: %s' % str(e))
+							log.error('Unable to save dining location: %s' % str(e))
 
-						created, grouped_location = GroupedLocation.objects.get_or_create(object_pk=dining_loc.pk,content_type=dining_loc_ctype)
+						grouped_location, created = GroupedLocation.objects.get_or_create(object_pk=dining_loc.pk,content_type=dining_loc_ctype)
 						if created:
 							group.locations.add(grouped_location)
 
