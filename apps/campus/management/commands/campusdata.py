@@ -2,7 +2,7 @@ import os.path, re, json, sys, campus, StringIO, warnings
 from django.core.management.base import BaseCommand
 from django.core.management import call_command
 from campus.admin import create_groupable_locations
-from campus.models import Group, GroupedLocation, MapObj
+from campus.models import Group, GroupedLocation, MapObj, DiningLocation
 from django.db.models.query import QuerySet
 from django.db import connection, transaction
 try:
@@ -72,7 +72,11 @@ class Command(BaseCommand):
 					continue # skip groups, must run last
 				print "  Updating %s ..." % fixture
 				call_command('loaddata', fixture, verbosity=0, interactive=False)
-		
+
+		# Create/Update DiningLocations from search service
+		print '  Updating dining ...'
+		DiningLocation.refresh()
+
 		# Groups
 		#   for the m2m relation, create all GroupedLocation instances
 		#   had to wait until all locations and contenttypes initiated
