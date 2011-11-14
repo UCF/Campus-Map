@@ -60,29 +60,6 @@ class Command(BaseCommand):
 		#syncdb,
 		call_command('syncdb', verbosity=0, interactive=False)
 		
-		# drop the cache db tables. call the django createcachetable command to recreate them
-		try: settings.CACHES
-		except AttributeError: pass # Caching in general is not configured
-		else:
-			for name,details in settings.CACHES.items():
-				try: details['BACKEND']
-				except KeyError: pass # Cache not configured correctly
-				else:
-					if details['BACKEND'].split('.')[-1] == 'DatabaseCache':
-						try: details['LOCATION']
-						except KeyError: pass# Cache not configured correctly
-						else:
-							# Even with IF EXISTS, this DROP statement will produce a warning.
-							# Since we don't want that printed to the console, supress warnings
-							# for a moment. An alternate method of doing this would be to redirect
-							# stdout momentarily.
-							error = True
-							with warnings.catch_warnings():
-								warnings.simplefilter('ignore')
-								error = self.run_query('DROP TABLE IF EXISTS `%s`' % details['LOCATION'])
-							if not error:
-								call_command('createcachetable', details['LOCATION'], verbosity=0, interactive=False)
-		
 		# load all the data from fixtures
 		path = os.path.join(os.path.dirname(campus.__file__), 'fixtures')
 		fixtures = os.listdir(path)
