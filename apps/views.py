@@ -134,19 +134,30 @@ def organization_search(q):
 		logger.error('Issue with organization search service')
 		return None
 
-def get_orgs():
-	orgs = cache.get('organizations')
-	if orgs is None:
-		url = settings.PHONEBOOK + '?use=tableSearch&in=organizations&order_by=name&order=ASC'
+
+class Orgs:
+	url  = settings.PHONEBOOK + '?use=tableSearch&in=organizations&order_by=name&order=ASC'
+	data = None
+	
+	@classmethod
+	def fetch(cls):
 		try:
-			results = urllib.urlopen(url).read()
-			orgs = json.loads(results)
+			results  = urllib.urlopen(cls.url).read()
+			orgs     = json.loads(results)
+			cls.data = orgs
+			return True
 		except:
+			return False
+
+
+def get_orgs():
+	if Orgs.data is None:
+		result = Orgs.fetch()
+		if not result:
 			print "Issue with phonebook search service"
 			return None
-		else:
-			cache.set('organizations', orgs)
-	return orgs
+	return Orgs.data
+
 
 def get_depts():
 	depts = cache.get('departments')
