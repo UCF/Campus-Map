@@ -46,3 +46,7 @@ DATABASES = {
 # Read settings.py for more details about these settings
 #GOOGLE_CAN_SEE_ME = False
 #GOOGLE_LOOK_HERE  = "http://map.ucf.edu"
+
+
+# Disable Cache
+#CACHES = { 'default': { 'BACKEND': 'django.core.cache.backends.dummy.DummyCache', } }
