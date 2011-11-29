@@ -1,0 +1,90 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<title>UCF Campus Map</title>
+	<script src="http://maps.google.com/maps/api/js?sensor=false" type="text/javascript" ></script>
+	<style>
+		body, html { background:none; }
+		#wrap { width:700px; margin:0 auto; position:relative; }
+		#head { padding-bottom:10px; }
+		#map-canvas { width:100%; height:700px; background:#E5E3DF; border:1px solid #979797; clear:both; }
+		#foot { position:relative; padding-top:10px; }
+		.right { width:49%; float:right; text-align:right; }
+		.left { width:49%; float:left; }
+		.clear { clear:both; height:1px; overflow:hidden; }
+		textarea { resize:none; width:420px; float:right; height:100px; font-family:georgia, serif; padding:10px; }
+		a.iclose { display:none; }
+		@media print {
+			textarea { margin:0; border:0; }
+			.iBox { background:black !important; }
+		}
+		h1 { font-size:16px; }
+		
+	</style>
+</head>
+<body>
+	
+	
+	<div id="wrap">
+		<div id="head">
+			<img src="{{MEDIA_URL}}images/ucf.png" alt="UCF Stands For Opporuntiy">
+			<textarea onclick="javascript:this.innerHTML = '';">Notes...</textarea>
+		</div>
+		{% if loc %}
+			<h1>{{ loc.name }}</h1>
+		{% endif %}
+		<div id="map-canvas"></div>
+		<div id="foot">
+			<div class="left">
+				4000 Central Florida Blvd. Orlando, FL 32816
+			</div>
+			<div class="right">
+				UCF Campus Map http://map.ucf.edu/
+			</div>
+			<div class="clear"></div>
+		</div>
+		
+		
+	</div>
+	
+	<script>
+	/**************************************************************************\
+		Create a google map
+	\**************************************************************************/
+	var loc = {
+		{% if loc and loc.googlemap_point %}
+			set  : true,
+			x    : {{loc.googlemap_point}}[0],
+			y    : {{loc.googlemap_point}}[1],
+			name : "{{loc.name}}"
+		{% else %}
+			set  : false,
+			x    : 28.601669501975557,
+			y    : -81.200527721813230,
+			name : null
+		{% endif %}
+	};
+	
+	var center = new google.maps.LatLng(loc.x, loc.y);
+	
+	var options = {
+	  zoom: 16,
+	  center: center,
+	  mapTypeId: google.maps.MapTypeId.ROADMAP
+	};
+	
+	var map = new google.maps.Map(document.getElementById("map-canvas"), options);
+	
+	if(loc.set){
+		var marker = new google.maps.Marker({
+			position: center,
+			title:loc.name
+		});
+		marker.setMap(map);
+	}
+	
+	</script>
+	
+</body>
+</html>

@@ -41,6 +41,9 @@ urlpatterns += patterns('',
 	# search
 	url(r'^search/$', 'views.search', name="search"),
 	
+	# print layout
+	url(r'^print/$', 'views.print_layout', name="print"),
+	
 	# org individual page and org profile pages
 	url(r'^organizations/$', 'views.organizations', name="organizations"),
 	url(r'^organizations/(?P<id>\d+)/([^/]+/)?$', 'views.organization', name="org"),
