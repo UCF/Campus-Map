@@ -302,14 +302,14 @@ Campus.menuInit = function(){
 	// sliding windows
 	Campus.menuWin = $('#menu-window');
 	Campus.menuWin.equalHeights();
-	Campus.menuMargin = -246;
+	Campus.menuMargin = 0;
 	$('.nav').click(function(){
 		var winNum = $(this).attr('data-nav');
-		$('.nav').removeClass('active');
-		$('#nav-'+winNum).addClass('active');
-		Campus.menuMargin = '-' + (Number(winNum) * 230 + 16);
-		Campus.menuWin.animate({"margin-left" : Campus.menuMargin }, 300);
 		$.cookie('menu_page', winNum);
+		winNum -= 1;
+		Campus.menuMargin = '-' + (Number(winNum) * 230);
+		console.log(Campus.menuMargin);
+		Campus.menuWin.animate({"margin-left" : Campus.menuMargin }, 300);
 	});
 	
 	var menu_page = Number($.cookie('menu_page'));
@@ -317,13 +317,10 @@ Campus.menuInit = function(){
 		$('#nav-' + menu_page).click();
 	}
 
-	Campus.stage = $('#menu-stage');
-	Campus.stageVisible = false;
-	Campus.stageNext  = $('#menu-stage-next');
+	Campus.stage      = $('#menu-stage');
 	Campus.tabOne     = $('#tab-one');
 	Campus.tabTwo     = $('#tab-two');
 	Campus.menuTitle  = $('#menu-title');
-	Campus.menuPages  = $('#menu-pages');
 	Campus.menuGap    = $('#menu .gap');
 	var menuWidth     = $('#menu-header').width() - 15;
 	Campus.menuGap.resize = function(){
@@ -335,9 +332,7 @@ Campus.menuInit = function(){
 	};
 	Campus.menuGap.resize();
 	
-	
 	// upper-right email icon
-	Campus.menuIcons  = $('#menu-icons');
 	Campus.permalink  = Campus.urls.base_url + '/?show=%s';
 	Campus.mailto     = function(title, link){
 		title   = escape(title);
@@ -356,21 +351,15 @@ Campus.menuInit = function(){
 	
 	Campus.menu.show = function(label){
 		if(label==='main'){
-			Campus.stageNext.animate({"width" : 0 }, 300);
 			Campus.menuWin.animate({"margin-left" : Campus.menuMargin }, 300);
-			Campus.menuPages.animate({"top" : 2 }, 300);
-			Campus.menuIcons.animate({"top" : 28 }, 300);
 			Campus.tabOne.removeClass('off');
 			Campus.tabTwo.addClass('off');
 		} else {
-			Campus.stageNext.animate({"width" : 230 }, 300);
 			Campus.tabTwo.removeClass('off');
 			Campus.tabOne.addClass('off');
 			Campus.menuTitle.html(label);
 			Campus.tabTwo.show();
-			Campus.menuWin.animate({"margin-left" : -246 }, 300);
-			Campus.menuPages.animate({"top" : -26 }, 300);
-			Campus.menuIcons.animate({"top" :  2  }, 300);
+			Campus.menuWin.animate({"margin-left" : -690 }, 300);
 		}
 		Campus.menuGap.resize();
 	};
@@ -762,6 +751,7 @@ Campus.layers = {
 				var marker = this.markers[i];
 				if(marker.setVisible){ marker.setVisible(true);}
 			}
+			
 			return;
 		},
 		unload : function() {

@@ -15,14 +15,6 @@
 	
 		<div id="menu-window">
 	
-			<div id="menu-stage-next" class="slide"></div>
-	
-			<div id="menu-stage" class="slide">
-				<div class="item load">
-					Loading...
-				</div>
-			</div>
-	
 			<div id="menu-1" class="slide">
 				<div class="item" id="item-desc">
 					<img src="{{MEDIA_URL}}images/buildings/_home.jpg">
@@ -38,7 +30,7 @@
 				</div>
 				<div class="more-menu">
 					<span>&nbsp;</span>
-					<a class="next nav" data-nav="2">Next Menu &#9654;</a>
+					<a class="next nav" data-nav="2" id="nav-2">Next Menu &#9654;</a>
 					<div class="clear"></div>
 				</div>
 			</div>
@@ -59,7 +51,7 @@
 			
 				<div class="more-menu">
 					<a class="prev nav" data-nav="1">&#9664; Previous Menu</a>
-					<a class="next nav" data-nav="3">Next Menu &#9654;</a>
+					<a class="next nav" data-nav="3" id="nav-3">Next Menu &#9654;</a>
 					<div class="clear"></div>
 				</div>
 			</div>
@@ -72,6 +64,13 @@
 					<div class="clear"></div>
 				</div>
 			</div>
+			
+			<div id="menu-stage" class="slide">
+				<div class="item load">
+					Loading...
+				</div>
+			</div>
+			
 		</div>
 		<div id="menu-screen"></div>
 		<div class="clear"></div>

@@ -219,7 +219,7 @@ footer dd { padding:8px 0 0 8px; margin:0; }
 .ie7 #menu-header { width:230px; background:#C5C5C5; border:1px solid #676767; border-bottom:0; padding-top:3px; }
 #menu h2 { font-size:13px; line-height:22px; margin:0; padding:0 0 0 6px; color:white; text-align: left; }
 #menu h2 a { display:block; float:left; position:relative; color:white; }
-#menu h2 a span { display:block; float:left; background:black; padding:0 5px; }
+#menu h2 a span { display:block; float:left; background:black; padding:0 3px; }
 #menu h2 a .l { padding:0; width:12px; height:22px; overflow:hidden; background:url('img/menu-tabs.png'); }
 #menu h2 a .r { padding:0; width:16px; height:22px; overflow:hidden; background:url('img/menu-tabs.png'); background-position:0 -22px; }
 #menu .gap { height:22px; width:145px; float:left; background:#626262; background:rgba(0,0,0,.5); border-top-right-radius:3px; }
@@ -249,7 +249,7 @@ footer dd { padding:8px 0 0 8px; margin:0; }
 .item ul li a:hover { text-decoration:underline; }
 
 #menu-wrap { position:absolute; top:-5000px; }
-#menu-window { width:2000px; position:relative; margin-left:-246px;  }
+#menu-window { width:2000px; position:relative;  }
 #menu .slide { padding:8px 8px 23px 8px; width:214px; float:left; position:relative; }
 #menu #menu-stage { padding-bottom:0; }
 #menu .load { color:#5981B7; padding:20px; background-image:url('img/spinner.gif'); background-repeat:no-repeat; background-position:center 50px; height:150px; }
