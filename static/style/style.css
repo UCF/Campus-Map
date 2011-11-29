@@ -17,7 +17,7 @@ h3 a { text-decoration:none; }
 h4 { font-family: "Trebuchet MS", sans-serif; }
 
 label { padding:3px; vertical-align:baseline; border-radius:2px; -moz-border-radius: 2px; -webkit-border-radius: 2px; 
-	border:1px solid white; border:1px solid rgba(255,255,255,0);  }
+	border:1px solid #fafaf9; border:1px solid rgba(255,255,255,0);  }
 label.disabled { color:#555; }
 label.disabled:hover { cursor:default; color:#555; }
 label:hover { cursor:pointer; color:white; }
@@ -206,28 +206,28 @@ footer dd { padding:8px 0 0 8px; margin:0; }
 	width:230px; margin:0 5px 0 0; padding:0 0 6px 0;
 	border-radius:2px; -moz-border-radius: 2px; -webkit-border-radius: 2px;
 	border:1px solid #3b3b39; border:1px solid rgba(0,0,0,0.6);
-	background: rgb(255, 255, 255); background: rgba(255, 255, 255, 0.6);
+	background: #fafaf9; background: rgba(255, 255, 255, 0.6);
 	box-shadow:2px 2px 3px rgba(0, 0, 0, 0.25); -moz-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.25); -webkit-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.25); }
 .safari #menu { margin-top:0; }
 
 /* menu header */
 #menu-header { position:relative; overflow:hidden; height:22px; }
 #menu-icons { position:absolute; top:1px; right:15px;  }
-#menu-icons a { display:block; float:left; height:20px; width:24px; background: transparent url('img/menu-icons.png'); text-indent:-50px; overflow:hidden; }
+#menu-icons a.foo { display:block; float:left; height:20px; width:24px; background: transparent url('img/menu-icons.png'); text-indent:-50px; overflow:hidden; }
 #menu-icons #email:hover { background-position:0 -1px; }
 
-.ie7 #menu-header { width:230px; background:#C5C5C5; border:1px solid #676767; border-bottom:0; padding-top:2px; }
-#menu h2 { font-size:14px; line-height:22px; margin:0; padding:0 0 0 6px; color:white; text-align: left; }
+.ie7 #menu-header { width:230px; background:#C5C5C5; border:1px solid #676767; border-bottom:0; padding-top:3px; }
+#menu h2 { font-size:13px; line-height:22px; margin:0; padding:0 0 0 6px; color:white; text-align: left; }
 #menu h2 a { display:block; float:left; position:relative; color:white; }
 #menu h2 a span { display:block; float:left; background:black; padding:0 5px; }
 #menu h2 a .l { padding:0; width:12px; height:22px; overflow:hidden; background:url('img/menu-tabs.png'); }
 #menu h2 a .r { padding:0; width:16px; height:22px; overflow:hidden; background:url('img/menu-tabs.png'); background-position:0 -22px; }
-#menu .gap { height:22px; width:147px; float:left; background:#626262; background:rgba(0,0,0,.5); border-top-right-radius:3px; }
+#menu .gap { height:22px; width:145px; float:left; background:#626262; background:rgba(0,0,0,.5); border-top-right-radius:3px; }
 #menu #tab-two { display:none; }
-#menu #tab-two .l { background-position:0 -44px; }
+#menu #tab-two .l { background-position:0 -44px; width:16px; }
 #menu #tab-one.off span { background:#626262; background:rgba(0,0,0,.5); } 
 #menu #tab-one.off .l { background:url('img/menu-tabs.png'); background-position:0 -66px; } 
-#menu #tab-one.off .r { display:none; }
+#menu #tab-one.off .r { display:none;}
 #menu #tab-two.off span { background:#626262; background:rgba(0,0,0,.5); } 
 #menu #tab-two.off .l { display:none; } 
 #menu #tab-two.off .r { background:url('img/menu-tabs.png'); background-position:0 -88px; } 

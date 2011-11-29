@@ -320,9 +320,21 @@ Campus.menuInit = function(){
 	Campus.stage = $('#menu-stage');
 	Campus.stageVisible = false;
 	Campus.stageNext  = $('#menu-stage-next');
-	Campus.label      = $('#menu-label-main');
-	Campus.labelStage = $('#menu-label-stage');
+	Campus.tabOne     = $('#tab-one');
+	Campus.tabTwo     = $('#tab-two');
+	Campus.menuTitle  = $('#menu-title');
 	Campus.menuPages  = $('#menu-pages');
+	Campus.menuGap    = $('#menu .gap');
+	var menuWidth     = $('#menu-header').width() - 15;
+	Campus.menuGap.resize = function(){
+		var width = menuWidth - Campus.tabOne.width();
+		if(Campus.tabTwo.is(":visible")){
+			width -= Campus.tabTwo.width();
+		}
+		Campus.menuGap.width(width);
+	};
+	Campus.menuGap.resize();
+	
 	
 	// upper-right email icon
 	Campus.menuIcons  = $('#menu-icons');
@@ -335,31 +347,32 @@ Campus.menuInit = function(){
 		return "mailto:?subject=" + subject + "&body=" + body;
 	}
 	
-	Campus.label.click(function(){
+	Campus.tabOne.click(function(){
 		Campus.menu.show('main');
 	});
-	Campus.labelStage.click(function(){
-		Campus.menu.show($(this).html());
+	Campus.tabTwo.click(function(){
+		Campus.menu.show(Campus.menuTitle.html());
 	});
 	
 	Campus.menu.show = function(label){
 		if(label==='main'){
 			Campus.stageNext.animate({"width" : 0 }, 300);
 			Campus.menuWin.animate({"margin-left" : Campus.menuMargin }, 300);
-			Campus.label.removeClass('inactive');
-			Campus.labelStage.addClass('inactive');
 			Campus.menuPages.animate({"top" : 2 }, 300);
 			Campus.menuIcons.animate({"top" : 28 }, 300);
+			Campus.tabOne.removeClass('off');
+			Campus.tabTwo.addClass('off');
 		} else {
 			Campus.stageNext.animate({"width" : 230 }, 300);
+			Campus.tabTwo.removeClass('off');
+			Campus.tabOne.addClass('off');
+			Campus.menuTitle.html(label);
+			Campus.tabTwo.show();
 			Campus.menuWin.animate({"margin-left" : -246 }, 300);
-			Campus.labelStage.html(label);
-			Campus.labelStage.removeClass('inactive');
-			Campus.labelStage.animate({"padding-left" : 68 }, 300);
-			Campus.label.addClass('inactive');
 			Campus.menuPages.animate({"top" : -26 }, 300);
 			Campus.menuIcons.animate({"top" :  2  }, 300);
 		}
+		Campus.menuGap.resize();
 	};
 
 	// menu hiding
