@@ -253,15 +253,8 @@ Campus.controls = function(){
 		Campus.infoBox.show(loc.name, latlng, loc.profile_link);
 		Campus.stage.html(loc.info);
 		Campus.menu.show('location');
+		Campus.buttons({'loc_id':loc.number, 'title':loc.name});
 		
-		
-		if(!loc.number){
-			$('#email').hide();
-		} else {
-			var permalink = Campus.permalink.replace("%s", loc.number);
-			var mailto = Campus.mailto(loc.name, permalink);
-			$('#email').attr('href', mailto).show();
-		}
 	}
 	
 	// Checkboxes:
@@ -302,14 +295,13 @@ Campus.menuInit = function(){
 	// sliding windows
 	Campus.menuWin = $('#menu-window');
 	Campus.menuWin.equalHeights();
-	Campus.menuMargin = -246;
+	Campus.menuMargin = 0;
 	$('.nav').click(function(){
 		var winNum = $(this).attr('data-nav');
-		$('.nav').removeClass('active');
-		$('#nav-'+winNum).addClass('active');
-		Campus.menuMargin = '-' + (Number(winNum) * 230 + 16);
-		Campus.menuWin.animate({"margin-left" : Campus.menuMargin }, 300);
 		$.cookie('menu_page', winNum);
+		winNum -= 1;
+		Campus.menuMargin = '-' + (Number(winNum) * 230);
+		Campus.menuWin.animate({"margin-left" : Campus.menuMargin }, 300);
 	});
 	
 	var menu_page = Number($.cookie('menu_page'));
@@ -317,49 +309,92 @@ Campus.menuInit = function(){
 		$('#nav-' + menu_page).click();
 	}
 
-	Campus.stage = $('#menu-stage');
-	Campus.stageVisible = false;
-	Campus.stageNext  = $('#menu-stage-next');
-	Campus.label      = $('#menu-label-main');
-	Campus.labelStage = $('#menu-label-stage');
-	Campus.menuPages  = $('#menu-pages');
+	Campus.stage      = $('#menu-stage');
+	Campus.tabOne     = $('#tab-one');
+	Campus.tabTwo     = $('#tab-two');
+	Campus.menuTitle  = $('#menu-title');
+	Campus.menuGap    = $('#menu .gap');
+	var menuWidth     = $('#menu-header').width() - 15;
+	Campus.menuGap.resize = function(){
+		var width = menuWidth - Campus.tabOne.width();
+		if(Campus.tabTwo.is(":visible")){
+			width -= Campus.tabTwo.width();
+		}
+		Campus.menuGap.width(width);
+	};
+	Campus.menuGap.resize();
 	
-	// upper-right email icon
-	Campus.menuIcons  = $('#menu-icons');
-	Campus.permalink  = Campus.urls.base_url + '/?show=%s';
-	Campus.mailto     = function(title, link){
-		title   = escape(title);
-		link    = escape(link);
-		subject = escape("UCF Campus Map - ") + title;
-		body    = title + escape("\n") + link;
-		return "mailto:?subject=" + subject + "&body=" + body;
+	// upper-right icons
+	Campus.buttons = function(options){
+		var defaults = {
+			'loc_id'  : false,
+			'title'   : false,
+			'subject' : "UCF Campus Map",
+			'body'    : escape("UCF Campus Map\nhttp://map.ucf.edu/"),
+			'print'   : Campus.urls.base_url + '/print/'
+		}
+		
+		// setting
+		var s = $.extend({}, defaults, options);
+		
+		if(s.loc_id){
+			var title   = escape(s.title);
+			var link    = Campus.urls.base_url + '/?show=' + s.loc_id;
+			link = escape(link);
+			s.subject = escape("UCF Campus Map - ") + title;
+			s.body    = title + escape("\n") + link;
+			s.print   = s.print + '?show=' + s.loc_id;
+		}
+		
+		// update email button
+		var mailto = "mailto:?subject=" + s.subject + "&body=" + s.body;
+		$('#email').attr('href', mailto);
+		
+		// update print button
+		$('#print').attr('href', s.print);
 	}
+	Campus.buttons();
 	
-	Campus.label.click(function(){
+	Campus.tabOne.click(function(){
 		Campus.menu.show('main');
 	});
-	Campus.labelStage.click(function(){
-		Campus.menu.show($(this).html());
+	Campus.tabTwo.click(function(){
+		Campus.menu.show({'label':Campus.menuTitle.html()});
 	});
 	
-	Campus.menu.show = function(label){
-		if(label==='main'){
-			Campus.stageNext.animate({"width" : 0 }, 300);
-			Campus.menuWin.animate({"margin-left" : Campus.menuMargin }, 300);
-			Campus.label.removeClass('inactive');
-			Campus.labelStage.addClass('inactive');
-			Campus.menuPages.animate({"top" : 2 }, 300);
-			Campus.menuIcons.animate({"top" : 28 }, 300);
-		} else {
-			Campus.stageNext.animate({"width" : 230 }, 300);
-			Campus.menuWin.animate({"margin-left" : -246 }, 300);
-			Campus.labelStage.html(label);
-			Campus.labelStage.removeClass('inactive');
-			Campus.labelStage.animate({"padding-left" : 68 }, 300);
-			Campus.label.addClass('inactive');
-			Campus.menuPages.animate({"top" : -26 }, 300);
-			Campus.menuIcons.animate({"top" :  2  }, 300);
+	Campus.menu.show = function(options){
+		var defaults = {
+			'label' : false,
+			'html'  : false
 		}
+		// settings
+		var s = $.extend({}, defaults, options);
+		
+		// reset menu back to "main"
+		if(!s.label && !s.html){
+			Campus.menuWin.animate({"margin-left" : Campus.menuMargin }, 300);
+			Campus.tabOne.removeClass('off');
+			Campus.tabTwo.addClass('off');
+		}
+		
+		// swtich tabs and update style
+		if(s.label){
+			Campus.tabTwo.removeClass('off');
+			Campus.tabOne.addClass('off');
+			Campus.menuTitle.html(s.label);
+			Campus.tabTwo.show();
+			
+			// slide window over to the stage
+			Campus.menuWin.animate({"margin-left" : -690 }, 300);
+		}
+		
+		// update stage content
+		if(s.html) Campus.stage.html(s.html);
+		
+		// fix styles
+		Campus.menuGap.resize();
+		$('.slide').css('min-height', '290px');
+		Campus.menuWin.equalHeights();
 	};
 
 	// menu hiding
@@ -749,6 +784,7 @@ Campus.layers = {
 				var marker = this.markers[i];
 				if(marker.setVisible){ marker.setVisible(true);}
 			}
+			
 			return;
 		},
 		unload : function() {
@@ -967,7 +1003,7 @@ Campus.info = function(id, pan){
 			if ($.browser.name !== 'msie'){
 				e.preventDefault();
 			}
-			Campus.menu.show('main');
+			Campus.menu.show();
 			Campus.infoBox.close();
 			return false;
 		}
@@ -978,12 +1014,8 @@ Campus.info = function(id, pan){
 		return; 
 	}
 	
-	// show in menu
-	Campus.menu.show('Location');
-	
-	if(Campus.ajax){ Campus.ajax.abort(); }
-	Campus.stage.html('<div class="item load">Loading...</div>');
-	$('#email').hide()
+	Campus.ajax.abort();
+	Campus.menu.show({'label':'Location', 'html':'<div class="item load">Loading...</div>'});
 	var url = Campus.urls.location.replace("%s", id);
 	
 	Campus.ajax = $.ajax({
@@ -992,7 +1024,7 @@ Campus.info = function(id, pan){
 		success: function(data){
 			var name = data.name;
 			var point = (Campus.map.mapTypeId === 'illustrated') ? 'illustrated_point' : 'googlemap_point';
-			Campus.stage.html(data.info);
+			Campus.menu.show({'html':data.info});
 			if(!data[point] || !data[point].length){
 				var err = '<code>' + name + '</code> does not have a map location';
 				Campus.error(err);
@@ -1001,14 +1033,12 @@ Campus.info = function(id, pan){
 			var latlng = new google.maps.LatLng(data[point][0], data[point][1]);
 			Campus.infoBox.show(name, latlng, data.profile_link);
 			
-			var permalink = Campus.permalink.replace("%s", id);
-			var mailto = Campus.mailto(name, permalink);
-			$('#email').attr('href', mailto).show();
-			
+			Campus.buttons({'loc_id' : id, 'title': name});
 			if(pan){ Campus.map.panTo(latlng);  }
 		},
 		error: function(){
-			Campus.stage.html('<div class="item">Error, request failed for building: ' + id + '</div>');
+			var html = '<div class="item">Error, request failed for building: ' + id + '</div>';
+			Campus.menu.show({'html':html});
 		}
 	});
 };

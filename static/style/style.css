@@ -17,7 +17,7 @@ h3 a { text-decoration:none; }
 h4 { font-family: "Trebuchet MS", sans-serif; }
 
 label { padding:3px; vertical-align:baseline; border-radius:2px; -moz-border-radius: 2px; -webkit-border-radius: 2px; 
-	border:1px solid white; border:1px solid rgba(255,255,255,0);  }
+	border:1px solid #fafaf9; border:1px solid rgba(255,255,255,0);  }
 label.disabled { color:#555; }
 label.disabled:hover { cursor:default; color:#555; }
 label:hover { cursor:pointer; color:white; }
@@ -138,7 +138,7 @@ footer dd { padding:8px 0 0 8px; margin:0; }
 #jquery-lightbox h2 a { text-decoration:none; }
 #jquery-lightbox p { font-weight:normal; font-size:13px; }
 #lightbox-image-details { padding-bottom:5px; }
-#map-go { text-align:right; padding:5px 0; font-size:14px; padding-right:22px; background:url('img/map_go.png') no-repeat right 8px; }
+#map-go { text-align:right; padding:5px 0; font-size:14px; padding-right:22px; background:url('img/map-go.png') no-repeat right 8px; }
 #map-go a { border-bottom: 1px dotted #A0A0A0; text-decoration:none; }
 #map-go a:hover { border-bottom: 1px solid #C30202; }
 
@@ -200,18 +200,41 @@ footer dd { padding:8px 0 0 8px; margin:0; }
 /******************************************************************************\
     Menu
 \******************************************************************************/
-#menu { 
-	color:#333; overflow:hidden; position:relative;
+#menu { margin-top:4px; color:#333; overflow:hidden; position:relative; }
+#menu-body {  
+	overflow:hidden;
+	width:230px; margin:0 5px 0 0; padding:0 0 6px 0;
 	border-radius:2px; -moz-border-radius: 2px; -webkit-border-radius: 2px;
-	box-shadow:2px 2px 3px rgba(0, 0, 0, 0.25); -moz-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.25); -webkit-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.25); 
-	width:230px; margin:2px 5px 0 0; padding:0 0 6px 0; border:1px solid #3b3b39; border:1px solid rgba(0,0,0,0.6); background: rgb(255, 255, 255); background: rgba(255, 255, 255, 0.6); }
+	border:1px solid #3b3b39; border:1px solid rgba(0,0,0,0.6);
+	background: #fafaf9; background: rgba(255, 255, 255, 0.6);
+	box-shadow:2px 2px 3px rgba(0, 0, 0, 0.25); -moz-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.25); -webkit-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.25); }
 .safari #menu { margin-top:0; }
-#menu h2 { margin:0; padding:0; color:white; text-align: left; line-height:13px; }
-#menu h2 a {
-	position:absolute; top:0; left:0; z-index:4;
-	color:white; font-family:"Helvetica Neue", helvetica; font-weight:bold; font-size:11.5px; margin:0; letter-spacing:.5px; letter-spacing:1px;
-	display:inline-block; padding:6px 18px 7px 6px; background:url('img/menu-arrow.png') top right no-repeat; }
-#menu h2 a.inactive { background-position:right -26px; font-weight:normal; }
+
+/* menu header */
+#menu-header { position:relative; overflow:hidden; height:22px; }
+#menu-icons { position:absolute; top:1px; right:15px;  }
+#menu-icons a { display:block; float:left; height:20px; width:20px; margin-left:4px; text-indent:-50px; overflow:hidden; background-color:transparent; background-position:center; }
+#menu-icons a:hover { background-position:0 -1px; }
+#menu-icons #email { background-image:url('img/icon-mail.png'); }
+#menu-icons #print { background-image:url('img/icon-print.png'); }
+
+.ie7 #menu-header { width:230px; background:#C5C5C5; border:1px solid #676767; border-bottom:0; padding-top:3px; }
+#menu h2 { font-size:13px; line-height:22px; margin:0; padding:0 0 0 6px; color:white; text-align: left; }
+#menu h2 a { display:block; float:left; position:relative; color:white; }
+#menu h2 a span { display:block; float:left; background:black; padding:0 3px; }
+#menu h2 a .l { padding:0; width:12px; height:22px; overflow:hidden; background:url('img/menu-tabs.png'); }
+#menu h2 a .r { padding:0; width:16px; height:22px; overflow:hidden; background:url('img/menu-tabs.png'); background-position:0 -22px; }
+#menu .gap { height:22px; width:145px; float:left; background:#626262; background:rgba(0,0,0,.5); border-top-right-radius:3px; }
+#menu #tab-two { display:none; }
+#menu #tab-two .l { background-position:0 -44px; width:16px; }
+#menu #tab-one.off span { background:#626262; background:rgba(0,0,0,.5); } 
+#menu #tab-one.off .l { background:url('img/menu-tabs.png'); background-position:0 -66px; } 
+#menu #tab-one.off .r { display:none;}
+#menu #tab-two.off span { background:#626262; background:rgba(0,0,0,.5); } 
+#menu #tab-two.off .l { display:none; } 
+#menu #tab-two.off .r { background:url('img/menu-tabs.png'); background-position:0 -88px; } 
+
+/* menu body items */
 #menu h3 { margin:0; padding:4px 0; font-family:helvetica; clear:both; font-size:13px;  }
 #menu .item { background:white; background: rgba(255, 255, 255, .8); padding:5px; margin:0 0 6px 0; display:block; border:1px solid #aaa; border:1px solid rgba(170, 170, 170, .5);  border-radius:4px; -moz-border-radius: 4px; -webkit-border-radius: 4px; }
 #menu a.item { text-decoration:none; color:black; background-image:url('img/arrow-grey.png'); background-repeat:no-repeat; background-position:right center; cursor:pointer; }
@@ -228,19 +251,8 @@ footer dd { padding:8px 0 0 8px; margin:0; }
 .item ul li a:hover { text-decoration:underline; }
 
 #menu-wrap { position:absolute; top:-5000px; }
-#menu-header { position:relative; overflow:hidden; height:26px; background: #7d7d7b; background:rgba(1,1,1, 0.5); }
-#menu #menu-label-main  { z-index:5; width:37px; }
-#menu #menu-label-stage { z-index:4; }
-#menu-pages { position:absolute; top:2px; right:0; }
-#menu-pages a { display:block; float:left; width:20px; height:20px; background:transparent url('img/menu-dots.png') 0 -20px; text-indent:-50px; overflow:hidden; }
-#menu-pages a.active, #menu-pages a.active:hover { background-position:0 0; }
-#menu-pages a:hover { background-position: 0 -40px; }
-#menu-icons { position:absolute; top:28px; right:5px; }
-#menu-icons a { display:block; float:left; background:green; height:20px; width:24px; background: transparent url('img/menu-icons.png'); text-indent:-50px; overflow:hidden; }
-#menu-icons #email:hover { background-position:0 -1px; }
-
-#menu-window { width:2000px; position:relative; margin-left:-246px;  }
-#menu .slide { padding:8px 8px 23px 8px; width:214px; float:left; position:relative; }
+#menu-window { width:2000px; position:relative;  }
+#menu .slide { padding:8px 8px 0 8px; width:214px; float:left; position:relative; }
 #menu #menu-stage { padding-bottom:0; }
 #menu .load { color:#5981B7; padding:20px; background-image:url('img/spinner.gif'); background-repeat:no-repeat; background-position:center 50px; height:150px; }
 #menu #menu-stage-next { min-height:50px; width:0px; overflow:hidden; }
@@ -264,6 +276,10 @@ footer dd { padding:8px 0 0 8px; margin:0; }
 #menu .more-menu a.next { text-align:right; }
 #menu .more-menu a:hover { color:#C30202; }
 
+
+/******************************************************************************\
+    Black google map infobox
+\******************************************************************************/
 .infoBox  { background:url('img/infobox-tip.png') no-repeat bottom left; color:white; padding-bottom:13px; }
 .iBox { -moz-border-radius: 5px; -webkit-border-radius:3px; border-radius:3px; padding:3px; max-width:250px;
 	background: black; background: rgba(0,0,0,.71); padding:5px 5px 6px; text-align:center; font-weight:bold;  } 

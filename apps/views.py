@@ -56,6 +56,17 @@ def server_error(request, **kwargs):
 	context = { 'MEDIA_URL': settings.MEDIA_URL }
 	return HttpResponseServerError(t.render(Context(context)))
 
+def print_layout(request):
+	loc = request.GET.get('loc', False)
+	if loc:
+		from campus.models import MapObj
+		try:
+			loc = MapObj.objects.get(id=loc)
+		except MapObj.DoesNotExist:
+			loc = False
+	return render(request, 'pages/print.djt', { 'loc' : loc })
+	
+	
 def pages(request, page=None):
 	'''
 	static pages with API placeholders
