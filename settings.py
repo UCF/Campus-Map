@@ -105,11 +105,11 @@ LOGGING = {
 			'filters': ['require_debug_true']
 		},
 		'file': {
-			'level': 'INFO',
-			'class':'logging.FileHandler',
-			'filename':'logs/application.log',
-			'formatter':'concise',
-			'filters': ['require_debug_false']
+			'level'    : 'INFO',
+			'class'    : 'logging.FileHandler',
+			'filename' : '%s/application.log' % os.path.join(PROJECT_FOLDER, 'logs'),
+			'formatter': 'concise',
+			'filters'  : ['require_debug_false']
 		}
 	},
 	'loggers': {
