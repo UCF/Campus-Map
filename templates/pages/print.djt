@@ -30,6 +30,7 @@
 		<div id="head">
 			<img src="{{MEDIA_URL}}images/ucf.png" alt="UCF Stands For Opporuntiy">
 			<textarea onclick="javascript:this.innerHTML = '';">Notes...</textarea>
+			<div class="clear"></div>
 		</div>
 		{% if loc %}
 			<h1>{{ loc.name }}</h1>
@@ -69,9 +70,10 @@
 	var center = new google.maps.LatLng(loc.x, loc.y);
 	
 	var options = {
-	  zoom: 16,
-	  center: center,
-	  mapTypeId: google.maps.MapTypeId.ROADMAP
+		zoom: 16,
+		center: center,
+		mapTypeControl: false,
+		mapTypeId: google.maps.MapTypeId.ROADMAP
 	};
 	
 	var map = new google.maps.Map(document.getElementById("map-canvas"), options);

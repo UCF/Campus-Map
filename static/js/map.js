@@ -253,15 +253,8 @@ Campus.controls = function(){
 		Campus.infoBox.show(loc.name, latlng, loc.profile_link);
 		Campus.stage.html(loc.info);
 		Campus.menu.show('location');
+		Campus.buttons({'loc_id':loc.number, 'title':loc.name});
 		
-		
-		if(!loc.number){
-			$('#email').hide();
-		} else {
-			var permalink = Campus.permalink.replace("%s", loc.number);
-			var mailto = Campus.mailto(loc.name, permalink);
-			$('#email').attr('href', mailto).show();
-		}
 	}
 	
 	// Checkboxes:
@@ -308,7 +301,6 @@ Campus.menuInit = function(){
 		$.cookie('menu_page', winNum);
 		winNum -= 1;
 		Campus.menuMargin = '-' + (Number(winNum) * 230);
-		console.log(Campus.menuMargin);
 		Campus.menuWin.animate({"margin-left" : Campus.menuMargin }, 300);
 	});
 	
@@ -332,36 +324,77 @@ Campus.menuInit = function(){
 	};
 	Campus.menuGap.resize();
 	
-	// upper-right email icon
-	Campus.permalink  = Campus.urls.base_url + '/?show=%s';
-	Campus.mailto     = function(title, link){
-		title   = escape(title);
-		link    = escape(link);
-		subject = escape("UCF Campus Map - ") + title;
-		body    = title + escape("\n") + link;
-		return "mailto:?subject=" + subject + "&body=" + body;
+	// upper-right icons
+	Campus.buttons = function(options){
+		var defaults = {
+			'loc_id'  : false,
+			'title'   : false,
+			'subject' : "UCF Campus Map",
+			'body'    : escape("UCF Campus Map\nhttp://map.ucf.edu/"),
+			'print'   : Campus.urls.base_url + '/print/'
+		}
+		
+		// setting
+		var s = $.extend({}, defaults, options);
+		
+		if(s.loc_id){
+			var title   = escape(s.title);
+			var link    = Campus.urls.base_url + '/?show=' + s.loc_id;
+			link = escape(link);
+			s.subject = escape("UCF Campus Map - ") + title;
+			s.body    = title + escape("\n") + link;
+			s.print   = s.print + '?show=' + s.loc_id;
+		}
+		
+		// update email button
+		var mailto = "mailto:?subject=" + s.subject + "&body=" + s.body;
+		$('#email').attr('href', mailto);
+		
+		// update print button
+		$('#print').attr('href', s.print);
 	}
+	Campus.buttons();
 	
 	Campus.tabOne.click(function(){
 		Campus.menu.show('main');
 	});
 	Campus.tabTwo.click(function(){
-		Campus.menu.show(Campus.menuTitle.html());
+		Campus.menu.show({'label':Campus.menuTitle.html()});
 	});
 	
-	Campus.menu.show = function(label){
-		if(label==='main'){
+	Campus.menu.show = function(options){
+		var defaults = {
+			'label' : false,
+			'html'  : false
+		}
+		// settings
+		var s = $.extend({}, defaults, options);
+		
+		// reset menu back to "main"
+		if(!s.label && !s.html){
 			Campus.menuWin.animate({"margin-left" : Campus.menuMargin }, 300);
 			Campus.tabOne.removeClass('off');
 			Campus.tabTwo.addClass('off');
-		} else {
+		}
+		
+		// swtich tabs and update style
+		if(s.label){
 			Campus.tabTwo.removeClass('off');
 			Campus.tabOne.addClass('off');
-			Campus.menuTitle.html(label);
+			Campus.menuTitle.html(s.label);
 			Campus.tabTwo.show();
+			
+			// slide window over to the stage
 			Campus.menuWin.animate({"margin-left" : -690 }, 300);
 		}
+		
+		// update stage content
+		if(s.html) Campus.stage.html(s.html);
+		
+		// fix styles
 		Campus.menuGap.resize();
+		$('.slide').css('min-height', '290px');
+		Campus.menuWin.equalHeights();
 	};
 
 	// menu hiding
@@ -970,7 +1003,7 @@ Campus.info = function(id, pan){
 			if ($.browser.name !== 'msie'){
 				e.preventDefault();
 			}
-			Campus.menu.show('main');
+			Campus.menu.show();
 			Campus.infoBox.close();
 			return false;
 		}
@@ -981,12 +1014,8 @@ Campus.info = function(id, pan){
 		return; 
 	}
 	
-	// show in menu
-	Campus.menu.show('Location');
-	
-	if(Campus.ajax){ Campus.ajax.abort(); }
-	Campus.stage.html('<div class="item load">Loading...</div>');
-	$('#email').hide()
+	Campus.ajax.abort();
+	Campus.menu.show({'label':'Location', 'html':'<div class="item load">Loading...</div>'});
 	var url = Campus.urls.location.replace("%s", id);
 	
 	Campus.ajax = $.ajax({
@@ -995,7 +1024,7 @@ Campus.info = function(id, pan){
 		success: function(data){
 			var name = data.name;
 			var point = (Campus.map.mapTypeId === 'illustrated') ? 'illustrated_point' : 'googlemap_point';
-			Campus.stage.html(data.info);
+			Campus.menu.show({'html':data.info});
 			if(!data[point] || !data[point].length){
 				var err = '<code>' + name + '</code> does not have a map location';
 				Campus.error(err);
@@ -1004,14 +1033,12 @@ Campus.info = function(id, pan){
 			var latlng = new google.maps.LatLng(data[point][0], data[point][1]);
 			Campus.infoBox.show(name, latlng, data.profile_link);
 			
-			var permalink = Campus.permalink.replace("%s", id);
-			var mailto = Campus.mailto(name, permalink);
-			$('#email').attr('href', mailto).show();
-			
+			Campus.buttons({'loc_id' : id, 'title': name});
 			if(pan){ Campus.map.panTo(latlng);  }
 		},
 		error: function(){
-			Campus.stage.html('<div class="item">Error, request failed for building: ' + id + '</div>');
+			var html = '<div class="item">Error, request failed for building: ' + id + '</div>';
+			Campus.menu.show({'html':html});
 		}
 	});
 };

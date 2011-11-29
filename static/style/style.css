@@ -138,7 +138,7 @@ footer dd { padding:8px 0 0 8px; margin:0; }
 #jquery-lightbox h2 a { text-decoration:none; }
 #jquery-lightbox p { font-weight:normal; font-size:13px; }
 #lightbox-image-details { padding-bottom:5px; }
-#map-go { text-align:right; padding:5px 0; font-size:14px; padding-right:22px; background:url('img/map_go.png') no-repeat right 8px; }
+#map-go { text-align:right; padding:5px 0; font-size:14px; padding-right:22px; background:url('img/map-go.png') no-repeat right 8px; }
 #map-go a { border-bottom: 1px dotted #A0A0A0; text-decoration:none; }
 #map-go a:hover { border-bottom: 1px solid #C30202; }
 
@@ -200,7 +200,7 @@ footer dd { padding:8px 0 0 8px; margin:0; }
 /******************************************************************************\
     Menu
 \******************************************************************************/
-#menu { margin-top:2px; color:#333; overflow:hidden; position:relative; }
+#menu { margin-top:4px; color:#333; overflow:hidden; position:relative; }
 #menu-body {  
 	overflow:hidden;
 	width:230px; margin:0 5px 0 0; padding:0 0 6px 0;
@@ -213,8 +213,10 @@ footer dd { padding:8px 0 0 8px; margin:0; }
 /* menu header */
 #menu-header { position:relative; overflow:hidden; height:22px; }
 #menu-icons { position:absolute; top:1px; right:15px;  }
-#menu-icons a.foo { display:block; float:left; height:20px; width:24px; background: transparent url('img/menu-icons.png'); text-indent:-50px; overflow:hidden; }
-#menu-icons #email:hover { background-position:0 -1px; }
+#menu-icons a { display:block; float:left; height:20px; width:20px; margin-left:4px; text-indent:-50px; overflow:hidden; background-color:transparent; background-position:center; }
+#menu-icons a:hover { background-position:0 -1px; }
+#menu-icons #email { background-image:url('img/icon-mail.png'); }
+#menu-icons #print { background-image:url('img/icon-print.png'); }
 
 .ie7 #menu-header { width:230px; background:#C5C5C5; border:1px solid #676767; border-bottom:0; padding-top:3px; }
 #menu h2 { font-size:13px; line-height:22px; margin:0; padding:0 0 0 6px; color:white; text-align: left; }
@@ -250,7 +252,7 @@ footer dd { padding:8px 0 0 8px; margin:0; }
 
 #menu-wrap { position:absolute; top:-5000px; }
 #menu-window { width:2000px; position:relative;  }
-#menu .slide { padding:8px 8px 23px 8px; width:214px; float:left; position:relative; }
+#menu .slide { padding:8px 8px 0 8px; width:214px; float:left; position:relative; }
 #menu #menu-stage { padding-bottom:0; }
 #menu .load { color:#5981B7; padding:20px; background-image:url('img/spinner.gif'); background-repeat:no-repeat; background-position:center 50px; height:150px; }
 #menu #menu-stage-next { min-height:50px; width:0px; overflow:hidden; }
