@@ -394,6 +394,9 @@ Campus.menuInit = function(){
 		// fix styles
 		Campus.menuGap.resize();
 		$('.slide').css('min-height', '290px');
+		
+		if($.browser.name === "msie") return;
+		
 		Campus.menuWin.equalHeights();
 	};
 
@@ -1016,7 +1019,8 @@ Campus.info = function(id, pan){
 		return; 
 	}
 	
-	Campus.ajax.abort();
+	try{ Campus.ajax.abort(); }
+	catch(e) { /* ie sux */ }
 	Campus.menu.show({'label':'Location', 'html':'<div class="item load">Loading...</div>'});
 	var url = Campus.urls.location.replace("%s", id);
 	
@@ -1204,7 +1208,8 @@ Campus.search = function(){
 		
 		//'escape' key
 		if(keyCode===27){
-			Campus.ajax.abort();
+			try{ Campus.ajax.abort(); }
+			catch(e) { /* ie sux */ }
 			search.find('ul').remove();
 			return;
 		}
