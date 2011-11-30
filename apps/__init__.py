@@ -26,6 +26,6 @@ def map_context(request):
 	context_extras['base_url'] = base_url
 	
 	# {{static}}
-	context_extras['static'] = base_url + settings.MEDIA_URL
+	context_extras['static'] = settings.MEDIA_URL
 	
 	return context_extras
