@@ -20,7 +20,7 @@
 			textarea { margin:0; border:0; }
 			.iBox { background:black !important; }
 		}
-		h1 { font-size:16px; }
+		h1 { font-size:22px; font-family: sans-serif; margin:0; padding:0 0 4px 0; }
 		
 	</style>
 </head>
