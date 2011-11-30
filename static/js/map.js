@@ -402,6 +402,7 @@ Campus.menuInit = function(){
 		if(Campus.menuHidden){
 			//show
 			Campus.menuWin.slideDown();
+			$('#menu-screen').hide();
 			Campus.menu.removeClass('closed');
 			Campus.menu.animate({"opacity" : 1 }, 300);
 			Campus.menuHidden = false;
@@ -412,6 +413,7 @@ Campus.menuInit = function(){
 			Campus.menu.animate({"opacity" : 0.5 }, 300, function(){
 				Campus.menu.addClass('closed');
 			});
+			$('#menu-screen').show();
 			Campus.menuHidden = true;
 			$.cookie('hide_menu', true);
 		}

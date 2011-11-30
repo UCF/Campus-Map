@@ -200,9 +200,9 @@ footer dd { padding:8px 0 0 8px; margin:0; }
 /******************************************************************************\
     Menu
 \******************************************************************************/
-#menu { margin:4px 5px 5px 0; width:230px; color:#333; overflow:hidden; position:relative; }
+#menu { margin:4px 5px 0 0; width:230px; color:#333; overflow:hidden; position:relative; }
 #menu-body {  
-	overflow:hidden; padding:0 0 6px 0;
+	overflow:hidden; padding:0 0 5px 0;
 	border-radius:2px; -moz-border-radius: 2px; -webkit-border-radius: 2px;
 	border:1px solid #3b3b39; border:1px solid rgba(0,0,0,0.6);
 	background: #fafaf9; background: rgba(255, 255, 255, 0.6);
@@ -212,13 +212,11 @@ footer dd { padding:8px 0 0 8px; margin:0; }
 /* menu header */
 #menu-header { position:relative; overflow:hidden; height:22px; }
 #menu-icons { position:absolute; top:1px; right:15px;  }
-.ie7 #menu-icons { top:4px; }
 #menu-icons a { display:block; float:left; height:20px; width:20px; margin-left:4px; text-indent:-50px; overflow:hidden; background-color:transparent; background-position:center; }
 #menu-icons a:hover { background-position:0 -1px; }
 #menu-icons #email { background-image:url('img/icon-mail.png'); }
 #menu-icons #print { background-image:url('img/icon-print.png'); }
 
-.ie7 #menu-header { width:228px; background:#C5C5C5; border:1px solid #676767; border-bottom:0; padding-top:3px; }
 #menu h2 { font-size:13px; line-height:22px; margin:0; padding:0 0 0 6px; color:white; text-align: left; }
 #menu h2 a { display:block; float:left; position:relative; color:white; }
 #menu h2 a span { display:block; float:left; background:black; padding:0 3px; }
@@ -233,6 +231,11 @@ footer dd { padding:8px 0 0 8px; margin:0; }
 #menu #tab-two.off span { background:#626262; background:rgba(0,0,0,.5); } 
 #menu #tab-two.off .l { display:none; } 
 #menu #tab-two.off .r { background:url('img/menu-tabs.png'); background-position:0 -88px; } 
+
+/* Check template for more IE fixes */
+.ie #menu #tab-one.off span { background:transparent; filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#7F000000',endColorstr='#7F000000'); }
+.ie #menu #tab-two.off span { background:transparent; filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#7F000000',endColorstr='#7F000000'); zoom: 1; }
+.ie #menu .gap { background:transparent; filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#7F000000',endColorstr='#7F000000'); zoom: 1; }
 
 /* menu body items */
 #menu h3 { margin:0; padding:4px 0; font-family:helvetica; clear:both; font-size:13px;  }
@@ -258,7 +261,7 @@ footer dd { padding:8px 0 0 8px; margin:0; }
 #menu #menu-stage-next { min-height:50px; width:0px; overflow:hidden; }
 #menu-screen { display:none; }
 #menu-screen:hover { cursor:pointer; }
-#menu-hide { display:block; height:12px; width:232px; z-index:11; position:relative; margin-top:-7px; clear:both; background:url('img/menu-collapse.png') top center no-repeat transparent; }
+#menu-hide { display:block; height:12px; width:230px; z-index:11; position:relative; margin-top:-7px; clear:both; background:url('img/menu-collapse.png') top center no-repeat transparent; }
 #menu-hide:hover { cursor:pointer; }
 
 .closed #menu #menu-window { display:none; }

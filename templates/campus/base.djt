@@ -1,6 +1,18 @@
 {% extends "base.djt"%}
 {% load weather %}
 
+{% block head %}
+{# IE is a dirty bastard.  Needs an absolute URL to work, thus needs to be here to have access to MEDIA_URL #}
+<style>
+.ie #menu h2 a .r         { background:none !important; filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src="{{ MEDIA_URL }}style/img/ie-sux/tab-dark-light.png", sizingMethod="crop"); zoom:1; }
+.ie #menu #tab-one .l     { background:none; filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src="{{ MEDIA_URL }}style/img/ie-sux/tab-dark-left.png", sizingMethod="crop"); zoom:1; }
+.ie #menu #tab-two .l     { background:none; filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src="{{ MEDIA_URL }}style/img/ie-sux/tab-light-dark.png", sizingMethod="crop"); zoom:1; }
+.ie #menu #tab-one.off .l { background:none; filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src="{{ MEDIA_URL }}style/img/ie-sux/tab-light-left.png", sizingMethod="crop"); zoom:1; } 
+.ie #menu #tab-two.off .r { background:none; filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src="{{ MEDIA_URL }}style/img/ie-sux/tab-light-light.png", sizingMethod="crop"); zoom:1; }
+</style>
+{% endblock %}
+
+
 {% block body %}
 <div id="map">
 	<header>
