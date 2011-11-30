@@ -314,7 +314,7 @@ Campus.menuInit = function(){
 	Campus.tabTwo     = $('#tab-two');
 	Campus.menuTitle  = $('#menu-title');
 	Campus.menuGap    = $('#menu .gap');
-	var menuWidth     = $('#menu-header').width() - 15;
+	var menuWidth     = $('#menu-header').width() - 10;
 	Campus.menuGap.resize = function(){
 		var width = menuWidth - Campus.tabOne.width();
 		if(Campus.tabTwo.is(":visible")){
