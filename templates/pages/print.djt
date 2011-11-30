@@ -15,6 +15,7 @@
 		.clear { clear:both; height:1px; overflow:hidden; }
 		textarea { resize:none; width:420px; float:right; height:100px; font-family:georgia, serif; padding:10px; }
 		a.iclose { display:none; }
+		.error { font-size:16px; font-family:sans-serif; color:#C6272C; font-weight:bold; padding:10px 0;  }
 		@media print {
 			textarea { margin:0; border:0; }
 			.iBox { background:black !important; }
@@ -34,6 +35,9 @@
 		</div>
 		{% if loc %}
 			<h1>{{ loc.name }}</h1>
+		{% endif %}
+		{% if error %}
+			<div class="error">{{error}}</div>
 		{% endif %}
 		<div id="map-canvas"></div>
 		<div id="foot">

@@ -8,7 +8,7 @@
 		
 		<div id="menu-icons">
 			<a href="" id="email" title="Share this Location">email</a>
-			<a href="" id="print" title="Print">print</a>
+			<a href="" id="print" title="Print" target="blank">print</a>
 		</div>
 	</div>
 	<div id="menu-body">

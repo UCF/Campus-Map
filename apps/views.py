@@ -57,14 +57,16 @@ def server_error(request, **kwargs):
 	return HttpResponseServerError(t.render(Context(context)))
 
 def print_layout(request):
-	loc = request.GET.get('loc', False)
+	loc   = request.GET.get('show', False)
+	error = False
 	if loc:
 		from campus.models import MapObj
 		try:
 			loc = MapObj.objects.get(id=loc)
 		except MapObj.DoesNotExist:
 			loc = False
-	return render(request, 'pages/print.djt', { 'loc' : loc })
+			error = "Location not found"
+	return render(request, 'pages/print.djt', { 'loc' : loc, 'error': error })
 	
 	
 def pages(request, page=None):

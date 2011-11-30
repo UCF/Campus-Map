@@ -129,11 +129,11 @@ Campus.maps = {
 			minZoom: 12,
 			maxZoom :16, //can go up to 18
 			getTile : function(coord, zoom, ownerDocument) {
-			  var div = ownerDocument.createElement('div');
-			  div.style.width = this.tileSize.width + 'px';
-			  div.style.height = this.tileSize.height + 'px';
-			  div.style.backgroundImage = this.bg(coord,zoom);
-			  return div;
+				var div = ownerDocument.createElement('div');
+				div.style.width = this.tileSize.width + 'px';
+				div.style.height = this.tileSize.height + 'px';
+				div.style.backgroundImage = this.bg(coord,zoom);
+				return div;
 			},
 			name : "Illustrated",
 			alt  : "Show illustrated map",
