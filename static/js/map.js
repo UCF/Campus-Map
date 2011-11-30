@@ -170,6 +170,7 @@ Campus.maps = {
 				Campus.map.setZoom(options.zoom);
 				Campus.map.setCenter(options.center);
 				Campus.layers.update();
+				Campus.buttons({'toggle_illustrated':true});
 			});
 		}
 	},
@@ -326,16 +327,28 @@ Campus.menuInit = function(){
 	
 	// upper-right icons
 	Campus.buttons = function(options){
+		
 		var defaults = {
 			'loc_id'  : false,
 			'title'   : false,
 			'subject' : "UCF Campus Map",
 			'body'    : escape("UCF Campus Map\nhttp://map.ucf.edu/"),
-			'print'   : Campus.urls.base_url + '/print/'
+			'print'   : Campus.urls.base_url + '/print/?',
+			'toggle_illustrated' : false
 		}
 		
 		// setting
 		var s = $.extend({}, defaults, options);
+		
+		var illustrated = (Campus.map.mapTypeId === 'illustrated');
+		
+		if(s.toggle_illustrated){
+			var href = $('#print').attr('href');
+			href = href.replace('&illustrated', '');
+			if(illustrated) href = href + '&illustrated';
+			$('#print').attr('href', href);
+			return;
+		}
 		
 		if(s.loc_id){
 			var title   = escape(s.title);
@@ -343,7 +356,7 @@ Campus.menuInit = function(){
 			link = escape(link);
 			s.subject = escape("UCF Campus Map - ") + title;
 			s.body    = title + escape("\n") + link;
-			s.print   = s.print + '?show=' + s.loc_id;
+			s.print   = s.print + '&show=' + s.loc_id;
 		}
 		
 		// update email button
@@ -351,6 +364,7 @@ Campus.menuInit = function(){
 		$('#email').attr('href', mailto);
 		
 		// update print button
+		if(illustrated) s.print = s.print + '&illustrated';
 		$('#print').attr('href', s.print);
 	}
 	Campus.buttons();
