@@ -49,7 +49,12 @@ urlpatterns += patterns('',
 	url(r'^organizations/(?P<id>\d+)/([^/]+/)?$', 'views.organization', name="org"),
 	
 	# admin
+	url(r'^admin/password_reset/$', 'django.contrib.auth.views.password_reset', name='password_reset'),
+	(r'^password_reset/done/$', 'django.contrib.auth.views.password_reset_done'),
+	(r'^reset/(?P<uidb36>[-\w]+)/(?P<token>[-\w]+)/$', 'django.contrib.auth.views.password_reset_confirm'),
+	(r'^reset/done/$', 'django.contrib.auth.views.password_reset_complete'),
 	(r'^admin/', include(admin.site.urls)),
+
 	
 	# catch-all for individual pages
 	url(r'^(?P<page>[\w-]+)/$', 'views.pages', name="page"),
