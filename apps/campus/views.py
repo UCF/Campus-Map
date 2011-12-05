@@ -5,6 +5,7 @@ from django.core.urlresolvers import reverse
 from campus.models import MapObj, DiningLocation
 from django.core.cache import cache
 from xml.etree import ElementTree
+from django.contrib.auth.decorators import login_required
 
 import settings, json, re, urllib
 
@@ -543,6 +544,35 @@ def regional_campuses(request, campus=None):
 	
 	return render(request, 'campus/regional-campuses.djt', context)
 
+@login_required
+def cache_admin(request, clear=False):
+	from django.core.cache import cache
+	from django.core.cache.backends.filebased import FileBasedCache
+	
+	error   = False
+	cleared = False
+	
+	if clear:
+		if isinstance(cache, FileBasedCache):
+			try:
+				shutil.rmtree(self._dir)
+				cleared = True
+			except (IOError, OSError) as e:
+				error = e
+		else:
+			cache.clear()
+			cleared = True
+	
+	context = {
+		'error'   : error,
+		'cleared' : cleared,
+		'num'     : cache._num_entries,
+	}
+	
+	return render(request, 'admin/cache.djt', context)
+	
+	
+	
 def data_dump(request):
 	from django.core import serializers
 	from django.db.models import get_apps, get_app

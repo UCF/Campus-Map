@@ -14,5 +14,6 @@ urlpatterns = patterns('campus.views',
 	
 	# campus admin views
 	url(r'^admin/dump/', 'data_dump', name="dump_data"),
+	url(r'^admin/cache/', 'cache_admin', name="cache"),
 	
 )

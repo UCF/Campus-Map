@@ -1,0 +1,29 @@
+{% extends "admin/index.html" %}
+
+{% block extrastyle %}
+	{{block.super}}
+	<style>
+		.colX { margin-right: 39em !important; }
+		#menu { float:right; width:18em; margin-right:-38em; }
+		#menu h2 { background: #eee url(../img/admin/nav-bg.gif) bottom left repeat-x; color: #666; }
+	</style>
+{% endblock %}
+
+{% block coltype %}colX{% endblock %}
+
+{% block content %}
+	{{ block.super }}
+	
+	<div id="menu">
+		<div class="module">
+			<h2>Other Stuffs</h2>
+			<a href="">stuff A</a> / <a href="">stuff B</a></li>
+		</div>
+	</div>
+	
+	
+	{% admin_media_prefix %}
+{% endblock %}
+
+
+
