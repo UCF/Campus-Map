@@ -1,28 +1,38 @@
 {% extends "admin/index.html" %}
+{% load adminmedia admin_list i18n %}
 
 {% block extrastyle %}
 	{{block.super}}
 	<style>
 		.colX { margin-right: 39em !important; }
-		#menu { float:right; width:18em; margin-right:-38em; }
-		#menu h2 { background: #eee url(../img/admin/nav-bg.gif) bottom left repeat-x; color: #666; }
+		#content-related { clear:right; margin-top:8px; }
+		#menu { float:right; width:18em; margin-right:-19em; }
+		#menu h2 { background: #eee url({% admin_media_prefix %}img/admin/nav-bg.gif) bottom left repeat-x; color: #666; }
+		#menu ul { padding-top:8px; padding-bottom:4px; }
+		#menu li span { font-size:80%; }
 	</style>
 {% endblock %}
 
+{% comment %}
 {% block coltype %}colX{% endblock %}
+{% endcomment %}
 
 {% block content %}
-	{{ block.super }}
 	
+	{% if user.is_superuser %}
 	<div id="menu">
 		<div class="module">
-			<h2>Other Stuffs</h2>
-			<a href="">stuff A</a> / <a href="">stuff B</a></li>
+			<h2>Management</h2>
+			<ul>
+				<li><a href="">Manage Cache</a></li>
+				<li><a href="{% url dump_data %}UCF Campus Map {%now "Y-m-d" %}.json">Data Export</a> <span>(right-click, save as)</span></li>
+			</ul>
 		</div>
 	</div>
+	{% endif %}
 	
+	{{ block.super }}
 	
-	{% admin_media_prefix %}
 {% endblock %}
 
 
