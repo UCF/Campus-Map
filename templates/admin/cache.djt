@@ -1,9 +1,45 @@
 {% extends "admin/base_site.html" %}
-{% load i18n %}
+
+{% block extrastyle %}
+	{{block.super}}
+	<style>
+		#content table { margin: 10px 0; }
+		#content table td { border:0; font-size:12px; }
+		#content table th { border:0; font-size:12px; padding-left:0; }
+		.success { pading:15px 0; font-weight:bold; color:#389D33; }
+		.error   { pading:15px 0; font-weight:bold; color:#8C2226; }
+	</style>
+{% endblock %}
+
+
+{% block breadcrumbs %}
+<div class="breadcrumbs">
+     <a href="../">Home</a> &rsaquo; Cache Management
+</div>
+{% endblock %}
+
 
 {% block content %}
-	{{block.super}}
 	
-	Yo yo yo yo.
-
+	{% if error %}
+		<div class="error">{{error}}</div>
+	{% else %}
+		
+		<h1>Cache</h1>
+		
+		{% if form.error %}<div class="error">{{form.error}}</div>{% endif %}
+		{% if form.success %}<div class="success">Cache cleared.</div>{% endif %}
+		
+		<table>
+		{% for attr,val in stats.items %}
+			<tr><th>{{attr}}:</th><td>{{val}}</td></tr>
+		{% endfor %}
+		</table>
+		
+		<form method="POST">
+			<input type="submit" value="Clear Cache">
+		</form>
+	
+	{% endif %}
+	
 {% endblock %}

@@ -12,6 +12,7 @@ INC_FOLDER        = os.path.join(PROJECT_FOLDER, 'third-party')
 TEMPL_FOLDER      = os.path.join(PROJECT_FOLDER, 'templates')
 ROOT_URLCONF      = os.path.basename(PROJECT_FOLDER) + '.urls'
 MEDIA_ROOT        = os.path.join(PROJECT_FOLDER, 'static')
+LOGIN_URL         = '/admin/'
 
 # Add local apps folder to python path
 sys.path.append(APP_FOLDER)

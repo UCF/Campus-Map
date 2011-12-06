@@ -54,7 +54,6 @@ urlpatterns += patterns('',
 	(r'^reset/(?P<uidb36>[-\w]+)/(?P<token>[-\w]+)/$', 'django.contrib.auth.views.password_reset_confirm'),
 	(r'^reset/done/$', 'django.contrib.auth.views.password_reset_complete'),
 	(r'^admin/', include(admin.site.urls)),
-
 	
 	# catch-all for individual pages
 	url(r'^(?P<page>[\w-]+)/$', 'views.pages', name="page"),

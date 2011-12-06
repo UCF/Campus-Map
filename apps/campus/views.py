@@ -544,34 +544,46 @@ def regional_campuses(request, campus=None):
 	
 	return render(request, 'campus/regional-campuses.djt', context)
 
-@login_required
-def cache_admin(request, clear=False):
+def cache_admin(request):
 	from django.core.cache import cache
-	from django.core.cache.backends.filebased import FileBasedCache
+	from django.core.cache.backends.filebased import CacheClass as FileBased
 	
-	error   = False
-	cleared = False
+	if not request.user.is_superuser:
+		return render(request, 'admin/cache.djt', { 'error': 'You are not authorized' })
 	
-	if clear:
-		if isinstance(cache, FileBasedCache):
-			try:
-				shutil.rmtree(self._dir)
-				cleared = True
-			except (IOError, OSError) as e:
-				error = e
+	form    = { 
+		'error'   : False,
+		'success' : False,
+	}
+	
+	if request.method == 'POST':
+		if cache._num_entries < 1:
+			form['success'] = True
 		else:
-			cache.clear()
-			cleared = True
+			# clear cache
+			if isinstance(cache, FileBased):
+				try:
+					import shutil
+					shutil.rmtree(cache._dir)
+					form['success'] = True
+				except (IOError, OSError) as e:
+					form['error'] = e
+			else:
+				cache.clear()
+				form['success'] = True
+	
+	stats = {
+		'Number of Entries': cache._num_entries,
+	}
 	
 	context = {
-		'error'   : error,
-		'cleared' : cleared,
-		'num'     : cache._num_entries,
+		'form'   : form,
+		'stats'  : stats,
 	}
 	
 	return render(request, 'admin/cache.djt', context)
-	
-	
+cache_admin = login_required(cache_admin)
+
 	
 def data_dump(request):
 	from django.core import serializers
