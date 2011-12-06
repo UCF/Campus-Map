@@ -15,6 +15,12 @@ ADMINS         = (
 )
 MANAGERS       = ADMINS
 
+
+# Email settings for mailing forgot password emails
+EMAIL_HOST          = ''
+EMAIL_PORT          = 
+
+
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash if there is a path component (optional in other cases).
 # 
