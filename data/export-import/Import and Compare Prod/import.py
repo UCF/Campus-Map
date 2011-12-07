@@ -90,6 +90,9 @@ def compare(mob, o):
 				
 		except KeyError:
 			
+			if k == "content_type":
+				continue
+			
 			# if locations
 			if k == 'locations':
 				g = Group.objects.get(id=o['pk'])
@@ -140,8 +143,6 @@ for o in prod:
 		try:
 			if str(model) == "emergencyphone":
 				id = '-'.join(['phone',str(o['pk'])])
-			elif str(model) == "group":
-				id = o['fields']['slug']
 			else:
 				id = '-'.join([str(model),str(o['pk'])])
 			mob = ct.get_object_for_this_type(pk=id)

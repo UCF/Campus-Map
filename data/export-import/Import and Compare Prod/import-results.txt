@@ -4697,3 +4697,502 @@ Results:
   Accepted: 1    
   Rejected: 2    
   Missing locally: 94   
+
+
+>>>>>>>>>>>>>>>>>>>> Wednesday December 07, 2011 11:36
+
+Reading contents of "UCF Campus Map 2011-12-07.json" 
+
+
+------------------------------------------------------------------------------
+  Inspecting Updates 
+------------------------------------------------------------------------------
+
+content type key error
+content type key error
+content type key error
+content type key error
+content type key error
+content type key error
+content type key error
+content type key error
+content type key error
+content type key error
+content type key error
+content type key error
+content type key error
+content type key error
+content type key error
+content type key error
+content type key error
+content type key error
+content type key error
+content type key error
+content type key error
+content type key error
+content type key error
+content type key error
+content type key error
+content type key error
+content type key error
+content type key error
+content type key error
+content type key error
+content type key error
+content type key error
+content type key error
+content type key error
+content type key error
+content type key error
+content type key error
+content type key error
+content type key error
+content type key error
+content type key error
+content type key error
+content type key error
+content type key error
+content type key error
+content type key error
+content type key error
+content type key error
+content type key error
+content type key error
+content type key error
+content type key error
+content type key error
+content type key error
+content type key error
+content type key error
+content type key error
+content type key error
+content type key error
+content type key error
+content type key error
+content type key error
+content type key error
+content type key error
+content type key error
+content type key error
+content type key error
+content type key error
+content type key error
+content type key error
+content type key error
+content type key error
+content type key error
+content type key error
+content type key error
+content type key error
+content type key error
+content type key error
+content type key error
+content type key error
+content type key error
+content type key error
+content type key error
+content type key error
+content type key error
+content type key error
+content type key error
+content type key error
+content type key error
+content type key error
+content type key error
+content type key error
+content type key error
+Academic Village II - Hercules [108]
+  name Academic Village II - Hercules
+  name Hercules 108
+accepted
+
+content type key error
+Academic Village II - Hercules [109]
+  name Academic Village II - Hercules
+  name Hercules 109
+accepted
+
+content type key error
+Academic Village II - Hercules [110]
+  name Academic Village II - Hercules
+  name Hercules 110
+accepted
+
+content type key error
+Academic Village II - Hercules [111]
+  name Academic Village II - Hercules
+  name Hercules 111
+accepted
+
+content type key error
+Academic Village II - Hercules [112]
+  name Academic Village II - Hercules
+  name Hercules 112
+accepted
+
+content type key error
+Academic Village II - Hercules [113]
+  name Academic Village II - Hercules
+  name Hercules 113
+accepted
+
+content type key error
+Academic Village II - Hercules [114]
+  name Academic Village II - Hercules
+  name Hercules 114
+accepted
+
+content type key error
+Academic Village II - Hercules [115]
+  name Academic Village II - Hercules
+  name Hercules 115
+accepted
+
+content type key error
+Missing Locally: map obj hercules-community 
+content type key error
+content type key error
+content type key error
+content type key error
+content type key error
+content type key error
+content type key error
+content type key error
+content type key error
+content type key error
+content type key error
+content type key error
+content type key error
+content type key error
+content type key error
+Lake Claire Commons [65]
+  name Lake Claire Commons
+  name Lake Claire Community Office and Center
+
+
+>>>>>>>>>>>>>>>>>>>> Wednesday December 07, 2011 11:37
+
+Reading contents of "UCF Campus Map 2011-12-07.json" 
+
+
+------------------------------------------------------------------------------
+  Inspecting Updates 
+------------------------------------------------------------------------------
+
+Missing Locally: map obj hercules-community 
+Lake Claire Commons [65]
+  name Lake Claire Commons
+  name Lake Claire Community Office and Center
+accepted
+
+Libra Commons [33]
+  name Libra Commons
+  name Libra Community Center
+accepted
+
+Academic Village I - Nike [101]
+  name Academic Village I - Nike
+  name Nike 101
+accepted
+
+Academic Village I - Nike [102]
+  name Academic Village I - Nike
+  name Nike 102
+accepted
+
+Academic Village I - Nike [103]
+  name Academic Village I - Nike
+  name Nike 103
+accepted
+
+Academic Village I - Nike [104]
+  name Academic Village I - Nike
+  name Nike 104
+accepted
+
+Academic Village I - Nike [105]
+  name Academic Village I - Nike
+  name Nike 105
+accepted
+
+Academic Village I - Nike [106]
+  name Academic Village I - Nike
+  name Nike 106
+accepted
+
+Academic Village I - Nike [107]
+  name Academic Village I - Nike
+  name Nike 107
+accepted
+
+Missing Locally: map obj nike-community 
+Residence Halls [residence-halls]
+  illustrated_point [85.046717867638506, -179.91926465915174]
+  illustrated_point [85.047143612403289, -179.91089761856162]
+accepted
+
+Residence Halls [residence-halls]
+  googlemap_point [28.602258438411337, -81.198629923440819]
+  googlemap_point [28.51560124539921, -81.31933343284831]
+accepted
+
+Missing Locally: map obj rosen-college-apartments 
+Rosen College of Hospitality Management [rosen-college]
+  googlemap_point [28.432559, -81.443424]
+  googlemap_point [28.42823781733697, -81.4417503015747]
+accepted
+
+Rosen College of Hospitality Management [rosen-college]
+  description (none)
+  description Rosen College of Hospitality Management
+accepted
+
+Pegasus Point [pp]
+  name Pegasus Point
+  name The Pointe at Central
+accepted
+
+Tower 1 [129]
+  name Tower 1
+  name Tower I
+accepted
+
+Tower 2 [130]
+  name Tower 2
+  name Tower II
+accepted
+
+Tower 3 [132]
+  name Tower 3
+  name Tower III
+accepted
+
+Tower 4 [133]
+  name Tower 4
+  name Tower IV
+accepted
+
+Missing Locally: map obj towers-knights-plaza 
+Missing Locally: map obj veterans-commemorative-site 
+Missing Locally: building rosen-college-apartments 
+Missing Locally: building veterans-commemorative-site 
+
+
+>>>>>>>>>>>>>>>>>>>> Wednesday December 07, 2011 13:14
+
+Reading contents of "UCF Campus Map 2011-12-07.json" 
+
+
+------------------------------------------------------------------------------
+  Inspecting Updates 
+------------------------------------------------------------------------------
+
+Missing Locally: map obj hercules-community 
+Missing Locally: map obj nike-community 
+Missing Locally: map obj rosen-college-apartments 
+Missing Locally: map obj towers-knights-plaza 
+Missing Locally: map obj veterans-commemorative-site 
+Missing Locally: building rosen-college-apartments 
+Missing Locally: building veterans-commemorative-site 
+Missing Locally: group hercules-community 
+Missing Locally: group nike-community 
+Location Missing in Group: [apollo-community] in [residence-halls]
+Location Missing in Group: [libra-community] in [residence-halls]
+Location Missing in Group: [nike-community] in [residence-halls]
+Location Missing in Group: [hercules-community] in [residence-halls]
+Location Missing in Group: [towers-knights-plaza] in [residence-halls]
+Location Missing in Group: [rosen-college-apartments] in [residence-halls]
+Location Removed in Group: [101] in [residence-halls]
+Location Removed in Group: [102] in [residence-halls]
+Location Removed in Group: [103] in [residence-halls]
+Location Removed in Group: [104] in [residence-halls]
+Location Removed in Group: [105] in [residence-halls]
+Location Removed in Group: [106] in [residence-halls]
+Location Removed in Group: [107] in [residence-halls]
+Location Removed in Group: [108] in [residence-halls]
+Location Removed in Group: [109] in [residence-halls]
+Location Removed in Group: [110] in [residence-halls]
+Location Removed in Group: [111] in [residence-halls]
+Location Removed in Group: [112] in [residence-halls]
+Location Removed in Group: [113] in [residence-halls]
+Location Removed in Group: [114] in [residence-halls]
+Location Removed in Group: [115] in [residence-halls]
+Location Removed in Group: [30] in [residence-halls]
+Location Removed in Group: [85] in [residence-halls]
+Location Removed in Group: [86] in [residence-halls]
+Location Removed in Group: [9] in [residence-halls]
+Location Removed in Group: [33] in [residence-halls]
+Location Removed in Group: [31] in [residence-halls]
+Location Removed in Group: [10] in [residence-halls]
+Location Removed in Group: [11] in [residence-halls]
+Location Removed in Group: [32] in [residence-halls]
+Location Removed in Group: [84] in [residence-halls]
+Location Removed in Group: [129] in [residence-halls]
+Location Removed in Group: [130] in [residence-halls]
+Location Removed in Group: [132] in [residence-halls]
+Location Removed in Group: [133] in [residence-halls]
+Location Removed in Group: [8] in [residence-halls]
+Missing Locally: group towers-knights-plaza 
+
+
+Results:
+  M2M missing: 6    
+  M2M removed: 30   
+  Accepted: 0    
+  Rejected: 0    
+  Missing locally: 10   
+
+
+>>>>>>>>>>>>>>>>>>>> Wednesday December 07, 2011 14:29
+
+Reading contents of "UCF Campus Map 2011-12-07.json" 
+
+
+------------------------------------------------------------------------------
+  Inspecting Updates 
+------------------------------------------------------------------------------
+
+Missing Locally: map obj hercules-community 
+Missing Locally: map obj nike-community 
+Missing Locally: map obj rosen-college-apartments 
+Missing Locally: map obj towers-knights-plaza 
+Missing Locally: map obj veterans-commemorative-site 
+Missing Locally: building rosen-college-apartments 
+Missing Locally: building veterans-commemorative-site 
+Missing Locally: group hercules-community 
+Missing Locally: group nike-community 
+Location Missing in Group: [apollo-community] in [residence-halls]
+Location Missing in Group: [libra-community] in [residence-halls]
+Location Missing in Group: [nike-community] in [residence-halls]
+Location Missing in Group: [hercules-community] in [residence-halls]
+Location Missing in Group: [towers-knights-plaza] in [residence-halls]
+Location Missing in Group: [rosen-college-apartments] in [residence-halls]
+Location Removed in Group: [101] in [residence-halls]
+Location Removed in Group: [102] in [residence-halls]
+Location Removed in Group: [103] in [residence-halls]
+Location Removed in Group: [104] in [residence-halls]
+Location Removed in Group: [105] in [residence-halls]
+Location Removed in Group: [106] in [residence-halls]
+Location Removed in Group: [107] in [residence-halls]
+Location Removed in Group: [108] in [residence-halls]
+Location Removed in Group: [109] in [residence-halls]
+Location Removed in Group: [110] in [residence-halls]
+Location Removed in Group: [111] in [residence-halls]
+Location Removed in Group: [112] in [residence-halls]
+Location Removed in Group: [113] in [residence-halls]
+Location Removed in Group: [114] in [residence-halls]
+Location Removed in Group: [115] in [residence-halls]
+Location Removed in Group: [30] in [residence-halls]
+Location Removed in Group: [85] in [residence-halls]
+Location Removed in Group: [86] in [residence-halls]
+Location Removed in Group: [9] in [residence-halls]
+Location Removed in Group: [33] in [residence-halls]
+Location Removed in Group: [31] in [residence-halls]
+Location Removed in Group: [10] in [residence-halls]
+Location Removed in Group: [11] in [residence-halls]
+Location Removed in Group: [32] in [residence-halls]
+Location Removed in Group: [84] in [residence-halls]
+Location Removed in Group: [129] in [residence-halls]
+Location Removed in Group: [130] in [residence-halls]
+Location Removed in Group: [132] in [residence-halls]
+Location Removed in Group: [133] in [residence-halls]
+Location Removed in Group: [8] in [residence-halls]
+Missing Locally: group towers-knights-plaza 
+
+
+Results:
+  M2M missing: 6    
+  M2M removed: 30   
+  Accepted: 0    
+  Rejected: 0    
+  Missing locally: 10   
+
+
+>>>>>>>>>>>>>>>>>>>> Wednesday December 07, 2011 14:34
+
+Reading contents of "UCF Campus Map 2011-12-07.json" 
+
+
+------------------------------------------------------------------------------
+  Inspecting Updates 
+------------------------------------------------------------------------------
+
+Missing Locally: map obj hercules-community 
+Missing Locally: map obj nike-community 
+Missing Locally: map obj residence-halls 
+Missing Locally: map obj rosen-college-apartments 
+Missing Locally: map obj towers-knights-plaza 
+Missing Locally: map obj veterans-commemorative-site 
+Missing Locally: building rosen-college-apartments 
+Missing Locally: building veterans-commemorative-site 
+Missing Locally: group hercules-community 
+Missing Locally: group nike-community 
+Missing Locally: group residence-halls 
+Missing Locally: group towers-knights-plaza 
+
+
+Results:
+  Accepted: 0    
+  Rejected: 0    
+  Missing locally: 12   
+
+
+>>>>>>>>>>>>>>>>>>>> Wednesday December 07, 2011 16:16
+
+Reading contents of "UCF Campus Map 2011-12-07.json" 
+
+
+------------------------------------------------------------------------------
+  Inspecting Updates 
+------------------------------------------------------------------------------
+
+Missing Locally: map obj residence-halls 
+Missing Locally: group residence-halls 
+
+
+Results:
+  Accepted: 0    
+  Rejected: 0    
+  Missing locally: 2    
+
+
+>>>>>>>>>>>>>>>>>>>> Wednesday December 07, 2011 16:23
+
+Reading contents of "UCF Campus Map 2011-12-07.json" 
+
+
+------------------------------------------------------------------------------
+  Inspecting Updates 
+------------------------------------------------------------------------------
+
+Residence Halls [residence-halls]
+  illustrated_point [85.04728623297899, -179.91088102239078]
+  illustrated_point [85.047143612403289, -179.91089761856162]
+accepted
+
+Residence Halls [residence-halls]
+  googlemap_point [28.515593416701666, -81.319185041730037]
+  googlemap_point [28.51560124539921, -81.31933343284831]
+accepted
+
+
+
+Results:
+  Accepted: 2    
+  Rejected: 0    
+
+
+>>>>>>>>>>>>>>>>>>>> Wednesday December 07, 2011 16:23
+
+Reading contents of "UCF Campus Map 2011-12-07.json" 
+
+
+------------------------------------------------------------------------------
+  Inspecting Updates 
+------------------------------------------------------------------------------
+
+
+
+Results:
+  Accepted: 0    
+  Rejected: 0    

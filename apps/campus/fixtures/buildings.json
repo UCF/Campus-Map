@@ -8,126 +8,6 @@
         }
     }, 
     {
-        "pk": "101", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "AV1", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "102", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "AV2", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "103", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "AV3", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "104", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "AV4", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "105", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "AV5", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "106", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "AV6", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "107", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "AV7", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "108", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "AV08", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "109", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "AV09", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "110", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "AV10", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "111", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "AV11", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "112", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "AV12", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "113", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "AV13", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "114", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "AV14", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "115", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "AV15", 
-            "sketchup": null
-        }
-    }, 
-    {
         "pk": "406", 
         "model": "campus.building", 
         "fields": {
@@ -808,6 +688,70 @@
         }
     }, 
     {
+        "pk": "108", 
+        "model": "campus.building", 
+        "fields": {
+            "abbreviation": "AV08", 
+            "sketchup": null
+        }
+    }, 
+    {
+        "pk": "109", 
+        "model": "campus.building", 
+        "fields": {
+            "abbreviation": "AV09", 
+            "sketchup": null
+        }
+    }, 
+    {
+        "pk": "110", 
+        "model": "campus.building", 
+        "fields": {
+            "abbreviation": "AV10", 
+            "sketchup": null
+        }
+    }, 
+    {
+        "pk": "111", 
+        "model": "campus.building", 
+        "fields": {
+            "abbreviation": "AV11", 
+            "sketchup": null
+        }
+    }, 
+    {
+        "pk": "112", 
+        "model": "campus.building", 
+        "fields": {
+            "abbreviation": "AV12", 
+            "sketchup": null
+        }
+    }, 
+    {
+        "pk": "113", 
+        "model": "campus.building", 
+        "fields": {
+            "abbreviation": "AV13", 
+            "sketchup": null
+        }
+    }, 
+    {
+        "pk": "114", 
+        "model": "campus.building", 
+        "fields": {
+            "abbreviation": "AV14", 
+            "sketchup": null
+        }
+    }, 
+    {
+        "pk": "115", 
+        "model": "campus.building", 
+        "fields": {
+            "abbreviation": "AV15", 
+            "sketchup": null
+        }
+    }, 
+    {
         "pk": "73", 
         "model": "campus.building", 
         "fields": {
@@ -1048,6 +992,62 @@
         }
     }, 
     {
+        "pk": "101", 
+        "model": "campus.building", 
+        "fields": {
+            "abbreviation": "AV1", 
+            "sketchup": null
+        }
+    }, 
+    {
+        "pk": "102", 
+        "model": "campus.building", 
+        "fields": {
+            "abbreviation": "AV2", 
+            "sketchup": null
+        }
+    }, 
+    {
+        "pk": "103", 
+        "model": "campus.building", 
+        "fields": {
+            "abbreviation": "AV3", 
+            "sketchup": null
+        }
+    }, 
+    {
+        "pk": "104", 
+        "model": "campus.building", 
+        "fields": {
+            "abbreviation": "AV4", 
+            "sketchup": null
+        }
+    }, 
+    {
+        "pk": "105", 
+        "model": "campus.building", 
+        "fields": {
+            "abbreviation": "AV5", 
+            "sketchup": null
+        }
+    }, 
+    {
+        "pk": "106", 
+        "model": "campus.building", 
+        "fields": {
+            "abbreviation": "AV6", 
+            "sketchup": null
+        }
+    }, 
+    {
+        "pk": "107", 
+        "model": "campus.building", 
+        "fields": {
+            "abbreviation": "AV7", 
+            "sketchup": null
+        }
+    }, 
+    {
         "pk": "74", 
         "model": "campus.building", 
         "fields": {
@@ -1172,14 +1172,6 @@
         "model": "campus.building", 
         "fields": {
             "abbreviation": "SA64", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "pp", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": null, 
             "sketchup": null
         }
     }, 
@@ -1416,6 +1408,14 @@
         }
     }, 
     {
+        "pk": "rosen-college-apartments", 
+        "model": "campus.building", 
+        "fields": {
+            "abbreviation": null, 
+            "sketchup": null
+        }
+    }, 
+    {
         "pk": "7b", 
         "model": "campus.building", 
         "fields": {
@@ -1552,6 +1552,14 @@
         }
     }, 
     {
+        "pk": "pp", 
+        "model": "campus.building", 
+        "fields": {
+            "abbreviation": null, 
+            "sketchup": null
+        }
+    }, 
+    {
         "pk": "50c", 
         "model": "campus.building", 
         "fields": {
@@ -1664,6 +1672,14 @@
         }
     }, 
     {
+        "pk": "veterans-commemorative-site", 
+        "model": "campus.building", 
+        "fields": {
+            "abbreviation": null, 
+            "sketchup": null
+        }
+    }, 
+    {
         "pk": "153", 
         "model": "campus.building", 
         "fields": {
@@ -1736,3 +1752,4 @@
         }
     }
 ]
+

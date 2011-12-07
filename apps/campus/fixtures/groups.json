@@ -116,6 +116,46 @@
         }
     }, 
     {
+        "pk": "hercules-community", 
+        "model": "campus.group", 
+        "fields": {
+            "locations": [
+                [
+                    "campus.building", 
+                    "108"
+                ], 
+                [
+                    "campus.building", 
+                    "109"
+                ], 
+                [
+                    "campus.building", 
+                    "110"
+                ], 
+                [
+                    "campus.building", 
+                    "111"
+                ], 
+                [
+                    "campus.building", 
+                    "112"
+                ], 
+                [
+                    "campus.building", 
+                    "113"
+                ], 
+                [
+                    "campus.building", 
+                    "114"
+                ], 
+                [
+                    "campus.building", 
+                    "115"
+                ]
+            ]
+        }
+    }, 
+    {
         "pk": "lake-claire", 
         "model": "campus.group", 
         "fields": {
@@ -224,7 +264,7 @@
         }
     }, 
     {
-        "pk": "residence-halls", 
+        "pk": "nike-community", 
         "model": "campus.group", 
         "fields": {
             "locations": [
@@ -255,70 +295,18 @@
                 [
                     "campus.building", 
                     "107"
-                ], 
-                [
-                    "campus.building", 
-                    "108"
-                ], 
-                [
-                    "campus.building", 
-                    "109"
-                ], 
-                [
-                    "campus.building", 
-                    "110"
-                ], 
-                [
-                    "campus.building", 
-                    "111"
-                ], 
-                [
-                    "campus.building", 
-                    "112"
-                ], 
-                [
-                    "campus.building", 
-                    "113"
-                ], 
-                [
-                    "campus.building", 
-                    "114"
-                ], 
-                [
-                    "campus.building", 
-                    "115"
-                ], 
+                ]
+            ]
+        }
+    }, 
+    {
+        "pk": "residence-halls", 
+        "model": "campus.group", 
+        "fields": {
+            "locations": [
                 [
                     "campus.building", 
                     "402"
-                ], 
-                [
-                    "campus.building", 
-                    "30"
-                ], 
-                [
-                    "campus.building", 
-                    "85"
-                ], 
-                [
-                    "campus.building", 
-                    "86"
-                ], 
-                [
-                    "campus.building", 
-                    "9"
-                ], 
-                [
-                    "campus.building", 
-                    "33"
-                ], 
-                [
-                    "campus.building", 
-                    "31"
-                ], 
-                [
-                    "campus.building", 
-                    "10"
                 ], 
                 [
                     "campus.building", 
@@ -341,17 +329,44 @@
                     "64"
                 ], 
                 [
-                    "campus.building", 
-                    "11"
+                    "campus.group", 
+                    "apollo-community"
+                ], 
+                [
+                    "campus.group", 
+                    "libra-community"
+                ], 
+                [
+                    "campus.group", 
+                    "hercules-community"
+                ], 
+                [
+                    "campus.group", 
+                    "nike-community"
+                ], 
+                [
+                    "campus.group", 
+                    "towers-knights-plaza"
                 ], 
                 [
                     "campus.building", 
-                    "32"
-                ], 
-                [
-                    "campus.building", 
-                    "84"
-                ], 
+                    "rosen-college-apartments"
+                ]
+            ]
+        }
+    }, 
+    {
+        "pk": "food", 
+        "model": "campus.group", 
+        "fields": {
+            "locations": []
+        }
+    }, 
+    {
+        "pk": "towers-knights-plaza", 
+        "model": "campus.group", 
+        "fields": {
+            "locations": [
                 [
                     "campus.building", 
                     "129"
@@ -367,12 +382,9 @@
                 [
                     "campus.building", 
                     "133"
-                ], 
-                [
-                    "campus.building", 
-                    "8"
                 ]
             ]
         }
     }
 ]
+
