@@ -538,11 +538,18 @@ class DiningLocation(MapObj):
 						if created:
 							group.locations.add(grouped_location)
 
-'''
-	This shit should be built into the exporter.  When looking at the groups
-	in the export, fucking thing makes no sense wihtout this manager
-'''
 class GroupedLocationManager(models.Manager):
+	'''
+	Used with the managment commands to import/export.  When the many-to-many
+	relationship is being dumped, for example locations within a group, 
+	each location looks like:
+	, it looks like: 
+	"locations": [
+		["campus.building", "406"],
+		...
+		["campus.building", "410"],
+	]
+	'''
 	def get_by_natural_key(self, content_type, object_pk):
 		app_label, model = content_type.split(".")
 		content_type = ContentType.objects.get(app_label=app_label, model=model)
