@@ -92,7 +92,11 @@
 		
 		{% if location.profile and location.profile != "None" %}
 		<div id="profile-image">
-			<img src="{{MEDIA_URL}}images/buildings/{{ location.image }}">
+			{% if location.object_type == 'RegionalCampus' %}
+				<img src="{{MEDIA_URL}}images/regional-campuses/{{location.id}}.jpg" alt="{{location.description}}" />
+			{% else %}
+				<img src="{{MEDIA_URL}}images/buildings/{{ location.image }}">
+			{% endif %}
 		</div>
 		{% endif %}
 		
