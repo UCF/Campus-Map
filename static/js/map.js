@@ -771,8 +771,8 @@ Campus.layers = {
 			// Catch first run when markers haven't been generated
 			if(this.markers.length < 1){
 				// custom icon
-				var icon   = new google.maps.MarkerImage(Campus.urls['static'] + '/images/markers/disabled.png', new google.maps.Size(32, 32), new google.maps.Point(0, 0));
-				var shadow = new google.maps.MarkerImage(Campus.urls['static'] + '/images/markers/disabled.png', new google.maps.Size(32, 32), new google.maps.Point(0, 0), new google.maps.Point(0, 32));
+				var icon   = new google.maps.MarkerImage(Campus.urls['static'] + 'images/markers/disabled.png', new google.maps.Size(17, 17), new google.maps.Point(0, 0));
+				var shadow = new google.maps.MarkerImage(Campus.urls['static'] + 'images/markers/disabled.png', new google.maps.Size(17, 17), new google.maps.Point(0, 0), new google.maps.Point(0, 17));
 				
 				// create and place markers
 				for(var spot in this.data.handicap){
@@ -785,10 +785,11 @@ Campus.layers = {
 						);
 						this.markers.push(
 							new google.maps.Marker({
-								icon:icon,
-								clickable: false,
-								position: latlng, 
-								map: Campus.map
+								icon      : icon,
+								clickable : false,
+								title     : "what?",
+								position  : latlng, 
+								map       : Campus.map
 							})
 						);
 					}
