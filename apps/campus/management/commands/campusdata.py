@@ -31,12 +31,23 @@ class Command(BaseCommand):
 		return error
 	
 	def reset_sql(self):
+		
 		cursor = connection.cursor()
-		campus_tables = "SELECT table_name \
-				FROM INFORMATION_SCHEMA.TABLES \
-				WHERE table_schema='%s' \
-				AND LOCATE('campus_', table_name) = 1" % settings.DATABASES['default']['NAME']
-		cursor.execute(campus_tables)
+		try:
+			# mysql
+			campus_tables = "SELECT table_name \
+					FROM INFORMATION_SCHEMA.TABLES \
+					WHERE table_schema='%s' \
+					AND LOCATE('campus_', table_name) = 1" % settings.DATABASES['default']['NAME']
+			cursor.execute(campus_tables)
+		except DatabaseError:
+			pass
+		try:
+			# sqlite
+			campus_tables = "SELECT name FROM sqlite_master WHERE type IN ('table','view') AND name LIKE 'campus_%%'"
+			cursor.execute(campus_tables)
+		except DatabaseError:
+			raise DatabaseError('Can not read table names from the database')
 		
 		reset_sql = ''
 		for r in cursor:

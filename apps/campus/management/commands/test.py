@@ -1,5 +1,7 @@
 '''
-	This file is used only for testing code
+	This file is used only for testing code.
+	to use, in your Campus Map project:
+		python manage.py test
 	
 '''
 from django.core.management.base import BaseCommand
@@ -8,6 +10,7 @@ from apps.campus.models import MapObj
 from django.core.management import call_command
 
 def prompt():
+	''' keep me, I'm useful '''
 	while(True):
 		i = raw_input("Accept? [y/n] ")
 		if(i == 'y'): 
@@ -22,7 +25,19 @@ def prompt():
 class Command(BaseCommand):
 	
 	def handle(self, *args, **options):
+		'''
+		From here down
+		Feel free to overwrite, delete, or change anything
 		
-		for o in MapObj.objects.all():
-			if o.image:
-				print "%25s" % o.image
+		'''
+		
+		import settings
+		from django.db import connection, transaction
+		cursor = connection.cursor()
+		print cursor.description
+		sql = "SELECT name FROM sqlite_master WHERE type IN ('table','view') AND name LIKE 'campus_%%'"
+		print sql
+		cursor.execute(sql)
+		print cursor.description
+		for r in cursor:
+			print r

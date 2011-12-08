@@ -1,5 +1,6 @@
 '''
-	This file is used only for testing code
+	This was needed at some point (testing 3rd party system for displaying geodata)
+	Not so much needed now, only kept for posterity.
 	
 '''
 from django.core.management.base import BaseCommand
