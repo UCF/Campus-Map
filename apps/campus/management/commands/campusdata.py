@@ -29,7 +29,20 @@ class Command(BaseCommand):
 			except DatabaseError:
 				pass # "unknown table, happens on second pass"
 		return error
+	
+	def reset_sql(self):
+		cursor = connection.cursor()
+		campus_tables = "SELECT table_name \
+				FROM INFORMATION_SCHEMA.TABLES \
+				WHERE table_schema='%s' \
+				AND LOCATE('campus_', table_name) = 1" % settings.DATABASES['default']['NAME']
+		cursor.execute(campus_tables)
 		
+		reset_sql = ''
+		for r in cursor:
+			reset_sql += "DROP TABLE `%s`;\n" % r
+		return reset_sql
+	
 	def handle(self, *args, **options):
 		
 		print "Crunching datas:"
@@ -43,13 +56,16 @@ class Command(BaseCommand):
 		The SQL generated from sqlclear always failed (an issue with the names
 		of foriegn key constraints).  If the SQL is ran twice, the tables with 
 		dependencies will be removed first and independent tables removed second
+		
+		Future compatibility issues:
+		sqlclear and reset both generate sql based on models in the project.
+		Sometimes we have to jump back/forth between map versions and the
+		models/tablenames between the two are not yet knows.  The sql is now
+		generated directly from in information schema
 		'''
+		
 		for i in range(2):
-			output = StringIO.StringIO()
-			sys.stdout = output
-			call_command('sqlclear', 'campus')
-			sys.stdout = sys.__stdout__
-			sql = output.getvalue()
+			sql = self.reset_sql()
 			error = self.run_query(sql)
 		if error:
 			print "Failed to update the db :("

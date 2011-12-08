@@ -130,6 +130,12 @@ def create_groupable_locations(**kwargs):
 	''' ensure all campus locations are groupable '''
 	for ct in ContentType.objects.filter(app_label="campus"):
 		model = models.get_model("campus", ct.model)
+		
+		''' clean up content type, unused content types are created from going back/forth between map version and renaming models '''
+		if model is None:
+			ct.delete()
+			continue
+		
 		if not issubclass(model, campus.models.MapObj):
 			continue
 		for loc in model.objects.all():
