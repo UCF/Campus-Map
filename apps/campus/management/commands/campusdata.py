@@ -30,7 +30,7 @@ class Command(BaseCommand):
 				pass # "unknown table, happens on second pass"
 		return error
 	
-	def reset_sql(self):
+	def table_names(self):
 		
 		cursor = connection.cursor()
 		try:
@@ -40,19 +40,26 @@ class Command(BaseCommand):
 					WHERE table_schema='%s' \
 					AND LOCATE('campus_', table_name) = 1" % settings.DATABASES['default']['NAME']
 			cursor.execute(campus_tables)
+			return cursor
 		except DatabaseError:
 			pass
+		
 		try:
 			# sqlite
 			campus_tables = "SELECT name FROM sqlite_master WHERE type IN ('table','view') AND name LIKE 'campus_%%'"
 			cursor.execute(campus_tables)
+			return cursor
 		except DatabaseError:
-			raise DatabaseError('Can not read table names from the database')
+			pass
 		
-		reset_sql = ''
-		for r in cursor:
-			reset_sql += "DROP TABLE `%s`;\n" % r
-		return reset_sql
+		raise DatabaseError('Can not read table names from the database')
+	
+	def reset_sql(self):
+		tables = self.table_names()
+		sql = ''
+		for name in tables:
+			sql += "DROP TABLE `%s`;\n" % name
+		return sql
 	
 	def handle(self, *args, **options):
 		
