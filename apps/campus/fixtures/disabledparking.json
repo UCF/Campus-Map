@@ -1,0 +1,262 @@
+[
+    {
+        "pk": "hp-", 
+        "model": "campus.disabledparking", 
+        "fields": {}
+    }, 
+    {
+        "pk": "disabled-parking-4-spaces-andromeda-circle", 
+        "model": "campus.disabledparking", 
+        "fields": {}
+    }, 
+    {
+        "pk": "disabled-parking-4-spaces-bookstore", 
+        "model": "campus.disabledparking", 
+        "fields": {}
+    }, 
+    {
+        "pk": "disabled-parking-11-spaces-classroom-1", 
+        "model": "campus.disabledparking", 
+        "fields": {}
+    }, 
+    {
+        "pk": "disabled-parking-3-spaces-fairwinds-alumni-center", 
+        "model": "campus.disabledparking", 
+        "fields": {}
+    }, 
+    {
+        "pk": "disabled-parking-10-spaces-garage-a", 
+        "model": "campus.disabledparking", 
+        "fields": {}
+    }, 
+    {
+        "pk": "disabled-parking-5-spaces-garage-b", 
+        "model": "campus.disabledparking", 
+        "fields": {}
+    }, 
+    {
+        "pk": "disabled-parking-2-spaces-garage-c", 
+        "model": "campus.disabledparking", 
+        "fields": {}
+    }, 
+    {
+        "pk": "disabled-parking-8-spaces-garage-d", 
+        "model": "campus.disabledparking", 
+        "fields": {}
+    }, 
+    {
+        "pk": "disabled-parking-14-spaces-garage-e", 
+        "model": "campus.disabledparking", 
+        "fields": {}
+    }, 
+    {
+        "pk": "disabled-parking-14-spaces-garage-f", 
+        "model": "campus.disabledparking", 
+        "fields": {}
+    }, 
+    {
+        "pk": "disabled-parking-14-spaces-garage-g", 
+        "model": "campus.disabledparking", 
+        "fields": {}
+    }, 
+    {
+        "pk": "disabled-parking-40-spaces-garage-h", 
+        "model": "campus.disabledparking", 
+        "fields": {}
+    }, 
+    {
+        "pk": "disabled-parking-12-spaces-garage-i", 
+        "model": "campus.disabledparking", 
+        "fields": {}
+    }, 
+    {
+        "pk": "disabled-parking-11-spaces-h1", 
+        "model": "campus.disabledparking", 
+        "fields": {}
+    }, 
+    {
+        "pk": "disabled-parking-2-spaces-h3", 
+        "model": "campus.disabledparking", 
+        "fields": {}
+    }, 
+    {
+        "pk": "disabled-parking-12-spaces-library-service", 
+        "model": "campus.disabledparking", 
+        "fields": {}
+    }, 
+    {
+        "pk": "disabled-parking-10-spaces-lot-b1", 
+        "model": "campus.disabledparking", 
+        "fields": {}
+    }, 
+    {
+        "pk": "disabled-parking-1-space-lot-b10", 
+        "model": "campus.disabledparking", 
+        "fields": {}
+    }, 
+    {
+        "pk": "disabled-parking-1-space-lot-b11", 
+        "model": "campus.disabledparking", 
+        "fields": {}
+    }, 
+    {
+        "pk": "disabled-parking-11-space-lot-b11", 
+        "model": "campus.disabledparking", 
+        "fields": {}
+    }, 
+    {
+        "pk": "disabled-parking-1-space-lot-b12", 
+        "model": "campus.disabledparking", 
+        "fields": {}
+    }, 
+    {
+        "pk": "disabled-parking-1-space-lot-b14", 
+        "model": "campus.disabledparking", 
+        "fields": {}
+    }, 
+    {
+        "pk": "disabled-parking-7-spaces-lot-b15", 
+        "model": "campus.disabledparking", 
+        "fields": {}
+    }, 
+    {
+        "pk": "disabled-parking-8-spaces-lot-b17", 
+        "model": "campus.disabledparking", 
+        "fields": {}
+    }, 
+    {
+        "pk": "disabled-parking-18-spaces-lot-b2", 
+        "model": "campus.disabledparking", 
+        "fields": {}
+    }, 
+    {
+        "pk": "disabled-parking-4-spaces-lot-b3", 
+        "model": "campus.disabledparking", 
+        "fields": {}
+    }, 
+    {
+        "pk": "disabled-parking-2-spaces-lot-b4", 
+        "model": "campus.disabledparking", 
+        "fields": {}
+    }, 
+    {
+        "pk": "disabled-parking-2-spaces-lot-b6", 
+        "model": "campus.disabledparking", 
+        "fields": {}
+    }, 
+    {
+        "pk": "disabled-parking-1-space-lot-b6-a", 
+        "model": "campus.disabledparking", 
+        "fields": {}
+    }, 
+    {
+        "pk": "disabled-parking-6-spaces-lot-b7", 
+        "model": "campus.disabledparking", 
+        "fields": {}
+    }, 
+    {
+        "pk": "disabled-parking-1-space-lot-b7-a", 
+        "model": "campus.disabledparking", 
+        "fields": {}
+    }, 
+    {
+        "pk": "disabled-parking-11-spaces-lot-b8", 
+        "model": "campus.disabledparking", 
+        "fields": {}
+    }, 
+    {
+        "pk": "disabled-parking-6-spaces-lot-b9", 
+        "model": "campus.disabledparking", 
+        "fields": {}
+    }, 
+    {
+        "pk": "disabled-parking-4-spaces-lot-c", 
+        "model": "campus.disabledparking", 
+        "fields": {}
+    }, 
+    {
+        "pk": "disabled-parking-10-spaces-lot-c1", 
+        "model": "campus.disabledparking", 
+        "fields": {}
+    }, 
+    {
+        "pk": "disabled-parking-9-spaces-lot-c3-extension", 
+        "model": "campus.disabledparking", 
+        "fields": {}
+    }, 
+    {
+        "pk": "disabled-parking-22-spaces-lot-d1", 
+        "model": "campus.disabledparking", 
+        "fields": {}
+    }, 
+    {
+        "pk": "disabled-parking-e1-lot-e1", 
+        "model": "campus.disabledparking", 
+        "fields": {}
+    }, 
+    {
+        "pk": "disabled-parking-3-spaces-lot-e4", 
+        "model": "campus.disabledparking", 
+        "fields": {}
+    }, 
+    {
+        "pk": "disabled-parking-3-spaces-lot-h10", 
+        "model": "campus.disabledparking", 
+        "fields": {}
+    }, 
+    {
+        "pk": "disabled-parking-5-spaces-lot-h2", 
+        "model": "campus.disabledparking", 
+        "fields": {}
+    }, 
+    {
+        "pk": "disabled-parking-10-spaces-lot-h4", 
+        "model": "campus.disabledparking", 
+        "fields": {}
+    }, 
+    {
+        "pk": "disabled-parking-9-spaces-lot-h5", 
+        "model": "campus.disabledparking", 
+        "fields": {}
+    }, 
+    {
+        "pk": "disabled-parking-1-space-lot-h6", 
+        "model": "campus.disabledparking", 
+        "fields": {}
+    }, 
+    {
+        "pk": "disabled-parking-1-space-lot-h8", 
+        "model": "campus.disabledparking", 
+        "fields": {}
+    }, 
+    {
+        "pk": "disabled-parking-3-spaces-lot-h9", 
+        "model": "campus.disabledparking", 
+        "fields": {}
+    }, 
+    {
+        "pk": "disabled-parking-4-spaces-north-end", 
+        "model": "campus.disabledparking", 
+        "fields": {}
+    }, 
+    {
+        "pk": "disabled-parking-2-spaces-orlando-tech-center", 
+        "model": "campus.disabledparking", 
+        "fields": {}
+    }, 
+    {
+        "pk": "disabled-parking-3-spaces-psychology-building", 
+        "model": "campus.disabledparking", 
+        "fields": {}
+    }, 
+    {
+        "pk": "disabled-parking-1-space-teaching-academy", 
+        "model": "campus.disabledparking", 
+        "fields": {}
+    }, 
+    {
+        "pk": "disabled-parking-1-space-theater", 
+        "model": "campus.disabledparking", 
+        "fields": {}
+    }
+]

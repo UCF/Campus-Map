@@ -114,12 +114,12 @@ admin.site.register(Location, LocationAdmin)
 
 
 
-class HandicappedParkingAdmin(admin.ModelAdmin):
+class DisabledParkingAdmin(admin.ModelAdmin):
 	list_display         = ('name',)
 	fields               = ('name', 'googlemap_point', 'illustrated_point')
 	actions              = None
 	change_form_template = 'admin/maps_point_selector.djt'
-admin.site.register(HandicappedParking, HandicappedParkingAdmin)
+admin.site.register(DisabledParking, DisabledParkingAdmin)
 
 
 

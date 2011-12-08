@@ -329,16 +329,20 @@
                     "64"
                 ], 
                 [
+                    "campus.building", 
+                    "rosen-college-apartments"
+                ], 
+                [
                     "campus.group", 
                     "apollo-community"
                 ], 
                 [
                     "campus.group", 
-                    "libra-community"
+                    "hercules-community"
                 ], 
                 [
                     "campus.group", 
-                    "hercules-community"
+                    "libra-community"
                 ], 
                 [
                     "campus.group", 
@@ -347,10 +351,6 @@
                 [
                     "campus.group", 
                     "towers-knights-plaza"
-                ], 
-                [
-                    "campus.building", 
-                    "rosen-college-apartments"
                 ]
             ]
         }
@@ -387,4 +387,3 @@
         }
     }
 ]
-

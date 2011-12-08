@@ -266,9 +266,9 @@ def location(request, loc, return_obj=False):
 	return render(request, 'campus/location.djt', context)
 
 def parking(request):
-	from campus.models import ParkingLot, HandicappedParking
+	from campus.models import ParkingLot, DisabledParking
 	lots     = list(ParkingLot.objects.all())
-	handicap = list(HandicappedParking.objects.all())
+	handicap = list(DisabledParking.objects.all())
 	
 	if request.is_json():
 		lots     = [l.json() for l in lots]

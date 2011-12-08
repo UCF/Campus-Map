@@ -73,10 +73,6 @@ class Command(BaseCommand):
 				print "  Updating %s ..." % fixture
 				call_command('loaddata', fixture, verbosity=0, interactive=False)
 
-		# Create/Update DiningLocations from search service
-		print '  Updating dining ...'
-		DiningLocation.refresh()
-
 		# Groups
 		#   for the m2m relation, create all GroupedLocation instances
 		#   had to wait until all locations and contenttypes initiated
@@ -102,6 +98,10 @@ class Command(BaseCommand):
 		create_groupable_locations(verbosity=1)
 		sys.stdout.flush()
 		print
+		
+		# Create/Update DiningLocations from search service
+		print '  Updating dining ...'
+		DiningLocation.refresh()
 		
 		sys.stdout.write("  Updating m2m locations ")
 		for g in groups[:]:

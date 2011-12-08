@@ -14,14 +14,15 @@ class Command(BaseCommand):
 	def handle(self, *args, **options):
 		
 		model_file = [
-			("bikerack"       , "bikeracks.json"),
-			("building"       , "buildings.json"),
-			("regionalcampus" , "campuses.json"),
-			("group"          , "groups.json"),
-			("location"       , "locations.json"),
-			("emergencyphone" , "phones.json"),
-			("parkinglot"     , "parkinglots.json"),
-			("sidewalk"       , "sidewalks.json"),
+			("bikerack"        , "bikeracks.json"),
+			("building"        , "buildings.json"),
+			("regionalcampus"  , "campuses.json"),
+			("group"           , "groups.json"),
+			("location"        , "locations.json"),
+			("emergencyphone"  , "phones.json"),
+			("parkinglot"      , "parkinglots.json"),
+			("sidewalk"        , "sidewalks.json"),
+			("disabledparking" , "disabledparking.json"),
 		]
 		
 		
