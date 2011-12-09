@@ -16,8 +16,7 @@
 		</div>
 	</h2>
 	
-	
-	<div class="span-12">
+	<div class="{% if location.object_type == 'RegionalCampus' %}span-7{%else%}span-12{%endif%}">
 		
 		<div id="profile-copy">
 		{% if not location.profile or location.profile == "None" %}
