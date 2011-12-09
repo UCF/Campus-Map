@@ -252,9 +252,8 @@ Campus.controls = function(){
 		Campus.info();
 		if(loc.object_type == 'Location') loc.profile_link = false;
 		Campus.infoBox.show(loc.name, latlng, loc.profile_link);
-		Campus.stage.html(loc.info);
-		Campus.menu.show('location');
 		Campus.buttons({'loc_id':loc.number, 'title':loc.name});
+		Campus.menu.show({'label':'Location', 'html':loc.info});
 		
 	}
 	
@@ -370,7 +369,7 @@ Campus.menuInit = function(){
 	Campus.buttons();
 	
 	Campus.tabOne.click(function(){
-		Campus.menu.show('main');
+		Campus.menu.show();
 	});
 	Campus.tabTwo.click(function(){
 		Campus.menu.show({'label':Campus.menuTitle.html()});
