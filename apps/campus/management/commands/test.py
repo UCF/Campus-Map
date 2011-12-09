@@ -31,13 +31,21 @@ class Command(BaseCommand):
 		
 		'''
 		
-		import settings
-		from django.db import connection, transaction
-		cursor = connection.cursor()
-		print cursor.description
-		sql = "SELECT name FROM sqlite_master WHERE type IN ('table','view') AND name LIKE 'campus_%%'"
-		print sql
-		cursor.execute(sql)
-		print cursor.description
-		for r in cursor:
-			print r
+		from campus.models import DisabledParking
+		import re
+		dp = DisabledParking.objects.all()
+		counter = 0
+		for p in dp:
+			counter += 1
+			id = p.id
+			p.description = p.name
+			m = re.match(r"(?P<desc>.+) \((?P<num>\d+).*", p.description)
+			if m:
+				p.description = m.group('desc')
+				p.num_spaces = m.group('num')
+				
+			p.id = "disabledparking-%0.3d" % counter
+			p.name = None
+			p.save()
+			p = DisabledParking.objects.get(id=id)
+			p.delete()

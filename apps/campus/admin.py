@@ -114,10 +114,13 @@ admin.site.register(Location, LocationAdmin)
 
 
 
+class DisabledParkingAdminForm(MapObjForm):
+	class Meta:
+		model = DisabledParking
 class DisabledParkingAdmin(admin.ModelAdmin):
-	list_display         = ('name',)
-	fields               = ('name', 'googlemap_point', 'illustrated_point')
+	fields               = ('description', 'num_spaces', 'googlemap_point', 'illustrated_point')
 	actions              = None
+	form                 = DisabledParkingAdminForm
 	change_form_template = 'admin/maps_point_selector.djt'
 admin.site.register(DisabledParking, DisabledParkingAdmin)
 

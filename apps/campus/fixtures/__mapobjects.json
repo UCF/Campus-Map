@@ -2839,11 +2839,11 @@
         }
     }, 
     {
-        "pk": "hp-", 
+        "pk": "disabledparking-001", 
         "model": "campus.mapobj", 
         "fields": {
             "profile": null, 
-            "name": "                               ", 
+            "name": null, 
             "image": null, 
             "poly_coords": null, 
             "illustrated_point": "[85.04755947922413, -179.84489486424934]", 
@@ -2852,7 +2852,874 @@
                 "disabledparking"
             ], 
             "googlemap_point": "[28.59239315551864, -81.19705962555696]", 
-            "description": null
+            "description": "Police Station"
+        }
+    }, 
+    {
+        "pk": "disabledparking-002", 
+        "model": "campus.mapobj", 
+        "fields": {
+            "profile": null, 
+            "name": null, 
+            "image": null, 
+            "poly_coords": null, 
+            "illustrated_point": "[85.0457511928324, -179.8880247852088]", 
+            "content_type": [
+                "campus", 
+                "disabledparking"
+            ], 
+            "googlemap_point": "[28.59774617127261, -81.20051028745462]", 
+            "description": "Andromeda Circle"
+        }
+    }, 
+    {
+        "pk": "disabledparking-003", 
+        "model": "campus.mapobj", 
+        "fields": {
+            "profile": null, 
+            "name": null, 
+            "image": null, 
+            "poly_coords": null, 
+            "illustrated_point": "[85.04523971370887, -179.91875217168342]", 
+            "content_type": [
+                "campus", 
+                "disabledparking"
+            ], 
+            "googlemap_point": "[28.601642420663094, -81.20150806920816]", 
+            "description": "Bookstore"
+        }
+    }, 
+    {
+        "pk": "disabledparking-004", 
+        "model": "campus.mapobj", 
+        "fields": {
+            "profile": null, 
+            "name": null, 
+            "image": null, 
+            "poly_coords": null, 
+            "illustrated_point": "[85.04545839601145, -179.93630454747688]", 
+            "content_type": [
+                "campus", 
+                "disabledparking"
+            ], 
+            "googlemap_point": "[28.603463917739976, -81.20107891576578]", 
+            "description": "Classroom 1"
+        }
+    }, 
+    {
+        "pk": "disabledparking-005", 
+        "model": "campus.mapobj", 
+        "fields": {
+            "profile": null, 
+            "name": null, 
+            "image": null, 
+            "poly_coords": null, 
+            "illustrated_point": "[85.04661465761892, -179.9451880237342]", 
+            "content_type": [
+                "campus", 
+                "disabledparking"
+            ], 
+            "googlemap_point": "[28.605660975625852, -81.19892912524034]", 
+            "description": "Fairwinds Alumni Center"
+        }
+    }, 
+    {
+        "pk": "disabledparking-006", 
+        "model": "campus.mapobj", 
+        "fields": {
+            "profile": null, 
+            "name": null, 
+            "image": null, 
+            "poly_coords": null, 
+            "illustrated_point": "[85.04293369745801, -179.90828082768928]", 
+            "content_type": [
+                "campus", 
+                "disabledparking"
+            ], 
+            "googlemap_point": "[28.599685291544148, -81.20513179608724]", 
+            "description": "Garage A"
+        }
+    }, 
+    {
+        "pk": "disabledparking-007", 
+        "model": "campus.mapobj", 
+        "fields": {
+            "profile": null, 
+            "name": null, 
+            "image": null, 
+            "poly_coords": null, 
+            "illustrated_point": "[85.04586237697674, -179.88175914495002]", 
+            "content_type": [
+                "campus", 
+                "disabledparking"
+            ], 
+            "googlemap_point": "[28.597148003543772, -81.20020585673143]", 
+            "description": "Garage B"
+        }
+    }, 
+    {
+        "pk": "disabledparking-008", 
+        "model": "campus.mapobj", 
+        "fields": {
+            "profile": null, 
+            "name": null, 
+            "image": null, 
+            "poly_coords": null, 
+            "illustrated_point": "[85.04775953602707, -179.91763637273323]", 
+            "content_type": [
+                "campus", 
+                "disabledparking"
+            ], 
+            "googlemap_point": "[28.60191441091974, -81.19621472971727]", 
+            "description": "Garage C"
+        }
+    }, 
+    {
+        "pk": "disabledparking-009", 
+        "model": "campus.mapobj", 
+        "fields": {
+            "profile": null, 
+            "name": null, 
+            "image": null, 
+            "poly_coords": null, 
+            "illustrated_point": "[85.04732977443453, -179.93540332524788]", 
+            "content_type": [
+                "campus", 
+                "disabledparking"
+            ], 
+            "googlemap_point": "[28.604872112325136, -81.1974807323723]", 
+            "description": "Garage D"
+        }
+    }, 
+    {
+        "pk": "disabledparking-010", 
+        "model": "campus.mapobj", 
+        "fields": {
+            "profile": null, 
+            "name": null, 
+            "image": null, 
+            "poly_coords": null, 
+            "illustrated_point": "[85.04841151706275, -179.94673297612678]", 
+            "content_type": [
+                "campus", 
+                "disabledparking"
+            ], 
+            "googlemap_point": "[28.606303835965125, -81.19550662653734]", 
+            "description": "Garage E"
+        }
+    }, 
+    {
+        "pk": "disabledparking-011", 
+        "model": "campus.mapobj", 
+        "fields": {
+            "profile": null, 
+            "name": null, 
+            "image": null, 
+            "poly_coords": null, 
+            "illustrated_point": "[85.04800403895014, -179.96226833074104]", 
+            "content_type": [
+                "campus", 
+                "disabledparking"
+            ], 
+            "googlemap_point": "[28.608281843105964, -81.19623618738939]", 
+            "description": "Garage F"
+        }
+    }, 
+    {
+        "pk": "disabledparking-012", 
+        "model": "campus.mapobj", 
+        "fields": {
+            "profile": null, 
+            "name": null, 
+            "image": null, 
+            "poly_coords": null, 
+            "illustrated_point": "[85.04748538206594, -179.9679331561805]", 
+            "content_type": [
+                "campus", 
+                "disabledparking"
+            ], 
+            "googlemap_point": "[28.608507898693638, -81.19763093607713]", 
+            "description": "Garage G"
+        }
+    }, 
+    {
+        "pk": "disabledparking-013", 
+        "model": "campus.mapobj", 
+        "fields": {
+            "profile": null, 
+            "name": null, 
+            "image": null, 
+            "poly_coords": null, 
+            "illustrated_point": "[85.0456325936683, -179.94347140996467]", 
+            "content_type": [
+                "campus", 
+                "disabledparking"
+            ], 
+            "googlemap_point": "[28.604589532985578, -81.20089250223924]", 
+            "description": "Garage H"
+        }
+    }, 
+    {
+        "pk": "disabledparking-014", 
+        "model": "campus.mapobj", 
+        "fields": {
+            "profile": null, 
+            "name": null, 
+            "image": null, 
+            "poly_coords": null, 
+            "illustrated_point": "[85.0435788966525, -179.91617725102913]", 
+            "content_type": [
+                "campus", 
+                "disabledparking"
+            ], 
+            "googlemap_point": "[28.60093477171819, -81.20424526350786]", 
+            "description": "Garage I"
+        }
+    }, 
+    {
+        "pk": "disabledparking-015", 
+        "model": "campus.mapobj", 
+        "fields": {
+            "profile": null, 
+            "name": null, 
+            "image": null, 
+            "poly_coords": null, 
+            "illustrated_point": "[85.04453541713465, -179.9210696002723]", 
+            "content_type": [
+                "campus", 
+                "disabledparking"
+            ], 
+            "googlemap_point": "[28.601638888317385, -81.20290013568689]", 
+            "description": "H1"
+        }
+    }, 
+    {
+        "pk": "disabledparking-016", 
+        "model": "campus.mapobj", 
+        "fields": {
+            "profile": null, 
+            "name": null, 
+            "image": null, 
+            "poly_coords": null, 
+            "illustrated_point": "[85.04307461017837, -179.92493198125374]", 
+            "content_type": [
+                "campus", 
+                "disabledparking"
+            ], 
+            "googlemap_point": "[28.602029800513, -81.2050821127205]", 
+            "description": "H3"
+        }
+    }, 
+    {
+        "pk": "disabledparking-017", 
+        "model": "campus.mapobj", 
+        "fields": {
+            "profile": null, 
+            "name": null, 
+            "image": null, 
+            "poly_coords": null, 
+            "illustrated_point": "[85.04543986398636, -179.9063925525428]", 
+            "content_type": [
+                "campus", 
+                "disabledparking"
+            ], 
+            "googlemap_point": "[28.600322492579426, -81.20102661268999]", 
+            "description": "Library Service"
+        }
+    }, 
+    {
+        "pk": "disabledparking-018", 
+        "model": "campus.mapobj", 
+        "fields": {
+            "profile": null, 
+            "name": null, 
+            "image": null, 
+            "poly_coords": null, 
+            "illustrated_point": "[85.04432040144393, -179.90098521916877]", 
+            "content_type": [
+                "campus", 
+                "disabledparking"
+            ], 
+            "googlemap_point": "[28.599269835106014, -81.20328235047151]", 
+            "description": "Lot B1"
+        }
+    }, 
+    {
+        "pk": "disabledparking-019", 
+        "model": "campus.mapobj", 
+        "fields": {
+            "profile": null, 
+            "name": null, 
+            "image": null, 
+            "poly_coords": null, 
+            "illustrated_point": "[85.04708894348599, -179.8789267322303]", 
+            "content_type": [
+                "campus", 
+                "disabledparking"
+            ], 
+            "googlemap_point": "[28.59656160746586, -81.1979125680237]", 
+            "description": "Lot B10"
+        }
+    }, 
+    {
+        "pk": "disabledparking-020", 
+        "model": "campus.mapobj", 
+        "fields": {
+            "profile": null, 
+            "name": null, 
+            "image": null, 
+            "poly_coords": null, 
+            "illustrated_point": "[85.04722603330414, -179.88347575871956]", 
+            "content_type": [
+                "campus", 
+                "disabledparking"
+            ], 
+            "googlemap_point": "[28.597381148063473, -81.19766982810785]", 
+            "description": "Lot B11"
+        }
+    }, 
+    {
+        "pk": "disabledparking-021", 
+        "model": "campus.mapobj", 
+        "fields": {
+            "profile": null, 
+            "name": null, 
+            "image": null, 
+            "poly_coords": null, 
+            "illustrated_point": "[85.04722603330414, -179.88347575871956]", 
+            "content_type": [
+                "campus", 
+                "disabledparking"
+            ], 
+            "googlemap_point": "[28.597381148063473, -81.19766982810785]", 
+            "description": "Lot B11"
+        }
+    }, 
+    {
+        "pk": "disabledparking-022", 
+        "model": "campus.mapobj", 
+        "fields": {
+            "profile": null, 
+            "name": null, 
+            "image": null, 
+            "poly_coords": null, 
+            "illustrated_point": "[85.04788549358213, -179.88030002324592]", 
+            "content_type": [
+                "campus", 
+                "disabledparking"
+            ], 
+            "googlemap_point": "[28.597190393494927, -81.19629519598772]", 
+            "description": "Lot B12"
+        }
+    }, 
+    {
+        "pk": "disabledparking-023", 
+        "model": "campus.mapobj", 
+        "fields": {
+            "profile": null, 
+            "name": null, 
+            "image": null, 
+            "poly_coords": null, 
+            "illustrated_point": "[85.04803367484965, -179.83807132451545]", 
+            "content_type": [
+                "campus", 
+                "disabledparking"
+            ], 
+            "googlemap_point": "[28.591189690335877, -81.19584994929124]", 
+            "description": "Lot B14"
+        }
+    }, 
+    {
+        "pk": "disabledparking-024", 
+        "model": "campus.mapobj", 
+        "fields": {
+            "profile": null, 
+            "name": null, 
+            "image": null, 
+            "poly_coords": null, 
+            "illustrated_point": "[85.04763357527601, -179.863563038993]", 
+            "content_type": [
+                "campus", 
+                "disabledparking"
+            ], 
+            "googlemap_point": "[28.59474705590585, -81.19673105495264]", 
+            "description": "Lot B15"
+        }
+    }, 
+    {
+        "pk": "disabledparking-025", 
+        "model": "campus.mapobj", 
+        "fields": {
+            "profile": null, 
+            "name": null, 
+            "image": null, 
+            "poly_coords": null, 
+            "illustrated_point": "[85.04803737932484, -179.83820007054817]", 
+            "content_type": [
+                "campus", 
+                "disabledparking"
+            ], 
+            "googlemap_point": "[28.59117673711456, -81.1958606781273]", 
+            "description": "Lot B17"
+        }
+    }, 
+    {
+        "pk": "disabledparking-026", 
+        "model": "campus.mapobj", 
+        "fields": {
+            "profile": null, 
+            "name": null, 
+            "image": null, 
+            "poly_coords": null, 
+            "illustrated_point": "[85.045076622334, -179.89549205510627]", 
+            "content_type": [
+                "campus", 
+                "disabledparking"
+            ], 
+            "googlemap_point": "[28.59868580583021, -81.20186077969362]", 
+            "description": "Lot B2"
+        }
+    }, 
+    {
+        "pk": "disabledparking-027", 
+        "model": "campus.mapobj", 
+        "fields": {
+            "profile": null, 
+            "name": null, 
+            "image": null, 
+            "poly_coords": null, 
+            "illustrated_point": "[85.04406088735468, -179.89377544133674]", 
+            "content_type": [
+                "campus", 
+                "disabledparking"
+            ], 
+            "googlemap_point": "[28.598226586983184, -81.20357202904512]", 
+            "description": "Lot B3"
+        }
+    }, 
+    {
+        "pk": "disabledparking-028", 
+        "model": "campus.mapobj", 
+        "fields": {
+            "profile": null, 
+            "name": null, 
+            "image": null, 
+            "poly_coords": null, 
+            "illustrated_point": "[85.0447578373669, -179.8869948169471]", 
+            "content_type": [
+                "campus", 
+                "disabledparking"
+            ], 
+            "googlemap_point": "[28.597671989239096, -81.20248573439409]", 
+            "description": "Lot B4"
+        }
+    }, 
+    {
+        "pk": "disabledparking-029", 
+        "model": "campus.mapobj", 
+        "fields": {
+            "profile": null, 
+            "name": null, 
+            "image": null, 
+            "poly_coords": null, 
+            "illustrated_point": "[85.0445131745637, -179.87875507085334]", 
+            "content_type": [
+                "campus", 
+                "disabledparking"
+            ], 
+            "googlemap_point": "[28.59768258667562, -81.20250182764818]", 
+            "description": "Lot B6"
+        }
+    }, 
+    {
+        "pk": "disabledparking-030", 
+        "model": "campus.mapobj", 
+        "fields": {
+            "profile": null, 
+            "name": null, 
+            "image": null, 
+            "poly_coords": null, 
+            "illustrated_point": "[85.04420918277984, -179.87832591741096]", 
+            "content_type": [
+                "campus", 
+                "disabledparking"
+            ], 
+            "googlemap_point": "[28.596874823448644, -81.20330649035265]", 
+            "description": "Lot B6 a"
+        }
+    }, 
+    {
+        "pk": "disabledparking-031", 
+        "model": "campus.mapobj", 
+        "fields": {
+            "profile": null, 
+            "name": null, 
+            "image": null, 
+            "poly_coords": null, 
+            "illustrated_point": "[85.0451062757098, -179.86965701787483]", 
+            "content_type": [
+                "campus", 
+                "disabledparking"
+            ], 
+            "googlemap_point": "[28.595645504233673, -81.20189564841081]", 
+            "description": "Lot B7"
+        }
+    }, 
+    {
+        "pk": "disabledparking-032", 
+        "model": "campus.mapobj", 
+        "fields": {
+            "profile": null, 
+            "name": null, 
+            "image": null, 
+            "poly_coords": null, 
+            "illustrated_point": "[85.04478007884244, -179.86836955754768]", 
+            "content_type": [
+                "campus", 
+                "disabledparking"
+            ], 
+            "googlemap_point": "[28.59551008983974, -81.20248975770761]", 
+            "description": "Lot B7 a"
+        }
+    }, 
+    {
+        "pk": "disabledparking-033", 
+        "model": "campus.mapobj", 
+        "fields": {
+            "profile": null, 
+            "name": null, 
+            "image": null, 
+            "poly_coords": null, 
+            "illustrated_point": "[85.04554734876989, -179.86171767919075]", 
+            "content_type": [
+                "campus", 
+                "disabledparking"
+            ], 
+            "googlemap_point": "[28.594363181800407, -81.20105879919817]", 
+            "description": "Lot B8"
+        }
+    }, 
+    {
+        "pk": "disabledparking-034", 
+        "model": "campus.mapobj", 
+        "fields": {
+            "profile": null, 
+            "name": null, 
+            "image": null, 
+            "poly_coords": null, 
+            "illustrated_point": "[85.04629967712926, -179.88075063436042]", 
+            "content_type": [
+                "campus", 
+                "disabledparking"
+            ], 
+            "googlemap_point": "[28.59724926839883, -81.19939851181795]", 
+            "description": "Lot B9"
+        }
+    }, 
+    {
+        "pk": "disabledparking-035", 
+        "model": "campus.mapobj", 
+        "fields": {
+            "profile": null, 
+            "name": null, 
+            "image": null, 
+            "poly_coords": null, 
+            "illustrated_point": "[85.04710005901741, -179.89420459477913]", 
+            "content_type": [
+                "campus", 
+                "disabledparking"
+            ], 
+            "googlemap_point": "[28.598990773135647, -81.19752364771654]", 
+            "description": "Lot C"
+        }
+    }, 
+    {
+        "pk": "disabledparking-036", 
+        "model": "campus.mapobj", 
+        "fields": {
+            "profile": null, 
+            "name": null, 
+            "image": null, 
+            "poly_coords": null, 
+            "illustrated_point": "[85.04737052928557, -179.91870925633918]", 
+            "content_type": [
+                "campus", 
+                "disabledparking"
+            ], 
+            "googlemap_point": "[28.602105156913662, -81.19750487225343]", 
+            "description": "Lot C1"
+        }
+    }, 
+    {
+        "pk": "disabledparking-037", 
+        "model": "campus.mapobj", 
+        "fields": {
+            "profile": null, 
+            "name": null, 
+            "image": null, 
+            "poly_coords": null, 
+            "illustrated_point": "[85.04689256498946, -179.8979811450721]", 
+            "content_type": [
+                "campus", 
+                "disabledparking"
+            ], 
+            "googlemap_point": "[28.599318111574878, -81.19794073121835]", 
+            "description": "Lot C3 extension"
+        }
+    }, 
+    {
+        "pk": "disabledparking-038", 
+        "model": "campus.mapobj", 
+        "fields": {
+            "profile": null, 
+            "name": null, 
+            "image": null, 
+            "poly_coords": null, 
+            "illustrated_point": "[85.04684069012764, -179.93154094426643]", 
+            "content_type": [
+                "campus", 
+                "disabledparking"
+            ], 
+            "googlemap_point": "[28.603708822502057, -81.19797962324907]", 
+            "description": "Lot D1"
+        }
+    }, 
+    {
+        "pk": "disabledparking-039", 
+        "model": "campus.mapobj", 
+        "fields": {
+            "profile": null, 
+            "name": null, 
+            "image": null, 
+            "poly_coords": null, 
+            "illustrated_point": "[85.04881155394327, -179.93978069036018]", 
+            "content_type": [
+                "campus", 
+                "disabledparking"
+            ], 
+            "googlemap_point": "[28.606040098865805, -81.19410785453607]", 
+            "description": "Lot E1"
+        }
+    }, 
+    {
+        "pk": "disabledparking-040", 
+        "model": "campus.mapobj", 
+        "fields": {
+            "profile": null, 
+            "name": null, 
+            "image": null, 
+            "poly_coords": null, 
+            "illustrated_point": "[85.05043359527036, -179.9239878436805]", 
+            "content_type": [
+                "campus", 
+                "disabledparking"
+            ], 
+            "googlemap_point": "[28.604288114185817, -81.19020121710588]", 
+            "description": "Lot E4"
+        }
+    }, 
+    {
+        "pk": "disabledparking-041", 
+        "model": "campus.mapobj", 
+        "fields": {
+            "profile": null, 
+            "name": null, 
+            "image": null, 
+            "poly_coords": null, 
+            "illustrated_point": "[85.04450576035127, -179.96304080693733]", 
+            "content_type": [
+                "campus", 
+                "disabledparking"
+            ], 
+            "googlemap_point": "[28.606715923857337, -81.20268421786119]", 
+            "description": "Lot H10"
+        }
+    }, 
+    {
+        "pk": "disabledparking-042", 
+        "model": "campus.mapobj", 
+        "fields": {
+            "profile": null, 
+            "name": null, 
+            "image": null, 
+            "poly_coords": null, 
+            "illustrated_point": "[85.044557659606, -179.92776439397346]", 
+            "content_type": [
+                "campus", 
+                "disabledparking"
+            ], 
+            "googlemap_point": "[28.60248429298425, -81.20277004854967]", 
+            "description": "Lot H2"
+        }
+    }, 
+    {
+        "pk": "disabledparking-043", 
+        "model": "campus.mapobj", 
+        "fields": {
+            "profile": null, 
+            "name": null, 
+            "image": null, 
+            "poly_coords": null, 
+            "illustrated_point": "[85.04327855572461, -179.93694827764045]", 
+            "content_type": [
+                "campus", 
+                "disabledparking"
+            ], 
+            "googlemap_point": "[28.60316014084807, -81.2049184979706]", 
+            "description": "Lot H4"
+        }
+    }, 
+    {
+        "pk": "disabledparking-044", 
+        "model": "campus.mapobj", 
+        "fields": {
+            "profile": null, 
+            "name": null, 
+            "image": null, 
+            "poly_coords": null, 
+            "illustrated_point": "[85.0438384359173, -179.94184062688362]", 
+            "content_type": [
+                "campus", 
+                "disabledparking"
+            ], 
+            "googlemap_point": "[28.603711177352583, -81.20373564379503]", 
+            "description": "Lot H5"
+        }
+    }, 
+    {
+        "pk": "disabledparking-045", 
+        "model": "campus.mapobj", 
+        "fields": {
+            "profile": null, 
+            "name": null, 
+            "image": null, 
+            "poly_coords": null, 
+            "illustrated_point": "[85.04417952404891, -179.9477629443885]", 
+            "content_type": [
+                "campus", 
+                "disabledparking"
+            ], 
+            "googlemap_point": "[28.60461779095376, -81.20336818115999]", 
+            "description": "Lot H6"
+        }
+    }, 
+    {
+        "pk": "disabledparking-046", 
+        "model": "campus.mapobj", 
+        "fields": {
+            "profile": null, 
+            "name": null, 
+            "image": null, 
+            "poly_coords": null, 
+            "illustrated_point": "[85.04330451182992, -179.94587466924202]", 
+            "content_type": [
+                "campus", 
+                "disabledparking"
+            ], 
+            "googlemap_point": "[28.603664080328254, -81.2052430452614]", 
+            "description": "Lot H8"
+        }
+    }, 
+    {
+        "pk": "disabledparking-047", 
+        "model": "campus.mapobj", 
+        "fields": {
+            "profile": null, 
+            "name": null, 
+            "image": null, 
+            "poly_coords": null, 
+            "illustrated_point": "[85.04383102069784, -179.94973705022346]", 
+            "content_type": [
+                "campus", 
+                "disabledparking"
+            ], 
+            "googlemap_point": "[28.60427633999632, -81.20447325127412]", 
+            "description": "Lot H9"
+        }
+    }, 
+    {
+        "pk": "disabledparking-048", 
+        "model": "campus.mapobj", 
+        "fields": {
+            "profile": null, 
+            "name": null, 
+            "image": null, 
+            "poly_coords": null, 
+            "illustrated_point": "[85.0475854129685, -179.96449992864143]", 
+            "content_type": [
+                "campus", 
+                "disabledparking"
+            ], 
+            "googlemap_point": "[28.608500834463886, -81.19723128693391]", 
+            "description": "North End"
+        }
+    }, 
+    {
+        "pk": "disabledparking-049", 
+        "model": "campus.mapobj", 
+        "fields": {
+            "profile": null, 
+            "name": null, 
+            "image": null, 
+            "poly_coords": null, 
+            "illustrated_point": "[85.04806331057239, -179.81845901219856]", 
+            "content_type": [
+                "campus", 
+                "disabledparking"
+            ], 
+            "googlemap_point": "[28.588491852867154, -81.19579496400644]", 
+            "description": "Orlando Tech Center"
+        }
+    }, 
+    {
+        "pk": "disabledparking-050", 
+        "model": "campus.mapobj", 
+        "fields": {
+            "profile": null, 
+            "name": null, 
+            "image": null, 
+            "poly_coords": null, 
+            "illustrated_point": "[85.04655166311944, -179.94480178563606]", 
+            "content_type": [
+                "campus", 
+                "disabledparking"
+            ], 
+            "googlemap_point": "[28.605318350651178, -81.1995339633732]", 
+            "description": "Psychology Building"
+        }
+    }, 
+    {
+        "pk": "disabledparking-051", 
+        "model": "campus.mapobj", 
+        "fields": {
+            "profile": null, 
+            "name": null, 
+            "image": null, 
+            "poly_coords": null, 
+            "illustrated_point": "[85.04348990864008, -179.90398929326545]", 
+            "content_type": [
+                "campus", 
+                "disabledparking"
+            ], 
+            "googlemap_point": "[28.599493555138245, -81.2045939506798]", 
+            "description": "Teaching Academy"
+        }
+    }, 
+    {
+        "pk": "disabledparking-052", 
+        "model": "campus.mapobj", 
+        "fields": {
+            "profile": null, 
+            "name": null, 
+            "image": null, 
+            "poly_coords": null, 
+            "illustrated_point": "[85.04617367933965, -179.90832374303352]", 
+            "content_type": [
+                "campus", 
+                "disabledparking"
+            ], 
+            "googlemap_point": "[28.600782879726047, -81.19995238797952]", 
+            "description": "Theater"
         }
     }, 
     {
@@ -2937,23 +3804,6 @@
                 "building"
             ], 
             "googlemap_point": "[28.591369857686590, -81.191727394035330]", 
-            "description": null
-        }
-    }, 
-    {
-        "pk": "disabled-parking-4-spaces-andromeda-circle", 
-        "model": "campus.mapobj", 
-        "fields": {
-            "profile": null, 
-            "name": "Andromeda Circle (4 Spaces)", 
-            "image": null, 
-            "poly_coords": null, 
-            "illustrated_point": "[85.0457511928324, -179.8880247852088]", 
-            "content_type": [
-                "campus", 
-                "disabledparking"
-            ], 
-            "googlemap_point": "[28.59774617127261, -81.20051028745462]", 
             "description": null
         }
     }, 
@@ -3277,23 +4127,6 @@
                 "building"
             ], 
             "googlemap_point": "[28.588826289375813, -81.192135089805590]", 
-            "description": null
-        }
-    }, 
-    {
-        "pk": "disabled-parking-4-spaces-bookstore", 
-        "model": "campus.mapobj", 
-        "fields": {
-            "profile": null, 
-            "name": "Bookstore (4 Spaces)", 
-            "image": null, 
-            "poly_coords": null, 
-            "illustrated_point": "[85.04523971370887, -179.91875217168342]", 
-            "content_type": [
-                "campus", 
-                "disabledparking"
-            ], 
-            "googlemap_point": "[28.601642420663094, -81.20150806920816]", 
             "description": null
         }
     }, 
@@ -3702,23 +4535,6 @@
                 "building"
             ], 
             "googlemap_point": "[28.598663433640600, -81.198435598781570]", 
-            "description": null
-        }
-    }, 
-    {
-        "pk": "disabled-parking-11-spaces-classroom-1", 
-        "model": "campus.mapobj", 
-        "fields": {
-            "profile": null, 
-            "name": "Classroom 1 (11 Spaces)", 
-            "image": null, 
-            "poly_coords": null, 
-            "illustrated_point": "[85.04545839601145, -179.93630454747688]", 
-            "content_type": [
-                "campus", 
-                "disabledparking"
-            ], 
-            "googlemap_point": "[28.603463917739976, -81.20107891576578]", 
             "description": null
         }
     }, 
@@ -4233,23 +5049,6 @@
         }
     }, 
     {
-        "pk": "disabled-parking-3-spaces-fairwinds-alumni-center", 
-        "model": "campus.mapobj", 
-        "fields": {
-            "profile": null, 
-            "name": "Fairwinds Alumni Center (3 Spaces)", 
-            "image": null, 
-            "poly_coords": null, 
-            "illustrated_point": "[85.04661465761892, -179.9451880237342]", 
-            "content_type": [
-                "campus", 
-                "disabledparking"
-            ], 
-            "googlemap_point": "[28.605660975625852, -81.19892912524034]", 
-            "description": null
-        }
-    }, 
-    {
         "pk": "7", 
         "model": "campus.mapobj", 
         "fields": {
@@ -4331,159 +5130,6 @@
                 "building"
             ], 
             "googlemap_point": "[28.606465139096740, -81.192961210182180]", 
-            "description": null
-        }
-    }, 
-    {
-        "pk": "disabled-parking-10-spaces-garage-a", 
-        "model": "campus.mapobj", 
-        "fields": {
-            "profile": null, 
-            "name": "Garage A (10 Spaces)", 
-            "image": null, 
-            "poly_coords": null, 
-            "illustrated_point": "[85.04293369745801, -179.90828082768928]", 
-            "content_type": [
-                "campus", 
-                "disabledparking"
-            ], 
-            "googlemap_point": "[28.599685291544148, -81.20513179608724]", 
-            "description": null
-        }
-    }, 
-    {
-        "pk": "disabled-parking-5-spaces-garage-b", 
-        "model": "campus.mapobj", 
-        "fields": {
-            "profile": null, 
-            "name": "Garage B (5 Spaces)", 
-            "image": null, 
-            "poly_coords": null, 
-            "illustrated_point": "[85.04586237697674, -179.88175914495002]", 
-            "content_type": [
-                "campus", 
-                "disabledparking"
-            ], 
-            "googlemap_point": "[28.597148003543772, -81.20020585673143]", 
-            "description": null
-        }
-    }, 
-    {
-        "pk": "disabled-parking-2-spaces-garage-c", 
-        "model": "campus.mapobj", 
-        "fields": {
-            "profile": null, 
-            "name": "Garage C (2 Spaces)", 
-            "image": null, 
-            "poly_coords": null, 
-            "illustrated_point": "[85.04775953602707, -179.91763637273323]", 
-            "content_type": [
-                "campus", 
-                "disabledparking"
-            ], 
-            "googlemap_point": "[28.60191441091974, -81.19621472971727]", 
-            "description": null
-        }
-    }, 
-    {
-        "pk": "disabled-parking-8-spaces-garage-d", 
-        "model": "campus.mapobj", 
-        "fields": {
-            "profile": null, 
-            "name": "Garage D (8 Spaces)", 
-            "image": null, 
-            "poly_coords": null, 
-            "illustrated_point": "[85.04732977443453, -179.93540332524788]", 
-            "content_type": [
-                "campus", 
-                "disabledparking"
-            ], 
-            "googlemap_point": "[28.604872112325136, -81.1974807323723]", 
-            "description": null
-        }
-    }, 
-    {
-        "pk": "disabled-parking-14-spaces-garage-e", 
-        "model": "campus.mapobj", 
-        "fields": {
-            "profile": null, 
-            "name": "Garage E (14 Spaces)", 
-            "image": null, 
-            "poly_coords": null, 
-            "illustrated_point": "[85.04841151706275, -179.94673297612678]", 
-            "content_type": [
-                "campus", 
-                "disabledparking"
-            ], 
-            "googlemap_point": "[28.606303835965125, -81.19550662653734]", 
-            "description": null
-        }
-    }, 
-    {
-        "pk": "disabled-parking-14-spaces-garage-f", 
-        "model": "campus.mapobj", 
-        "fields": {
-            "profile": null, 
-            "name": "Garage F (14 Spaces)", 
-            "image": null, 
-            "poly_coords": null, 
-            "illustrated_point": "[85.04800403895014, -179.96226833074104]", 
-            "content_type": [
-                "campus", 
-                "disabledparking"
-            ], 
-            "googlemap_point": "[28.608281843105964, -81.19623618738939]", 
-            "description": null
-        }
-    }, 
-    {
-        "pk": "disabled-parking-14-spaces-garage-g", 
-        "model": "campus.mapobj", 
-        "fields": {
-            "profile": null, 
-            "name": "Garage G (14 Spaces)", 
-            "image": null, 
-            "poly_coords": null, 
-            "illustrated_point": "[85.04748538206594, -179.9679331561805]", 
-            "content_type": [
-                "campus", 
-                "disabledparking"
-            ], 
-            "googlemap_point": "[28.608507898693638, -81.19763093607713]", 
-            "description": null
-        }
-    }, 
-    {
-        "pk": "disabled-parking-40-spaces-garage-h", 
-        "model": "campus.mapobj", 
-        "fields": {
-            "profile": null, 
-            "name": "Garage H (40 Spaces)", 
-            "image": null, 
-            "poly_coords": null, 
-            "illustrated_point": "[85.0456325936683, -179.94347140996467]", 
-            "content_type": [
-                "campus", 
-                "disabledparking"
-            ], 
-            "googlemap_point": "[28.604589532985578, -81.20089250223924]", 
-            "description": null
-        }
-    }, 
-    {
-        "pk": "disabled-parking-12-spaces-garage-i", 
-        "model": "campus.mapobj", 
-        "fields": {
-            "profile": null, 
-            "name": "Garage I (12 Spaces)", 
-            "image": null, 
-            "poly_coords": null, 
-            "illustrated_point": "[85.0435788966525, -179.91617725102913]", 
-            "content_type": [
-                "campus", 
-                "disabledparking"
-            ], 
-            "googlemap_point": "[28.60093477171819, -81.20424526350786]", 
             "description": null
         }
     }, 
@@ -4586,40 +5232,6 @@
                 "group"
             ], 
             "googlemap_point": "[28.605658694859155, -81.206043946586789]", 
-            "description": null
-        }
-    }, 
-    {
-        "pk": "disabled-parking-11-spaces-h1", 
-        "model": "campus.mapobj", 
-        "fields": {
-            "profile": null, 
-            "name": "H1 (11 Spaces)", 
-            "image": null, 
-            "poly_coords": null, 
-            "illustrated_point": "[85.04453541713465, -179.9210696002723]", 
-            "content_type": [
-                "campus", 
-                "disabledparking"
-            ], 
-            "googlemap_point": "[28.601638888317385, -81.20290013568689]", 
-            "description": null
-        }
-    }, 
-    {
-        "pk": "disabled-parking-2-spaces-h3", 
-        "model": "campus.mapobj", 
-        "fields": {
-            "profile": null, 
-            "name": "H3 (2 Spaces)", 
-            "image": null, 
-            "poly_coords": null, 
-            "illustrated_point": "[85.04307461017837, -179.92493198125374]", 
-            "content_type": [
-                "campus", 
-                "disabledparking"
-            ], 
-            "googlemap_point": "[28.602029800513, -81.2050821127205]", 
             "description": null
         }
     }, 
@@ -5219,23 +5831,6 @@
         }
     }, 
     {
-        "pk": "disabled-parking-12-spaces-library-service", 
-        "model": "campus.mapobj", 
-        "fields": {
-            "profile": null, 
-            "name": "Library Service (12 Spaces)", 
-            "image": null, 
-            "poly_coords": null, 
-            "illustrated_point": "[85.04543986398636, -179.9063925525428]", 
-            "content_type": [
-                "campus", 
-                "disabledparking"
-            ], 
-            "googlemap_point": "[28.600322492579426, -81.20102661268999]", 
-            "description": null
-        }
-    }, 
-    {
         "pk": "7ab", 
         "model": "campus.mapobj", 
         "fields": {
@@ -5249,516 +5844,6 @@
                 "building"
             ], 
             "googlemap_point": "[28.597888647693647, -81.200428480079640]", 
-            "description": null
-        }
-    }, 
-    {
-        "pk": "disabled-parking-10-spaces-lot-b1", 
-        "model": "campus.mapobj", 
-        "fields": {
-            "profile": null, 
-            "name": "Lot B1 (10 Spaces)", 
-            "image": null, 
-            "poly_coords": null, 
-            "illustrated_point": "[85.04432040144393, -179.90098521916877]", 
-            "content_type": [
-                "campus", 
-                "disabledparking"
-            ], 
-            "googlemap_point": "[28.599269835106014, -81.20328235047151]", 
-            "description": null
-        }
-    }, 
-    {
-        "pk": "disabled-parking-1-space-lot-b10", 
-        "model": "campus.mapobj", 
-        "fields": {
-            "profile": null, 
-            "name": "Lot B10 (1 Space)", 
-            "image": null, 
-            "poly_coords": null, 
-            "illustrated_point": "[85.04708894348599, -179.8789267322303]", 
-            "content_type": [
-                "campus", 
-                "disabledparking"
-            ], 
-            "googlemap_point": "[28.59656160746586, -81.1979125680237]", 
-            "description": null
-        }
-    }, 
-    {
-        "pk": "disabled-parking-1-space-lot-b11", 
-        "model": "campus.mapobj", 
-        "fields": {
-            "profile": null, 
-            "name": "Lot B11 (1 Space)", 
-            "image": null, 
-            "poly_coords": null, 
-            "illustrated_point": "[85.04722603330414, -179.88347575871956]", 
-            "content_type": [
-                "campus", 
-                "disabledparking"
-            ], 
-            "googlemap_point": "[28.597381148063473, -81.19766982810785]", 
-            "description": null
-        }
-    }, 
-    {
-        "pk": "disabled-parking-11-space-lot-b11", 
-        "model": "campus.mapobj", 
-        "fields": {
-            "profile": null, 
-            "name": "Lot B11 (11 Space)", 
-            "image": null, 
-            "poly_coords": null, 
-            "illustrated_point": "[85.04722603330414, -179.88347575871956]", 
-            "content_type": [
-                "campus", 
-                "disabledparking"
-            ], 
-            "googlemap_point": "[28.597381148063473, -81.19766982810785]", 
-            "description": null
-        }
-    }, 
-    {
-        "pk": "disabled-parking-1-space-lot-b12", 
-        "model": "campus.mapobj", 
-        "fields": {
-            "profile": null, 
-            "name": "Lot B12 (1 Space)", 
-            "image": null, 
-            "poly_coords": null, 
-            "illustrated_point": "[85.04788549358213, -179.88030002324592]", 
-            "content_type": [
-                "campus", 
-                "disabledparking"
-            ], 
-            "googlemap_point": "[28.597190393494927, -81.19629519598772]", 
-            "description": null
-        }
-    }, 
-    {
-        "pk": "disabled-parking-1-space-lot-b14", 
-        "model": "campus.mapobj", 
-        "fields": {
-            "profile": null, 
-            "name": "Lot B14 (1 Space)", 
-            "image": null, 
-            "poly_coords": null, 
-            "illustrated_point": "[85.04803367484965, -179.83807132451545]", 
-            "content_type": [
-                "campus", 
-                "disabledparking"
-            ], 
-            "googlemap_point": "[28.591189690335877, -81.19584994929124]", 
-            "description": null
-        }
-    }, 
-    {
-        "pk": "disabled-parking-7-spaces-lot-b15", 
-        "model": "campus.mapobj", 
-        "fields": {
-            "profile": null, 
-            "name": "Lot B15 (7 Spaces)", 
-            "image": null, 
-            "poly_coords": null, 
-            "illustrated_point": "[85.04763357527601, -179.863563038993]", 
-            "content_type": [
-                "campus", 
-                "disabledparking"
-            ], 
-            "googlemap_point": "[28.59474705590585, -81.19673105495264]", 
-            "description": null
-        }
-    }, 
-    {
-        "pk": "disabled-parking-8-spaces-lot-b17", 
-        "model": "campus.mapobj", 
-        "fields": {
-            "profile": null, 
-            "name": "Lot B17 (8 Spaces)", 
-            "image": null, 
-            "poly_coords": null, 
-            "illustrated_point": "[85.04803737932484, -179.83820007054817]", 
-            "content_type": [
-                "campus", 
-                "disabledparking"
-            ], 
-            "googlemap_point": "[28.59117673711456, -81.1958606781273]", 
-            "description": null
-        }
-    }, 
-    {
-        "pk": "disabled-parking-18-spaces-lot-b2", 
-        "model": "campus.mapobj", 
-        "fields": {
-            "profile": null, 
-            "name": "Lot B2 (18 Spaces)", 
-            "image": null, 
-            "poly_coords": null, 
-            "illustrated_point": "[85.045076622334, -179.89549205510627]", 
-            "content_type": [
-                "campus", 
-                "disabledparking"
-            ], 
-            "googlemap_point": "[28.59868580583021, -81.20186077969362]", 
-            "description": null
-        }
-    }, 
-    {
-        "pk": "disabled-parking-4-spaces-lot-b3", 
-        "model": "campus.mapobj", 
-        "fields": {
-            "profile": null, 
-            "name": "Lot B3 (4 Spaces)", 
-            "image": null, 
-            "poly_coords": null, 
-            "illustrated_point": "[85.04406088735468, -179.89377544133674]", 
-            "content_type": [
-                "campus", 
-                "disabledparking"
-            ], 
-            "googlemap_point": "[28.598226586983184, -81.20357202904512]", 
-            "description": null
-        }
-    }, 
-    {
-        "pk": "disabled-parking-2-spaces-lot-b4", 
-        "model": "campus.mapobj", 
-        "fields": {
-            "profile": null, 
-            "name": "Lot B4 (2 Spaces)", 
-            "image": null, 
-            "poly_coords": null, 
-            "illustrated_point": "[85.0447578373669, -179.8869948169471]", 
-            "content_type": [
-                "campus", 
-                "disabledparking"
-            ], 
-            "googlemap_point": "[28.597671989239096, -81.20248573439409]", 
-            "description": null
-        }
-    }, 
-    {
-        "pk": "disabled-parking-2-spaces-lot-b6", 
-        "model": "campus.mapobj", 
-        "fields": {
-            "profile": null, 
-            "name": "Lot B6 (2 Spaces)", 
-            "image": null, 
-            "poly_coords": null, 
-            "illustrated_point": "[85.0445131745637, -179.87875507085334]", 
-            "content_type": [
-                "campus", 
-                "disabledparking"
-            ], 
-            "googlemap_point": "[28.59768258667562, -81.20250182764818]", 
-            "description": null
-        }
-    }, 
-    {
-        "pk": "disabled-parking-1-space-lot-b6-a", 
-        "model": "campus.mapobj", 
-        "fields": {
-            "profile": null, 
-            "name": "Lot B6 a (1 Space)", 
-            "image": null, 
-            "poly_coords": null, 
-            "illustrated_point": "[85.04420918277984, -179.87832591741096]", 
-            "content_type": [
-                "campus", 
-                "disabledparking"
-            ], 
-            "googlemap_point": "[28.596874823448644, -81.20330649035265]", 
-            "description": null
-        }
-    }, 
-    {
-        "pk": "disabled-parking-6-spaces-lot-b7", 
-        "model": "campus.mapobj", 
-        "fields": {
-            "profile": null, 
-            "name": "Lot B7 (6 Spaces)", 
-            "image": null, 
-            "poly_coords": null, 
-            "illustrated_point": "[85.0451062757098, -179.86965701787483]", 
-            "content_type": [
-                "campus", 
-                "disabledparking"
-            ], 
-            "googlemap_point": "[28.595645504233673, -81.20189564841081]", 
-            "description": null
-        }
-    }, 
-    {
-        "pk": "disabled-parking-1-space-lot-b7-a", 
-        "model": "campus.mapobj", 
-        "fields": {
-            "profile": null, 
-            "name": "Lot B7 a (1 Space)", 
-            "image": null, 
-            "poly_coords": null, 
-            "illustrated_point": "[85.04478007884244, -179.86836955754768]", 
-            "content_type": [
-                "campus", 
-                "disabledparking"
-            ], 
-            "googlemap_point": "[28.59551008983974, -81.20248975770761]", 
-            "description": null
-        }
-    }, 
-    {
-        "pk": "disabled-parking-11-spaces-lot-b8", 
-        "model": "campus.mapobj", 
-        "fields": {
-            "profile": null, 
-            "name": "Lot B8 (11 Spaces)", 
-            "image": null, 
-            "poly_coords": null, 
-            "illustrated_point": "[85.04554734876989, -179.86171767919075]", 
-            "content_type": [
-                "campus", 
-                "disabledparking"
-            ], 
-            "googlemap_point": "[28.594363181800407, -81.20105879919817]", 
-            "description": null
-        }
-    }, 
-    {
-        "pk": "disabled-parking-6-spaces-lot-b9", 
-        "model": "campus.mapobj", 
-        "fields": {
-            "profile": null, 
-            "name": "Lot B9 (6 Spaces)", 
-            "image": null, 
-            "poly_coords": null, 
-            "illustrated_point": "[85.04629967712926, -179.88075063436042]", 
-            "content_type": [
-                "campus", 
-                "disabledparking"
-            ], 
-            "googlemap_point": "[28.59724926839883, -81.19939851181795]", 
-            "description": null
-        }
-    }, 
-    {
-        "pk": "disabled-parking-4-spaces-lot-c", 
-        "model": "campus.mapobj", 
-        "fields": {
-            "profile": null, 
-            "name": "Lot C (4 Spaces)", 
-            "image": null, 
-            "poly_coords": null, 
-            "illustrated_point": "[85.04710005901741, -179.89420459477913]", 
-            "content_type": [
-                "campus", 
-                "disabledparking"
-            ], 
-            "googlemap_point": "[28.598990773135647, -81.19752364771654]", 
-            "description": null
-        }
-    }, 
-    {
-        "pk": "disabled-parking-10-spaces-lot-c1", 
-        "model": "campus.mapobj", 
-        "fields": {
-            "profile": null, 
-            "name": "Lot C1 (10 Spaces)", 
-            "image": null, 
-            "poly_coords": null, 
-            "illustrated_point": "[85.04737052928557, -179.91870925633918]", 
-            "content_type": [
-                "campus", 
-                "disabledparking"
-            ], 
-            "googlemap_point": "[28.602105156913662, -81.19750487225343]", 
-            "description": null
-        }
-    }, 
-    {
-        "pk": "disabled-parking-9-spaces-lot-c3-extension", 
-        "model": "campus.mapobj", 
-        "fields": {
-            "profile": null, 
-            "name": "Lot C3 extension (9 Spaces)", 
-            "image": null, 
-            "poly_coords": null, 
-            "illustrated_point": "[85.04689256498946, -179.8979811450721]", 
-            "content_type": [
-                "campus", 
-                "disabledparking"
-            ], 
-            "googlemap_point": "[28.599318111574878, -81.19794073121835]", 
-            "description": null
-        }
-    }, 
-    {
-        "pk": "disabled-parking-22-spaces-lot-d1", 
-        "model": "campus.mapobj", 
-        "fields": {
-            "profile": null, 
-            "name": "Lot D1 (22 Spaces)", 
-            "image": null, 
-            "poly_coords": null, 
-            "illustrated_point": "[85.04684069012764, -179.93154094426643]", 
-            "content_type": [
-                "campus", 
-                "disabledparking"
-            ], 
-            "googlemap_point": "[28.603708822502057, -81.19797962324907]", 
-            "description": null
-        }
-    }, 
-    {
-        "pk": "disabled-parking-e1-lot-e1", 
-        "model": "campus.mapobj", 
-        "fields": {
-            "profile": null, 
-            "name": "Lot E1 (E1)", 
-            "image": null, 
-            "poly_coords": null, 
-            "illustrated_point": "[85.04881155394327, -179.93978069036018]", 
-            "content_type": [
-                "campus", 
-                "disabledparking"
-            ], 
-            "googlemap_point": "[28.606040098865805, -81.19410785453607]", 
-            "description": null
-        }
-    }, 
-    {
-        "pk": "disabled-parking-3-spaces-lot-e4", 
-        "model": "campus.mapobj", 
-        "fields": {
-            "profile": null, 
-            "name": "Lot E4 (3 Spaces)", 
-            "image": null, 
-            "poly_coords": null, 
-            "illustrated_point": "[85.05043359527036, -179.9239878436805]", 
-            "content_type": [
-                "campus", 
-                "disabledparking"
-            ], 
-            "googlemap_point": "[28.604288114185817, -81.19020121710588]", 
-            "description": null
-        }
-    }, 
-    {
-        "pk": "disabled-parking-3-spaces-lot-h10", 
-        "model": "campus.mapobj", 
-        "fields": {
-            "profile": null, 
-            "name": "Lot H10 (3 Spaces)", 
-            "image": null, 
-            "poly_coords": null, 
-            "illustrated_point": "[85.04450576035127, -179.96304080693733]", 
-            "content_type": [
-                "campus", 
-                "disabledparking"
-            ], 
-            "googlemap_point": "[28.606715923857337, -81.20268421786119]", 
-            "description": null
-        }
-    }, 
-    {
-        "pk": "disabled-parking-5-spaces-lot-h2", 
-        "model": "campus.mapobj", 
-        "fields": {
-            "profile": null, 
-            "name": "Lot H2 (5 Spaces)", 
-            "image": null, 
-            "poly_coords": null, 
-            "illustrated_point": "[85.044557659606, -179.92776439397346]", 
-            "content_type": [
-                "campus", 
-                "disabledparking"
-            ], 
-            "googlemap_point": "[28.60248429298425, -81.20277004854967]", 
-            "description": null
-        }
-    }, 
-    {
-        "pk": "disabled-parking-10-spaces-lot-h4", 
-        "model": "campus.mapobj", 
-        "fields": {
-            "profile": null, 
-            "name": "Lot H4 (10 Spaces)", 
-            "image": null, 
-            "poly_coords": null, 
-            "illustrated_point": "[85.04327855572461, -179.93694827764045]", 
-            "content_type": [
-                "campus", 
-                "disabledparking"
-            ], 
-            "googlemap_point": "[28.60316014084807, -81.2049184979706]", 
-            "description": null
-        }
-    }, 
-    {
-        "pk": "disabled-parking-9-spaces-lot-h5", 
-        "model": "campus.mapobj", 
-        "fields": {
-            "profile": null, 
-            "name": "Lot H5 (9 Spaces)", 
-            "image": null, 
-            "poly_coords": null, 
-            "illustrated_point": "[85.0438384359173, -179.94184062688362]", 
-            "content_type": [
-                "campus", 
-                "disabledparking"
-            ], 
-            "googlemap_point": "[28.603711177352583, -81.20373564379503]", 
-            "description": null
-        }
-    }, 
-    {
-        "pk": "disabled-parking-1-space-lot-h6", 
-        "model": "campus.mapobj", 
-        "fields": {
-            "profile": null, 
-            "name": "Lot H6 (1 Space)", 
-            "image": null, 
-            "poly_coords": null, 
-            "illustrated_point": "[85.04417952404891, -179.9477629443885]", 
-            "content_type": [
-                "campus", 
-                "disabledparking"
-            ], 
-            "googlemap_point": "[28.60461779095376, -81.20336818115999]", 
-            "description": null
-        }
-    }, 
-    {
-        "pk": "disabled-parking-1-space-lot-h8", 
-        "model": "campus.mapobj", 
-        "fields": {
-            "profile": null, 
-            "name": "Lot H8 (1 Space)", 
-            "image": null, 
-            "poly_coords": null, 
-            "illustrated_point": "[85.04330451182992, -179.94587466924202]", 
-            "content_type": [
-                "campus", 
-                "disabledparking"
-            ], 
-            "googlemap_point": "[28.603664080328254, -81.2052430452614]", 
-            "description": null
-        }
-    }, 
-    {
-        "pk": "disabled-parking-3-spaces-lot-h9", 
-        "model": "campus.mapobj", 
-        "fields": {
-            "profile": null, 
-            "name": "Lot H9 (3 Spaces)", 
-            "image": null, 
-            "poly_coords": null, 
-            "illustrated_point": "[85.04383102069784, -179.94973705022346]", 
-            "content_type": [
-                "campus", 
-                "disabledparking"
-            ], 
-            "googlemap_point": "[28.60427633999632, -81.20447325127412]", 
             "description": null
         }
     }, 
@@ -6086,23 +6171,6 @@
         }
     }, 
     {
-        "pk": "disabled-parking-4-spaces-north-end", 
-        "model": "campus.mapobj", 
-        "fields": {
-            "profile": null, 
-            "name": "North End (4 Spaces)", 
-            "image": null, 
-            "poly_coords": null, 
-            "illustrated_point": "[85.0475854129685, -179.96449992864143]", 
-            "content_type": [
-                "campus", 
-                "disabledparking"
-            ], 
-            "googlemap_point": "[28.608500834463886, -81.19723128693391]", 
-            "description": null
-        }
-    }, 
-    {
         "pk": "74", 
         "model": "campus.mapobj", 
         "fields": {
@@ -6184,23 +6252,6 @@
                 "building"
             ], 
             "googlemap_point": "[28.598128855497865, -81.198711866310100]", 
-            "description": null
-        }
-    }, 
-    {
-        "pk": "disabled-parking-2-spaces-orlando-tech-center", 
-        "model": "campus.mapobj", 
-        "fields": {
-            "profile": null, 
-            "name": "Orlando Tech Center (2 Spaces)", 
-            "image": null, 
-            "poly_coords": null, 
-            "illustrated_point": "[85.04806331057239, -179.81845901219856]", 
-            "content_type": [
-                "campus", 
-                "disabledparking"
-            ], 
-            "googlemap_point": "[28.588491852867154, -81.19579496400644]", 
             "description": null
         }
     }, 
@@ -6745,23 +6796,6 @@
                 "building"
             ], 
             "googlemap_point": "[28.604586000703200, -81.199457520416250]", 
-            "description": null
-        }
-    }, 
-    {
-        "pk": "disabled-parking-3-spaces-psychology-building", 
-        "model": "campus.mapobj", 
-        "fields": {
-            "profile": null, 
-            "name": "Psychology Building (3 Spaces)", 
-            "image": null, 
-            "poly_coords": null, 
-            "illustrated_point": "[85.04655166311944, -179.94480178563606]", 
-            "content_type": [
-                "campus", 
-                "disabledparking"
-            ], 
-            "googlemap_point": "[28.605318350651178, -81.1995339633732]", 
             "description": null
         }
     }, 
@@ -7446,23 +7480,6 @@
         }
     }, 
     {
-        "pk": "disabled-parking-1-space-teaching-academy", 
-        "model": "campus.mapobj", 
-        "fields": {
-            "profile": null, 
-            "name": "Teaching Academy (1 Space)", 
-            "image": null, 
-            "poly_coords": null, 
-            "illustrated_point": "[85.04348990864008, -179.90398929326545]", 
-            "content_type": [
-                "campus", 
-                "disabledparking"
-            ], 
-            "googlemap_point": "[28.599493555138245, -81.2045939506798]", 
-            "description": null
-        }
-    }, 
-    {
         "pk": "3259", 
         "model": "campus.mapobj", 
         "fields": {
@@ -7527,23 +7544,6 @@
                 "building"
             ], 
             "googlemap_point": "[28.607915679081046, -81.196963066032400]", 
-            "description": null
-        }
-    }, 
-    {
-        "pk": "disabled-parking-1-space-theater", 
-        "model": "campus.mapobj", 
-        "fields": {
-            "profile": null, 
-            "name": "Theater (1 Space)", 
-            "image": null, 
-            "poly_coords": null, 
-            "illustrated_point": "[85.04617367933965, -179.90832374303352]", 
-            "content_type": [
-                "campus", 
-                "disabledparking"
-            ], 
-            "googlemap_point": "[28.600782879726047, -81.19995238797952]", 
             "description": null
         }
     }, 

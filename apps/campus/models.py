@@ -401,11 +401,29 @@ class ParkingLot(MapObj):
 		obj['link'] = self.link
 		obj['title'] = self.title
 		return obj
+
 		
 class DisabledParking(MapObj):
+	num_spaces = models.IntegerField(null=True)
+	
 	def save(self, **kwargs):
-		self.id = 'hp-' + slugify(self.name)
+		if self.id in ("", None, False, "None", "none", "null"):
+			# pseduo auto-incredment of key: "disabled-parking-###"
+			dp = DisabledParking.objects.all().order_by('-id')[0]
+			dp_num = int(dp.id[-3:])
+			dp_num += 1
+			dp_pk = "disabledparking-%0.3d" % dp_num
+			self.id = dp_pk
 		super(DisabledParking, self).save(**kwargs)
+	
+	def __unicode__(self):
+		if self.num_spaces:
+			return u'%s (%s spaces)' % (self.description, self.num_spaces)
+		else:
+			str = self.description.strip()
+			if str == '':
+				return '[no description]'
+			return self.description
 	
 	class Meta:
 		verbose_name_plural = "Handicap Parking"
