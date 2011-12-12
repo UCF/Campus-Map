@@ -87,6 +87,7 @@ class MapMiddleware(object):
 						rsp['content'] = spec['content'] % 'Not Found'
 						return HttpResponseNotFound(**rsp)
 					elif response.status_code == 500:
+						if settings.DEBUG: return response
 						rsp = dict(spec)
 						rsp['content'] = spec['content'] % 'Server Error. Bummer'
 						return HttpResponseServerError(**rsp)

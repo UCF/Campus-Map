@@ -350,6 +350,15 @@ class Building(MapObj):
 	class Meta:
 		ordering = ("name", "id")
 
+
+
+parking_permit_colors = {
+	"B Permits"       : "cc0400", #red
+	"C Permits"       : "0052d9", #blue
+	"D Permits"       : "009a36", #green
+	"Housing Permits" : "ffba00", #orange
+	"Greek Row"       : "eb00e3", #pink
+}
 class ParkingLot(MapObj):
 	permit_type  = models.CharField(max_length=255, null=True)
 	abbreviation = models.CharField(max_length=50, null=True)
@@ -360,15 +369,7 @@ class ParkingLot(MapObj):
 	number = property(_number)
 	
 	def _color_fill(self):
-		
-		colors = {
-			"B Permits"       : "cc0400", #red
-			"C Permits"       : "0052d9", #blue
-			"D Permits"       : "009a36", #green
-			"Housing Permits" : "ffba00", #orange
-			"Greek Row"       : "eb00e3", #pink
-		}
-		
+		colors = parking_permit_colors
 		rgb = colors.get(self.permit_type) or 'fffb00' #default=yellow
 		opacity = .35
 		
@@ -406,6 +407,11 @@ class ParkingLot(MapObj):
 class DisabledParking(MapObj):
 	num_spaces = models.IntegerField(null=True)
 	
+	def json(self, **kw):
+		obj = MapObj.json(self, **kw)
+		obj['title'] = self.__unicode__()
+		return obj
+	
 	def save(self, **kwargs):
 		if self.id in ("", None, False, "None", "none", "null"):
 			# pseduo auto-incredment of key: "disabled-parking-###"
@@ -418,7 +424,8 @@ class DisabledParking(MapObj):
 	
 	def __unicode__(self):
 		if self.num_spaces:
-			return u'%s (%s spaces)' % (self.description, self.num_spaces)
+			from django.template.defaultfilters import pluralize
+			return u'%s (%s space%s)' % (self.description, self.num_spaces, pluralize(self.num_spaces))
 		else:
 			str = self.description.strip()
 			if str == '':

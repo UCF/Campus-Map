@@ -1,3 +1,4 @@
+{% load parking %}
 <div id="menu">
 	<div id="menu-header">
 		<h2> 
@@ -77,3 +78,19 @@
 	</div><!-- /menu-bottom -->
 </div>
 <a id="menu-hide" title="Collapse Menu" >&nbsp;</a>
+
+{# parking key #}
+<div style="display:none;" id="parking-key-content">
+	<div id="parking-key">
+		<div class="item">
+			<h3>Parking Permit Key</h3>
+			{% permits %}
+		</div>
+		<a class="item" href="http://parking.ucf.edu/maps/">Download Parking Guide</a>
+		<a class="item" href="http://parking.ucf.edu/">Parking Services Website</a>
+	</div>
+</div>
+
+
+
+

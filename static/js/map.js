@@ -746,13 +746,18 @@ Campus.layers = {
 		markers: [],
 		data   : null,
 		loaded : false,
+		key    : null,
 		layer  : { setMap:function(){} },
 		load   : function(){
 			var _this = this;
 			
 			// Corner case, first run, load assets and store
 			if(!this.loaded){
-				this.layer = new google.maps.KmlLayer(Campus.urls.parking_kml, { preserveViewport : true });
+				this.layer = new google.maps.KmlLayer(Campus.urls.parking_kml, 
+					{
+						preserveViewport    : true,
+						suppressInfoWindows : true
+					});
 				
 				// pull down with ajax
 				Campus.ajax = $.ajax({
@@ -764,39 +769,62 @@ Campus.layers = {
 						_this.load();
 					}
 				});
+				Campus.info(); // init's Campus.infoBox
+				this.key = $('#parking-key-content').html();
+				$('#parking-key-content').html('');
 				return;
 			}
+			
+			// Show key in menu
+			Campus.menu.show({
+				'label' : 'Parking',
+				'html'  : this.key
+			});
 			
 			// Catch first run when markers haven't been generated
 			if(this.markers.length < 1){
 				// custom icon
-				var icon   = new google.maps.MarkerImage(Campus.urls['static'] + 'images/markers/disabled.png', new google.maps.Size(17, 17), new google.maps.Point(0, 0));
-				var shadow = new google.maps.MarkerImage(Campus.urls['static'] + 'images/markers/disabled.png', new google.maps.Size(17, 17), new google.maps.Point(0, 0), new google.maps.Point(0, 17));
+				var icon   = new google.maps.MarkerImage(
+					Campus.urls['static'] + 'images/markers/disabled.png', 
+					new google.maps.Size(17, 17), //size
+					new google.maps.Point(0, 0),  //origin
+					new google.maps.Point(10, 8)   //anchor
+				);
+				
+				// need closures to make this work
+				function clickable(marker){
+					google.maps.event.addListener(marker, 'click', function(event) {
+						Campus.infoBox.show(marker.title, event.latLng);
+					});
+				}
 				
 				// create and place markers
 				for(var spot in this.data.handicap){
 					if(this.data.handicap.hasOwnProperty(spot)){
 						spot       = this.data.handicap[spot];
+						
 						var point  = spot.googlemap_point;
 						var latlng = new google.maps.LatLng(
 							spot.googlemap_point[0],
 							spot.googlemap_point[1]
 						);
-						this.markers.push(
-							new google.maps.Marker({
-								icon      : icon,
-								clickable : false,
-								title     : "what?",
-								position  : latlng, 
-								map       : Campus.map
-							})
-						);
+						var marker = new google.maps.Marker({
+							icon     : icon,
+							position : latlng, 
+							map      : Campus.map,
+							title    : spot.title
+						});
+						clickable(marker);
+						this.markers.push(marker);
 					}
 				}
 			}
 			
 			// Common case, display assets on map
 			this.layer.setMap(Campus.map); // Set parking lot kml layer
+			google.maps.event.addListener(this.layer, 'click', function (kmlEvent) {
+				Campus.infoBox.show(kmlEvent.featureData.description, kmlEvent.latLng);
+			});
 			
 			// Set markers to visible
 			for(var i = 0; i < this.markers.length; i++){

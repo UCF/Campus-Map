@@ -21,10 +21,7 @@
 	<description>
 		{# apparently GGeoXml strips html classes from the description :( #}
 		<![CDATA[
-		<div class="building-info">
-			{% if lot.name %}<h3 style="margin:0; padding:0;">{{ lot.name }}</h3>{% endif %}
-			<p style="margin:0; padding:3px 0;">Permit Type: {% if lot.permit_type %}<strong class="{{ lot.permit_type|slugify }}">{{ lot.permit_type }}</strong>{% else %} unknown {% endif %}</p>
-		</div>
+		{{ lot.name }} {% if lot.permit_type %}({{ lot.permit_type }}){% endif %}</p>
 		]]>
 	</description>
 	{% endif %}

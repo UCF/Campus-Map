@@ -279,6 +279,12 @@ footer dd { padding:8px 0 0 8px; margin:0; }
 #menu .more-menu a.next { text-align:right; }
 #menu .more-menu a:hover { color:#C30202; }
 
+#parking-key table { margin:0; padding:0; }
+#parking-key thead { display:none; }
+#parking-key td { border:0; margin:0; padding:3px 4px; }
+#parking-key td div { height:14px; width:14px; overflow:hidden; text-indent:100px; }
+#parking-key td img { width:17px; height:17px; }
+
 
 /******************************************************************************\
     Black google map infobox
