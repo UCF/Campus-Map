@@ -21,7 +21,7 @@
 	<description>
 		{# apparently GGeoXml strips html classes from the description :( #}
 		<![CDATA[
-		{{ lot.name }} {% if lot.permit_type %}({{ lot.permit_type }}){% endif %}
+		{{ lot.name|default:'Parking' }} {% if lot.permit_type %}({{ lot.permit_type }}){% endif %}
 		]]>
 	</description>
 	{% endif %}
