@@ -86,8 +86,8 @@
 			<h3>Parking Permit Key</h3>
 			{% permits %}
 		</div>
-		<a class="item" href="http://parking.ucf.edu/maps/">Download Parking Guide</a>
-		<a class="item" href="http://parking.ucf.edu/">Parking Services Website</a>
+		<a class="item" href="http://parking.ucf.edu/maps/" target="blank">Download Parking Guide</a>
+		<a class="item" href="http://parking.ucf.edu/" target="blank">Parking Services Website</a>
 	</div>
 </div>
 
