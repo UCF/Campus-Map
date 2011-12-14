@@ -442,7 +442,8 @@ def dining(request):
 					'geometry': {
 						'type'       : 'Point',
 						'coordinates': json.loads(str(location.googlemap_point))
-					} 
+					},
+					'properties':  { 'name': location.name },
 				}
 			)
 	obj = {
