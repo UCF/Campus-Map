@@ -261,14 +261,6 @@ Campus.controls = function(){
 	//   the setting name and checkbox ID are the same
 	//   cycle through each and add onclick event to init appropriate layer
 	//   if layer is already turned on, "check" the checkbox
-	var checkboxes = [
-		'buildings',
-		'sidewalks',
-		'bikeracks',
-		'emergency_phones',
-		'parking',
-		'traffic',
-		'dining'];
 	var i, id;
 	var make_onclick = function(layer){
 		return function(){
@@ -276,12 +268,13 @@ Campus.controls = function(){
 			Campus.layers[layer].update();
 		};
 	};
-	for(i=0; i<checkboxes.length; i++){
-		id = checkboxes[i];
+	for(i=0; i<Campus.layers.ids.length; i++){
+		id = Campus.layers.ids[i];
 		$('#' + id)
 			.click(make_onclick(id))
 			.attr('checked', Campus.settings[id]);
 	}
+	
 };
 
 /******************************************************************************\
@@ -454,13 +447,22 @@ Campus.layers = {
 		this.traffic.layer = new google.maps.TrafficLayer();
 	},
 	
+	ids : [
+		'buildings',
+		'sidewalks',
+		'bikeracks',
+		'emergency_phones',
+		'parking',
+		'traffic',
+		'points',
+		'dining'],
+	
+	/* call update function for each and every layer */
 	update : function(){
-		this.buildings.update();
-		this.points.update();
-		this.sidewalks.update();
-		this.bikeracks.update();
-		this.emergency_phones.update();
-		this.parking.update();
+		for(i=0; i<this.ids.length; i++){
+			layer = this.ids[i];
+			this[layer].update();
+		}
 	},
 	
 	/* Google's traffic layer */
@@ -866,7 +868,6 @@ Campus.layers = {
 				} 
 				// pull down with ajax
 				else {
-					
 					Campus.ajax = $.ajax({
 						url: Campus.urls.dining,
 						dataType: 'json',
