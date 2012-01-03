@@ -81,6 +81,15 @@ Campus.map  = false;
 
 if(!window.console ) { window.console = { log: function() { return; } }; }
 
+
+// need closures to make this work
+Campus.clickable = function(marker){
+	Campus.info();
+	google.maps.event.addListener(marker, 'click', function(event) {
+		Campus.infoBox.show(marker.title, event.latLng);
+	});
+}
+
 Array.prototype.has=function(v){
 	var i;
 	for (i=0;i<this.length;i++){
@@ -261,14 +270,6 @@ Campus.controls = function(){
 	//   the setting name and checkbox ID are the same
 	//   cycle through each and add onclick event to init appropriate layer
 	//   if layer is already turned on, "check" the checkbox
-	var checkboxes = [
-		'buildings',
-		'sidewalks',
-		'bikeracks',
-		'emergency_phones',
-		'parking',
-		'traffic',
-		'dining'];
 	var i, id;
 	var make_onclick = function(layer){
 		return function(){
@@ -276,12 +277,13 @@ Campus.controls = function(){
 			Campus.layers[layer].update();
 		};
 	};
-	for(i=0; i<checkboxes.length; i++){
-		id = checkboxes[i];
+	for(i=0; i<Campus.layers.ids.length; i++){
+		id = Campus.layers.ids[i];
 		$('#' + id)
 			.click(make_onclick(id))
 			.attr('checked', Campus.settings[id]);
 	}
+	
 };
 
 /******************************************************************************\
@@ -454,13 +456,22 @@ Campus.layers = {
 		this.traffic.layer = new google.maps.TrafficLayer();
 	},
 	
+	ids : [
+		'buildings',
+		'sidewalks',
+		'bikeracks',
+		'emergency_phones',
+		'parking',
+		'traffic',
+		'points',
+		'dining'],
+	
+	/* call update function for each and every layer */
 	update : function(){
-		this.buildings.update();
-		this.points.update();
-		this.sidewalks.update();
-		this.bikeracks.update();
-		this.emergency_phones.update();
-		this.parking.update();
+		for(i=0; i<this.ids.length; i++){
+			layer = this.ids[i];
+			this[layer].update();
+		}
 	},
 	
 	/* Google's traffic layer */
@@ -791,13 +802,6 @@ Campus.layers = {
 					new google.maps.Point(10, 8)   //anchor
 				);
 				
-				// need closures to make this work
-				function clickable(marker){
-					google.maps.event.addListener(marker, 'click', function(event) {
-						Campus.infoBox.show(marker.title, event.latLng);
-					});
-				}
-				
 				// create and place markers
 				for(var spot in this.data.handicap){
 					if(this.data.handicap.hasOwnProperty(spot)){
@@ -814,7 +818,7 @@ Campus.layers = {
 							map      : Campus.map,
 							title    : spot.title
 						});
-						clickable(marker);
+						Campus.clickable(marker);
 						this.markers.push(marker);
 					}
 				}
@@ -866,7 +870,6 @@ Campus.layers = {
 				} 
 				// pull down with ajax
 				else {
-					
 					Campus.ajax = $.ajax({
 						url: Campus.urls.dining,
 						dataType: 'json',
@@ -895,12 +898,12 @@ Campus.layers = {
 				(Campus.urls['static'] + 'images/markers/knife-fork.png'),
 				new google.maps.Size(28, 28),  // dimensions
 				new google.maps.Point(0,0),  // origin
-				new google.maps.Point(16,32)); // anchor 
+				new google.maps.Point(16,20)); // anchor 
 			var shadow = new google.maps.MarkerImage(
 				Campus.urls['static'] + 'images/markers/knife-fork-shadow.png',
 				new google.maps.Size(46, 22),
 				new google.maps.Point(0,0),
-				new google.maps.Point(10,25));
+				new google.maps.Point(10,13));
 			
 			// create and place markers
 			var ExistingPoint = function(lat, lon) {
@@ -912,6 +915,7 @@ Campus.layers = {
 			var randomInt = function() {return Math.round(Math.random() * 10) + Math.round(Math.random() * 10);}
 			var existing_points = [];
 			var ADJUSTMENT = 150000;
+			
 			$.each(this.geo.features, function(index, feature) {
 				if(feature.geometry != undefined && feature.geometry.coordinates != undefined) {
 					var point  = feature.geometry.coordinates;
@@ -946,19 +950,19 @@ Campus.layers = {
 					if(!adjusted) {
 						existing_points.push(new ExistingPoint(point[0],point[1]))
 					}
-
+					
 					var latlng = new google.maps.LatLng(point[0], point[1]);
-					that.markers.push(
-						new google.maps.Marker({
-							icon     : icon,
-							shadow   : shadow,
-							clickable: false,
-							position : latlng,
-							map      : Campus.map
-						})
-					); 
+					var marker = new google.maps.Marker({
+						icon     : icon,
+						shadow   : shadow,
+						position : latlng,
+						title    : feature.properties.name,
+						map      : Campus.map
+					});
+					that.markers.push(marker);
+					Campus.clickable(marker);
 				}
-			});			
+			});
 		},
 		unload : function() {
 			if(!this.loaded){ return; }
