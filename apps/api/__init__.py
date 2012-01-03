@@ -71,6 +71,14 @@ class MapMiddleware(object):
 		
 	def process_response(self, request, response):
 		'''
+		Cross-domain XHR using the html5 postMessage API.
+		Not using Access Control anywhere in map, so only implementing here and not also in process_request
+		'''
+		response['Access-Control-Allow-Origin']  = '*'
+		response['Access-Control-Allow-Methods'] = ','.join( ['GET', 'OPTIONS'] )
+		
+		
+		'''
 		Make sure reponses have right mime type and return Not Implemented server error when appropriate
 		'''
 		for format,spec in formats.items():
