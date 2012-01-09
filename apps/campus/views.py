@@ -282,6 +282,19 @@ def parking(request):
 		return response
 	
 	if request.is_kml():
+		def parking_filter(l):
+			# query arguments can be used to filter by attribute
+			if not request.GET:
+				return True
+			l = l.__dict__
+			for k,v in request.GET.items():
+				try: 
+					if l[k] == v: continue
+					else: return False
+				except KeyError:
+					return False
+			return True
+		lots = filter(parking_filter, lots)
 		response = render_to_response('api/parking.kml', { 'parking':lots })
 		response['Content-type'] = 'application/vnd.google-earth.kml+xml'
 		return response
