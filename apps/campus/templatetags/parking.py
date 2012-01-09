@@ -18,7 +18,6 @@ def permits(*args):
 	for permit,color in parking_permit_colors.items():
 		style = "background:%s; background:rgba(%s,%s,%s,.5); border:1px solid #%s;" % (
 			color, int(color[0:2],16), int(color[2:4],16), int(color[4:],16), color )
-		print style
 		str += '<tr><td><div class="permit" style="%s">%s</div></td><td>%s</td>' % (
 				style, text[permit]['color'], text[permit]['label'] )
 				

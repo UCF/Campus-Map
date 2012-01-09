@@ -55,19 +55,17 @@ class MapMiddleware(object):
 	def process_request(self, request):
 		'''
 		Caching
-		django ignores cache if query string is present.
-		GET vars not needed for api requests so just removing it to enable cache
+		django ignores cache if query string is present, this is not what we want.  The KML layer uses a "version" var
+		to clear google's server-side cache.  The API does use some query strings (search, kml filter), so this now
+		uses a query string blacklist, if present the query string is destroyed and django is happy and the view is cached
 		'''
-		if request.GET.get('q', False):
-			return
-		
-		for format,spec in formats.items():
-			is_api_call = getattr(request, 'is_%s' % format)
-			if is_api_call():
+		blacklist = ['v']
+		for var in blacklist:
+			if request.GET.get(var, False):
 				request.GET = {}
-				if settings.DEBUG:
-					cache_key = get_cache_key(request)
-					print "API Cache Key: %s" % cache_key
+		if settings.DEBUG:
+			cache_key = get_cache_key(request)
+			if cache_key: print "API Cache Key: %s" % cache_key
 		
 	def process_response(self, request, response):
 		'''

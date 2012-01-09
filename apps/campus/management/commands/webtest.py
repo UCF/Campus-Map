@@ -17,6 +17,8 @@ class Command(BaseCommand):
 			print "No host given, using 'my.mac'"
 			base = "http://my.mac/"
 		
+		from settings import MAP_VERSION
+		
 		url_strings = [
 			'',
 			'.json',
@@ -29,7 +31,7 @@ class Command(BaseCommand):
 			'locations/',
 			"locations.kml",
 			'locations.json',
-			"locations/.kml?v=17",
+			"locations.kml?v=%s" % MAP_VERSION,
 			'locations/.json',
 			"locations/52/.json",
 			"locations/52.json",
@@ -37,10 +39,10 @@ class Command(BaseCommand):
 			"locations/52/student-union.json",
 			'locations/1/millican-hall/?org=354',
 			'printable/',
-			"parking/.kml?v=17",
-			"sidewalks/.kml?v=17",
-			"bikeracks/.json",
-			"emergency-phones/.json",
+			"parking.kml?v=%s" % MAP_VERSION,
+			"sidewalks.kml?v=%s" % MAP_VERSION,
+			"bikeracks.json",
+			"emergency-phones.json",
 		]
 		
 		for u in url_strings:
