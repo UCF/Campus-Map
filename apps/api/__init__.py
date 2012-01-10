@@ -107,9 +107,6 @@ class MapMiddleware(object):
 					
 		return response
 
-	def process_exception(self, request, exception):
-		log.error(':'.join([str(type(exception)), str(exception.message)]))
-
 
 def handle_request(request, url):
 	'''
