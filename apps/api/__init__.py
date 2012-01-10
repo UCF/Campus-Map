@@ -1,9 +1,12 @@
 import re
+import logging
 from django.conf import settings
 from django.core.urlresolvers import reverse, resolve, Resolver404
 from django.http import HttpResponse, HttpRequest, HttpResponseNotFound, HttpResponseServerError
 from django.core.cache import cache
 from django.utils.cache import get_cache_key
+
+log = logging.getLogger(__name__)
 
 formats = {
 	'json' : {
@@ -103,6 +106,9 @@ class MapMiddleware(object):
 						response._container = [msg]
 					
 		return response
+
+	def process_exception(self, request, exception):
+		log.error(':'.join([str(type(exception)), str(exception.message)]))
 
 
 def handle_request(request, url):

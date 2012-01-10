@@ -88,10 +88,10 @@ LOGGING = {
 	},
 	'formatters': {
 		'talkative': {
-			'format':'%(levelname)s: %(asctime)s %(module)s %(funcName)s %(message)s'
+			'format':'\t'.join(['%(levelname)s','%(asctime)s','%(pathname)s','%(funcName)s','%(lineno)d','%(message)s']),
 		},
 		'concise': {
-			'format':'%(levelname)s: %(message)s (%(asctime)s)'
+			'format':'%(levelname)s,%(asctime)s,%(message)s'
 		}
 	},
 	'handlers': {
@@ -102,31 +102,46 @@ LOGGING = {
 		'console': {
 			'level':'DEBUG',
 			'class':'logging.StreamHandler',
-			'formatter':'concise',
+			'formatter':'talkative',
 			'filters': ['require_debug_true']
 		},
-		'file': {
-			'level'    : 'INFO',
-			'class'    : 'logging.FileHandler',
-			'filename' : '%s/application.log' % os.path.join(PROJECT_FOLDER, 'logs'),
-			'formatter': 'concise',
-			'filters'  : ['require_debug_false']
+		'file_all': {
+			'level'       : 'INFO',
+			'class'       : 'logging.handlers.RotatingFileHandler',
+			'filename'    : '%s/application.log' % os.path.join(PROJECT_FOLDER, 'logs'),
+			'maxBytes'    : 1024*1024*10, # 10 MB
+			'backupCount' : 5,
+			'formatter'   : 'talkative',
+			'filters'     : ['require_debug_false']
+		},
+		'file_request': {
+			'level'       : 'INFO',
+			'class'       : 'logging.handlers.RotatingFileHandler',
+			'filename'    : '%s/request.log' % os.path.join(PROJECT_FOLDER, 'logs'),
+			'maxBytes'    : 1024*1024*10, # 10 MB
+			'backupCount' : 5,
+			'formatter'   : 'talkative',
+			'filters'     : ['require_debug_false']
 		}
 	},
 	'loggers': {
-		'django': {
-			'handlers':['discard'],
-			'propogate': True,
-			'level':'INFO'
+		'django.db.backends': {
+			'handlers'  : ['discard'],
+			'level'     : 'CRITICAL',
+			'propogate' : False
 		},
-		'campus.views': {
-			'handlers':['console', 'file'],
-			'level':'DEBUG'
+		'django.request': {
+			'handlers'  : ['console', 'file_request'],
+			'level'     : 'WARNING',
+			'handlers'  : ['console'],
+			'propogate' : False
 		},
-		'views': {
-			'handlers':['console', 'file'],
-			'level':'DEBUG'
-		}
+		'': {
+			'handlers'  : ['console', 'file_all'],
+			'level'     : 'DEBUG',
+			'propogate' : False
+		},
+		
 	}
 }
 
@@ -151,7 +166,7 @@ SEARCH_QUERY_CACHE_PREFIX = 'search_'
 
 CACHE_TIMEOUT   = 60*60*24
 CACHE_LOCATION  = os.path.join(PROJECT_FOLDER, 'cache')
-CACHE_BACKEND   = 'file://%s?timeout=%d' % (CACHE_LOCATION, CACHE_TIMEOUT)
+CACHE_BACKEND   = 'locmem://'
 CACHE_MIDDLEWARE_ANONYMOUS_ONLY = True
 
 try:
