@@ -87,59 +87,72 @@ LOGGING = {
 		}
 	},
 	'formatters': {
-		'talkative': {
-			'format':'\t'.join(['%(levelname)s','%(asctime)s','%(pathname)s','%(funcName)s','%(lineno)d','%(message)s']),
-		},
 		'concise': {
-			'format':'%(levelname)s,%(asctime)s,%(message)s'
-		}
+			'format':'\t'.join(['%(levelname)s','%(asctime)s','%(message)s']),
+		},
+		'talkative': {
+			'format':'\t'.join(['%(levelname)s','%(asctime)s','%(funcName)s','%(lineno)d','%(message)s']),
+		},
+		# Request Specific Formatters
+		'request_console_formatter':{
+			'format':'\t'.join(['%(levelname)s','%(asctime)s','%(message)s','%(exc_info)s']),
+		},
+		'request_file_formatter':{
+			'format':'\t'.join(['%(levelname)s','%(asctime)s','%(message)s','%(exc_info)s']),
+		},
 	},
 	'handlers': {
 		'discard': {
-			'level':'DEBUG',
-			'class':'django.utils.log.NullHandler'
+			'level' : 'DEBUG',
+			'class' : 'django.utils.log.NullHandler'
 		},
 		'console': {
-			'level':'DEBUG',
-			'class':'logging.StreamHandler',
-			'formatter':'talkative',
-			'filters': ['require_debug_true']
-		},
-		'file_all': {
-			'level'       : 'INFO',
+			'level'     : 'DEBUG',
+			'class'     : 'logging.StreamHandler',
+			'formatter' : 'concise',
+			'filters'   : ['require_debug_true']
+		},		
+		'file': {
+			'level'       : 'DEBUG',
 			'class'       : 'logging.handlers.RotatingFileHandler',
 			'filename'    : '%s/application.log' % os.path.join(PROJECT_FOLDER, 'logs'),
 			'maxBytes'    : 1024*1024*10, # 10 MB
 			'backupCount' : 5,
-			'formatter'   : 'talkative',
+			'formatter'   : 'concise',
 			'filters'     : ['require_debug_false']
 		},
+		# Request Specific Handlers
+		'console_request': {
+			'level'       : 'DEBUG',
+			'class'       : 'logging.StreamHandler',
+			'formatter'   : 'request_console_formatter',
+			'filters'     : ['require_debug_true']
+		},
 		'file_request': {
-			'level'       : 'INFO',
+			'level'       : 'DEBUG',
 			'class'       : 'logging.handlers.RotatingFileHandler',
 			'filename'    : '%s/request.log' % os.path.join(PROJECT_FOLDER, 'logs'),
 			'maxBytes'    : 1024*1024*10, # 10 MB
 			'backupCount' : 5,
-			'formatter'   : 'talkative',
+			'formatter'   : 'request_file_formatter',
 			'filters'     : ['require_debug_false']
 		}
 	},
 	'loggers': {
-		'django.db.backends': {
+		'django.db.backends': { # Supress SQL debug messages
 			'handlers'  : ['discard'],
 			'level'     : 'CRITICAL',
-			'propogate' : False
+			'propagate' : False
 		},
 		'django.request': {
-			'handlers'  : ['console', 'file_request'],
-			'level'     : 'WARNING',
-			'handlers'  : ['console'],
-			'propogate' : False
+			'handlers'  : ['console_request', 'file_request'],
+			'level'     : 'DEBUG',
+			'propagate' : False
 		},
 		'': {
-			'handlers'  : ['console', 'file_all'],
+			'handlers'  : ['console', 'file'],
 			'level'     : 'DEBUG',
-			'propogate' : False
+			'propagate' : False
 		},
 		
 	}
