@@ -13,6 +13,7 @@
 	.input #widget_width, 
 		.input #widget_height {width:40px;text-align:right;}
 	button[type="submit"] {padding:5px;font-size:16px;}
+	#embed_code textarea {width:100%;border:1px solid #CCC;height:100px;padding:5px;font-size:14px;}
 </style>
 {% endblock %}
 {% block js %}
@@ -123,7 +124,7 @@
 					// Put together the final IFRAME HTML
 					html = base_html.replace('SRC', iframe_src).replace('STYLE', iframe_style).replace('ALT', alt_content);
 					
-					$('#embed_code code').text(html);
+					$('#embed_code textarea').val(html);
 					$('#preview').find('iframe').remove().end().append(html);
 				}
 
@@ -186,9 +187,9 @@
 <div class="span-24 last">
 	<div id="embed_code">
 		<h3>Embed Code - Copy &amp; paste this code into the appropriate place in your website's HTML</h3>
-		<code>
+		<textarea>
 			
-		</code>
+		</textarea>
 	</div>
 	<div id="preview">
 		<h3>Preview</h3>
