@@ -122,6 +122,8 @@
 					var infobox_width = building_title.length * 5.5;
 					if(infobox_width > (width / 2.1)) {
 						infobox_width = (width / 2.1);
+					} else if(infobox_width < 75) {
+						infobox_width = 75;
 					}
 					infobox.setContent('<div class="iBox" style="width:' + infobox_width + 'px;"><a href="{{base_url}}?show={{building.id}}">' + building_title + '</a></div>');
 					var map_point_latlng = undefined;
