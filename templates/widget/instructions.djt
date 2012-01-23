@@ -105,8 +105,9 @@
 {% block wrap %}
 <h2>Emebedding the UCF Campus Map</h2>
 <p>
-	The UCF Campus Map is available in the form of a widget that can be embedded
-	on other websites. Below is a form which will allow you to create your own embed code.
+	The UCF Campus Map is available as a widget that can be embedded
+	on other websites. Below is a form which will allow you to configure and
+	create your own embed code.
 </p>
 <div class="span-14" id="widget_creation">
 	<h3>Create Your Own Widget Embed Code</h3>
@@ -136,7 +137,7 @@
 		<div class="input">
 			<label for="widget_illustrated">Illustrated</label>:
 			<input type="checkbox" id="widget_illustrated" />
-			<p>Rendering instead of standard road map.</p>
+			<p>Display an illustrated version of the map instead of the standard road map.</p>
 		</div>
 		<button>Update Embed Code</button>
 	</form>
