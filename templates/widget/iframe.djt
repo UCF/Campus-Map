@@ -119,7 +119,12 @@
 						infoBoxClearance       : new google.maps.Size(1, 1),
 						enableEventPropagation : false
 					});
-					infobox.setContent('<div class="iBox" style="width:' + (width / 2.1) + 'px;"><a href="' + MAP_SHOW_URL + '{{building.id}}' + '">{{building.title}}</a></div>');
+					var building_title = '{{building.title}}';
+					var infobox_width = building_title.length * 5.5;
+					if(infobox_width > (width / 2.1)) {
+						infobox_width = (width / 2.1);
+					}
+					infobox.setContent('<div class="iBox" style="width:' + infobox_width + 'px;"><a href="' + MAP_SHOW_URL + '{{building.id}}' + '">' + building_title + '</a></div>');
 					var map_point_latlng = undefined;
 					if(show_illustrated_map) {
 						map_point_latlng = new google.maps.LatLng(illustrated_map_point[0],illustrated_map_point[1]);
