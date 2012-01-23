@@ -5,7 +5,7 @@
 		<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
 		<script type="text/javascript" src="{{MEDIA_URL}}-/gmaps-infobox/infobox.js"></script>
 		<script type="text/javascript">
-			var Widget = function() {
+			(window.onload = function() {
 				var that                  = this,
 					width                 = {{width}},
 					height                = {{height}},
@@ -136,7 +136,8 @@
 					infobox.open(map);
 					map.panTo(map_point_latlng);
 				}
-			};
+			}
+		)();
 		</script>
 		<style type="text/css">
 			*    {margin:0;padding:0;font-size:100%;font-family:"Helvetica Neue",Helvetica,sans-serif;}
@@ -154,7 +155,7 @@
 			.ie .iBox { background:transparent; filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#B4000000',endColorstr='#B4000000'); zoom: 1; }
 		</style>
 	</head>
-	<body onload="Widget()">
+	<body>
 		{% if title %}
 		<h1>{% if building %}<a href="{{base_url}}?show={{building.id}}">{{title}}</a>{% else %}{{title}}{% endif %}</h1>
 		{% endif %}
