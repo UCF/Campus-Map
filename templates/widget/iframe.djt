@@ -16,8 +16,7 @@
 					map_element           = document.getElementById('map'),
 					map_options           = {},
 					map                   = undefined,
-					infobox               = undefined,
-					MAP_SHOW_URL          = 'http://map.ucf.edu/?show=';
+					infobox               = undefined;
 				
 				// Showing a specific building
 				{% if building %}
@@ -124,7 +123,7 @@
 					if(infobox_width > (width / 2.1)) {
 						infobox_width = (width / 2.1);
 					}
-					infobox.setContent('<div class="iBox" style="width:' + infobox_width + 'px;"><a href="' + MAP_SHOW_URL + '{{building.id}}' + '">' + building_title + '</a></div>');
+					infobox.setContent('<div class="iBox" style="width:' + infobox_width + 'px;"><a href="{{base_url}}?show={{building.id}}">' + building_title + '</a></div>');
 					var map_point_latlng = undefined;
 					if(illustrated) {
 						map_point_latlng = new google.maps.LatLng(illustrated_map_point[0],illustrated_map_point[1]);
@@ -155,7 +154,7 @@
 	</head>
 	<body onload="Widget()">
 		{% if title %}
-		<h1>{% if building %}<a href="http://map.ucf.edu/?show={{building.id}}">{{title}}</a>{% else %}{{title}}{% endif %}</h1>
+		<h1>{% if building %}<a href="{{base_url}}?show={{building.id}}">{{title}}</a>{% else %}{{title}}{% endif %}</h1>
 		{% endif %}
 		<div id="map"></div>
 		<div id="info-box"></div>
