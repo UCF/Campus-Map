@@ -12,6 +12,7 @@
 	.input p {font-size:90%;display:block;clear:both;text-align:right;padding-top:3px;}
 	.input #widget_width, 
 		.input #widget_height {width:40px;text-align:right;}
+	button[type="submit"] {padding:5px;font-size:16px;}
 </style>
 {% endblock %}
 {% block js %}
@@ -111,10 +112,10 @@
 	<h3>Instructions:</h3>
 	<ol>
 		<li>Change the configuration options in the form below to your liking</li>
-		<li>Once you are finished configuring the options, click the Update Embed Code button</li>
+		<li>Once you are finished configuring the options, click the Generate Embed Code button</li>
 		<li>
 			Copy and paste the resulting HTML in the Embed Code section
-			into the appropriate place in your website's HTML
+			into the appropriate place in your website's HTML.
 		</li>
 	</ol>
 	<hr />
@@ -147,7 +148,7 @@
 			<input type="checkbox" id="widget_illustrated" />
 			<p>Display an illustrated version of the map instead of the standard road map.</p>
 		</div>
-		<button>Update Embed Code</button>
+		<button type="submit">Generate Embed Code</button>
 	</form>
 </div>
 <div class="span-24 last">
