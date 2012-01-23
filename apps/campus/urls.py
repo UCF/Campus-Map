@@ -12,6 +12,8 @@ urlpatterns = patterns('campus.views',
 	url(r'^food/$', 'dining', name='dining'),
 	url(r'^regional-campuses/((?P<campus>[\w-]+)/)?$', 'regional_campuses', name="regional"),
 	
+	url(r'^widget/$', 'widget', name='widget'),
+
 	# campus admin views
 	url(r'^admin/dump/', 'data_dump', name="dump_data"),
 	url(r'^admin/cache/', 'cache_admin', name="cache"),

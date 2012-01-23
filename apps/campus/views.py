@@ -2,7 +2,7 @@ from django.shortcuts import render_to_response, get_object_or_404
 from django.http      import HttpResponse, HttpResponseNotFound, Http404, HttpResponsePermanentRedirect
 from django.views.generic.simple import direct_to_template as render
 from django.core.urlresolvers import reverse
-from campus.models import MapObj, DiningLocation
+from campus.models import MapObj, DiningLocation, Building
 from django.core.cache import cache
 from xml.etree import ElementTree
 from django.contrib.auth.decorators import login_required
@@ -646,3 +646,48 @@ def data_dump(request):
 	response = HttpResponse(data)
 	response['Content-type'] = 'application/json'
 	return response
+
+def widget(request):
+	'''
+	Outputs information to build the map widget
+	'''
+	context  = {}
+	template = 'widget/iframe.djt'
+
+	if len(request.GET) != 0:
+		context['width']                = request.GET.get('width',                256)
+		context['height']               = request.GET.get('height',               256)
+		context['title']                = request.GET.get('title',                'UCF Map')
+		building_id                     = request.GET.get('building_id',          None)
+		context['show_illustrated_map'] = request.GET.get('show_illustrated_map', 'n')
+
+		# Check default values
+		try:
+			context['width'] = int(context['width'])
+		except ValueError:
+			context['width'] = 256
+		
+		try:
+			context['height'] = int(context['height'])
+		except ValueError:
+			context['height'] = 256
+
+		try:
+			context['building'] = Building.objects.get(id=building_id)
+		except Building.DoesNotExist:
+			context['building'] = None
+		
+		if context['show_illustrated_map'] not in ('y', 'n', 'Y', 'N'):
+			context['show_illustrated_map'] = 'n'
+		if context['show_illustrated_map'].lower() in ('y', 'Y'):
+			context['show_illustrated_map'] = True
+		elif context['show_illustrated_map'].lower() in ('n', 'N'):
+			context['show_illustrated_map'] = False
+
+		# Convert to JavaScript boolean
+		context['show_illustrated_map'] = str(context['show_illustrated_map']).lower()
+		
+	else:
+		template = 'widget/instructions.djt'
+	
+	return render(request, template, context)

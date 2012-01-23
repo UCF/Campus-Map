@@ -1,0 +1,155 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+		<script type="text/javascript" src="{{MEDIA_URL}}-/gmaps-infobox/infobox.js"></script>
+		<script type="text/javascript">
+			var Widget = function() {
+				var that                  = this,
+					width                 = {{width}},
+					height                = {{height}},
+					title                 = '{{title}}',
+					show_illustrated_map  = {{show_illustrated_map}},
+					google_map_point      = undefined,
+					illustrated_map_point = undefined,
+					map_element           = document.getElementById('map'),
+					map_options           = {},
+					map                   = undefined,
+					infobox               = undefined;
+				
+				// Showing a specific building
+				{% if building %}
+					{% if building.googlemap_point %}
+						google_map_point      = {{building.googlemap_point}};
+					{% else %}
+						//This building does not have a google map point
+					{% endif %}
+					{% if building.illustrated_point %}
+						illustrated_map_point = {{building.illustrated_point}};
+					{% else %}
+						//This building does not have a illustrated map point
+					{% endif %}
+				{% endif %}
+
+				//
+				// Construct the map options and create the map
+				//
+				var imap_type = {
+					tileSize : new google.maps.Size(256,256),
+					minZoom  : 12,
+					maxZoom  : 16, //can go up to 18
+					getTile  : function(coord, zoom, ownerDocument) {
+						var div                   = ownerDocument.createElement('div');
+						div.style.width           = this.tileSize.width + 'px';
+						div.style.height          = this.tileSize.height + 'px';
+						div.style.backgroundImage = this.bg(coord,zoom);
+						return div;
+					},
+					name : "Illustrated",
+					alt  : "Show illustrated map",
+					bg   : function(coord,zoom) {
+						var tile = "zoom-" + zoom + "/" + zoom + "-" + coord.x + "-" + coord.y + ".jpg";
+						var nope = "white.png";
+
+						// check to see if requested tile for this zoom is within bounds,
+						// if not, return a whilte tile
+						if(zoom < 12 || coord.y<0 || coord.x<0){
+							tile = nope;
+						} else if( zoom === 12){
+							// map is 2 tiles tall, 3 wide (zero indexed)
+							if(coord.y >1 || coord.x > 2){ tile = nope; }
+						} else {
+							// smallest map is 5x3
+							// for each zoom a tile is divided equally into 4 parts
+							var wide = 5;
+							var tall = 3;
+							var factor = Math.pow(2, (zoom - 13));
+							if( coord.x >= wide*factor || coord.y >= tall*factor){ tile = nope; }
+						}
+						
+						return 'url("http://cdn.ucf.edu/map/tiles/' +tile+'")';
+					}
+				};
+
+				if(show_illustrated_map) {
+					map_options = {
+						zoom           : 14,
+						center         : new google.maps.LatLng(85.04591,-179.92189), // world's corner
+						mapTypeId      : 'illustrated',
+						mapTypeControl : true
+					};	
+				} else {
+					map_options = {
+						zoom      : 16,
+						center    : new google.maps.LatLng(28.6022,-81.2004),
+						mapTypeId : google.maps.MapTypeId.ROADMAP,
+						
+					}
+				}
+
+				// Shared map options
+				map_options.panControl         = true;
+				map_options.panControlOptions  = {
+					style: google.maps.ZoomControlStyle.SMALL,
+					position: google.maps.ControlPosition.LEFT_TOP
+				};
+				map_options.zoomControl        = true;
+				map_options.zoomControlOptions = {
+					style: google.maps.ZoomControlStyle.SMALL,
+					position: google.maps.ControlPosition.LEFT_TOP
+				};
+				map_options.streetViewControl  = false;
+				map_options.mapTypeControl     = false;
+
+				// Create the map
+				map = new google.maps.Map(map_element, map_options);
+				map.mapTypes.set('illustrated',imap_type);
+
+				// Create an infobox if needed
+				if((google_map_point != undefined && show_illustrated_map == false) || 
+					(illustrated_map_point != undefined && show_illustrated_map)) {
+					infobox = new InfoBox({
+						alignBottom            : true,
+						pixelOffset            : new google.maps.Size(-18, -3),
+						maxWidth               : 0,
+						closeBoxURL            : "",
+						pane                   : "floatPane",
+						infoBoxClearance       : new google.maps.Size(1, 1),
+						enableEventPropagation : false
+					});
+					infobox.setContent('<div class="iBox" style="width:' + (width / 2.1) + 'px;">{{building.title}}</div>');
+					var map_point_latlng = undefined;
+					if(show_illustrated_map) {
+						map_point_latlng = new google.maps.LatLng(illustrated_map_point[0],illustrated_map_point[1]);
+					} else {
+						map_point_latlng = new google.maps.LatLng(google_map_point[0],google_map_point[1]);
+					}
+					infobox.setPosition(map_point_latlng);
+					infobox.open(map);
+					map.panTo(map_point_latlng);
+				}
+			};
+		</script>
+		<link rel="stylesheet" href="{{MEDIA_URL}}style/widget.css" />
+		<style type="text/css">
+			*    {margin:0;padding:0;font-size:100%;font-family:"Helvetica Neue",Helvetica,sans-serif;}
+			h1   {font-size:18px;margin-bottom:3px;}
+			#map {width:{{width}}px;height:{{height}}px;}
+			/******************************************************************************\
+			    Black google map infobox - Copied form style.css
+			\******************************************************************************/
+			.infoBox { background:url('{{MEDIA_URL}}style/img/infobox-tip.png') no-repeat bottom left; color:white; padding-bottom:13px; }
+			.iBox { -moz-border-radius: 5px; -webkit-border-radius:3px; border-radius:3px; padding:3px; max-width:250px;
+				background: black; background: rgba(0,0,0,.71); padding:5px 5px 6px; text-align:center; font-weight:bold;  } 
+			.ie .iBox { background:transparent; filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#B4000000',endColorstr='#B4000000'); zoom: 1; }
+		</style>
+	</head>
+	<body onload="Widget()">
+		{% if title %}
+		<h1>{{title}}</h1>
+		{% endif %}
+		<div id="map"></div>
+		<div id="info-box"></div>
+	</body>
+</html>
