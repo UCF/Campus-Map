@@ -95,7 +95,8 @@
 				}
 
 				return false;
-			});
+			})
+			.trigger('submit');
 
 		})();
 	})
@@ -137,14 +138,14 @@
 			<input type="checkbox" id="widget_illustrated" />
 			<p>Rendering instead of standard road map.</p>
 		</div>
-		<button>Create Embed Code</button>
+		<button>Update Embed Code</button>
 	</form>
 </div>
 <div class="span-24 last">
 	<div id="embed_code">
 		<h3>Embed Code</h3>
 		<code>
-			aaaaaaa
+			
 		</code>
 	</div>
 	<div id="preview">
