@@ -10,7 +10,7 @@
 					width                 = {{width}},
 					height                = {{height}},
 					title                 = '{{title}}',
-					show_illustrated_map  = {{show_illustrated_map}},
+					illustrated  = {{illustrated}},
 					google_map_point      = undefined,
 					illustrated_map_point = undefined,
 					map_element           = document.getElementById('map'),
@@ -73,7 +73,7 @@
 					}
 				};
 
-				if(show_illustrated_map) {
+				if(illustrated) {
 					map_options = {
 						zoom           : 14,
 						center         : new google.maps.LatLng(85.04591,-179.92189), // world's corner
@@ -108,8 +108,8 @@
 				map.mapTypes.set('illustrated',imap_type);
 
 				// Create an infobox if needed
-				if((google_map_point != undefined && show_illustrated_map == false) || 
-					(illustrated_map_point != undefined && show_illustrated_map)) {
+				if((google_map_point != undefined && illustrated == false) || 
+					(illustrated_map_point != undefined && illustrated)) {
 					infobox = new InfoBox({
 						alignBottom            : true,
 						pixelOffset            : new google.maps.Size(-18, -3),
@@ -126,7 +126,7 @@
 					}
 					infobox.setContent('<div class="iBox" style="width:' + infobox_width + 'px;"><a href="' + MAP_SHOW_URL + '{{building.id}}' + '">' + building_title + '</a></div>');
 					var map_point_latlng = undefined;
-					if(show_illustrated_map) {
+					if(illustrated) {
 						map_point_latlng = new google.maps.LatLng(illustrated_map_point[0],illustrated_map_point[1]);
 					} else {
 						map_point_latlng = new google.maps.LatLng(google_map_point[0],google_map_point[1]);
@@ -137,7 +137,6 @@
 				}
 			};
 		</script>
-		<link rel="stylesheet" href="{{MEDIA_URL}}style/widget.css" />
 		<style type="text/css">
 			*    {margin:0;padding:0;font-size:100%;font-family:"Helvetica Neue",Helvetica,sans-serif;}
 			h1   {font-size:18px;margin-bottom:3px;}

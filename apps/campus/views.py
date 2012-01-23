@@ -6,7 +6,7 @@ from campus.models import MapObj, DiningLocation, Building
 from django.core.cache import cache
 from xml.etree import ElementTree
 from django.contrib.auth.decorators import login_required
-
+from django.core.urlresolvers import get_script_prefix
 import settings, json, re, urllib
 
 def home(request, **kwargs):
@@ -655,11 +655,11 @@ def widget(request):
 	template = 'widget/iframe.djt'
 
 	if len(request.GET) != 0:
-		context['width']                = request.GET.get('width',                256)
-		context['height']               = request.GET.get('height',               256)
-		context['title']                = request.GET.get('title',                'UCF Map')
-		building_id                     = request.GET.get('building_id',          None)
-		context['show_illustrated_map'] = request.GET.get('show_illustrated_map', 'n')
+		context['width']       = request.GET.get('width',                256)
+		context['height']      = request.GET.get('height',               256)
+		context['title']       = request.GET.get('title',                'UCF Map')
+		building_id            = request.GET.get('building_id',          None)
+		context['illustrated'] = request.GET.get('illustrated', 'n')
 
 		# Check default values
 		try:
@@ -677,15 +677,15 @@ def widget(request):
 		except Building.DoesNotExist:
 			context['building'] = None
 		
-		if context['show_illustrated_map'] not in ('y', 'n', 'Y', 'N'):
-			context['show_illustrated_map'] = 'n'
-		if context['show_illustrated_map'].lower() in ('y', 'Y'):
-			context['show_illustrated_map'] = True
-		elif context['show_illustrated_map'].lower() in ('n', 'N'):
-			context['show_illustrated_map'] = False
+		if context['illustrated'] not in ('y', 'n', 'Y', 'N'):
+			context['illustrated'] = 'n'
+		if context['illustrated'].lower() in ('y', 'Y'):
+			context['illustrated'] = True
+		elif context['illustrated'].lower() in ('n', 'N'):
+			context['illustrated'] = False
 
 		# Convert to JavaScript boolean
-		context['show_illustrated_map'] = str(context['show_illustrated_map']).lower()
+		context['illustrated'] = str(context['illustrated']).lower()
 		
 	else:
 		template = 'widget/instructions.djt'
