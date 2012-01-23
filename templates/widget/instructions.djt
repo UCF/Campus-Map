@@ -19,25 +19,16 @@
 <script type="text/javascript">
 	$().ready(function() {
 		(function() {
-			var form = $('#widget_creation > form'),
-				base_html = '<iframe src="{{base_url}}/widget/?title=TITLE&width=WIDTH&height=HEIGHT&illustrated=ILLUSTRATED&building_id=BUILDING_ID" style="border:none;width:IFRAME_WIDTHpx;height:IFRAME_HEIGHTpx">DESCRIPTION</iframe>' 
+			var form       = $('#widget_creation > form'),
+				base_html  = '<iframe src="SRC" style="STYLE">ALT</iframe>';
 			
-			function htmlEscape(str) {
-				return String(str)
-					.replace(/&/g, '&amp;')
-					.replace(/"/g, '&quot;')
-					.replace(/'/g, '&#39;')
-					.replace(/</g, '&lt;')
-					.replace(/>/g, '&gt;');
-			}
-
 			// Populate location list
 			$.getJSON(
 				'{{base_url}}/locations.json',
 				function(data) {
 					$.each(data, function(index, map_object) {
 						if(map_object.object_type == 'Building') {
-							$('#widget_building')
+							$('#widget_building_id')
 								.append('<option value="' + map_object.id + '">' +  map_object.title + '</option>')
 						}
 					})
@@ -49,12 +40,18 @@
 					width         = $('#widget_width').val(),
 					height        = $('#widget_height').val(),
 					illustrated   = $('#widget_illustrated').attr('checked'),
-					building_id   = $('#widget_building').val(),
-					description   = '',
-					iframe_height = undefined;
+					building_id   = $('#widget_building_id').val(),
+					iframe_height = undefined,
+					alt_content   = undefined,
+					iframe_src    = undefined,
+					iframe_params = [],
+					iframe_style  = undefined,
+					style_params  = [];
 				
+				// Remove any old errors that were generated
 				$(this).find('.error').remove();
 
+				// Validate width and height
 				width = parseInt(width, 10);
 				if(isNaN(width)) {
 					$(this).prepend('<div class="error">Width must be a number.</div>');
@@ -65,33 +62,28 @@
 				}
 
 				if(!isNaN(width) && !isNaN(height)) {
+					// Normalize illustrated param
+					illustrated = (illustrated) ? 'y':'n';
 
-					if(illustrated) {
-						illustrated = 'y';
-					} else {
-						illustrated = 'n';
-					}
+					// Construct IFRAME URL params
+					iframe_params.push('title='+title);
+					iframe_params.push('width='+width);
+					iframe_params.push('height='+height);
+					iframe_params.push('illustrated='+illustrated);
+					iframe_params.push('building_id='+building_id);
+					iframe_src = '{{base_url}}/widget?' + encodeURIComponent(iframe_params.join('&'));
 
-					// Adjustment if title is present
-					iframe_height = height;
-					if(title != '') {
-						iframe_height += 30;
-					}
+					// Styling
+					style_params.push('border:none');
+					style_params.push('width:' + (width + 15) + 'px');
+					// Height adjustment if title is present
+					style_params.push('height:' + ((title == '') ? height:height + 30) + 'px');
+					iframe_style = style_params.join(';');
 
-					description = 'UCF Campus Map'
-
-					var html = base_html
-					            .replace('TITLE',  title)
-					            .replace('WIDTH',  width)
-					            .replace('HEIGHT', height)
-					            .replace('IFRAME_WIDTH', width+15)
-					            .replace('IFRAME_HEIGHT', iframe_height)
-					            .replace('ILLUSTRATED', illustrated)
-					            .replace('BUILDING_ID', building_id)
-					            .replace('DESCRIPTION', description);
-
+					// Put together the final IFRAME HTML
+					html = base_html.replace('SRC', iframe_src).replace('STYLE', iframe_style);
 					
-					$('#embed_code code').empty().text(html);
+					$('#embed_code code').text(html);
 					$('#preview').find('iframe').remove().end().append(html);
 				}
 
@@ -127,8 +119,8 @@
 			<p>If blank, title will not be shown.</p>
 		</div>
 		<div class="input">
-			<label for="widget_building">Location</label>:
-			<select id="widget_building">
+			<label for="widget_building_id">Location</label>:
+			<select id="widget_building_id">
 				<option value=""></option>
 			</select>
 			<p>If no location is selected, the map will be centered on the Student Union.</p>
