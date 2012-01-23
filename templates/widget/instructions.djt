@@ -28,26 +28,46 @@
 				function(data) {
 					$.each(data, function(index, map_object) {
 						if(map_object.object_type == 'Building') {
+							var googlemap_point   = [0,0],
+								illustrated_point = [0,0];
+							if(map_object.googlemap_point != undefined) {
+								googlemap_point = map_object.googlemap_point;
+							}
+							if(map_object.illustrated_point != undefined) {
+								illustrated_point = map_object.illustrated_point;
+							}
 							$('#widget_building_id')
-								.append('<option value="' + map_object.id + '">' +  map_object.title + '</option>')
+								.append('<option value="' + map_object.id + '" data-glat="' + googlemap_point[0] + '" data-glng="' + googlemap_point[1] + '" data-ilat="' + illustrated_point[0] + '" data-ilng="' + illustrated_point[1] + '">' +  map_object.title + '</option>')
 						}
 					})
 				})
 
 			form.submit(function(e) {
 				e.preventDefault();
-				var title         = $('#widget_title').val(),
-					width         = $('#widget_width').val(),
-					height        = $('#widget_height').val(),
-					illustrated   = $('#widget_illustrated').attr('checked'),
-					building_id   = $('#widget_building_id').val(),
-					iframe_height = undefined,
-					alt_content   = undefined,
-					iframe_src    = undefined,
-					iframe_params = [],
-					iframe_style  = undefined,
-					style_params  = [];
+				var title              = $('#widget_title').val(),
+					width                 = $('#widget_width').val(),
+					height                = $('#widget_height').val(),
+					illustrated           = $('#widget_illustrated').attr('checked'),
+					building_el           = $('#widget_building_id option:selected'),
+					building_id           = building_el.val(),
+					illustrated_latlng    = undefined,
+					googlemap_latlng      = undefined,
+					iframe_height         = undefined,
+					alt_content           = undefined,
+					iframe_src            = undefined,
+					iframe_params         = [],
+					iframe_style          = undefined,
+					style_params          = [],
+					static_src            = undefined,
+					static_base_url       = 'http://maps.googleapis.com/maps/api/staticmap',
+					static_params         = [],
+					static_default_center = [28.6018,-81.1995];
 				
+				if(building_id != '') {
+					googlemap_latlng   = [building_el.attr('data-glat'), building_el.attr('data-glng')];
+					illustrated_latlng = [building_el.attr('data-ilat'), building_el.attr('data-ilng')];
+				}
+
 				// Remove any old errors that were generated
 				$(this).find('.error').remove();
 
@@ -71,7 +91,7 @@
 					iframe_params.push('height='+height);
 					iframe_params.push('illustrated='+illustrated);
 					iframe_params.push('building_id='+building_id);
-					iframe_src = '{{base_url}}/widget?' + encodeURIComponent(iframe_params.join('&'));
+					iframe_src = encodeURI('{{base_url}}/widget?' + iframe_params.join('&'));
 
 					// Styling
 					style_params.push('border:none');
@@ -80,8 +100,28 @@
 					style_params.push('height:' + ((title == '') ? height:height + 30) + 'px');
 					iframe_style = style_params.join(';');
 
+					// Alt Content
+					if(building_id != '') {
+						alt_content = '<a style="display:block;color:#000;font-weight:bold;font-size:16px;" href="' + encodeURI('{{base_url}}?show=' + building_id) + '">UCF Campus Map - ' + building_el.text() + '</a>';
+
+						if(googlemap_latlng[0] != 0 && googlemap_latlng[1] != 0) {
+							static_params.push('center=' + googlemap_latlng.join(','));
+							static_params.push('markers=color:red|label:A|' + googlemap_latlng.join(','));
+						}
+					} else {
+						alt_content = '<a style="display:block;color:#000;font-weight:bold;font-size:16px;" href="' + encodeURI('{{base_url}}') + '">UCF Campus Map</a>';
+						static_params.push('center=' + static_default_center.join(',') );
+						static_params.push('zoom=16');
+					}
+					static_params.push('size=' + width + 'x' + height);
+					static_params.push('maptype=roadmap');
+					static_params.push('sensor=false');
+					static_src = encodeURI(static_base_url + '?' + static_params.join('&'));
+
+					alt_content += '<img src="' + static_src + '" />';
+
 					// Put together the final IFRAME HTML
-					html = base_html.replace('SRC', iframe_src).replace('STYLE', iframe_style);
+					html = base_html.replace('SRC', iframe_src).replace('STYLE', iframe_style).replace('ALT', alt_content);
 					
 					$('#embed_code code').text(html);
 					$('#preview').find('iframe').remove().end().append(html);
