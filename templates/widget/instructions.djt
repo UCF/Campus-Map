@@ -21,7 +21,7 @@
 	$().ready(function() {
 		(function() {
 			var form       = $('#widget_creation > form'),
-				base_html  = '<iframe src="SRC" style="STYLE">ALT</iframe>';
+				base_html  = '<iframe ATTRS src="SRC" style="STYLE">ALT</iframe>';
 			
 			// Populate location list
 			$.getJSON(
@@ -53,11 +53,11 @@
 					building_id           = building_el.val(),
 					illustrated_latlng    = undefined,
 					googlemap_latlng      = undefined,
-					iframe_height         = undefined,
 					alt_content           = undefined,
 					iframe_src            = undefined,
 					iframe_params         = [],
 					iframe_style          = undefined,
+					iframe_attrs          = [],
 					style_params          = [],
 					static_src            = undefined,
 					static_link           = undefined,
@@ -96,6 +96,9 @@
 					iframe_params.push('building_id='+building_id);
 					iframe_src = encodeURI('{{base_url}}/widget?' + iframe_params.join('&'));
 
+					// IFrame Attributes
+					iframe_attrs.push('frameborder="0"');
+
 					// Styling
 					style_params.push('border:none');
 					style_params.push('width:' + (width + 15) + 'px');
@@ -128,7 +131,7 @@
 					alt_content += '<a style="border:0;text-indent:-500em;text-decoration:none;" href="' + static_link + '"><img src="' + static_src + '" alt="' + static_alt_text + '"/></a>';
 
 					// Put together the final IFRAME HTML
-					html = base_html.replace('SRC', iframe_src).replace('STYLE', iframe_style).replace('ALT', alt_content);
+					html = base_html.replace('SRC', iframe_src).replace('STYLE', iframe_style).replace('ALT', alt_content).replace('ATTRS', iframe_attrs.join(' '));
 					
 					$('#embed_code textarea').val(html);
 					$('#preview').find('iframe').remove().end().append(html);
