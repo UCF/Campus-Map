@@ -16,7 +16,8 @@
 					map_element           = document.getElementById('map'),
 					map_options           = {},
 					map                   = undefined,
-					infobox               = undefined;
+					infobox               = undefined,
+					MAP_SHOW_URL          = 'http://map.ucf.edu/?show=';
 				
 				// Showing a specific building
 				{% if building %}
@@ -118,7 +119,7 @@
 						infoBoxClearance       : new google.maps.Size(1, 1),
 						enableEventPropagation : false
 					});
-					infobox.setContent('<div class="iBox" style="width:' + (width / 2.1) + 'px;">{{building.title}}</div>');
+					infobox.setContent('<div class="iBox" style="width:' + (width / 2.1) + 'px;"><a href="' + MAP_SHOW_URL + '{{building.id}}' + '">{{building.title}}</a></div>');
 					var map_point_latlng = undefined;
 					if(show_illustrated_map) {
 						map_point_latlng = new google.maps.LatLng(illustrated_map_point[0],illustrated_map_point[1]);
@@ -135,19 +136,22 @@
 		<style type="text/css">
 			*    {margin:0;padding:0;font-size:100%;font-family:"Helvetica Neue",Helvetica,sans-serif;}
 			h1   {font-size:18px;margin-bottom:3px;}
+			h1 a {color:#000;text-decoration:none; border-bottom:1px dotted #000;}
 			#map {width:{{width}}px;height:{{height}}px;}
 			/******************************************************************************\
 			    Black google map infobox - Copied form style.css
 			\******************************************************************************/
 			.infoBox { background:url('{{MEDIA_URL}}style/img/infobox-tip.png') no-repeat bottom left; color:white; padding-bottom:13px; }
 			.iBox { -moz-border-radius: 5px; -webkit-border-radius:3px; border-radius:3px; padding:3px; max-width:250px;
-				background: black; background: rgba(0,0,0,.71); padding:5px 5px 6px; text-align:center; font-weight:bold;  } 
+				background: black; background: rgba(0,0,0,.71); padding:5px 5px 6px; text-align:center; font-weight:bold;  }
+			.iBox a { color:white; text-decoration:none; border-bottom:1px dotted #B1B1B1; }
+			.iBox a:hover  { border-bottom-style:solid; }
 			.ie .iBox { background:transparent; filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#B4000000',endColorstr='#B4000000'); zoom: 1; }
 		</style>
 	</head>
 	<body onload="Widget()">
 		{% if title %}
-		<h1>{{title}}</h1>
+		<h1>{% if building %}<a href="http://map.ucf.edu/?show={{building.id}}">{{title}}</a>{% else %}{{title}}{% endif %}</h1>
 		{% endif %}
 		<div id="map"></div>
 		<div id="info-box"></div>
