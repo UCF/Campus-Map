@@ -3,7 +3,7 @@
 {% block title %}Locations and Building - {{block.super}}{% endblock %}
 {% block head %}
 <style type="text/css">
-	#widget_creation form {background-color:#f1f1f1;padding:15px;width:100%;border-radius:2px}
+	#widget_creation form {background-color:#f1f1f1;padding:15px;width:500px;border-radius:2px}
 	.input {margin-bottom:10px;clear:both;}
 	.input label {font-size:18px;width:150px;}
 	.input input[type="text"] {border:1px solid #b1b1b1;padding:5px;font-size:16px;float:right}
@@ -11,7 +11,7 @@
 	.input select {float:right;font-size:16px;}
 	.input p {font-size:90%;display:block;clear:both;text-align:right;padding-top:3px;}
 	.input #widget_width, 
-		.input #widget_height {width:40px;text-align:right;} 
+		.input #widget_height {width:40px;text-align:right;}
 </style>
 {% endblock %}
 {% block js %}
@@ -104,13 +104,21 @@
 {% endblock %}
 {% block wrap %}
 <h2>Emebedding the UCF Campus Map</h2>
-<p>
-	The UCF Campus Map is available as a widget that can be embedded
-	on other websites. Below is a form which will allow you to configure and
-	create your own embed code.
-</p>
-<div class="span-14" id="widget_creation">
-	<h3>Create Your Own Widget Embed Code</h3>
+<div class="span-24 last" id="widget_creation">
+	<p>
+		The UCF Campus Map can be embedded in other websites via a simple iframe. 
+	</p>
+	<h3>Instructions:</h3>
+	<ol>
+		<li>Change the configuration options in the form below to your liking</li>
+		<li>Once you are finished configuring the options, click the Update Embed Code button</li>
+		<li>
+			Copy and paste the resulting HTML in the Embed Code section
+			into the appropriate place in your website's HTML
+		</li>
+	</ol>
+	<hr />
+	<h3>Map Options</h3>
 	<form action="" method="post">
 		<div class="input">
 			<label for="widget_title">Title</label>:
@@ -144,7 +152,7 @@
 </div>
 <div class="span-24 last">
 	<div id="embed_code">
-		<h3>Embed Code</h3>
+		<h3>Embed Code - Copy &amp; paste this code into the appropriate place in your website's HTML</h3>
 		<code>
 			
 		</code>
