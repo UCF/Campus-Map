@@ -12,7 +12,7 @@
 	.input p {font-size:90%;display:block;clear:both;text-align:right;padding-top:3px;}
 	.input #widget_width, 
 		.input #widget_height {width:40px;text-align:right;}
-	button[type="submit"] {padding:5px;font-size:16px;}
+	button[type="submit"] {padding:5px;font-size:16px;float:right;}
 	#embed_code textarea {width:100%;border:1px solid #CCC;height:100px;padding:5px;font-size:14px;}
 </style>
 {% endblock %}
@@ -152,8 +152,8 @@
 		</li>
 	</ol>
 	<hr />
-	<h3>Map Options</h3>
-	<form action="" method="post">
+	<h3>Configuration Options</h3>
+	<form action="" method="post" class="clearfix">
 		<div class="input">
 			<label for="widget_title">Title</label>:
 			<input type="text" id="widget_title" value="UCF Map" />
