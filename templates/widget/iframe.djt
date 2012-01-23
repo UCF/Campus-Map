@@ -83,8 +83,7 @@
 					map_options = {
 						zoom      : 16,
 						center    : new google.maps.LatLng(28.6022,-81.2004),
-						mapTypeId : google.maps.MapTypeId.ROADMAP,
-						
+						mapTypeId : google.maps.MapTypeId.ROADMAP						
 					}
 				}
 
