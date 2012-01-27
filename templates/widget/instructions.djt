@@ -187,6 +187,7 @@
 					<label for="widget_ssl">SSL:</label>
 					<input type="checkbox" id="widget_ssl" />
 				</div>
+				<p>(Check this box if you are embedding the map on a secure website.)
 				<div class="field">
 					<label for="widget_illustrated">Illustrated:</label>
 					<input type="checkbox" id="widget_illustrated" />
