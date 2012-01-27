@@ -1,6 +1,6 @@
 {% extends "base.djt"%}
 
-{% block title %}Locations and Building - {{block.super}}{% endblock %}
+{% block title %}Widget - UCF Campus Map{% endblock %}
 {% block js %}
 <script type="text/javascript">
 	$().ready(function() {
