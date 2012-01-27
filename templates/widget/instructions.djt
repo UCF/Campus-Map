@@ -155,16 +155,10 @@
 		To place a UCF map on your website:
 	</p>
 	<ol>
-		<li>Change the configuration options in the form below to your liking</li>
-		<li>Once you are finished configuring the options, click the Generate Embed Code button</li>
-		<li>
-			Copy and paste the resulting HTML in the Embed Code section
-			into the appropriate place in your website's HTML.
-		</li>
+		<li>Fill in the appropriate title, location and size for the map you'd like to place on your site.</li>
+		<li>Click the Preview button to see what it will look like on your webpage.</li>
+		<li>Once you're happy with what you see, copy the <a href="#embed_code">HTML code</a> at the bottom of this page and paste it into the code for your site.</li>
 	</ol>
-	<p>
-		 Once you're happy with what you see, copy the <a href="#code">HTML code</a> at the bottom of this page and paste it into the code for your site.
-	</p>
 	<hr />
 	<div class="span-24 last">
 		<div class="span-13" id="customize">
