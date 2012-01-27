@@ -655,12 +655,13 @@ def widget(request):
 	template = 'widget/iframe.djt'
 
 	if len(request.GET) != 0:
-		context['width']       = request.GET.get('width',                256)
-		context['height']      = request.GET.get('height',               256)
-		context['title']       = request.GET.get('title',                'UCF Map')
-		building_id            = request.GET.get('building_id',          None)
+		context['width']       = request.GET.get('width',       256)
+		context['height']      = request.GET.get('height',      256)
+		context['title']       = request.GET.get('title',       'UCF Map')
+		building_id            = request.GET.get('building_id', None)
 		context['illustrated'] = request.GET.get('illustrated', 'n')
-
+		context['ssl']         = request.GET.get('ssl',         'n')
+		
 		# Check default values
 		try:
 			context['width'] = int(context['width'])
@@ -683,9 +684,18 @@ def widget(request):
 			context['illustrated'] = True
 		elif context['illustrated'].lower() in ('n', 'N'):
 			context['illustrated'] = False
-
+		
 		# Convert to JavaScript boolean
 		context['illustrated'] = str(context['illustrated']).lower()
+
+		if context['ssl'] not in ('y', 'n', 'Y', 'N'):
+			context['ssl'] = 'n'
+		if context['ssl'].lower() in ('y', 'Y'):
+			context['ssl'] = True
+		elif context['ssl'].lower() in ('n', 'N'):
+			context['ssl'] = False
+		
+		context['ssl'] = str(context['ssl']).lower()		
 		
 	else:
 		template = 'widget/instructions.djt'
