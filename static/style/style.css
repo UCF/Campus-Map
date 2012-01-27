@@ -385,15 +385,21 @@ a.iclose:hover { background-position:0 -11px; }
 /******************************************************************************\
     Widget Instructions
 \******************************************************************************/
-#widget_instructions #widget_creation form {background-color:#f1f1f1;padding:15px;width:500px;border-radius:2px}
-#widget_instructions .input {margin-bottom:10px;clear:both;}
-#widget_instructions .input label {font-size:18px;width:150px;}
-#widget_instructions .input input[type="text"] {border:1px solid #b1b1b1;padding:5px;font-size:16px;float:right}
-#widget_instructions .input input[type="checkbox"] {float:right;font-size:16px;}
-#widget_instructions .input select {float:right;font-size:16px;}
-#widget_instructions .input p {font-size:90%;display:block;clear:both;text-align:right;padding-top:3px;}
-#widget_instructions .input #widget_width, 
-	#widget_instructions .input #widget_height {width:40px;text-align:right;}
-#widget_instructions #widget_instructions button[type="submit"] {padding:5px;font-size:16px;float:right;}
+#widget_instructions #widget_creation form {background-color:#f1f1f1;padding:15px;width:430px;border-radius:2px}
+#widget_instructions .field {margin-bottom:15px;clear:left;}
+#widget_instructions label {font-size:18px;width:100px;display:block;float:left;}
+#widget_instructions input[type="text"] {border:1px solid #b1b1b1;padding:5px;font-size:16px;}
+#widget_instructions select {font-size:11px;position:relative;top:5px;}
+#widget_instructions input[type="checkbox"] {position:relative;top:8px;}
+#widget_instructions #widget_height,
+	#widget_instructions #widget_width {width:50px;text-align:right;}
+#widget_instructions button[type="submit"] {
+	float:right;
+	color:#FFF;
+	border:1px solid #f7f7f7;
+	padding:7px;
+	font-size:14px;
+	background: -webkit-gradient(linear, center top, center bottom, from(#0F7322), to(rgba(15, 115, 34, .6)));
+}
 #widget_instructions #embed_code textarea {width:825px;border:1px solid #CCC;height:125px;padding:5px;font-size:14px;}
 #widget_instructions .error {padding:10px;background:#FBE3E4;color:#8a1f11;border:1px solid #FBC2C4;margin-bottom:5px;}
