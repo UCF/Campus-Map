@@ -189,7 +189,7 @@
 					<input type="text" id="widget_height" value="256" /> <span>pixels</span>
 				</div>
 				<div class="field">
-					<label for="widget_illustrated">SSL:</label>
+					<label for="widget_ssl">SSL:</label>
 					<input type="checkbox" id="widget_ssl" />
 				</div>
 				<div class="field">
