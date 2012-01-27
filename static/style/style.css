@@ -385,7 +385,7 @@ a.iclose:hover { background-position:0 -11px; }
 /******************************************************************************\
     Widget Instructions
 \******************************************************************************/
-#widget_instructions #widget_creation form {background-color:#f1f1f1;padding:15px;width:430px;border-radius:2px}
+#widget_instructions #customize form {background-color:#f1f1f1;padding:15px;width:430px;border-radius:2px}
 #widget_instructions .field {margin-bottom:15px;clear:left;}
 #widget_instructions label {font-size:18px;width:100px;display:block;float:left;}
 #widget_instructions input[type="text"] {border:1px solid #b1b1b1;padding:5px;font-size:16px;}
@@ -401,5 +401,6 @@ a.iclose:hover { background-position:0 -11px; }
 	font-size:14px;
 	background: -webkit-gradient(linear, center top, center bottom, from(#0F7322), to(rgba(15, 115, 34, .6)));
 }
-#widget_instructions #embed_code textarea {width:825px;border:1px solid #CCC;height:125px;padding:5px;font-size:14px;}
+#widget_instructions #preview {margin-top:55px;}
+#widget_instructions #embed_code textarea {width:825px;border:1px solid #CCC;height:125px;padding:5px;font-size:14px;margin-bottom:20px;}
 #widget_instructions .error {padding:10px;background:#FBE3E4;color:#8a1f11;border:1px solid #FBC2C4;margin-bottom:5px;}

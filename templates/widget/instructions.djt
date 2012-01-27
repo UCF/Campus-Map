@@ -5,7 +5,7 @@
 <script type="text/javascript">
 	$().ready(function() {
 		(function() {
-			var form       = $('#widget_creation > form'),
+			var form       = $('#customize > form'),
 				base_html  = '<iframe ATTRS src="SRC" style="STYLE">ALT</iframe>';
 			
 			// Populate location list
@@ -144,49 +144,52 @@
 {% block wrap %}
 <div id="widget_instructions">
 	<h2>Widget Code Creator</h2>
-	<div class="span-24 last" id="widget_creation">
-		<p>
-			To place a UCF map on your website:
-		</p>
-		<ol>
-			<li>Change the configuration options in the form below to your liking</li>
-			<li>Once you are finished configuring the options, click the Generate Embed Code button</li>
-			<li>
-				Copy and paste the resulting HTML in the Embed Code section
-				into the appropriate place in your website's HTML.
-			</li>
-		</ol>
-		<p>
-			 Once you're happy with what you see, copy the <a href="#code">HTML code</a> at the bottom of this page and paste it into the code for your site.
-		</p>
-		<hr />
-		<h3>Customize</h3>
-		<form action="" method="post" class="clearfix">
-			<div class="field">
-				<label for="widget_title">Title:</label>
-				<input type="text" id="widget_title" value="UCF Map" />
-			</div>
-			<div class="field">
-				<label for="widget_building_id">Location:</label>
-				<select id="widget_building_id">
-					<option value=""></option>
-				</select>
-			</div>
-			<div class="field">
-				<label for="widget_width">Width:</label>
-				<input type="text" id="widget_width" value="256" /> <span>pixels</span>
-			</div>
-			<div class="field">
-				<label for="widget_height">Height:</label>
-				<input type="text" id="widget_height" value="256" /> <span>pixels</span>
-			</div>
-			<div class="field">
-				<label for="widget_illustrated">Illustrated:</label>
-				<input type="checkbox" id="widget_illustrated" />
-			</div>
-			<p>(Display an illustrated map instead of the standard road map.)</p>
-			<button type="submit">Preview &gt;&gt;&gt;</button>
-		</form>
+	<p>
+		To place a UCF map on your website:
+	</p>
+	<ol>
+		<li>Change the configuration options in the form below to your liking</li>
+		<li>Once you are finished configuring the options, click the Generate Embed Code button</li>
+		<li>
+			Copy and paste the resulting HTML in the Embed Code section
+			into the appropriate place in your website's HTML.
+		</li>
+	</ol>
+	<p>
+		 Once you're happy with what you see, copy the <a href="#code">HTML code</a> at the bottom of this page and paste it into the code for your site.
+	</p>
+	<hr />
+	<div class="span-24 last">
+		<div class="span-13" id="customize">
+			<h3>Customize</h3>
+			<form action="" method="post" class="clearfix">
+				<div class="field">
+					<label for="widget_title">Title:</label>
+					<input type="text" id="widget_title" value="UCF Map" />
+				</div>
+				<div class="field">
+					<label for="widget_building_id">Location:</label>
+					<select id="widget_building_id">
+						<option value=""></option>
+					</select>
+				</div>
+				<div class="field">
+					<label for="widget_width">Width:</label>
+					<input type="text" id="widget_width" value="256" /> <span>pixels</span>
+				</div>
+				<div class="field">
+					<label for="widget_height">Height:</label>
+					<input type="text" id="widget_height" value="256" /> <span>pixels</span>
+				</div>
+				<div class="field">
+					<label for="widget_illustrated">Illustrated:</label>
+					<input type="checkbox" id="widget_illustrated" />
+				</div>
+				<p>(Display an illustrated map instead of the standard road map.)</p>
+				<button type="submit">Preview &gt;&gt;&gt;</button>
+			</form>
+		</div>
+		<div class="span-11  last" id="preview"></div>
 	</div>
 	<div class="span-24 last">
 		<div id="embed_code">
@@ -195,10 +198,7 @@
 				
 			</textarea>
 		</div>
-		<div id="preview">
-			<h3>Preview</h3>
-
-		</div>
+		
 	</div>
 </div>	
 {% endblock %}
