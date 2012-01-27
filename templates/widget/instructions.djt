@@ -143,12 +143,11 @@
 {% endblock %}
 {% block wrap %}
 <div id="widget_instructions">
-	<h2>Emebedding the UCF Campus Map</h2>
+	<h2>Widget Code Creator</h2>
 	<div class="span-24 last" id="widget_creation">
 		<p>
-			The UCF Campus Map can be embedded in other websites via a simple iframe. 
+			To place a UCF map on your website:
 		</p>
-		<h3>Instructions:</h3>
 		<ol>
 			<li>Change the configuration options in the form below to your liking</li>
 			<li>Once you are finished configuring the options, click the Generate Embed Code button</li>
@@ -157,6 +156,9 @@
 				into the appropriate place in your website's HTML.
 			</li>
 		</ol>
+		<p>
+			 Once you're happy with what you see, copy the <a href="#code">HTML code</a> at the bottom of this page and paste it into the code for your site.
+		</p>
 		<hr />
 		<h3>Configuration Options</h3>
 		<form action="" method="post" class="clearfix">
