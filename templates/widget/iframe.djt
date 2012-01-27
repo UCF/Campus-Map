@@ -81,7 +81,7 @@
 					};	
 				} else {
 					map_options = {
-						zoom      : 16,
+						zoom      : 14,
 						center    : new google.maps.LatLng(28.6022,-81.2004),
 						mapTypeId : google.maps.MapTypeId.ROADMAP						
 					}
