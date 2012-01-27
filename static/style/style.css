@@ -394,6 +394,7 @@ a.iclose:hover { background-position:0 -11px; }
 #widget_instructions #widget_height,
 	#widget_instructions #widget_width {width:50px;text-align:right;}
 #widget_instructions button[type="submit"] {
+	background-color:#0F7322;
 	float:right;
 	color:#FFF;
 	border:1px solid #f7f7f7;
