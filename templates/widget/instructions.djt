@@ -154,6 +154,7 @@
 	<p>
 		 Use the tools below to create a custom map and generate the code to embed it on your website.
 	</p>
+	<h3>Instructions</h3>
 	<ol>
 		<li>Fill in the appropriate title, location and size for the map you'd like to place on your site.</li>
 		<li>Click the Preview button to see what it will look like on your webpage.</li>
@@ -166,7 +167,7 @@
 			<form action="" method="post" class="clearfix">
 				<div class="field">
 					<label for="widget_title">Title:</label>
-					<input type="text" id="widget_title" value="UCF Map" />
+					<input type="text" id="widget_title" value="UCF Map" /> <span>not required</span>
 				</div>
 				<div class="field">
 					<label for="widget_building_id">Location:</label>
