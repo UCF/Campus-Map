@@ -399,7 +399,9 @@ a.iclose:hover { background-position:0 -11px; }
 	border:1px solid #f7f7f7;
 	padding:7px;
 	font-size:14px;
-	background: -webkit-gradient(linear, center top, center bottom, from(#0F7322), to(rgba(15, 115, 34, .6)));
+	background: -webkit-gradient(linear, center top, center bottom, from(#0F7322), to(rgba(15, 115, 34, .7)));
+	background: -moz-linear-gradient(top,  #0F7322,  rgba(15, 115, 34, .7));
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0F732200', endColorstr='#0F732207');
 }
 #widget_instructions #preview {margin-top:55px;}
 #widget_instructions #embed_code textarea {width:825px;border:1px solid #CCC;height:125px;padding:5px;font-size:14px;margin-bottom:20px;}
