@@ -1,6 +1,6 @@
 {% extends "base.djt"%}
 
-{% block title %}Widget - UCF Campus Map{% endblock %}
+{% block title %}Widget - UCF Campus map{% endblock %}
 {% block js %}
 <script type="text/javascript">
 	$().ready(function() {
@@ -60,16 +60,27 @@
 				$(this).find('.error').remove();
 
 				// Validate width and height
+				dimension_error = false;
 				width = parseInt(width, 10);
 				if(isNaN(width)) {
 					$(this).prepend('<div class="error">Width must be a number.</div>');
+					dimension_error = true;
 				}
 				height = parseInt(height, 10);
 				if(isNaN(height)) {
 					$(this).prepend('<div class="error">Height must be a number.</div>');
+					dimension_error = true;
+				}
+				if(width > 1000) {
+					$(this).prepend('<div class="error">Width must be 1000 pixels or less.</div>');
+					dimension_error = true;
+				}
+				if(height > 1000) {
+					$(this).prepend('<div class="error">Height must be 1000 pixels or less.</div>');
+					dimension_error = true;
 				}
 
-				if(!isNaN(width) && !isNaN(height)) {
+				if(!dimension_error) {
 					// Normalize illustrated param
 					illustrated = (illustrated) ? 'y':'n';
 
