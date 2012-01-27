@@ -1,21 +1,6 @@
 {% extends "base.djt"%}
 
 {% block title %}Locations and Building - {{block.super}}{% endblock %}
-{% block head %}
-<style type="text/css">
-	#widget_creation form {background-color:#f1f1f1;padding:15px;width:500px;border-radius:2px}
-	.input {margin-bottom:10px;clear:both;}
-	.input label {font-size:18px;width:150px;}
-	.input input[type="text"] {border:1px solid #b1b1b1;padding:5px;font-size:16px;float:right}
-	.input input[type="checkbox"] {float:right;font-size:16px;}
-	.input select {float:right;font-size:16px;}
-	.input p {font-size:90%;display:block;clear:both;text-align:right;padding-top:3px;}
-	.input #widget_width, 
-		.input #widget_height {width:40px;text-align:right;}
-	button[type="submit"] {padding:5px;font-size:16px;float:right;}
-	#embed_code textarea {width:100%;border:1px solid #CCC;height:100px;padding:5px;font-size:14px;}
-</style>
-{% endblock %}
 {% block js %}
 <script type="text/javascript">
 	$().ready(function() {
@@ -146,63 +131,65 @@
 </script>
 {% endblock %}
 {% block wrap %}
-<h2>Emebedding the UCF Campus Map</h2>
-<div class="span-24 last" id="widget_creation">
-	<p>
-		The UCF Campus Map can be embedded in other websites via a simple iframe. 
-	</p>
-	<h3>Instructions:</h3>
-	<ol>
-		<li>Change the configuration options in the form below to your liking</li>
-		<li>Once you are finished configuring the options, click the Generate Embed Code button</li>
-		<li>
-			Copy and paste the resulting HTML in the Embed Code section
-			into the appropriate place in your website's HTML.
-		</li>
-	</ol>
-	<hr />
-	<h3>Configuration Options</h3>
-	<form action="" method="post" class="clearfix">
-		<div class="input">
-			<label for="widget_title">Title</label>:
-			<input type="text" id="widget_title" value="UCF Map" />
-			<p>If blank, title will not be shown.</p>
-		</div>
-		<div class="input">
-			<label for="widget_building_id">Location</label>:
-			<select id="widget_building_id">
-				<option value=""></option>
-			</select>
-			<p>If no location is selected, the map will be centered on the Student Union.</p>
-		</div>
-		<div class="input">
-			<label for="widget_width">Width</label>:
-			<input type="text" id="widget_width" value="256" />
-			<p>pixels</p>
-		</div>
-		<div class="input">
-			<label for="widget_height">Height</label>:
-			<input type="text" id="widget_height" value="256" />
-			<p>pixels</p>
-		</div>
-		<div class="input">
-			<label for="widget_illustrated">Illustrated</label>:
-			<input type="checkbox" id="widget_illustrated" />
-			<p>Display an illustrated version of the map instead of the standard road map.</p>
-		</div>
-		<button type="submit">Generate Embed Code</button>
-	</form>
-</div>
-<div class="span-24 last">
-	<div id="embed_code">
-		<h3>Embed Code - Copy &amp; paste this code into the appropriate place in your website's HTML</h3>
-		<textarea>
-			
-		</textarea>
+<div id="widget_instructions">
+	<h2>Emebedding the UCF Campus Map</h2>
+	<div class="span-24 last" id="widget_creation">
+		<p>
+			The UCF Campus Map can be embedded in other websites via a simple iframe. 
+		</p>
+		<h3>Instructions:</h3>
+		<ol>
+			<li>Change the configuration options in the form below to your liking</li>
+			<li>Once you are finished configuring the options, click the Generate Embed Code button</li>
+			<li>
+				Copy and paste the resulting HTML in the Embed Code section
+				into the appropriate place in your website's HTML.
+			</li>
+		</ol>
+		<hr />
+		<h3>Configuration Options</h3>
+		<form action="" method="post" class="clearfix">
+			<div class="input">
+				<label for="widget_title">Title</label>:
+				<input type="text" id="widget_title" value="UCF Map" />
+				<p>If blank, title will not be shown.</p>
+			</div>
+			<div class="input">
+				<label for="widget_building_id">Location</label>:
+				<select id="widget_building_id">
+					<option value=""></option>
+				</select>
+				<p>If no location is selected, the map will be centered on the Student Union.</p>
+			</div>
+			<div class="input">
+				<label for="widget_width">Width</label>:
+				<input type="text" id="widget_width" value="256" />
+				<p>pixels</p>
+			</div>
+			<div class="input">
+				<label for="widget_height">Height</label>:
+				<input type="text" id="widget_height" value="256" />
+				<p>pixels</p>
+			</div>
+			<div class="input">
+				<label for="widget_illustrated">Illustrated</label>:
+				<input type="checkbox" id="widget_illustrated" />
+				<p>Display an illustrated version of the map instead of the standard road map.</p>
+			</div>
+			<button type="submit">Generate Embed Code</button>
+		</form>
 	</div>
-	<div id="preview">
-		<h3>Preview</h3>
+	<div class="span-24 last">
+		<div id="embed_code">
+			<h3>Embed Code - Copy &amp; paste this code into the appropriate place in your website's HTML</h3>
+			<textarea>
+				
+			</textarea>
+		</div>
+		<div id="preview">
+			<h3>Preview</h3>
 
+		</div>
 	</div>
-</div>
+</div>	
 {% endblock %}
