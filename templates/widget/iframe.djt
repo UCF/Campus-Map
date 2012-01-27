@@ -127,7 +127,7 @@
 					} else if(infobox_width < 75) {
 						infobox_width = 75;
 					}
-					infobox.setContent('<div class="iBox" style="width:' + infobox_width + 'px;"><a href="{{base_url}}?show={{building.id}}">' + building_title + '</a></div>');
+					infobox.setContent('<div class="iBox" style="width:' + infobox_width + 'px;"><a href="{{base_url}}?show={{building.id}}" target="_blank">' + building_title + '</a></div>');
 					var map_point_latlng = undefined;
 					if(illustrated) {
 						map_point_latlng = new google.maps.LatLng(illustrated_map_point[0],illustrated_map_point[1]);
