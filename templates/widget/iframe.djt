@@ -121,7 +121,7 @@
 					
 					// Map is really small and infobox would be too big
 					// Place a marker instead
-					if(width < 150 || height < 150) {
+					if(width < 175 || height < 175) {
 						var marker = new google.maps.Marker({
 							position : map_point_latlng,
 							map      : map
