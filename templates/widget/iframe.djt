@@ -75,7 +75,7 @@
 
 				if(illustrated) {
 					map_options = {
-						zoom           : 14,
+						zoom           : 12,
 						center         : new google.maps.LatLng(85.04591,-179.92189), // world's corner
 						mapTypeId      : 'illustrated',
 						mapTypeControl : true
