@@ -44,7 +44,7 @@ MIDDLEWARE_CLASSES = [
 	'django.contrib.auth.middleware.AuthenticationMiddleware',
 	'django.middleware.cache.UpdateCacheMiddleware',
 	'django.middleware.common.CommonMiddleware',
-	'django.middleware.cache.FetchFromCacheMiddleware',
+	#'django.middleware.cache.FetchFromCacheMiddleware',
 ]
 
 TEMPLATE_DIRS = (TEMPL_FOLDER,)

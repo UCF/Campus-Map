@@ -15,7 +15,12 @@
 		<h3 style="float:left;">Illustrated Map</h3>
 		<div id="map-canvas" style="width:49%;clear:left; float:left; height:360px;"></div>
 		<div id="ill-canvas" style="width:49%; clear:right; float:right; height:360px;"></div>
-		<h3 style="float:left;margin-top:20px;">Poly Coordinates Map</h3>
+		<div style="float:left;margin-top:20px;width:49%;">
+			<h3 style="float:left;">Poly Coordinates Map</h3>
+			<span style="float:right;margin-top:13px;">
+				<span id="polygon_count"></span> polygon(s) on map. <a id="clear_polygons" href="#">[Clear Polygons]</a>
+			</span>
+		</div>
 		<div id="poly-canvas" style="width:49%;clear:left;float:left; height:360px;"></div>
 		<div style="clear:both;"></div>
 	</div>
@@ -233,6 +238,22 @@ $(document).ready(function(){
 	});
 	drawingManager.setMap(map);
 
+
+	var polygons = [];
+	google.maps.event.addListener(drawingManager, 'polygoncomplete', function(polygon) {
+		google.maps.event.addListener(polygon.getPath(), 'insert_at', function() {
+				update_poly_coords_field();
+		});
+		google.maps.event.addListener(polygon.getPath(), 'set_at', function() {
+			update_poly_coords_field();
+		});
+		google.maps.event.addListener(polygon.getPath(), 'remove_at', function() {
+			update_poly_coords_field();
+		});
+		polygons.push(polygon);
+		update_poly_coords_field();
+	})
+
 	/**************************************************************************\
 		If there are poly coords, create corresponding polygons and display
 		them on the map.
@@ -267,10 +288,69 @@ $(document).ready(function(){
 		}
 		var g_poly_coords = convert_coords(poly_coords);
 		
-		var custom_options   = common_polygon_options;
-		custom_options.paths = g_poly_coords;
-		var polygon          = new google.maps.Polygon(custom_options)
+		// Create the polygon and add listeners to update poly_coords
+		$.each(g_poly_coords, function(index, g_poly_coord) {
+			var custom_options   = common_polygon_options;
+			custom_options.paths = g_poly_coord;
+			var polygon = new google.maps.Polygon(custom_options);
+
+			google.maps.event.addListener(polygon.getPath(), 'insert_at', function() {
+				console.log('insert_at')
+				update_poly_coords_field();
+			});
+			google.maps.event.addListener(polygon.getPath(), 'set_at', function() {
+				console.log('set_at')
+				update_poly_coords_field();
+			});
+			google.maps.event.addListener(polygon.getPath(), 'remove_at', function() {
+				console.log('remove_at')
+				update_poly_coords_field();
+			});
+			polygons.push(polygon);
+		})
 	}
+
+	// Update text about how many polygons are on the map
+	function update_polygon_count() {
+		$('#polygon_count').text(polygons.length);
+	}
+
+	// Update the map object poly_coords field
+	function update_poly_coords_field() {
+		var value = '';
+		$.each(polygons, function(index, polygon) {
+			var path = polygon.getPath();
+			value += '['
+			path.forEach(function(point, _index) {
+				value += '[' + point.lng() + ',' + point.lat() + ']';
+				if((_index + 1) != path.getLength()) {
+					value += ','
+				}
+			})
+			value += ']'
+			if((index + 1) != polygons.length) value += ','
+		})
+		if(value != '') value = '[' + value + ']';
+		$('#id_poly_coords').val(value);
+	}
+
+	// Listener for when the [Clear Polygons] link is clicked
+	$('#clear_polygons')
+		.click(function(event) {
+			event.preventDefault();
+			var confirmed = confirm('You are about to remove ' + polygons.length + ' polygon(s) from the map. Are you sure you want to do this?');
+			if(confirmed) {
+				$.each(polygons, function(index, polygon) {
+					polygon.setMap(null);
+				});
+				polygons = [];
+				update_polygon_count();
+				update_poly_coords_field();
+			}
+		})
+	
+	// Update count on load
+	update_polygon_count()
 }); 
 </script>
 
