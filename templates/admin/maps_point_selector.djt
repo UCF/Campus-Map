@@ -207,42 +207,17 @@ $(document).ready(function(){
 	);
 	
 	/**************************************************************************\
-		Eval poly coords and display on map
+		Create the drawing manager
 	\**************************************************************************/
-	var poly_coords = eval('{{original.js_poly_coords}}');
-	
-	// Pan to the midpoint of the first polygon
-	midpoint_func = function(a, b) { return [((a[0] + b[0]) / 2), ((a[1] + b[1])/ 2)]}
-	if(poly_coords[0][1] instanceof Array) { // List of polygons
-		midpoint = poly_coords[0].reduce(midpoint_func)
-	} else {
-		midpoint = poly_coords.reduce(midpoint_func)
-	}
-	map.panTo(new google.maps.LatLng(midpoint[1], midpoint[0]));
-
-	// Convert array of lats and lngs into array of google.maps.LatLng
-	var g_poly_coords = (function(points) {
-		var gpoints = [];
-		$.each(points, function(index, point) {
-			if(point[0] != undefined && point[1] != undefined 
-				&& typeof point[0] == 'number' && typeof point[1] == 'number') {
-				gpoints.push(new google.maps.LatLng(point[1], point[0]));
-			} else {
-				gpoints.push(convert_coords(point));
-			}
-		});
-		return gpoints;
-	})(poly_coords);
-	
 	common_polygon_options = {
-		fillColor  : 'pink',
-		strokeColor: 'grey',
-		fillOpacity: 1,
-		strokeWeight: 3,
-		clickable: false,
-		zIndex: 1,
-		editable: true,
-		map: map
+		fillColor    : 'pink',
+		strokeColor  : 'grey',
+		fillOpacity  : 1,
+		strokeWeight : 3,
+		clickable    : false,
+		zIndex       : 1,
+		editable     : true,
+		map          : map
 	}
 
 	var drawingManager = new google.maps.drawing.DrawingManager({
@@ -257,10 +232,44 @@ $(document).ready(function(){
 	});
 	drawingManager.setMap(map);
 
-	var custom_options = common_polygon_options;
-	custom_options.paths = g_poly_coords;
-	var polygon = new google.maps.Polygon(custom_options)
+	/**************************************************************************\
+		If there are poly coords, create corresponding polygons and display
+		them on the map.
+	\**************************************************************************/
 
+	var poly_coords = eval('{{original.js_poly_coords}}');
+
+	if(poly_coords != undefined) {
+		// If it's just only polygon, enclose it in an array
+		// to avoid code duplication later
+		if(typeof poly_coords[0][1] == 'number') {
+			poly_coords = [poly_coords]
+		}
+
+		// Pan to the midpoint of the first polygon
+		var midpoint_func = function(a, b) { return [((a[0] + b[0]) / 2), ((a[1] + b[1])/ 2)]}
+		var midpoint = poly_coords[0].reduce(midpoint_func)
+		map.panTo(new google.maps.LatLng(midpoint[1], midpoint[0]));
+
+		// Convert array of lats and lngs into array of google.maps.LatLng
+		function convert_coords(points) {
+			var gpoints = [];
+			$.each(points, function(index, point) {
+				if(point[0] != undefined && point[1] != undefined 
+					&& typeof point[0] == 'number' && typeof point[1] == 'number') {
+					gpoints.push(new google.maps.LatLng(point[1], point[0]));
+				} else {
+					gpoints.push(convert_coords(point));
+				}
+			});
+			return gpoints;
+		}
+		var g_poly_coords = convert_coords(poly_coords);
+		
+		var custom_options = common_polygon_options;
+		custom_options.paths = g_poly_coords;
+		var polygon = new google.maps.Polygon(custom_options)
+	}
 }); 
 </script>
 
