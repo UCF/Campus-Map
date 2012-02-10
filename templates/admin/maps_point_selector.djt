@@ -218,8 +218,16 @@ $(document).ready(function(){
 	
 	map = new google.maps.Map(document.getElementById("poly-canvas"), myOptions);
 	
-	var poly_coords = eval('{{original.js_poly_coords}}'.replace('\n', '').replace('\r', ''));
-	console.log(poly_coords);
+	var poly_coords = eval('{{original.js_poly_coords}}');
+	
+	// Pan to the midpoint of the first polygon
+	midpoint_func = function(a, b) { return [((a[0] + b[0]) / 2), ((a[1] + b[1])/ 2)]}
+	if(poly_coords[0][1] instanceof Array) { // List of polygons
+		midpoint = poly_coords[0].reduce(midpoint_func)
+	} else {
+		midpoint = poly_coords.reduce(midpoint_func)
+	}
+	map.panTo(new google.maps.LatLng(midpoint[1], midpoint[0]));
 
 	// Convert array of lats and lngs into array of google.maps.LatLng
 	function convert_coords(points) {
@@ -235,7 +243,6 @@ $(document).ready(function(){
 		return gpoints;
 	}
 	var g_poly_coords = convert_coords(poly_coords)
-	console.log(g_poly_coords[0]);
 	
 	common_polygon_options = {
 		fillColor  : 'pink',
