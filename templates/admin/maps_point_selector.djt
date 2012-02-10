@@ -224,7 +224,7 @@ $(document).ready(function(){
 		drawingMode: null,
 		drawingControl: true,
 		drawingControlOptions: {
-			position: google.maps.ControlPosition.TOP_CENTER,
+			position: google.maps.ControlPosition.LEFT_CENTER,
 			drawingModes: [
 				google.maps.drawing.OverlayType.POLYGON
 			]
