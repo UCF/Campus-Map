@@ -193,31 +193,22 @@ $(document).ready(function(){
 /* Poly Coordinates Map */
 $(document).ready(function(){
 	/**************************************************************************\
-		Location being updated
+		Create a google map
+		  - center at Student Union Entrance
 	\**************************************************************************/
-	var location = {
-		set  : false,
-		x    : 28.601669501975557,
-		y    : -81.200527721813230,
-		name : null
-	};
+	var map = new google.maps.Map(
+		document.getElementById("poly-canvas"),
+		{
+		  zoom            : 16,
+		  center          : new google.maps.LatLng(28.601669501975557,-81.200527721813230),
+		  draggableCursor : 'crosshair',
+		  mapTypeId       : google.maps.MapTypeId.ROADMAP
+		}
+	);
 	
 	/**************************************************************************\
-		Create a google map
-		  - if set, center at Location
-		  - else center at Student Union Entrance
-	\**************************************************************************/	
-	var myLatlng = new google.maps.LatLng(location.x,location.y);
-	
-	var myOptions = {
-	  zoom: 16,
-	  center: myLatlng,
-	  draggableCursor : 'crosshair',
-	  mapTypeId: google.maps.MapTypeId.ROADMAP
-	}
-	
-	map = new google.maps.Map(document.getElementById("poly-canvas"), myOptions);
-	
+		Eval poly coords and display on map
+	\**************************************************************************/
 	var poly_coords = eval('{{original.js_poly_coords}}');
 	
 	// Pan to the midpoint of the first polygon
@@ -230,7 +221,7 @@ $(document).ready(function(){
 	map.panTo(new google.maps.LatLng(midpoint[1], midpoint[0]));
 
 	// Convert array of lats and lngs into array of google.maps.LatLng
-	function convert_coords(points) {
+	var g_poly_coords = (function(points) {
 		var gpoints = [];
 		$.each(points, function(index, point) {
 			if(point[0] != undefined && point[1] != undefined 
@@ -241,8 +232,7 @@ $(document).ready(function(){
 			}
 		});
 		return gpoints;
-	}
-	var g_poly_coords = convert_coords(poly_coords)
+	})(poly_coords);
 	
 	common_polygon_options = {
 		fillColor  : 'pink',
