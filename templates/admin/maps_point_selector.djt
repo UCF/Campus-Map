@@ -226,6 +226,7 @@ $(document).ready(function(){
 		drawingControlOptions: {
 			position: google.maps.ControlPosition.TOP_CENTER,
 			drawingModes: [
+				google.maps.drawing.OverlayType.POLYGON
 			]
 		},
 		polygonOptions: common_polygon_options,
@@ -266,9 +267,9 @@ $(document).ready(function(){
 		}
 		var g_poly_coords = convert_coords(poly_coords);
 		
-		var custom_options = common_polygon_options;
+		var custom_options   = common_polygon_options;
 		custom_options.paths = g_poly_coords;
-		var polygon = new google.maps.Polygon(custom_options)
+		var polygon          = new google.maps.Polygon(custom_options)
 	}
 }); 
 </script>
