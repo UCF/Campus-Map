@@ -301,6 +301,14 @@ class MapObj(models.Model):
 			return self
 		return model.objects.get(id=self.id)
 	
+	@property
+	def js_poly_coords(self):
+		'''
+			Remove all line breaks from poly coord text so it
+			can be evaled by JavaScript
+		'''
+		return self.poly_coords.replace('\n', '').replace('\r', '')
+
 	def __unicode__(self):
 		return u'%s' % (self.name)
 	
