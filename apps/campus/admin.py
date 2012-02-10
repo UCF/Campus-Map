@@ -124,7 +124,16 @@ class DisabledParkingAdmin(admin.ModelAdmin):
 	change_form_template = 'admin/maps_point_selector.djt'
 admin.site.register(DisabledParking, DisabledParkingAdmin)
 
-
+class ParkingLotAdminForm(MapObjForm):
+	class Meta:
+		model = ParkingLot
+class ParkingLotAdmin(admin.ModelAdmin):
+	list_display = ('name', 'id')
+	fields               = ('name', 'description', 'permit_type', 'abbreviation', 'sketchup', 'googlemap_point', 'illustrated_point', 'poly_coords')
+	actions              = None
+	form                 = ParkingLotAdminForm
+	change_form_template = 'admin/maps_point_selector.djt'
+admin.site.register(ParkingLot, ParkingLotAdmin)
 
 def create_groupable_locations(**kwargs):
 	import sys
