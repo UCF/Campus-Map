@@ -12,9 +12,9 @@
 <div style="border:1px solid #CCCCCC; padding:8px 12px;">
 	<div style="position:realtive">
 		<h3 style="float:left;width:51%;">Google Map</h3>
-		<h3 style="float:left;">Illustrated Map</h3>
-		<div id="map-canvas" style="width:49%;clear:left; float:left; height:360px;"></div>
-		<div id="ill-canvas" style="width:49%; clear:right; float:right; height:360px;"></div>
+		<h3 style="float:left;width:48%">Illustrated Map</h3>
+		<div id="map-canvas" style="width:49%;float:left; height:360px;"></div>
+		<div id="ill-canvas" style="width:49%;float:right; height:360px;"></div>
 		<div style="float:left;margin-top:20px;width:49%;">
 			<h3 style="float:left;">Poly Coordinates Map</h3>
 			<span style="float:right;margin-top:13px;">
@@ -197,6 +197,35 @@ $(document).ready(function(){
 
 /* Poly Coordinates Map */
 $(document).ready(function(){
+
+	// Add reduce for browers that don't have it
+	if ( !Array.prototype.reduce ) {
+	  Array.prototype.reduce = function reduce(accumulator){
+	        var i, l = this.length, curr;
+	        
+	        if(typeof accumulator !== "function") // ES5 : "If IsCallable(callbackfn) is false, throw a TypeError exception."
+	          throw new TypeError("First argument is not callable");
+
+	        if((l == 0 || l === null) && (arguments.length <= 1))// == on purpose to test 0 and false.
+	          throw new TypeError("Array length is 0 and no second argument");
+	        
+	        if(arguments.length <= 1){
+	          curr = this[0]; // Increase i to start searching the secondly defined element in the array
+	          i = 1; // start accumulating at the second element
+	        }
+	        else{
+	          curr = arguments[1];
+	        }
+	        
+	        for(i = i || 0 ; i < l ; ++i){
+	          if(i in this)
+	            curr = accumulator.call(undefined, curr, this[i], i, this);
+	        }
+	        
+	        return curr;
+	      };
+	  }
+
 	/**************************************************************************\
 		Create a google map
 		  - center at Student Union Entrance
@@ -215,8 +244,8 @@ $(document).ready(function(){
 		Create the drawing manager
 	\**************************************************************************/
 	common_polygon_options = {
-		fillColor    : 'pink',
-		strokeColor  : 'grey',
+		fillColor    : '#FFB5C5',
+		strokeColor  : '#666666',
 		fillOpacity  : 1,
 		strokeWeight : 3,
 		clickable    : false,
@@ -234,7 +263,7 @@ $(document).ready(function(){
 				google.maps.drawing.OverlayType.POLYGON
 			]
 		},
-		polygonOptions: common_polygon_options,
+		polygonOptions: common_polygon_options
 	});
 	drawingManager.setMap(map);
 
