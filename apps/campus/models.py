@@ -181,11 +181,11 @@ class MapObj(models.Model):
 			
 			# with the validator, hopefully this never causes an issue
 			if key == "poly_coords":
-				if obj["poly_coords"] != None:
+				if obj["poly_coords"] != None and obj['poly_coords'] != '':
 					obj["poly_coords"] = json.loads(str(obj["poly_coords"]))
 				continue
 			if key == "illustrated_point" or key == "googlemap_point":
-				if obj[key] != None:
+				if obj[key] != None and obj[key] != '':
 					obj[key] = json.loads(str(obj[key]))
 				continue
 			
