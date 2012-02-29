@@ -129,7 +129,7 @@ class ParkingLotAdminForm(MapObjForm):
 		model = ParkingLot
 class ParkingLotAdmin(admin.ModelAdmin):
 	list_display = ('name', 'id')
-	fields               = ('name', 'description', 'permit_type', 'abbreviation', 'sketchup', 'googlemap_point', 'illustrated_point', 'poly_coords')
+	fields               = ('name', 'id', 'image', 'description', 'permit_type', 'abbreviation', 'sketchup', 'googlemap_point', 'illustrated_point', 'poly_coords')
 	actions              = None
 	form                 = ParkingLotAdminForm
 	change_form_template = 'admin/maps_point_selector.djt'
