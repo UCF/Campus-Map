@@ -18,6 +18,15 @@ if settings.DEBUG or settings.SERVE_STATIC_FILES:
 			}
 		),
 	)
+	urlpatterns += patterns('',
+		(r'^admin/admin/(?P<path>.*)$',
+			'django.views.static.serve',
+			{
+				'document_root': 'static/admin',
+				'show_indexes' : True,
+			}
+		),
+	)
 
 urlpatterns += patterns('',
 	
