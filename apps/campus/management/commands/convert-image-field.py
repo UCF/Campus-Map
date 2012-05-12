@@ -16,8 +16,12 @@ class Command(BaseCommand):
 		- Prepend the new image upload path to each MapObj->image entry
 	'''
 
+	_NEW_UPLOAD_PATH = os.path.join(media_root, 'uploads')
+
 	_OLD_IMAGE_PATH = os.path.join(media_root, 'images', 'buildings')
 	_NEW_IMAGE_PATH = os.path.join(media_root, 'uploads','images')
+
+	_RELATIVE_IMAGE_PATH = 'static/uploads/images'
 
 	def handle(self, *args, **options):
 		media_root = settings.MEDIA_ROOT
@@ -30,6 +34,8 @@ class Command(BaseCommand):
 		'''
 			Move static/images/building to static/uploads/images
 		'''
+		if not os.path.exists(self._NEW_UPLOAD_PATH):
+			os.mkdir(self._NEW_UPLOAD_PATH)
 		os.rename(self._OLD_IMAGE_PATH, self._NEW_IMAGE_PATH)
 
 	def alter_image_column():
@@ -45,5 +51,5 @@ class Command(BaseCommand):
 			Prepend the new image upload path to each MapObj->image entry
 		'''
 		cursor = connection.cursor()
-		cursor.execute('UPDATE campus_mapobj SET image = CONCAT("%s", "/", image) WHERE image != ""' % _NEW_IMAGE_PATH)
+		cursor.execute('UPDATE campus_mapobj SET image = CONCAT("%s", "/", image) WHERE image != ""' % self._RELATIVE_IMAGE_PATH)
 		cursor.commit_unless_managed()
