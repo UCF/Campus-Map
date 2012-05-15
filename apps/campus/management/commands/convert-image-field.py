@@ -41,6 +41,8 @@ class Command(BaseCommand):
 			Alter the MapObj->image column structure to be  VARCHAR(100) NOT NULL
 		'''
 		cursor = connection.cursor()
+		# To avoid a warning, set all NULL entries to empty string
+		cursor.execute('UPDATE campus_mapobj SET image = "" WHERE image IS NULL')
 		cursor.execute('ALTER TABLE  campus_mapobj CHANGE  image  image VARCHAR( 100 ) NOT NULL')
 		transaction.commit_unless_managed()
 
