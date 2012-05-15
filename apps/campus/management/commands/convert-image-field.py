@@ -21,7 +21,7 @@ class Command(BaseCommand):
 	_OLD_IMAGE_PATH = os.path.join(settings.MEDIA_ROOT, 'images', 'buildings')
 	_NEW_IMAGE_PATH = os.path.join(_NEW_UPLOAD_PATH,'images')
 
-	_RELATIVE_IMAGE_PATH = 'static/uploads/images'
+	_RELATIVE_IMAGE_PATH = 'uploads/images'
 
 	def handle(self, *args, **options):
 		self.move_images()
