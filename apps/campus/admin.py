@@ -96,7 +96,7 @@ class RegionalAdminForm(MapObjForm):
 class RegionalAdmin(admin.ModelAdmin):
 	list_display = ('name', 'id')
 	prepopulated_fields = {'id': ('name',)}
-	fields = ('name', 'id', 'description', 'profile', 'googlemap_point')
+	fields = ('name', 'id', 'image', 'description', 'profile', 'googlemap_point')
 	actions = None
 	change_form_template = 'admin/maps_point_selector.djt'
 	form = RegionalAdminForm
