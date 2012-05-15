@@ -18,7 +18,7 @@
 	
 			<div id="menu-1" class="slide">
 				<div class="item" id="item-desc">
-					<img src="{{MEDIA_URL}}images/buildings/_home.jpg">
+					<img src="{{static}}images/home.jpg">
 				</div>
 				<a class="item" href="{% url locations %}">Locations &amp; Buildings</a>
 				<a class="item" href="{% url organizations %}">Organizations &amp; Depts</a>
