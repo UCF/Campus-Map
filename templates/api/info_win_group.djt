@@ -9,7 +9,11 @@
 	<a href="{{base_url}}{{location.profile_link}}" class="item">{{location.name}}</a>
 
 	<a class="item" href="{{base_url}}{{location.profile_link}}">
-		{% if location.image %}<img src="{{static}}images/buildings/{{ location.image }}">{%else%}<img src="{{static}}images/buildings/_no_image.jpg">{% endif %}
+				{% if location.image %}
+			<img src="{{ location.image.url }}">
+		{%else%}
+			<img src="{{static}}images/buildings/_no_image.jpg">
+		{% endif %}
 	</a>
 	
 	{% if location.description %}
