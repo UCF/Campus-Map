@@ -555,7 +555,7 @@ def regional_campuses(request, campus=None):
 			raise Http404()
 		else:
 			html = location_html(rc, request, orgs=False)
-			img = rc.img_tag
+			img = rc.image.url
 			rc = rc.json()
 			rc['info'] = html
 			return home(request, location=rc)

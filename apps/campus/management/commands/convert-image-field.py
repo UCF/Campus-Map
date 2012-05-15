@@ -18,15 +18,18 @@ class Command(BaseCommand):
 
 	_NEW_UPLOAD_PATH = os.path.join(settings.MEDIA_ROOT, 'uploads')
 
+	_RC_IMAGE_PATH  = os.path.join(settings.MEDIA_ROOT, 'images', 'regional-campuses')
 	_OLD_IMAGE_PATH = os.path.join(settings.MEDIA_ROOT, 'images', 'buildings')
 	_NEW_IMAGE_PATH = os.path.join(_NEW_UPLOAD_PATH,'images')
 
 	_RELATIVE_IMAGE_PATH = 'uploads/images'
 
 	def handle(self, *args, **options):
-		self.move_images()
-		self.alter_image_column()
-		self.prepend_upload_path()
+		#self.move_images()
+		#self.alter_image_column()
+		#self.prepend_upload_path()
+		self.move_rc_images()
+		self.register_rc_images()
 
 	def move_images(self):
 		'''
@@ -52,4 +55,23 @@ class Command(BaseCommand):
 		'''
 		cursor = connection.cursor()
 		cursor.execute('UPDATE campus_mapobj SET image = CONCAT("%s", "/", image) WHERE image != ""' % self._RELATIVE_IMAGE_PATH)
+		transaction.commit_unless_managed()
+
+	def move_rc_images(self):
+		'''
+			Note the names of the regional campus images and copy them into the uploads
+			directory.
+		'''
+		self.rc_image_filenames = os.listdir(self._RC_IMAGE_PATH)
+
+		for filename in self.rc_image_filenames:
+			os.rename(os.path.join(self._RC_IMAGE_PATH, filename), os.path.join(self._NEW_IMAGE_PATH, filename))
+	def register_rc_images(self):
+		'''
+			Assign the copied Regional Campus images to their respective locations
+		'''
+		cursor = connection.cursor()
+		for filename in self.rc_image_filenames:
+			name, extension = os.path.splitext(filename)
+			cursor.execute('UPDATE campus_mapobj SET image = CONCAT("%s", "/", "%s") WHERE id = "%s"' % (self._RELATIVE_IMAGE_PATH, filename, name))
 		transaction.commit_unless_managed()

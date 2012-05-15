@@ -1,8 +1,14 @@
 {% if not location %}null{% else %}
 <div class="item">
 	<h2 class="light">{{location.name}}</h2>
+	<a class="item" href="{{base_url}}{{location.profile_link}}">
+		{% if location.image %}
+			<img src="{{ location.image.url }}">
+		{%else%}
+			<img src="{{static}}images/no-image.jpg">
+		{% endif %}
+	</a>
 	<p>
-		{{location.img_tag|safe}}
 		{{location.profile|safe}}
 	</p>
 </div>

@@ -323,11 +323,6 @@ class Location(MapObj):
 	pass
 
 class RegionalCampus(MapObj):
-	def _img_tag(self):
-		import settings
-		image_url = settings.MEDIA_URL + 'images/regional-campuses/' + self.id + '.jpg'
-		return '<img src="%s" alt="%s">' % (image_url, self.description)
-	img_tag = property(_img_tag)
 	
 	class Meta:
 		verbose_name_plural = "Regional Campuses"
