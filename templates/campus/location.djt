@@ -22,7 +22,7 @@
 		{% if not location.profile or location.profile == "None" %}
 		{# if no profile, display image on the left #}
 			{% if location.image %}
-			<img src="{{MEDIA_URL}}images/buildings/{{ location.image }}"><br><br>
+				<img src="{{ location.image.url }}"><br><br>
 			{% endif %}
 			This location needs a profile, <a href="mailto:webcom@ucf.edu?subject=Campus Map Location Profile&amp;Body={{location.name}}">do you have one?</a>
 		{% else %}

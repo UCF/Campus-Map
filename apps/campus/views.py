@@ -187,8 +187,15 @@ def location(request, loc, return_obj=False):
 	
 	base_url = request.build_absolute_uri(reverse('home'))[:-1]
 	html = location_html(location, request)
+
+	location_image = location.image
 	location = location.json(base_url=base_url)
-	location['info'] = html
+	location['info']  = html
+
+	if location_image != '':
+		location['image'] = {'url':location_image.url}
+	else:
+		location['image'] = None
 	
 	# API views
 	if request.is_json():
@@ -255,7 +262,7 @@ def location(request, loc, return_obj=False):
 	groups_orgs = list()
 	for g in groups:
 		groups_orgs.append((g, group_orgs(g)))
-	
+
 	context = { 
 		'location'      : location,
 		'orgs'          : location_orgs,
