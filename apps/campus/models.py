@@ -267,7 +267,7 @@ class MapObj(models.Model):
 			# Optional Attributes
 			if self.image is not None:
 				image    = Element('image_url')
-				image.text = base_url + settings.MEDIA_URL + 'images/buildings/' + self.image
+				image.text = base_url + settings.MEDIA_URL + self.image
 				location.append(image)
 			
 			if self.description is not None:
