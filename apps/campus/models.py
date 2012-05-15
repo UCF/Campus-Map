@@ -124,7 +124,7 @@ class MapObj(models.Model):
 	content_type      = models.ForeignKey(ContentType, editable=False, null=True)
 	id                = models.CharField(max_length=80, primary_key=True, help_text='<strong class="caution">Caution</strong>: changing may break external resources (used for links and images)')
 	name              = models.CharField(max_length=255, null=True)
-	image             = models.CharField(max_length=50, null=True, help_text='Don&rsquo;t forget to append a file extension')
+	image             = models.ImageField(upload_to='uploads/images')
 	description       = models.CharField(max_length=255, null=True)
 	profile           = tinymce_models.HTMLField(null=True)
 	googlemap_point   = models.CharField(max_length=255, null=True, help_text='E.g., <code>[28.6017, -81.2005]</code>')
