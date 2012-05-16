@@ -66,6 +66,7 @@ class Command(BaseCommand):
 
 		for filename in self.rc_image_filenames:
 			os.rename(os.path.join(self._RC_IMAGE_PATH, filename), os.path.join(self._NEW_IMAGE_PATH, filename))
+
 	def register_rc_images(self):
 		'''
 			Assign the copied Regional Campus images to their respective locations
@@ -74,4 +75,5 @@ class Command(BaseCommand):
 		for filename in self.rc_image_filenames:
 			name, extension = os.path.splitext(filename)
 			cursor.execute('UPDATE campus_mapobj SET image = CONCAT("%s", "/", "%s") WHERE id = "%s"' % (self._RELATIVE_IMAGE_PATH, filename, name))
+
 		transaction.commit_unless_managed()
