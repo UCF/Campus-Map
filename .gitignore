@@ -1,6 +1,9 @@
 # Local Settings
 settings_local.py
 
+# Uploads
+static/uploads/*
+
 # Application, OS, and backup files
 *~
 *.pyc
