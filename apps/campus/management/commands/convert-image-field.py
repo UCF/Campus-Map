@@ -2,6 +2,7 @@ from django.core.management.base import BaseCommand
 from django.db                   import connection, transaction
 from django.conf                 import settings
 import os
+import sys
 
 class Command(BaseCommand):
 	'''
@@ -35,45 +36,54 @@ class Command(BaseCommand):
 		'''
 			Move static/images/building to static/uploads/images
 		'''
+		sys.stdout.write('Moving static/images/building to static/uploads/images...')
 		if not os.path.exists(self._NEW_UPLOAD_PATH):
 			os.mkdir(self._NEW_UPLOAD_PATH)
 		os.rename(self._OLD_IMAGE_PATH, self._NEW_IMAGE_PATH)
+		sys.stdout.write('done\n')
 
 	def alter_image_column(self):
 		'''
 			Alter the MapObj->image column structure to be  VARCHAR(100) NOT NULL
 		'''
+		sys.stdout.write('Altering MapObj->image column to VARCHAR(100) NOT NULL...')
 		cursor = connection.cursor()
 		# To avoid a warning, set all NULL entries to empty string
 		cursor.execute('UPDATE campus_mapobj SET image = "" WHERE image IS NULL')
 		cursor.execute('ALTER TABLE  campus_mapobj CHANGE  image  image VARCHAR( 100 ) NOT NULL')
 		transaction.commit_unless_managed()
+		sys.stdout.write('done\n')
 
 	def prepend_upload_path(self):
 		'''
 			Prepend the new image upload path to each MapObj->image entry
 		'''
+		sys.stdout.write('Prepending new upload path to MapObj->image column...')
 		cursor = connection.cursor()
 		cursor.execute('UPDATE campus_mapobj SET image = CONCAT("%s", "/", image) WHERE image != ""' % self._RELATIVE_IMAGE_PATH)
 		transaction.commit_unless_managed()
+		sys.stdout.write('done\n')
 
 	def move_rc_images(self):
 		'''
 			Note the names of the regional campus images and copy them into the uploads
 			directory.
 		'''
+		sys.stdout.write('Moving regional campus images into uploads directory...')
 		self.rc_image_filenames = os.listdir(self._RC_IMAGE_PATH)
 
 		for filename in self.rc_image_filenames:
 			os.rename(os.path.join(self._RC_IMAGE_PATH, filename), os.path.join(self._NEW_IMAGE_PATH, filename))
+		sys.stdout.write('done\n')
 
 	def register_rc_images(self):
 		'''
 			Assign the copied Regional Campus images to their respective locations
 		'''
+		sys.stdout.write('Assigning regional campus images to MapObj entries...')
 		cursor = connection.cursor()
 		for filename in self.rc_image_filenames:
 			name, extension = os.path.splitext(filename)
 			cursor.execute('UPDATE campus_mapobj SET image = CONCAT("%s", "/", "%s") WHERE id = "%s"' % (self._RELATIVE_IMAGE_PATH, filename, name))
-
 		transaction.commit_unless_managed()
+		sys.stdout.write('done\n')
