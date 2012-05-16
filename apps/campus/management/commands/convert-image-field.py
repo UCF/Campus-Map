@@ -25,9 +25,9 @@ class Command(BaseCommand):
 	_RELATIVE_IMAGE_PATH = 'uploads/images'
 
 	def handle(self, *args, **options):
-		#self.move_images()
-		#self.alter_image_column()
-		#self.prepend_upload_path()
+		self.move_images()
+		self.alter_image_column()
+		self.prepend_upload_path()
 		self.move_rc_images()
 		self.register_rc_images()
 
