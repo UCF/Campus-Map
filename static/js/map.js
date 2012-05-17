@@ -19,7 +19,8 @@ var CampusMap = function(urls) {
 		IMAP_TYPE    = null,
 
 		MAP    = null,
-		SEARCH = null
+		SEARCH = null,
+		MENU   = null,
 
 		// Utility functions
 		UTIL = new Util();
@@ -93,6 +94,92 @@ var CampusMap = function(urls) {
 	// Setup and configure the search
 	SEARCH = new Search();
 
+	// Setup and configure the menu
+	MENU = new Menu();
+
+	function Menu() {
+		/*
+			The menu consists of four different faces. The content of
+			the first three faces is constant while the content of the 
+			fourth face dynamic. The fourth face, referred as the `stage`,
+			is where information about locations that are selected is 
+			displayed.
+
+			In addition to the four faces, there are are two tabs.
+		*/
+		var container = $('#menu-wrap'), // contains all of the menu HTML,
+			menu      = $('#menu-window'), // this is the window through which the faces are viewed
+			tab_one   = $('#tab-one'),
+			tab_two   = $('#tab-two');
+
+		// Set all the faces to the same height
+		menu.equalHeights();
+
+		// The menu header has a gap the needs to move left and right 
+		// depending on how many tabs are displayed
+		function reset_tab_gap() {
+			var width = $('#menu-header').width() - 10 - tab_one.width();
+			if(tab_two.is(':visible')) {
+				width -= tab_two.width();
+			}
+			$('#menu .gap').width(width);
+		}
+		reset_tab_gap();
+
+		// Hiding and Showing the menu
+		$('#menu-hide,#menu-screen')
+			.click(function(e) {
+				e.preventDefault();
+				var screen = $('#menu-screen');
+				if(screen.is(':visible')) {
+					menu.slideDown();
+					screen.hide();
+					container
+						.removeClass('closed')
+						.animate({'opacity':1}, 300);
+				} else {
+					menu.slideUp();
+					container
+						.animate({'opacity':.5}, 300, function() {
+							container.addClass('closed');
+						});
+					screen.show();
+				}
+			})
+
+		// There are two button in the upper right hand corner of the menu:
+		// email and print. They are updated based on various actions
+		// ------
+
+		this.change_tabs = function(options) {
+			var defaults = {
+				'label':false,
+				'html' :false
+			}
+
+			var settings = $.extend({}, defaults, options);
+
+			// If no label or html is set, go back to the `Menu` tab
+			if(!settings.label && !settings.html) {
+				menu.animate({'margin-left':0}, 300);
+				tab_one.removeClass('off');
+				tab_two.addClass('on');
+			} else {
+				tab_two.removeClass('off');
+				tab_one.addClass('on');
+				$('#menu-title').html(settings.label); // tab two title
+				tab_two.show();
+
+				$('#menu-stage').html(settings.html); // tab two content
+
+				reset_tab_gap();
+				menu.equalHeights();
+			}
+		}
+
+		// Add the menu to the map in the right uppper
+		MAP.controls[google.maps.ControlPosition.RIGHT_TOP].push(container[0]);
+	}
 
 	function Search() {
 		var element = null,
@@ -371,4 +458,36 @@ var CampusMap = function(urls) {
 			console.log(arguments);
 		}
 	}
+}
+
+/*-------------------------------------------------------------------- 
+ * JQuery Plugin: "EqualHeights" & "EqualWidths"
+ * by:	Scott Jehl, Todd Parker, Maggie Costello Wachs (http://www.filamentgroup.com)
+ *
+ * Copyright (c) 2007 Filament Group
+ * Licensed under GPL (http://www.opensource.org/licenses/gpl-license.php)
+ *
+ * Description: Compares the heights or widths of the top-level children of a provided element 
+ 		and sets their min-height to the tallest height (or width to widest width). Sets in em units 
+ 		by default if pxToEm() method is available.
+ * Dependencies: jQuery library, pxToEm method	(article: http://www.filamentgroup.com/lab/retaining_scalable_interfaces_with_pixel_to_em_conversion/)							  
+ * Usage Example: $(element).equalHeights();
+   						      Optional: to set min-height in px, pass a true argument: $(element).equalHeights(true);
+ * Version: 2.0, 07.24.2008
+ * Changelog:
+ *  08.02.2007 initial Version 1.0
+ *  07.24.2008 v 2.0 - added support for widths
+--------------------------------------------------------------------*/
+
+$.fn.equalHeights = function(px) {
+	$(this).each(function(){
+		var currentTallest = 0;
+		$(this).children().each(function(i){
+			if ($(this).height() > currentTallest) { currentTallest = $(this).height(); }
+		});
+		// for ie6, set height since min-height isn't supported
+		if ($.browser.msie && $.browser.version === 6.0) { $(this).children().css({'height': currentTallest}); }
+		$(this).children().css({'min-height': currentTallest});	
+	});
+	return this;
 }
