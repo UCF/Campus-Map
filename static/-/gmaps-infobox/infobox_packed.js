@@ -3,5 +3,5 @@ function infobox_init(){
 
 	// hard coded because there's no way to pass the init function such as
 	// http://code.google.com/apis/maps/documentation/javascript/basics.html#Async
-	Campus.init();
+	//Campus.init();
 }
