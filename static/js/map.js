@@ -2,7 +2,8 @@ var CampusMap = function(urls, points, base_ignore_types) {
 	var that  = this,
 
 		POINTS            = points,
-		BASE_IGNORE_TYPES = base_ignore_types
+		// Ignore these point types on the base points layer
+		BASE_IGNORE_TYPES = base_ignore_types,
 
 		// URLs provided by the template
 		STATIC_URL        = urls['static'],
@@ -21,14 +22,11 @@ var CampusMap = function(urls, points, base_ignore_types) {
 		IMAP_OPTIONS = null,
 		IMAP_TYPE    = null,
 
-		MAP    = null,
-		SEARCH = null,
-		MENU   = null,
-
-		LAYER_MANAGER = new LayerManager(),
-
-		// Utility functions
-		UTIL = new Util();
+		MAP           = null,
+		SEARCH        = null,
+		MENU          = null,
+		LAYER_MANAGER = null,
+		UTIL          = new Util();
 
 	// Load the Google Maps JS
 	if(typeof google === 'undefined') {
@@ -102,12 +100,342 @@ var CampusMap = function(urls, points, base_ignore_types) {
 	// Setup and configure the menu
 	MENU = new Menu();
 
+	// Setup and configure the layers
+	LAYER_MANAGER = new LayerManager();
+
+	// Implementation details for the traffic layer
+	LAYER_MANAGER.register_layer(
+		(function() {
+			var traffic_layer   = new Layer('traffic');
+			traffic_layer.layer = new google.maps.TrafficLayer();
+			return traffic_layer;
+		})()
+	);
+
+	// Implementation details for the sidewalks layer
+	LAYER_MANAGER.register_layer(
+		(function() {
+			var sidewalk_layer = new Layer('sidewalks');
+			sidewalk_layer.layer = new google.maps.KmlLayer(
+					SIDEWALKS_KML_URL, 
+					{
+						preserveViewport : true,
+						suppressInfoWindows: true,
+						clickable: false
+					}
+				);
+			return sidewalk_layer;
+		})()
+	);
+
+	// Implementation details for the points layer
+	LAYER_MANAGER.register_layer(
+		(function() {
+			var points_layer     = new Layer('points');
+			points_layer.markers = (function() {
+				var markers        = [],
+					images         = {
+						'Building'   : UTIL.get_google_image('yellow'),
+						'ParkingLot' : UTIL.get_google_image('yellow'),
+						'Group'      : UTIL.get_google_image('yellow2'),
+						'Location'   : UTIL.get_google_image('blue'),
+					},
+					map_point_type = (MAP.mapTypeId === 'illustrated') ? 'ipoint' : 'gpoint';
+
+				$.each(POINTS, function(index, point) {
+					var map_point = point[map_point_type];
+					if(map_point != null && $.inArray(point.type, BASE_IGNORE_TYPES) == -1) {
+						markers.push(
+							new google.maps.Marker({
+								position : new google.maps.LatLng(map_point[0], map_point[1]),
+								map      : MAP,
+								icon     : images[point.type],
+								location : index,
+								visible  : false
+							})
+						);
+					}
+				});
+				return markers;
+			})();
+ 			return points_layer;
+		})()
+	);
+
+	// Implementation details for the buildings layer
+	LAYER_MANAGER.register_layer(
+		(function() {
+			var buildings_layer   = new Layer('buildings');
+			buildings_layer.layer = new google.maps.KmlLayer(
+				BUILDINGS_KML_URL, 
+				{
+					preserveViewport    :true,
+					suppressInfoWindows :true,
+					clickable           :false 
+				}
+			);
+			return buildings_layer;
+		})()
+	);
+
+	// Implementation details for the bikeracks layer
+	LAYER_MANAGER.register_layer(
+		(function() {
+			var bikeracks_layer  = new Layer('bikeracks');
+			bikeracks_layer.markers = (function() {
+				var markers = [];
+				$.ajax({
+					url     :BIKERACKS_URL,
+					dataType:'json',
+					async   :false,
+					success :
+						function(data, text_status, jq_xhr) {
+							if(typeof data.features != 'undefined') {
+								$.each(data.features, function(index, rack) {
+									if(rack.geometry && rack.geometry.coordinates) {
+										markers.push(
+											new google.maps.Marker({
+												clickable : false,
+												position  : new google.maps.LatLng(
+													rack.geometry.coordinates[0],
+													rack.geometry.coordinates[1]
+												),
+												map       : MAP,
+												visible   : false
+											})
+										);
+									}
+								});
+							}
+						}
+				});
+				return markers;
+			})();
+			return bikeracks_layer;
+		})()
+	);
+
+	// Implementation details for the emergency phones layer
+	LAYER_MANAGER.register_layer(
+		(function() {
+			var phones_layer = new Layer('emergency_phones');
+			phones_layer.markers = (function() {
+				var markers = [];
+				$.ajax({
+					url     :PHONES_URL,
+					dataType:'json',
+					async   :false,
+					success :
+						function(data, text_status, jq_xhr) {
+							var icon   = new google.maps.MarkerImage(
+									STATIC_URL + '/images/markers/marker_phone.png',
+									new google.maps.Size(20, 34)
+								),
+								shadow = new google.maps.MarkerImage(
+									STATIC_URL + '/images/markers/marker_phone.png',
+									new google.maps.Size(37,34),
+									new google.maps.Point(20, 0),
+									new google.maps.Point(10, 34)
+								);
+
+							if(typeof data.features != 'undefined') {
+								$.each(data.features, function(index, rack) {
+									if(rack.geometry && rack.geometry.coordinates) {
+										markers.push(
+											new google.maps.Marker({
+												clickable : false,
+												position  : new google.maps.LatLng(
+													rack.geometry.coordinates[0],
+													rack.geometry.coordinates[1]
+												),
+												map       : MAP,
+												visible   : false,
+												icon      : icon,
+												shadow    : shadow
+											})
+										);
+									}
+								});
+							}
+						}
+				});
+				return markers;
+			})();
+			return phones_layer;
+		})()
+	);
+	
+	// Implementation detail for the parking layer
+	LAYER_MANAGER.register_layer(
+		(function() {
+			var parking_layer = new Layer('parking');
+			parking_layer.layer = new google.maps.KmlLayer(
+					PARKING_KML_URL,
+					{
+						preserveViewport    : true,
+						suppressInfoWindows : true
+					}
+			);
+			parking_layer.markers = (function() {
+				var markers = [];
+				$.ajax({
+					url      : PARKING_JSON_URL,
+					dataType : 'json',
+					async    : false,
+					success: function(data){
+						var icon   = new google.maps.MarkerImage(
+								STATIC_URL + 'images/markers/disabled.png', 
+								new google.maps.Size(17, 17), //size
+								new google.maps.Point(0, 0),  //origin
+								new google.maps.Point(10, 8)   //anchor
+							);
+						if(typeof data.handicap != 'undefined') {
+							$.each(data.handicap, function(index, spot) {
+								markers.push(
+									new google.maps.Marker({
+										icon     : icon,
+										position : new google.maps.LatLng(
+											spot.googlemap_point[0],
+											spot.googlemap_point[1]
+										), 
+										map      : MAP,
+										title    : spot.title,
+										visible  : false
+									})
+								);
+							});
+						}
+					}
+				});
+				return markers;
+			})();
+			return parking_layer;
+		})()
+	);
+
+	// Implementation details for the dining layer
+	LAYER_MANAGER.register_layer(
+		(function() {
+			var dining_layer     = new Layer('dining');
+			dining_layer.markers = (function() {
+				var markers         = [],
+					ExistingPoint   = function(lat, lon) {
+						this.lat      = lat;
+						this.lon      = lon;
+						this.count    = 1;
+						this.odd_flip = true;
+					},
+					randomInt       = function() {
+						return Math.round(Math.random() * 10) + Math.round(Math.random() * 10);
+					},
+					existing_points = [],
+					adjustment      = 150000,
+					icon = new google.maps.MarkerImage(
+						STATIC_URL + 'images/markers/knife-fork.png',
+						new google.maps.Size(28, 28),  // dimensions
+						new google.maps.Point(0,0),  // origin
+						new google.maps.Point(16,20)), // anchor 
+					shadow = new google.maps.MarkerImage(
+						STATIC_URL + 'images/markers/knife-fork-shadow.png',
+						new google.maps.Size(46, 22),
+						new google.maps.Point(0,0),
+						new google.maps.Point(10,13));;
+
+				$.ajax({
+					url      : DINING_URL,
+					dataType : 'json',
+					async    : false,
+					success: function(data){
+						
+
+						if(typeof data.features != 'undefined') {
+							$.each(data.features, function(index, feature) {
+								var point = feature.geometry.coordinates;
+
+								// Nudge points if they are on top of each other
+								var adjusted = false;
+								$.each(existing_points, function(_index, existing_point) {
+									if(point[0] == existing_point.lat && point[1] == existing_point.lon) {
+										var count = existing_point.count;
+										if( (count % 2) == 0) {
+											point[0] = point[0] + ((count + randomInt()) / adjustment);
+											if( (count % 4) == 0) {
+												point[1] = point[1] + ((count + randomInt()) / adjustment);
+											} else {
+												point[1] = point[1] - ((count + randomInt()) / adjustment);
+											}
+										} else {
+											point[0] = point[0] - ((count + randomInt()) / adjustment);
+											if(existing_point.odd_flip) {
+												point[1] = point[1] + ((count + randomInt()) / adjustment);
+												existing_point.odd_flip = false;
+											} else {
+												point[1] = point[1] - ((count + randomInt()) / adjustment);
+												existing_point.odd_flip = true;
+											}
+										}
+										adjusted = true;
+										existing_point.count += 1;
+										return false;
+									}
+								});
+								if(!adjusted) {
+									existing_points.push(new ExistingPoint(point[0],point[1]))
+								}
+								markers.push(
+									new google.maps.Marker({
+										icon     : icon,
+										shadow   : shadow,
+										position : new google.maps.LatLng(point[0], point[1]),
+										title    : feature.properties.name,
+										map      : MAP,
+										visible  : false
+									})
+								);
+							});
+						}
+					}
+				});
+				return markers;
+			})();
+			return dining_layer;
+		})()
+	);
+
+	// Display the points layer when the  map loads
+	(LAYER_MANAGER.get_layer('points')).toggle();
+
+	// Attach click handles to layer checkboxes
+	(function() {
+		$.each(LAYER_MANAGER.layers, function(index, layer) {
+			var name = layer.name;
+			$('input[type="checkbox"][id="' + layer.name + '"]')
+				.click(function() {
+					// For parking, change menu to legend
+					if($(this).attr('id') == 'parking') {
+						MENU.change_tabs({
+							'label':'Parking',
+							'html' :$('#parking-key-content').html()
+						});
+					}
+					layer.toggle();
+				});
+		});
+	})();
+
+	/*********************************
+	 *
+	 * Layers
+	 *
+	 *********************************/
 	function LayerManager() {
-		var layers = [];
+		var that = this;
+
+		this.layers = [];
 
 		this.get_layer = function(name) {
 			var layer = null;
-			$.each(layers, function(index, _layer) {
+			$.each(that.layers, function(index, _layer) {
 				if(_layer.name == name) {
 					layer = _layer;
 					return false;
@@ -117,13 +445,13 @@ var CampusMap = function(urls, points, base_ignore_types) {
 		}
 
 		this.load_all_layers = function() {
-			$.each(layers, function(index, layer) {
-				layer.load();
+			$.each(that.layers, function(index, layer) {
+				layer.toggle();
 			});
 		}
 
 		this.register_layer = function(layer) {
-			layers.push(layer);
+			that.layers.push(layer);
 		}
 	}
 
@@ -132,89 +460,56 @@ var CampusMap = function(urls, points, base_ignore_types) {
 			Layers are sets of objects placed on the map (e.g. points, buidlings,
 			sidewalks, etc.)
 
+			Layers are made up of two types of Google Maps items: KML and points.
+			Most layers have one or the other; some have both.
+
+
+			This function represents and interface of what the LayerManager
+			expects. Implementations for each layer appear below
+
 		*/
 
-		var that   = this,
-			name   = name,
-			layer  = null, // the actualy Google Maps layer on the map
-			active = false; 
+		var that    = this;
+		
+		this.active  = false;
+		this.name    = name;
+		this.layer   = null; // the actual Google Maps layer on the map, if applicable
+		this.markers = null; // the actual Google Maps markers on the map, if applicable
 
-		this.load = function load() {
-			this.layer.setMap(MAP);
-			this.loaded = true;
-		}
 		this.toggle = function toggle() {
-			if(this.active) { // turn off
-				this.active = false;
-				this.layer.setMap(null);
-			} else { // turn on
-				this.active = true;
-				this.layer.setMap(MAP);
+			that.active ? deactivate() : activate();
+		}
+
+		function activate() {
+			that.active = true;
+			if(that.layer != null) {
+				that.layer.setMap(MAP);
+			}
+			if(that.markers != null) {
+				$.each(that.markers, function(index, marker) {
+					marker.setVisible(true);
+				});
+			}
+		}
+
+		function deactivate() {
+			that.active = false;
+			if(that.layer != null) {
+				that.layer.setMap(null);
+			}
+			if(that.markers != null) {
+				$.each(that.markers, function(index, marker) {
+					marker.setVisible(false);
+				});
 			}
 		}
 	}
-
-	// Implementation details for the traffic layer
-	LAYER_MANAGER.register_layer(
-		(function() {
-			var traffic_layer   = new Layer('traffic');
-			traffic_layer.layer = new google.maps.TrafficLayer();
-			traffic_layer.load = function() {
-				this.toggle();
-			}
-			return traffic_layer;
-		})()
-	);
-
-	// Implementation details for the sidewalks layer
-	LAYER_MANAGER.register_layer(
-		(function() {
-			var sidewalk_layer = new Layer('sidewalks');
-			log(SIDEWALKS_KML_URL);
-			sidewalk_layer.layer = new google.maps.KmlLayer(
-					SIDEWALKS_KML_URL, 
-					{
-						preserveViewport : true,
-						suppressInfoWindows: true,
-						clickable: false
-					}
-				);
-			sidewalk_layer.load = function() {
-				this.toggle();
-			}
-			return sidewalk_layer;
-		})()
-	);
-
-	// Implementation details for the points layer
-	LAYER_MANAGER.register_layer(
-		(function() {
-			var points_layer = new Layer('points');
-			points_layer.load = function() {
-				var images = {
-					'Building'   : UTIL.get_google_image('yellow'),
-					'ParkingLog' : UTIL.get_google_image('yellow'),
-					'Group'      : UTIL.get_google_image('yellow2'),
-					'Location'   : UTIL.get_google_image('blue'),
-				}
-
-				$.each(POINTS, function(index, point) {
-					//var lat_lng = new google.maps.LatLng(point[0], point[1]);
-					new google.maps.Marker({
-						position : new google.maps.LatLng(point[0], point[1]),
-						map      : MAP,
-						icon     : images[point.type],
-						location : index
-					});
-				});
-			}
-			return points_layer;
-		})()
-	);
-
-	LAYER_MANAGER.load_all_layers();
 	
-
+	/*********************************
+	 *
+	 * Menu
+	 *
+	 *********************************/
 	function Menu() {
 		/*
 			The menu consists of four different faces. The content of
@@ -243,6 +538,15 @@ var CampusMap = function(urls, points, base_ignore_types) {
 			$('#menu .gap').width(width);
 		}
 		reset_tab_gap();
+
+
+		// Next Menu / Previous Menu actions
+		$('.nav').click(function(){
+			var page_num = $(this).attr('data-nav');
+			$.cookie('menu_page', page_num);
+			page_num -= 1;
+			menu.animate({"margin-left" : '-' + (Number(page_num) * 230) }, 300);
+		});
 
 		// Hiding and Showing the menu
 		$('#menu-hide,#menu-screen')
@@ -290,6 +594,8 @@ var CampusMap = function(urls, points, base_ignore_types) {
 
 				$('#menu-stage').html(settings.html); // tab two content
 
+				menu.animate({'margin-left':-690}, 300);
+
 				reset_tab_gap();
 				menu.equalHeights();
 			}
@@ -299,6 +605,11 @@ var CampusMap = function(urls, points, base_ignore_types) {
 		MAP.controls[google.maps.ControlPosition.RIGHT_TOP].push(container[0]);
 	}
 
+	/*********************************
+	 *
+	 * Search
+	 *
+	 *********************************/
 	function Search() {
 		var element = null,
 			input   = null,
@@ -515,6 +826,11 @@ var CampusMap = function(urls, points, base_ignore_types) {
 		}
 	}
 
+	/*********************************
+	 *
+	 * Utility
+	 *
+	 *********************************/
 	function Util() {
 
 		// Returns the URL of a illustrated map tiles based on the specified
