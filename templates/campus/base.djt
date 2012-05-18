@@ -86,8 +86,10 @@
 				"sidewalks_kml" : "{{ sidewalks_kml }}",
 				"bikeracks"     : "{% url bikeracks %}.json",
 				"phones"        : "{% url emergency_phones %}.json",
-				"base_url"      : "{{ base_url }}"
-			})
+				"base_url"      : "{{ base_url }}"},
+				{{ points|safe }},
+				{{base_ignore_types|safe}}
+			)
 		});
 	</script>
 {% endblock %}

@@ -1,5 +1,8 @@
-var CampusMap = function(urls) {
-	var that       = this,
+var CampusMap = function(urls, points, base_ignore_types) {
+	var that  = this,
+
+		POINTS            = points,
+		BASE_IGNORE_TYPES = base_ignore_types
 
 		// URLs provided by the template
 		STATIC_URL        = urls['static'],
@@ -21,6 +24,8 @@ var CampusMap = function(urls) {
 		MAP    = null,
 		SEARCH = null,
 		MENU   = null,
+
+		LAYER_MANAGER = new LayerManager(),
 
 		// Utility functions
 		UTIL = new Util();
@@ -96,6 +101,119 @@ var CampusMap = function(urls) {
 
 	// Setup and configure the menu
 	MENU = new Menu();
+
+	function LayerManager() {
+		var layers = [];
+
+		this.get_layer = function(name) {
+			var layer = null;
+			$.each(layers, function(index, _layer) {
+				if(_layer.name == name) {
+					layer = _layer;
+					return false;
+				}
+			});
+			return layer;
+		}
+
+		this.load_all_layers = function() {
+			$.each(layers, function(index, layer) {
+				layer.load();
+			});
+		}
+
+		this.register_layer = function(layer) {
+			layers.push(layer);
+		}
+	}
+
+	function Layer(name) {
+		/*
+			Layers are sets of objects placed on the map (e.g. points, buidlings,
+			sidewalks, etc.)
+
+		*/
+
+		var that   = this,
+			name   = name,
+			layer  = null, // the actualy Google Maps layer on the map
+			active = false; 
+
+		this.load = function load() {
+			this.layer.setMap(MAP);
+			this.loaded = true;
+		}
+		this.toggle = function toggle() {
+			if(this.active) { // turn off
+				this.active = false;
+				this.layer.setMap(null);
+			} else { // turn on
+				this.active = true;
+				this.layer.setMap(MAP);
+			}
+		}
+	}
+
+	// Implementation details for the traffic layer
+	LAYER_MANAGER.register_layer(
+		(function() {
+			var traffic_layer   = new Layer('traffic');
+			traffic_layer.layer = new google.maps.TrafficLayer();
+			traffic_layer.load = function() {
+				this.toggle();
+			}
+			return traffic_layer;
+		})()
+	);
+
+	// Implementation details for the sidewalks layer
+	LAYER_MANAGER.register_layer(
+		(function() {
+			var sidewalk_layer = new Layer('sidewalks');
+			log(SIDEWALKS_KML_URL);
+			sidewalk_layer.layer = new google.maps.KmlLayer(
+					SIDEWALKS_KML_URL, 
+					{
+						preserveViewport : true,
+						suppressInfoWindows: true,
+						clickable: false
+					}
+				);
+			sidewalk_layer.load = function() {
+				this.toggle();
+			}
+			return sidewalk_layer;
+		})()
+	);
+
+	// Implementation details for the points layer
+	LAYER_MANAGER.register_layer(
+		(function() {
+			var points_layer = new Layer('points');
+			points_layer.load = function() {
+				var images = {
+					'Building'   : UTIL.get_google_image('yellow'),
+					'ParkingLog' : UTIL.get_google_image('yellow'),
+					'Group'      : UTIL.get_google_image('yellow2'),
+					'Location'   : UTIL.get_google_image('blue'),
+				}
+
+				$.each(POINTS, function(index, point) {
+					//var lat_lng = new google.maps.LatLng(point[0], point[1]);
+					new google.maps.Marker({
+						position : new google.maps.LatLng(point[0], point[1]),
+						map      : MAP,
+						icon     : images[point.type],
+						location : index
+					});
+				});
+			}
+			return points_layer;
+		})()
+	);
+
+	LAYER_MANAGER.load_all_layers();
+	
 
 	function Menu() {
 		/*
@@ -448,6 +566,15 @@ var CampusMap = function(urls) {
 		// Platform generic event keycode parser. Designed to be used with keyup/down
 		this.parse_keycode = function(event) {
 			return document.layers ? event.which : document.all ? event.keyCode : document.getElementById ? event.keyCode : 0;
+		}
+
+		// Returns URL of google icon based on specified color
+		this.get_google_image = function(color) {
+			return new google.maps.MarkerImage(
+				(STATIC_URL + 'images/markers/' + color + '.png'),
+				new google.maps.Size(19, 19),
+				new google.maps.Point(0,0), 
+				new google.maps.Point(10,10));
 		}
 	}
 
