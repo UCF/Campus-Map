@@ -494,48 +494,48 @@ var CampusMap = function(urls, points, base_ignore_types) {
 
 	 }
 
-	 function Info(position, text, options) {
-	 	var that    = this,
-	 		lat_lng = new google.maps.LatLng(position[0], position[1]),
-	 		options = {
-				alignBottom            : true,
-				pixelOffset            : new google.maps.Size(-18, -3),
-				maxWidth               : 0,
-				closeBoxURL            : "",
-				pane                   : "floatPane",
-				infoBoxClearance       : new google.maps.Size(1, 1),
-				enableEventPropagation : false
-	 		},
-	 		element  = null,
-	 		text_box = null,
+	 function Info(position, name, options) {
+	 	var that         = this,
+	 		lat_lng      = new google.maps.LatLng(position[0], position[1]),
+	 		content      =  null
+	 		test_content = null,
 	 		default_options  = {
 	 			link : null,
 	 			pan  : false
 	 		};
 	 	this.box = null;
-	 	options = $.extend(default_options, options);
-
+	 	
+	 	options = $.extend({}, default_options, options);
+	 	
 	 	// Wrap the text in a link if neccessary
 	 	if(options.link != null) {
-	 		text = '<a href="' + link + '">' + text + '</a>';
+	 		name = '<a href="' + options.link + '">' + name + '</a>';
 	 	}
-	 	text = $('<div class="iBox">' + text + '<a class="iclose"></a></div>');
+	 	content = $('<div class="iBox">' + name + '<a class="iclose"></a></div>');
 
 	 	// Create a hidden test box to figure out the correct width
-	 	test_box = $('<div id="testBox" class="iBox">' + text + '</div>')[0];
-	 	$('body').append(test_box);
+	 	test_content = $('<div id="testBox" class="iBox">' + content + '</div>')[0];
+	 	$('body').append(test_content);
 
 		// Close button listener
-	 	text.find('.iclose').click(function(e) {
+	 	content.find('.iclose').click(function(e) {
 	 		e.preventDefault();
 	 		box.close();
 	 	});
-	 	text             = text[0];
-	 	text.style.width = test_box.offsetWidth + 'px';
-	 	options.content  = text;
+	 	content             = content[0];
+	 	content.style.width = test_content.offsetWidth + 'px';
 
 	 	// Create the box and set it's position
-	 	this.box = new InfoBox(options);
+	 	this.box = new InfoBox({
+	 		content                : content,
+			alignBottom            : true,
+			pixelOffset            : new google.maps.Size(-18, -3),
+			maxWidth               : 0,
+			closeBoxURL            : "",
+			pane                   : "floatPane",
+			infoBoxClearance       : new google.maps.Size(1, 1),
+			enableEventPropagation : false
+	 	});
 	 	this.box.setPosition(lat_lng);
 	 	this.box.open(MAP);
 
@@ -1145,7 +1145,7 @@ var CampusMap = function(urls, points, base_ignore_types) {
 								new Info(
 									data[point_type],
 									data.name,
-									data.profile_link
+									{link: data.profile_link}
 								)
 							);
 							if(options.reset_zoom_center && MAP.getZoom() != default_zoom) {
