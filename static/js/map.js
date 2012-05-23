@@ -457,7 +457,10 @@ var CampusMap = function(urls, points, base_ignore_types) {
 					
 				);
 			}
-		});
+			SEARCH.hide_results();
+		})
+		.find('a').live('click', function(e) {e.preventDefault()});
+
 	$('body').bind('search-result-highlighted', function(event) {
 		var location_id = SEARCH.current_location_id();
 		if(location_id) {
@@ -472,6 +475,7 @@ var CampusMap = function(urls, points, base_ignore_types) {
 	 *********************************/
 	 function InfoManager() {
 	 	var that = this;
+
 	 	this.infos = [];
 
 	 	this.register = function(info) {
@@ -482,6 +486,7 @@ var CampusMap = function(urls, points, base_ignore_types) {
 	 		$.each(that.infos, function(index, info) {
 	 			info.close();
 	 		});
+	 		that.infos = [];
 	 	}
 
 	 }
@@ -489,7 +494,6 @@ var CampusMap = function(urls, points, base_ignore_types) {
 	 function Info(position, text, options) {
 	 	var that    = this,
 	 		lat_lng = new google.maps.LatLng(position[0], position[1]),
-	 		box     = null,
 	 		options = {
 				alignBottom            : true,
 				pixelOffset            : new google.maps.Size(-18, -3),
@@ -501,11 +505,11 @@ var CampusMap = function(urls, points, base_ignore_types) {
 	 		},
 	 		element  = null,
 	 		text_box = null,
-
 	 		default_options  = {
 	 			link : null,
 	 			pan  : false
 	 		};
+	 	this.box = null;
 	 	options = $.extend(default_options, options);
 
 	 	// Wrap the text in a link if neccessary
@@ -528,16 +532,16 @@ var CampusMap = function(urls, points, base_ignore_types) {
 	 	options.content  = text;
 
 	 	// Create the box and set it's position
-	 	box = new InfoBox(options);
-	 	box.setPosition(lat_lng);
-	 	box.open(MAP);
+	 	this.box = new InfoBox(options);
+	 	this.box.setPosition(lat_lng);
+	 	this.box.open(MAP);
 
 	 	if(options.pan) {
 	 		MAP.panTo(lat_lng);
 	 	}
 
 	 	this.close = function() {
-	 		box.close();
+	 		that.box.close();
 	 	}
 	 }
 
@@ -746,7 +750,8 @@ var CampusMap = function(urls, points, base_ignore_types) {
 	 *
 	 *********************************/
 	function Search() {
-		var element = null,
+		var that    = this,
+			element = null,
 			input   = null,
 			results = null,
 			timer   = null,
@@ -824,14 +829,17 @@ var CampusMap = function(urls, points, base_ignore_types) {
 
 		// Attach the typing events
 		input
+			.focus(function(event) {
+				if($(this).val() != '') {
+					$(this).trigger('keyup');
+				}
+			})
 			.keydown(function(event) {
 				var keycode = UTIL.parse_keycode(event);
 				if(keycode == KEYCODES.ENTER) {
 
 				}
-			});
-
-		input
+			})
 			.keyup(function(event) {
 				var keycode      = UTIL.parse_keycode(event),
 					search_query = $(this).val();
@@ -880,7 +888,7 @@ var CampusMap = function(urls, points, base_ignore_types) {
 					$('body').trigger('search-result-highlighted', [next]);
 				} else if(keycode === KEYCODES.ESCAPE) { // Empty and hide results
 					abort_ajax();
-					results.empty().hide();
+					that.hide_results();
 				} else {
 					if(search_query === '') {
 						results.hide();
@@ -986,6 +994,10 @@ var CampusMap = function(urls, points, base_ignore_types) {
 			}
 			return location_id;
 		}
+
+		this.hide_results = function() {
+			results.empty().hide();
+		}
 	}
 
 	/*********************************
@@ -1058,27 +1070,72 @@ var CampusMap = function(urls, points, base_ignore_types) {
 
 		// Creates an info box for a location and also executes arbitary function
 		this.highlight_location = function(location_id, options) {
-			var options = $.extend({clear:true,pan:false}, options);
+			var options = $.extend({clear:true,pan:false, reset_zoom_center:true}, options);
 
 			if(options.clear) INFO_MANAGER.clear();
 
-			$.getJSON(
-				LOCATION_URL.replace('%s', location_id),
-				function(data, text_status, jq_xhr) {
-					var point_type = (MAP.mapTypeId === 'illustrated') ? 'illustrated_point' : 'googlemap_point';
+			$.ajax({
+				url      :LOCATION_URL.replace('%s', location_id),
+				dataType :'json',
+				async    : false,
+				success  : function(data, text_status, jq_xhr) {
+					var map_type       = MAP.mapTypeId;
+					var point_type     = (map_type === 'illustrated') ? 'illustrated_point' : 'googlemap_point',
+						default_zoom   = (map_type === 'illustrated') ? IMAP_OPTIONS.zoom : GMAP_OPTIONS.zoom,
+						default_center = (map_type === 'illustrated') ? IMAP_OPTIONS.center : GMAP_OPTIONS.center;
 
 					if(typeof options.func != 'undefined') {
 						options.func(data);
 					}
 
 					if(data.object_type == 'Group') {
+						MAP.panTo((new google.maps.LatLng(data[point_type][0], data[point_type][1])));
+
 						$.each(data.locations.ids, function(index, sub_location_id) {
-							that.highlight_location(sub_location_id, {clear:false});
+							that.highlight_location(sub_location_id, {clear:false, reset_zoom_center:false});
 						});
+
+						// Pan to the group center point
+						if(typeof data[point_type] != 'undefined') {
+							var points           = [],
+								distance_total   = 0,
+								distance_count   = 0,
+								average_distance = null,
+								zoom             = 19,
+								interval         = .09,
+								increment        = .05;
+
+							// Collect the position of each infobox
+							$.each(INFO_MANAGER.infos, function(index, info) {
+								var pos = info.box.getPosition();
+								if(pos != null) points.push(pos);
+							});
+
+							// Caculate the average distance between them
+							$.each(points, function(index, point) {
+								$.each(points, function(_index, cpoint) {
+									if(index != _index) {
+										var distance = that.calc_distance(point, cpoint);
+										if(distance > 0) {
+											distance_total += distance;
+											distance_count += 1;
+										}
+									}
+								});
+							});
+							average_distance = distance_total / distance_count;
+							// Iterate to figure out the zoom
+							while(average_distance > interval) {
+								interval += increment;
+								zoom     -= 1;
+							}
+
+							MAP.setZoom((zoom < 15 ? 15 : zoom));
+						}
 					} else {
 
 						// Create the info box(es)
-						if(typeof data[point_type] != 'undefined') {
+						if(typeof data[point_type] != 'undefined' && data[point_type] != null) {
 							INFO_MANAGER.register(
 								new Info(
 									data[point_type],
@@ -1086,14 +1143,31 @@ var CampusMap = function(urls, points, base_ignore_types) {
 									data.profile_link
 								)
 							);
+							if(options.reset_zoom_center && MAP.getZoom() != default_zoom) {
+								MAP.setZoom(default_zoom);
+								MAP.panTo(default_center);
+							}
 						}
 					}
 				}
-			);
+			});
 		}
 
+		this.calc_distance = function(a, b) {
+			var a_lat = a.lat(),
+				a_lng = a.lng(),
+				b_lat = b.lat(),
+				b_lng = b.lng(),
+				x     = null,
+				y     = null,
+				R     = 6371; // radius of the earth
+			a_lat = a_lat * (Math.PI/180);
+			a_lng = a_lng * (Math.PI/180);
+			b_lat = b_lat * (Math.PI/180);
+			b_lng = b_lng * (Math.PI/180);
+			return Math.acos(Math.sin(a_lat)*Math.sin(b_lat) + Math.cos(a_lat)*Math.cos(b_lat) * Math.cos(b_lng-a_lng)) * R;
+		}
 	}
-
 
 	// Log a message to the console if it's available
 	function log() {
