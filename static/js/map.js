@@ -26,6 +26,7 @@ var CampusMap = function(urls, points, base_ignore_types) {
 		SEARCH        = null,
 		MENU          = null,
 		LAYER_MANAGER = null,
+		INFO_MANAGER  = null,
 		UTIL          = new Util();
 
 	// Load the Google Maps JS
@@ -99,6 +100,9 @@ var CampusMap = function(urls, points, base_ignore_types) {
 
 	// Setup and configure the menu
 	MENU = new Menu();
+
+	// Setup and configure the info boxes
+	INFO_MANAGER = new InfoManager();
 
 	// Setup and configure the layers
 	LAYER_MANAGER = new LayerManager();
@@ -423,6 +427,101 @@ var CampusMap = function(urls, points, base_ignore_types) {
 		});
 	})();
 
+	//var x = new Info([28.6018,-81.1995], 'test');
+	//var y = new Info([28.6018,-81.1975], 'test1');
+
+
+	// Search result selection. Tab and infobox population
+	// --
+	// For some reason I can't get this events list to bind
+	// to the #search-form ul element. Bind it to body and
+	// pass #search-form ul as an argument
+	$('#search > ul > li:not(.more)')
+		.live('click', function() {
+			var location_id = SEARCH.current_location_id();
+			log(location_id);
+			if(location_id) {
+
+				// Change menu tab to a loading indicator
+				MENU.change_tabs({
+						label:'Location',
+						html :'<div class="item load">Loading...</div>'
+					});
+				UTIL.highlight_location(
+					location_id,
+					{
+						func: function(data) {
+							// Populate the menu tab
+							MENU.change_tabs({'html':data.info});
+						}
+					}
+					
+				);
+			}
+		});
+	$('body').bind('search-result-highlighted', function(event) {
+		var location_id = SEARCH.current_location_id();
+		if(location_id) {
+			UTIL.highlight_location(location_id);
+		}
+	});
+
+	/*********************************
+	 *
+	 * InfoBox
+	 *
+	 *********************************/
+	 function InfoManager() {
+	 	var that = this;
+	 	this.infos = [];
+
+	 	this.register = function(info) {
+	 		that.infos.push(info);
+	 	}
+
+	 	this.clear = function() {
+	 		$.each(that.infos, function(index, info) {
+	 			info.close();
+	 		});
+	 	}
+
+	 }
+
+	 function Info(position, text, link) {
+	 	var that    = this,
+	 		box     = null,
+	 		options = {
+				alignBottom            : true,
+				pixelOffset            : new google.maps.Size(-18, -3),
+				maxWidth               : 0,
+				closeBoxURL            : "",
+				pane                   : "floatPane",
+				infoBoxClearance       : new google.maps.Size(1, 1),
+				enableEventPropagation : false
+	 		},
+	 		element = null;
+
+	 	// Wrap the text in a link if neccessary
+	 	if(typeof link != 'undefined') {
+	 		text = '<a href="' + link + '">' + text + '</a>';
+	 	}	
+	 	text = $('<div class="iBox">' + text + '<a class="iclose"></a></div>');
+	 	options.content = text[0];
+
+	 	box = new InfoBox(options);
+	 	text.find('.iclose').click(function(e) {
+	 		e.preventDefault();
+	 		box.close();
+	 	});
+
+	 	box.setPosition((new google.maps.LatLng(position[0], position[1])));
+	 	box.open(MAP);
+
+	 	this.close = function() {
+	 		box.close();
+	 	}
+	 }
+
 	/*********************************
 	 *
 	 * Layers
@@ -520,10 +619,13 @@ var CampusMap = function(urls, points, base_ignore_types) {
 
 			In addition to the four faces, there are are two tabs.
 		*/
-		var container = $('#menu-wrap'), // contains all of the menu HTML,
-			menu      = $('#menu-window'), // this is the window through which the faces are viewed
-			tab_one   = $('#tab-one'),
-			tab_two   = $('#tab-two');
+		var that         = this,
+			container    = $('#menu-wrap'), // contains all of the menu HTML,
+			menu         = $('#menu-window'), // this is the window through which the faces are viewed
+			tab_one      = $('#tab-one'),
+			tab_two      = $('#tab-two'),
+			header_width = $('#menu-header').width() - 10,
+			stage        = $('menu_stage');
 
 		// Set all the faces to the same height
 		menu.equalHeights();
@@ -531,7 +633,7 @@ var CampusMap = function(urls, points, base_ignore_types) {
 		// The menu header has a gap the needs to move left and right 
 		// depending on how many tabs are displayed
 		function reset_tab_gap() {
-			var width = $('#menu-header').width() - 10 - tab_one.width();
+			var width = header_width - tab_one.width();
 			if(tab_two.is(':visible')) {
 				width -= tab_two.width();
 			}
@@ -569,6 +671,16 @@ var CampusMap = function(urls, points, base_ignore_types) {
 				}
 			})
 
+		tab_one.click(function() {
+			that.change_tabs();
+		})
+		tab_two.click(function() {
+			that.change_tabs({
+				label:$(this).text(),
+				html :stage.html()
+			})
+		})
+
 		// There are two button in the upper right hand corner of the menu:
 		// email and print. They are updated based on various actions
 		// ------
@@ -585,17 +697,21 @@ var CampusMap = function(urls, points, base_ignore_types) {
 			if(!settings.label && !settings.html) {
 				menu.animate({'margin-left':0}, 300);
 				tab_one.removeClass('off');
-				tab_two.addClass('on');
+				tab_two.addClass('off');
 			} else {
 				tab_two.removeClass('off');
-				tab_one.addClass('on');
-				$('#menu-title').html(settings.label); // tab two title
+				tab_one.addClass('off');
+				if(settings.label) {
+					$('#menu-title').html(settings.label); // tab two title
+					
+				}
 				tab_two.show();
 
-				$('#menu-stage').html(settings.html); // tab two content
+				if(settings.html) {
+					$('#menu-stage').html(settings.html); // tab two content
+				}
 
 				menu.animate({'margin-left':-690}, 300);
-
 				reset_tab_gap();
 				menu.equalHeights();
 			}
@@ -660,6 +776,7 @@ var CampusMap = function(urls, points, base_ignore_types) {
 			anchor.onclick = '$(\'#search-form\').submit()';
 			anchor.appendChild(document.createTextNode('search'));
 
+			ul.id = 'search-results';
 			ul.style.display = 'none';
 
 			form.appendChild(input);
@@ -672,8 +789,20 @@ var CampusMap = function(urls, points, base_ignore_types) {
 		})();
 		MAP.controls[google.maps.ControlPosition.TOP_LEFT].push(element);
 		element = $(element);
-		input   = element.find('input')
-		results = element.find('ul');
+		input   = element.find('input');
+		results = element.find(' > ul');
+
+		// Attach hover events
+		// For some realy i can't get this to work with the `results` object.
+		// So for now, reference directly
+		$('#search > ul > li:not(.more)')
+				.live('mouseover', function() {
+						log('test');
+						$(this).addClass('hover');
+				})
+				.live('mouseleave', function() {
+						$(this).removeClass('hover');
+				})
 
 		// Attach the typing events
 		input
@@ -710,21 +839,27 @@ var CampusMap = function(urls, points, base_ignore_types) {
 
 				// Search result navigation
 				if(keycode === KEYCODES.DOWN) { // Scroll down results
-					var li = results.find('.hover');
-					if(li.length) {
-						li.removeClass('hover');
-						li.next().addClass('hover');
+					var current = results.find('.hover'),
+						next    = null;
+					if(current.length) {
+						current.removeClass('hover');
+						next = current.next();
 					} else {
-						results.find('li:first').addClass('hover');
+						next = results.find('li:first');
 					}
+					next.addClass('hover')
+					$('body').trigger('search-result-highlighted', [next]);
 				} else if(keycode === KEYCODES.UP) { // Scroll up results
-					var li = results.find('.hover');
-					if(li.length) {
-						li.removeClass('hover');
-						li.prev().addClass('hover');
+					var current = results.find('.hover'),
+						next    = null;
+					if(current.length) {
+						current.removeClass('hover');
+						next = current.prev();
 					} else {
-						results.find('li:last').addClass('hover');
+						next = results.find('li:last')
 					}
+					next.addClass('hover')
+					$('body').trigger('search-result-highlighted', [next]);
 				} else if(keycode === KEYCODES.ESCAPE) { // Empty and hide results
 					abort_ajax();
 					results.empty().hide();
@@ -824,6 +959,15 @@ var CampusMap = function(urls, points, base_ignore_types) {
 		function abort_ajax() {
 			if(ajax != null) ajax.abort();
 		}
+
+		this.current_location_id = function() {
+			var li          = results.find('li.hover:not(.more)'),
+				location_id = null;
+			if(li.length && li.find('a').length && typeof li.find('a').attr('data-pk') != 'undefined') {
+				location_id = li.find('a').attr('data-pk');
+			}
+			return location_id;
+		}
 	}
 
 	/*********************************
@@ -832,6 +976,7 @@ var CampusMap = function(urls, points, base_ignore_types) {
 	 *
 	 *********************************/
 	function Util() {
+		var that = this;
 
 		// Returns the URL of a illustrated map tiles based on the specified
 		// coordinate and zoom. If coordinate and/or zoom are outside the illustrated
@@ -892,6 +1037,43 @@ var CampusMap = function(urls, points, base_ignore_types) {
 				new google.maps.Point(0,0), 
 				new google.maps.Point(10,10));
 		}
+
+		// Creates an info box for a location and also executes arbitary function
+		this.highlight_location = function(location_id, options) {
+			var options = $.extend({clear:true,pan:false}, options);
+
+			if(options.clear) INFO_MANAGER.clear();
+
+			$.getJSON(
+				LOCATION_URL.replace('%s', location_id),
+				function(data, text_status, jq_xhr) {
+					var point_type = (MAP.mapTypeId === 'illustrated') ? 'illustrated_point' : 'googlemap_point';
+
+					if(typeof options.func != 'undefined') {
+						options.func(data);
+					}
+
+					if(data.object_type == 'Group') {
+						$.each(data.locations.ids, function(index, sub_location_id) {
+							that.highlight_location(sub_location_id, {clear:false});
+						});
+					} else {
+
+						// Create the info box(es)
+						if(typeof data[point_type] != 'undefined') {
+							INFO_MANAGER.register(
+								new Info(
+									data[point_type],
+									data.name,
+									data.profile_link
+								)
+							);
+						}
+					}
+				}
+			);
+		}
+
 	}
 
 
