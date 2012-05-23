@@ -439,7 +439,6 @@ var CampusMap = function(urls, points, base_ignore_types) {
 	$('#search > ul > li:not(.more)')
 		.live('click', function() {
 			var location_id = SEARCH.current_location_id();
-			log(location_id);
 			if(location_id) {
 
 				// Change menu tab to a loading indicator
@@ -487,8 +486,9 @@ var CampusMap = function(urls, points, base_ignore_types) {
 
 	 }
 
-	 function Info(position, text, link) {
+	 function Info(position, text, options) {
 	 	var that    = this,
+	 		lat_lng = new google.maps.LatLng(position[0], position[1]),
 	 		box     = null,
 	 		options = {
 				alignBottom            : true,
@@ -499,23 +499,42 @@ var CampusMap = function(urls, points, base_ignore_types) {
 				infoBoxClearance       : new google.maps.Size(1, 1),
 				enableEventPropagation : false
 	 		},
-	 		element = null;
+	 		element  = null,
+	 		text_box = null,
+
+	 		default_options  = {
+	 			link : null,
+	 			pan  : false
+	 		};
+	 	options = $.extend(default_options, options);
 
 	 	// Wrap the text in a link if neccessary
-	 	if(typeof link != 'undefined') {
+	 	if(options.link != null) {
 	 		text = '<a href="' + link + '">' + text + '</a>';
-	 	}	
+	 	}
 	 	text = $('<div class="iBox">' + text + '<a class="iclose"></a></div>');
-	 	options.content = text[0];
 
-	 	box = new InfoBox(options);
+	 	// Create a hidden test box to figure out the correct width
+	 	test_box = $('<div id="testBox" class="iBox">' + text + '</div>')[0];
+	 	$('body').append(test_box);
+
+		// Close button listener
 	 	text.find('.iclose').click(function(e) {
 	 		e.preventDefault();
 	 		box.close();
 	 	});
+	 	text             = text[0];
+	 	text.style.width = test_box.offsetWidth + 'px';
+	 	options.content  = text;
 
-	 	box.setPosition((new google.maps.LatLng(position[0], position[1])));
+	 	// Create the box and set it's position
+	 	box = new InfoBox(options);
+	 	box.setPosition(lat_lng);
 	 	box.open(MAP);
+
+	 	if(options.pan) {
+	 		MAP.panTo(lat_lng);
+	 	}
 
 	 	this.close = function() {
 	 		box.close();
@@ -797,7 +816,6 @@ var CampusMap = function(urls, points, base_ignore_types) {
 		// So for now, reference directly
 		$('#search > ul > li:not(.more)')
 				.live('mouseover', function() {
-						log('test');
 						$(this).addClass('hover');
 				})
 				.live('mouseleave', function() {
