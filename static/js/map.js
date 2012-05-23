@@ -94,6 +94,7 @@ var CampusMap = function(urls, points, base_ignore_types) {
 		MAP.setZoom(options.zoom);
 		MAP.setCenter(options.center); 
 	})
+	UTIL.resize_canvas();
 
 	// Setup and configure the search
 	SEARCH = new Search();
@@ -1069,15 +1070,17 @@ var CampusMap = function(urls, points, base_ignore_types) {
 		}
 
 		// Creates an info box for a location and also executes arbitary function
+		// Special handling for Group objects to show each individual info box
+		// and set an appropriate zoom level
 		this.highlight_location = function(location_id, options) {
-			var options = $.extend({clear:true,pan:false, reset_zoom_center:true}, options);
+			var options = $.extend({func:undefined, clear:true, pan:false, reset_zoom_center:true,ajax_async:true}, options);
 
 			if(options.clear) INFO_MANAGER.clear();
 
 			$.ajax({
 				url      :LOCATION_URL.replace('%s', location_id),
 				dataType :'json',
-				async    : false,
+				async    : options.ajax_async,
 				success  : function(data, text_status, jq_xhr) {
 					var map_type       = MAP.mapTypeId;
 					var point_type     = (map_type === 'illustrated') ? 'illustrated_point' : 'googlemap_point',
@@ -1089,13 +1092,13 @@ var CampusMap = function(urls, points, base_ignore_types) {
 					}
 
 					if(data.object_type == 'Group') {
+						// Pan to the group center point
 						MAP.panTo((new google.maps.LatLng(data[point_type][0], data[point_type][1])));
 
 						$.each(data.locations.ids, function(index, sub_location_id) {
-							that.highlight_location(sub_location_id, {clear:false, reset_zoom_center:false});
+							that.highlight_location(sub_location_id, {clear:false, reset_zoom_center:false, ajax_async:false});
 						});
 
-						// Pan to the group center point
 						if(typeof data[point_type] != 'undefined') {
 							var points           = [],
 								distance_total   = 0,
@@ -1153,6 +1156,7 @@ var CampusMap = function(urls, points, base_ignore_types) {
 			});
 		}
 
+		// Calculate the distance between two Google LatLng objects
 		this.calc_distance = function(a, b) {
 			var a_lat = a.lat(),
 				a_lng = a.lng(),
@@ -1166,6 +1170,27 @@ var CampusMap = function(urls, points, base_ignore_types) {
 			b_lat = b_lat * (Math.PI/180);
 			b_lng = b_lng * (Math.PI/180);
 			return Math.acos(Math.sin(a_lat)*Math.sin(b_lat) + Math.cos(a_lat)*Math.cos(b_lat) * Math.cos(b_lng-a_lng)) * R;
+		}
+
+		// Resize teh map canvase to be 100% height and width
+		this.resize_canvas = function() {
+			var height = document.documentElement.clientHeight,
+				blackbar = document.getElementById('UCFHBHeader');
+			
+			height -= blackbar ? blackbar.clientHeight : 0;
+			height -= $('#map header')[0].clientHeight;
+			height -= $('footer')[0].clientHeight;
+			height -= 2 + 17; // borders + margin
+			
+			var canvas   = document.getElementById('map-canvas');
+			canvas.style.height = height + "px";
+			
+			// iphone, hide url bar
+			if($.os.name === "iphone"){
+				height += 58;
+				document.getElementById('map-canvas').style.height = height + "px";
+				window.scrollTo(0, 1);
+			}
 		}
 	}
 
