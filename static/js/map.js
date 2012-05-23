@@ -94,7 +94,9 @@ var CampusMap = function(urls, points, base_ignore_types) {
 		MAP.setZoom(options.zoom);
 		MAP.setCenter(options.center); 
 	})
+
 	UTIL.resize_canvas();
+	$(window).resize(UTIL.resize_canvas);
 
 	// Setup and configure the search
 	SEARCH = new Search();
