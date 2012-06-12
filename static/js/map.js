@@ -1265,8 +1265,9 @@ var CampusMap = function(options, urls, points, base_ignore_types) {
 								});
 							}
 						});
-
-						MENU.change_buttons({'loc_id':location_id, 'title': data.name});
+						if(MENU != null) {
+							MENU.change_buttons({'loc_id':location_id, 'title': data.name});
+						}
 					} else {
 						// Create the info box(es)
 						if(typeof data[point_type] != 'undefined' && data[point_type] != null) {
@@ -1282,7 +1283,9 @@ var CampusMap = function(options, urls, points, base_ignore_types) {
 									MAP.setZoom(default_zoom);
 									MAP.panTo(default_center);
 								}
-								MENU.change_buttons({'loc_id':location_id, 'title': data.name});
+								if(MENU != null) {
+									MENU.change_buttons({'loc_id':location_id, 'title': data.name});
+								}
 							}
 							$('body').trigger('highlight-location-loaded', [location_id]);
 						}
