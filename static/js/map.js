@@ -782,6 +782,47 @@ var CampusMap = function(options, urls, points, base_ignore_types) {
 		// There are two button in the upper right hand corner of the menu:
 		// email and print. They are updated based on various actions
 		// ------
+		this.change_buttons = function(options) {
+			var defaults = {
+				'loc_id'  : false,
+				'title'   : false,
+				'subject' : "UCF Campus Map",
+				'body'    : escape("UCF Campus Map\nhttp://map.ucf.edu/"),
+				'print'   : BASE_URL + '/print/?',
+				'toggle_illustrated' : false
+			}
+			
+			// setting
+			var s = $.extend({}, defaults, options);
+			
+			var illustrated = (MAP.mapTypeId === 'illustrated');
+			
+			if(s.toggle_illustrated){
+				var href = $('#print').attr('href');
+				href = href.replace('&illustrated', '');
+				if(illustrated) href = href + '&illustrated';
+				$('#print').attr('href', href);
+				return;
+			}
+			
+			if(s.loc_id){
+				var title   = escape(s.title);
+				var link    = BASE_URL + '/?show=' + s.loc_id;
+				link = escape(link);
+				s.subject = escape("UCF Campus Map - ") + title;
+				s.body    = title + escape("\n") + link;
+				s.print   = s.print + '&show=' + s.loc_id;
+			}
+			
+			// update email button
+			var mailto = "mailto:?subject=" + s.subject + "&body=" + s.body;
+			$('#email').attr('href', mailto);
+			
+			// update print button
+			if(illustrated) s.print = s.print + '&illustrated';
+			$('#print').attr('href', s.print);
+		}
+		this.change_buttons();
 
 		this.change_tabs = function(options) {
 			var defaults = {
@@ -1147,14 +1188,18 @@ var CampusMap = function(options, urls, points, base_ignore_types) {
 		// Special handling for Group objects to show each individual info box
 		// and set an appropriate zoom level
 		this.highlight_location = function(location_id, options) {
-			var options = $.extend({func:undefined, clear:true, pan:false, reset_zoom_center:true,ajax_async:true}, options);
+			var options = $.extend({
+				func              : undefined,
+				pan               : false,
+				reset_zoom_center : true,
+				sublocation       : false
+			}, options);
 
-			if(options.clear) INFO_MANAGER.clear();
+			if(!options.sublocation) INFO_MANAGER.clear();
 
 			$.ajax({
 				url      :LOCATION_URL.replace('%s', location_id),
 				dataType :'json',
-				async    : options.ajax_async,
 				success  : function(data, text_status, jq_xhr) {
 					var map_type       = MAP.mapTypeId;
 					var point_type     = (map_type === 'illustrated') ? 'illustrated_point' : 'googlemap_point',
@@ -1170,7 +1215,7 @@ var CampusMap = function(options, urls, points, base_ignore_types) {
 						MAP.panTo((new google.maps.LatLng(data[point_type][0], data[point_type][1])));
 
 						$.each(data.locations.ids, function(index, sub_location_id) {
-							that.highlight_location(sub_location_id, {clear:false, reset_zoom_center:false, ajax_async:true});
+							that.highlight_location(sub_location_id, {sublocation:true});
 							if(index == (data.locations.ids.length - 1)) {
 								$('body').bind('highlight-location-loaded', function(event, event_location_id) {
 									if(event_location_id == sub_location_id) {
@@ -1215,6 +1260,8 @@ var CampusMap = function(options, urls, points, base_ignore_types) {
 								});
 							}
 						});
+
+						MENU.change_buttons({'loc_id':location_id, 'title': data.name});
 					} else {
 						// Create the info box(es)
 						if(typeof data[point_type] != 'undefined' && data[point_type] != null) {
@@ -1225,9 +1272,12 @@ var CampusMap = function(options, urls, points, base_ignore_types) {
 									{link: data.profile_link}
 								)
 							);
-							if(options.reset_zoom_center && MAP.getZoom() != default_zoom) {
-								MAP.setZoom(default_zoom);
-								MAP.panTo(default_center);
+							if(!options.sublocation) { 
+								if(MAP.getZoom() != default_zoom) {
+									MAP.setZoom(default_zoom);
+									MAP.panTo(default_center);
+								}
+								MENU.change_buttons({'loc_id':location_id, 'title': data.name});
 							}
 							$('body').trigger('highlight-location-loaded', [location_id]);
 						}
