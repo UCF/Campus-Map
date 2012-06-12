@@ -94,7 +94,7 @@ var CampusMap = function(options, urls, points, base_ignore_types) {
 			return div;
 		},
 		name : "Illustrated",
-		alt  : "Show illustrated map",
+		alt  : "Show illustrated map"
 	}
 
 
@@ -171,7 +171,7 @@ var CampusMap = function(options, urls, points, base_ignore_types) {
 							'Building'   : UTIL.get_google_image('yellow'),
 							'ParkingLot' : UTIL.get_google_image('yellow'),
 							'Group'      : UTIL.get_google_image('yellow2'),
-							'Location'   : UTIL.get_google_image('blue'),
+							'Location'   : UTIL.get_google_image('blue')
 						},
 						map_point_type = 'gpoint';
 
@@ -208,7 +208,7 @@ var CampusMap = function(options, urls, points, base_ignore_types) {
 							'Building'   : UTIL.get_google_image('yellow'),
 							'ParkingLot' : UTIL.get_google_image('yellow'),
 							'Group'      : UTIL.get_google_image('yellow2'),
-							'Location'   : UTIL.get_google_image('blue'),
+							'Location'   : UTIL.get_google_image('blue')
 						},
 						map_point_type = 'ipoint';
 
@@ -884,7 +884,7 @@ var CampusMap = function(options, urls, points, base_ignore_types) {
 				COMMAND    :224,
 				DOWN       :40,
 				UP         :38,
-				ESCAPE     :27,
+				ESCAPE     :27
 			};
 
 		// Create and populate the search element
