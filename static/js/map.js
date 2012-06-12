@@ -489,7 +489,6 @@ var CampusMap = function(options, urls, points, base_ignore_types) {
 	}
 
 	if(options.infobox_location_id != null) {
-		log(options.infobox_location_id);
 		UTIL.highlight_location(options.infobox_location_id, {pan:true});
 	}
 
@@ -1100,7 +1099,7 @@ var CampusMap = function(options, urls, points, base_ignore_types) {
 			var options = $.extend({func:undefined, clear:true, pan:false, reset_zoom_center:true,ajax_async:true}, options);
 
 			if(options.clear) INFO_MANAGER.clear();
-			
+
 			$.ajax({
 				url      :LOCATION_URL.replace('%s', location_id),
 				dataType :'json',
