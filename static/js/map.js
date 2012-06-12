@@ -166,17 +166,20 @@ var CampusMap = function(options, urls, points, base_ignore_types) {
 						map_point_type = (MAP.mapTypeId === 'illustrated') ? 'ipoint' : 'gpoint';
 
 					$.each(POINTS, function(index, point) {
-						var map_point = point[map_point_type];
+						var map_point = point[map_point_type],
+							marker    = null;
 						if(map_point != null && $.inArray(point.type, BASE_IGNORE_TYPES) == -1) {
-							markers.push(
-								new google.maps.Marker({
-									position : new google.maps.LatLng(map_point[0], map_point[1]),
-									map      : MAP,
-									icon     : images[point.type],
-									location : index,
-									visible  : false
-								})
-							);
+							marker = new google.maps.Marker({
+								position : new google.maps.LatLng(map_point[0], map_point[1]),
+								map      : MAP,
+								icon     : images[point.type],
+								location : index,
+								visible  : false
+							})
+							markers.push(marker);
+							google.maps.event.addListener(marker, 'click', function(event) {
+								UTIL.highlight_location(index);
+							});
 						}
 					});
 					return markers;
