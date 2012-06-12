@@ -544,7 +544,7 @@ var CampusMap = function(options, urls, points, base_ignore_types) {
 		// Close button listener
 	 	content.find('.iclose').click(function(e) {
 	 		e.preventDefault();
-	 		box.close();
+	 		that.box.close();
 	 	});
 	 	content             = content[0];
 	 	content.style.width = test_content.offsetWidth + 'px';
