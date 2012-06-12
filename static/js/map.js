@@ -103,9 +103,19 @@ var CampusMap = function(options, urls, points, base_ignore_types) {
 	MAP.mapTypes.set('illustrated', IMAP_TYPE); // Register the illustrated map type
 	google.maps.event.addListener(MAP, 'maptypeid_changed', function() {
 		var type    = MAP.mapTypeId;
-		var options = type === 'illustrated' ? IMAP_OPTIONS : GMAP_OPTIONS;
+		if(type == 'illustrated') {
+			LAYER_MANAGER.get_layer('gpoints').toggle();
+		} else {
+			LAYER_MANAGER.get_layer('ipoints').toggle();
+		}
+		var options = (type === 'illustrated') ? IMAP_OPTIONS : GMAP_OPTIONS;
 		MAP.setZoom(options.zoom);
 		MAP.setCenter(options.center); 
+		if(type == 'illustrated') {
+			LAYER_MANAGER.get_layer('ipoints').toggle();
+		} else {
+			LAYER_MANAGER.get_layer('gpoints').toggle();
+		}
 	})
 
 	if(!options.simple) {
@@ -151,10 +161,10 @@ var CampusMap = function(options, urls, points, base_ignore_types) {
 			})()
 		);
 
-		// Implementation details for the points layer
+		// Implementation details for the points layer for the google maps layer
 		LAYER_MANAGER.register_layer(
 			(function() {
-				var points_layer     = new Layer('points');
+				var points_layer     = new Layer('gpoints');
 				points_layer.markers = (function() {
 					var markers        = [],
 						images         = {
@@ -163,7 +173,7 @@ var CampusMap = function(options, urls, points, base_ignore_types) {
 							'Group'      : UTIL.get_google_image('yellow2'),
 							'Location'   : UTIL.get_google_image('blue'),
 						},
-						map_point_type = (MAP.mapTypeId === 'illustrated') ? 'ipoint' : 'gpoint';
+						map_point_type = 'gpoint';
 
 					$.each(POINTS, function(index, point) {
 						var map_point = point[map_point_type],
@@ -187,6 +197,44 @@ var CampusMap = function(options, urls, points, base_ignore_types) {
 	 			return points_layer;
 			})()
 		);
+
+		// Implementation details for the points layer
+		LAYER_MANAGER.register_layer(
+			(function() {
+				var points_layer     = new Layer('ipoints');
+				points_layer.markers = (function() {
+					var markers        = [],
+						images         = {
+							'Building'   : UTIL.get_google_image('yellow'),
+							'ParkingLot' : UTIL.get_google_image('yellow'),
+							'Group'      : UTIL.get_google_image('yellow2'),
+							'Location'   : UTIL.get_google_image('blue'),
+						},
+						map_point_type = 'ipoint';
+
+					$.each(POINTS, function(index, point) {
+						var map_point = point[map_point_type],
+							marker    = null;
+						if(map_point != null && $.inArray(point.type, BASE_IGNORE_TYPES) == -1) {
+							marker = new google.maps.Marker({
+								position : new google.maps.LatLng(map_point[0], map_point[1]),
+								map      : MAP,
+								icon     : images[point.type],
+								location : index,
+								visible  : false
+							})
+							markers.push(marker);
+							google.maps.event.addListener(marker, 'click', function(event) {
+								UTIL.highlight_location(index);
+							});
+						}
+					});
+					return markers;
+				})();
+	 			return points_layer;
+			})()
+		);
+		
 
 		// Implementation details for the buildings layer
 		LAYER_MANAGER.register_layer(
@@ -428,8 +476,8 @@ var CampusMap = function(options, urls, points, base_ignore_types) {
 			})()
 		);
 
-		// Display the points layer when the  map loads
-		(LAYER_MANAGER.get_layer('points')).toggle();
+		// Display the google map points layer when the  map loads
+		(LAYER_MANAGER.get_layer('gpoints')).toggle();
 
 		// Attach click handles to layer checkboxes
 		(function() {
