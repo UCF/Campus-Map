@@ -210,7 +210,8 @@ $(document).ready(function(){
 		zoom_control        : false,
 		street_view_control : false,
 		map_type_control    : false,
-		infobox_location_id : "{{location.id}}"
+		infobox_location_id : "{{location.id}}",
+		illustrated         : true
 	})
 });
 

@@ -7,7 +7,8 @@ var CampusMap = function(options, urls, points, base_ignore_types) {
 			'zoom_control'        : true,
 			'street_view_control' : true,
 			'map_type_control'    : true,
-			'infobox_location_id' : null
+			'infobox_location_id' : null,
+			'illustrated'         : false
 		},
 
 		options = $.extend({}, default_options, options);
@@ -77,10 +78,13 @@ var CampusMap = function(options, urls, points, base_ignore_types) {
 
 	// Illustrated Map
 	IMAP_OPTIONS = { 
-		zoom : 14,
-		center : new google.maps.LatLng(85.04591,-179.92189), // world's corner
-		mapTypeId : 'illustrated',
-		mapTypeControl : true
+		zoom              : 14,
+		center            : new google.maps.LatLng(85.04591,-179.92189), // world's corner
+		mapTypeId         : 'illustrated',
+		panControl        : options.pan_control,
+		zoomControl       : options.zoom_control,
+		streetViewControl : options.street_view_control,
+		mapTypeControl    : options.map_type_control
 	}
 	IMAP_TYPE = {
 		tileSize : new google.maps.Size(256,256),
@@ -99,7 +103,7 @@ var CampusMap = function(options, urls, points, base_ignore_types) {
 
 
 	// Setup and configure the map
-	MAP = new google.maps.Map(document.getElementById(options.canvas_id), GMAP_OPTIONS);
+	MAP = new google.maps.Map(document.getElementById(options.canvas_id), options.illustrated ? IMAP_OPTIONS : GMAP_OPTIONS);
 	MAP.mapTypes.set('illustrated', IMAP_TYPE); // Register the illustrated map type
 	google.maps.event.addListener(MAP, 'maptypeid_changed', function() {
 		var type    = MAP.mapTypeId;
@@ -477,7 +481,8 @@ var CampusMap = function(options, urls, points, base_ignore_types) {
 		);
 
 		// Display the google map points layer when the  map loads
-		(LAYER_MANAGER.get_layer('gpoints')).toggle();
+
+		options.illustrated ? (LAYER_MANAGER.get_layer('ipoints')).toggle() : (LAYER_MANAGER.get_layer('gpoints')).toggle();
 
 		// Attach click handles to layer checkboxes
 		(function() {
