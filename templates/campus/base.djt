@@ -77,20 +77,22 @@
 		$(document).ready(function(){
 			//Campus.scripts.google(); // fire off maps
 			var map = new CampusMap({
-				"static"        : "{{ MEDIA_URL }}",
-				"search"        : "{% url search %}",
-				"location"      : "{{ loc_url }}",
-				"parking_json"  : "{{ parking_json }}",
-				"dining"        : "{{ dining_json }}",
-				"parking_kml"   : "{{ parking_kml}}",
-				"buildings_kml" : "{{ buildings_kml }}",
-				"sidewalks_kml" : "{{ sidewalks_kml }}",
-				"bikeracks"     : "{% url bikeracks %}.json",
-				"phones"        : "{% url emergency_phones %}.json",
-				"base_url"      : "{{ base_url }}"},
-				{{ points|safe }},
-				{{base_ignore_types|safe}}
-			)
+				"urls": {
+					"static"        : "{{ MEDIA_URL }}",
+					"search"        : "{% url search %}",
+					"location"      : "{{ loc_url }}",
+					"parking_json"  : "{{ parking_json }}",
+					"dining"        : "{{ dining_json }}",
+					"parking_kml"   : "{{ parking_kml}}",
+					"buildings_kml" : "{{ buildings_kml }}",
+					"sidewalks_kml" : "{{ sidewalks_kml }}",
+					"bikeracks"     : "{% url bikeracks %}.json",
+					"phones"        : "{% url emergency_phones %}.json",
+					"base_url"      : "{{ base_url }}"},
+				}
+				"points"            : {{ points|safe }},
+				"base_ignore_types" : {{base_ignore_types|safe}}
+			})
 		});
 	</script>
 {% endblock %}

@@ -265,6 +265,7 @@ def location(request, loc, return_obj=False):
 
 	context = { 
 		'location'      : location,
+		'loc_url'       : "%s.json" % reverse('location', kwargs={'loc':'foo'}).replace('foo', '%s'),
 		'orgs'          : location_orgs,
 		'groups_orgs'   : groups_orgs,
 		'org'           : org,
