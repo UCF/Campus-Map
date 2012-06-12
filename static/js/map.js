@@ -1098,45 +1098,51 @@ var CampusMap = function(urls, points, base_ignore_types) {
 						MAP.panTo((new google.maps.LatLng(data[point_type][0], data[point_type][1])));
 
 						$.each(data.locations.ids, function(index, sub_location_id) {
-							that.highlight_location(sub_location_id, {clear:false, reset_zoom_center:false, ajax_async:false});
-						});
+							that.highlight_location(sub_location_id, {clear:false, reset_zoom_center:false, ajax_async:true});
+							if(index == (data.locations.ids.length - 1)) {
+								$('body').bind('highlight-location-loaded', function(event, event_location_id) {
+									if(event_location_id == sub_location_id) {
+										$('body').unbind('highlight-location-loaded');
+										if(typeof data[point_type] != 'undefined') {
+											var points           = [],
+												distance_total   = 0,
+												distance_count   = 0,
+												average_distance = null,
+												zoom             = 19,
+												interval         = .09,
+												increment        = .05;
 
-						if(typeof data[point_type] != 'undefined') {
-							var points           = [],
-								distance_total   = 0,
-								distance_count   = 0,
-								average_distance = null,
-								zoom             = 19,
-								interval         = .09,
-								increment        = .05;
+											// Collect the position of each infobox
+											$.each(INFO_MANAGER.infos, function(index, info) {
+												var pos = info.box.getPosition();
+												if(pos != null) points.push(pos);
+											});
 
-							// Collect the position of each infobox
-							$.each(INFO_MANAGER.infos, function(index, info) {
-								var pos = info.box.getPosition();
-								if(pos != null) points.push(pos);
-							});
+											// Caculate the average distance between them
+											$.each(points, function(index, point) {
+												$.each(points, function(_index, cpoint) {
+													if(index != _index) {
+														var distance = that.calc_distance(point, cpoint);
+														if(distance > 0) {
+															distance_total += distance;
+															distance_count += 1;
+														}
+													}
+												});
+											});
+											average_distance = distance_total / distance_count;
+											// Iterate to figure out the zoom
+											while(average_distance > interval) {
+												interval += increment;
+												zoom     -= 1;
+											}
 
-							// Caculate the average distance between them
-							$.each(points, function(index, point) {
-								$.each(points, function(_index, cpoint) {
-									if(index != _index) {
-										var distance = that.calc_distance(point, cpoint);
-										if(distance > 0) {
-											distance_total += distance;
-											distance_count += 1;
+											MAP.setZoom((zoom < 15 ? 15 : zoom));
 										}
 									}
 								});
-							});
-							average_distance = distance_total / distance_count;
-							// Iterate to figure out the zoom
-							while(average_distance > interval) {
-								interval += increment;
-								zoom     -= 1;
 							}
-
-							MAP.setZoom((zoom < 15 ? 15 : zoom));
-						}
+						});
 					} else {
 
 						// Create the info box(es)
@@ -1152,6 +1158,7 @@ var CampusMap = function(urls, points, base_ignore_types) {
 								MAP.setZoom(default_zoom);
 								MAP.panTo(default_center);
 							}
+							$('body').trigger('highlight-location-loaded', [location_id]);
 						}
 					}
 				}
