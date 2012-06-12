@@ -12,6 +12,7 @@
 					height                = {{height}},
 					title                 = '{{title}}',
 					illustrated           = {{illustrated}},
+					zoom                  = {{zoom|default:'false'}},
 					google_map_point      = undefined,
 					illustrated_map_point = undefined,
 					map_element           = document.getElementById('map'),
@@ -75,14 +76,14 @@
 
 				if(illustrated) {
 					map_options = {
-						zoom           : 12,
+						zoom           : (zoom ? zoom : 12),
 						center         : new google.maps.LatLng(85.04591,-179.92189), // world's corner
 						mapTypeId      : 'illustrated',
 						mapTypeControl : true
 					};	
 				} else {
 					map_options = {
-						zoom      : 14,
+						zoom      : (zoom ? zoom : 14),
 						center    : new google.maps.LatLng(28.6022,-81.2004),
 						mapTypeId : google.maps.MapTypeId.ROADMAP						
 					}

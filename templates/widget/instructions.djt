@@ -35,6 +35,7 @@
 					height                = $('#widget_height').val(),
 					illustrated           = $('#widget_illustrated').attr('checked'),
 					ssl                   = $('#widget_ssl').attr('checked'),
+					zoom                  = $('#widget_zoom').val(),
 					building_el           = $('#widget_building_id option:selected'),
 					building_id           = building_el.val(),
 					illustrated_latlng    = undefined,
@@ -97,6 +98,7 @@
 					iframe_params.push('height='+height);
 					iframe_params.push('illustrated='+illustrated);
 					iframe_params.push('building_id='+building_id);
+					iframe_params.push('zoom='+zoom);
 					iframe_src = encodeURI(map_base_url + '/widget?' + iframe_params.join('&'));
 
 					// IFrame Attributes
@@ -193,6 +195,10 @@
 					<input type="checkbox" id="widget_illustrated" />
 				</div>
 				<p>(Display an illustrated map instead of the standard road map.)</p>
+				<div class="field">
+					<label for="widget_zoom">Zoom Level:</label>
+					<input type="text" id="widget_zoom" />
+				</div>
 				<button type="submit">Preview &gt;&gt;&gt;</button>
 			</form>
 		</div>

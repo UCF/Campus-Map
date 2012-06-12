@@ -669,7 +669,8 @@ def widget(request):
 		building_id            = request.GET.get('building_id', None)
 		context['illustrated'] = request.GET.get('illustrated', 'n')
 		context['ssl']         = request.GET.get('ssl',         'n')
-		
+		context['zoom']        = request.GET.get('zoom',        None)
+
 		# Check default values
 		try:
 			context['width'] = int(context['width'])
