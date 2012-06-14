@@ -55,6 +55,13 @@ var saveGIF = false;
 
 var currentDocument = app.activeDocument; // Run the script on the active document
 
+/*
+saveFile = new File(FolderPath + "test.png");    
+pngSaveOptions = new PNGSaveOptions();
+pngSaveOptions.interlaced = 0;
+app.activeDocument.saveAs(saveFile, pngSaveOptions, true, Extension.LOWERCASE);
+*/
+
 // via http://www.ps-scripts.com/bb/viewtopic.php?p=343
 function takeSnapshot () { 
    var id686 = charIDToTypeID( "Mk  " ); 
@@ -279,6 +286,11 @@ while (ZoomLevel >= LowestZoomLevel)
 			if (saveJPEG)
 			{
 				//Set path to file and file name
+				dir_name = "Zoom-" + ZoomLevel;
+				dir_folder = new Folder(FolderPath + dir_name);
+				if(!dir_folder.exists) {
+					dir_folder.create();
+				}
 				filename = FolderPath + "Zoom-" + ZoomLevel + "/" + ZoomLevel + "-" + TileX + "-" + TileY + ".jpg"
 				saveFile = new File(filename);
 				jpegSaveOptions = new JPEGSaveOptions();
