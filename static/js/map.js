@@ -30,6 +30,8 @@ var CampusMap = function(options, urls, points, base_ignore_types) {
 		PHONES_URL        = options.urls['phones'],
 		BASE_URL          = options.urls['base_url'],
 
+		SIMPLE = options.simple,
+
 		GMAP_OPTIONS = null,
 		IMAP_OPTIONS = null,
 		IMAP_TYPE    = null,
@@ -1230,9 +1232,19 @@ var CampusMap = function(options, urls, points, base_ignore_types) {
 												distance_total   = 0,
 												distance_count   = 0,
 												average_distance = null,
-												zoom             = 19,
+												zoom             = null,
 												interval         = .09,
 												increment        = .05;
+
+											if(SIMPLE) {
+												zoom = 16;
+											} else {
+												if(map_type == 'illustrated') {
+													zoom = 16;
+												} else {
+													zoom = 19;
+												}
+											}
 
 											// Collect the position of each infobox
 											$.each(INFO_MANAGER.infos, function(index, info) {
@@ -1259,7 +1271,17 @@ var CampusMap = function(options, urls, points, base_ignore_types) {
 												zoom     -= 1;
 											}
 
-											MAP.setZoom((zoom < 15 ? 15 : zoom));
+											if(SIMPLE) {
+												MAP.setZoom(zoom - 1);
+											} else {
+												if(map_type == 'illustrated') {
+													if(zoom < 12) zoom = 12;
+													if(zoom > 16) zoom = 16;
+												} else {
+													zoom = (zoom < 15) ? 15 : zoom;
+												}
+												MAP.setZoom(zoom);
+											}
 										}
 									}
 								});
