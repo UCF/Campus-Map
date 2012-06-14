@@ -31,6 +31,8 @@ var CampusMap = function(options, urls, points, base_ignore_types) {
 		BASE_URL          = options.urls['base_url'],
 
 		SIMPLE = options.simple,
+		// Simple really means the map on the profile pages.
+		// This variable should really be renamed.
 
 		GMAP_OPTIONS = null,
 		IMAP_OPTIONS = null,
