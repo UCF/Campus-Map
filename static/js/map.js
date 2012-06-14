@@ -34,6 +34,8 @@ var CampusMap = function(options, urls, points, base_ignore_types) {
 		// Simple really means the map on the profile pages.
 		// This variable should really be renamed.
 
+		CURRENT_LOCATION = null,
+
 		GMAP_OPTIONS = null,
 		IMAP_OPTIONS = null,
 		IMAP_TYPE    = null,
@@ -123,6 +125,10 @@ var CampusMap = function(options, urls, points, base_ignore_types) {
 			LAYER_MANAGER.get_layer('ipoints').toggle();
 		} else {
 			LAYER_MANAGER.get_layer('gpoints').toggle();
+		}
+		INFO_MANAGER.clear();
+		if(CURRENT_LOCATION != null) {
+			UTIL.highlight_location(CURRENT_LOCATION);
 		}
 	})
 
@@ -1220,6 +1226,7 @@ var CampusMap = function(options, urls, points, base_ignore_types) {
 					}
 
 					if(data.object_type == 'Group') {
+						CURRENT_LOCATION = location_id;
 						// Pan to the group center point
 						MAP.panTo((new google.maps.LatLng(data[point_type][0], data[point_type][1])));
 
@@ -1302,7 +1309,8 @@ var CampusMap = function(options, urls, points, base_ignore_types) {
 									{link: data.profile_link}
 								)
 							);
-							if(!options.sublocation) { 
+							if(!options.sublocation) {
+								CURRENT_LOCATION = location_id;
 								if(MAP.getZoom() != default_zoom) {
 									MAP.setZoom(default_zoom);
 									MAP.panTo(default_center);
