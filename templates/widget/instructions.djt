@@ -22,12 +22,19 @@
 							if(map_object.illustrated_point != undefined) {
 								illustrated_point = map_object.illustrated_point;
 							}
-							$('#widget_building_id')
+							$('.widget_building_id:eq(0)')
 								.append('<option value="' + map_object.id + '" data-glat="' + googlemap_point[0] + '" data-glng="' + googlemap_point[1] + '" data-ilat="' + illustrated_point[0] + '" data-ilng="' + illustrated_point[1] + '">' +  map_object.title + '</option>')
 						}
 					})
 				})
-
+			$('#add_location')
+				.click(function(event) {
+					event.preventDefault();
+					var copy = $('.widget_building_id:eq(0)').clone();
+					copy.find('option:selected').attr('selected', '');
+					copy.find('option:eq(0)').attr('selected', 'selected');
+					$(this).parent().before(copy);
+				})
 			form.submit(function(e) {
 				e.preventDefault();
 				var title                 = $('#widget_title').val(),
@@ -36,19 +43,15 @@
 					illustrated           = $('#widget_illustrated').attr('checked'),
 					ssl                   = $('#widget_ssl').attr('checked'),
 					zoom                  = $('#widget_zoom').val(),
-					building_el           = $('#widget_building_id option:selected'),
-					building_id           = building_el.val(),
+					building_els          = $('.widget_building_id:has(option:selected[value!=""])'),
 					illustrated_latlng    = undefined,
 					googlemap_latlng      = undefined,
-					alt_content           = undefined,
+					alt_content           = '',
 					iframe_src            = undefined,
 					iframe_params         = [],
 					iframe_style          = undefined,
 					iframe_attrs          = [],
 					style_params          = [],
-					static_src            = undefined,
-					static_link           = undefined,
-					static_alt_text       = undefined,
 					static_base_url       = 'http://maps.googleapis.com/maps/api/staticmap',
 					static_params         = [],
 					static_default_center = [28.6018,-81.1995],
@@ -59,16 +62,22 @@
 					map_base_url = map_base_url.replace('http://', 'https://');
 				}
 
-				if(building_id != '') {
-					googlemap_latlng   = [building_el.attr('data-glat'), building_el.attr('data-glng')];
-					illustrated_latlng = [building_el.attr('data-ilat'), building_el.attr('data-ilng')];
+				function extract_latlng(building_el) {
+					if(building_el.val() == '') {
+						return false;
+					} else {
+						return [
+							[building_el.attr('data-glat'), building_el.attr('data-glng')],
+							[building_el.attr('data-ilat'), building_el.attr('data-ilng')]
+						];
+					}
 				}
 
 				// Remove any old errors that were generated
 				$(this).find('.error').remove();
 
 				// Validate width and height
-				dimension_error = false;
+				var dimension_error = false;
 				width = parseInt(width, 10);
 				if(isNaN(width)) {
 					$(this).prepend('<div class="error">Width must be a number.</div>');
@@ -97,7 +106,13 @@
 					iframe_params.push('width='+width);
 					iframe_params.push('height='+height);
 					iframe_params.push('illustrated='+illustrated);
-					iframe_params.push('building_id='+building_id);
+					$.each(building_els, function(index, building_el) {
+						var building_id = $(building_el).val();
+
+						if(building_id != '') {
+							iframe_params.push('building_id='+building_id);
+						}
+					})
 					iframe_params.push('zoom='+zoom);
 					iframe_src = encodeURI(map_base_url + '/widget?' + iframe_params.join('&'));
 
@@ -112,19 +127,45 @@
 					iframe_style = style_params.join(';');
 
 					// Alt Content
-					static_alt_text = 'UCF Campus Map'
-					if(building_id != '') {
-						static_link     = encodeURI(map_base_url + '?show=' + building_id);
-						static_alt_text += ' - ' + building_el.text();
-						alt_content = '<a style="display:block;color:#000;font-weight:bold;font-size:16px;" href="' + static_link + '">' + static_alt_text + '</a>';
+					static_alt_text = 'UCF Campus Map';
 
+					if(building_els.length > 0) {
+
+						// Set center to first location has has an approrpiate type point
+						// Also, generate the markers
+						var center_found = false,
+							markers      = [];
+						$.each(building_els, function(index, building_el) {
+							var building_el  = $(building_el),
+								selection    = building_el.find('option:selected'),
+								lat_lngs     = extract_latlng(building_el);
+
+							if(lat_lngs) {
+								alt_content += '<a style="display:block;color:#000;font-weight:bold;font-size:16px;" href="' + encodeURI(map_base_url + '?show=' + index) + '">' + selection.text() + '</a>';
+								if(illustrated && lat_lngs[1][0] != null && lat_lngs[1][1] != null) {
+									markers.push('red|label:' + String.fromCharCode(64 + index) + '|' + lat_lngs[1].join(','));
+									if(!center_found) {
+										center_found = true;
+										static_params.push('center=' + lat_lngs[1].join(','));
+									}
+								} else if(lat_lngs[0][0] != null && lat_lngs[0][1] != null) {
+									markers.push('red|label:' + String.fromCharCode(64 + index) + '|' + lat_lngs[0].join(','));
+									if(!center_found) {
+										center_found = true;
+										static_params.push('center=' + lat_lngs[0].join(','));
+									}
+								}
+							}
+						});
+
+						/*
 						if(googlemap_latlng[0] != 0 && googlemap_latlng[1] != 0) {
 							static_params.push('center=' + googlemap_latlng.join(','));
-							static_params.push('markers=color:red|label:A|' + googlemap_latlng.join(','));
 						}
+						static_params.push('markers=color:red|label:A|' + googlemap_latlng.join(','));
+						*/
 					} else {
-						static_link = encodeURI(map_base_url);
-						alt_content = '<a style="display:block;color:#000;font-weight:bold;font-size:16px;" href="' + static_link + '">' + static_alt_text + '</a>';
+						alt_content = '<a style="display:block;color:#000;font-weight:bold;font-size:16px;" href="' + encodeURI(map_base_url) + '">UCF Campus Map</a>';
 						static_params.push('center=' + static_default_center.join(',') );
 						static_params.push('zoom=16');
 					}
@@ -132,8 +173,8 @@
 					static_params.push('maptype=roadmap');
 					static_params.push('sensor=false');
 					static_src = encodeURI(static_base_url + '?' + static_params.join('&'));
-					
-					alt_content += '<a style="border:0;text-indent:-500em;text-decoration:none;" href="' + static_link + '"><img src="' + static_src + '" alt="' + static_alt_text + '"/></a>';
+					console.log(alt_content);
+					//alt_content += '<a style="border:0;text-indent:-500em;text-decoration:none;" href="' + static_link + '"><img src="' + static_src + '" alt="' + static_alt_text + '"/></a>';
 
 					// Put together the final IFRAME HTML
 					html = base_html.replace('SRC', iframe_src).replace('STYLE', iframe_style).replace('ALT', alt_content).replace('ATTRS', iframe_attrs.join(' '));
@@ -173,9 +214,15 @@
 				</div>
 				<div class="field">
 					<label for="widget_building_id">Location:</label>
-					<select id="widget_building_id">
-						<option value=""></option>
-					</select>
+					<div id="widget_buildings">
+						<select class="widget_building_id">
+							<option value=""></option>
+						</select>
+						<p>
+							<a href="#" id="add_location">[Add Another]</a>
+							Map will be centered on first location.
+						</p>
+					</div>
 				</div>
 				<div class="field">
 					<label for="widget_width">Width:</label>

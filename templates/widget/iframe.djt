@@ -13,27 +13,25 @@
 					title                 = '{{title}}',
 					illustrated           = {{illustrated}},
 					zoom                  = {{zoom|default:'false'}},
-					google_map_point      = undefined,
-					illustrated_map_point = undefined,
 					map_element           = document.getElementById('map'),
 					map_options           = {},
 					map                   = undefined,
-					infobox               = undefined;
+					infobox               = undefined,
+					buildings             = {{buildings|safe}},
+					googlemap_center      = {{googlemap_center}},
+					illustrated_center    = {{illustrated_center}};
 				
-				// Showing a specific building
-				{% if building %}
-					{% if building.googlemap_point %}
-						google_map_point      = {{building.googlemap_point}};
-					{% else %}
-						//This building does not have a google map point
-					{% endif %}
-					{% if building.illustrated_point %}
-						illustrated_map_point = {{building.illustrated_point}};
-					{% else %}
-						//This building does not have a illustrated map point
-					{% endif %}
-				{% endif %}
-
+				if(googlemap_center == 0) {
+					googlemap_center = new google.maps.LatLng(28.6022,-81.2004)
+				} else {
+					googlemap_center = new google.maps.LatLng(googlemap_center[0],googlemap_center[1]);
+				}
+				if(illustrated_center == 0) {
+					illustrated_center = new google.maps.LatLng(85.04591,-179.92189);
+				} else {
+					illustrated_center = new google.maps.LatLng(illustrated_center[0], illustrated_center[1]);
+				}
+				
 				//
 				// Construct the map options and create the map
 				//
@@ -77,15 +75,15 @@
 				if(illustrated) {
 					map_options = {
 						zoom           : (zoom ? zoom : 12),
-						center         : new google.maps.LatLng(85.04591,-179.92189), // world's corner
+						center         : illustrated_center,
 						mapTypeId      : 'illustrated',
 						mapTypeControl : true
 					};	
 				} else {
 					map_options = {
 						zoom      : (zoom ? zoom : 14),
-						center    : new google.maps.LatLng(28.6022,-81.2004),
-						mapTypeId : google.maps.MapTypeId.ROADMAP						
+						center    : googlemap_center,
+						mapTypeId : google.maps.MapTypeId.ROADMAP
 					}
 				}
 
@@ -110,8 +108,52 @@
 				map.mapTypes.set('illustrated',imap_type);
 
 				// Create an infobox or marker if needed
-				if((google_map_point != undefined && illustrated == false) || 
-					(illustrated_map_point != undefined && illustrated)) {
+				for(var index in buildings) {
+					var building = buildings[index],
+						map_point_latlng = undefined;
+					if(illustrated) {
+						map_point_latlng = new google.maps.LatLng(building.illustrated_point[0],building.illustrated_point[1]);
+					} else {
+						map_point_latlng = new google.maps.LatLng(building.googlemap_point[0],building.googlemap_point[1]);
+					}
+					
+					// Map is really small and infobox would be too big
+					// Place a marker instead
+					if(width < 175 || height < 175) {
+						var marker = new google.maps.Marker({
+							position : map_point_latlng,
+							map      : map
+						});
+						google.maps.event.addListener(marker, 'click', function(event) {
+							window.open('{{base_url}}?show=' + building.id, '_blank');
+						});
+					} else {
+					// Map is sufficiently big. Place an infobox
+						infobox = new InfoBox({
+							alignBottom            : true,
+							pixelOffset            : new google.maps.Size(-18, -3),
+							maxWidth               : 0,
+							closeBoxURL            : "",
+							pane                   : "floatPane",
+							infoBoxClearance       : new google.maps.Size(1, 1),
+							enableEventPropagation : false
+						});
+						var building_title = building.title;
+						var infobox_width  = building_title.length * 5.5;
+						if(infobox_width > (width / 2.1)) {
+							infobox_width = (width / 2.1);
+						} else if(infobox_width < 75) {
+							infobox_width = 75;
+						}
+						infobox.setContent('<div class="iBox" style="width:' + infobox_width + 'px;"><a href="{{base_url}}?show=' + building.id + '" target="_blank" style="font-size:12px;">' + building_title + '</a></div>');
+						
+						infobox.setPosition(map_point_latlng);
+						infobox.open(map);
+					}
+					map.panTo(map_point_latlng);
+				};
+				/*
+				if((google_map_point != undefined && illustrated == false) || (illustrated_map_point != undefined && illustrated)) {
 					
 					var map_point_latlng = undefined;
 					if(illustrated) {
@@ -155,6 +197,7 @@
 					}
 					map.panTo(map_point_latlng);
 				}
+				*/
 			}
 		)();
 		</script>

@@ -394,6 +394,8 @@ a.iclose:hover { background-position:0 -11px; }
 #widget_instructions #widget_height,
 	#widget_instructions #widget_width,
 		#widget_instructions #widget_zoom {width:50px;text-align:right;}
+#widget_instructions #widget_buildings {margin-left:106px;}
+#widget_instructions #widget_buildings p {clear:both;margin-top:5px;}
 #widget_instructions button[type="submit"] {
 	background-color:#0F7322;
 	float:right;
