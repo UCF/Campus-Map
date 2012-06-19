@@ -55,25 +55,6 @@
 	<script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
 	<script src="{{MEDIA_URL}}-/gmaps-infobox/infobox.js?{{map_version}}" type="text/javascript"></script>
 	<script type="text/javascript">
-		/*
-		Campus.urls = {
-			"static"        : "{{ MEDIA_URL }}",
-			"search"        : "{% url search %}",
-			"location"      : "{{ loc_url }}",
-			"parking_json"  : "{{ parking_json }}",
-			"dining"        : "{{ dining_json }}",
-			"parking_kml"   : "{{ parking_kml}}",
-			"buildings_kml" : "{{ buildings_kml }}",
-			"sidewalks_kml" : "{{ sidewalks_kml }}",
-			"bikeracks"     : "{% url bikeracks %}.json",
-			"phones"        : "{% url emergency_phones %}.json",
-			"base_url"      : "{{ base_url }}"
-		};
-		
-		Campus.points = {{ points|safe }};
-		Campus.settings = {{options|safe}};
-		Campus.base_ignore_types = {{base_ignore_types|safe}};
-		*/
 		$(document).ready(function(){
 			//Campus.scripts.google(); // fire off maps
 			var map = new CampusMap({
@@ -88,10 +69,11 @@
 					"sidewalks_kml" : "{{ sidewalks_kml }}",
 					"bikeracks"     : "{% url bikeracks %}.json",
 					"phones"        : "{% url emergency_phones %}.json",
-					"base_url"      : "{{ base_url }}"
+					"base_url"      : "{{ base_url }}",
 				},
-				"points"            : {{ points|safe }},
-				"base_ignore_types" : {{base_ignore_types|safe}}
+				"base_ignore_types"   : {{base_ignore_types|safe}},
+				"infobox_location_id" : '{{infobox_location_id}}',
+				"points"              : {{ points|safe }}
 			})
 		});
 	</script>
