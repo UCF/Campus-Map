@@ -175,7 +175,7 @@ $('.org').click(function(e){
 	// load org info
 	if(info.hasClass('loaded')) return;
 	info.addClass('loading');
-	Campus.ajax = $.ajax({
+	$.ajax({
 		url: link,
 		dataType: 'html',
 		success: function(data){
