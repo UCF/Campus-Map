@@ -680,34 +680,42 @@ def widget(request):
 		except ValueError:
 			context['height'] = 256
 
-		context['buildings'] = []
-		for building_id in building_ids:
-			try:
-				building = Building.objects.get(id=building_id)
-				context['buildings'].append({
-					'googlemap_point'   : json.loads(building.googlemap_point) if building.googlemap_point is not None else None,
-					'illustrated_point' : json.loads(building.illustrated_point) if building.illustrated_point is not None else None,
-					'id'                : building.id,
-					'title'             : building.title
-				})
-			except Building.DoesNotExist:
-				pass
-
-		if len(context['buildings']) > 0:
-			context['googlemap_center']   = json.dumps(reduce(midpoint_func, [b['googlemap_point'] for b in context['buildings'] if b['googlemap_point'] is not None]))
-			context['illustrated_center'] = json.dumps(reduce(midpoint_func, [b['illustrated_point'] for b in context['buildings'] if b['illustrated_point'] is not None]))
-		else:
-			context['googlemap_center']   = None
-			context['illustrated_center'] = None
-		
-		context['buildings']          = json.dumps(context['buildings'])
-		
 		if context['illustrated'] not in ('y', 'n', 'Y', 'N'):
 			context['illustrated'] = 'n'
 		if context['illustrated'].lower() in ('y', 'Y'):
 			context['illustrated'] = True
 		elif context['illustrated'].lower() in ('n', 'N'):
 			context['illustrated'] = False
+
+		context['buildings'] = []
+		for building_id in building_ids:
+			try:
+				building = Building.objects.get(id=building_id)
+				if context['illustrated']:
+					if building.illustrated_point is not None:
+						context['buildings'].append({
+							'illustrated_point' : json.loads(building.illustrated_point),
+							'id'                : building.id,
+							'title'             : building.title
+						})
+				elif building.googlemap_point is not None:
+					context['buildings'].append({
+						'googlemap_point'   : json.loads(building.googlemap_point),
+						'id'                : building.id,
+						'title'             : building.title
+					})
+			except Building.DoesNotExist:
+				pass
+
+		context['googlemap_center']   = json.dumps(None)
+		context['illustrated_center'] = json.dumps(None)
+		if len(context['buildings']) > 0:
+			if context['illustrated']:
+				context['illustrated_center'] = json.dumps(reduce(midpoint_func, [b['illustrated_point'] for b in context['buildings']]))
+			else:
+				context['googlemap_center']   = json.dumps(reduce(midpoint_func, [b['googlemap_point'] for b in context['buildings']]))
+
+		context['buildings']          = json.dumps(context['buildings'])
 		
 		# Convert to JavaScript boolean
 		context['illustrated'] = str(context['illustrated']).lower()
