@@ -34,6 +34,20 @@
 					copy.find('option:selected').attr('selected', '');
 					copy.find('option:eq(0)').attr('selected', 'selected');
 					$(this).parent().before(copy);
+				});
+
+			$('#widget_illustrated')
+				.change(function() {
+					var zoom = $('#widget_zoom');
+					if($(this).is(':checked')) {
+						if(zoom.val() == '12') {
+							zoom.val('14');
+						}
+					} else {
+						if(zoom.val() == '14') {
+							zoom.val('12');
+						}
+					}
 				})
 			form.submit(function(e) {
 				e.preventDefault();
@@ -234,9 +248,8 @@
 				<p>(Display an illustrated map instead of the standard road map.)</p>
 				<div class="field">
 					<label for="widget_zoom">Zoom Level:</label>
-					<input type="text" id="widget_zoom" /> Defaults: Illustrated 12, Regular 14
+					<input type="text" id="widget_zoom" value="12" />
 				</div>
-				<p>(The higher the value, the closer the zoom.)</p>
 				<button type="submit">Preview &gt;&gt;&gt;</button>
 			</form>
 		</div>
