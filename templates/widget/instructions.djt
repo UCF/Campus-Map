@@ -157,13 +157,6 @@
 								}
 							}
 						});
-
-						/*
-						if(googlemap_latlng[0] != 0 && googlemap_latlng[1] != 0) {
-							static_params.push('center=' + googlemap_latlng.join(','));
-						}
-						static_params.push('markers=color:red|label:A|' + googlemap_latlng.join(','));
-						*/
 					} else {
 						alt_content = '<a style="display:block;color:#000;font-weight:bold;font-size:16px;" href="' + encodeURI(map_base_url) + '">UCF Campus Map</a>';
 						static_params.push('center=' + static_default_center.join(',') );
@@ -173,8 +166,6 @@
 					static_params.push('maptype=roadmap');
 					static_params.push('sensor=false');
 					static_src = encodeURI(static_base_url + '?' + static_params.join('&'));
-					
-					//alt_content += '<a style="border:0;text-indent:-500em;text-decoration:none;" href="' + static_link + '"><img src="' + static_src + '" alt="' + static_alt_text + '"/></a>';
 
 					// Put together the final IFRAME HTML
 					html = base_html.replace('SRC', iframe_src).replace('STYLE', iframe_style).replace('ALT', alt_content).replace('ATTRS', iframe_attrs.join(' '));
