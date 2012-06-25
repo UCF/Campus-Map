@@ -657,7 +657,7 @@ def widget(request):
 	'''
 	context  = {}
 	template = 'widget/iframe.djt'
-
+	
 	midpoint_func = lambda a, b: [((a[0] + b[0])/2), ((a[1] + b[1])/2)]
 
 	if len(request.GET) != 0:
@@ -685,8 +685,8 @@ def widget(request):
 			try:
 				building = Building.objects.get(id=building_id)
 				context['buildings'].append({
-					'googlemap_point'   : json.loads(building.googlemap_point),
-					'illustrated_point' : json.loads(building.illustrated_point),
+					'googlemap_point'   : json.loads(building.googlemap_point) if building.googlemap_point is not None else None,
+					'illustrated_point' : json.loads(building.illustrated_point) if building.illustrated_point is not None else None,
 					'id'                : building.id,
 					'title'             : building.title
 				})
@@ -697,8 +697,8 @@ def widget(request):
 			context['googlemap_center']   = json.dumps(reduce(midpoint_func, [b['googlemap_point'] for b in context['buildings'] if b['googlemap_point'] is not None]))
 			context['illustrated_center'] = json.dumps(reduce(midpoint_func, [b['illustrated_point'] for b in context['buildings'] if b['illustrated_point'] is not None]))
 		else:
-			context['googlemap_center']   = 0
-			context['illustrated_center'] = 0
+			context['googlemap_center']   = None
+			context['illustrated_center'] = None
 		
 		context['buildings']          = json.dumps(context['buildings'])
 		

@@ -219,8 +219,7 @@
 							<option value=""></option>
 						</select>
 						<p>
-							<a href="#" id="add_location">[Add Another]</a>
-							Map will be centered on first location.
+							<a href="#" id="add_location">[Add Another Location]</a>
 						</p>
 					</div>
 				</div>

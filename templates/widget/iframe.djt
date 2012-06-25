@@ -21,12 +21,12 @@
 					googlemap_center      = {{googlemap_center}},
 					illustrated_center    = {{illustrated_center}};
 				
-				if(googlemap_center == 0) {
+				if(googlemap_center == null) {
 					googlemap_center = new google.maps.LatLng(28.6022,-81.2004)
 				} else {
 					googlemap_center = new google.maps.LatLng(googlemap_center[0],googlemap_center[1]);
 				}
-				if(illustrated_center == 0) {
+				if(illustrated_center == null) {
 					illustrated_center = new google.maps.LatLng(85.04591,-179.92189);
 				} else {
 					illustrated_center = new google.maps.LatLng(illustrated_center[0], illustrated_center[1]);
@@ -89,12 +89,6 @@
 
 				// Shared map options
 				map_options.panControl         = false;
-				/*
-				map_options.panControlOptions  = {
-					style: google.maps.ZoomControlStyle.SMALL,
-					position: google.maps.ControlPosition.LEFT_TOP
-				};
-				*/
 				map_options.zoomControl        = true;
 				map_options.zoomControlOptions = {
 					style: google.maps.ZoomControlStyle.SMALL,
@@ -109,95 +103,53 @@
 
 				// Create an infobox or marker if needed
 				for(var index in buildings) {
-					var building = buildings[index],
-						map_point_latlng = undefined;
-					if(illustrated) {
+					var building         = buildings[index],
+						map_point_latlng = null;
+
+					if(illustrated && building.illustrated_point != null) {
 						map_point_latlng = new google.maps.LatLng(building.illustrated_point[0],building.illustrated_point[1]);
-					} else {
+					} else if(building.googlemap_point != null) {
 						map_point_latlng = new google.maps.LatLng(building.googlemap_point[0],building.googlemap_point[1]);
 					}
 					
-					// Map is really small and infobox would be too big
-					// Place a marker instead
-					if(width < 175 || height < 175) {
-						var marker = new google.maps.Marker({
-							position : map_point_latlng,
-							map      : map
-						});
-						google.maps.event.addListener(marker, 'click', function(event) {
-							window.open('{{base_url}}?show=' + building.id, '_blank');
-						});
-					} else {
-					// Map is sufficiently big. Place an infobox
-						infobox = new InfoBox({
-							alignBottom            : true,
-							pixelOffset            : new google.maps.Size(-18, -3),
-							maxWidth               : 0,
-							closeBoxURL            : "",
-							pane                   : "floatPane",
-							infoBoxClearance       : new google.maps.Size(1, 1),
-							enableEventPropagation : false
-						});
-						var building_title = building.title;
-						var infobox_width  = building_title.length * 5.5;
-						if(infobox_width > (width / 2.1)) {
-							infobox_width = (width / 2.1);
-						} else if(infobox_width < 75) {
-							infobox_width = 75;
+					if(map_point_latlng != null) {
+						// Map is really small and infobox would be too big
+						// Place a marker instead
+						if(width < 175 || height < 175) {
+							var marker = new google.maps.Marker({
+								position : map_point_latlng,
+								map      : map
+							});
+							google.maps.event.addListener(marker, 'click', function(event) {
+								window.open('{{base_url}}?show=' + building.id, '_blank');
+							});
+						} else {
+						// Map is sufficiently big. Place an infobox
+							infobox = new InfoBox({
+								alignBottom            : true,
+								pixelOffset            : new google.maps.Size(-18, -3),
+								maxWidth               : 0,
+								closeBoxURL            : "",
+								pane                   : "floatPane",
+								infoBoxClearance       : new google.maps.Size(1, 1),
+								enableEventPropagation : false,
+								disableAutoPan         : true
+							});
+							var building_title = building.title;
+							var infobox_width  = building_title.length * 5.5;
+							if(infobox_width > (width / 2.1)) {
+								infobox_width = (width / 2.1);
+							} else if(infobox_width < 75) {
+								infobox_width = 75;
+							}
+							infobox.setContent('<div class="iBox" style="width:' + infobox_width + 'px;"><a href="{{base_url}}?show=' + building.id + '" target="_blank" style="font-size:12px;">' + building_title + '</a></div>');
+							
+							infobox.setPosition(map_point_latlng);
+							infobox.open(map);
 						}
-						infobox.setContent('<div class="iBox" style="width:' + infobox_width + 'px;"><a href="{{base_url}}?show=' + building.id + '" target="_blank" style="font-size:12px;">' + building_title + '</a></div>');
-						
-						infobox.setPosition(map_point_latlng);
-						infobox.open(map);
+						if(buildings.length == 1) map.panTo(map_point_latlng);
 					}
-					map.panTo(map_point_latlng);
-				};
-				/*
-				if((google_map_point != undefined && illustrated == false) || (illustrated_map_point != undefined && illustrated)) {
-					
-					var map_point_latlng = undefined;
-					if(illustrated) {
-						map_point_latlng = new google.maps.LatLng(illustrated_map_point[0],illustrated_map_point[1]);
-					} else {
-						map_point_latlng = new google.maps.LatLng(google_map_point[0],google_map_point[1]);
-					}
-					
-					// Map is really small and infobox would be too big
-					// Place a marker instead
-					if(width < 175 || height < 175) {
-						var marker = new google.maps.Marker({
-							position : map_point_latlng,
-							map      : map
-						});
-						google.maps.event.addListener(marker, 'click', function(event) {
-							window.open('{{base_url}}?show={{building.id}}', '_blank');
-						});
-					} else {
-					// Map is sufficiently big. Place an infobox
-						infobox = new InfoBox({
-							alignBottom            : true,
-							pixelOffset            : new google.maps.Size(-18, -3),
-							maxWidth               : 0,
-							closeBoxURL            : "",
-							pane                   : "floatPane",
-							infoBoxClearance       : new google.maps.Size(1, 1),
-							enableEventPropagation : false
-						});
-						var building_title = '{{building.title}}';
-						var infobox_width = building_title.length * 5.5;
-						if(infobox_width > (width / 2.1)) {
-							infobox_width = (width / 2.1);
-						} else if(infobox_width < 75) {
-							infobox_width = 75;
-						}
-						infobox.setContent('<div class="iBox" style="width:' + infobox_width + 'px;"><a href="{{base_url}}?show={{building.id}}" target="_blank">' + building_title + '</a></div>');
-						
-						infobox.setPosition(map_point_latlng);
-						infobox.open(map);
-					}
-					map.panTo(map_point_latlng);
 				}
-				*/
 			}
 		)();
 		</script>
