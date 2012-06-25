@@ -250,6 +250,7 @@
 					<label for="widget_zoom">Zoom Level:</label>
 					<input type="text" id="widget_zoom" value="12" />
 				</div>
+				<p>(A higher value indicates an increased zoom level)</p>
 				<button type="submit">Preview &gt;&gt;&gt;</button>
 			</form>
 		</div>
