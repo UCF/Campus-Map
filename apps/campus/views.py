@@ -21,12 +21,7 @@ def home(request, **kwargs):
 	
 	
 	# process query string
-	loc_id = request.GET.get('show', False)
-	if loc_id:
-		loc = location(request, loc=loc_id, return_obj=True)
-		loc.pop('profile')
-		loc.pop('poly_coords')
-		kwargs['location'] = loc
+	loc_id = request.GET.get('show', None)
 	
 	if request.is_json():
 		from campus.templatetags.weather import weather
@@ -93,8 +88,9 @@ def home(request, **kwargs):
 		kwargs.pop('error')
 	
 	context = {
-		'options'            : json.dumps(kwargs), 
-		'points'             : json.dumps(points), 
+		'infobox_location_id': loc_id,
+		'options'            : json.dumps(kwargs),
+		'points'             : json.dumps(points),
 		'date'               : date,
 		'buildings_kml'      : buildings_kml,
 		'sidewalks_kml'      : sidewalks_kml,

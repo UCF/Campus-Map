@@ -30,6 +30,12 @@ var CampusMap = function(options, urls, points, base_ignore_types) {
 		PHONES_URL        = options.urls['phones'],
 		BASE_URL          = options.urls['base_url'],
 
+		SIMPLE = options.simple,
+		// Simple really means the map on the profile pages.
+		// This variable should really be renamed.
+
+		CURRENT_LOCATION = null,
+
 		GMAP_OPTIONS = null,
 		IMAP_OPTIONS = null,
 		IMAP_TYPE    = null,
@@ -119,6 +125,10 @@ var CampusMap = function(options, urls, points, base_ignore_types) {
 			LAYER_MANAGER.get_layer('ipoints').toggle();
 		} else {
 			LAYER_MANAGER.get_layer('gpoints').toggle();
+		}
+		INFO_MANAGER.clear();
+		if(CURRENT_LOCATION != null) {
+			UTIL.highlight_location(CURRENT_LOCATION);
 		}
 	})
 
@@ -1216,6 +1226,7 @@ var CampusMap = function(options, urls, points, base_ignore_types) {
 					}
 
 					if(data.object_type == 'Group') {
+						CURRENT_LOCATION = location_id;
 						// Pan to the group center point
 						MAP.panTo((new google.maps.LatLng(data[point_type][0], data[point_type][1])));
 
@@ -1230,9 +1241,19 @@ var CampusMap = function(options, urls, points, base_ignore_types) {
 												distance_total   = 0,
 												distance_count   = 0,
 												average_distance = null,
-												zoom             = 19,
+												zoom             = null,
 												interval         = .09,
 												increment        = .05;
+
+											if(SIMPLE) {
+												zoom = 16;
+											} else {
+												if(map_type == 'illustrated') {
+													zoom = 16;
+												} else {
+													zoom = 19;
+												}
+											}
 
 											// Collect the position of each infobox
 											$.each(INFO_MANAGER.infos, function(index, info) {
@@ -1259,7 +1280,17 @@ var CampusMap = function(options, urls, points, base_ignore_types) {
 												zoom     -= 1;
 											}
 
-											MAP.setZoom((zoom < 15 ? 15 : zoom));
+											if(SIMPLE) {
+												MAP.setZoom(zoom - 1);
+											} else {
+												if(map_type == 'illustrated') {
+													if(zoom < 12) zoom = 12;
+													if(zoom > 16) zoom = 16;
+												} else {
+													zoom = (zoom < 15) ? 15 : zoom;
+												}
+												MAP.setZoom(zoom);
+											}
 										}
 									}
 								});
@@ -1278,7 +1309,8 @@ var CampusMap = function(options, urls, points, base_ignore_types) {
 									{link: data.profile_link}
 								)
 							);
-							if(!options.sublocation) { 
+							if(!options.sublocation) {
+								CURRENT_LOCATION = location_id;
 								if(MAP.getZoom() != default_zoom) {
 									MAP.setZoom(default_zoom);
 									MAP.panTo(default_center);
