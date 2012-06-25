@@ -243,8 +243,9 @@
 				<p>(Display an illustrated map instead of the standard road map.)</p>
 				<div class="field">
 					<label for="widget_zoom">Zoom Level:</label>
-					<input type="text" id="widget_zoom" />
+					<input type="text" id="widget_zoom" /> Defaults: Illustrated 12, Regular 14
 				</div>
+				<p>(The higher the value, the closer the zoom.)</p>
 				<button type="submit">Preview &gt;&gt;&gt;</button>
 			</form>
 		</div>
