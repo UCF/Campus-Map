@@ -549,7 +549,19 @@ var CampusMap = function(options, urls, points, base_ignore_types) {
 		$('body').bind('search-result-highlighted', function(event) {
 			var location_id = SEARCH.current_location_id();
 			if(location_id) {
-				UTIL.highlight_location(location_id);
+				MENU.change_tabs({
+							label:'Location',
+							html :'<div class="item load">Loading...</div>'
+						});
+				UTIL.highlight_location(
+					location_id,
+					{
+						func: function(data) {
+							// Populate the menu tab
+							MENU.change_tabs({'html':data.info});
+						}
+					}
+				);
 			}
 		});
 	}
