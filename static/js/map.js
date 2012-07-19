@@ -970,6 +970,14 @@ var CampusMap = function(options, urls, points, base_ignore_types) {
 						$(this).removeClass('hover');
 				})
 
+		// Hide the search results when anything else is clicked
+		$(document).click(function(e) {
+			var target = $(e.target);
+			if(target != results || !target.inArray(results.find('*'))) {
+				results.hide();
+			}
+		})
+
 		// Attach the typing events
 		input
 			.focus(function(event) {
