@@ -30,12 +30,6 @@
 		{% if form.error %}<div class="error">{{form.error}}</div>{% endif %}
 		{% if form.success %}<div class="success">Cache cleared.</div>{% endif %}
 		
-		<table>
-		{% for attr,val in stats.items %}
-			<tr><th>{{attr}}:</th><td>{{val}}</td></tr>
-		{% endfor %}
-		</table>
-		
 		<form method="POST">
 			<input type="submit" value="Clear Cache">
 		</form>

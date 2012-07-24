@@ -575,28 +575,20 @@ def cache_admin(request):
 	}
 	
 	if request.method == 'POST':
-		if cache._num_entries < 1:
-			form['success'] = True
-		else:
-			# clear cache
-			if isinstance(cache, FileBased):
-				try:
-					import shutil
-					shutil.rmtree(cache._dir)
-					form['success'] = True
-				except (IOError, OSError) as e:
-					form['error'] = e
-			else:
-				cache.clear()
+		# clear cache
+		if isinstance(cache, FileBased):
+			try:
+				import shutil
+				shutil.rmtree(cache._dir)
 				form['success'] = True
-	
-	stats = {
-		'Number of Entries': cache._num_entries,
-	}
+			except (IOError, OSError) as e:
+				form['error'] = e
+		else:
+			cache.clear()
+			form['success'] = True
 	
 	context = {
 		'form'   : form,
-		'stats'  : stats,
 	}
 	
 	return render(request, 'admin/cache.djt', context)
