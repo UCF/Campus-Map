@@ -112,19 +112,18 @@ var CampusMap = function(options, urls, points, base_ignore_types) {
 	MAP = new google.maps.Map(document.getElementById(options.canvas_id), options.illustrated ? IMAP_OPTIONS : GMAP_OPTIONS);
 	MAP.mapTypes.set('illustrated', IMAP_TYPE); // Register the illustrated map type
 	google.maps.event.addListener(MAP, 'maptypeid_changed', function() {
-		var type    = MAP.mapTypeId;
-		if(type == 'illustrated') {
-			LAYER_MANAGER.get_layer('gpoints').toggle();
-		} else {
-			LAYER_MANAGER.get_layer('ipoints').toggle();
-		}
-		var options = (type === 'illustrated') ? IMAP_OPTIONS : GMAP_OPTIONS;
+		var type    = MAP.mapTypeId,
+			options = (type === 'illustrated') ? IMAP_OPTIONS : GMAP_OPTIONS,
+			gpoints = LAYER_MANAGER.get_layer('gpoints'),
+			ipoints = LAYER_MANAGER.get_layer('ipoints');
 		MAP.setZoom(options.zoom);
-		MAP.setCenter(options.center); 
+		MAP.setCenter(options.center);
 		if(type == 'illustrated') {
-			LAYER_MANAGER.get_layer('ipoints').toggle();
+			gpoints.deactivate();
+			ipoints.activate();
 		} else {
-			LAYER_MANAGER.get_layer('gpoints').toggle();
+			ipoints.deactivate();
+			gpoints.activate();
 		}
 		INFO_MANAGER.clear();
 		if(CURRENT_LOCATION != null) {
@@ -700,31 +699,35 @@ var CampusMap = function(options, urls, points, base_ignore_types) {
 		this.layer   = null; // the actual Google Maps layer on the map, if applicable
 		this.markers = null; // the actual Google Maps markers on the map, if applicable
 
-		this.toggle = function toggle() {
-			that.active ? deactivate() : activate();
+		this.toggle = function() {
+			that.active ? that.deactivate() : that.activate();
 		}
 
-		function activate() {
-			that.active = true;
-			if(that.layer != null) {
-				that.layer.setMap(MAP);
-			}
-			if(that.markers != null) {
-				$.each(that.markers, function(index, marker) {
-					marker.setVisible(true);
-				});
+		this.activate = function() {
+			if(that.active != true) {
+				that.active = true;
+				if(that.layer != null) {
+					that.layer.setMap(MAP);
+				}
+				if(that.markers != null) {
+					$.each(that.markers, function(index, marker) {
+						marker.setVisible(true);
+					});
+				}
 			}
 		}
 
-		function deactivate() {
-			that.active = false;
-			if(that.layer != null) {
-				that.layer.setMap(null);
-			}
-			if(that.markers != null) {
-				$.each(that.markers, function(index, marker) {
-					marker.setVisible(false);
-				});
+		this.deactivate = function() {
+			if(that.active != false) {
+				that.active = false;
+				if(that.layer != null) {
+					that.layer.setMap(null);
+				}
+				if(that.markers != null) {
+					$.each(that.markers, function(index, marker) {
+						marker.setVisible(false);
+					});
+				}
 			}
 		}
 	}
