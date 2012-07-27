@@ -78,7 +78,13 @@ var CampusMap = function(options, urls, points, base_ignore_types) {
 		},
 		mapTypeControl: options.map_type_control,
 		mapTypeControlOptions: {
-			mapTypeIds: [google.maps.MapTypeId.ROADMAP, google.maps.MapTypeId.SATELLITE, 'illustrated']
+			mapTypeIds: [
+				google.maps.MapTypeId.ROADMAP, 
+				google.maps.MapTypeId.SATELLITE, 
+				google.maps.MapTypeId.HYBRID,
+				google.maps.MapTypeId.TERRAIN,
+				'illustrated'
+			]
 		}
 	}
 
