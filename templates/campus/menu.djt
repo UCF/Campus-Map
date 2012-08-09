@@ -25,9 +25,9 @@
 				<div id="layers" class="clearfix">
 					<label><input type="checkbox" id="parking"> Parking</label>
 					<label><input type="checkbox" id="traffic"> Traffic</label>
-					<label><input type="checkbox" id="dining"> Food</label>
+					<label><input type="checkbox" id="food"> Food</label>
 					<label><input type="checkbox" id="bikeracks"> Bike Racks</label>
-					<label><input type="checkbox" id="emergency_phones"> Emergency</label>
+					<label><input type="checkbox" id="emergency-phones"> Emergency</label>
 				</div>
 				<div class="more-menu">
 					<span>&nbsp;</span>
