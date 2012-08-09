@@ -409,7 +409,7 @@ var CampusMap = function(options) {
 		// Implementation details for the dining layer
 		LAYER_MANAGER.register_layer(
 			(function() {
-				var dining_layer     = new Layer('dining');
+				var dining_layer     = new Layer('food');
 				dining_layer.markers = (function() {
 					var markers         = [],
 						ExistingPoint   = function(lat, lon) {
