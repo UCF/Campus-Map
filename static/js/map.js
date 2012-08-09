@@ -524,6 +524,12 @@ var CampusMap = function(options) {
 				if(layer != null) {
 					layer.activate();
 					activated_layer = true;
+					if(layer.name == 'parking') {
+						MENU.change_tabs({
+								'label':'Parking',
+								'html' :$('#parking-key-content').html()
+							});
+					}
 				}
 			});
 			if(!activated_layer) {
