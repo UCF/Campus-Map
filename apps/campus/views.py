@@ -47,27 +47,27 @@ def home(request, **kwargs):
 		return response
 	
 	# points on the map (will have to be extended with more data added)
-	if kwargs.get('points', False):
-		from django.contrib.contenttypes.models import ContentType
-		from models import Building, Location, Group, ParkingLot
-		
-		# Filter home page locations to building, locations, and groups
-		points = cache.get('home_points')
-		if points is None:
-			show   = map(lambda c: ContentType.objects.get_for_model(c), (Building, Location, Group, ParkingLot, DiningLocation))
-			mobs   = MapObj.objects.filter(content_type__in=map(lambda c: c.id, show))
-			points = {}
-			for o in mobs:
-				o = o.json()
-				points[o['id']] = {
-					'name'   : o['name'],
-					'gpoint' : o['googlemap_point'],
-					'ipoint' : o['illustrated_point'],
-					'type'   : o['object_type'],
-				}
-			cache.set('home_points', points, 60 * 60 * 24)
-	else:
-		points = None
+	#if kwargs.get('points', False):
+	from django.contrib.contenttypes.models import ContentType
+	from models import Building, Location, Group, ParkingLot
+	
+	# Filter home page locations to building, locations, and groups
+	points = cache.get('home_points')
+	if points is None:
+		show   = map(lambda c: ContentType.objects.get_for_model(c), (Building, Location, Group, ParkingLot, DiningLocation))
+		mobs   = MapObj.objects.filter(content_type__in=map(lambda c: c.id, show))
+		points = {}
+		for o in mobs:
+			o = o.json()
+			points[o['id']] = {
+				'name'   : o['name'],
+				'gpoint' : o['googlemap_point'],
+				'ipoint' : o['illustrated_point'],
+				'type'   : o['object_type'],
+			}
+		cache.set('home_points', points, 60 * 60 * 24)
+	#else:
+	#	points = None
 		
 	# urls
 	v = settings.MAP_VERSION
@@ -88,7 +88,7 @@ def home(request, **kwargs):
 		kwargs.pop('error')
 	
 	context = {
-		'infobox_location_id': loc_id,
+		'infobox_location_id': json.dumps(loc_id),
 		'options'            : json.dumps(kwargs),
 		'points'             : json.dumps(points),
 		'date'               : date,
