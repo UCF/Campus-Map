@@ -311,7 +311,7 @@ var CampusMap = function(options) {
 		// Implementation details for the emergency phones layer
 		LAYER_MANAGER.register_layer(
 			(function() {
-				var phones_layer = new Layer('emergency_phones');
+				var phones_layer = new Layer('emergency-phones');
 				phones_layer.markers = (function() {
 					var markers = [];
 					$.ajax({
