@@ -546,7 +546,7 @@ var CampusMap = function(options) {
 				checkbox
 					.click(function() {
 						// For parking, change menu to legend
-						if($(this).attr('id') == 'parking') {
+						if($(this).attr('id') == 'parking' && $(this).is(':checked')) {
 							MENU.change_tabs({
 								'label':'Parking',
 								'html' :$('#parking-key-content').html()
