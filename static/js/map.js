@@ -494,9 +494,29 @@ var CampusMap = function(options) {
 				return dining_layer;
 			})()
 		);
+		
+		// See if this is a special subpage
+		(function() {
+			var url   = window.location + "",
+				parts = url.split('/');
+			if(parts.length > 3) {
+				parts = parts.splice(3);
+				$.each(parts, function(index, part) {
+					if(part != 'map' && part != '') {
+						if(part == 'illustrated') {
+							options.illustrated = true;
+						} else {
+							var layer = LAYER_MANAGER.get_layer(part);
+							if(layer != null) {
+								layer.activate();
+							}
+						}
+					}
+				});
+			}
+		})();
 
 		// Display the google map points layer when the  map loads
-
 		options.illustrated ? (LAYER_MANAGER.get_layer('ipoints')).toggle() : (LAYER_MANAGER.get_layer('gpoints')).toggle();
 
 		// Attach click handles to layer checkboxes
