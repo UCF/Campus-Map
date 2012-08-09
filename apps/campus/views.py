@@ -23,6 +23,11 @@ def home(request, **kwargs):
 	# process query string
 	loc_id = request.GET.get('show', None)
 	
+	if loc_id is None:
+		location = kwargs.get('location', None)
+		if location is not None:
+			loc_id = location.id
+
 	if request.is_json():
 		from campus.templatetags.weather import weather
 		campus = { 
