@@ -72,7 +72,7 @@
 					"base_url"      : "{{ base_url }}"
 				},
 				"base_ignore_types"   : {{base_ignore_types|safe}},
-				"infobox_location_id" : '{{infobox_location_id}}',
+				"infobox_location_id" : {{infobox_location_id|safe}},
 				"points"              : {{ points|safe }}
 			})
 		});

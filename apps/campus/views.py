@@ -27,6 +27,7 @@ def home(request, **kwargs):
 		location = kwargs.get('location', None)
 		if location is not None:
 			loc_id = location.id
+			del kwargs['location']
 
 	if request.is_json():
 		from campus.templatetags.weather import weather
@@ -556,10 +557,6 @@ def regional_campuses(request, campus=None):
 		except RegionalCampus.DoesNotExist:
 			raise Http404()
 		else:
-			html = location_html(rc, request, orgs=False)
-			img = rc.image.url
-			rc = rc.json()
-			rc['info'] = html
 			return home(request, location=rc)
 	
 	campuses = RegionalCampus.objects.all()
