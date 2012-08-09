@@ -1,8 +1,8 @@
 var CampusMap = function(options) {
 	var that = this,
 		default_options = {
-			'simple'     : false,
-			'canvas_id'  :'map-canvas',
+			'simple'              : false,
+			'canvas_id'           : 'map-canvas',
 			'pan_control'         : true,
 			'zoom_control'        : true,
 			'street_view_control' : true,
