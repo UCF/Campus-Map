@@ -36,6 +36,8 @@ var CampusMap = function(options) {
 
 		CURRENT_LOCATION = null,
 
+		ACTIVATED_LAYERS = [],
+
 		GMAP_OPTIONS = null,
 		IMAP_OPTIONS = null,
 		IMAP_TYPE    = null,
@@ -52,6 +54,25 @@ var CampusMap = function(options) {
 		log('Unable to load google code');
 		return;
 	}
+
+	// Find out which layers are activated by default based on the URL
+	(function() {
+		var url   = window.location + "",
+			parts = url.split('/');
+		if(parts.length > 3) {
+			parts = parts.splice(3);
+			$.each(parts, function(index, part) {
+				if(part != 'map' && part != '') {
+					if(part == 'illustrated') {
+						options.illustrated = true;
+					} else {
+						ACTIVATED_LAYERS.push(part);
+					}
+				}
+			});
+		}
+	})();
+
 
 	//
 	// Define the map layer options and types
@@ -495,36 +516,29 @@ var CampusMap = function(options) {
 			})()
 		);
 		
-		// See if this is a special subpage
 		(function() {
-			var url   = window.location + "",
-				parts = url.split('/');
-			if(parts.length > 3) {
-				parts = parts.splice(3);
-				$.each(parts, function(index, part) {
-					if(part != 'map' && part != '') {
-						if(part == 'illustrated') {
-							options.illustrated = true;
-						} else {
-							var layer = LAYER_MANAGER.get_layer(part);
-							if(layer != null) {
-								layer.activate();
-							}
-						}
-					}
-				});
+			var activated_layer = false;
+			// Activated layers
+			$.each(ACTIVATED_LAYERS, function(index, layer_name) {
+				var layer = LAYER_MANAGER.get_layer(layer_name);
+				if(layer != null) {
+					layer.activate();
+					activated_layer = true;
+				}
+			});
+			if(!activated_layer) {
+				// Display the google map points layer when the  map loads
+				options.illustrated ? (LAYER_MANAGER.get_layer('ipoints')).toggle() : (LAYER_MANAGER.get_layer('gpoints')).toggle();
 			}
 		})();
-
-		// Display the google map points layer when the  map loads
-		options.illustrated ? (LAYER_MANAGER.get_layer('ipoints')).toggle() : (LAYER_MANAGER.get_layer('gpoints')).toggle();
+		
 
 		// Attach click handles to layer checkboxes
 		(function() {
 			$.each(LAYER_MANAGER.layers, function(index, layer) {
 				var name     = layer.name,
 					checkbox = $('input[type="checkbox"][id="' + layer.name + '"]');
-				
+
 				if(layer.active) {
 					checkbox.attr('checked', 'checked');
 				}
