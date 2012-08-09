@@ -1,4 +1,4 @@
-var CampusMap = function(options, urls, points, base_ignore_types) {
+var CampusMap = function(options) {
 	var that = this,
 		default_options = {
 			'simple'     : false,
