@@ -522,8 +522,14 @@ var CampusMap = function(options) {
 		// Attach click handles to layer checkboxes
 		(function() {
 			$.each(LAYER_MANAGER.layers, function(index, layer) {
-				var name = layer.name;
-				$('input[type="checkbox"][id="' + layer.name + '"]')
+				var name     = layer.name,
+					checkbox = $('input[type="checkbox"][id="' + layer.name + '"]');
+				
+				if(layer.active) {
+					checkbox.attr('checked', 'checked');
+				}
+
+				checkbox
 					.click(function() {
 						// For parking, change menu to legend
 						if($(this).attr('id') == 'parking') {
