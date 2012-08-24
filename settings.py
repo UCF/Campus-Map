@@ -185,6 +185,8 @@ CACHE_LOCATION  = os.path.join(PROJECT_FOLDER, 'cache')
 CACHE_BACKEND   = 'locmem://'
 CACHE_MIDDLEWARE_ANONYMOUS_ONLY = True
 
+LOGIN_REDIRECT_URL = '/admin/'
+
 try:
 	from settings_local import *
 except ImportError:
