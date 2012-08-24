@@ -1386,10 +1386,6 @@ var CampusMap = function(options) {
 							);
 							if(!options.sublocation) {
 								CURRENT_LOCATION = location_id;
-								if(MAP.getZoom() != default_zoom) {
-									MAP.setZoom(default_zoom);
-									MAP.panTo(default_center);
-								}
 								if(MENU != null) {
 									MENU.change_buttons({'loc_id':location_id, 'title': data.name});
 								}
