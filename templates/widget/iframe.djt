@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8" />
 		<title>Widget - UCF Campus Map</title>
-		<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+		<script type="text/javascript" src="//maps.googleapis.com/maps/api/js?sensor=false"></script>
 		<script type="text/javascript" src="{{MEDIA_URL}}-/gmaps-infobox/infobox.js"></script>
 		<script type="text/javascript">
 			(window.onload = function() {
@@ -68,7 +68,7 @@
 							if( coord.x >= wide*factor || coord.y >= tall*factor){ tile = nope; }
 						}
 						
-						return 'url("http://cdn.ucf.edu/map/tiles/' +tile+'")';
+						return 'url("//cdn.ucf.edu/map/tiles/' +tile+'")';
 					}
 				};
 

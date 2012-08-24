@@ -25,8 +25,8 @@
 		<link href="{{MEDIA_URL}}-/jquery-ui-1.8.4/css/ui-lightness/jquery-ui-1.8.4.custom.css" rel="stylesheet" />
 		
 		<!-- UCF Header and Stylesheets -->
-		<link href="http://universityheader.ucf.edu/bar/css/bar.css" rel="stylesheet">
-		<link href="http://www.ucf.edu/css/global.css" rel="stylesheet">
+		<link href="//universityheader.ucf.edu/bar/css/bar.css" rel="stylesheet">
+		<link href="//www.ucf.edu/css/global.css" rel="stylesheet">
 		
 		<!-- UCF Web Communications -->		
 		<link href="{{MEDIA_URL}}style/style.css?{{map_version}}" rel="stylesheet">
@@ -34,7 +34,7 @@
 		
 		{% if debug %}
 		<!--[if IE]>
-		{# <script type="text/javascript" src="https://getfirebug.com/firebug-lite.js#startOpened"></script> #}
+		{# <script type="text/javascript" src="//getfirebug.com/firebug-lite.js#startOpened"></script> #}
 		<![endif]-->
 		{% endif %}
 		
@@ -119,8 +119,8 @@
 {% endblock %}{# /body #}
 	
 	<!-- Grab Google CDN's jQuery. fall back to local if necessary -->
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
-	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.4/jquery-ui.min.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.4/jquery-ui.min.js"></script>
 	<script>!window.jQuery && document.write(
 		'<script src="{{MEDIA_URL}}-/jquery-ui-1.8.4/js/jquery-1.4.2.min.js"><\/script>' +
 		'<script src="{{MEDIA_URL}}-/jquery-ui-1.8.4/js/jquery-ui-1.8.4.custom.min.js"><\/script>')</script>
