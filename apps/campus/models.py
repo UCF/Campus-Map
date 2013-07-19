@@ -130,6 +130,7 @@ class MapObj(models.Model):
 	googlemap_point   = models.CharField(max_length=255, null=True, help_text='E.g., <code>[28.6017, -81.2005]</code>')
 	illustrated_point = models.CharField(max_length=255, null=True)
 	poly_coords       = models.TextField(null=True)
+	modified          = models.DateTimeField(auto_now=True)
 	
 	
 	def __init__(self, *args, **kwargs):

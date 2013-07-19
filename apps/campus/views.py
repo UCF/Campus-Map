@@ -16,7 +16,7 @@ def home(request, **kwargs):
 	using as js options for the map, that way other views can call home and
 	pass whatever map options are needed
 	'''
-	from time import time
+	from time import time, mktime
 	date = int(time())
 	
 	
@@ -74,9 +74,19 @@ def home(request, **kwargs):
 		cache.set('home_points', points, 60 * 60 * 24)
 	#else:
 	#	points = None
-		
 	# urls
-	v = settings.MAP_VERSION
+
+	"""
+		Google Maps API caches the KML data. In order to purge that cache,
+		the latest MapObj (poly's) modified time is taken and appended to
+		the end of the KML link making it unique.
+	"""
+	map_objs = MapObj.objects.order_by('-modified')
+	v = str(time())
+	if map_objs.count():
+		latest_mapobj = map_objs[0]
+		v = str(mktime(latest_mapobj.modified.timetuple()))
+
 	if settings.GOOGLE_CAN_SEE_ME:
 		buildings_kml = "%s.kml?v=%s" % (request.build_absolute_uri(reverse('locations')[:-1]), v)
 		sidewalks_kml = "%s.kml?v=%s" % (request.build_absolute_uri(reverse('sidewalks')[:-1]), v)
