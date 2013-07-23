@@ -112,7 +112,7 @@ var CampusMap = function(options) {
 	// Illustrated Map
 	IMAP_OPTIONS = { 
 		zoom              : 14,
-		center            : new google.maps.LatLng(85.04591,-179.92189), // world's corner
+		center            : new google.maps.LatLng(85.04591,-179.94189), // world's corner
 		mapTypeId         : 'illustrated',
 		panControl        : options.pan_control,
 		zoomControl       : options.zoom_control,
@@ -136,6 +136,7 @@ var CampusMap = function(options) {
 
 
 	// Setup and configure the map
+	google.maps.visualRefresh = true;
 	MAP = new google.maps.Map(document.getElementById(options.canvas_id), options.illustrated ? IMAP_OPTIONS : GMAP_OPTIONS);
 	MAP.mapTypes.set('illustrated', IMAP_TYPE); // Register the illustrated map type
 	google.maps.event.addListener(MAP, 'maptypeid_changed', function() {
@@ -1221,7 +1222,7 @@ var CampusMap = function(options) {
 			var filename = null,
 				no_tile  = 'white.png',
 				// Smallest map dimensions
-				dimensions     = {x:5, y:3},
+				dimensions     = {x:2.5, y:3.5},
 				scaling_factor = Math.pow(2, (zoom - 13));
 
 			if( // Outside bounds
@@ -1237,7 +1238,7 @@ var CampusMap = function(options) {
 			} else {
 				filename = 'zoom-' + zoom + '/' + zoom + '-' + coordinate.x + '-' + coordinate.y + '.jpg';
 			}
-			return 'url("http://cdn.ucf.edu/map/tiles/' + filename + '")'; 
+			return 'url("http://cdn.ucf.edu/map/tiles/' + filename + '")';
 		}
 
 		// Wraps a specified term with start and end wraps. Preserves capitalization.

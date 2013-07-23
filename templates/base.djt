@@ -9,6 +9,8 @@
 		<meta name="google-site-verification" content="" />
 		<link rel="shortcut icon" href="{{MEDIA_URL}}images/favicon.ico">
 		<link rel="apple-touch-icon" href="{{MEDIA_URL}}images/apple-touch-icon.png">
+
+		<link rel="canonical" href="http://map.ucf.edu/" />
 		
 		<!-- HTML5 compatibility -->
 		<!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
