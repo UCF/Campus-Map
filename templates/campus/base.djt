@@ -56,6 +56,11 @@
 	<script src="{{MEDIA_URL}}-/gmaps-infobox/infobox.js?{{map_version}}" type="text/javascript"></script>
 	<script type="text/javascript">
 		$(document).ready(function(){
+			if($("#error-close").length > 0) {
+				$("#error-close").click(function() {
+					$("#error").hide();
+				});
+			}
 			//Campus.scripts.google(); // fire off maps
 			var map = new CampusMap({
 				"urls": {
