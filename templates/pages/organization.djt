@@ -66,6 +66,7 @@
 				streetViewControl: false,
 				mapTypeControl: false
 		};
+		google.maps.visualRefresh = true;
 		var map = new google.maps.Map(this, myOptions);
 		
 		// show infoBox

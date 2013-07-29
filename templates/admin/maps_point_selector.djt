@@ -61,6 +61,7 @@ $(document).ready(function(){
 	  mapTypeId: google.maps.MapTypeId.ROADMAP
 	}
 	
+	google.maps.visualRefresh = true;
 	map = new google.maps.Map(document.getElementById("map-canvas"), myOptions);
 	
 	/**************************************************************************\
@@ -139,10 +140,10 @@ $(document).ready(function(){
 		if(zoom < 12 || coord.y<0 || coord.x<0){
 			return nope;
 		} else if( zoom === 12){
-			if(coord.y >1 || coord.x > 2) return nope;
+			if(coord.y > 1 || coord.x > 1) return nope;
 		} else {
-			var wide = 5;
-			var tall = 3;
+			var wide = 2.5;
+			var tall = 3.5;
 			var factor = Math.pow(2, (zoom - 13));
 			if( coord.x >= wide*factor || coord.y >= tall*factor) return nope;
 		}
@@ -163,6 +164,7 @@ $(document).ready(function(){
 	
 	var map;
 	var coordinateMapType = new CoordMapType();
+	google.maps.visualRefresh = true;
 	map = new google.maps.Map(document.getElementById("ill-canvas"), myOptions);
 
 	// Now attach the coordinate map type to the map's registry
@@ -230,6 +232,7 @@ $(document).ready(function(){
 		Create a google map
 		  - center at Student Union Entrance
 	\**************************************************************************/
+	google.maps.visualRefresh = true;
 	var map = new google.maps.Map(
 		document.getElementById("poly-canvas"),
 		{

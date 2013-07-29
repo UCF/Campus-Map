@@ -58,12 +58,12 @@
 							tile = nope;
 						} else if( zoom === 12){
 							// map is 2 tiles tall, 3 wide (zero indexed)
-							if(coord.y >1 || coord.x > 2){ tile = nope; }
+							if(coord.y > 1 || coord.x > 1){ tile = nope; }
 						} else {
 							// smallest map is 5x3
 							// for each zoom a tile is divided equally into 4 parts
-							var wide = 5;
-							var tall = 3;
+							var wide = 2.5;
+							var tall = 3.5;
 							var factor = Math.pow(2, (zoom - 13));
 							if( coord.x >= wide*factor || coord.y >= tall*factor){ tile = nope; }
 						}
@@ -98,6 +98,7 @@
 				map_options.mapTypeControl     = false;
 
 				// Create the map
+				google.maps.visualRefresh = true;
 				map = new google.maps.Map(map_element, map_options);
 				map.mapTypes.set('illustrated',imap_type);
 
