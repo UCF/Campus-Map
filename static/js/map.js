@@ -1417,7 +1417,7 @@ var CampusMap = function(options) {
 		// Resize teh map canvase to be 100% height and width
 		this.resize_canvas = function() {
 			var height = document.documentElement.clientHeight,
-				blackbar = document.getElementById('UCFHBHeader');
+				blackbar = document.getElementById('UCFHBHeader') || document.getElementById('ucfhb');
 			
 			height -= blackbar ? blackbar.clientHeight : 0;
 			height -= $('#map header')[0].clientHeight;

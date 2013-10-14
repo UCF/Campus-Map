@@ -27,7 +27,6 @@
 		<link href="{{MEDIA_URL}}-/jquery-ui-1.8.4/css/ui-lightness/jquery-ui-1.8.4.custom.css" rel="stylesheet" />
 		
 		<!-- UCF Header and Stylesheets -->
-		<link href="//universityheader.ucf.edu/bar/css/bar.css" rel="stylesheet">
 		<link href="//www.ucf.edu/css/global.css" rel="stylesheet">
 		
 		<!-- UCF Web Communications -->		
@@ -60,11 +59,11 @@
 <!--[if IE 8 ]>     <body class="ie ie8"> <![endif]-->
 <!--[if IE 9 ]>     <body class="ie ie9"> <![endif]-->
 <!--[if (gt IE 9)|!(IE)]><!--> <body> <!--<![endif]-->
-	
-{% include 'blackbar.djt' %}
+
+<!-- University Header -->
+<div id="ucfhb"></div>
 
 {% block body %}
-	
 	<header>
 		<h1><a href="{% url home %}">UCF Campus Map</a></h1>
 		{% weather %}
@@ -128,7 +127,7 @@
 		'<script src="{{MEDIA_URL}}-/jquery-ui-1.8.4/js/jquery-ui-1.8.4.custom.min.js"><\/script>')</script>
 	<script src="{{MEDIA_URL}}-/jquery.plugins/browser.js"></script>
 	<script src="{{MEDIA_URL}}-/jquery.plugins/cookie.js"></script>
-	<script type="text/javascript" src="{{MEDIA_URL}}js/blackbar.js"></script>
+	<script type="text/javascript" src="//universityheader.ucf.edu/bar/js/university-header.js"></script>
 	
 	{% block js %}{% endblock %}
 	
