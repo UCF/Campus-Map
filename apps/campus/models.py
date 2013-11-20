@@ -23,7 +23,7 @@ class MapQuerySet(QuerySet):
 	thanks: http://djangosnippets.org/snippets/1034/
 	'''
 	campus_models = False
-	
+
 	def __getitem__(self, k):
 		''' making my querysets act a bit heterogenous'''
 		result = super(MapQuerySet, self).__getitem__(k)
@@ -34,7 +34,7 @@ class MapQuerySet(QuerySet):
 	def __iter__(self):
 		for item in super(MapQuerySet, self).__iter__():
 			yield item.as_leaf_class()
-	
+
 	def get(self, *args, **kwargs):
 		# same as getitem, idk why getitem isn't called when this is used
 		result = QuerySet.get(self, *args, **kwargs)
@@ -42,8 +42,8 @@ class MapQuerySet(QuerySet):
 			return result.as_leaf_class()
 		else:
 			return result
-	
-	
+
+
 	def filter(self, *args, **kwargs):
 		'''
 		allows to query over all MapObj's, incliding child specfic fields.
@@ -56,7 +56,7 @@ class MapQuerySet(QuerySet):
 				MapObj.objects.filter(permit_type="Greek Row")
 			yet these attributes are not apart of MapObj
 		'''
-		
+
 		# process the query
 		if len(args):
 			query = args[0]
@@ -70,10 +70,10 @@ class MapQuerySet(QuerySet):
 				# shoudl probably have some recurrsion here
 				# will fail with complex / nested queries
 				new_query = new_query | self.leaf_filter(Q(c))
-		
+
 		# return a QuerySet of MapObj's
 		return QuerySet.filter(self, new_query)
-	
+
 	def leaf_filter(self, query):
 		'''
 		Should not be called directly, use filter()
@@ -83,7 +83,7 @@ class MapQuerySet(QuerySet):
 			q1 = Q(name__icontains='commons')
 			q2 = Q(abbreviation__icontains='map')
 			MapObj.objects.filter(q1|q2)
-		returns: 
+		returns:
 			[<Group: Ferrell Commons>, <Building: Libra Commons>, <Building: Math & Physics>, ...]
 		'''
 		# grab all the models that extend MapObj
@@ -93,7 +93,7 @@ class MapQuerySet(QuerySet):
 				model = models.get_model("campus", ct.model)
 				if issubclass(model, campus.models.MapObj):
 					MapQuerySet.campus_models.append(model)
-		
+
 		# return queryset containing MapObj's
 		mob_query = Q(pk="~~~ no results ~~~")
 		for m in self.campus_models:
@@ -110,14 +110,14 @@ class MapQuerySet(QuerySet):
 class MapManager(models.Manager):
 	def get_query_set(self):
 		return MapQuerySet(self.model)
-	
+
 	def mob_filter(self, *args, **kwargs):
 		'''
 		Needed because plain 'filter' returns leaf class
 		'''
 		qs = QuerySet(campus.models.MapObj)
 		return qs.filter(*args, **kwargs)
-	
+
 
 class MapObj(models.Model):
 	objects           = MapManager()
@@ -131,8 +131,8 @@ class MapObj(models.Model):
 	illustrated_point = models.CharField(max_length=255, null=True)
 	poly_coords       = models.TextField(null=True)
 	modified          = models.DateTimeField(auto_now=True)
-	
-	
+
+
 	def __init__(self, *args, **kwargs):
 		for k,v in kwargs.items():
 			if v in ('', "None", "none", "null"):
@@ -140,14 +140,14 @@ class MapObj(models.Model):
 		if kwargs.get('id', False):
 			kwargs['id'] = kwargs['id'].lower()
 		super(MapObj, self).__init__(*args, **kwargs)
-		
+
 	def _title(self):
 		if (self.name):
 			return self.name
 		else:
 			return self.id
 	title = property(_title)
-	
+
 	def _orgs(self):
 		''' retruns a subset of orgs '''
 		from apps.views import get_orgs
@@ -155,31 +155,31 @@ class MapObj(models.Model):
 		count    = 0
 		overflow = False
 		for o in get_orgs()['results']:
-			if self.pk == o['bldg_id']:
+			if self.pk == str(o['bldg_id']):
 				building_orgs.append(o)
 		return {
 			"results" : building_orgs,
 			"overflow": overflow
 		}
 	orgs = property(_orgs)
-	
+
 	def _object_type(self):
 		return self.__class__.__name__
 	object_type = property(_object_type)
-	
+
 	def json(self, base_url=''):
 		"""Returns a json serializable object for this instance"""
 		obj = dict(self.__dict__)
-		
+
 		for key,val in obj.items():
-			
+
 			if key == "_state":
 				# prevents object.save() function from being destroyed
 				# not sure how or why it does, but if object.json() is called
 				# first, object.save() will fail
 				obj.pop("_state")
 				continue
-			
+
 			# with the validator, hopefully this never causes an issue
 			if key == "poly_coords":
 				if obj["poly_coords"] != None and obj['poly_coords'] != '':
@@ -189,20 +189,20 @@ class MapObj(models.Model):
 				if obj[key] != None and obj[key] != '':
 					obj[key] = json.loads(str(obj[key]))
 				continue
-			
+
 			if isinstance(val, unicode) or isinstance(val, bool) or val==None:
 				continue
-			
+
 			# super dumb, concerning floats http://code.djangoproject.com/ticket/3324
 			# general catch-all for stuff that makes json cry like like jared's baby
 			obj[key] = val.__str__()
-		
+
 		obj['profile_link'] = self._profile_link(base_url)
 		obj.pop('content_type_id', None)
 		obj.pop('mapobj_ptr_id', None)
 		obj['object_type'] = self.object_type
 		return obj
-	
+
 	def _kml_coords(self):
 		if self.poly_coords == None:
 			return None
@@ -218,12 +218,12 @@ class MapObj(models.Model):
 		arr = json.loads(self.poly_coords)
 		return flat(arr)
 	kml_coords = property(_kml_coords)
-	
+
 	def _link(self):
 		url = reverse('location', kwargs={'loc':self.id})
 		return '<a href="%s%s/" data-pk="%s">%s</a>' % (url, slugify(self.name), self.id, self.title)
 	link = property(_link)
-	
+
 	def _profile_link(self, base_url=''):
 		url = reverse('location', kwargs={'loc':self.id})
 		slug = slugify(self.title)
@@ -231,51 +231,51 @@ class MapObj(models.Model):
 			return '%s%s' % (base_url, url)
 		return '%s%s%s/' % (base_url, url, slug)
 	profile_link = property(_profile_link)
-	
+
 	def bxml(self, *args, **kwargs):
 		'''
 			Representation of this object in Blackbaord Mobile XML.
 			Listing only requires names.
-			Search requires name, unique building id, and geocode lat long in 
+			Search requires name, unique building id, and geocode lat long in
 			decimal format. Addtional attributes can also be included for search
 		'''
 		from xml.etree.ElementTree import Element
-		
+
 		base_url  = kwargs.pop('base_url', '')
 		name_only = kwargs.pop('name_only', False)
-		
-		location = Element('location') # Root 
-		
+
+		location = Element('location') # Root
+
 		# Required Attributes
 		name     = Element('name')
 		loc_code = Element('location_code')
 		geocode  = Element('geocode')
 		lat      = Element('lat')
 		lon      = Element('lon')
-		
+
 		name.text     = self.title
 		loc_code.text = self.id
 		if self.googlemap_point is not None:
 			lat.text, lon.text = self.googlemap_point[1:-1].replace(' ','').split(',')
-		
+
 		location.append(name)
 		if not name_only:
 			location.append(loc_code)
 			geocode.append(lat)
 			geocode.append(lon)
 			location.append(geocode)
-		
+
 			# Optional Attributes
 			if self.image is not None:
 				image    = Element('image_url')
 				image.text = base_url + settings.MEDIA_URL + self.image
 				location.append(image)
-			
+
 			if self.description is not None:
 				desc     = Element('description')
 				desc.text = self.description
 				location.append(desc)
-		
+
 			if len(self.orgs['results']) > 0:
 				orgs     = Element('organizations')
 				for org_data in self.orgs['results']:
@@ -283,14 +283,14 @@ class MapObj(models.Model):
 					org.text = org_data['name']
 					orgs.append(org)
 				location.append(orgs)
-		
+
 		return location
-	
+
 	def save(self, *args, **kwargs):
 		from django.core.cache import cache
 		# Forces cache reset once data changes
 		cache.clear()
-		
+
 		if(not self.content_type):
 			self.content_type = ContentType.objects.get_for_model(self.__class__)
 
@@ -302,14 +302,14 @@ class MapObj(models.Model):
 				gl = GroupedLocation(content_type=self.content_type, object_pk=self.pk)
 				gl.save()
 
-			
+
 	def as_leaf_class(self):
 		content_type = self.content_type
 		model = content_type.model_class()
 		if (model == MapObj):
 			return self
 		return model.objects.get(id=self.id)
-	
+
 	@property
 	def js_poly_coords(self):
 		'''
@@ -320,7 +320,7 @@ class MapObj(models.Model):
 
 	def __unicode__(self):
 		return u'%s' % (self.name)
-	
+
 	class Meta:
 		ordering = ("name",)
 
@@ -332,25 +332,25 @@ class Location(MapObj):
 	pass
 
 class RegionalCampus(MapObj):
-	
+
 	class Meta:
 		verbose_name_plural = "Regional Campuses"
 
 class Building(MapObj):
 	abbreviation      = models.CharField(max_length=50, null=True)
 	sketchup          = models.CharField(max_length=50, null=True, help_text="E.g., http://sketchup.google.com/3dwarehouse/details?mid=<code>54b7f313bf315a3a85622796b26c9e66</code>&prevstart=0")
-	
+
 	def _number(self):
 		return self.id
 	number = property(_number)
-	
+
 	def _title(self):
 		if self.abbreviation:
 			return "%s (%s)" % (self.name, self.abbreviation)
 		else:
 			return self.name
 	title = property(_title)
-	
+
 	def json(self, **kw):
 		obj = MapObj.json(self, **kw)
 		obj['number'] = self.number
@@ -358,7 +358,7 @@ class Building(MapObj):
 		obj['title'] = self.title
 		obj['orgs'] = self.orgs
 		return obj
-	
+
 	class Meta:
 		ordering = ("name", "id")
 
@@ -375,21 +375,21 @@ class ParkingLot(MapObj):
 	permit_type  = models.CharField(max_length=255, null=True)
 	abbreviation = models.CharField(max_length=50, null=True)
 	sketchup     = models.CharField(max_length=50, null=True, help_text="E.g., http://sketchup.google.com/3dwarehouse/details?mid=<code>54b7f313bf315a3a85622796b26c9e66</code>&prevstart=0")
-	
+
 	def _number(self):
 		return self.id
 	number = property(_number)
-	
+
 	def _color_fill(self):
 		colors = parking_permit_colors
 		rgb = colors.get(self.permit_type) or 'fffb00' #default=yellow
 		opacity = .35
-		
+
 		# kml is weird, it goes [opacity][blue][green][red] (each two digit hex)
 		kml_color = "%x%s%s%s" % (int(opacity*255), rgb[4:], rgb[2:4], rgb[0:2])
 		return kml_color
 	color_fill = property(_color_fill)
-	
+
 	def _color_line(self):
 		# same as fill, up opacity
 		color = self.color_fill
@@ -397,7 +397,7 @@ class ParkingLot(MapObj):
 		kml_color = "%x%s" % (opacity * 255, color[2:])
 		return kml_color
 	color_line = property(_color_line)
-	
+
 	def _title(self):
 		if self.abbreviation:
 			return "%s (%s)" % (self.name, self.abbreviation)
@@ -407,7 +407,7 @@ class ParkingLot(MapObj):
 			else:
 				return self.id
 	title = property(_title)
-	
+
 	def json(self, **kw):
 		obj = MapObj.json(self, **kw)
 		obj['number'] = self.number
@@ -415,15 +415,15 @@ class ParkingLot(MapObj):
 		obj['title'] = self.title
 		return obj
 
-		
+
 class DisabledParking(MapObj):
 	num_spaces = models.IntegerField(null=True)
-	
+
 	def json(self, **kw):
 		obj = MapObj.json(self, **kw)
 		obj['title'] = self.__unicode__()
 		return obj
-	
+
 	def save(self, **kwargs):
 		if self.id in ("", None, False, "None", "none", "null"):
 			# pseduo auto-incredment of key: "disabled-parking-###"
@@ -433,7 +433,7 @@ class DisabledParking(MapObj):
 			dp_pk = "disabledparking-%0.3d" % dp_num
 			self.id = dp_pk
 		super(DisabledParking, self).save(**kwargs)
-	
+
 	def __unicode__(self):
 		if self.num_spaces:
 			from django.template.defaultfilters import pluralize
@@ -443,20 +443,20 @@ class DisabledParking(MapObj):
 			if str == '':
 				return '[no description]'
 			return self.description
-	
+
 	class Meta:
 		verbose_name_plural = "Handicap Parking"
 
 
 class Sidewalk(models.Model):
 	poly_coords = models.TextField(null=True)
-	
+
 	def _kml_coords(self):
 		if self.poly_coords == None:
 			return None
-		
+
 		def flat(l):
-			''' 
+			'''
 			recursive function to flatten array and create a a list of coordinates separated by a space
 			'''
 			str = ""
@@ -466,25 +466,25 @@ class Sidewalk(models.Model):
 				else:
 					str += ("%.6f,%.6f ")  % (i[0], i[1])
 			return str
-		
-		
+
+
 		arr = json.loads(self.poly_coords)
 		return flat(arr)
 	kml_coords = property(_kml_coords)
-	
+
 	def clean(self, *args, **kwargs):
 		from django.core.exceptions import ValidationError
-		
+
 		# keep blanks out of coordinates
 		if self.poly_coords       == "": self.poly_coords       = None
-		
+
 		# check poloy coordinates
-		if self.poly_coords != None: 
+		if self.poly_coords != None:
 			try:
 				json.loads("{0}".format(self.poly_coords))
 			except ValueError:
 				raise ValidationError("Invalid polygon coordinates (not json serializable)")
-		
+
 		super(Sidewalk, self).clean(*args, **kwargs)
 
 
@@ -507,7 +507,7 @@ class DiningLocation(MapObj):
 
 	@classmethod
 	def refresh(cls):
-		''' 
+		'''
 			- Fetch the DiningLocation information from the search service.
 			- Create/update corresponding DiningLocation objects.
 			- Create/update the DiningLocation group.
@@ -523,7 +523,7 @@ class DiningLocation(MapObj):
 				group.save()
 			except Exception, e:
 				log.error('Unable to save group: %s' % str(e))
-		
+
 		dining_loc_ctype = ContentType.objects.get(
 								app_label=DiningLocation._meta.app_label,
 								model=DiningLocation.__name__.lower())
@@ -551,7 +551,7 @@ class DiningLocation(MapObj):
 							dining_loc = cls.objects.get(id=dept['id'])
 						except DiningLocation.DoesNotExist:
 							dining_loc = cls(id=dept['id'])
-						
+
 						# Update name and building details
 						dining_loc.name = dept['name']
 
@@ -578,9 +578,9 @@ class DiningLocation(MapObj):
 class GroupedLocationManager(models.Manager):
 	'''
 	Used with the managment commands to import/export.  When the many-to-many
-	relationship is being dumped, for example locations within a group, 
+	relationship is being dumped, for example locations within a group,
 	each location looks like:
-	, it looks like: 
+	, it looks like:
 	"locations": [
 		["campus.building", "406"],
 		...
@@ -594,11 +594,11 @@ class GroupedLocationManager(models.Manager):
 
 class GroupedLocation(models.Model):
 	objects      = GroupedLocationManager()
-	
+
 	object_pk    = models.CharField(max_length=255)
 	content_type = models.ForeignKey(ContentType)
 	content_object = generic.GenericForeignKey('content_type', 'object_pk')
-	
+
 	def __unicode__(self):
 		loc      = self.content_object
 		loc_name = str(loc)
@@ -610,18 +610,18 @@ class GroupedLocation(models.Model):
 			loc_name = "{0} | {1}".format(loc_name, loc.number)
 		loc_class = loc.__class__.__name__
 		return "{0} | {1}".format(loc_class, loc_name)
-	
+
 	def natural_key(self):
 		content_type = ".".join(self.content_type.natural_key())
 		return (content_type, self.object_pk)
 	natural_key.dependencies = ['contenttypes.contenttype']
-	
+
 	class Meta:
 		unique_together = (('object_pk', 'content_type'),)
 
 class Group(MapObj):
 	locations = models.ManyToManyField(GroupedLocation, null=True)
-	
+
 	def json(self, **kw):
 		obj = super(Group, self).json(**kw)
 		locations = {}
@@ -634,30 +634,30 @@ class Group(MapObj):
 				locations['links'].append(l.content_object.link)
 		obj['locations'] = locations
 		return obj
-		
+
 	@classmethod
 	def update_coordinates(cls, **kwargs):
 		sender = kwargs['instance']
 		sender.googlemap_point   = sender.midpoint('googlemap_point')
 		sender.illustrated_point = sender.midpoint('illustrated_point')
 		sender.save()
-	
+
 	def midpoint(self, coordinates_field):
 		midpoint_func = lambda a, b: [((a[0] + b[0])/2), ((a[1] + b[1])/2)]
-		
+
 		points = [p.content_object for p in self.locations.all()]
 		points = [getattr(p, coordinates_field, None) for p in points]
 		points = [json.loads(p) for p in points if p is not None]
-		
+
 		if len(points) < 1:
 			return None
 		if len(points) < 2:
 			return json.dumps(points[0])
-		
+
 		midpoint = reduce(midpoint_func, points)
 		midpoint = json.dumps(midpoint)
 		return midpoint
-	
+
 	def __unicode__(self):
 		return self.name
 
