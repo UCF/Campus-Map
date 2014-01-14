@@ -12,5 +12,4 @@ static/uploads/*
 Thumbs.db
 .svn
 cache/*
-logs/application.log
-logs/request.log
+logs/*

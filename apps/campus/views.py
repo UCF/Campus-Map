@@ -18,11 +18,11 @@ def home(request, **kwargs):
 	'''
 	from time import time, mktime
 	date = int(time())
-	
-	
+
+
 	# process query string
 	loc_id = request.GET.get('show', None)
-	
+
 	if loc_id is None:
 		location = kwargs.get('location', None)
 		if location is not None:
@@ -31,14 +31,14 @@ def home(request, **kwargs):
 
 	if request.is_json():
 		from campus.templatetags.weather import weather
-		campus = { 
+		campus = {
 			"name"    : "UCF Campus Map",
-			"weather" : weather(json_request=True) 
+			"weather" : weather(json_request=True)
 		}
 		response = HttpResponse(json.dumps(campus))
 		response['Content-type'] = 'application/json'
 		return response
-	
+
 	if request.is_txt():
 		from campus.templatetags.weather import weather
 		text = u"UCF Campus Map - %s\n%s\n\n# Campus Address\n%s\n\n# Weather\n%s" % (
@@ -46,17 +46,17 @@ def home(request, **kwargs):
 				"-"*78,
 				"4000 Central Florida Blvd. Orlando, Florida, 32816",
 				weather(text_request=True))
-				
-				
+
+
 		response = HttpResponse(text)
 		response['Content-type'] = 'text/plain; charset=utf-8'
 		return response
-	
+
 	# points on the map (will have to be extended with more data added)
 	#if kwargs.get('points', False):
 	from django.contrib.contenttypes.models import ContentType
 	from models import Building, Location, Group, ParkingLot
-	
+
 	# Filter home page locations to building, locations, and groups
 	points = cache.get('home_points')
 	if points is None:
@@ -98,11 +98,11 @@ def home(request, **kwargs):
 	loc = "%s.json" % reverse('location', kwargs={'loc':'foo'})
 	loc = loc.replace('foo', '%s')
 	kwargs['map'] = 'gmap';
-	
+
 	error = kwargs.get('error', None)
 	if error:
 		kwargs.pop('error')
-	
+
 	context = {
 		'infobox_location_id': json.dumps(loc_id),
 		'options'            : json.dumps(kwargs),
@@ -120,16 +120,16 @@ def home(request, **kwargs):
 		# still need to be here to be available for searching infoboxes, etc.
 		'base_ignore_types'  : json.dumps(['DiningLocation'])
 	}
-	
+
 	return render(request, 'campus/base.djt', context)
 
 
 def locations(request):
 	from campus.models import MapObj
-	
+
 	locations = MapObj.objects.all()
 	base_url  = request.build_absolute_uri(reverse('home'))[:-1]
-	
+
 	if request.is_json():
 		arr = []
 		for l in locations:
@@ -137,7 +137,7 @@ def locations(request):
 		response = HttpResponse(json.dumps(arr))
 		response['Content-type'] = 'application/json'
 		return response
-		
+
 	if request.is_kml():
 		# helpful:
 		# http://code.google.com/apis/kml/documentation/kml_tut.html#network_links
@@ -152,7 +152,7 @@ def locations(request):
 			response['Content-type'] = 'application/vnd.google-earth.kml+xml'
 			cache.set('kml_response', response, 60 * 60 * 24)
 		return response
-	
+
 	if request.is_bxml():
 		xml_locations = ElementTree.Element('Locations')
 		for location in list(l.bxml(base_url=base_url,name_only=True) for l in locations):
@@ -160,7 +160,7 @@ def locations(request):
 		response = HttpResponse(ElementTree.tostring(xml_locations,encoding='UTF-8'))
 		response['Content-type'] = 'application/xml'
 		return response
-	
+
 	context = cache.get('locations_context')
 	if context is None:
 		context = {
@@ -169,7 +169,7 @@ def locations(request):
 			'campuses'  : list(),
 			'groups'    : list(),
 		}
-	
+
 		for l in locations:
 			if (l.object_type == 'Building'):
 				context['buildings'].append(l)
@@ -179,9 +179,9 @@ def locations(request):
 				context['campuses'].append(l)
 			elif(l.object_type == 'Group'):
 				context['groups'].append(l)
-		
+
 		cache.set('locations_context', context, 60 * 60 * 24)
-	
+
 	return render(request, 'campus/locations.djt', context)
 
 def location(request, loc, return_obj=False):
@@ -189,14 +189,14 @@ def location(request, loc, return_obj=False):
 	Will one day be a wrapper for all data models, searching over all locations
 	and organizations, maybe even people too
 	'''
-	
+
 	location_orgs = []
 	try:
 		location = MapObj.objects.get(pk=loc)
 		location_orgs = location._orgs()['results']
 	except MapObj.DoesNotExist:
 		raise Http404("Location ID <code>%s</code> could not be found" % (loc))
-	
+
 	base_url = request.build_absolute_uri(reverse('home'))[:-1]
 	html = location_html(location, request)
 
@@ -208,7 +208,7 @@ def location(request, loc, return_obj=False):
 		location['image'] = {'url':location_image.url}
 	else:
 		location['image'] = None
-	
+
 	# API views
 	if request.is_json():
 		if settings.DEBUG:
@@ -217,12 +217,12 @@ def location(request, loc, return_obj=False):
 		response = HttpResponse(json.dumps(location))
 		response['Content-type'] = 'application/json'
 		return response
-	
+
 	org = None
 	if request.GET.get('org', None):
 		from apps.views import get_org
 		org = get_org(request.GET['org'])
-	
+
 	if return_obj:
 		return location
 
@@ -244,17 +244,17 @@ def location(request, loc, return_obj=False):
 			p.info = '<h2><a href="http://flickr.com/photos/universityofcentralflorida/%s/">%s</a></h2>' % (p.id, p.title)
 			if p.description.text:
 				p.info = "%s<p>%s</p>" % (p.info, p.description.text)
-	
+
 	# find organizations related to this location via the group it belongs to
 	from models import GroupedLocation
 	from django.contrib.contenttypes.models import ContentType
-	
+
 	location_ctype = ContentType.objects.get(
 		app_label="campus",
 		model=location['object_type'].lower()
 	)
 	location_pk       = location['id']
-	
+
 	# Find all groups this location is a member of
 	grouped_locations = GroupedLocation.objects.filter(
 		object_pk=location_pk,
@@ -262,20 +262,20 @@ def location(request, loc, return_obj=False):
 	)
 	groups = [gl.group_set.all() for gl in grouped_locations]
 	groups = reduce(lambda a, b: a + b, groups)
-	
+
 	# Find the union of all organizations between this group and its members
 	def group_orgs(g):
 		group_orgs = g._orgs()['results']
 		orgs = [gl.content_object._orgs()['results'] for gl in g.locations.all()]
 		orgs = reduce(lambda a, b: a + b, orgs) + group_orgs
 		return orgs
-	
+
 	# Attach org info to each group for this location
 	groups_orgs = list()
 	for g in groups:
 		groups_orgs.append((g, group_orgs(g)))
 
-	context = { 
+	context = {
 		'location'      : location,
 		'loc_url'       : "%s.json" % reverse('location', kwargs={'loc':'foo'}).replace('foo', '%s'),
 		'orgs'          : location_orgs,
@@ -289,18 +289,18 @@ def parking(request):
 	from campus.models import ParkingLot, DisabledParking
 	lots     = list(ParkingLot.objects.all())
 	handicap = list(DisabledParking.objects.all())
-	
+
 	if request.is_json():
 		lots     = [l.json() for l in lots]
 		handicap = [h.json() for h in handicap]
-		
+
 		response = HttpResponse(json.dumps({
 			'lots'     : lots,
 			'handicap' : handicap,
 		}))
 		response['Content-type'] = 'application/json'
 		return response
-	
+
 	if request.is_kml():
 		def parking_filter(l):
 			# query arguments can be used to filter by attribute
@@ -308,7 +308,7 @@ def parking(request):
 				return True
 			l = l.__dict__
 			for k,v in request.GET.items():
-				try: 
+				try:
 					if l[k] == v: continue
 					else: return False
 				except KeyError:
@@ -318,32 +318,32 @@ def parking(request):
 		response = render_to_response('api/parking.kml', { 'parking':lots })
 		response['Content-type'] = 'application/vnd.google-earth.kml+xml'
 		return response
-	
+
 	return home(request, parking=True)
-	
-	
+
+
 def sidewalks(request):
 	'''
 	Mostly an API wrapper
 	'''
 	from campus.models import Sidewalk
 	sidewalks = Sidewalk.objects.all()
-	
+
 	url = request.build_absolute_uri(reverse('sidewalks'))
-	
+
 	if request.is_kml():
 		response = render_to_response('api/sidewalks.kml', { 'sidewalks':sidewalks })
 		response['Content-type'] = 'application/vnd.google-earth.kml+xml'
 		return response
-	
+
 	if request.is_json():
 		# trying to stick to the  geojson spec: http://geojson.org/geojson-spec.html
 		arr = []
 		for s in sidewalks:
 			sidewalk = {
-				"type": "Feature", 
-				"geometry": { 
-					"type": "LineString", 
+				"type": "Feature",
+				"geometry": {
+					"type": "LineString",
 					"coordinates": json.loads(s.poly_coords)
 				}
 			}
@@ -358,7 +358,7 @@ def sidewalks(request):
 		response = HttpResponse(json.dumps(obj, indent=4))
 		response['Content-type'] = 'application/json'
 		return response
-	
+
 	if request.is_txt():
 		text = "University of Central Florida\nCampus Map: Sidewalks\n%s\n%s\n" % (
 					url + ".txt",
@@ -368,7 +368,7 @@ def sidewalks(request):
 		response = HttpResponse(text)
 		response['Content-type'] = 'text/plain; charset=utf-8'
 		return response
-	
+
 	return home(request, sidewalks=True)
 
 def bikeracks(request):
@@ -377,16 +377,16 @@ def bikeracks(request):
 	'''
 	from campus.models import BikeRack
 	bikeracks = BikeRack.objects.all()
-	
+
 	url = request.build_absolute_uri(reverse('bikeracks'))
-	
+
 	# trying to stick to the  geojson spec: http://geojson.org/geojson-spec.html
 	arr = []
 	for r in bikeracks:
 		bikerack = {
-			"type": "Feature", 
-			"geometry": { 
-				"type": "Point", 
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
 				"coordinates": json.loads( "%s" % r.googlemap_point)
 			}
 		}
@@ -398,12 +398,12 @@ def bikeracks(request):
 		"type"     : "FeatureCollection",
 		"features" : arr
 	}
-	
+
 	if request.is_json():
 		response = HttpResponse(json.dumps(obj, indent=4))
 		response['Content-type'] = 'application/json'
 		return response
-	
+
 	if request.is_txt():
 		text = "University of Central Florida\nCampus Map: Bike Racks\n%s\n%s\n" % (
 					url + ".txt",
@@ -413,7 +413,7 @@ def bikeracks(request):
 		response = HttpResponse(text)
 		response['Content-type'] = 'text/plain; charset=utf-8'
 		return response
-	
+
 	return home(request, bikeracks=True, bikeracks_geo=obj)
 
 def emergency_phones(request):
@@ -422,16 +422,16 @@ def emergency_phones(request):
 	'''
 	from campus.models import EmergencyPhone
 	phones = EmergencyPhone.objects.all()
-	
+
 	url = request.build_absolute_uri(reverse('emergency_phones'))
-	
+
 	# trying to stick to the  geojson spec: http://geojson.org/geojson-spec.html
 	arr = []
 	for p in phones:
 		phone = {
-			"type": "Feature", 
-			"geometry": { 
-				"type": "Point", 
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
 				"coordinates": json.loads( "%s" % p.googlemap_point)
 			}
 		}
@@ -443,12 +443,12 @@ def emergency_phones(request):
 		"type"     : "FeatureCollection",
 		"features" : arr
 	}
-	
+
 	if request.is_json():
 		response = HttpResponse(json.dumps(obj, indent=4))
 		response['Content-type'] = 'application/json'
 		return response
-	
+
 	if request.is_txt():
 		text = "University of Central Florida\nCampus Map: Emergency Phones\n%s\n%s\n" % (
 					url + ".txt",
@@ -458,14 +458,14 @@ def emergency_phones(request):
 		response = HttpResponse(text)
 		response['Content-type'] = 'text/plain; charset=utf-8'
 		return response
-	
+
 	return home(request, emergency_phones=True, phone_geo=obj)
 
 def dining(request):
 	'''
 	API wrapper for dining locations.
 	'''
-	dining_locations = DiningLocation.objects.all()
+	dining_locations = DiningLocation.objects.all().order_by('name')
 	arr = []
 	for location in dining_locations:
 		if location.googlemap_point is not None:
@@ -490,7 +490,7 @@ def dining(request):
 		response = HttpResponse(json.dumps(obj, indent=4))
 		response['Content-type'] = 'application/json'
 		return response
-	
+
 	if request.is_txt():
 		text = "University of Central Florida\nCampus Map: Food\n%s\n%s\n" % (
 					url + ".txt",
@@ -500,7 +500,7 @@ def dining(request):
 		response = HttpResponse(text)
 		response['Content-type'] = 'text/plain; charset=utf-8'
 		return response
-	
+
 	return home(request, dining=True, dining_geo=obj)
 
 def location_html(loc, request, orgs=True):
@@ -524,7 +524,7 @@ def location_html(loc, request, orgs=True):
 			if count == 4:
 				group['overflow'] = True
 				break
-	
+
 	# create info HTML using template
 	d = {   'location'  : loc,
 			'orgs'      : orgs,
@@ -539,28 +539,28 @@ def backward_location(request):
 	map URLs.
 	Example: http://campusmap.ucf.edu/flash/index.php?select=b_8118
 	'''
-	
+
 	select = request.GET.get('select', None)
-	
+
 	if select is not None and select.startswith('b_') and len(select) > 2:
 		url = '?'.join([reverse('home'), urllib.urlencode({'show':select[2:]})])
 		return HttpResponsePermanentRedirect(url)
 	return HttpResponsePermanentRedirect(reverse('home'))
-	
+
 def regional_campuses(request, campus=None):
 	from campus.models import RegionalCampus
-	
+
 	# TODO - regional campuses API
 	if request.is_json():
 		response = HttpResponse(json.dumps("API not available for Regional Campuses"))
 		response['Content-type'] = 'application/json'
 		return response
-	
+
 	if request.is_txt():
 		response = HttpResponse("API not available for Regional Campuses")
 		response['Content-type'] = 'text/plain; charset=utf-8'
 		return response
-	
+
 	if campus:
 		try:
 			rc = RegionalCampus.objects.get(pk=campus)
@@ -568,24 +568,24 @@ def regional_campuses(request, campus=None):
 			raise Http404()
 		else:
 			return home(request, location=rc)
-	
+
 	campuses = RegionalCampus.objects.all()
 	context = { "campuses": campuses }
-	
+
 	return render(request, 'campus/regional-campuses.djt', context)
 
 def cache_admin(request):
 	from django.core.cache import cache
 	from django.core.cache.backends.filebased import CacheClass as FileBased
-	
+
 	if not request.user.is_superuser:
 		return render(request, 'admin/cache.djt', { 'error': 'You are not authorized' })
-	
-	form    = { 
+
+	form    = {
 		'error'   : False,
 		'success' : False,
 	}
-	
+
 	if request.method == 'POST':
 		# clear cache
 		if isinstance(cache, FileBased):
@@ -598,35 +598,35 @@ def cache_admin(request):
 		else:
 			cache.clear()
 			form['success'] = True
-	
+
 	context = {
 		'form'   : form,
 	}
-	
+
 	return render(request, 'admin/cache.djt', context)
 cache_admin = login_required(cache_admin)
 
-	
+
 def data_dump(request):
 	from django.core import serializers
 	from django.db.models import get_apps, get_app
 	from django.core.management.commands.dumpdata import sort_dependencies
 	from django.utils.datastructures import SortedDict
 	import campus
-	
+
 	if not request.user.is_authenticated() or not request.user.is_superuser:
 		response = HttpResponse(json.dumps({"Error": "Not Authorized"}))
 		response['Content-type'] = 'application/json'
 		return response
-	
+
 	#if wanted all apps, but only want campus
 	#app_list = SortedDict([(app, None) for app in get_apps()])
 	app_list = SortedDict([(get_app('campus'), None)])
-	
+
 	# Now collate the objects to be serialized.
 	objects = []
-	
-	# Needed because sqllite doesn't use 
+
+	# Needed because sqllite doesn't use
 	def ordering(self):
 		if hasattr(self, 'name'):
 			return str(self.name).lower()
@@ -634,7 +634,7 @@ def data_dump(request):
 			return self.id
 		else:
 			return self.pk
-	
+
 	for model in sort_dependencies(app_list.items()):
 		# skip groupedlocation model (not needed since Group uses natural keys)
 		if model == campus.models.GroupedLocation:
@@ -650,7 +650,7 @@ def data_dump(request):
 		data = serializers.serialize('json', objects, indent=4, use_natural_keys=True)
 	except Exception, e:
 		data = serializers.serialize('json', "ERORR!")
-	
+
 	response = HttpResponse(data)
 	response['Content-type'] = 'application/json'
 	return response
@@ -661,7 +661,7 @@ def widget(request):
 	'''
 	context  = {}
 	template = 'widget/iframe.djt'
-	
+
 	midpoint_func = lambda a, b: [((a[0] + b[0])/2), ((a[1] + b[1])/2)]
 
 	if len(request.GET) != 0:
@@ -678,7 +678,7 @@ def widget(request):
 			context['width'] = int(context['width'])
 		except ValueError:
 			context['width'] = 256
-		
+
 		try:
 			context['height'] = int(context['height'])
 		except ValueError:
@@ -720,7 +720,7 @@ def widget(request):
 				context['googlemap_center']   = json.dumps(reduce(midpoint_func, [b['googlemap_point'] for b in context['buildings']]))
 
 		context['buildings']          = json.dumps(context['buildings'])
-		
+
 		# Convert to JavaScript boolean
 		context['illustrated'] = str(context['illustrated']).lower()
 
@@ -730,10 +730,10 @@ def widget(request):
 			context['ssl'] = True
 		elif context['ssl'].lower() in ('n', 'N'):
 			context['ssl'] = False
-		
-		context['ssl'] = str(context['ssl']).lower()		
-		
+
+		context['ssl'] = str(context['ssl']).lower()
+
 	else:
 		template = 'widget/instructions.djt'
-	
+
 	return render(request, template, context)
