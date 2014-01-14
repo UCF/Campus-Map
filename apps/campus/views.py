@@ -275,8 +275,6 @@ def location(request, loc, return_obj=False):
 	for g in groups:
 		groups_orgs.append((g, group_orgs(g)))
 
-	raise Exception
-
 	context = {
 		'location'      : location,
 		'loc_url'       : "%s.json" % reverse('location', kwargs={'loc':'foo'}).replace('foo', '%s'),
