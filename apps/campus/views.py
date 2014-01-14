@@ -127,7 +127,7 @@ def home(request, **kwargs):
 def locations(request):
 	from campus.models import MapObj
 
-	locations = MapObj.objects.all()
+	locations = MapObj.objects.all().order_by('name')
 	base_url  = request.build_absolute_uri(reverse('home'))[:-1]
 
 	if request.is_json():
