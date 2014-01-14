@@ -127,7 +127,7 @@ def home(request, **kwargs):
 def locations(request):
 	from campus.models import MapObj
 
-	locations = MapObj.objects.all().order_by('name')
+	locations = MapObj.objects.all()
 	base_url  = request.build_absolute_uri(reverse('home'))[:-1]
 
 	if request.is_json():
@@ -274,6 +274,8 @@ def location(request, loc, return_obj=False):
 	groups_orgs = list()
 	for g in groups:
 		groups_orgs.append((g, group_orgs(g)))
+
+	raise Exception
 
 	context = {
 		'location'      : location,
@@ -465,7 +467,7 @@ def dining(request):
 	'''
 	API wrapper for dining locations.
 	'''
-	dining_locations = DiningLocation.objects.all().order_by('name')
+	dining_locations = DiningLocation.objects.all()
 	arr = []
 	for location in dining_locations:
 		if location.googlemap_point is not None:
