@@ -21,7 +21,7 @@ class MapObjForm(ModelForm):
 				#form_field.widget.attrs['required'] = "required"
 			except AttributeError: pass
 		super(MapObjForm, self).__init__(*args, **kwargs)
-	
+
 	def clean(self, *args, **kwargs):
 		# keep id / building numbers lowercase
 		try:
@@ -30,7 +30,7 @@ class MapObjForm(ModelForm):
 				raise ValidationError("Invalid Location ID (allowed: lowercase alpha, numbers, dashes).  Suggestion: %s" % slugged)
 		except KeyError:
 			return super(MapObjForm, self).clean(*args, **kwargs)
-		
+
 		# keep blanks out of data (makes the API more uniform)
 		for k,v in self.cleaned_data.items():
 			try:
@@ -38,7 +38,7 @@ class MapObjForm(ModelForm):
 					self.cleaned_data[k] = None
 			except AttributeError:
 				pass # complex field (like m2m selector)
-			
+
 		# check poly coordinates
 		try:
 			coords = self.cleaned_data['poly_coords']
@@ -65,10 +65,10 @@ class MapObjForm(ModelForm):
 			pass # not present in read only (like groups)
 		except ValueError:
 			raise ValidationError("Invalid Google Map Point (not json serializable)")
-		
+
 		return super(MapObjForm, self).clean(*args, **kwargs)
-	
-	
+
+
 	class Meta:
 		model = MapObj
 
@@ -92,7 +92,7 @@ admin.site.register(Building, BuildingAdmin)
 class RegionalAdminForm(MapObjForm):
 	class Meta:
 		model = RegionalCampus
-		
+
 class RegionalAdmin(admin.ModelAdmin):
 	list_display = ('name', 'id')
 	prepopulated_fields = {'id': ('name',)}
@@ -138,16 +138,16 @@ admin.site.register(ParkingLot, ParkingLotAdmin)
 def create_groupable_locations(**kwargs):
 	import sys
 	verbosity = kwargs.get('verbosity', 0)
-	
+
 	''' ensure all campus locations are groupable '''
 	for ct in ContentType.objects.filter(app_label="campus"):
 		model = models.get_model("campus", ct.model)
-		
+
 		''' clean up content type, unused content types are created from going back/forth between map version and renaming models '''
 		if model is None:
 			ct.delete()
 			continue
-		
+
 		if not issubclass(model, campus.models.MapObj):
 			continue
 		for loc in model.objects.all():
@@ -159,7 +159,7 @@ def create_groupable_locations(**kwargs):
 		if verbosity > 0:
 			sys.stdout.write(".")
 			sys.stdout.flush()
-			
+
 	''' clean up any deleted locations '''
 	for gl in GroupedLocation.objects.all():
 		if not gl.content_object:
@@ -179,8 +179,21 @@ class GroupAdmin(admin.ModelAdmin):
 	filter_horizontal = ('locations',)
 	actions = None
 	form = GroupForm
-	
+
 	def get_form(self, request, obj=None, **kwargs):
 		create_groupable_locations()
 		return admin.ModelAdmin.get_form(self, request, obj, **kwargs)
 admin.site.register(Group, GroupAdmin)
+
+class DiningLocationForm(MapObjForm):
+	class Meta:
+		model = DiningLocation
+
+class DiningLocationAdmin(admin.ModelAdmin):
+	list_display = ('name', 'id')
+	prepopulated_fields = {'id': ('name',)}
+	fields = ('name', 'id', 'googlemap_point', 'illustrated_point')
+	actions = None
+	change_form_template = 'admin/maps_point_selector.djt'
+	form                 = DiningLocationForm
+admin.site.register(DiningLocation, DiningLocationAdmin)
