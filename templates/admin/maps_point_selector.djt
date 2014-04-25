@@ -46,24 +46,24 @@ $(document).ready(function(){
 		name : null
 	{% endif %}
 	};
-	
+
 	/**************************************************************************\
 		Create a google map
 		  - if set, center at Location
 		  - else center at Student Union Entrance
-	\**************************************************************************/	
+	\**************************************************************************/
 	var myLatlng = new google.maps.LatLng(location.x,location.y);
-	
+
 	var myOptions = {
 	  zoom: 16,
 	  center: myLatlng,
 	  draggableCursor : 'crosshair',
 	  mapTypeId: google.maps.MapTypeId.ROADMAP
 	}
-	
+
 	google.maps.visualRefresh = true;
 	map = new google.maps.Map(document.getElementById("map-canvas"), myOptions);
-	
+
 	/**************************************************************************\
 		Create dummy marker
 	\**************************************************************************/
@@ -71,7 +71,7 @@ $(document).ready(function(){
 		position: {% if original %}myLatlng{% else %}null{% endif %},
 		title:"Google Map Point"
 	});
-	
+
 	/**************************************************************************\
 		If location has coordinaties, update and place marker
 	\**************************************************************************/
@@ -80,7 +80,7 @@ $(document).ready(function(){
 		marker.title = location.name;
 		marker.setMap(map);
 	}
-	
+
 	/**************************************************************************\
 		When map is clicked:
 		  - form's coord_x and coord_y are updated with new location
@@ -93,14 +93,14 @@ $(document).ready(function(){
 		marker.setMap(map);
 		return;
 	}
-	
+
 	google.maps.event.addListener(map, 'click', function(event) {
 		place_marker(event.latLng);
 		return;
 	});
-});   
+});
 
-/* Illustrated Map */	 
+/* Illustrated Map */
 $(document).ready(function(){
 	/**************************************************************************\
 		See static/js/map.js for better documentation
@@ -118,13 +118,13 @@ $(document).ready(function(){
 		name : null
 	{% endif %}
 	};
-	
+
 	var CoordMapType= function(){};
-	
+
 	CoordMapType.prototype.tileSize = new google.maps.Size(256,256);
 	CoordMapType.prototype.minZoom = 12;
 	CoordMapType.prototype.maxZoom = 17;
-	CoordMapType.prototype.alt = "UCF Illustrated Campus Map";	  
+	CoordMapType.prototype.alt = "UCF Illustrated Campus Map";
 
 	CoordMapType.prototype.getTile = function(coord, zoom, ownerDocument) {
 	  var div = ownerDocument.createElement('DIV');
@@ -133,7 +133,7 @@ $(document).ready(function(){
 	  div.style.backgroundImage = 'url("http://cdn.ucf.edu/map/tiles/' + getTileUrl(coord, zoom) + '?_=' + new Date().getTime() + '")';
 	  return div;
 	};
-	
+
 	var getTileUrl = function(coord,zoom) {
 		var tile = "zoom-" + zoom + "/" + zoom + "-" + coord.x + "-" + coord.y + ".jpg";
 		var nope = "white.png"; //white tile
@@ -149,19 +149,19 @@ $(document).ready(function(){
 		}
 		return tile;
 	};
-	
+
 	var myLatlng = new google.maps.LatLng(85.04591,-179.92189);
 	if(location.x !== "None" && location.y !== "None"){
 		myLatlng = new google.maps.LatLng(location.x,location.y);
 	}
-	
+
 	var myOptions = {
 	  zoom: 14,
 	  center: myLatlng,
 	  draggableCursor : 'crosshair',
 	  mapTypeControl: false
 	}
-	
+
 	var map;
 	var coordinateMapType = new CoordMapType();
 	google.maps.visualRefresh = true;
@@ -172,8 +172,8 @@ $(document).ready(function(){
 
 	// We can now set the map to use the 'coordinate' map type
 	map.setMapTypeId('coordinate');
-	
-	
+
+
 	var marker = new google.maps.Marker({
 		position: myLatlng,
 		title:"Illustrated Map Point"
@@ -182,7 +182,7 @@ $(document).ready(function(){
 		marker.title = location.name;
 		marker.setMap(map);
 	}
-	
+
 	var place_marker = function(latlng){
 		var array_str = '[' + latlng.lat() + ', ' + latlng.lng() + ']';
 		$('#id_illustrated_point').val(array_str);
@@ -190,12 +190,12 @@ $(document).ready(function(){
 		marker.setMap(map);
 		return;
 	}
-	
+
 	google.maps.event.addListener(map, 'click', function(event) {
 		place_marker(event.latLng);
 		return;
-	 });	
-}); 
+	 });
+});
 
 /* Poly Coordinates Map */
 $(document).ready(function(){
@@ -204,13 +204,13 @@ $(document).ready(function(){
 	if ( !Array.prototype.reduce ) {
 	  Array.prototype.reduce = function reduce(accumulator){
 	        var i, l = this.length, curr;
-	        
+
 	        if(typeof accumulator !== "function") // ES5 : "If IsCallable(callbackfn) is false, throw a TypeError exception."
 	          throw new TypeError("First argument is not callable");
 
 	        if((l == 0 || l === null) && (arguments.length <= 1))// == on purpose to test 0 and false.
 	          throw new TypeError("Array length is 0 and no second argument");
-	        
+
 	        if(arguments.length <= 1){
 	          curr = this[0]; // Increase i to start searching the secondly defined element in the array
 	          i = 1; // start accumulating at the second element
@@ -218,12 +218,12 @@ $(document).ready(function(){
 	        else{
 	          curr = arguments[1];
 	        }
-	        
+
 	        for(i = i || 0 ; i < l ; ++i){
 	          if(i in this)
 	            curr = accumulator.call(undefined, curr, this[i], i, this);
 	        }
-	        
+
 	        return curr;
 	      };
 	  }
@@ -242,7 +242,7 @@ $(document).ready(function(){
 		  mapTypeId       : google.maps.MapTypeId.ROADMAP
 		}
 	);
-	
+
 	/**************************************************************************\
 		Create the drawing manager
 	\**************************************************************************/
@@ -309,7 +309,7 @@ $(document).ready(function(){
 		function convert_coords(points) {
 			var gpoints = [];
 			$.each(points, function(index, point) {
-				if(point[0] != undefined && point[1] != undefined 
+				if(point[0] != undefined && point[1] != undefined
 					&& typeof point[0] == 'number' && typeof point[1] == 'number') {
 					gpoints.push(new google.maps.LatLng(point[1], point[0]));
 				} else {
@@ -319,7 +319,7 @@ $(document).ready(function(){
 			return gpoints;
 		}
 		var g_poly_coords = convert_coords(poly_coords);
-		
+
 		// Create the polygon and add listeners to update poly_coords
 		$.each(g_poly_coords, function(index, g_poly_coord) {
 			var custom_options   = common_polygon_options;
@@ -380,10 +380,10 @@ $(document).ready(function(){
 				update_poly_coords_field();
 			}
 		})
-	
+
 	// Update count on load
 	update_polygon_count()
-}); 
+});
 </script>
 
 {% endblock %}

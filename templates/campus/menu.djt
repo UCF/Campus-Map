@@ -1,27 +1,27 @@
 {% load parking %}
 <div id="menu">
 	<div id="menu-header">
-		<h2> 
+		<h2>
 			<a id="tab-one"><span class="l"></span><span>Menu</span><span class="r"></span></a>
 			<a id="tab-two"><span class="l"></span><span id="menu-title"></span><span class="r"></span></a>
 			<div class="gap"></div>
 		</h2>
-		
+
 		<div id="menu-icons">
 			<a href="" id="email" title="Share this Location">email</a>
 			<a href="" id="print" title="Print" target="blank">print</a>
 		</div>
 	</div>
 	<div id="menu-body">
-	
+
 		<div id="menu-window">
-	
+
 			<div id="menu-1" class="slide">
 				<div class="item" id="item-desc">
-					<img src="{{static}}images/home.jpg">
+					<img src="{{ STATIC_URL }}images/home.jpg">
 				</div>
-				<a class="item" href="{% url locations %}">Locations &amp; Buildings</a>
-				<a class="item" href="{% url organizations %}">Organizations &amp; Depts</a>
+				<a class="item" href="{% url 'locations' %}">Locations &amp; Buildings</a>
+				<a class="item" href="{% url 'organizations' %}">Organizations &amp; Depts</a>
 				<div id="layers" class="clearfix">
 					<label><input type="checkbox" id="parking"> Parking</label>
 					<label><input type="checkbox" id="traffic"> Traffic</label>
@@ -35,12 +35,12 @@
 					<div class="clear"></div>
 				</div>
 			</div>
-	
+
 			<div id="menu-2" class="slide">
 
-				<a class="item" href="{% url page 'printable' %}">Printable Map</a>
-				<a class="item" href="{% url page 'directions' %}">Directions to UCF</a>
-			
+				<a class="item" href="{% url 'page' 'printable' %}">Printable Map</a>
+				<a class="item" href="{% url 'page' 'directions' %}">Directions to UCF</a>
+
 				<h3>Map view options:</h3>
 				<label><input type="checkbox" id="buildings"> Buildings</label>
 				<label><input type="checkbox" id="sidewalks"> Walking Paths</label>
@@ -49,29 +49,29 @@
 				<label class="disabled"><input type="checkbox" disabled="disabled"> Entrances/Exits</label>
 				<label class="disabled"><input type="checkbox" disabled="disabled"> Housing</label>
 				<label class="disabled"><input type="checkbox" disabled="disabled"> Shuttle Routes</label>
-			
+
 				<div class="more-menu">
 					<a class="prev nav" data-nav="1">&#9664; Previous Menu</a>
 					<a class="next nav" data-nav="3" id="nav-3">Next Menu &#9654;</a>
 					<div class="clear"></div>
 				</div>
 			</div>
-	
+
 			<div id="menu-3" class="slide">
-				<a class="item" href="{% url page 'about' %}">About &amp; More</a>
-			
+				<a class="item" href="{% url 'page' 'about' %}">About &amp; More</a>
+
 				<div class="more-menu">
 					<a class="prev nav" data-nav="2">&#9664; Previous Menu</a>
 					<div class="clear"></div>
 				</div>
 			</div>
-			
+
 			<div id="menu-stage" class="slide">
 				<div class="item load">
 					Loading...
 				</div>
 			</div>
-			
+
 		</div>
 		<div id="menu-screen"></div>
 		<div class="clear"></div>

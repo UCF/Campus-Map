@@ -2,13 +2,13 @@
 {% load weather %}
 
 {% block head %}
-{# IE is a dirty bastard.  Needs an absolute URL to work, thus needs to be here to have access to MEDIA_URL #}
+{# IE is a dirty bastard.  Needs an absolute URL to work, thus needs to be here to have access to STATIC_URL #}
 <style>
-.ie #menu h2 a .r         { background:none !important; filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src="{{ MEDIA_URL }}style/img/ie-sux/tab-dark-light.png", sizingMethod="crop"); zoom:1; }
-.ie #menu #tab-one .l     { background:none; filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src="{{ MEDIA_URL }}style/img/ie-sux/tab-dark-left.png", sizingMethod="crop"); zoom:1; }
-.ie #menu #tab-two .l     { background:none; filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src="{{ MEDIA_URL }}style/img/ie-sux/tab-light-dark.png", sizingMethod="crop"); zoom:1; }
-.ie #menu #tab-one.off .l { background:none; filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src="{{ MEDIA_URL }}style/img/ie-sux/tab-light-left.png", sizingMethod="crop"); zoom:1; } 
-.ie #menu #tab-two.off .r { background:none; filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src="{{ MEDIA_URL }}style/img/ie-sux/tab-light-light.png", sizingMethod="crop"); zoom:1; }
+.ie #menu h2 a .r         { background:none !important; filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src="{{ STATIC_URL }}style/img/ie-sux/tab-dark-light.png", sizingMethod="crop"); zoom:1; }
+.ie #menu #tab-one .l     { background:none; filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src="{{ STATIC_URL }}style/img/ie-sux/tab-dark-left.png", sizingMethod="crop"); zoom:1; }
+.ie #menu #tab-two .l     { background:none; filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src="{{ STATIC_URL }}style/img/ie-sux/tab-light-dark.png", sizingMethod="crop"); zoom:1; }
+.ie #menu #tab-one.off .l { background:none; filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src="{{ STATIC_URL }}style/img/ie-sux/tab-light-left.png", sizingMethod="crop"); zoom:1; }
+.ie #menu #tab-two.off .r { background:none; filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src="{{ STATIC_URL }}style/img/ie-sux/tab-light-light.png", sizingMethod="crop"); zoom:1; }
 </style>
 {% endblock %}
 
@@ -16,8 +16,8 @@
 {% block body %}
 <div id="map">
 	<header>
-		<h1><a href="{% url home %}">UCF Campus Map</a></h1>
-		
+		<h1><a href="{% url 'home' %}">UCF Campus Map</a></h1>
+
 		{% if error %}
 		<div id="error">
 			<p>{{error|safe}} <a id="error-close">close</a></p>
@@ -25,20 +25,20 @@
 		{% else %}
 		<div id="error" style="display:none;"></div>
 		{% endif %}
-		
+
 		{% weather %}
 	</header>
 	<div id="canvas-wrap"><div id="map-canvas" style="width:100%; height:550px"></div></div>
 </div>
 <footer>
 	<span class="left">
-		<a href="{% url page 'directions'%}">4000 Central Florida Blvd.  Orlando, FL 32816</a>
+		<a href="{% url 'page' 'directions'%}">4000 Central Florida Blvd.  Orlando, FL 32816</a>
 	</span>
 	<span class="right">
-		<a href="{% url page 'regional-campuses' %}">Regional Campuses</a> | 
-		<a href="{% url home %}?show=college-of-medicine">College of Medicine</a> | 
-		<a href="{% url home %}?show=downtown">Downtown</a> | 
-		<a href="{% url home %}?show=rosen-college">Rosen College</a>
+		<a href="{% url 'page' 'regional-campuses' %}">Regional Campuses</a> |
+		<a href="{% url 'home' %}?show=college-of-medicine">College of Medicine</a> |
+		<a href="{% url 'home' %}?show=downtown">Downtown</a> |
+		<a href="{% url 'home' %}?show=rosen-college">Rosen College</a>
 	</span>
 	<div class="clear">&nbsp;</div>
 </footer>
@@ -51,9 +51,9 @@
 
 
 {% block js %}
-	<script src="{{MEDIA_URL}}js/map.js?{{map_version}}" type="text/javascript"></script>
+	<script src="{{ STATIC_URL }}js/map.js?{{map_version}}" type="text/javascript"></script>
 	<script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
-	<script src="{{MEDIA_URL}}-/gmaps-infobox/infobox.js?{{map_version}}" type="text/javascript"></script>
+	<script src="{{ STATIC_URL }}-/gmaps-infobox/infobox.js?{{map_version}}" type="text/javascript"></script>
 	<script type="text/javascript">
 		$(document).ready(function(){
 			if($("#error-close").length > 0) {
@@ -64,16 +64,16 @@
 			//Campus.scripts.google(); // fire off maps
 			var map = new CampusMap({
 				"urls": {
-					"static"        : "{{ MEDIA_URL }}",
-					"search"        : "{% url search %}",
+					"static"        : "{{ STATIC_URL }}",
+					"search"        : "{% url 'search' %}",
 					"location"      : "{{ loc_url }}",
 					"parking_json"  : "{{ parking_json }}",
 					"dining"        : "{{ dining_json }}",
 					"parking_kml"   : "{{ parking_kml}}",
 					"buildings_kml" : "{{ buildings_kml }}",
 					"sidewalks_kml" : "{{ sidewalks_kml }}",
-					"bikeracks"     : "{% url bikeracks %}.json",
-					"phones"        : "{% url emergency_phones %}.json",
+					"bikeracks"     : "{% url 'bikeracks' %}.json",
+					"phones"        : "{% url 'emergency_phones' %}.json",
 					"base_url"      : "{{ base_url }}"
 				},
 				"base_ignore_types"   : {{base_ignore_types|safe}},

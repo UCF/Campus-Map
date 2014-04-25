@@ -1,3 +1,5 @@
+import datetime
+
 from django.db import models
 from tinymce import models as tinymce_models
 from django.contrib.contenttypes.models import ContentType
@@ -130,14 +132,14 @@ class MapObj(models.Model):
 	googlemap_point   = models.CharField(max_length=255, null=True, help_text='E.g., <code>[28.6017, -81.2005]</code>')
 	illustrated_point = models.CharField(max_length=255, null=True)
 	poly_coords       = models.TextField(null=True)
-	modified          = models.DateTimeField(auto_now=True)
+	modified          = models.DateTimeField(default=datetime.datetime.now)
 
 
 	def __init__(self, *args, **kwargs):
 		for k,v in kwargs.items():
 			if v in ('', "None", "none", "null"):
 				kwargs[k] = None # makes the API a bit uniform
-		if kwargs.get('id', False):
+		if kwargs.get('id', False) and not isinstance(kwargs['id'], int):
 			kwargs['id'] = kwargs['id'].lower()
 		super(MapObj, self).__init__(*args, **kwargs)
 

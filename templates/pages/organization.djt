@@ -7,15 +7,15 @@
 <div id="profile">
 
 	<h2>{{ org.name }} <span>Organization</span></h2>
-	
+
 	<div class="span-12">
-		
+
 		<p>
 			{{org.name}}<br>
 			{{org.phone}}<br>
 			{{org.building}} room {{org.room}}
 		</p>
-	
+
 		{% if org.departments %}
 			<h3>Departments</h3>
 			<ul>
@@ -30,11 +30,11 @@
 		{% endif %}
 	</div>
 	<div class="span-10" id="profile-right">
-		
+
 		{% if building %}
 		<div id="cwrap"><div id="canvas"></div></div>
 		{% endif %}
-		
+
 	</div>
 	<div class="clear"></div>
 </div><!--/org-->
@@ -42,18 +42,18 @@
 
 {% block js %}
 <script src="http://maps.google.com/maps/api/js?sensor=false" type="text/javascript" ></script>
-<script src="{{MEDIA_URL}}-/gmaps-infobox/infobox_packed.js?{{map_version}}"></script>
-<script src="{{MEDIA_URL}}js/map.js?{{map_version}}" type="text/javascript"></script>
+<script src="{{ STATIC_URL }}-/gmaps-infobox/infobox_packed.js?{{map_version}}"></script>
+<script src="{{ STATIC_URL }}js/map.js?{{map_version}}" type="text/javascript"></script>
 <script>
 
 	/**************************************************************************\
 		Mini Road Map
 	\*************************************************************************/
 	$('#canvas').each(function(){
-		
+
 		var coords = {{building.googlemap_point}};
 		if(!coords[0] || !coords[1]) return;
-		
+
 		var latlng = new google.maps.LatLng(coords[0], coords[1]);
 
 		// create map
@@ -68,15 +68,15 @@
 		};
 		google.maps.visualRefresh = true;
 		var map = new google.maps.Map(this, myOptions);
-		
+
 		// show infoBox
-		Campus.urls = { "static" : "{{MEDIA_URL}}" };
+		Campus.urls = { "static" : "{{ STATIC_URL }}" };
 		Campus.map = map;
 		Campus.menu = { "show" : function(){} };
 		Campus.info();
 		var link = '<a href="{% url location building.number %}">{{building.name}} &raquo;</a>';
 		Campus.infoBox.show(link, latlng);
-		
+
 	});
 </script>
 {% endblock %}

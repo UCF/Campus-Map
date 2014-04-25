@@ -5,12 +5,12 @@
 
 {% block branding %}
 <h1 id="site-name">Campus Map</h1>
-<a href="{% url home %}">view map</a>
+<a href="{% url 'home' %}">view map</a>
 {% endblock %}
 
 {% block nav-global %}{% endblock %}
 
 
 {% block extrahead %}
-<link rel="stylesheet" type="text/css" href="{{MEDIA_URL}}style/admin.css" media="all">
+<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}style/admin.css" media="all">
 {% endblock %}

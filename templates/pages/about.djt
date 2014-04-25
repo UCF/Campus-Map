@@ -3,13 +3,13 @@
 {% block title %}About - {{block.super}}{% endblock %}
 
 {% block wrap %}
-	
+
 	<h2>About</h2>
 	<p>UCF's Campus Map is a continuous work in progress.</p>
-	
-	<p>If you would like to contribute the project or explore the API, check out the <a href="{% url page 'developer' %}">developer&rsquo;s guide</a>.</p>
-	
+
+	<p>If you would like to contribute the project or explore the API, check out the <a href="{% url 'page' 'developer' %}">developer&rsquo;s guide</a>.</p>
+
 	<p>If you have any questions, contact us at <a href="mailto:webcom@ucf.edu?subject=UCF Campus Map">webcom@ucf.edu</a>.</p>
-	
-	
+
+
 {% endblock %}

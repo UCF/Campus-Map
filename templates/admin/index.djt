@@ -1,5 +1,5 @@
 {% extends "admin/index.html" %}
-{% load adminmedia admin_list i18n %}
+{% load admin_list i18n %}
 
 {% block extrastyle %}
 	{{block.super}}
@@ -7,7 +7,7 @@
 		.colX { margin-right: 39em !important; }
 		#content-related { clear:right; margin-top:8px; }
 		#menu { float:right; width:18em; margin-right:-19em; }
-		#menu h2 { background: #eee url({% admin_media_prefix %}img/admin/nav-bg.gif) bottom left repeat-x; color: #666; }
+		#menu h2 { background: #eee url({{ STATIC_URL }}img/admin/nav-bg.gif) bottom left repeat-x; color: #666; }
 		#menu ul { padding-top:8px; padding-bottom:4px; }
 		#menu li span { font-size:80%; }
 	</style>
@@ -18,21 +18,21 @@
 {% endcomment %}
 
 {% block content %}
-	
+
 	{% if user.is_superuser %}
 	<div id="menu">
 		<div class="module">
 			<h2>Management</h2>
 			<ul>
-				<li><a href="{% url cache %}">Manage Cache</a></li>
-				<li><a href="{% url dump_data %}UCF Campus Map {%now "Y-m-d" %}.json">Data Export</a> <span>(right-click, save as)</span></li>
+				<li><a href="{% url 'cache' %}">Manage Cache</a></li>
+				<li><a href="{% url 'dump_data' %}UCF Campus Map {%now "Y-m-d" %}.json">Data Export</a> <span>(right-click, save as)</span></li>
 			</ul>
 		</div>
 	</div>
 	{% endif %}
-	
+
 	{{ block.super }}
-	
+
 {% endblock %}
 
 

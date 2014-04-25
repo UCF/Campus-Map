@@ -1,9 +1,9 @@
 {% if not location %}
-	
+
 	<div class="item" id="item-desc">
 		No Location
 	</div>
-	
+
 {% else %}
 
 	<a href="{{base_url}}{{location.profile_link}}" class="item">{{location.name}}</a>
@@ -12,18 +12,18 @@
 		{% if location.image %}
 			<img src="{{ location.image.url }}">
 		{%else%}
-			<img src="{{static}}images/no-image.jpg">
+			<img src="{{ STATIC_URL }}images/no-image.jpg">
 		{% endif %}
 	</a>
-	
+
 	{% if location.description %}
 		<div class="item">{{ location.description }}</div>
 	{% endif %}
-	
+
 	{% if debug and not location.description %}
 		<a class="item" href="{{base_url}}{% url admin:app_list 'campus'%}building/{{location.pk}}/">add a description</a>
 	{% endif %}
-	
+
 
 	{% if group %}
 	<div class="item">
@@ -38,12 +38,12 @@
 		</ul>
 	</div>
 	{% endif %}
-	
+
 	{% if location.profile_link %}
 	<div class="item">
 		<h3 id="permalink">Permalink</h3>
 		<input type="text" value="{{base_url}}/?show={{location.id}}">
 	</div>
 	{% endif %}
-	
+
 {% endif %}

@@ -4,7 +4,7 @@
 		<meta charset="utf-8" />
 		<title>Widget - UCF Campus Map</title>
 		<script type="text/javascript" src="//maps.googleapis.com/maps/api/js?sensor=false"></script>
-		<script type="text/javascript" src="{{MEDIA_URL}}-/gmaps-infobox/infobox.js"></script>
+		<script type="text/javascript" src="{{ STATIC_URL }}-/gmaps-infobox/infobox.js"></script>
 		<script type="text/javascript">
 			(window.onload = function() {
 				var that                  = this,
@@ -20,7 +20,7 @@
 					buildings             = {{buildings|safe}},
 					googlemap_center      = {{googlemap_center}},
 					illustrated_center    = {{illustrated_center}};
-				
+
 				if(googlemap_center == null) {
 					googlemap_center = new google.maps.LatLng(28.6022,-81.2004)
 				} else {
@@ -31,7 +31,7 @@
 				} else {
 					illustrated_center = new google.maps.LatLng(illustrated_center[0], illustrated_center[1]);
 				}
-				
+
 				//
 				// Construct the map options and create the map
 				//
@@ -67,7 +67,7 @@
 							var factor = Math.pow(2, (zoom - 13));
 							if( coord.x >= wide*factor || coord.y >= tall*factor){ tile = nope; }
 						}
-						
+
 						return 'url("//cdn.ucf.edu/map/tiles/' + tile + '?_=' + new Date().getTime() + '")';
 					}
 				};
@@ -78,7 +78,7 @@
 						center         : illustrated_center,
 						mapTypeId      : 'illustrated',
 						mapTypeControl : true
-					};	
+					};
 				} else {
 					map_options = {
 						zoom      : (zoom ? zoom : 14),
@@ -112,7 +112,7 @@
 					} else if(building.googlemap_point != null) {
 						map_point_latlng = new google.maps.LatLng(building.googlemap_point[0],building.googlemap_point[1]);
 					}
-					
+
 					if(map_point_latlng != null) {
 						// Map is really small and infobox would be too big
 						// Place a marker instead
@@ -144,7 +144,7 @@
 								infobox_width = 75;
 							}
 							infobox.setContent('<div class="iBox" style="width:' + infobox_width + 'px;"><a href="{{base_url}}?show=' + building.id + '" target="_blank" style="font-size:12px;">' + building_title + '</a></div>');
-							
+
 							infobox.setPosition(map_point_latlng);
 							infobox.open(map);
 						}
@@ -163,7 +163,7 @@
 			/******************************************************************************\
 			    Black google map infobox - Copied form style.css
 			\******************************************************************************/
-			.infoBox { background:url('{{MEDIA_URL}}style/img/infobox-tip.png') no-repeat bottom left; color:white; padding-bottom:13px; }
+			.infoBox { background:url('{{ STATIC_URL }}style/img/infobox-tip.png') no-repeat bottom left; color:white; padding-bottom:13px; }
 			.iBox { -moz-border-radius: 5px; -webkit-border-radius:3px; border-radius:3px; padding:3px; max-width:250px;
 				background: black; background: rgba(0,0,0,.71); padding:5px 5px 6px; text-align:center; font-weight:bold;  }
 			.iBox a { color:white; text-decoration:none; border-bottom:1px dotted #B1B1B1; }

@@ -1,4 +1,4 @@
-from django.conf.urls.defaults import *
+from django.conf.urls import *
 import settings
 
 urlpatterns = patterns('campus.views',
@@ -12,11 +12,11 @@ urlpatterns = patterns('campus.views',
 	url(r'^parking/$', 'parking', name="parking"),
 	url(r'^food/$', 'dining', name='dining'),
 	url(r'^regional-campuses/((?P<campus>[\w-]+)/)?$', 'regional_campuses', name="regional"),
-	
+
 	url(r'^widget/$', 'widget', name='widget'),
 
 	# campus admin views
 	url(r'^admin/dump/', 'data_dump', name="dump_data"),
 	url(r'^admin/cache/', 'cache_admin', name="cache"),
-	
+
 )

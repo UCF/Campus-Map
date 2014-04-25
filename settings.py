@@ -11,10 +11,7 @@ APP_FOLDER        = os.path.join(PROJECT_FOLDER, 'apps')
 INC_FOLDER        = os.path.join(PROJECT_FOLDER, 'third-party')
 TEMPL_FOLDER      = os.path.join(PROJECT_FOLDER, 'templates')
 ROOT_URLCONF      = os.path.basename(PROJECT_FOLDER) + '.urls'
-MEDIA_ROOT        = os.path.join(PROJECT_FOLDER, 'static')
 LOGIN_URL         = '/admin/'
-STATIC_ROOT       = MEDIA_ROOT
-STATIC_URL        = '/static/'
 
 # Add local apps folder to python path
 sys.path.append(APP_FOLDER)
@@ -32,134 +29,174 @@ TEMPLATE_LOADERS = (
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
-	"apps.map_context",
-	"django.contrib.auth.context_processors.auth",
-	"django.core.context_processors.debug",
-	"django.core.context_processors.i18n",
-	"django.core.context_processors.media",
+    'apps.map_context',
+    'django.contrib.auth.context_processors.auth',
+    'django.core.context_processors.debug',
+    'django.core.context_processors.i18n',
+    'django.core.context_processors.media',
+    'django.core.context_processors.request',
+    'django.core.context_processors.static',
+    'django.contrib.messages.context_processors.messages',
 )
 
 MIDDLEWARE_CLASSES = [
-	'api.MapMiddleware',
-	'apps.DisableCSRF', # :(
-	'django.contrib.sessions.middleware.SessionMiddleware',
-	'django.contrib.auth.middleware.AuthenticationMiddleware',
-	'django.middleware.cache.UpdateCacheMiddleware',
-	'django.middleware.common.CommonMiddleware',
-	'django.contrib.messages.middleware.MessageMiddleware',
-	#'django.middleware.cache.FetchFromCacheMiddleware',
+    'api.MapMiddleware',
+    'apps.DisableCSRF', # :(
+    'django.middleware.common.CommonMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+    #'django.middleware.cache.FetchFromCacheMiddleware',
 ]
 
 TEMPLATE_DIRS = (TEMPL_FOLDER,)
 
 INSTALLED_APPS = (
-	'campus',
-	'django.contrib.admin',
-	'django.contrib.auth',
-	'django.contrib.contenttypes',
-	'django.contrib.sessions',
-	'django.contrib.sites',
+    'campus',
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.staticfiles',
+    'django.contrib.sites',
+    'django.contrib.humanize',
 )
 
 TINYMCE_DEFAULT_CONFIG = {
-	'theme': "advanced",
-	'theme_advanced_buttons1' : "%s,|,%s,|,%s,|,%s" % (
-			"bold,italic,underline",
-			"bullist,numlist,link|,outdent,indent,blockquote",
-			"justifyleft,justifycenter,justifyright,justifyfull",
-			"formatselect,|,removeformat,code" ),
-	'theme_advanced_buttons2' : "",
-	'theme_advanced_buttons3' : "",
-	'theme_advanced_buttons4' : "",
-	'theme_advanced_toolbar_location' : "top",
-	'theme_advanced_toolbar_align' : "left",
-	'theme_advanced_statusbar_location' : "bottom",
-	'theme_advanced_resizing' : True,
+    'theme': "advanced",
+    'theme_advanced_buttons1' : "%s,|,%s,|,%s,|,%s" % (
+            "bold,italic,underline",
+            "bullist,numlist,link|,outdent,indent,blockquote",
+            "justifyleft,justifycenter,justifyright,justifyfull",
+            "formatselect,|,removeformat,code" ),
+    'theme_advanced_buttons2' : "",
+    'theme_advanced_buttons3' : "",
+    'theme_advanced_buttons4' : "",
+    'theme_advanced_toolbar_location' : "top",
+    'theme_advanced_toolbar_align' : "left",
+    'theme_advanced_statusbar_location' : "bottom",
+    'theme_advanced_resizing' : True,
 }
 
 
 LOGGING = {
-	'version':1,
-	'disable_existing_loggers':True,
-	'filters': {
-		'require_debug_true': {
-			'()': 'logs.RequiredDebugTrue',
-		},
-		'require_debug_false': {
-			'()': 'logs.RequiredDebugFalse',
-		}
-	},
-	'formatters': {
-		'concise': {
-			'format':'\t'.join(['%(levelname)s','%(asctime)s','%(message)s']),
-		},
-		'talkative': {
-			'format':'\t'.join(['%(levelname)s','%(asctime)s','%(funcName)s','%(lineno)d','%(message)s']),
-		},
-		# Request Specific Formatters
-		'request_console_formatter':{
-			'format':'\t'.join(['%(levelname)s','%(asctime)s','%(message)s','%(exc_info)s']),
-		},
-		'request_file_formatter':{
-			'format':'\t'.join(['%(levelname)s','%(asctime)s','%(message)s','%(exc_info)s']),
-		},
-	},
-	'handlers': {
-		'discard': {
-			'level' : 'DEBUG',
-			'class' : 'django.utils.log.NullHandler'
-		},
-		'console': {
-			'level'     : 'DEBUG',
-			'class'     : 'logging.StreamHandler',
-			'formatter' : 'concise',
-			'filters'   : ['require_debug_true']
-		},		
-		'file': {
-			'level'       : 'DEBUG',
-			'class'       : 'logging.handlers.RotatingFileHandler',
-			'filename'    : '%s/application.log' % os.path.join(PROJECT_FOLDER, 'logs'),
-			'maxBytes'    : 1024*1024*10, # 10 MB
-			'backupCount' : 5,
-			'formatter'   : 'concise',
-			'filters'     : ['require_debug_false']
-		},
-		# Request Specific Handlers
-		'console_request': {
-			'level'       : 'DEBUG',
-			'class'       : 'logging.StreamHandler',
-			'formatter'   : 'request_console_formatter',
-			'filters'     : ['require_debug_true']
-		},
-		'file_request': {
-			'level'       : 'DEBUG',
-			'class'       : 'logging.handlers.RotatingFileHandler',
-			'filename'    : '%s/request.log' % os.path.join(PROJECT_FOLDER, 'logs'),
-			'maxBytes'    : 1024*1024*10, # 10 MB
-			'backupCount' : 5,
-			'formatter'   : 'request_file_formatter',
-			'filters'     : ['require_debug_false']
-		}
-	},
-	'loggers': {
-		'django.db.backends': { # Supress SQL debug messages
-			'handlers'  : ['discard'],
-			'level'     : 'CRITICAL',
-			'propagate' : False
-		},
-		'django.request': {
-			'handlers'  : ['console_request', 'file_request'],
-			'level'     : 'DEBUG',
-			'propagate' : False
-		},
-		'': {
-			'handlers'  : ['console', 'file'],
-			'level'     : 'DEBUG',
-			'propagate' : False
-		},
-		
-	}
+    'version':1,
+    'disable_existing_loggers':True,
+    'filters': {
+        'require_debug_true': {
+            '()': 'logs.RequiredDebugTrue',
+        },
+        'require_debug_false': {
+            '()': 'logs.RequiredDebugFalse',
+        }
+    },
+    'formatters': {
+        'concise': {
+            'format':'\t'.join(['%(levelname)s','%(asctime)s','%(message)s']),
+        },
+        'talkative': {
+            'format':'\t'.join(['%(levelname)s','%(asctime)s','%(funcName)s','%(lineno)d','%(message)s']),
+        },
+        # Request Specific Formatters
+        'request_console_formatter':{
+            'format':'\t'.join(['%(levelname)s','%(asctime)s','%(message)s','%(exc_info)s']),
+        },
+        'request_file_formatter':{
+            'format':'\t'.join(['%(levelname)s','%(asctime)s','%(message)s','%(exc_info)s']),
+        },
+    },
+    'handlers': {
+        'discard': {
+            'level' : 'DEBUG',
+            'class' : 'django.utils.log.NullHandler'
+        },
+        'console': {
+            'level'     : 'DEBUG',
+            'class'     : 'logging.StreamHandler',
+            'formatter' : 'concise',
+            'filters'   : ['require_debug_true']
+        },
+        'file': {
+            'level'       : 'DEBUG',
+            'class'       : 'logging.handlers.RotatingFileHandler',
+            'filename'    : '%s/application.log' % os.path.join(PROJECT_FOLDER, 'logs'),
+            'maxBytes'    : 1024*1024*10, # 10 MB
+            'backupCount' : 5,
+            'formatter'   : 'concise',
+            'filters'     : ['require_debug_false']
+        },
+        # Request Specific Handlers
+        'console_request': {
+            'level'       : 'DEBUG',
+            'class'       : 'logging.StreamHandler',
+            'formatter'   : 'request_console_formatter',
+            'filters'     : ['require_debug_true']
+        },
+        'file_request': {
+            'level'       : 'DEBUG',
+            'class'       : 'logging.handlers.RotatingFileHandler',
+            'filename'    : '%s/request.log' % os.path.join(PROJECT_FOLDER, 'logs'),
+            'maxBytes'    : 1024*1024*10, # 10 MB
+            'backupCount' : 5,
+            'formatter'   : 'request_file_formatter',
+            'filters'     : ['require_debug_false']
+        }
+    },
+    'loggers': {
+        'django.db.backends': { # Supress SQL debug messages
+            'handlers'  : ['discard'],
+            'level'     : 'CRITICAL',
+            'propagate' : False
+        },
+        'django.request': {
+            'handlers'  : ['console_request', 'file_request'],
+            'level'     : 'DEBUG',
+            'propagate' : False
+        },
+        '': {
+            'handlers'  : ['console', 'file'],
+            'level'     : 'DEBUG',
+            'propagate' : False
+        },
+
+    }
 }
+
+# Absolute filesystem path to the directory that will hold user-uploaded files.
+# Example: "/var/www/example.com/media/"
+MEDIA_ROOT = os.path.join(PROJECT_FOLDER, 'media')
+
+# URL that handles the media served from MEDIA_ROOT. Make sure to use a
+# trailing slash.
+# Examples: "http://example.com/media/", "http://media.example.com/"
+MEDIA_URL = '/media/'
+
+# Absolute path to the directory static files should be collected to.
+# Don't put anything in this directory yourself; store your static files
+# in apps' "static/" subdirectories and in STATICFILES_DIRS.
+# Example: "/var/www/example.com/static/"
+STATIC_ROOT = os.path.join(PROJECT_FOLDER, 'static')
+
+# URL prefix for static files.
+# Example: "http://example.com/static/", "http://static.example.com/"
+STATIC_URL = '/static/'
+
+# Additional locations of static files
+STATICFILES_DIRS = (
+    # Put strings here, like "/home/html/static" or "C:/www/django/static".
+    # Always use forward slashes, even on Windows.
+    # Don't forget to use absolute paths, not relative paths.
+    os.path.join(PROJECT_FOLDER, 'static_files'),
+)
+
+# List of finder classes that know how to find static files in
+# various locations.
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+#    'django.contrib.staticfiles.finders.DefaultStorageFinder',
+)
 
 # For Google to render KML layers, it needs to import the map data.  If working
 # locally or behind a firewall, this will not be possible.  If GOOGLE_CAN_SEE_ME
@@ -177,21 +214,13 @@ PHONEBOOK = "http://search.smca.ucf.edu/service.php"
 # Allows for debug to be false in dev
 SERVE_STATIC_FILES = False
 
-# Search Query Cache Prefix
-SEARCH_QUERY_CACHE_PREFIX = 'search_'
-
-CACHE_TIMEOUT   = 60*60*24
-CACHE_LOCATION  = os.path.join(PROJECT_FOLDER, 'cache')
-CACHE_BACKEND   = 'locmem://'
-CACHE_MIDDLEWARE_ANONYMOUS_ONLY = True
-
 LOGIN_REDIRECT_URL = '/admin/'
 
 try:
-	from settings_local import *
+    from settings_local import *
 except ImportError:
-	from django.core.exceptions import ImproperlyConfigured
-	raise ImproperlyConfigured(
-		'Local settings file was not found. ' +
-		'Ensure settings_local.py exists in project root.'
-	)
+    from django.core.exceptions import ImproperlyConfigured
+    raise ImproperlyConfigured(
+        'Local settings file was not found. ' +
+        'Ensure settings_local.py exists in project root.'
+    )
