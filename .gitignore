@@ -1,9 +1,6 @@
 # Local Settings
 settings_local.py
 
-# Uploads
-static/uploads/*
-
 # Application, OS, and backup files
 *~
 *.pyc
@@ -13,3 +10,9 @@ Thumbs.db
 .svn
 cache/*
 logs/*
+
+# Static Files
+static/*
+
+# Uploads
+media/*
