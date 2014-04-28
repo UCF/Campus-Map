@@ -1,11 +1,9 @@
 # production:
 #DEBUG                      = False
-#SERVE_STATIC_FILES         = False
 #TEMPLATE_DEBUG             = DEBUG
 
 # development
 DEBUG                      = True
-SERVE_STATIC_FILES         = True
 TEMPLATE_DEBUG             = DEBUG
 TEMPLATE_STRING_IF_INVALID = 'halp!'
 
@@ -18,15 +16,15 @@ MANAGERS       = ADMINS
 
 # Email settings for mailing forgot password emails
 EMAIL_HOST          = ''
-EMAIL_PORT          = 
+EMAIL_PORT          =
 
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash if there is a path component (optional in other cases).
-# 
+#
 # Should be a *complete* url, otherwise the API could break for anyone trying
 # to use map media.
-# 
+#
 # Examples: "http://media.lawrence.com", "http://example.com/media/"
 MEDIA_URL = 'http://.../static/'
 
@@ -56,7 +54,3 @@ DATABASES = {
 # Read settings.py for more details about these settings
 #GOOGLE_CAN_SEE_ME = False
 #GOOGLE_LOOK_HERE  = "http://map.ucf.edu"
-
-
-# Disable Cache
-#CACHES = { 'default': { 'BACKEND': 'django.core.cache.backends.dummy.DummyCache', } }

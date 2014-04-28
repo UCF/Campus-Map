@@ -1,6 +1,6 @@
 {% extends "base.djt"%}
 
-{% block title %}Locations and Building - {{block.super}}{% endblock %}
+{% block title %}Locations and Building - {{ block.super }}{% endblock %}
 
 {% block wrap %}
 
@@ -19,9 +19,9 @@
 				</thead>
 				{% for b in buildings %}
 				<tr>
-					<td class="mono">{{b.abbreviation|default:"&mdash;"}}</td>
-					<td>{{b.link|safe}}</td>
-					<td class="mono">{{b.number|default:"-"}}</td>
+					<td class="mono">{{ b.abbreviation|default:"&mdash;" }}</td>
+					<td>{{ b.link|safe }}</td>
+					<td class="mono">{{ b.number|default:"-" }}</td>
 				</tr>
 				{% endfor %}
 			</table>
@@ -37,7 +37,7 @@
 		{% if locations %}
 			<ul>
 			{% for l in locations %}
-				<li>{{l}}</li>
+				<li>{{ l }}</li>
 			{% endfor %}
 			</ul>
 		{% else %}
@@ -49,18 +49,18 @@
 		{% if groups %}
 			<ul>
 			{% for g in groups %}
-				<li><a href="{% url location loc=g.id %}">{{g}}</a></li>
+				<li><a href="{% url 'location' loc=g.id %}">{{ g }}</a></li>
 			{% endfor %}
 			</ul>
 		{% else %}
 			<p>No groups found.</p>
 		{% endif %}
 
-		<h2><a href="{% url regional %}">Regional Campuses</a></h2>
+		<h2><a href="{% url 'regional' %}">Regional Campuses</a></h2>
 		{% if campuses %}
 			<ul>
 			{% for c in campuses %}
-				<li><a href="{% url regional %}{{c.id}}/">{{c.name}}</a></li>
+				<li><a href="{% url 'regional' %}{{ c.id }}/">{{ c.name }}</a></li>
 			{% endfor %}
 			</ul>
 		{% else %}
@@ -70,23 +70,14 @@
 
 		<h2>Miscellaneous</h2>
 		<ul>
-			<li><a href="{% url parking %}">Parking</a></li>
-			<li><a href="{% url bikeracks %}">Bike Racks</a></li>
-			<li><a href="{% url emergency_phones %}">Blue Light Emergency Phones</a></li>
-			<li><a href="{% url sidewalks %}">Walking Paths</a></li>
-
-
-
-
+			<li><a href="{% url 'parking' %}">Parking</a></li>
+			<li><a href="{% url 'bikeracks' %}">Bike Racks</a></li>
+			<li><a href="{% url 'emergency_phones' %}">Blue Light Emergency Phones</a></li>
+			<li><a href="{% url 'sidewalks' %}">Walking Paths</a></li>
 		</ul>
 
 	</div>
 	<div class="clear"></div>
-
-
-
-
-
 {% endblock %}
 
 {% block head %}

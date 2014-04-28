@@ -6,9 +6,9 @@
 
 {% else %}
 
-	<a href="{{base_url}}{{location.profile_link}}" class="item">{{location.name}}</a>
+	<a href="{{ base_url }}{{ location.profile_link }}" class="item">{{ location.name }}</a>
 
-	<a class="item" href="{{base_url}}{{location.profile_link}}">
+	<a class="item" href="{{ base_url }}{{ location.profile_link }}">
 		{% if location.image %}
 			<img src="{{ location.image.url }}">
 		{%else%}
@@ -21,7 +21,7 @@
 	{% endif %}
 
 	{% if debug and not location.description %}
-		<a class="item" href="{{base_url}}{% url admin:app_list 'campus'%}building/{{location.pk}}/">add a description</a>
+		<a class="item" href="{{ base_url }}{% url 'admin:app_list' 'campus'%}building/{{ location.pk }}/">add a description</a>
 	{% endif %}
 
 
@@ -32,10 +32,10 @@
 		{# limit the number of organizations displayed to 4 #}
 		{% for o in location.orgs.results %}
 			{% if forloop.counter < 5 %}
-			<li><a href="{{base_url}}{% url locations %}/{{o.bldg_id}}/{{o.building|slugify}}/?org={{o.id}}">{{o.name}}</a></li>
+			<li><a href="{{ base_url }}{% url 'locations' %}/{{ o.bldg_id }}/{{ o.building|slugify }}/?org={{ o.id }}">{{ o.name }}</a></li>
 			{% endif %}
 			{% if forloop.counter == 5  %}
-				<li class="c"><a href="{{base_url}}{{location.profile_link}}">-- View All --</a></li>
+				<li class="c"><a href="{{ base_url }}{{ location.profile_link }}">-- View All --</a></li>
 			{% endif %}
 		{% endfor %}
 		</ul>
@@ -45,7 +45,7 @@
 	{% if location.profile_link %}
 	<div class="item">
 		<h3 id="permalink">Permalink</h3>
-		<input type="text" value="{{base_url}}/?show={{location.number}}">
+		<input type="text" value="{{ base_url }}/?show={{ location.number }}">
 	</div>
 	{% endif %}
 

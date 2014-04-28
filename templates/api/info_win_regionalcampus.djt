@@ -1,7 +1,7 @@
 {% if not location %}null{% else %}
 <div class="item">
-	<h2 class="light">{{location.name}}</h2>
-	<a class="item" href="{{base_url}}{{location.profile_link}}">
+	<h2 class="light">{{ location.name }}</h2>
+	<a class="item" href="{{ base_url }}{{ location.profile_link }}">
 		{% if location.image %}
 			<img src="{{ location.image.url }}">
 		{%else%}
@@ -9,10 +9,10 @@
 		{% endif %}
 	</a>
 	<p>
-		{{location.profile|safe}}
+		{{ location.profile|safe }}
 	</p>
 </div>
 
-<a href="{{base_url}}{% url regional %}" class="item">More Regional Campuses</a>
+<a href="{{ base_url }}{% url regional %}" class="item">More Regional Campuses</a>
 
 {% endif %}

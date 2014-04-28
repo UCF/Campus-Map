@@ -2,9 +2,9 @@
 <kml xmlns="http://www.opengis.net/kml/2.2"
      xmlns:atom="http://www.w3.org/2005/Atom">
 <Document>
-	
+
 <name>UCF Campus Map Locations</name>
-<atom:link href="{{base_url}}{% url locations%}.kml" />
+<atom:link href="{{ base_url }}{% url 'locations' %}.kml" />
 <atom:author>University of Central Florida</atom:author>
 
 <Schema name="location" id="location">
@@ -16,7 +16,8 @@
 	<SimpleField name="abbreviation" type="string"></SimpleField>
 </Schema>
 
-{% for l in locations %}{% if l.kml_coords %}
+{% for l in locations %}
+{% if l.kml_coords %}
 <Placemark id="{{l.id}}">
 	<name>{{l.title}}</name>
 	<Style>
@@ -25,23 +26,32 @@
 		<PolyStyle><color>59b0b0b0</color></PolyStyle>
 	</Style>
 	{% if l.image %}<description><![CDATA[
-		<a href="{{base_url}}{{l.profile_link}}"><img src="{{base_url}}{{l.image.url}}" alt="{{l.title}}" /></a><br/>
-		<a href="{{base_url}}{{l.profile_link}}">Location Profile</a> | <a href="{{base_url}}?show={{l.id}}">View on UCF Campus Map</a>
+		<a href="{{ base_url }}{{ l.profile_link }}"><img src="{{ base_url }}{{ l.image.url }}" alt="{{ l.title }}" /></a><br/>
+		<a href="{{ base_url }}{{ l.profile_link }}">Location Profile</a> | <a href="{{ base_url }}?show={{ l.id }}">View on UCF Campus Map</a>
 		{% if l.profile%}<div class="location-profile">
-			{{l.profile|safe}}
+			{{ l.profile|safe }}
 		</div>
 	{% endif %}]]></description>
 	{% endif %}<ExtendedData><SchemaData schemaUrl="#location">
-		<SimpleField name="href" type="string">{{base_url}}{{l.profile_link}}</SimpleField>
-		<SimpleField name="object_type" type="string">{{l.object_type}}</SimpleField>{% if l.image %}
-		<SimpleField name="imgsrc" type="string">{{base_url}}{{l.image.url}}</SimpleField>{% endif %}{% if l.perm_type %}
-		<SimpleField name="perm_type" type="string">{{ l.perm_type }}</SimpleField>{% endif %}{% if l.description %}
-		<SimpleField name="excerpt" type="string">{{ l.description }}</SimpleField>{% endif %}{% if l.abbreviation %}
-		<SimpleField name="abbreviation" type="string">{{ l.abbreviation }}</SimpleField>{% endif %}
+		<SimpleField name="href" type="string">{{ base_url }}{{ l.profile_link }}</SimpleField>
+		<SimpleField name="object_type" type="string">{{ l.object_type }}</SimpleField>
+        {% if l.image %}
+		<SimpleField name="imgsrc" type="string">{{ base_url }}{{ l.image.url }}</SimpleField>
+        {% endif %}
+        {% if l.perm_type %}
+		<SimpleField name="perm_type" type="string">{{ l.perm_type }}</SimpleField>
+        {% endif %}
+        {% if l.description %}
+		<SimpleField name="excerpt" type="string">{{ l.description }}</SimpleField>
+        {% endif %}
+        {% if l.abbreviation %}
+		<SimpleField name="abbreviation" type="string">{{ l.abbreviation }}</SimpleField>
+        {% endif %}
 	</SchemaData></ExtendedData>
-	<Polygon><outerBoundaryIs><LinearRing><coordinates>{{l.kml_coords}}</coordinates></LinearRing></outerBoundaryIs></Polygon>
+	<Polygon><outerBoundaryIs><LinearRing><coordinates>{{ l.kml_coords }}</coordinates></LinearRing></outerBoundaryIs></Polygon>
 </Placemark>
-{% endif %}{% endfor %}
+{% endif %}
+{% endfor %}
 
 </Document>
 </kml>

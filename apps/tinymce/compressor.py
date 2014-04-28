@@ -11,7 +11,6 @@ from datetime import datetime
 import os
 
 from django.conf import settings
-from django.core.cache import cache
 from django.http import HttpResponse
 from django.shortcuts import Http404
 from django.template import RequestContext
@@ -60,26 +59,6 @@ def gzip_compressor(request):
     now = datetime.utcnow()
     response['Date'] = now.strftime('%a, %d %b %Y %H:%M:%S GMT')
 
-    cacheKey = '|'.join(plugins + languages + themes)
-    cacheData = cache.get(cacheKey)
-
-    if not cacheData is None:
-        if cacheData.has_key('ETag'):
-            if_none_match = request.META.get('HTTP_IF_NONE_MATCH', None)
-            if if_none_match == cacheData['ETag']:
-                response.status_code = 304
-                response.content = ''
-                response['Content-Length'] = '0'
-                return response
-
-        if cacheData.has_key('Last-Modified'):
-            if_modified_since = request.META.get('HTTP_IF_MODIFIED_SINCE', None)
-            if if_modified_since == cacheData['Last-Modified']:
-                response.status_code = 304
-                response.content = ''
-                response['Content-Length'] = '0'
-                return response
-
     # Add core, with baseURL added
     content.append(get_file_contents("tiny_mce%s.js" % suffix).replace(
             "tinymce._init();", "tinymce.baseURL='%s';tinymce._init();"
@@ -127,8 +106,4 @@ def gzip_compressor(request):
     response.write(content)
     timeout = 3600 * 24 * 10
     patch_response_headers(response, timeout)
-    cache.set(cacheKey, {
-        'Last-Modified': response['Last-Modified'],
-        'ETag': response['ETag'],
-    })
     return response

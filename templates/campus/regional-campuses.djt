@@ -3,23 +3,23 @@
 {% block title %}Regional Campuses - {{block.super}}{% endblock %}
 
 {% block wrap %}
-<div id="regional-campuses">	
+<div id="regional-campuses">
 	<h2>Regional Campuses</h2>
 	<p><strong><a href="http://regionalcampuses.ucf.edu/">http://regionalcampuses.ucf.edu/</a></strong></p>
-	
+
 	{% if not campuses %}
 		<p>Coming Soon!</p>
 	{% else %}
-		
+
 		{% for c in campuses %}
 		<div class="rc {% cycle 'rc-clear' '' '' %}">
-			<h3><a href="{% url regional %}{{c.id}}/">{{c.name}}</a></h3>
-			<p><a href="{% url regional %}{{c.id}}/"><img src="{{c.image.url}}" /></a></p>
-			{{c.profile|safe}}
+			<h3><a href="{% url 'regional' %}{{ c.id }}/">{{ c.name }}</a></h3>
+			<p>{% if c.image %}<a href="{% url 'regional' %}{{ c.id }}/"><img src="{{ c.image.url }}" /></a>{% endif %}</p>
+			{{ c.profile|safe }}
 		</div>
-		
+
 		{%endfor%}
-		
+
 	{% endif %}
 	<div class="clear">&nbsp;</div>
 </div>

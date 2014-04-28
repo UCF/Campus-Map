@@ -6,9 +6,9 @@
 
 {% else %}
 
-	<a href="{{base_url}}{{location.profile_link}}" class="item">{{location.name}}</a>
+	<a href="{{ base_url }}{{ location.profile_link }}" class="item">{{ location.name }}</a>
 
-	<a class="item" href="{{base_url}}{{location.profile_link}}">
+	<a class="item" href="{{ base_url }}{{ location.profile_link }}">
 		{% if location.image %}
 			<img src="{{ location.image.url }}">
 		{%else%}
@@ -23,7 +23,7 @@
 	{% if location.profile_link %}
 	<div class="item">
 		<h3 id="permalink">Permalink</h3>
-		<input type="text" value="{{base_url}}/?show={{location.number}}">
+		<input type="text" value="{{ base_url }}/?show={{ location.number }}">
 	</div>
 	{% endif %}
 

@@ -47,7 +47,6 @@ MIDDLEWARE_CLASSES = [
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    #'django.middleware.cache.FetchFromCacheMiddleware',
 ]
 
 TEMPLATE_DIRS = (TEMPL_FOLDER,)
@@ -210,9 +209,6 @@ SEARCH_ENGINE = None
 
 # Phonebook search service url
 PHONEBOOK = "http://search.smca.ucf.edu/service.php"
-
-# Allows for debug to be false in dev
-SERVE_STATIC_FILES = False
 
 LOGIN_REDIRECT_URL = '/admin/'
 

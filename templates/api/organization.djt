@@ -1,6 +1,6 @@
 <p>
-	{{org.phone}}<br>
-	{{org.building}} room {{org.room}}
+	{{ org.phone }}<br>
+	{{ org.building }} room {{ org.room }}
 </p>
 
 {% if org.departments %}
@@ -8,9 +8,9 @@
 	<ul>
 	{% for d in org.departments %}
 		<li>
-			{{d.name}}<br>
-			{{d.phone}}<br>
-			{{d.building}} room {{d.room}}
+			{{ d.name}}<br>
+			{{ d.phone }}<br>
+			{{ d.building }} room {{ d.room }}
 		</li>
 	{% endfor %}
 	</ul>

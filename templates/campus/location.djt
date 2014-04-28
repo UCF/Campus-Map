@@ -1,6 +1,6 @@
-{% extends "base.djt"%}
+{% extends 'base.djt' %}
 
-{% block title %}{{location.name}} - {{block.super}}{% endblock %}
+{% block title %}{{ location.name}} - {{ block.super }}{% endblock %}
 
 
 {% block wrap %}
@@ -10,13 +10,13 @@
 	<h2>
 		{{ location.name }}
 		<div class="sub">
-			{% if location.number %}Location ID: <span>{{location.number}}</span>{% endif %}
-			{% if location.abbreviation %}Abbreviation: <span>{{location.abbreviation}}</span>{% endif %}
-			{% ifequal location.type 'Group' %}Group ID: <span>{{location.id}}</span>{% endifequal %}
+			{% if location.number %}Location ID: <span>{{ location.number }}</span>{% endif %}
+			{% if location.abbreviation %}Abbreviation: <span>{{ location.abbreviation }}</span>{% endif %}
+			{% ifequal location.type 'Group' %}Group ID: <span>{{ location.id }}</span>{% endifequal %}
 		</div>
 	</h2>
 
-	<div class="{% if location.object_type == 'RegionalCampus' %}span-7{%else%}span-12{%endif%}">
+	<div class="{% if location.object_type == 'RegionalCampus' %}span-7{% else %}span-12{% endif %}">
 
 		<div id="profile-copy">
 		{% if not location.profile or location.profile == "None" %}
@@ -24,9 +24,9 @@
 			{% if location.image %}
 				<img src="{{ location.image.url }}"><br><br>
 			{% endif %}
-			This location needs a profile, <a href="mailto:webcom@ucf.edu?subject=Campus Map Location Profile&amp;Body={{location.name}}">do you have one?</a>
+			This location needs a profile, <a href="mailto:webcom@ucf.edu?subject=Campus Map Location Profile&amp;Body={{ location.name }}">do you have one?</a>
 		{% else %}
-			{{location.profile|safe}}
+			{{ location.profile|safe }}
 		{% endif %}
 		</div>
 
@@ -35,13 +35,13 @@
 			<ul class="grey">
 			{% for o in orgs %}
 				<li>
-					<a class="org" data-pk="{{ o.id }}" data-link="{% url org o.id %}" href="?org={{o.id}}">{{o.name}}</a>
+					<a class="org" data-pk="{{ o.id }}" data-link="{% url 'org' o.id %}" href="?org={{ o.id }}">{{ o.name }}</a>
 				{% if o.id == org.id %}
-					<div class="org-info open loaded" id="org-{{o.id}}">
+					<div class="org-info open loaded" id="org-{{ o.id }}">
 						{% include 'api/organization.djt' %}
 					</div>
 				{% else %}
-					<div class="org-info" id="org-{{o.id}}"></div>
+					<div class="org-info" id="org-{{ o.id }}"></div>
 				{% endif %}
 				</li>
 			{% endfor %}
@@ -50,10 +50,10 @@
 			{# same code as below, juggling locations to make page look balanced if no orgs #}
 			{% if location.locations %}
 			<div id="group-locations">
-			 	<h3>Grouped in {{location.name}}:</h3>
+			 	<h3>Grouped in {{ location.name }}:</h3>
 				<ul class="grey">
 					{% for l in location.locations.links %}
-					<li>{{l|safe}}</li>
+					<li>{{ l|safe }}</li>
 					{% endfor %}
 				</ul>
 			</div>
@@ -63,20 +63,20 @@
 		{% if groups_orgs|length %}
 		<div id="group-organizations">
 			{% for group, orgs in groups_orgs %}
-			<h3>Located in {{group.name}}</h3>
+			<h3>Located in {{ group.name }}</h3>
 
 			{% if orgs|length %}
-			<p>Organizations in {{group.name}}</p>
+			<p>Organizations in {{ group.name }}</p>
 			<ul class="grey">
 			{% for o in orgs %}
 				<li>
-					<a class="org" data-pk="{{ o.id }}" data-link="{% url org o.id %}" href="?org={{o.id}}">{{o.name}}</a>
+					<a class="org" data-pk="{{ o.id }}" data-link="{% url 'org' o.id %}" href="?org={{ o.id }}">{{ o.name }}</a>
 				{% if o.id == org.id %}
-					<div class="org-info open loaded" id="org-{{o.id}}">
+					<div class="org-info open loaded" id="org-{{ o.id }}">
 						{% include 'api/organization.djt' %}
 					</div>
 				{% else %}
-					<div class="org-info" id="org-{{o.id}}"></div>
+					<div class="org-info" id="org-{{ o.id }}"></div>
 				{% endif %}
 				</li>
 			{% endfor %}
@@ -99,15 +99,15 @@
 
 		{% if location.illustrated_point %}
 		<div id="cwrap"><div id="canvas"></div></div>
-		<div id="map-go"><a href="/?show={{location.id}}">show on map</a></div>
+		<div id="map-go"><a href="/?show={{ location.id }}">show on map</a></div>
 		{% endif %}
 
 		{% if orgs and location.locations %}
 		<div id="group-locations">
-		 	<h3>Grouped in {{location.name}}:</h3>
+		 	<h3>Grouped in {{ location.name }}:</h3>
 			<ul class="grey">
 				{% for l in location.locations.links %}
-				<li>{{l|safe}}</li>
+				<li>{{ l|safe }}</li>
 				{% endfor %}
 			</ul>
 		</div>
@@ -118,7 +118,7 @@
 			<h3><a href="http://www.flickr.com/photos/universityofcentralflorida/">Photos on Flickr</a></h3>
 			<p>
 			{% for p in photos %}
-				<a href="{{p.url_z}}" title="{{p.info}}"><img src="{{p.url_sq}}" alt="{{p.title}}"></a>
+				<a href="{{ p.url_z }}" title="{{ p.info }}"><img src="{{ p.url_sq }}" alt="{{ p.title }}"></a>
 			{% endfor %}
 			</p>
 		</div>
@@ -127,11 +127,11 @@
 		{% if location.sketchup %}
 		<div id="sketchup">
 			{% comment %}
-			<h3 class="light"><a href="http://sketchup.google.com/3dwarehouse/details?mid={{location.sketchup}}">3D Model</a></h3>
-			<p><a href="http://sketchup.google.com/3dwarehouse/details?mid={{location.sketchup}}"><img src="http://sketchup.google.com/3dwarehouse/download?mid={{location.sketchup}}&amp;rtyp=lt&amp;ctyp=other" alt="{{location.name}}"></a></p>
+			<h3 class="light"><a href="http://sketchup.google.com/3dwarehouse/details?mid={{ location.sketchup }}">3D Model</a></h3>
+			<p><a href="http://sketchup.google.com/3dwarehouse/details?mid={{ location.sketchup }}"><img src="http://sketchup.google.com/3dwarehouse/download?mid={{ location.sketchup }}&amp;rtyp=lt&amp;ctyp=other" alt="{{ location.name }}"></a></p>
 			{% endcomment %}
 			<div id="model">
-				<iframe scrolling="no" src="http://sketchup.google.com/3dwarehouse/mini?etyp=sw&amp;tb=auto&amp;width=430&amp;height=300&amp;logo=false&amp;mid={{location.sketchup}}"></iframe>
+				<iframe scrolling="no" src="http://sketchup.google.com/3dwarehouse/mini?etyp=sw&amp;tb=auto&amp;width=430&amp;height=300&amp;logo=false&amp;mid={{ location.sketchup }}"></iframe>
 			</div>
 		</div>
 		{% endif %}
@@ -157,7 +157,7 @@
 <script src="{{ STATIC_URL }}-/jquery.plugins/lightbox/js/jquery.lightbox-0.5.min.js"></script>
 <script src="{{ STATIC_URL }}js/map.js?{{map_version}}" type="text/javascript"></script>
 <script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
-<script src="{{ STATIC_URL }}-/gmaps-infobox/infobox.js?{{map_version}}" type="text/javascript"></script>
+<script src="{{ STATIC_URL }}-/gmaps-infobox/infobox.js?{{ map_version }}" type="text/javascript"></script>
 <script>
 
 /**************************************************************************\
@@ -193,7 +193,7 @@ $('.org').click(function(e){
 
 $(document).ready(function(){
 	//scroll to org
-	var org = $('#org-' + '{{org.id|default:"null"}}');
+	var org = $('#org-' + '{{ org.id|default:'null' }}');
 	if(org.length){
 		var scroll = $(org).offset().top - 26;
 		$('html,body').animate({scrollTop: scroll}, 'slow');
@@ -210,7 +210,7 @@ $(document).ready(function(){
 		zoom_control        : false,
 		street_view_control : false,
 		map_type_control    : false,
-		infobox_location_id : "{{location.id}}",
+		infobox_location_id : "{{ location.id }}",
 		illustrated         : true
 	})
 });

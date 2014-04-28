@@ -20,7 +20,7 @@
 
 		{% if error %}
 		<div id="error">
-			<p>{{error|safe}} <a id="error-close">close</a></p>
+			<p>{{ error|safe }} <a id="error-close">close</a></p>
 		</div>
 		{% else %}
 		<div id="error" style="display:none;"></div>
@@ -51,9 +51,9 @@
 
 
 {% block js %}
-	<script src="{{ STATIC_URL }}js/map.js?{{map_version}}" type="text/javascript"></script>
+	<script src="{{ STATIC_URL }}js/map.js?{{ map_version }}" type="text/javascript"></script>
 	<script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
-	<script src="{{ STATIC_URL }}-/gmaps-infobox/infobox.js?{{map_version}}" type="text/javascript"></script>
+	<script src="{{ STATIC_URL }}-/gmaps-infobox/infobox.js?{{ map_version }}" type="text/javascript"></script>
 	<script type="text/javascript">
 		$(document).ready(function(){
 			if($("#error-close").length > 0) {
@@ -76,8 +76,8 @@
 					"phones"        : "{% url 'emergency_phones' %}.json",
 					"base_url"      : "{{ base_url }}"
 				},
-				"base_ignore_types"   : {{base_ignore_types|safe}},
-				"infobox_location_id" : {{infobox_location_id|safe}},
+				"base_ignore_types"   : {{ base_ignore_types|safe }},
+				"infobox_location_id" : {{ infobox_location_id|safe }},
 				"points"              : {{ points|safe }}
 			})
 		});

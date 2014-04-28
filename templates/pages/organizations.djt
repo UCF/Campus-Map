@@ -1,28 +1,28 @@
-{% extends "base.djt"%}
+{% extends 'base.djt' %}
 
-{% block title %}Organizations - {{block.super}}{% endblock %}
+{% block title %}Organizations - {{ block.super }}{% endblock %}
 
 {% block wrap %}
 
 	<h2> Organizations </h2>
 	{% if error %}
-		<div class="error">{{error}}</div>
+		<div class="error">{{ error }}</div>
 	{% else %}
 	<div class="span-12">
 		<ul class="orgs">
 		{% for o in orgs_one %}
-			<li><a href="{% url locations %}{{o.bldg_id}}/{{o.building|slugify}}/?org={{o.id}}">{{o.name}}</a></li>
+			<li><a href="{% url 'locations' %}{{ o.bldg_id }}/{{ o.building|slugify }}/?org={{ o.id }}">{{ o.name }}</a></li>
 		{% endfor %}
 		</ul>
 	</div>
 	<div class="span-11 last">
 		<ul class="orgs">
 		{% for o in orgs_two %}
-			<li><a href="{% url locations %}{{o.bldg_id}}/{{o.building|slugify}}/?org={{o.id}}">{{o.name}}</a></li>
+			<li><a href="{% url 'locations' %}{{ o.bldg_id }}/{{ o.building|slugify }}/?org={{ o.id }}">{{ o.name }}</a></li>
 		{% endfor %}
 		</ul>
 	</div>
 	<div class="clear"></div>
 	{% endif %}
-	
+
 {% endblock %}

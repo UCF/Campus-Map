@@ -7,10 +7,10 @@
 		(function() {
 			var form       = $('#customize > form'),
 				base_html  = '<iframe ATTRS src="SRC" style="STYLE">ALT</iframe>';
-			
+
 			// Populate location list
 			$.getJSON(
-				'{{base_url}}/locations.json',
+				'{{ base_url }}/locations.json',
 				function(data) {
 					$.each(data, function(index, map_object) {
 						if(map_object.object_type == 'Building') {
@@ -70,7 +70,7 @@
 					static_params         = [],
 					static_default_center = [28.6018,-81.1995],
 					map_base_url          = '{{base_url}}';
-				
+
 				if(ssl) {
 					static_base_url = static_base_url.replace('http://', 'https://');
 					map_base_url = map_base_url.replace('http://', 'https://');
@@ -183,7 +183,7 @@
 
 					// Put together the final IFRAME HTML
 					html = base_html.replace('SRC', iframe_src).replace('STYLE', iframe_style).replace('ALT', alt_content).replace('ATTRS', iframe_attrs.join(' '));
-					
+
 					$('#embed_code textarea').val(html);
 					$('#preview').find('iframe').remove().end().append(html);
 				}
@@ -260,10 +260,10 @@
 		<div id="embed_code">
 			<h3>Embed Code - Copy &amp; paste this code into the appropriate place in your website's HTML</h3>
 			<textarea>
-				
+
 			</textarea>
 		</div>
-		
+
 	</div>
-</div>	
+</div>
 {% endblock %}

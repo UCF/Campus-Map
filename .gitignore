@@ -8,7 +8,6 @@ settings_local.py
 .DS_Store
 Thumbs.db
 .svn
-cache/*
 logs/*
 
 # Static Files

@@ -13,11 +13,11 @@
 	{% if lot.poly_coords %}
 	<Style><LineStyle><color>{{ lot.color_line }}</color><width>1</width></LineStyle><PolyStyle><color>{{ lot.color_fill }}</color></PolyStyle></Style>
 	<ExtendedData><SchemaData schemaUrl="#parkinglot">
-		<SimpleData name="number">{{lot.number}}</SimpleData>
-		<SimpleData name="name">{{lot.name}}</SimpleData>
-		<SimpleData name="permit">{{lot.permit_type}}</SimpleData>
+		<SimpleData name="number">{{ lot.number }}</SimpleData>
+		<SimpleData name="name">{{ lot.name }}</SimpleData>
+		<SimpleData name="permit">{{ lot.permit_type }}</SimpleData>
 	</SchemaData></ExtendedData>
-	<Polygon><outerBoundaryIs><LinearRing><coordinates>{{lot.kml_coords}}</coordinates></LinearRing></outerBoundaryIs></Polygon>
+	<Polygon><outerBoundaryIs><LinearRing><coordinates>{{ lot.kml_coords }}</coordinates></LinearRing></outerBoundaryIs></Polygon>
 	<description>
 		{# apparently GGeoXml strips html classes from the description :( #}
 		<![CDATA[

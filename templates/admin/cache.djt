@@ -20,20 +20,20 @@
 
 
 {% block content %}
-	
+
 	{% if error %}
 		<div class="error">{{error}}</div>
 	{% else %}
-		
+
 		<h1>Cache</h1>
-		
+
 		{% if form.error %}<div class="error">{{form.error}}</div>{% endif %}
 		{% if form.success %}<div class="success">Cache cleared.</div>{% endif %}
-		
+
 		<form method="POST">
 			<input type="submit" value="Clear Cache">
 		</form>
-	
+
 	{% endif %}
-	
+
 {% endblock %}

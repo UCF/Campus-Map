@@ -3,29 +3,32 @@ import hashlib
 import json
 import logging
 import re
+import sys
 import urllib
 
+from django.conf import settings
 from django.core.urlresolvers import reverse
 from django.core.urlresolvers import Resolver404
-from django.core.cache import cache
 from django.db.models import Q
 from django.http import Http404
 from django.http import HttpResponse
+from django.http import HttpResponseNotFound
+from django.http import HttpResponseServerError
 from django.shortcuts import render_to_response
+from django.template import Context
+from django.template import loader
 from django.template import RequestContext
 from django.template import TemplateDoesNotExist
+from django.template.loader import get_template
 from django.utils.html import strip_tags
 
+import campus.models
+from campus.views import home
 import settings
 
 logger = logging.getLogger(__name__)
 
 def page_not_found(request, **kwargs):
-    from django.http import HttpResponseNotFound
-    from campus.views import home
-    import sys, json
-
-    # from conover: exc_class, exc, traceback = sys.exc_info()
     error = sys.exc_value
 
     if len(error.args):
@@ -53,14 +56,8 @@ def page_not_found(request, **kwargs):
     html = home(request, points=True, error=error)
     return HttpResponseNotFound(html)
 
+
 def server_error(request, **kwargs):
-    from django.http import HttpResponseServerError
-    from django.conf import settings
-    from django.template import Context, loader
-
-    #import sys
-    #print sys.exc_info()
-
     t = loader.get_template('pages/500.djt')
     context = { 'MEDIA_URL': settings.MEDIA_URL }
     return HttpResponseServerError(t.render(Context(context)))
@@ -71,9 +68,8 @@ def print_layout(request):
     error       = False
     illustrated = request.GET.has_key('illustrated')
     if loc:
-        from campus.models import MapObj
         try:
-            loc = MapObj.objects.get(id=loc)
+            loc = campus.models.MapObj.objects.get(id=loc)
         except MapObj.DoesNotExist:
             loc = False
             error = "Location not found"
@@ -85,7 +81,6 @@ def pages(request, page=None):
     '''
     static pages with API placeholders
     '''
-    from django.template.loader import get_template
     template = "pages/%s.djt" % page
     try:
         t = get_template(template)
@@ -122,16 +117,15 @@ def organizations(request):
 
 
 def organization(request, id):
-    from django.template.loader import get_template
-    from django.template import Context
     org = get_org(id)
     if not org:
         raise Http404("Organization ID <code>%s</code> could not be found" % (id))
+
     building = None
     try:
         from campus.models import Building
-        building = Building.objects.get(pk=str(org['bldg_id']))
-    except Building.DoesNotExist:
+        building = campus.models.Building.objects.get(pk=str(org['bldg_id']))
+    except campus.models.Building.DoesNotExist:
         pass
     context = {'org': org, 'building':building }
 
@@ -149,12 +143,13 @@ def organization(request, id):
     else:
         template = 'pages/organization.djt'
 
-    return render_to_response('pages/organizations.djt', context, context_instance=RequestContext(request))
+    return render_to_response(template, context, context_instance=RequestContext(request))
+
 
 def organization_search(q):
-    params = {  'use':'tableSearch',
-                'in':'organizations',
-                'search':q}
+    params = { 'use':'tableSearch',
+               'in':'organizations',
+               'search':q }
     url = '?'.join([settings.PHONEBOOK, urllib.urlencode(params)])
     try:
         results = urllib.urlopen(url).read()
@@ -189,18 +184,16 @@ def get_orgs():
 
 
 def get_depts():
-    depts = cache.get('departments')
-    if depts is None:
-        url = settings.PHONEBOOK + '?use=tableSearch&in=departments&order_by=name&order=ASC'
-        try:
-            results = urllib.urlopen(url).read()
-            depts = json.loads(results)
-        except:
-            print "Issue with phonebook search service"
-            return None
-        else:
-            cache.set('departments', depts)
+    url = settings.PHONEBOOK + '?use=tableSearch&in=departments&order_by=name&order=ASC'
+    try:
+        results = urllib.urlopen(url).read()
+        depts = json.loads(results)
+    except:
+        print "Issue with phonebook search service"
+        return None
+
     return depts
+
 
 def get_org(id):
     orgs = get_orgs()
@@ -213,6 +206,7 @@ def get_org(id):
                     o['departments'].append(d)
             return o
 
+
 def phonebook_search(q):
     url = "%s?search=%s" % (settings.PHONEBOOK, q)
     try:
@@ -224,54 +218,44 @@ def phonebook_search(q):
 
 
 def group_search(q):
-    from campus.models import Group
-    groups = Group.objects.filter(name__icontains=q)
+    groups = campus.models.Group.objects.filter(name__icontains=q)
     return groups
+
 
 def search(request):
     '''
     one day will search over all data available
     '''
-    from campus.models import MapObj
-
     found_entries = {'locations':[],'phonebook':[],'organizations':[]}
     query_string  = request.GET.get('q', '').strip()
 
     if bool(query_string):
+        orgs, locs, phones = ([],[],[])
 
-        cache_key  = settings.SEARCH_QUERY_CACHE_PREFIX + hashlib.md5(query_string).hexdigest()
-        cache_data = cache.get(cache_key)
+        # Organization Search
+        org_response = organization_search(query_string)
+        if org_response is not None:
+            orgs = org_response['results']
 
-        if cache_data is not None:
-            found_entries = cache_data
-        else:
-            orgs, locs, phones = ([],[],[])
+        # populate locations by name, abbreviation, and orgs
+        q1 = get_query(query_string, ['name',])
+        q2 = get_query(query_string, ['abbreviation',])
+        q3 = Q(pk = "~~~ no results ~~~")
+        for org in orgs:
+            q3 = q3 | Q(pk = str(org['bldg_id']))
+        results = campus.models.MapObj.objects.filter(q1|q2|q3)
+        locs = list(results)
 
-            # Organization Search
-            org_response = organization_search(query_string)
-            if org_response is not None:
-                orgs = org_response['results']
+        # Phonebook Search
+        phones_response = phonebook_search(query_string)
+        if phones_response is not None:
+            phones = phones_response['results']
 
-            # populate locations by name, abbreviation, and orgs
-            q1 = get_query(query_string, ['name',])
-            q2 = get_query(query_string, ['abbreviation',])
-            q3 = Q(pk = "~~~ no results ~~~")
-            for org in orgs:
-                q3 = q3 | Q(pk = str(org['bldg_id']))
-            results = MapObj.objects.filter(q1|q2|q3)
-            locs = list(results)
-
-            # Phonebook Search
-            phones_response = phonebook_search(query_string)
-            if phones_response is not None:
-                phones = phones_response['results']
-
-            found_entries = {
-                'locations'     : locs,
-                'phonebook'     : phones,
-                'organizations' : orgs,
-            }
-            cache.set(cache_key, found_entries, 60 * 60 * 24 * 7)
+        found_entries = {
+            'locations'     : locs,
+            'phonebook'     : phones,
+            'organizations' : orgs,
+        }
 
     if request.is_bxml():
         base_url  = request.build_absolute_uri(reverse('home'))[:-1]
@@ -282,7 +266,6 @@ def search(request):
         response['Content-type'] = 'application/xml'
         return response
 
-    # TODO: Text API format
     if request.is_json():
         def clean(item):
             return {
@@ -301,7 +284,6 @@ def search(request):
         response = HttpResponse(json.dumps(search))
         response['Content-type'] = 'application/json'
         return response
-
     else:
         # Do some sorting here to ease the pain in the template
         _locations = []
@@ -343,6 +325,7 @@ def normalize_query(query_string,
         ['some', 'random', 'words', 'with quotes', 'and', 'spaces']
     '''
     return [normspace(' ', (t[0] or t[1]).strip()) for t in findterms(query_string)]
+
 
 # thanks:  http://www.julienphalip.com/blog/2008/08/16/adding-search-django-site-snap/
 def get_query(query_string, search_fields):

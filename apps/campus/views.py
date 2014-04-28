@@ -1,24 +1,46 @@
 import json
 import re
 import urllib
+from time import time
+from time import mktime
 from xml.etree import ElementTree
 
+from django.contrib.contenttypes.models import ContentType
 from django.contrib.auth.decorators import login_required
-from django.core.cache import cache
+from django.core import serializers
+from django.core.management.commands.dumpdata import sort_dependencies
 from django.core.urlresolvers import reverse
 from django.core.urlresolvers import get_script_prefix
+from django.db.models import get_app
+from django.db.models import get_apps
 from django.http import HttpResponse
 from django.http import HttpResponseNotFound
 from django.http import Http404
 from django.http import HttpResponsePermanentRedirect
 from django.shortcuts import render_to_response
 from django.shortcuts import get_object_or_404
+from django.template.loader import get_template
 from django.template import RequestContext
+from django.utils.datastructures import SortedDict
+from django.views.generic import ListView
 
-from campus.models import MapObj
-from campus.models import DiningLocation
+from campus.models import BikeRack
 from campus.models import Building
+from campus.models import DiningLocation
+from campus.models import DisabledParking
+from campus.models import EmergencyPhone
+from campus.models import Group
+from campus.models import GroupedLocation
+from campus.models import Location
+from campus.models import MapObj
+from campus.models import ParkingLot
+from campus.models import RegionalCampus
+from campus.models import Sidewalk
+
+from campus.templatetags.weather import weather
+
 import settings
+
 
 def home(request, **kwargs):
     '''
@@ -27,9 +49,7 @@ def home(request, **kwargs):
     using as js options for the map, that way other views can call home and
     pass whatever map options are needed
     '''
-    from time import time, mktime
     date = int(time())
-
 
     # process query string
     loc_id = request.GET.get('show', None)
@@ -41,7 +61,6 @@ def home(request, **kwargs):
             del kwargs['location']
 
     if request.is_json():
-        from campus.templatetags.weather import weather
         campus = {
             "name"    : "UCF Campus Map",
             "weather" : weather(json_request=True)
@@ -51,7 +70,6 @@ def home(request, **kwargs):
         return response
 
     if request.is_txt():
-        from campus.templatetags.weather import weather
         text = u"UCF Campus Map - %s\n%s\n\n# Campus Address\n%s\n\n# Weather\n%s" % (
                 request.build_absolute_uri(reverse('home')),
                 "-"*78,
@@ -63,29 +81,18 @@ def home(request, **kwargs):
         response['Content-type'] = 'text/plain; charset=utf-8'
         return response
 
-    # points on the map (will have to be extended with more data added)
-    #if kwargs.get('points', False):
-    from django.contrib.contenttypes.models import ContentType
-    from models import Building, Location, Group, ParkingLot
-
     # Filter home page locations to building, locations, and groups
-    points = cache.get('home_points')
-    if points is None:
-        show = map(lambda c: ContentType.objects.get_for_model(c), (Building, Location, Group, ParkingLot, DiningLocation))
-        mobs = MapObj.objects.filter(content_type__in=map(lambda c: c.id, show))
-        points = {}
-        for o in mobs:
-            o = o.json()
-            points[o['id']] = {
-                'name'   : o['name'],
-                'gpoint' : o['googlemap_point'],
-                'ipoint' : o['illustrated_point'],
-                'type'   : o['object_type'],
-            }
-        cache.set('home_points', points, 60 * 60 * 24)
-    #else:
-    #   points = None
-    # urls
+    show = map(lambda c: ContentType.objects.get_for_model(c), (Building, Location, Group, ParkingLot, DiningLocation))
+    mobs = MapObj.objects.filter(content_type__in=map(lambda c: c.id, show))
+    points = {}
+    for o in mobs:
+        o = o.json()
+        points[o['id']] = {
+            'name'   : o['name'],
+            'gpoint' : o['googlemap_point'],
+            'ipoint' : o['illustrated_point'],
+            'type'   : o['object_type'],
+        }
 
     """
         Google Maps API caches the KML data. In order to purge that cache,
@@ -136,8 +143,6 @@ def home(request, **kwargs):
 
 
 def locations(request):
-    from campus.models import MapObj
-
     locations = MapObj.objects.all()
     base_url  = request.build_absolute_uri(reverse('home'))[:-1]
 
@@ -152,16 +157,13 @@ def locations(request):
     if request.is_kml():
         # helpful:
         # http://code.google.com/apis/kml/documentation/kml_tut.html#network_links
-        response = cache.get('kml_response')
-        if response is None:
-            context = {
-                'locations':locations,
-                'base_url':base_url,
-                'MEDIA_URL' : settings.MEDIA_URL,
-            }
-            response = render_to_response('api/locations.kml', context)
-            response['Content-type'] = 'application/vnd.google-earth.kml+xml'
-            cache.set('kml_response', response, 60 * 60 * 24)
+        context = {
+            'locations': locations,
+            'base_url': base_url,
+            'MEDIA_URL': settings.MEDIA_URL,
+        }
+        response = render_to_response('api/locations.kml', context)
+        response['Content-type'] = 'application/vnd.google-earth.kml+xml'
         return response
 
     if request.is_bxml():
@@ -172,26 +174,22 @@ def locations(request):
         response['Content-type'] = 'application/xml'
         return response
 
-    context = cache.get('locations_context')
-    if context is None:
-        context = {
-            'buildings' : list(),
-            'locations' : list(),
-            'campuses'  : list(),
-            'groups'    : list(),
-        }
+    context = {
+        'buildings' : list(),
+        'locations' : list(),
+        'campuses'  : list(),
+        'groups'    : list(),
+    }
 
-        for l in locations:
-            if (l.object_type == 'Building'):
-                context['buildings'].append(l)
-            elif(l.object_type == 'Location'):
-                context['locations'].append(l)
-            elif(l.object_type == 'RegionalCampus'):
-                context['campuses'].append(l)
-            elif(l.object_type == 'Group'):
+    for l in locations:
+        if (l.object_type == 'Building'):
+            context['buildings'].append(l)
+        elif(l.object_type == 'Location'):
+            context['locations'].append(l)
+        elif(l.object_type == 'RegionalCampus'):
+            context['campuses'].append(l)
+        elif(l.object_type == 'Group'):
                 context['groups'].append(l)
-
-        cache.set('locations_context', context, 60 * 60 * 24)
 
     return render_to_response('campus/locations.djt', context, context_instance=RequestContext(request))
 
@@ -216,7 +214,7 @@ def location(request, loc, return_obj=False):
     location['info']  = html
 
     if location_image != '':
-        location['image'] = {'url':location_image.url}
+        location['image'] = { 'url':location_image.url }
     else:
         location['image'] = None
 
@@ -257,14 +255,11 @@ def location(request, loc, return_obj=False):
                 p.info = "%s<p>%s</p>" % (p.info, p.description.text)
 
     # find organizations related to this location via the group it belongs to
-    from models import GroupedLocation
-    from django.contrib.contenttypes.models import ContentType
-
     location_ctype = ContentType.objects.get(
         app_label="campus",
         model=location['object_type'].lower()
     )
-    location_pk       = location['id']
+    location_pk = location['id']
 
     # Find all groups this location is a member of
     grouped_locations = GroupedLocation.objects.filter(
@@ -299,7 +294,6 @@ def location(request, loc, return_obj=False):
 
 
 def parking(request):
-    from campus.models import ParkingLot, DisabledParking
     lots     = list(ParkingLot.objects.all())
     handicap = list(DisabledParking.objects.all())
 
@@ -339,7 +333,6 @@ def sidewalks(request):
     '''
     Mostly an API wrapper
     '''
-    from campus.models import Sidewalk
     sidewalks = Sidewalk.objects.all()
 
     url = request.build_absolute_uri(reverse('sidewalks'))
@@ -388,7 +381,6 @@ def bikeracks(request):
     '''
     Mostly an API wrapper
     '''
-    from campus.models import BikeRack
     bikeracks = BikeRack.objects.all()
 
     url = request.build_absolute_uri(reverse('bikeracks'))
@@ -433,7 +425,6 @@ def emergency_phones(request):
     '''
     Mostly an API wrapper (very similar to bike racks, probably shoudl abstract this a bit)
     '''
-    from campus.models import EmergencyPhone
     phones = EmergencyPhone.objects.all()
 
     url = request.build_absolute_uri(reverse('emergency_phones'))
@@ -521,8 +512,6 @@ def location_html(loc, request, orgs=True):
     TODO
     This really should be a model method, but it's time to go home
     '''
-    from django.template.loader import get_template
-    from django.template import RequestContext
     base_url = request.build_absolute_uri(reverse('home'))[:-1]
     context  = { 'location':loc, 'base_url':base_url }
     location_type = loc.__class__.__name__.lower()
@@ -560,74 +549,14 @@ def backward_location(request):
         return HttpResponsePermanentRedirect(url)
     return HttpResponsePermanentRedirect(reverse('home'))
 
-def regional_campuses(request, campus=None):
-    from campus.models import RegionalCampus
 
-    # TODO - regional campuses API
-    if request.is_json():
-        response = HttpResponse(json.dumps("API not available for Regional Campuses"))
-        response['Content-type'] = 'application/json'
-        return response
-
-    if request.is_txt():
-        response = HttpResponse("API not available for Regional Campuses")
-        response['Content-type'] = 'text/plain; charset=utf-8'
-        return response
-
-    if campus:
-        try:
-            rc = RegionalCampus.objects.get(pk=campus)
-        except RegionalCampus.DoesNotExist:
-            raise Http404()
-        else:
-            return home(request, location=rc)
-
-    campuses = RegionalCampus.objects.all()
-    context = { "campuses": campuses }
-
-    return render_to_response('campus/regional-campuses.djt', context, context_instance=RequestContext(request))
-
-
-def cache_admin(request):
-    from django.core.cache import cache
-    from django.core.cache.backends.filebased import CacheClass as FileBased
-
-    if not request.user.is_superuser:
-        return render_to_response('admin/cache.djt', { 'error': 'You are not authorized' }, context_instance=RequestContext(request))
-
-    form    = {
-        'error'   : False,
-        'success' : False,
-    }
-
-    if request.method == 'POST':
-        # clear cache
-        if isinstance(cache, FileBased):
-            try:
-                import shutil
-                shutil.rmtree(cache._dir)
-                form['success'] = True
-            except (IOError, OSError) as e:
-                form['error'] = e
-        else:
-            cache.clear()
-            form['success'] = True
-
-    context = {
-        'form'   : form,
-    }
-
-    return render_to_response('admin/cache.djt', context, context_instance=RequestContext(request))
-cache_admin = login_required(cache_admin)
+class RegionalCampusListView(ListView):
+    model = RegionalCampus
+    context_object_name = 'campuses'
+    template_name = 'campus/regional-campuses.djt'
 
 
 def data_dump(request):
-    from django.core import serializers
-    from django.db.models import get_apps, get_app
-    from django.core.management.commands.dumpdata import sort_dependencies
-    from django.utils.datastructures import SortedDict
-    import campus
-
     if not request.user.is_authenticated() or not request.user.is_superuser:
         response = HttpResponse(json.dumps({"Error": "Not Authorized"}))
         response['Content-type'] = 'application/json'
@@ -651,12 +580,12 @@ def data_dump(request):
 
     for model in sort_dependencies(app_list.items()):
         # skip groupedlocation model (not needed since Group uses natural keys)
-        if model == campus.models.GroupedLocation:
+        if model == GroupedLocation:
             continue
         # - make ordering case insensitive
         # - must also make special case for MapObj else the leaf class will be
         #   serialized, not the actual MapObj itself
-        if model == campus.models.MapObj:
+        if model == MapObj:
             objects.extend( sorted(model.objects.mob_filter(), key=ordering) )
         else:
             objects.extend( sorted(model.objects.all(), key=ordering) )
