@@ -17,6 +17,9 @@ Ensure your environment has virtualenv and pip installed for python
 9. Sync the database
 
         python manage.py syncdb
+10. Collect static files
+
+        python manage.py collectstatic -cl
 
 ## Working with the Data
 
