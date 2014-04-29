@@ -1,5 +1,6 @@
 # Local Settings
 settings_local.py
+apache/python.wsgi
 
 # Application, OS, and backup files
 *~
