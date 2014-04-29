@@ -1,9 +1,26 @@
 # About
-Campus map yo
+Campus map ... where are the bathrooms?
 
-# Working with the Data
+## Setup
+Ensure your environment has virtualenv and pip installed for python
+1. Create virtual environment
+2. cd to the new virtual environment
+3. Clone repo to subdirectory (ex. git clone <url> src)
+4. Activate virtual environment
 
-## Import the data:
+        source bin/activate
+5. Install requirements
+
+        pip install -r src/requirements.txt
+7. Setup local settings using the local_settings.templ.py file
+8. Setup apache/python.wsgi using apache/python.templ.wsgi
+9. Sync the database
+
+        python manage.py syncdb
+
+## Working with the Data
+
+### Import the data:
 
     python manage.py campusdata
 
@@ -16,11 +33,16 @@ The `campusdata` command is a custom management command that resets the campus m
     python manage.py loaddata ... [all fixtures in apps/campus/fixtures]
 
 
-## Export data
-    python manage.py dumpdata --indent 4 campus.building > apps/campus/fixtures/buildings.json  
+### Export data
+    python manage.py dumpdata --indent 4 campus.building > apps/campus/fixtures/buildings.json
     python manage.py dumpdata --indent 4 --natural campus.group > apps/campus/fixtures/groups.json
 
 If there is updated campus data from the authoritative source, read `data/export-import/readme.markdown`
 
-# helpful:
+### helpful:
 http://docs.djangoproject.com/en/dev/howto/initial-data/
+
+## Code Contribution
+Never commit directly to master. Create a branch or fork and work on the new feature. Once it is complete it will be merged back to the master branch.
+
+If you use a branch to develop a feature, make sure to delete the old branch once it has been merged to master.
