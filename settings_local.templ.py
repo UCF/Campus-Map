@@ -5,14 +5,11 @@
 # development
 DEBUG                      = True
 TEMPLATE_DEBUG             = DEBUG
-TEMPLATE_STRING_IF_INVALID = 'halp!'
-
 
 ADMINS         = (
 	#('Your Name', 'your_email@domain.com'),
 )
 MANAGERS       = ADMINS
-
 
 # Email settings for mailing forgot password emails
 EMAIL_HOST          = ''
