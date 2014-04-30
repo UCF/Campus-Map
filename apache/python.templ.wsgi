@@ -6,8 +6,10 @@ import site
 site.addsitedir('/var/www/campus-maps/lib/python2.6/site-packages')
 # Remove system site packages since we are using wsgi to
 # import the virtalenv site packages
-sys.path.remove('/usr/lib64/python2.6/site-packages')
-sys.path.remove('/usr/lib/python2.6/site-packages')
+if '/usr/lib64/python2.6/site-packages' in sys.path:
+    sys.path.remove('/usr/lib64/python2.6/site-packages')
+if '/usr/lib/python2.6/site-packages' in sys.path:
+    sys.path.remove('/usr/lib/python2.6/site-packages')
 
 def main(project, path_to_parent, settings="settings"):
     settings_module = '.'.join([project, settings])
