@@ -2,6 +2,9 @@
 
 {% block title %}{{ location.name}} - {{ block.super }}{% endblock %}
 
+{% block meta-description %}{{ location.name }} - UCF, map, University of Central Florida and Orlando{% endblock %}
+
+{% block rel-canonical %}{{ base_url }}{% url 'location' location.id %}{{ location.title|slugify }}/{% endblock %}
 
 {% block wrap %}
 

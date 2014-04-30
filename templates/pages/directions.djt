@@ -2,20 +2,22 @@
 
 {% block title %}Directions - {{block.super}}{% endblock %}
 
+{% block rel-canonical %}{{ base_url }}{% url 'page' 'directions' %}{% endblock %}
+
 {% block wrap %}
 <div id="directions">
 	<h2>Google Directions</h2>
-	
+
 	<p>What is your address?</p>
 	<form method="get" action="http://maps.google.com/maps">
 		<input type="text" name="saddr">
 		<input type="hidden" name="daddr" value="UCF Progress Energy Welcome Center 32816-3551">
 		<input type="submit" value="get directions">
 	</form>
-	
+
 	<div class="clear"></div>
 	<br><br>
-	
+
 	<h2>Directions and UCF Mailing Information</h2>
 	<div class="span-5">
 		<h3>Mailing Address:</h3>
@@ -33,28 +35,28 @@
 	<div class="clear">&nbsp;<br></div>
 	<p>You can also use the Zip+4 to route mail directly to specific departments.</p>
 	<p><a href="http://www.hospitality.ucf.edu/contact.html">Directions to Rosen College of Hospitality Management</a>.</p>
-	
+
 	<h3>Directions to the UCF Main Campus:</h3>
-	
+
 	<div class="span-16 routes">
 		<h4>From Orlando International Airport:</h4>
 		<p>Go east on 528 to 417 north. Take 417 North to University Blvd. Exit east onto University Blvd. Continue east on University Blvd. for approximately two miles and it will take you to the main entrance to the campus. Make a right turn at the first light, Gemini Blvd. Follow the signs to the Visitor’s Information Center.</p>
 
 		<h4>From Orlando Sanford Airport:</h4>
 		<p>Take Lake Mary Blvd. to 417 South. Take 417 South to the University Blvd. exit. Exit east onto University Blvd. Continue east on University Blvd. for approximately two miles and it will take you to the main entrance to the campus. Make a right turn at the first light, Gemini Blvd. At the first stop sign you will see directions to the visitor’s information booth.</p>
-	
+
 		<h4>From The North:</h4>
 		<p><strong>Option 1</strong> – Take the Florida Turnpike South to 408 east. Take 408 east to 417 North toward Sanford. Exit off of 417 to University Blvd. East. Take University Blvd 2 miles and it will take you to the main entrance of the campus. Make a right turn at the first light , Gemini Blvd. Follow the signs to the Visitor’s Information Center.</p>
 		<p><strong>Option 2</strong> – Take I-95 South to SR 50 West. Take SR 50 to Alafaya Trail. Make a right hand turn on Alafaya Trail. Continue on Alafaya Trail to University Blvd. Make a right turn on University Blvd. and you are on campus. Make a right turn at the first light, Gemini Blvd. Then follow the signs to the Visitor's Information Center.</p>
-	
+
 		<h4>From The South and Melbourne Area:</h4>
 		<p><strong>Option 1</strong> –Take the Florida Turnpike north and exit onto I-4 East. Continue until you reach 408 east. Take 408 east to 417 North toward Sanford. Exit off of 417 to University Blvd East. Continue on University Blvd. for 2 miles and it will take you to the main entrance of the campus. Make a right turn at the first light, Gemini Blvd. Follow the signs to the Visitor’s Information Center.</p>
 		<p><strong>Option 2</strong> – Take I-95 north to 520 West. Continue West and the road will merge with SR 50. Take SR 50 West to Alafaya Trail. Make a right turn on Alafaya Trail. Continue for approximately 2 miles to University Blvd. Make a right turn on University Blvd. and you will be on campus. Make a right turn at the first light,Gemini Blvd. Follow the signs to the Visitor’s Information Center.</p>
-	
+
 		<h4>From The East, Titusville and Daytona:</h4>
 		<p><strong>Option 1</strong> – Take Highway 50 West to Alafaya Trail. Turn right on Alafaya Trail, go north for two miles. Turn right onto University Blvd. and you are on campus. Make a right turn at the first light Gemini Blvd. Follow the signs to the Visitor’s Information Center.</p>
 		<p><strong>Option 2</strong> – Take I-4 West to 417 South. Exit off of 417 at University Blvd. East. Continue on University Blvd East and it will take you to the main entrance of the campus. Make a right turn at the first light, Gemini Blvd. Follow the signs to the Visitor’s Information Center.</p>
-	
+
 		<h4>From The Tampa Area:</h4>
 		<p>Take I-4 east to 408 east toward Titusville. Take 408 to 417 North toward Sanford. Exit off of 417 at University Blvd.East. Continue going on University Blvd and it will take you to the main entrance of the campus. Make a right turn at the first light, Gemini Blvd. Follow the signs to the Visitor’s Information Center.</p>
 	</div>

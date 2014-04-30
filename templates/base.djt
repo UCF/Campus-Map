@@ -3,14 +3,14 @@
 	<head>
 
 		<title>{% block title %}UCF Campus Map{% endblock %}</title>
-		<meta name="description" content="We can help you find what you're looking for. Use the UCF Campus Map to locate your classrooms, labs, housing and nearby parking; find buildings, locations, organizations and more at the University of Central Florida." />
+		<meta name="description" content="{% block meta-description %}We can help you find what you're looking for. Use the UCF Campus Map to locate your classrooms, labs, housing and nearby parking; find buildings, locations, organizations and more at the University of Central Florida.{% endblock %}" />
 
 		<meta charset="utf-8">
 		<meta name="google-site-verification" content="" />
 		<link rel="shortcut icon" href="{{ STATIC_URL }}images/favicon.ico">
 		<link rel="apple-touch-icon" href="{{ STATIC_URL }}images/apple-touch-icon.png">
 
-		<link rel="canonical" href="http://map.ucf.edu/" />
+		<link rel="canonical" href="{% block rel-canonical %}http://map.ucf.edu/{% endblock %}" />
 
 		<!-- HTML5 compatibility -->
 		<!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->

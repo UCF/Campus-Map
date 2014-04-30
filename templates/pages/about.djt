@@ -2,6 +2,8 @@
 
 {% block title %}About - {{block.super}}{% endblock %}
 
+{% block rel-canonical %}{{ base_url }}{% url 'page' 'about' %}{% endblock %}
+
 {% block wrap %}
 
 	<h2>About</h2>

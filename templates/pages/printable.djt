@@ -2,11 +2,13 @@
 
 {% block title %}Printable Map - {{block.super}}{% endblock %}
 
+{% block rel-canonical %}{{ base_url }}{% url 'page' 'printable' %}{% endblock %}
+
 {% block wrap %}
 <div id="printable">
 	<h2>Printable Map</h2>
 	<p>All printable maps require <a href="http://get.adobe.com/reader/">Adobe Reader</a>.</p>
-	
+
 	<h3>Illustrated Campus Map</h3>
 	<a href="http://cdn.ucf.edu/map/printable/Illustrated Campus Map.pdf" class="pdf">Download 3D Illustrated Folding Map</a>
 	<br><a href="http://cdn.ucf.edu/map/printable/Illustrated Campus Map.pdf"><img src="http://cdn.ucf.edu/map/printable/illustrated.jpg" alt="color printable map"></a>

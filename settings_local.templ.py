@@ -18,16 +18,6 @@ MANAGERS       = ADMINS
 EMAIL_HOST          = ''
 EMAIL_PORT          =
 
-
-# URL that handles the media served from MEDIA_ROOT. Make sure to use a
-# trailing slash if there is a path component (optional in other cases).
-#
-# Should be a *complete* url, otherwise the API could break for anyone trying
-# to use map media.
-#
-# Examples: "http://media.lawrence.com", "http://example.com/media/"
-MEDIA_URL = 'http://.../static/'
-
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
 # trailing slash.
 # Examples: "http://foo.com/media/", "/media/".
