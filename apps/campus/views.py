@@ -147,6 +147,15 @@ def locations(request):
     base_url  = request.build_absolute_uri(reverse('home'))[:-1]
 
     if request.is_json():
+        types = request.GET.get('types')
+        if types:
+            type_filter = ()
+            for l_type in types.split(','):
+                l_type = l_type.lower()
+                if l_type and l_type in ['regionalcampus', 'building', 'parkinglot', 'disabledparking', 'sidewalk', 'bikerack', 'emergencyphone', 'dininglocation']:
+                    type_filter = type_filter + (l_type,)
+            locations = locations.filter(content_type__model__in=type_filter)
+
         arr = []
         for l in locations:
             arr.append(l.json(base_url=base_url))
@@ -192,6 +201,7 @@ def locations(request):
                 context['groups'].append(l)
 
     return render_to_response('campus/locations.djt', context, context_instance=RequestContext(request))
+
 
 def location(request, loc, return_obj=False):
     '''
