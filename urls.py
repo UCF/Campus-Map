@@ -23,7 +23,6 @@ urlpatterns += patterns('',
     url('^(?P<url>.*)\.(%s)' % '|'.join(formats), 'api.handle_request'),
 
     (r'^', include('campus.urls')),
-    (r'^favicon\.ico$', RedirectView.as_view(url='%simages/favicon.ico' % settings.STATIC_URL)),
 
     # django-tinymce
     (r'^tinymce/', include('tinymce.urls')),
