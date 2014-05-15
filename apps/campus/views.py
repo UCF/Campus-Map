@@ -23,6 +23,7 @@ from django.template.loader import get_template
 from django.template import RequestContext
 from django.utils.datastructures import SortedDict
 from django.views.generic import ListView
+from django.views.generic import TemplateView
 
 from campus.models import BikeRack
 from campus.models import Building
@@ -36,9 +37,8 @@ from campus.models import MapObj
 from campus.models import ParkingLot
 from campus.models import RegionalCampus
 from campus.models import Sidewalk
-
 from campus.templatetags.weather import weather
-
+from campus.utils import BusRouteAPI
 import settings
 
 
@@ -564,6 +564,94 @@ class RegionalCampusListView(ListView):
     model = RegionalCampus
     context_object_name = 'campuses'
     template_name = 'campus/regional-campuses.djt'
+
+
+def bus_routes(request):
+    """
+    Retrieve a list of bus routes and return them in json.
+    """
+    if not request.is_json():
+        raise Http404()
+
+    ucf_bus_api = BusRouteAPI(settings.BUS_WSDL, settings.BUS_APP_CODE, settings.BUS_COST_CENTER_ID)
+    ucf_bus_routes = ucf_bus_api.get_routes()
+    json_object = {}
+    for route_id, route in ucf_bus_routes.iteritems():
+        json_object.update(route.json())
+    return HttpResponse(json.dumps(json_object), content_type='application/json')
+
+
+def bus_stops(request, route_id):
+    """
+    Retrieve a list of bus stops and return them in json.
+    """
+    if not request.is_json() or route_id is None:
+        raise Http404()
+
+    json_object = {}
+    ucf_bus_api = BusRouteAPI(settings.BUS_WSDL, settings.BUS_APP_CODE, settings.BUS_COST_CENTER_ID)
+    bus_stops = ucf_bus_api.get_route_stops(route_id)
+    for stop in bus_stops:
+        json_object.update(stop.json())
+    return HttpResponse(json.dumps(json_object), content_type='application/json')
+
+
+def bus_gps(request, route_id):
+    """
+    Retrieve a list of bus gps locations and return them in json.
+    """
+    if not request.is_json() or route_id is None:
+        raise Http404()
+
+    json_object = {}
+    ucf_bus_api = BusRouteAPI(settings.BUS_WSDL, settings.BUS_APP_CODE, settings.BUS_COST_CENTER_ID)
+    route_gps_list = ucf_bus_api.get_route_gps(route_id)
+    for gps in route_gps_list:
+        json_object.update(gps.json())
+    return HttpResponse(json.dumps(json_object), content_type='application/json')
+
+
+class KMLTemplateView(TemplateView):
+    """
+    Only allows KML requests to execute.
+    """
+
+    def get(self, request, *args, **kwargs):
+        """
+        Determine if KML otherwise 404.
+        """
+        if not request.is_kml():
+            raise Http404()
+        return super(KMLTemplateView, self).get(request, *args, **kwargs)
+
+    def render_to_response(self, context, **response_kwargs):
+        """
+        Ensure the right response type
+        """
+        response_kwargs['content_type'] = 'application/vnd.google-earth.kml+xml'
+        return super(KMLTemplateView, self).render_to_response(context, **response_kwargs)
+
+
+class BusRoutePolyView(KMLTemplateView):
+    """
+    Return KML for the route polygons.
+    """
+    template_name = 'campus/bus/route-poly.kml'
+
+    def get_context_data(self, **kwargs):
+        """
+        Add route polys to context.
+        """
+        context = super(BusRoutePolyView, self).get_context_data(**kwargs)
+        route_id = self.kwargs.get('route_id')
+        if route_id is None:
+            raise Http404()
+        ucf_bus_api = BusRouteAPI(settings.BUS_WSDL, settings.BUS_APP_CODE, settings.BUS_COST_CENTER_ID)
+        route_lines = ucf_bus_api.get_route_poly(route_id)
+        route_info = ucf_bus_api.get_route_info(route_id)
+        context['route_lines'] = route_lines
+        context['route_info'] = route_info
+        return context
 
 
 def data_dump(request):

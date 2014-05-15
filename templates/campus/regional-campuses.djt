@@ -2,6 +2,8 @@
 
 {% block title %}Regional Campuses - {{block.super}}{% endblock %}
 
+{% block meta-description %}Use the UCF Campus Map to find Regional Campuses {{ block.super }}{% endblock %}
+
 {% block rel-canonical %}{{ base_url }}{% url 'page' 'regional-campuses' %}{% endblock %}
 
 {% block wrap %}

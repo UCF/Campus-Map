@@ -3,6 +3,8 @@
 
 {% block title %}Search - {{ block.super }}{% endblock %}
 
+{% block meta-description %}Use the UCF Campus Map to search locations, buildings, and organizations {{ block.super }}{% endblock %}
+
 {% block wrap %}
 <div id="flat_search">
 	<h2>Search</h2>

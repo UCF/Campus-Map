@@ -4,6 +4,7 @@ import logging
 from django.conf import settings
 from django.core.urlresolvers import reverse, resolve, Resolver404
 from django.http import HttpResponse, HttpRequest, HttpResponseNotFound, HttpResponseServerError
+from django.views.generic import View
 
 log = logging.getLogger(__name__)
 
@@ -100,5 +101,6 @@ def handle_request(request, url):
         view, args, kwargs = resolve('/' + url)
     except Resolver404:
         view, args, kwargs = resolve('/' + url + '/')
+
     kwargs['request'] = request
     return view(*args, **kwargs)

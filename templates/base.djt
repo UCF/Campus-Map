@@ -2,8 +2,8 @@
 <html>
 	<head>
 
-		<title>{% block title %}UCF Campus Map{% endblock %}</title>
-		<meta name="description" content="{% block meta-description %}We can help you find what you're looking for. Use the UCF Campus Map to locate your classrooms, labs, housing and nearby parking; find buildings, locations, organizations and more at the University of Central Florida.{% endblock %}" />
+		<title>{% block title %}UCF Campus Map, Orlando FL{% endblock %}</title>
+		<meta name="description" content="{% block meta-description %}in Orlando, FL; find buildings, locations, organizations and more at the University of Central Florida.{% endblock %}" />
 
 		<meta charset="utf-8">
 		<meta name="google-site-verification" content="" />

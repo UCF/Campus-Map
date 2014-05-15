@@ -1,6 +1,8 @@
 {% extends "base.djt"%}
 
-{% block title %}About - {{block.super}}{% endblock %}
+{% block title %}About - {{ block.super }}{% endblock %}
+
+{% block meta-description %}About UCF Campus Map {{ block.super }}{% endblock %}
 
 {% block rel-canonical %}{{ base_url }}{% url 'page' 'about' %}{% endblock %}
 

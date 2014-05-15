@@ -2,6 +2,8 @@
 
 {% block title %}Directions - {{block.super}}{% endblock %}
 
+{% block meta-description %}Directions to UCF {{ block.super }}{% endblock %}
+
 {% block rel-canonical %}{{ base_url }}{% url 'page' 'directions' %}{% endblock %}
 
 {% block wrap %}

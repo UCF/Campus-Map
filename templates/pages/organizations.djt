@@ -2,6 +2,8 @@
 
 {% block title %}Organizations - {{ block.super }}{% endblock %}
 
+{% block meta-description %}Use the UCF Campus Map to find Organizations {{ block.super }}{% endblock %}
+
 {% block rel-canonical %}{{ base_url }}{% url 'organizations' %}{% endblock %}
 
 {% block wrap %}

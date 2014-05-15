@@ -1,6 +1,10 @@
-{% extends "base.djt"%}
+{% extends 'base.djt' %}
 
-{% block title %}Organization - {{block.super}}{% endblock %}
+{% block title %}{{ org.name }} Organization - {{block.super}}{% endblock %}
+
+{% block meta-description %}Use the UCF Campus Map to find {{ org.name }} Organization {{ block.super }}{% endblock %}
+
+{% block rel-canonical %}{{ base_url }}{% url 'org' org.id %}{% endblock %}
 
 {% block wrap %}
 
@@ -11,9 +15,9 @@
 	<div class="span-12">
 
 		<p>
-			{{org.name}}<br>
-			{{org.phone}}<br>
-			{{org.building}} room {{org.room}}
+			{{ org.name }}<br>
+			{{ org.phone }}<br>
+			{{ org.building }} room {{ org.room }}
 		</p>
 
 		{% if org.departments %}
@@ -21,9 +25,9 @@
 			<ul>
 			{% for d in org.departments %}
 				<li>
-					{{d.name}}<br>
-					{{d.phone}}<br>
-					{{d.building}} room {{d.room}}
+					{{ d.name }}<br>
+					{{ d.phone }}<br>
+					{{ d.building }} room {{ d.room }}
 				</li>
 			{% endfor %}
 			</ul>
@@ -42,7 +46,7 @@
 
 {% block js %}
 <script src="http://maps.google.com/maps/api/js?sensor=false" type="text/javascript" ></script>
-<script src="{{ STATIC_URL }}-/gmaps-infobox/infobox_packed.js?{{map_version}}"></script>
+<script src="{{ STATIC_URL }}-/gmaps-infobox/infobox_packed.js?{{ map_version }}"></script>
 <script src="{{ STATIC_URL }}js/map.js?{{map_version}}" type="text/javascript"></script>
 <script>
 
@@ -74,7 +78,7 @@
 		Campus.map = map;
 		Campus.menu = { "show" : function(){} };
 		Campus.info();
-		var link = '<a href="{% url location building.number %}">{{building.name}} &raquo;</a>';
+		var link = '<a href="{% url 'location' building.number %}">{{ building.name }} &raquo;</a>';
 		Campus.infoBox.show(link, latlng);
 
 	});

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.1">
+    <Document>
+        <Style id="{{ route_info.shortname }}">
+            <LineStyle>
+                <color>#{{ route_info.color }}</color>
+                <width>4</width>
+            </LineStyle>
+        </Style>
+        <Placemark>
+            <sytleUrl>{{ route_info.shortname }}</sytleUrl>
+            <LineString>
+                <altitudeMode>relative</altitudeMode>
+                <coordinates>{% for line in route_lines %}
+                {{ line.from_point.lon }},{{ line.from_point.lat }},0{% endfor %}
+                {% with route_lines|last as last %}{{ last.to_point.lon }},{{ last.to_point.lat }},0{% endwith %}
+                </coordinates>
+            </LineString>
+        </Placemark>
+    </Document>
+</kml>

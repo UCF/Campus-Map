@@ -2,14 +2,18 @@
 
 {% block title %}Developer's Guide - {{block.super}}{% endblock %}
 
+{% block meta-description %}Developer's Guide for UCF Campus Map {{ block.super }}{% endblock %}
+
+{% block rel-canonical %}{{ base_url }}{% url 'page' 'developer' %}{% endblock %}
+
 {% block wrap %}
-	
+
 	<h2>Developer&rsquo;s Guide</h2>
 	<p>Documentation coming soon.</p>
 	<p>
-		In the mean time, try appending 
-		<code><a href="{% url search %}.json?q=union">.json</a></code> or 
+		In the mean time, try appending
+		<code><a href="{% url search %}.json?q=union">.json</a></code> or
 		<code><a href="{% url home %}.txt">.txt</a></code> to any url.
 	</p>
-	
+
 {% endblock %}

@@ -41,3 +41,7 @@ DATABASES = {
 # Read settings.py for more details about these settings
 #GOOGLE_CAN_SEE_ME = False
 #GOOGLE_LOOK_HERE  = "http://map.ucf.edu"
+
+BUS_WSDL = ''
+BUS_APP_CODE = ''
+BUS_COST_CENTER_ID = ''
