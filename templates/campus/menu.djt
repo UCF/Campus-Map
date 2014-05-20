@@ -28,6 +28,7 @@
 					<label><input type="checkbox" id="food"> Food</label>
 					<label><input type="checkbox" id="bikeracks"> Bike Racks</label>
 					<label><input type="checkbox" id="emergency-phones"> Emergency</label>
+                    <label><input type="checkbox" id="bus-routes"> Bus Routes</label>
 				</div>
 				<div class="more-menu">
 					<span>&nbsp;</span>
@@ -89,6 +90,11 @@
 		<a class="item" href="http://parking.ucf.edu/maps/" target="blank">Download Parking Guide</a>
 		<a class="item" href="http://parking.ucf.edu/" target="blank">Parking Services Website</a>
 	</div>
+</div>
+
+<div style="display:none;" id="bus-routes-content">
+    <div id="bus-routes">
+    </div>
 </div>
 
 

@@ -100,8 +100,8 @@ var CampusMap = function(options) {
 		mapTypeControl: options.map_type_control,
 		mapTypeControlOptions: {
 			mapTypeIds: [
-				google.maps.MapTypeId.ROADMAP, 
-				google.maps.MapTypeId.SATELLITE, 
+				google.maps.MapTypeId.ROADMAP,
+				google.maps.MapTypeId.SATELLITE,
 				google.maps.MapTypeId.HYBRID,
 				google.maps.MapTypeId.TERRAIN,
 				'illustrated'
@@ -110,7 +110,7 @@ var CampusMap = function(options) {
 	}
 
 	// Illustrated Map
-	IMAP_OPTIONS = { 
+	IMAP_OPTIONS = {
 		zoom              : 14,
 		center            : new google.maps.LatLng(85.04591,-179.94189), // world's corner
 		mapTypeId         : 'illustrated',
@@ -191,7 +191,7 @@ var CampusMap = function(options) {
 			(function() {
 				var sidewalk_layer = new Layer('sidewalks');
 				sidewalk_layer.layer = new google.maps.KmlLayer(
-						SIDEWALKS_KML_URL, 
+						SIDEWALKS_KML_URL,
 						{
 							preserveViewport : true,
 							suppressInfoWindows: true,
@@ -275,18 +275,18 @@ var CampusMap = function(options) {
 	 			return points_layer;
 			})()
 		);
-		
+
 
 		// Implementation details for the buildings layer
 		LAYER_MANAGER.register_layer(
 			(function() {
 				var buildings_layer   = new Layer('buildings');
 				buildings_layer.layer = new google.maps.KmlLayer(
-					BUILDINGS_KML_URL, 
+					BUILDINGS_KML_URL,
 					{
 						preserveViewport    :true,
 						suppressInfoWindows :true,
-						clickable           :false 
+						clickable           :false
 					}
 				);
 				return buildings_layer;
@@ -379,7 +379,7 @@ var CampusMap = function(options) {
 				return phones_layer;
 			})()
 		);
-		
+
 		// Implementation detail for the parking layer
 		LAYER_MANAGER.register_layer(
 			(function() {
@@ -399,7 +399,7 @@ var CampusMap = function(options) {
 						async    : false,
 						success: function(data){
 							var icon   = new google.maps.MarkerImage(
-									STATIC_URL + 'images/markers/disabled.png', 
+									STATIC_URL + 'images/markers/disabled.png',
 									new google.maps.Size(17, 17), //size
 									new google.maps.Point(0, 0),  //origin
 									new google.maps.Point(10, 8)   //anchor
@@ -412,7 +412,7 @@ var CampusMap = function(options) {
 											position : new google.maps.LatLng(
 												spot.googlemap_point[0],
 												spot.googlemap_point[1]
-											), 
+											),
 											map      : MAP,
 											title    : spot.title,
 											visible  : false
@@ -449,7 +449,7 @@ var CampusMap = function(options) {
 							STATIC_URL + 'images/markers/knife-fork.png',
 							new google.maps.Size(28, 28),  // dimensions
 							new google.maps.Point(0,0),  // origin
-							new google.maps.Point(16,20)), // anchor 
+							new google.maps.Point(16,20)), // anchor
 						shadow = new google.maps.MarkerImage(
 							STATIC_URL + 'images/markers/knife-fork-shadow.png',
 							new google.maps.Size(46, 22),
@@ -461,7 +461,7 @@ var CampusMap = function(options) {
 						dataType : 'json',
 						async    : false,
 						success: function(data){
-							
+
 
 							if(typeof data.features != 'undefined') {
 								$.each(data.features, function(index, feature) {
@@ -516,7 +516,7 @@ var CampusMap = function(options) {
 				return dining_layer;
 			})()
 		);
-		
+
 		(function() {
 			var activated_layer = false;
 			// Activated layers
@@ -538,7 +538,7 @@ var CampusMap = function(options) {
 				options.illustrated ? (LAYER_MANAGER.get_layer('ipoints')).toggle() : (LAYER_MANAGER.get_layer('gpoints')).toggle();
 			}
 		})();
-		
+
 
 		// Attach click handles to layer checkboxes
 		(function() {
@@ -562,10 +562,18 @@ var CampusMap = function(options) {
 						layer.toggle();
 					});
 			});
-		})();
 
-		//var x = new Info([28.6018,-81.1995], 'test');
-		//var y = new Info([28.6018,-81.1975], 'test1');
+            // Add click event to Bus Routes
+            var checkbox = $('input[type="checkbox"][id="bus-routes"]');
+            checkbox.click(function() {
+                if($(this).is(':checked')) {
+                    MENU.change_tabs({
+                        'label':'Bus Routes',
+                        'html' :$('#bus-routes-content').html()
+                    });
+                }
+            });
+		})();
 
 
 		// Search result selection. Tab and infobox population
@@ -591,7 +599,7 @@ var CampusMap = function(options) {
 								MENU.change_tabs({'html':data.info});
 							}
 						}
-						
+
 					);
 				}
 				SEARCH.hide_results();
@@ -655,9 +663,9 @@ var CampusMap = function(options) {
 	 			pan  : false
 	 		};
 	 	this.box = null;
-	 	
+
 	 	options = $.extend({}, default_options, options);
-	 	
+
 	 	// Wrap the text in a link if neccessary
 	 	if(options.link != null) {
 	 		name = '<a href="' + options.link + '">' + name + '</a>';
@@ -746,7 +754,7 @@ var CampusMap = function(options) {
 		*/
 
 		var that    = this;
-		
+
 		this.active  = false;
 		this.name    = name;
 		this.layer   = null; // the actual Google Maps layer on the map, if applicable
@@ -784,7 +792,7 @@ var CampusMap = function(options) {
 			}
 		}
 	}
-	
+
 	/*********************************
 	 *
 	 * Menu
@@ -793,9 +801,9 @@ var CampusMap = function(options) {
 	function Menu() {
 		/*
 			The menu consists of four different faces. The content of
-			the first three faces is constant while the content of the 
+			the first three faces is constant while the content of the
 			fourth face dynamic. The fourth face, referred as the `stage`,
-			is where information about locations that are selected is 
+			is where information about locations that are selected is
 			displayed.
 
 			In addition to the four faces, there are are two tabs.
@@ -811,7 +819,7 @@ var CampusMap = function(options) {
 		// Set all the faces to the same height
 		menu.equalHeights();
 
-		// The menu header has a gap the needs to move left and right 
+		// The menu header has a gap the needs to move left and right
 		// depending on how many tabs are displayed
 		function reset_tab_gap() {
 			var width = header_width - tab_one.width();
@@ -874,12 +882,12 @@ var CampusMap = function(options) {
 				'print'   : BASE_URL + '/print/?',
 				'toggle_illustrated' : false
 			}
-			
+
 			// setting
 			var s = $.extend({}, defaults, options);
-			
+
 			var illustrated = (MAP.mapTypeId === 'illustrated');
-			
+
 			if(s.toggle_illustrated){
 				var href = $('#print').attr('href');
 				href = href.replace('&illustrated', '');
@@ -887,7 +895,7 @@ var CampusMap = function(options) {
 				$('#print').attr('href', href);
 				return;
 			}
-			
+
 			if(s.loc_id){
 				var title   = escape(s.title);
 				var link    = BASE_URL + '/?show=' + s.loc_id;
@@ -896,11 +904,11 @@ var CampusMap = function(options) {
 				s.body    = title + escape("\n") + link;
 				s.print   = s.print + '&show=' + s.loc_id;
 			}
-			
+
 			// update email button
 			var mailto = "mailto:?subject=" + s.subject + "&body=" + s.body;
 			$('#email').attr('href', mailto);
-			
+
 			// update print button
 			if(illustrated) s.print = s.print + '&illustrated';
 			$('#print').attr('href', s.print);
@@ -925,7 +933,7 @@ var CampusMap = function(options) {
 				tab_one.addClass('off');
 				if(settings.label) {
 					$('#menu-title').html(settings.label); // tab two title
-					
+
 				}
 				tab_two.show();
 
@@ -1004,7 +1012,7 @@ var CampusMap = function(options) {
 
 			form.appendChild(input);
 			form.appendChild(anchor);
-			
+
 			div.appendChild(form)
 			div.appendChild(ul);
 
@@ -1057,13 +1065,13 @@ var CampusMap = function(options) {
 
 				// Ignore left, right, shift, control, option and command
 				// These are text navigation commands
-				if($.inArray(keycode, 
+				if($.inArray(keycode,
 						[
 							KEYCODES.LEFT_ARROW,
-							KEYCODES.RIGHT_ARROW, 
-							KEYCODES.SHIFT, 
-							KEYCODES.CONTROL, 
-							KEYCODES.OPTION, 
+							KEYCODES.RIGHT_ARROW,
+							KEYCODES.SHIFT,
+							KEYCODES.CONTROL,
+							KEYCODES.OPTION,
 							KEYCODES.COMMAND
 						]
 					) !== -1) {
@@ -1177,7 +1185,7 @@ var CampusMap = function(options) {
 												if(org_loc_count > 11) {
 													results.append('<li class="more"><a href="' + data.response_page_url + '">More Results &hellip;</a></li>');
 													return false;
-												} 
+												}
 												org_loc_count++;
 											});
 										}
@@ -1271,7 +1279,7 @@ var CampusMap = function(options) {
 			return new google.maps.MarkerImage(
 				(STATIC_URL + 'images/markers/' + color + '.png'),
 				new google.maps.Size(19, 19),
-				new google.maps.Point(0,0), 
+				new google.maps.Point(0,0),
 				new google.maps.Point(10,10));
 		}
 
@@ -1418,15 +1426,15 @@ var CampusMap = function(options) {
 		this.resize_canvas = function() {
 			var height = document.documentElement.clientHeight,
 				blackbar = document.getElementById('UCFHBHeader') || document.getElementById('ucfhb');
-			
+
 			height -= blackbar ? blackbar.clientHeight : 0;
 			height -= $('#map header')[0].clientHeight;
 			height -= $('footer')[0].clientHeight;
 			height -= 2 + 17; // borders + margin
-			
+
 			var canvas   = document.getElementById('map-canvas');
 			canvas.style.height = height + "px";
-			
+
 			// iphone, hide url bar
 			if($.os.name === "iphone"){
 				height += 58;
@@ -1444,17 +1452,17 @@ var CampusMap = function(options) {
 	}
 }
 
-/*-------------------------------------------------------------------- 
+/*--------------------------------------------------------------------
  * JQuery Plugin: "EqualHeights" & "EqualWidths"
  * by:	Scott Jehl, Todd Parker, Maggie Costello Wachs (http://www.filamentgroup.com)
  *
  * Copyright (c) 2007 Filament Group
  * Licensed under GPL (http://www.opensource.org/licenses/gpl-license.php)
  *
- * Description: Compares the heights or widths of the top-level children of a provided element 
- 		and sets their min-height to the tallest height (or width to widest width). Sets in em units 
+ * Description: Compares the heights or widths of the top-level children of a provided element
+ 		and sets their min-height to the tallest height (or width to widest width). Sets in em units
  		by default if pxToEm() method is available.
- * Dependencies: jQuery library, pxToEm method	(article: http://www.filamentgroup.com/lab/retaining_scalable_interfaces_with_pixel_to_em_conversion/)							  
+ * Dependencies: jQuery library, pxToEm method	(article: http://www.filamentgroup.com/lab/retaining_scalable_interfaces_with_pixel_to_em_conversion/)
  * Usage Example: $(element).equalHeights();
    						      Optional: to set min-height in px, pass a true argument: $(element).equalHeights(true);
  * Version: 2.0, 07.24.2008
@@ -1471,7 +1479,7 @@ $.fn.equalHeights = function(px) {
 		});
 		// for ie6, set height since min-height isn't supported
 		if ($.browser.msie && $.browser.version === 6.0) { $(this).children().css({'height': currentTallest}); }
-		$(this).children().css({'min-height': currentTallest});	
+		$(this).children().css({'min-height': currentTallest});
 	});
 	return this;
 }

@@ -112,7 +112,7 @@ def home(request, **kwargs):
     else:
         buildings_kml = "%s%s.kml?v=%s" % (settings.GOOGLE_LOOK_HERE, reverse('locations')[:-1], v)
         sidewalks_kml = "%s%s.kml?v=%s" % (settings.GOOGLE_LOOK_HERE, reverse('sidewalks')[:-1], v)
-        parking_kml    = "%s%s.kml?v=%s" % (settings.GOOGLE_LOOK_HERE, reverse('parking')[:-1], v)
+        parking_kml   = "%s%s.kml?v=%s" % (settings.GOOGLE_LOOK_HERE, reverse('parking')[:-1], v)
     loc = "%s.json" % reverse('location', kwargs={'loc':'foo'})
     loc = loc.replace('foo', '%s')
     kwargs['map'] = 'gmap';
@@ -575,9 +575,11 @@ def bus_routes(request):
 
     ucf_bus_api = BusRouteAPI(settings.BUS_WSDL, settings.BUS_APP_CODE, settings.BUS_COST_CENTER_ID)
     ucf_bus_routes = ucf_bus_api.get_routes()
+    json_route_list = []
     json_object = {}
     for route_id, route in ucf_bus_routes.iteritems():
-        json_object.update(route.json())
+        json_route_list.append(route.json())
+    json_object['routes'] = json_route_list
     return HttpResponse(json.dumps(json_object), content_type='application/json')
 
 
@@ -591,8 +593,10 @@ def bus_stops(request, route_id):
     json_object = {}
     ucf_bus_api = BusRouteAPI(settings.BUS_WSDL, settings.BUS_APP_CODE, settings.BUS_COST_CENTER_ID)
     bus_stops = ucf_bus_api.get_route_stops(route_id)
+    json_stop_list = []
     for stop in bus_stops:
-        json_object.update(stop.json())
+        json_stop_list.append(stop.json())
+    json_object['stops'] = json_stop_list
     return HttpResponse(json.dumps(json_object), content_type='application/json')
 
 
@@ -606,8 +610,10 @@ def bus_gps(request, route_id):
     json_object = {}
     ucf_bus_api = BusRouteAPI(settings.BUS_WSDL, settings.BUS_APP_CODE, settings.BUS_COST_CENTER_ID)
     route_gps_list = ucf_bus_api.get_route_gps(route_id)
+    json_gps_list = []
     for gps in route_gps_list:
-        json_object.update(gps.json())
+        json_gps_list.append(gps.json())
+    json_object['locations'] = json_gps_list
     return HttpResponse(json.dumps(json_object), content_type='application/json')
 
 

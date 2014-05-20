@@ -114,8 +114,11 @@ class RouteInfo(object):
         self.color = color
 
     def json(self):
-        json_object = {}
-        json_object[self.id] = {'shortname': self.shortname, 'color': self.color}
+        json_object = {
+            'id': self.id,
+            'shortname': self.shortname,
+            'color': self.color,
+        }
         return json_object
 
 
@@ -130,22 +133,22 @@ class RouteStop(object):
         self.point = point
 
     def json(self):
-        json_object = {}
-        json_object[self.id] = {'name': self.name, 'lat': self.point.lat, 'lon': self.point.lon}
+        json_object = {'id': self.id, 'name': self.name, 'lat': self.point.lat, 'lon': self.point.lon}
         return json_object
 
 
 class BusGps(object):
     id = None
     point = None
+    next_stop = None
 
-    def __init__(self, id, point):
+    def __init__(self, id, point, next_stop):
         self.id = id
         self.point = point
+        self.next_stop = next_stop
 
     def json(self):
-        json_object = {}
-        json_object[self.id] = {'lat': self.point.lat, 'lon': self.point.lon}
+        json_object = {'id': self.id, 'lat': self.point.lat, 'lon': self.point.lon, 'nextStop': self.next_stop}
         return json_object
 
 
@@ -220,12 +223,13 @@ class BusRouteAPI(object):
         """
         polygon_response = self.client.service.GetRoutePolygon(sAppCode=self.app_code, sCostcenterId=self.cost_center_id, nShadowRouteId=route_id)
         lines = []
-        xml_polygon_list = ET.fromstring(polygon_response)
-        for xml_polygon in xml_polygon_list:
-            from_point = Point(lat=xml_polygon.find('FromLat').text, lon=xml_polygon.find('FromLon').text)
-            to_point = Point(lat=xml_polygon.find('ToLat').text, lon=xml_polygon.find('ToLon').text)
-            line = Line(from_point, to_point)
-            lines.append(line)
+        if polygon_response is not None:
+            xml_polygon_list = ET.fromstring(polygon_response)
+            for xml_polygon in xml_polygon_list:
+                from_point = Point(lat=xml_polygon.find('FromLat').text, lon=xml_polygon.find('FromLon').text)
+                to_point = Point(lat=xml_polygon.find('ToLat').text, lon=xml_polygon.find('ToLon').text)
+                line = Line(from_point, to_point)
+                lines.append(line)
         return lines
 
     def get_route_gps(self, route_id, stop_id=None):
@@ -244,6 +248,9 @@ class BusRouteAPI(object):
         gps_list = []
         for xml_prediction in xml_prediction_list:
             if xml_prediction.find('GPSTime').text and xml_prediction.find('Vehicle').text:
-                gps_list.append(BusGps(xml_prediction.find('Vehicle').text, Point(xml_prediction.find('Lat').text, xml_prediction.find('Lon').text)))
+                gps_list.append(BusGps(xml_prediction.find('Vehicle').text,
+                                       Point(xml_prediction.find('Lat').text, xml_prediction.find('Lon').text),
+
+                                ))
 
         return gps_list
