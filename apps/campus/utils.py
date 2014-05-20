@@ -4,7 +4,6 @@ import xml.etree.ElementTree as ET
 from suds.client import Client
 from suds.plugin import MessagePlugin
 
-
 class GoogleKmlFactory(object):
     @staticmethod
     def create_kml(doc_name=None, doc_desciption=None):

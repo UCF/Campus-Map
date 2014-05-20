@@ -579,7 +579,36 @@ def bus_routes(request):
     json_object = {}
     for route_id, route in ucf_bus_routes.iteritems():
         json_route_list.append(route.json())
-    json_object['routes'] = json_route_list
+
+    def string_number_cmp(x, y):
+        try:
+            x = x['shortname']
+            xsplit = x.split(' ')
+            xsplit_len = len(xsplit)
+            route_num = xsplit[xsplit_len - 1]
+            if int(route_num) > -1 and len(route_num) == 1:
+                xsplit[xsplit_len - 1] = '0'
+                xsplit.append(route_num)
+                x = ' '.join(xsplit)
+        except ValueError:
+            pass
+
+        try:
+            y = y['shortname']
+            ysplit = y.split(' ')
+            ysplit_len = len(ysplit)
+            route_num = ysplit[ysplit_len - 1]
+            if int(route_num) > -1 and len(route_num) == 1:
+                ysplit[ysplit_len - 1] = '0'
+                ysplit.append(route_num)
+                y = ' '.join(ysplit)
+        except ValueError:
+            pass
+
+        return cmp(x.lower(), y.lower())
+
+    sorted_route_list = sorted(json_route_list, cmp=string_number_cmp)
+    json_object['routes'] = sorted_route_list
     return HttpResponse(json.dumps(json_object), content_type='application/json')
 
 

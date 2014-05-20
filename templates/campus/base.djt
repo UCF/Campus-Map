@@ -82,7 +82,19 @@
 				"base_ignore_types"   : {{ base_ignore_types|safe }},
 				"infobox_location_id" : {{ infobox_location_id|safe }},
 				"points"              : {{ points|safe }}
-			})
+			});
+
+            $.ajax({
+                url      : '{% url 'bus_routes' %}.json',
+                dataType : 'json',
+                success  : function(data) {
+                    $.each(data.routes, function(index, route) {
+                        map.addBusRoute(route.id, route.shortname);
+                    });
+                }
+            });
+
+            //map.addBusRoute('186', 'BLACK');
 		});
 	</script>
 {% endblock %}

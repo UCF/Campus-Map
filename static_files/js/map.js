@@ -569,7 +569,7 @@ var CampusMap = function(options) {
                 if($(this).is(':checked')) {
                     MENU.change_tabs({
                         'label':'Bus Routes',
-                        'html' :$('#bus-routes-content').html()
+                        'html' :$('#bus-routes-content').clone(true, true).show()
                     });
                 }
             });
@@ -938,7 +938,12 @@ var CampusMap = function(options) {
 				tab_two.show();
 
 				if(settings.html) {
-					$('#menu-stage').html(settings.html); // tab two content
+                    $('#menu-stage').empty();
+                    if (settings.html instanceof jQuery) {// tab two content
+                        settings.html.appendTo('#menu-stage');
+                    } else {
+                        $('#menu-stage').html(settings.html);
+                    }
 				}
 
 				menu.animate({'margin-left':-690}, 300);
@@ -1450,6 +1455,76 @@ var CampusMap = function(options) {
 			console.log(arguments);
 		}
 	}
+
+    this.addBusRoute = function(routeId, routeName, category) {
+        // Append a new route label to menu
+        var domId = 'bus-' + routeName.replace(' ', '-');
+        var busRouteDom = $('#bus-routes-content #bus-routes');
+        var label = '<label><input type="checkbox" id="' + domId + '"> ' + routeName + '</label>';
+        busRouteDom.append(label);
+
+
+        // Implementation detail for the bus route layer
+        LAYER_MANAGER.register_layer(
+            (function() {
+                var bus_layer = new Layer(domId);
+                bus_layer.layer = new google.maps.KmlLayer(
+                        '/bus/' + routeId + '/poly/.kml',
+                        {
+                            preserveViewport    : true,
+                            suppressInfoWindows : true
+                        }
+                );
+                bus_layer.markers = (function() {
+                    var markers = [];
+                    $.ajax({
+                        url      : '/bus/' + routeId + '/stops/.json',
+                        dataType : 'json',
+                        async: true,
+                        success: function(data){
+                            if(typeof data.stops != 'undefined') {
+                                $.each(data.stops, function(index, spot) {
+                                    var stopMarker = new google.maps.Marker({
+                                        position : new google.maps.LatLng(
+                                            spot.lat,
+                                            spot.lon
+                                        ),
+                                        map      : MAP,
+                                        title    : spot.name,
+                                        visible  : false,
+                                    });
+                                    var infoWindow = new google.maps.InfoWindow({
+                                        content: '<div>Stop: ' + spot.name + '</div>'
+                                    });
+
+                                    google.maps.event.addListener(stopMarker, 'click', function() {
+                                        infoWindow.open(MAP, stopMarker);
+                                    });
+
+                                    markers.push(stopMarker);
+                                });
+                            }
+                        }
+                    });
+                    return markers;
+                })()
+
+                var checkbox = $('input[type="checkbox"][id="' + domId + '"]');
+                checkbox.click(function() {
+                    bus_layer.toggle();
+                });
+                return bus_layer;
+            })()
+        );
+
+        // // Setup onclick event for route
+        // $.ajax({
+        //     url      :LOCATION_URL.replace('%s', location_id),
+        //     dataType :'json',
+        //     success  : function(data) {
+        //     }
+        // });
+    }
 }
 
 /*--------------------------------------------------------------------

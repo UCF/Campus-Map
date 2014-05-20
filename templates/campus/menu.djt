@@ -94,6 +94,15 @@
 
 <div style="display:none;" id="bus-routes-content">
     <div id="bus-routes">
+        <div id="on-campus-routes">
+            <h3>On-Campus</h3>
+        </div>
+        <div id="off-campus-routes">
+            <h3>Off-Campus</h3>
+        </div>
+        <div id="other-routes">
+            <h3>Other</h3>
+        </div>
     </div>
 </div>
 
