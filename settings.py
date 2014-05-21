@@ -60,6 +60,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'django.contrib.humanize',
+    'south',
 )
 
 TINYMCE_DEFAULT_CONFIG = {
