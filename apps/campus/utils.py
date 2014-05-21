@@ -4,6 +4,9 @@ import xml.etree.ElementTree as ET
 from suds.client import Client
 from suds.plugin import MessagePlugin
 
+from campus.models import BusRoute
+
+
 class GoogleKmlFactory(object):
     @staticmethod
     def create_kml(doc_name=None, doc_desciption=None):
@@ -106,17 +109,23 @@ class RouteInfo(object):
     id = None
     shortname = None
     color = None
+    cateogry = None
+    description = None
 
-    def __init__(self, id, shortname, color):
+    def __init__(self, id, shortname, color, category, description):
         self.id = id
         self.shortname = shortname
         self.color = color
+        self.category = category
+        self.description = description
 
     def json(self):
         json_object = {
             'id': self.id,
             'shortname': self.shortname,
             'color': self.color,
+            'category': self.category,
+            'description': self.description,
         }
         return json_object
 
@@ -177,17 +186,38 @@ class BusRouteAPI(object):
 
             routes_response = self.client.service.GetRoutes(sAppCode=self.app_code, sCostcenterId=self.cost_center_id, nDate=date.today().strftime('%Y%m%d'))
             xml_route_list = ET.fromstring(routes_response)
+            stored_bus_routes = BusRoute.objects.all()
 
             route_list = {}
             for xml_route in xml_route_list:
                 route_id = xml_route.find('ShadowRouteId').text
                 shortname = xml_route.find('Shortname').text
                 color = xml_route.find('RouteColor').text
+                description = xml_route.find('Direction').text
+                category = 'Other'
+
+                stored_route = None
+                try:
+                    stored_route = stored_bus_routes.get(id=route_id)
+                except BusRoute.DoesNotExist:
+                    pass
+
+                if stored_route:
+                    if stored_route.shortname:
+                        shortname = stored_route.shortname
+
+                    if stored_route.description:
+                        description = stored_route.description
+
+                    if stored_route.category:
+                        category = stored_route.category.name
+
+                shortname = shortname.title()
 
                 if not color:
                     color = 'ffffff00'
 
-                route_list[route_id] = RouteInfo(route_id, shortname, color)
+                route_list[route_id] = RouteInfo(route_id, shortname, color, category, description)
 
             self.route_list = route_list
         return self.route_list
@@ -245,11 +275,12 @@ class BusRouteAPI(object):
         prediction_response = self.client.service.GetPredictions(sAppCode=self.app_code, sCostcenterId=self.cost_center_id, nShadowRouteId=route_id, nShadowStopId=stop_id, nMaxPredictions=10)
         xml_prediction_list = ET.fromstring(prediction_response)
         gps_list = []
+        vehicles = []
         for xml_prediction in xml_prediction_list:
-            if xml_prediction.find('GPSTime').text and xml_prediction.find('Vehicle').text:
+            if xml_prediction.find('GPSTime').text and xml_prediction.find('Vehicle').text and xml_prediction.find('Vehicle').text not in vehicles:
+                vehicles.append(xml_prediction.find('Vehicle').text);
                 gps_list.append(BusGps(xml_prediction.find('Vehicle').text,
                                        Point(xml_prediction.find('Lat').text, xml_prediction.find('Lon').text),
-
-                                ))
+                                       xml_prediction.find('NextStop').text))
 
         return gps_list

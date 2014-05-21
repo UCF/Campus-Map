@@ -1459,10 +1459,10 @@ var CampusMap = function(options) {
     this.addBusRoute = function(routeId, routeName, category) {
         // Append a new route label to menu
         var domId = 'bus-' + routeName.replace(' ', '-');
-        var busRouteDom = $('#bus-routes-content #bus-routes');
+        var categoryDomId = category.replace(' ', '-').toLowerCase() + '-routes';
+        var cateogryDom = $('#' + categoryDomId);
         var label = '<label><input type="checkbox" id="' + domId + '"> ' + routeName + '</label>';
-        busRouteDom.append(label);
-
+        cateogryDom.append(label);
 
         // Implementation detail for the bus route layer
         LAYER_MANAGER.register_layer(
@@ -1502,6 +1502,41 @@ var CampusMap = function(options) {
                                     });
 
                                     markers.push(stopMarker);
+                                });
+                            }
+                        }
+                    });
+
+                    $.ajax({
+                        url      : '/bus/' + routeId + '/gps/.json',
+                        dataType : 'json',
+                        async: true,
+                        success: function(data){
+                            if(typeof data.locations != 'undefined') {
+                                $.each(data.locations, function(index, spot) {
+                                    var icon = new google.maps.MarkerImage(
+                                        STATIC_URL + '/images/markers/map-shuttle.png',
+                                        new google.maps.Size(36, 36)
+                                    );
+                                    var gpsMarker = new google.maps.Marker({
+                                        position : new google.maps.LatLng(
+                                            spot.lat,
+                                            spot.lon
+                                        ),
+                                        map      : MAP,
+                                        title    : spot.name,
+                                        visible  : false,
+                                        icon     : icon,
+                                    });
+                                    var infoWindow = new google.maps.InfoWindow({
+                                        content: '<div>Next Stop: ' + spot.nextStop + '</div>'
+                                    });
+
+                                    google.maps.event.addListener(gpsMarker, 'click', function() {
+                                        infoWindow.open(MAP, gpsMarker);
+                                    });
+
+                                    markers.push(gpsMarker);
                                 });
                             }
                         }

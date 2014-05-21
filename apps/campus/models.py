@@ -662,3 +662,20 @@ class Group(MapObj):
         return self.name
 
 m2m_changed.connect(Group.update_coordinates, sender=Group.locations.through)
+
+
+class BusCategory(models.Model):
+    name = models.CharField(max_length=80)
+
+    def __unicode__(self):
+        return u'%s' % (self.name)
+
+    class Meta:
+        verbose_name_plural = 'Bus categories'
+
+
+class BusRoute(models.Model):
+    id = models.CharField(max_length=80, primary_key=True, help_text='<strong class="caution">Caution</strong>: changing may break external resources (used for links and images)')
+    shortname = models.CharField(max_length=80, null=True, blank=True)
+    description = models.TextField(null=True, blank=True)
+    category = models.ForeignKey(BusCategory, related_name='bus_routes')

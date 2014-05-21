@@ -209,3 +209,17 @@ class DiningLocationAdmin(admin.ModelAdmin):
     change_form_template = 'admin/maps_point_selector.djt'
     form                 = DiningLocationForm
 admin.site.register(campus.models.DiningLocation, DiningLocationAdmin)
+
+
+class BusCategoryAdmin(admin.ModelAdmin):
+    search_fields = ('name',)
+    list_display = ('name', 'id', )
+    fields = ('name', )
+admin.site.register(campus.models.BusCategory, BusCategoryAdmin)
+
+
+class BusRouteAdmin(admin.ModelAdmin):
+    search_fields = ('shortname',)
+    list_display = ('id', 'shortname', 'category', 'description',)
+    fields = ('id', 'shortname', 'category', 'description',)
+admin.site.register(campus.models.BusRoute, BusRouteAdmin)

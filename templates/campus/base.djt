@@ -89,7 +89,7 @@
                 dataType : 'json',
                 success  : function(data) {
                     $.each(data.routes, function(index, route) {
-                        map.addBusRoute(route.id, route.shortname);
+                        map.addBusRoute(route.id, route.shortname, route.category);
                     });
                 }
             });
