@@ -755,10 +755,12 @@ var CampusMap = function(options) {
 
 		var that    = this;
 
-		this.active  = false;
-		this.name    = name;
-		this.layer   = null; // the actual Google Maps layer on the map, if applicable
-		this.markers = null; // the actual Google Maps markers on the map, if applicable
+		this.active     = false;
+		this.name       = name;
+		this.layer      = null; // the actual Google Maps layer on the map, if applicable
+		this.markers    = null; // the actual Google Maps markers on the map, if applicable
+        this.busRouteId = null;
+        this.gpsMarkers = null; // Google marker for gps data that can be used to refresh on an interval (unlike markers)
 
 		this.toggle = function() {
 			that.active ? that.deactivate() : that.activate();
@@ -775,6 +777,11 @@ var CampusMap = function(options) {
 						marker.setVisible(true);
 					});
 				}
+                if(that.gpsMarkers != null) {
+                    $.each(that.gpsMarkers, function(index, marker) {
+                        marker.setVisible(true);
+                    });
+                }
 			}
 		}
 
@@ -789,6 +796,11 @@ var CampusMap = function(options) {
 						marker.setVisible(false);
 					});
 				}
+                if(that.gpsMarkers != null) {
+                    $.each(that.gpsMarkers, function(index, marker) {
+                        marker.setVisible(false);
+                    });
+                }
 			}
 		}
 	}
@@ -1475,12 +1487,12 @@ var CampusMap = function(options) {
                             suppressInfoWindows : true
                         }
                 );
-                bus_layer.markers = (function() {
+                bus_layer.markers = (function(routeId) {
                     var markers = [];
                     $.ajax({
                         url      : '/bus/' + routeId + '/stops/.json',
                         dataType : 'json',
-                        async: true,
+                        async    : true,
                         success: function(data){
                             if(typeof data.stops != 'undefined') {
                                 $.each(data.stops, function(index, spot) {
@@ -1506,11 +1518,16 @@ var CampusMap = function(options) {
                             }
                         }
                     });
+                    return markers;
+                })(routeId);
 
+                bus_layer.busRouteId = routeId;
+                bus_layer.gpsMarkers = (function(routeId) {
+                    var markers = [];
                     $.ajax({
                         url      : '/bus/' + routeId + '/gps/.json',
                         dataType : 'json',
-                        async: true,
+                        async    : true,
                         success: function(data){
                             if(typeof data.locations != 'undefined') {
                                 $.each(data.locations, function(index, spot) {
@@ -1542,7 +1559,7 @@ var CampusMap = function(options) {
                         }
                     });
                     return markers;
-                })()
+                })(routeId);
 
                 var checkbox = $('input[type="checkbox"][id="' + domId + '"]');
                 checkbox.click(function() {
@@ -1551,14 +1568,61 @@ var CampusMap = function(options) {
                 return bus_layer;
             })()
         );
+    }
 
-        // // Setup onclick event for route
-        // $.ajax({
-        //     url      :LOCATION_URL.replace('%s', location_id),
-        //     dataType :'json',
-        //     success  : function(data) {
-        //     }
-        // });
+    this.refreshBusData = function() {
+        $.each(LAYER_MANAGER.layers, function(index, layer) {
+            if (layer.busRouteId != null) {
+                var newGpsMarkers = (function(layer) {
+                    var markers = [];
+                    $.ajax({
+                        url      : '/bus/' + layer.busRouteId + '/gps/.json',
+                        dataType : 'json',
+                        async: true,
+                        success: function(data) {
+                            if(typeof data.locations != 'undefined') {
+                                $.each(data.locations, function(index, spot) {
+                                    var icon = new google.maps.MarkerImage(
+                                        STATIC_URL + '/images/markers/map-shuttle.png',
+                                        new google.maps.Size(36, 36)
+                                    );
+                                    var gpsMarker = new google.maps.Marker({
+                                        position : new google.maps.LatLng(
+                                            spot.lat,
+                                            spot.lon
+                                        ),
+                                        map     : MAP,
+                                        title   : spot.name,
+                                        visible : false,
+                                        icon    : icon,
+                                    });
+                                    var infoWindow = new google.maps.InfoWindow({
+                                        content: '<div>Next Stop: ' + spot.nextStop + '</div>'
+                                    });
+
+                                    google.maps.event.addListener(gpsMarker, 'click', function() {
+                                        infoWindow.open(MAP, gpsMarker);
+                                    });
+
+                                    markers.push(gpsMarker);
+                                });
+                            }
+
+                            if (layer.active) {
+                                $.each(layer.gpsMarkers, function (index, oldGpsMarker) {
+                                    oldGpsMarker.setMap(null);
+                                });
+                                layer.gpsMarkers = markers;
+                                layer.deactivate();
+                                layer.activate();
+                            } else {
+                                layer.gpsMarkers = markers;
+                            }
+                        }
+                    });
+                })(layer);
+            }
+        });
     }
 }
 

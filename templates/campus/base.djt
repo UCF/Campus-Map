@@ -94,7 +94,15 @@
                 }
             });
 
-            //map.addBusRoute('186', 'BLACK');
+            var busInterval = null;
+            $('#refresh-bus-gps').click(function() {
+                if($(this).is(':checked')) {
+                    busInterval = setInterval(function() { map.refreshBusData() }, 15000);
+                } else {
+                    clearInterval(busInterval);
+                }
+            });
+
 		});
 	</script>
 {% endblock %}

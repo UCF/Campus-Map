@@ -94,6 +94,9 @@
 
 <div style="display:none;" id="bus-routes-content">
     <div id="bus-routes">
+        <div>
+            <label><input type="checkbox" id="refresh-bus-gps"> Auto Refresh GPS</label>
+        </div>
         <div id="on-campus-routes">
             <h3>On-Campus</h3>
         </div>
