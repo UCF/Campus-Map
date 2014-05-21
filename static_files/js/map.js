@@ -777,10 +777,10 @@ var CampusMap = function(options) {
 						marker.setVisible(true);
 					});
 				}
-                if(that.gpsMarkers != null) {
-                    $.each(that.gpsMarkers, function(index, marker) {
-                        marker.setVisible(true);
-                    });
+
+                // Get the latest GPS data
+                if(that.busRouteId != null) {
+                    updateBusGpsData(that);
                 }
 			}
 		}
@@ -1522,44 +1522,6 @@ var CampusMap = function(options) {
                 })(routeId);
 
                 bus_layer.busRouteId = routeId;
-                bus_layer.gpsMarkers = (function(routeId) {
-                    var markers = [];
-                    $.ajax({
-                        url      : '/bus/' + routeId + '/gps/.json',
-                        dataType : 'json',
-                        async    : true,
-                        success: function(data){
-                            if(typeof data.locations != 'undefined') {
-                                $.each(data.locations, function(index, spot) {
-                                    var icon = new google.maps.MarkerImage(
-                                        STATIC_URL + '/images/markers/map-shuttle.png',
-                                        new google.maps.Size(36, 36)
-                                    );
-                                    var gpsMarker = new google.maps.Marker({
-                                        position : new google.maps.LatLng(
-                                            spot.lat,
-                                            spot.lon
-                                        ),
-                                        map      : MAP,
-                                        title    : spot.name,
-                                        visible  : false,
-                                        icon     : icon,
-                                    });
-                                    var infoWindow = new google.maps.InfoWindow({
-                                        content: '<div>Next Stop: ' + spot.nextStop + '</div>'
-                                    });
-
-                                    google.maps.event.addListener(gpsMarker, 'click', function() {
-                                        infoWindow.open(MAP, gpsMarker);
-                                    });
-
-                                    markers.push(gpsMarker);
-                                });
-                            }
-                        }
-                    });
-                    return markers;
-                })(routeId);
 
                 var checkbox = $('input[type="checkbox"][id="' + domId + '"]');
                 checkbox.click(function() {
@@ -1570,57 +1532,61 @@ var CampusMap = function(options) {
         );
     }
 
+    function updateBusGpsData(layer) {
+        (function(layer) {
+            var markers = [];
+            $.ajax({
+                url      : '/bus/' + layer.busRouteId + '/gps/.json',
+                dataType : 'json',
+                async: true,
+                success: function(data) {
+                    if(typeof data.locations != 'undefined') {
+
+                        // Remove old GPS locations
+                        if(layer.gpsMarkers != null) {
+                            $.each(layer.gpsMarkers, function (index, oldGpsMarker) {
+                                oldGpsMarker.setMap(null);
+                            });
+                        }
+
+                        // Add new GPS locations
+                        $.each(data.locations, function(index, spot) {
+                            var icon = new google.maps.MarkerImage(
+                                STATIC_URL + '/images/markers/map-shuttle.png',
+                                new google.maps.Size(36, 36)
+                            );
+                            var gpsMarker = new google.maps.Marker({
+                                position : new google.maps.LatLng(
+                                    spot.lat,
+                                    spot.lon
+                                ),
+                                map     : MAP,
+                                title   : spot.name,
+                                visible : layer.active,
+                                icon    : icon,
+                            });
+                            var infoWindow = new google.maps.InfoWindow({
+                                content: '<div>Next Stop: ' + spot.nextStop + '</div>'
+                            });
+
+                            google.maps.event.addListener(gpsMarker, 'click', function() {
+                                infoWindow.open(MAP, gpsMarker);
+                            });
+
+                            markers.push(gpsMarker);
+                        });
+                    }
+
+                    layer.gpsMarkers = markers;
+                }
+            });
+        })(layer);
+    }
+
     this.refreshBusData = function() {
         $.each(LAYER_MANAGER.layers, function(index, layer) {
-            if (layer.busRouteId != null) {
-                var newGpsMarkers = (function(layer) {
-                    var markers = [];
-                    $.ajax({
-                        url      : '/bus/' + layer.busRouteId + '/gps/.json',
-                        dataType : 'json',
-                        async: true,
-                        success: function(data) {
-                            if(typeof data.locations != 'undefined') {
-                                $.each(data.locations, function(index, spot) {
-                                    var icon = new google.maps.MarkerImage(
-                                        STATIC_URL + '/images/markers/map-shuttle.png',
-                                        new google.maps.Size(36, 36)
-                                    );
-                                    var gpsMarker = new google.maps.Marker({
-                                        position : new google.maps.LatLng(
-                                            spot.lat,
-                                            spot.lon
-                                        ),
-                                        map     : MAP,
-                                        title   : spot.name,
-                                        visible : false,
-                                        icon    : icon,
-                                    });
-                                    var infoWindow = new google.maps.InfoWindow({
-                                        content: '<div>Next Stop: ' + spot.nextStop + '</div>'
-                                    });
-
-                                    google.maps.event.addListener(gpsMarker, 'click', function() {
-                                        infoWindow.open(MAP, gpsMarker);
-                                    });
-
-                                    markers.push(gpsMarker);
-                                });
-                            }
-
-                            if (layer.active) {
-                                $.each(layer.gpsMarkers, function (index, oldGpsMarker) {
-                                    oldGpsMarker.setMap(null);
-                                });
-                                layer.gpsMarkers = markers;
-                                layer.deactivate();
-                                layer.activate();
-                            } else {
-                                layer.gpsMarkers = markers;
-                            }
-                        }
-                    });
-                })(layer);
+            if (layer.busRouteId != null && layer.active) {
+                updateBusGpsData(layer);
             }
         });
     }

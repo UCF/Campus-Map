@@ -97,6 +97,7 @@
             var busInterval = null;
             $('#refresh-bus-gps').click(function() {
                 if($(this).is(':checked')) {
+                    map.refreshBusData();
                     busInterval = setInterval(function() { map.refreshBusData() }, 15000);
                 } else {
                     clearInterval(busInterval);
