@@ -37,6 +37,7 @@ from campus.models import MapObj
 from campus.models import ParkingLot
 from campus.models import RegionalCampus
 from campus.models import Sidewalk
+from campus.models import SimpleSetting
 from campus.templatetags.weather import weather
 from campus.utils import BusRouteAPI
 import settings
@@ -121,6 +122,12 @@ def home(request, **kwargs):
     if error:
         kwargs.pop('error')
 
+    bus_info = ''
+    try:
+        bus_info = SimpleSetting.objects.get(name='bus_information')
+    except SimpleSetting.DoesNotExist:
+        pass
+
     context = {
         'infobox_location_id': json.dumps(loc_id),
         'options'            : json.dumps(kwargs),
@@ -134,6 +141,7 @@ def home(request, **kwargs):
         'loc_url'            : loc,
         'base_url'           : request.build_absolute_uri(reverse('home'))[:-1],
         'error'              : error,
+        'bus_info'           : bus_info.value,
         # These points are not displayed on the base tempalte but they
         # still need to be here to be available for searching infoboxes, etc.
         'base_ignore_types'  : json.dumps(['DiningLocation'])

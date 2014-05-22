@@ -94,6 +94,7 @@
 
 <div style="display:none;" id="bus-routes-content">
     <div id="bus-routes">
+        <a class="item" id="bus-info-button" href="#bus-info">Information <img src="{{ STATIC_URL }}images/info-icon.png" alt="Bus Information"></a>
         <div>
             <label><input type="checkbox" id="refresh-bus-gps"> Auto Refresh GPS</label>
         </div>
@@ -106,6 +107,14 @@
         <div id="other-routes">
             <h3>Other</h3>
         </div>
+    </div>
+</div>
+
+<div style="display:none;" id="bus-info">
+    <div class="bus-info-wrapper" >
+        {% if bus_info %}
+            {{ bus_info|safe }}
+        {% endif %}
     </div>
 </div>
 

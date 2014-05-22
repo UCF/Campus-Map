@@ -223,3 +223,10 @@ class BusRouteAdmin(admin.ModelAdmin):
     list_display = ('id', 'shortname', 'category', 'description',)
     fields = ('id', 'shortname', 'category', 'description',)
 admin.site.register(campus.models.BusRoute, BusRouteAdmin)
+
+
+class SimpleSettingAdmin(admin.ModelAdmin):
+    search_fields = ('name',)
+    list_display = ('name',)
+    fields = ('name', 'value',)
+admin.site.register(campus.models.SimpleSetting, SimpleSettingAdmin)

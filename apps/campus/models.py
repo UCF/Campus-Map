@@ -679,3 +679,8 @@ class BusRoute(models.Model):
     shortname = models.CharField(max_length=80, null=True, blank=True)
     description = models.TextField(null=True, blank=True)
     category = models.ForeignKey(BusCategory, related_name='bus_routes')
+
+
+class SimpleSetting(models.Model):
+    name = models.CharField(max_length=80)
+    value = tinymce_models.HTMLField(null=True)

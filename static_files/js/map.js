@@ -573,6 +573,16 @@ var CampusMap = function(options) {
                     });
                 }
             });
+
+            // Add click event to Bus Route Information
+            var busInfoButton = $('#bus-info-button');
+            busInfoButton.click(function(event) {
+                event.preventDefault();
+                MENU.change_tabs({
+                    'label' : 'Bus Info',
+                    'html'  : $('#bus-info').html()
+                });
+            });
 		})();
 
 
