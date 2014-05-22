@@ -1566,7 +1566,7 @@ var CampusMap = function(options) {
                                 icon    : icon,
                             });
                             var infoWindow = new google.maps.InfoWindow({
-                                content: '<div>Next Stop: ' + spot.nextStop + '</div>'
+                                content: '<div>Bus ' + spot.id + '</div>'
                             });
 
                             google.maps.event.addListener(gpsMarker, 'click', function() {
