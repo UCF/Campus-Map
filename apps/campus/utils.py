@@ -246,6 +246,28 @@ class BusRouteAPI(object):
             stops.append(RouteStop(xml_stop.find('ShadowStopId').text, xml_stop.find('StopName').text, Point(lat=xml_stop.find('Lat').text, lon=xml_stop.find('Lon').text)))
         return stops
 
+    def get_all_bus_stops_dict(self):
+        """
+        Get all the bus stops
+        """
+        routes = self.get_routes()
+
+        stops = {}
+        for route_id, route_info in routes.iteritems():
+            route_stops = self.get_route_stops(route_id)
+            for stop in route_stops:
+                if stop.id not in stops.keys():
+                    stop_dict = stop.json()
+                    stop_dict['routes'] = []
+                else:
+                    stop_dict = stops[stop.id]
+
+                stop_dict['routes'].append({'id': route_info.id, 'shortname': route_info.shortname})
+                stops[stop.id] = stop_dict
+
+        stops = list(stops.values())
+        return stops
+
     def get_route_poly(self, route_id):
         """
         Get the route polygon

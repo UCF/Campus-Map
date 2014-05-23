@@ -28,7 +28,7 @@
 					<label><input type="checkbox" id="food"> Food</label>
 					<label><input type="checkbox" id="bikeracks"> Bike Racks</label>
 					<label><input type="checkbox" id="emergency-phones"> Emergency</label>
-                    <label><input type="checkbox" id="bus-routes"> Bus Routes</label>
+                    <label><input type="checkbox" id="bus-routes"> Shuttles</label>
 				</div>
 				<div class="more-menu">
 					<span>&nbsp;</span>
@@ -95,17 +95,22 @@
 <div style="display:none;" id="bus-routes-content">
     <div id="bus-routes">
         <a class="item" id="bus-info-button" href="#bus-info">Information <img src="{{ STATIC_URL }}images/info-icon.png" alt="Bus Information"></a>
+        <div id="bus-stop-wrapper">
+            <select>
+            </select>
+        </div>
+        <h3 class="c">Routes</h3>
         <div>
-            <label><input type="checkbox" id="refresh-bus-gps"> Auto Refresh GPS</label>
+            <label><input type="checkbox" id="refresh-bus-gps"> Track Shuttles in Real-time</label>
         </div>
         <div id="on-campus-routes">
-            <h3>On-Campus</h3>
+            <h4>On-Campus</h4>
         </div>
         <div id="off-campus-routes">
-            <h3>Off-Campus</h3>
+            <h4>Off-Campus</h4>
         </div>
         <div id="other-routes">
-            <h3>Other</h3>
+            <h4>Other</h4>
         </div>
     </div>
 </div>

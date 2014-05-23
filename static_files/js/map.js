@@ -14,6 +14,11 @@ var CampusMap = function(options) {
 		options = $.extend({}, default_options, options);
 
 	var POINTS            = options.points,
+
+        // Bus Route information
+        BUS_ROUTES        = options.bus_routes,
+        BUS_STOPS         = options.bus_stops,
+
 		// Ignore these point types on the base points layer
 		BASE_IGNORE_TYPES = options.base_ignore_types,
 
@@ -517,6 +522,130 @@ var CampusMap = function(options) {
 			})()
 		);
 
+        (function() {
+            $.each(BUS_STOPS, function(index, stop) {
+                $('#bus-stop-wrapper select').append($("<option></option>").attr('value', stop.id).text(stop.name));
+            });
+
+            var stopMarker = null;
+            var stopInfoBox = null;
+            $('#bus-stop-wrapper select').change(function() {
+                var value = $(this).val();
+                for (var key in BUS_STOPS) {
+                    stop = BUS_STOPS[key];
+                    if (stop.id == value) {
+                        if (stopMarker != null) {
+                            stopMarker.setPosition(new google.maps.LatLng(stop.lat, stop.lon));
+                            var route_names = '';
+                            for(var index in stop.routes) {
+                                route_names += '<br>' + stop.routes[index].shortname;
+                            }
+                            stopInfoBox.setContent('<div><b>Stop:</b> ' + stop.name + '<br><b>Routes:</b>' + route_names +'</div>');
+                        } else {
+                            stopMarker = new google.maps.Marker({
+                                position : new google.maps.LatLng(
+                                    stop.lat,
+                                    stop.lon
+                                ),
+                                map      : MAP,
+                                title    : stop.name
+                            });
+
+                            var route_names = '';
+                            for(var index in stop.routes) {
+                                route_names += '<br>' + stop.routes[index].shortname;
+                            }
+                            stopInfoBox = new google.maps.InfoWindow({
+                                content: '<div><b>Stop:</b> ' + stop.name + '<br><b>Routes:</b>' + route_names + '</div>'
+                            });
+
+                            google.maps.event.addListener(stopMarker, 'click', function() {
+                                stopInfoBox.open(MAP, stopMarker);
+                            });
+                        }
+                        stopInfoBox.open(MAP, stopMarker);
+                        MAP.panTo(new google.maps.LatLng(stop.lat, stop.lon));
+                        break;
+                    }
+                }
+            });
+
+            $.each(BUS_ROUTES.routes, function(index, route) {
+                // Append a new route label to menu
+                var domId = 'bus-' + route.shortname.replace(' ', '-');
+                var categoryDomId = route.category.replace(' ', '-').toLowerCase() + '-routes';
+                var cateogryDom = $('#' + categoryDomId);
+                var label = '<label><input type="checkbox" id="' + domId + '"> ' + route.shortname + '</label>';
+                cateogryDom.append(label);
+
+                // Implementation detail for the bus route layer
+                LAYER_MANAGER.register_layer(
+                    (function() {
+                        var bus_layer = new Layer(domId);
+                        bus_layer.layer = new google.maps.KmlLayer(
+                                '/bus/' + route.id + '/poly/.kml',
+                                {
+                                    preserveViewport    : true,
+                                    suppressInfoWindows : true
+                                }
+                        );
+                        bus_layer.markers = (function(routeId) {
+                            var markers = [];
+                            $.ajax({
+                                url      : '/bus/' + routeId + '/stops/.json',
+                                dataType : 'json',
+                                async    : true,
+                                success: function(data){
+                                    if(typeof data.stops != 'undefined') {
+                                        $.each(data.stops, function(index, spot) {
+                                            var stopMarker = new google.maps.Marker({
+                                                position : new google.maps.LatLng(
+                                                    spot.lat,
+                                                    spot.lon
+                                                ),
+                                                map      : MAP,
+                                                title    : spot.name,
+                                                visible  : false,
+                                            });
+                                            var infoWindow = new google.maps.InfoWindow({
+                                                content: '<div>Stop: ' + spot.name + '</div>'
+                                            });
+
+                                            google.maps.event.addListener(stopMarker, 'click', function() {
+                                                infoWindow.open(MAP, stopMarker);
+                                            });
+
+                                            markers.push(stopMarker);
+                                        });
+                                    }
+                                }
+                            });
+                            return markers;
+                        })(route.id);
+
+                        bus_layer.busRouteId = route.id;
+
+                        return bus_layer;
+                    })()
+                );
+            });
+
+            var busInterval = null;
+            $('#refresh-bus-gps').click(function() {
+                if($(this).is(':checked')) {
+                    busInterval = setInterval(function() {
+                            $.each(LAYER_MANAGER.layers, function(index, layer) {
+                                if (layer.busRouteId != null && layer.active) {
+                                    updateBusGpsData(layer);
+                                }
+                            });
+                        }, 15000);
+                } else {
+                    clearInterval(busInterval);
+                }
+            });
+        })();
+
 		(function() {
 			var activated_layer = false;
 			// Activated layers
@@ -568,7 +697,7 @@ var CampusMap = function(options) {
             checkbox.click(function() {
                 if($(this).is(':checked')) {
                     MENU.change_tabs({
-                        'label':'Bus Routes',
+                        'label':'Shuttles',
                         'html' :$('#bus-routes-content').clone(true, true).show()
                     });
                 }
@@ -579,7 +708,7 @@ var CampusMap = function(options) {
             busInfoButton.click(function(event) {
                 event.preventDefault();
                 MENU.change_tabs({
-                    'label' : 'Bus Info',
+                    'label' : 'Shuttles',
                     'html'  : $('#bus-info').html()
                 });
             });
@@ -639,6 +768,55 @@ var CampusMap = function(options) {
 	if(options.infobox_location_id != null) {
 		UTIL.highlight_location(options.infobox_location_id, {pan:true});
 	}
+
+    function updateBusGpsData(layer) {
+        var markers = [];
+        $.ajax({
+            url      : '/bus/' + layer.busRouteId + '/gps/.json',
+            dataType : 'json',
+            async: true,
+            success: function(data) {
+                if(typeof data.locations != 'undefined') {
+
+                    // Remove old GPS locations
+                    if(layer.gpsMarkers != null) {
+                        $.each(layer.gpsMarkers, function (index, oldGpsMarker) {
+                            oldGpsMarker.setMap(null);
+                        });
+                    }
+
+                    // Add new GPS locations
+                    $.each(data.locations, function(index, spot) {
+                        var icon = new google.maps.MarkerImage(
+                            STATIC_URL + '/images/markers/map-shuttle.png',
+                            new google.maps.Size(36, 36)
+                        );
+                        var gpsMarker = new google.maps.Marker({
+                            position : new google.maps.LatLng(
+                                spot.lat,
+                                spot.lon
+                            ),
+                            map     : MAP,
+                            title   : spot.name,
+                            visible : layer.active,
+                            icon    : icon,
+                        });
+                        var infoWindow = new google.maps.InfoWindow({
+                            content: '<div>Bus ' + spot.id + '</div>'
+                        });
+
+                        google.maps.event.addListener(gpsMarker, 'click', function() {
+                            infoWindow.open(MAP, gpsMarker);
+                        });
+
+                        markers.push(gpsMarker);
+                    });
+                }
+
+                layer.gpsMarkers = markers;
+            }
+        });
+    }
 
 	/*********************************
 	 *
@@ -1477,129 +1655,6 @@ var CampusMap = function(options) {
 			console.log(arguments);
 		}
 	}
-
-    this.addBusRoute = function(routeId, routeName, category) {
-        // Append a new route label to menu
-        var domId = 'bus-' + routeName.replace(' ', '-');
-        var categoryDomId = category.replace(' ', '-').toLowerCase() + '-routes';
-        var cateogryDom = $('#' + categoryDomId);
-        var label = '<label><input type="checkbox" id="' + domId + '"> ' + routeName + '</label>';
-        cateogryDom.append(label);
-
-        // Implementation detail for the bus route layer
-        LAYER_MANAGER.register_layer(
-            (function() {
-                var bus_layer = new Layer(domId);
-                bus_layer.layer = new google.maps.KmlLayer(
-                        '/bus/' + routeId + '/poly/.kml',
-                        {
-                            preserveViewport    : true,
-                            suppressInfoWindows : true
-                        }
-                );
-                bus_layer.markers = (function(routeId) {
-                    var markers = [];
-                    $.ajax({
-                        url      : '/bus/' + routeId + '/stops/.json',
-                        dataType : 'json',
-                        async    : true,
-                        success: function(data){
-                            if(typeof data.stops != 'undefined') {
-                                $.each(data.stops, function(index, spot) {
-                                    var stopMarker = new google.maps.Marker({
-                                        position : new google.maps.LatLng(
-                                            spot.lat,
-                                            spot.lon
-                                        ),
-                                        map      : MAP,
-                                        title    : spot.name,
-                                        visible  : false,
-                                    });
-                                    var infoWindow = new google.maps.InfoWindow({
-                                        content: '<div>Stop: ' + spot.name + '</div>'
-                                    });
-
-                                    google.maps.event.addListener(stopMarker, 'click', function() {
-                                        infoWindow.open(MAP, stopMarker);
-                                    });
-
-                                    markers.push(stopMarker);
-                                });
-                            }
-                        }
-                    });
-                    return markers;
-                })(routeId);
-
-                bus_layer.busRouteId = routeId;
-
-                var checkbox = $('input[type="checkbox"][id="' + domId + '"]');
-                checkbox.click(function() {
-                    bus_layer.toggle();
-                });
-                return bus_layer;
-            })()
-        );
-    }
-
-    function updateBusGpsData(layer) {
-        (function(layer) {
-            var markers = [];
-            $.ajax({
-                url      : '/bus/' + layer.busRouteId + '/gps/.json',
-                dataType : 'json',
-                async: true,
-                success: function(data) {
-                    if(typeof data.locations != 'undefined') {
-
-                        // Remove old GPS locations
-                        if(layer.gpsMarkers != null) {
-                            $.each(layer.gpsMarkers, function (index, oldGpsMarker) {
-                                oldGpsMarker.setMap(null);
-                            });
-                        }
-
-                        // Add new GPS locations
-                        $.each(data.locations, function(index, spot) {
-                            var icon = new google.maps.MarkerImage(
-                                STATIC_URL + '/images/markers/map-shuttle.png',
-                                new google.maps.Size(36, 36)
-                            );
-                            var gpsMarker = new google.maps.Marker({
-                                position : new google.maps.LatLng(
-                                    spot.lat,
-                                    spot.lon
-                                ),
-                                map     : MAP,
-                                title   : spot.name,
-                                visible : layer.active,
-                                icon    : icon,
-                            });
-                            var infoWindow = new google.maps.InfoWindow({
-                                content: '<div>Bus ' + spot.id + '</div>'
-                            });
-
-                            google.maps.event.addListener(gpsMarker, 'click', function() {
-                                infoWindow.open(MAP, gpsMarker);
-                            });
-
-                            markers.push(gpsMarker);
-                        });
-                    }
-
-                    layer.gpsMarkers = markers;
-                }
-            });
-        })(layer);
-    }
-
-    this.refreshBusData = function() {
-        $.each(LAYER_MANAGER.layers, function(index, layer) {
-            if (layer.busRouteId != null && layer.active) {
-                updateBusGpsData(layer);
-            }
-        });
-    }
 }
 
 /*--------------------------------------------------------------------

@@ -128,6 +128,9 @@ def home(request, **kwargs):
     except SimpleSetting.DoesNotExist:
         pass
 
+    ucf_bus_api = BusRouteAPI(settings.BUS_WSDL, settings.BUS_APP_CODE, settings.BUS_COST_CENTER_ID)
+    bus_stops = ucf_bus_api.get_all_bus_stops_dict()
+    bus_stops = sorted(bus_stops, key=lambda k: k['name'])
     context = {
         'infobox_location_id': json.dumps(loc_id),
         'options'            : json.dumps(kwargs),
@@ -141,6 +144,8 @@ def home(request, **kwargs):
         'loc_url'            : loc,
         'base_url'           : request.build_absolute_uri(reverse('home'))[:-1],
         'error'              : error,
+        'bus_routes'         : json.dumps(get_bus_routes_dict()),
+        'bus_stops'          : json.dumps(bus_stops),
         'bus_info'           : bus_info.value,
         # These points are not displayed on the base tempalte but they
         # still need to be here to be available for searching infoboxes, etc.
@@ -574,19 +579,17 @@ class RegionalCampusListView(ListView):
     template_name = 'campus/regional-campuses.djt'
 
 
-def bus_routes(request):
+def get_bus_routes_dict():
     """
-    Retrieve a list of bus routes and return them in json.
+    Get the bus routes
     """
-    if not request.is_json():
-        raise Http404()
 
     ucf_bus_api = BusRouteAPI(settings.BUS_WSDL, settings.BUS_APP_CODE, settings.BUS_COST_CENTER_ID)
     ucf_bus_routes = ucf_bus_api.get_routes()
-    json_route_list = []
-    json_object = {}
+    route_list = []
+    route_dict = {}
     for route_id, route in ucf_bus_routes.iteritems():
-        json_route_list.append(route.json())
+        route_list.append(route.json())
 
     def string_number_cmp(x, y):
         try:
@@ -615,8 +618,20 @@ def bus_routes(request):
 
         return cmp(x.lower(), y.lower())
 
-    sorted_route_list = sorted(json_route_list, cmp=string_number_cmp)
-    json_object['routes'] = sorted_route_list
+    sorted_route_list = sorted(route_list, cmp=string_number_cmp)
+    route_dict['routes'] = sorted_route_list
+    return route_dict
+
+
+def bus_routes(request):
+    """
+    Retrieve a list of bus routes and return them in json.
+    """
+
+    if not request.is_json():
+        raise Http404()
+
+    json_object = get_bus_routes_dict()
     return HttpResponse(json.dumps(json_object), content_type='application/json')
 
 
