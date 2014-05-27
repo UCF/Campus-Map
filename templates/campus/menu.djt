@@ -97,6 +97,7 @@
         <a class="item" id="bus-info-button" href="#bus-info">Information <img src="{{ STATIC_URL }}images/info-icon.png" alt="Bus Information"></a>
         <div id="bus-stop-wrapper">
             <select>
+            <option value="">Select a Stop</option>
             </select>
         </div>
         <h3 class="c">Routes</h3>

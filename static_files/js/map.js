@@ -531,41 +531,49 @@ var CampusMap = function(options) {
             var stopInfoBox = null;
             $('#bus-stop-wrapper select').change(function() {
                 var value = $(this).val();
-                for (var key in BUS_STOPS) {
-                    stop = BUS_STOPS[key];
-                    if (stop.id == value) {
-                        if (stopMarker != null) {
-                            stopMarker.setPosition(new google.maps.LatLng(stop.lat, stop.lon));
-                            var route_names = '';
-                            for(var index in stop.routes) {
-                                route_names += '<br>' + stop.routes[index].shortname;
-                            }
-                            stopInfoBox.setContent('<div><b>Stop:</b> ' + stop.name + '<br><b>Routes:</b>' + route_names +'</div>');
-                        } else {
-                            stopMarker = new google.maps.Marker({
-                                position : new google.maps.LatLng(
-                                    stop.lat,
-                                    stop.lon
-                                ),
-                                map      : MAP,
-                                title    : stop.name
-                            });
+                if (value != '') {
+                    for (var key in BUS_STOPS) {
+                        stop = BUS_STOPS[key];
+                        if (stop.id == value) {
+                            if (stopMarker != null) {
+                                stopMarker.setPosition(new google.maps.LatLng(stop.lat, stop.lon));
+                                stopMarker.setVisible(true);
+                                var route_names = '';
+                                for(var index in stop.routes) {
+                                    route_names += '<br>' + stop.routes[index].shortname;
+                                }
+                                stopInfoBox.setContent('<div><b>Stop:</b> ' + stop.name + '<br><b>Routes:</b>' + route_names +'</div>');
+                            } else {
+                                stopMarker = new google.maps.Marker({
+                                    position : new google.maps.LatLng(
+                                        stop.lat,
+                                        stop.lon
+                                    ),
+                                    map      : MAP,
+                                    title    : stop.name
+                                });
 
-                            var route_names = '';
-                            for(var index in stop.routes) {
-                                route_names += '<br>' + stop.routes[index].shortname;
-                            }
-                            stopInfoBox = new google.maps.InfoWindow({
-                                content: '<div><b>Stop:</b> ' + stop.name + '<br><b>Routes:</b>' + route_names + '</div>'
-                            });
+                                var route_names = '';
+                                for(var index in stop.routes) {
+                                    route_names += '<br>' + stop.routes[index].shortname;
+                                }
+                                stopInfoBox = new google.maps.InfoWindow({
+                                    content: '<div><b>Stop:</b> ' + stop.name + '<br><b>Routes:</b>' + route_names + '</div>'
+                                });
 
-                            google.maps.event.addListener(stopMarker, 'click', function() {
-                                stopInfoBox.open(MAP, stopMarker);
-                            });
+                                google.maps.event.addListener(stopMarker, 'click', function() {
+                                    stopInfoBox.open(MAP, stopMarker);
+                                });
+                            }
+                            stopInfoBox.open(MAP, stopMarker);
+                            MAP.panTo(new google.maps.LatLng(stop.lat, stop.lon));
+                            break;
                         }
-                        stopInfoBox.open(MAP, stopMarker);
-                        MAP.panTo(new google.maps.LatLng(stop.lat, stop.lon));
-                        break;
+                    }
+                } else {
+                    if (stopMarker != null) {
+                        stopMarker.setVisible(false);
+                        stopInfoBox.close();
                     }
                 }
             });
