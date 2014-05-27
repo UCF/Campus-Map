@@ -117,6 +117,7 @@
 
 <div style="display:none;" id="bus-info">
     <div class="bus-info-wrapper" >
+    <a class="item bus-routes-btn">Back to Shuttles</a>
         {% if bus_info %}
             {{ bus_info|safe }}
         {% endif %}

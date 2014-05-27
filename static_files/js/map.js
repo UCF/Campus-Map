@@ -693,7 +693,7 @@ var CampusMap = function(options) {
 			});
 
             // Add click event to Bus Routes
-            var checkbox = $('input[type="checkbox"][id="bus-routes"]');
+            var checkbox = $('input[type="checkbox"][id="bus-routes"], .bus-routes-btn');
             checkbox.click(function() {
                 if($(this).is(':checked')) {
                     MENU.change_tabs({
@@ -709,9 +709,19 @@ var CampusMap = function(options) {
                 event.preventDefault();
                 MENU.change_tabs({
                     'label' : 'Shuttles',
-                    'html'  : $('#bus-info').html()
+                    'html'  : $('#bus-info').clone(true, true).show()
                 });
             });
+
+            // Add back button for route info or any other buttons that go to the routes menu
+            var checkbox = $('.bus-routes-btn');
+            checkbox.click(function() {
+                MENU.change_tabs({
+                    'label':'Shuttles',
+                    'html' :$('#bus-routes-content').clone(true, true).show()
+                });
+            });
+
 		})();
 
 
