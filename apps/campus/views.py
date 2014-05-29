@@ -40,6 +40,7 @@ from campus.models import Sidewalk
 from campus.models import SimpleSetting
 from campus.templatetags.weather import weather
 from campus.utils import BusRouteAPI
+from campus.utils import get_geo_data
 import settings
 
 
@@ -304,6 +305,9 @@ def location(request, loc, return_obj=False):
     for g in groups:
         groups_orgs.append((g, group_orgs(g)))
 
+    latlng = location.get('googlemap_point')
+    geo_placename, geo_region = get_geo_data(latlng[0], latlng[1])
+
     context = {
         'location'      : location,
         'loc_url'       : "%s.json" % reverse('location', kwargs={'loc':'foo'}).replace('foo', '%s'),
@@ -311,6 +315,8 @@ def location(request, loc, return_obj=False):
         'groups_orgs'   : groups_orgs,
         'org'           : org,
         'photos'        : photos,
+        'geo_placename' : geo_placename,
+        'geo_region'    : geo_region,
     }
 
     return render_to_response('campus/location.djt', context, context_instance=RequestContext(request))

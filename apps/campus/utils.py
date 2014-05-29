@@ -1,4 +1,6 @@
 from datetime import date
+import json
+import urllib2
 import xml.etree.ElementTree as ET
 
 from suds.client import Client
@@ -306,3 +308,31 @@ class BusRouteAPI(object):
                                        xml_prediction.find('NextStop').text))
 
         return gps_list
+
+
+def get_geo_data(lat, lng):
+    """
+    Get geo location data for tagging
+    """
+    geo_placename = None
+    geo_state = None
+    geo_country = None
+    geo_url = 'http://maps.googleapis.com/maps/api/geocode/json?latlng=%s,%s&sensor=false' % (str(lat), str(lng),)
+    geo_request = json.load(urllib2.urlopen(geo_url))
+    geo_results = geo_request.get('results')
+    if len(geo_results):
+        for geo_addr in geo_results:
+            for geo_addr_comp in geo_addr.get('address_components'):
+                if geo_placename is None and 'locality' in geo_addr_comp.get('types'):
+                    geo_placename = geo_addr_comp.get('long_name')
+
+                if geo_state is None and 'administrative_area_level_1' in geo_addr_comp.get('types'):
+                    geo_state = geo_addr_comp.get('short_name')
+
+                if geo_country is None and 'country' in geo_addr_comp.get('types'):
+                    geo_country = geo_addr_comp.get('short_name')
+
+                if geo_placename and geo_state and geo_country:
+                    return (geo_placename, geo_country + '-' + geo_state)
+
+    return (geo_placename, geo_country + '-' + geo_state if geo_country and geo_state else None)

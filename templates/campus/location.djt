@@ -154,6 +154,18 @@
 		var img = new Image(); img.src = "{{ STATIC_URL }}style/img/spinner.gif";
 	})();
 </script>
+
+{% if geo_region %}
+<meta name="geo.region" content="{{ geo_region }}" />
+{% endif %}
+{% if geo_placename %}
+<meta name="geo.placename" content="{{ geo_placename }}" />
+{% endif %}
+{% if location.googlemap_point.0 and location.googlemap_point.1 %}
+<meta name="geo.position" content="{{ location.googlemap_point.0 }};{{ location.googlemap_point.1 }}" />
+<meta name="ICBM" content="{{ location.googlemap_point.0 }}, {{ location.googlemap_point.1 }}" />
+{% endif %}
+<meta name="description" content="We can help you find what you're looking for. Use the UCF Campus Map to locate your classrooms, labs, housing and nearby parking; find buildings, locations, organizations and more at the University of Central Florida.">
 {% endblock %}
 
 {% block js %}
