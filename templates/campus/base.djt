@@ -10,6 +10,16 @@
 .ie #menu #tab-one.off .l { background:none; filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src="{{ STATIC_URL }}style/img/ie-sux/tab-light-left.png", sizingMethod="crop"); zoom:1; }
 .ie #menu #tab-two.off .r { background:none; filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src="{{ STATIC_URL }}style/img/ie-sux/tab-light-light.png", sizingMethod="crop"); zoom:1; }
 </style>
+{% if geo_region %}
+<meta name="geo.region" content="{{ geo_region }}" />
+{% endif %}
+{% if geo_placename %}
+<meta name="geo.placename" content="{{ geo_placename }}" />
+{% endif %}
+{% if geo_latlng and geo_latlng.0 and geo_latlng.1 %}
+<meta name="geo.position" content="{{ geo_latlng.0 }};{{ geo_latlng.1 }}" />
+<meta name="ICBM" content="{{ geo_latlng.0 }}, {{ geo_latlng.1 }}" />
+{% endif %}
 {% endblock %}
 
 

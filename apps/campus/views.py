@@ -56,11 +56,26 @@ def home(request, **kwargs):
     # process query string
     loc_id = request.GET.get('show', None)
 
+    geo_placename = None
+    geo_region = None
+    geo_latlng = None
     if loc_id is None:
         location = kwargs.get('location', None)
         if location is not None:
             loc_id = location.id
             del kwargs['location']
+            latlng = location.get('googlemap_point')
+            geo_placename, geo_region = get_geo_data(latlng[0], latlng[1])
+            geo_latlng = latlng
+    else:
+        try:
+            location = MapObj.objects.get(pk=loc_id)
+        except MapObj.DoesNotExist:
+            pass
+        else:
+            latlng = location.json().get('googlemap_point')
+            geo_placename, geo_region = get_geo_data(latlng[0], latlng[1])
+            geo_latlng = latlng
 
     if request.is_json():
         campus = {
@@ -134,6 +149,9 @@ def home(request, **kwargs):
     bus_stops = sorted(bus_stops, key=lambda k: k['name'])
     context = {
         'infobox_location_id': json.dumps(loc_id),
+        'geo_placename'      : geo_placename,
+        'geo_region'         : geo_region,
+        'geo_latlng'         : geo_latlng,
         'options'            : json.dumps(kwargs),
         'points'             : json.dumps(points),
         'date'               : date,
