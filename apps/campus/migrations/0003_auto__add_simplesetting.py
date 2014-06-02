@@ -8,18 +8,18 @@ from django.db import models
 class Migration(SchemaMigration):
 
     def forwards(self, orm):
-        # Adding model 'SimpleSettings'
-        db.create_table(u'campus_simplesettings', (
+        # Adding model 'SimpleSetting'
+        db.create_table(u'campus_simplesetting', (
             (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('name', self.gf('django.db.models.fields.CharField')(max_length=80)),
             ('value', self.gf('tinymce.models.HTMLField')(null=True, blank=True)),
         ))
-        db.send_create_signal(u'campus', ['SimpleSettings'])
+        db.send_create_signal(u'campus', ['SimpleSetting'])
 
 
     def backwards(self, orm):
-        # Deleting model 'SimpleSettings'
-        db.delete_table(u'campus_simplesettings')
+        # Deleting model 'SimpleSetting'
+        db.delete_table(u'campus_simplesetting')
 
 
     models = {
@@ -102,8 +102,8 @@ class Migration(SchemaMigration):
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'poly_coords': ('django.db.models.fields.TextField', [], {'null': 'True'})
         },
-        u'campus.simplesettings': {
-            'Meta': {'object_name': 'SimpleSettings'},
+        u'campus.simplesetting': {
+            'Meta': {'object_name': 'SimpleSetting'},
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'name': ('django.db.models.fields.CharField', [], {'max_length': '80'}),
             'value': ('tinymce.models.HTMLField', [], {'null': 'True', 'blank': 'True'})
