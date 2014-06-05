@@ -29,7 +29,7 @@ def get_photos(page=1):
             for photo in data.rsp.photos.photo:
                 _photos.append(photo)
         else:
-            _photos.append(photo)
+            _photos.append(data.rsp.photos.photo)
 
         #recursive call to grab all the photos
         if hasattr(data.rsp.photos, "pages") and page < int(data.rsp.photos.pages):
