@@ -24,7 +24,7 @@ def get_photos(page=1):
 	if photos is not None:
 		if DEBUG: print "Flickr - photos cached"
 		return photos
-	
+
 	if DEBUG: print "Flickr - grabbing photos"
 	method = 'flickr.people.getPublicPhotos'
 	data = _doget(method, user_id=USER_ID, per_page=500, page=page, extras="tags,description,date_taken,o_dims,path_alias,url_t,url_sq,url_s,url_m,url_l,url_z")
@@ -33,12 +33,12 @@ def get_photos(page=1):
 			for photo in data.rsp.photos.photo:
 				_photos.append(photo)
 		else:
-			_photos.append(photo)
-		
+			_photos.append(data.rsp.photos.photo)
+
 		#recursive call to grab all the photos
 		if hasattr(data.rsp.photos, "pages") and page < int(data.rsp.photos.pages):
 			return get_photos(page+1)
-	
+
 	cache.set('photos', _photos, 24*60*60)
 	return _photos
 
@@ -52,7 +52,7 @@ def _doget(method, auth=False, **params):
 
 	if DEBUG:
 		print "Pulling photos: ", url
-	
+
 	return _get_data(minidom.parse(urlopen(url)))
 
 def _prepare_params(params):
@@ -81,7 +81,7 @@ def unmarshal(element):
 	if isinstance(element, minidom.Element):
 		for key in element.attributes.keys():
 			setattr(rc, key, element.attributes[key].value)
-			
+
 	childElements = [e for e in element.childNodes \
 					 if isinstance(e, minidom.Element)]
 	if childElements:
