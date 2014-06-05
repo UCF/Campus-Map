@@ -141,6 +141,7 @@ def home(request, **kwargs):
     bus_info = ''
     try:
         bus_info = SimpleSetting.objects.get(name='bus_information')
+        bus_info = bus_info.value
     except SimpleSetting.DoesNotExist:
         pass
 
@@ -165,7 +166,7 @@ def home(request, **kwargs):
         'error'              : error,
         'bus_routes'         : json.dumps(get_bus_routes_dict()),
         'bus_stops'          : json.dumps(bus_stops),
-        'bus_info'           : bus_info.value,
+        'bus_info'           : bus_info,
         # These points are not displayed on the base tempalte but they
         # still need to be here to be available for searching infoboxes, etc.
         'base_ignore_types'  : json.dumps(['DiningLocation'])
@@ -240,7 +241,6 @@ def location(request, loc, return_obj=False):
     Will one day be a wrapper for all data models, searching over all locations
     and organizations, maybe even people too
     '''
-
     location_orgs = []
     try:
         location = MapObj.objects.get(pk=loc)
