@@ -15,6 +15,7 @@ from django.db.utils import IntegrityError, DatabaseError
 from campus.admin import create_groupable_locations
 from campus.models import Group, GroupedLocation, MapObj, DiningLocation
 import campus
+import settings
 
 try:
     from _mysql_exceptions import OperationalError
@@ -48,7 +49,7 @@ class Command(BaseCommand):
             campus_tables = "SELECT table_name \
                     FROM INFORMATION_SCHEMA.TABLES \
                     WHERE table_schema='%s' \
-                    AND LOCATE('campus_', table_name) = 1" % settings.DATABASES['default']['NAME']
+                    AND (LOCATE('campus_', table_name) = 1 OR LOCATE('south_', table_name) = 1)" % settings.DATABASES['default']['NAME']
             cursor.execute(campus_tables)
             return cursor
         except DatabaseError:
@@ -56,7 +57,7 @@ class Command(BaseCommand):
 
         try:
             # sqlite
-            campus_tables = "SELECT name FROM sqlite_master WHERE type IN ('table','view') AND name LIKE 'campus_%%'"
+            campus_tables = "SELECT name FROM sqlite_master WHERE type IN ('table','view') AND (name LIKE 'campus_%%' OR name LIKE 'south_%%')"
             cursor.execute(campus_tables)
             return cursor
         except DatabaseError:
@@ -91,7 +92,6 @@ class Command(BaseCommand):
         models/tablenames between the two are not yet knows.  The sql is now
         generated directly from in information schema
         '''
-
         for i in range(2):
             sql = self.reset_sql()
             error = self.run_query(sql)
@@ -101,8 +101,12 @@ class Command(BaseCommand):
             print error
             return
 
-        #syncdb,
+        #syncdb
         call_command('syncdb', verbosity=0, interactive=False)
+
+        #south migrate
+        if options.get('test') is not True:
+            call_command('migrate', verbosity=0, interactive=False)
 
         # load all the data from fixtures
         path = os.path.join(os.path.dirname(campus.__file__), 'fixtures')

@@ -213,6 +213,8 @@ PHONEBOOK = "http://search.smca.ucf.edu/service.php"
 
 LOGIN_REDIRECT_URL = '/admin/'
 
+SOUTH_TESTS_MIGRATE = False
+
 try:
     from settings_local import *
 except ImportError:
