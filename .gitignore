@@ -9,7 +9,7 @@ apache/python.wsgi
 .DS_Store
 Thumbs.db
 .svn
-logs/*
+logs/*.log
 
 # Static Files
 static/*
