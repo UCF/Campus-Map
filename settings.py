@@ -213,6 +213,8 @@ PHONEBOOK = "http://search.smca.ucf.edu/service.php"
 
 LOGIN_REDIRECT_URL = '/admin/'
 
+TEST_RUNNER = 'utils.DisableLoggingTestRunner'
+
 SOUTH_TESTS_MIGRATE = False
 
 try:
