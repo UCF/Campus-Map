@@ -17,7 +17,7 @@ def map_context(request):
     context_extras = {}
 
     if settings.DEBUG:
-        context_extras['map_version'] = 'blah'
+        context_extras['map_version'] = str(time())
     else:
         context_extras['map_version'] = settings.MAP_VERSION
 
