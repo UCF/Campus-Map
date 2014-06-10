@@ -638,7 +638,14 @@ var CampusMap = function(options) {
                 );
             });
 
-            var busInterval = null;
+            var busInterval =
+                setInterval(function() {
+                    $.each(LAYER_MANAGER.layers, function(index, layer) {
+                        if (layer.busRouteId != null && layer.active) {
+                            updateBusGpsData(layer);
+                        }
+                    });
+                }, 7000);
             $('#refresh-bus-gps').click(function() {
                 if($(this).is(':checked')) {
                     busInterval = setInterval(function() {
@@ -647,7 +654,7 @@ var CampusMap = function(options) {
                                     updateBusGpsData(layer);
                                 }
                             });
-                        }, 15000);
+                        }, 7000);
                 } else {
                     clearInterval(busInterval);
                 }
