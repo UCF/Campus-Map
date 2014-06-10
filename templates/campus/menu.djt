@@ -102,7 +102,7 @@
         </div>
         <h3 class="c">Routes</h3>
         <div>
-            <label><input type="checkbox" id="refresh-bus-gps"> Track Shuttles in Real-time</label>
+            <label><input type="checkbox" id="refresh-bus-gps" checked="checked"> Track Shuttles in Real-time</label>
         </div>
         <div id="on-campus-routes">
             <h4>On-Campus</h4>
