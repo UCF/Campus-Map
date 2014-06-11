@@ -11,9 +11,9 @@
             <sytleUrl>{{ route_info.shortname }}</sytleUrl>
             <LineString>
                 <altitudeMode>relative</altitudeMode>
-                <coordinates>{% for line in route_lines %}
+                <coordinates>{% if route_lines %}{% for line in route_lines %}
                 {{ line.from_point.lon }},{{ line.from_point.lat }},0{% endfor %}
-                {% with route_lines|last as last %}{{ last.to_point.lon }},{{ last.to_point.lat }},0{% endwith %}
+                {% with route_lines|last as last %}{{ last.to_point.lon }},{{ last.to_point.lat }},0{% endwith %}{% endif %}
                 </coordinates>
             </LineString>
         </Placemark>
