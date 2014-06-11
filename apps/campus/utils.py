@@ -178,7 +178,7 @@ class BusRouteAPI(object):
                 foo.xmlns = "http://tempuri.org/"
 
         try:
-            self.client = Client(url=wsdl_url, plugins=[NamespacePlugin()])
+            self.client = Client(url=wsdl_url, plugins=[NamespacePlugin()], timeout=30)
         except urllib2.URLError:
             pass #allow application to run without the feature
 
