@@ -164,7 +164,7 @@ def home(request, **kwargs):
         'loc_url'            : loc,
         'base_url'           : request.build_absolute_uri(reverse('home'))[:-1],
         'error'              : error,
-        'bus_routes'         : json.dumps(get_bus_routes_dict()),
+        'bus_routes'         : json.dumps(get_bus_routes_dict(ucf_bus_api)),
         'bus_stops'          : json.dumps(bus_stops),
         'bus_info'           : bus_info,
         # These points are not displayed on the base tempalte but they
@@ -603,12 +603,12 @@ class RegionalCampusListView(ListView):
     template_name = 'campus/regional-campuses.djt'
 
 
-def get_bus_routes_dict():
+def get_bus_routes_dict(ucf_bus_api=None):
     """
     Get the bus routes
     """
-
-    ucf_bus_api = BusRouteAPI(settings.BUS_WSDL, settings.BUS_APP_CODE, settings.BUS_COST_CENTER_ID)
+    if ucf_bus_api is None:
+        ucf_bus_api = BusRouteAPI(settings.BUS_WSDL, settings.BUS_APP_CODE, settings.BUS_COST_CENTER_ID)
     ucf_bus_routes = ucf_bus_api.get_routes()
     route_list = []
     route_dict = {}
