@@ -14,10 +14,11 @@ Ensure your environment has virtualenv and pip installed for python
         pip install -r src/requirements.txt
 7. Setup local settings using the local_settings.templ.py file
 8. Setup apache/python.wsgi using apache/python.templ.wsgi
-9. Sync the database
+9. Setup templates/robots.txt using templates/robots.templ.txt
+10. Sync the database
 
         python manage.py syncdb
-10. Collect static files
+11. Collect static files
 
         python manage.py collectstatic -cl
 

@@ -1,6 +1,7 @@
 # Local Settings
 settings_local.py
 apache/python.wsgi
+templates/robots.txt
 
 # Application, OS, and backup files
 *~
