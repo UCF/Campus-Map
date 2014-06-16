@@ -78,6 +78,7 @@
 			<li><a href="{% url 'bikeracks' %}">Bike Racks</a></li>
 			<li><a href="{% url 'emergency_phones' %}">Blue Light Emergency Phones</a></li>
 			<li><a href="{% url 'sidewalks' %}">Walking Paths</a></li>
+            <li><a href="{% url 'shuttles' %}">Shuttles</a></li>
 		</ul>
 
 	</div>
