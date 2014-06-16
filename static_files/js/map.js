@@ -574,7 +574,6 @@ var CampusMap = function(options) {
                     if (stopMarker != null) {
                         stopMarker.setVisible(false);
                         stopInfoBox.close();
-                        stopInfoBox = null
                     }
                 }
             });
