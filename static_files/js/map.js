@@ -540,7 +540,7 @@ var CampusMap = function(options) {
                                 stopMarker.setVisible(true);
                                 var route_names = '';
                                 for(var index in stop.routes) {
-                                    route_names += '<br><a class="route-link" href="#bus-' + stop.routes[index].shortname + '">' + stop.routes[index].shortname + '</a>';
+                                    route_names += '<br><a class="route-link" href="#bus-' + stop.routes[index].shortname.replace(' ', '-') + '">' + stop.routes[index].shortname + '</a>';
                                 }
                                 stopInfoBox.setContent('<div><b>Stop:</b> ' + stop.name + '<br><b>Routes:</b>' + route_names +'</div>');
                             } else {
@@ -555,7 +555,7 @@ var CampusMap = function(options) {
 
                                 var route_names = '';
                                 for(var index in stop.routes) {
-                                    route_names += '<br><a class="route-link" href="#bus-' + stop.routes[index].shortname + '">' + stop.routes[index].shortname + '</a>';
+                                    route_names += '<br><a class="route-link" href="#bus-' + stop.routes[index].shortname.replace(' ', '-') + '">' + stop.routes[index].shortname + '</a>';
                                 }
                                 stopInfoBox = new google.maps.InfoWindow({
                                     content: '<div><b>Stop:</b> ' + stop.name + '<br><b>Routes:</b>' + route_names + '</div>'
