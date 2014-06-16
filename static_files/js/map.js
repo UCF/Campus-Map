@@ -591,7 +591,7 @@ var CampusMap = function(options) {
                     (function() {
                         var bus_layer = new Layer(domId);
                         bus_layer.layer = new google.maps.KmlLayer(
-                                '/bus/' + route.id + '/poly/.kml',
+                                '/shuttles/' + route.id + '/poly/.kml',
                                 {
                                     preserveViewport    : true,
                                     suppressInfoWindows : true
@@ -600,7 +600,7 @@ var CampusMap = function(options) {
                         bus_layer.markers = (function(routeId) {
                             var markers = [];
                             $.ajax({
-                                url      : '/bus/' + routeId + '/stops/.json',
+                                url      : '/shuttles/' + routeId + '/stops/.json',
                                 dataType : 'json',
                                 async    : true,
                                 success: function(data){
@@ -666,7 +666,12 @@ var CampusMap = function(options) {
 			// Activated layers
 			$.each(ACTIVATED_LAYERS, function(index, layer_name) {
 				var layer = LAYER_MANAGER.get_layer(layer_name);
-				if(layer != null) {
+				if (layer_name == 'shuttles') {
+					MENU.change_tabs({
+						'label':'Shuttles',
+						'html' :$('#bus-routes-content').clone(true, true).show()
+					});
+				} else if(layer != null) {
 					layer.activate();
 					activated_layer = true;
 					if(layer.name == 'parking') {
@@ -797,7 +802,7 @@ var CampusMap = function(options) {
     function updateBusGpsData(layer) {
         var markers = [];
         $.ajax({
-            url      : '/bus/' + layer.busRouteId + '/gps/.json',
+            url      : '/shuttles/' + layer.busRouteId + '/gps/.json',
             dataType : 'json',
             async: true,
             success: function(data) {

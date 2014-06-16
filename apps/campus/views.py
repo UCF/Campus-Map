@@ -602,6 +602,8 @@ class RegionalCampusListView(ListView):
     context_object_name = 'campuses'
     template_name = 'campus/regional-campuses.djt'
 
+def shuttles(request):
+    return home(request, shuttles=True)
 
 def get_bus_routes_dict(ucf_bus_api=None):
     """
