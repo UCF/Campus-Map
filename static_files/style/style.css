@@ -288,6 +288,7 @@ footer dd { padding:8px 0 0 8px; margin:0; }
 #bus-routes-content { height: 400px;}
 #bus-routes h4 { font-size: 12px; clear: both; padding-top: 7px;}
 #bus-routes a.item img { vertical-align: middle; width: auto; }
+#bus-info a.item.bus-routes-btn { background-image: url(img/arrow-grey-left.png) }
 #bus-info p { font-size: 12px; }
 #bus-stop-wrapper {
     height: 29px;
