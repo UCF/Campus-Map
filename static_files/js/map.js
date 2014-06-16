@@ -540,7 +540,7 @@ var CampusMap = function(options) {
                                 stopMarker.setVisible(true);
                                 var route_names = '';
                                 for(var index in stop.routes) {
-                                    route_names += '<br>' + stop.routes[index].shortname;
+                                    route_names += '<br><a class="route-link" href="#bus-' + stop.routes[index].shortname + '">' + stop.routes[index].shortname + '</a>';
                                 }
                                 stopInfoBox.setContent('<div><b>Stop:</b> ' + stop.name + '<br><b>Routes:</b>' + route_names +'</div>');
                             } else {
@@ -555,7 +555,7 @@ var CampusMap = function(options) {
 
                                 var route_names = '';
                                 for(var index in stop.routes) {
-                                    route_names += '<br>' + stop.routes[index].shortname;
+                                    route_names += '<br><a class="route-link" href="#bus-' + stop.routes[index].shortname + '">' + stop.routes[index].shortname + '</a>';
                                 }
                                 stopInfoBox = new google.maps.InfoWindow({
                                     content: '<div><b>Stop:</b> ' + stop.name + '<br><b>Routes:</b>' + route_names + '</div>'
@@ -574,8 +574,16 @@ var CampusMap = function(options) {
                     if (stopMarker != null) {
                         stopMarker.setVisible(false);
                         stopInfoBox.close();
+                        stopInfoBox = null
                     }
                 }
+            });
+
+            // actively set click event to Info Windows set above
+            $('.route-link').live('click', function(e) {
+                e.preventDefault();
+                var link = $(this);
+                $(link.attr('href')).click();
             });
 
             $.each(BUS_ROUTES.routes, function(index, route) {
