@@ -15,9 +15,9 @@ var CampusMap = function(options) {
 
 	var POINTS            = options.points,
 
-        // Bus Route information
-        BUS_ROUTES        = options.bus_routes,
-        BUS_STOPS         = options.bus_stops,
+        // Shuttle Route information
+        SHUTTLE_ROUTES    = options.shuttle_routes,
+        SHUTTLE_STOPS     = options.shuttle_stops,
 
 		// Ignore these point types on the base points layer
 		BASE_IGNORE_TYPES = options.base_ignore_types,
@@ -523,24 +523,24 @@ var CampusMap = function(options) {
 		);
 
         (function() {
-            $.each(BUS_STOPS, function(index, stop) {
-                $('#bus-stop-wrapper select').append($("<option></option>").attr('value', stop.id).text(stop.name));
+            $.each(SHUTTLE_STOPS, function(index, stop) {
+                $('#shuttle-stop-wrapper select').append($("<option></option>").attr('value', stop.id).text(stop.name));
             });
 
             var stopMarker = null;
             var stopInfoBox = null;
-            $('#bus-stop-wrapper select').change(function() {
+            $('#shuttle-stop-wrapper select').change(function() {
                 var value = $(this).val();
                 if (value != '') {
-                    for (var key in BUS_STOPS) {
-                        stop = BUS_STOPS[key];
+                    for (var key in SHUTTLE_STOPS) {
+                        stop = SHUTTLE_STOPS[key];
                         if (stop.id == value) {
                             if (stopMarker != null) {
                                 stopMarker.setPosition(new google.maps.LatLng(stop.lat, stop.lon));
                                 stopMarker.setVisible(true);
                                 var route_names = '';
                                 for(var index in stop.routes) {
-                                    route_names += '<br><a class="route-link" href="#bus-' + stop.routes[index].shortname.replace(' ', '-') + '">' + stop.routes[index].shortname + '</a>';
+                                    route_names += '<br><a class="route-link" href="#shuttle-' + stop.routes[index].shortname.replace(' ', '-') + '">' + stop.routes[index].shortname + '</a>';
                                 }
                                 stopInfoBox.setContent('<div><b>Stop:</b> ' + stop.name + '<br><b>Routes:</b>' + route_names +'</div>');
                             } else {
@@ -555,7 +555,7 @@ var CampusMap = function(options) {
 
                                 var route_names = '';
                                 for(var index in stop.routes) {
-                                    route_names += '<br><a class="route-link" href="#bus-' + stop.routes[index].shortname.replace(' ', '-') + '">' + stop.routes[index].shortname + '</a>';
+                                    route_names += '<br><a class="route-link" href="#shuttle-' + stop.routes[index].shortname.replace(' ', '-') + '">' + stop.routes[index].shortname + '</a>';
                                 }
                                 stopInfoBox = new google.maps.InfoWindow({
                                     content: '<div><b>Stop:</b> ' + stop.name + '<br><b>Routes:</b>' + route_names + '</div>'
@@ -585,26 +585,26 @@ var CampusMap = function(options) {
                 $(link.attr('href')).click();
             });
 
-            $.each(BUS_ROUTES.routes, function(index, route) {
+            $.each(SHUTTLE_ROUTES.routes, function(index, route) {
                 // Append a new route label to menu
-                var domId = 'bus-' + route.shortname.replace(' ', '-');
+                var domId = 'shuttle-' + route.shortname.replace(' ', '-');
                 var categoryDomId = route.category.replace(' ', '-').toLowerCase() + '-routes';
                 var cateogryDom = $('#' + categoryDomId);
                 var label = '<label><input type="checkbox" id="' + domId + '"> ' + route.shortname + '</label>';
                 cateogryDom.append(label);
 
-                // Implementation detail for the bus route layer
+                // Implementation detail for the shuttle route layer
                 LAYER_MANAGER.register_layer(
                     (function() {
-                        var bus_layer = new Layer(domId);
-                        bus_layer.layer = new google.maps.KmlLayer(
+                        var shuttle_layer = new Layer(domId);
+                        shuttle_layer.layer = new google.maps.KmlLayer(
                                 '/shuttles/' + route.id + '/poly/.kml',
                                 {
                                     preserveViewport    : true,
                                     suppressInfoWindows : true
                                 }
                         );
-                        bus_layer.markers = (function(routeId) {
+                        shuttle_layer.markers = (function(routeId) {
                             var markers = [];
                             $.ajax({
                                 url      : '/shuttles/' + routeId + '/stops/.json',
@@ -638,32 +638,32 @@ var CampusMap = function(options) {
                             return markers;
                         })(route.id);
 
-                        bus_layer.busRouteId = route.id;
+                        shuttle_layer.shuttleRouteId = route.id;
 
-                        return bus_layer;
+                        return shuttle_layer;
                     })()
                 );
             });
 
-            var busInterval =
+            var shuttleInterval =
                 setInterval(function() {
                     $.each(LAYER_MANAGER.layers, function(index, layer) {
-                        if (layer.busRouteId != null && layer.active) {
-                            updateBusGpsData(layer);
+                        if (layer.shuttleRouteId != null && layer.active) {
+                            updateShuttleGpsData(layer);
                         }
                     });
                 }, 7000);
-            $('#refresh-bus-gps').click(function() {
+            $('#refresh-shuttle-gps').click(function() {
                 if($(this).is(':checked')) {
-                    busInterval = setInterval(function() {
+                    shuttleInterval = setInterval(function() {
                             $.each(LAYER_MANAGER.layers, function(index, layer) {
-                                if (layer.busRouteId != null && layer.active) {
-                                    updateBusGpsData(layer);
+                                if (layer.shuttleRouteId != null && layer.active) {
+                                    updateShuttleGpsData(layer);
                                 }
                             });
                         }, 7000);
                 } else {
-                    clearInterval(busInterval);
+                    clearInterval(shuttleInterval);
                 }
             });
         })();
@@ -676,7 +676,7 @@ var CampusMap = function(options) {
 				if (layer_name == 'shuttles') {
 					MENU.change_tabs({
 						'label':'Shuttles',
-						'html' :$('#bus-routes-content').clone(true, true).show()
+						'html' :$('#shuttle-routes-content').clone(true, true).show()
 					});
 				} else if(layer != null) {
 					layer.activate();
@@ -719,33 +719,33 @@ var CampusMap = function(options) {
 					});
 			});
 
-            // Add click event to Bus Routes
-            var checkbox = $('input[type="checkbox"][id="bus-routes"], .bus-routes-btn');
+            // Add click event to Shuttle Routes
+            var checkbox = $('input[type="checkbox"][id="shuttle-routes"], .shuttle-routes-btn');
             checkbox.click(function() {
                 if($(this).is(':checked')) {
                     MENU.change_tabs({
                         'label':'Shuttles',
-                        'html' :$('#bus-routes-content').clone(true, true).show()
+                        'html' :$('#shuttle-routes-content').clone(true, true).show()
                     });
                 }
             });
 
-            // Add click event to Bus Route Information
-            var busInfoButton = $('#bus-info-button');
-            busInfoButton.click(function(event) {
+            // Add click event to Shuttle Route Information
+            var shuttleInfoButton = $('#shuttle-info-button');
+            shuttleInfoButton.click(function(event) {
                 event.preventDefault();
                 MENU.change_tabs({
                     'label' : 'Shuttles',
-                    'html'  : $('#bus-info').clone(true, true).show()
+                    'html'  : $('#shuttle-info').clone(true, true).show()
                 });
             });
 
             // Add back button for route info or any other buttons that go to the routes menu
-            var checkbox = $('.bus-routes-btn');
+            var checkbox = $('.shuttle-routes-btn');
             checkbox.click(function() {
                 MENU.change_tabs({
                     'label':'Shuttles',
-                    'html' :$('#bus-routes-content').clone(true, true).show()
+                    'html' :$('#shuttle-routes-content').clone(true, true).show()
                 });
             });
 
@@ -806,10 +806,10 @@ var CampusMap = function(options) {
 		UTIL.highlight_location(options.infobox_location_id, {pan:true});
 	}
 
-    function updateBusGpsData(layer) {
+    function updateShuttleGpsData(layer) {
         var markers = [];
         $.ajax({
-            url      : '/shuttles/' + layer.busRouteId + '/gps/.json',
+            url      : '/shuttles/' + layer.shuttleRouteId + '/gps/.json',
             dataType : 'json',
             async: true,
             success: function(data) {
@@ -839,7 +839,7 @@ var CampusMap = function(options) {
                             icon    : icon,
                         });
                         var infoWindow = new google.maps.InfoWindow({
-                            content: '<div>Bus ' + spot.id + '</div>'
+                            content: '<div>Shuttle ' + spot.id + '</div>'
                         });
 
                         google.maps.event.addListener(gpsMarker, 'click', function() {
@@ -984,7 +984,7 @@ var CampusMap = function(options) {
 		this.name       = name;
 		this.layer      = null; // the actual Google Maps layer on the map, if applicable
 		this.markers    = null; // the actual Google Maps markers on the map, if applicable
-        this.busRouteId = null;
+        this.shuttleRouteId = null;
         this.gpsMarkers = null; // Google marker for gps data that can be used to refresh on an interval (unlike markers)
 
 		this.toggle = function() {
@@ -1004,8 +1004,8 @@ var CampusMap = function(options) {
 				}
 
                 // Get the latest GPS data
-                if(that.busRouteId != null) {
-                    updateBusGpsData(that);
+                if(that.shuttleRouteId != null) {
+                    updateShuttleGpsData(that);
                 }
 			}
 		}

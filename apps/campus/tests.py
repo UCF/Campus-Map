@@ -55,8 +55,8 @@ class TestViews(TestCase):
         self.assertIn('parking/.json', response.context['parking_json'])
         self.assertIn('food/.json', response.context['dining_json'])
         self.assertIn('http', response.context['base_url'])
-        self.assertIn('"id": "533", "name": "Academic Village 1/Nike Community"', response.context['bus_stops'])
-        self.assertIn('"shortname": "Black", "id": "186"', response.context['bus_routes'])
+        self.assertIn('"id": "533", "name": "Academic Village 1/Nike Community"', response.context['shuttle_stops'])
+        self.assertIn('"shortname": "Black", "id": "186"', response.context['shuttle_routes'])
 
     def test_map_location(self):
         """

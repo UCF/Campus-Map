@@ -28,7 +28,7 @@
 					<label><input type="checkbox" id="food"> Food</label>
 					<label><input type="checkbox" id="bikeracks"> Bike Racks</label>
 					<label><input type="checkbox" id="emergency-phones"> Emergency</label>
-                    <label><input type="checkbox" id="bus-routes"> Shuttles</label>
+                    <label><input type="checkbox" id="shuttle-routes"> Shuttles</label>
 				</div>
 				<div class="more-menu">
 					<span>&nbsp;</span>
@@ -92,17 +92,17 @@
 	</div>
 </div>
 
-<div style="display:none;" id="bus-routes-content">
-    <div id="bus-routes">
-        <a class="item" id="bus-info-button" href="#bus-info">Information <img src="{{ STATIC_URL }}images/info-icon.png" alt="Bus Information"></a>
-        <div id="bus-stop-wrapper">
+<div style="display:none;" id="shuttle-routes-content">
+    <div id="shuttle-routes">
+        <a class="item" id="shuttle-info-button" href="#shuttle-info">Information <img src="{{ STATIC_URL }}images/info-icon.png" alt="Shuttle Information"></a>
+        <div id="shuttle-stop-wrapper">
             <select>
             <option value="">Select a Stop</option>
             </select>
         </div>
         <h3 class="c">Routes</h3>
         <div>
-            <label><input type="checkbox" id="refresh-bus-gps" checked="checked"> Track Shuttles in Real-time</label>
+            <label><input type="checkbox" id="refresh-shuttle-gps" checked="checked"> Track Shuttles in Real-time</label>
         </div>
         <div id="on-campus-routes">
             <h4>On-Campus</h4>
@@ -116,11 +116,11 @@
     </div>
 </div>
 
-<div style="display:none;" id="bus-info">
-    <div class="bus-info-wrapper" >
-    <a class="item bus-routes-btn">Back to Shuttles</a>
-        {% if bus_info %}
-            {{ bus_info|safe }}
+<div style="display:none;" id="shuttle-info">
+    <div class="shuttle-info-wrapper" >
+    <a class="item shuttle-routes-btn">Back to Shuttles</a>
+        {% if shuttle_info %}
+            {{ shuttle_info|safe }}
         {% endif %}
     </div>
 </div>

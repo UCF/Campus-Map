@@ -92,8 +92,8 @@
 				"base_ignore_types"   : {{ base_ignore_types|safe }},
 				"infobox_location_id" : {{ infobox_location_id|safe }},
 				"points"              : {{ points|safe }},
-                "bus_routes"          : {{ bus_routes|safe }},
-                "bus_stops"           : {{ bus_stops|safe }},
+                "shuttle_routes"      : {{ shuttle_routes|safe }},
+                "shuttle_stops"       : {{ shuttle_stops|safe }},
 			});
 		});
 	</script>

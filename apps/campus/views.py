@@ -38,8 +38,8 @@ from campus.models import ParkingLot
 from campus.models import RegionalCampus
 from campus.models import Sidewalk
 from campus.models import SimpleSetting
+from campus.shuttle import ShuttleRouteAPI
 from campus.templatetags.weather import weather
-from campus.utils import BusRouteAPI
 from campus.utils import get_geo_data
 import settings
 
@@ -138,16 +138,18 @@ def home(request, **kwargs):
     if error:
         kwargs.pop('error')
 
-    bus_info = ''
+    shuttle_info = ''
     try:
-        bus_info = SimpleSetting.objects.get(name='bus_information')
-        bus_info = bus_info.value
+        shuttle_info = SimpleSetting.objects.get(name='shuttle_information')
+        shuttle_info = shuttle_info.value
     except SimpleSetting.DoesNotExist:
         pass
 
-    ucf_bus_api = BusRouteAPI(settings.BUS_WSDL, settings.BUS_APP_CODE, settings.BUS_COST_CENTER_ID)
-    bus_stops = ucf_bus_api.get_all_bus_stops_dict()
-    bus_stops = sorted(bus_stops, key=lambda k: k['name'])
+    ucf_shuttle_api = ShuttleRouteAPI(settings.SHUTTLE_WSDL,
+                                  settings.SHUTTLE_APP_CODE,
+                                  settings.SHUTTLE_COST_CENTER_ID)
+    shuttle_stops = ucf_shuttle_api.get_all_shuttle_stops_dict()
+    shuttle_stops = sorted(shuttle_stops, key=lambda k: k['name'])
     context = {
         'infobox_location_id': json.dumps(loc_id),
         'geo_placename'      : geo_placename,
@@ -164,9 +166,9 @@ def home(request, **kwargs):
         'loc_url'            : loc,
         'base_url'           : request.build_absolute_uri(reverse('home'))[:-1],
         'error'              : error,
-        'bus_routes'         : json.dumps(get_bus_routes_dict(ucf_bus_api)),
-        'bus_stops'          : json.dumps(bus_stops),
-        'bus_info'           : bus_info,
+        'shuttle_routes'     : json.dumps(get_shuttle_routes_dict(ucf_shuttle_api)),
+        'shuttle_stops'      : json.dumps(shuttle_stops),
+        'shuttle_info'       : shuttle_info,
         # These points are not displayed on the base tempalte but they
         # still need to be here to be available for searching infoboxes, etc.
         'base_ignore_types'  : json.dumps(['DiningLocation'])
@@ -605,16 +607,18 @@ class RegionalCampusListView(ListView):
 def shuttles(request):
     return home(request, shuttles=True)
 
-def get_bus_routes_dict(ucf_bus_api=None):
+def get_shuttle_routes_dict(ucf_shuttle_api=None):
     """
-    Get the bus routes
+    Get the shuttle routes
     """
-    if ucf_bus_api is None:
-        ucf_bus_api = BusRouteAPI(settings.BUS_WSDL, settings.BUS_APP_CODE, settings.BUS_COST_CENTER_ID)
-    ucf_bus_routes = ucf_bus_api.get_routes()
+    if ucf_shuttle_api is None:
+        ucf_shuttle_api = ShuttleRouteAPI(settings.SHUTTLE_WSDL,
+                                      settings.SHUTTLE_APP_CODE,
+                                      settings.SHUTTLE_COST_CENTER_ID)
+    ucf_shuttle_routes = ucf_shuttle_api.get_routes()
     route_list = []
     route_dict = {}
-    for route_id, route in ucf_bus_routes.iteritems():
+    for route_id, route in ucf_shuttle_routes.iteritems():
         route_list.append(route.json())
 
     def string_number_cmp(x, y):
@@ -649,45 +653,49 @@ def get_bus_routes_dict(ucf_bus_api=None):
     return route_dict
 
 
-def bus_routes(request):
+def shuttle_routes(request):
     """
-    Retrieve a list of bus routes and return them in json.
+    Retrieve a list of shuttle routes and return them in json.
     """
 
     if not request.is_json():
         raise Http404()
 
-    json_object = get_bus_routes_dict()
+    json_object = get_shuttle_routes_dict()
     return HttpResponse(json.dumps(json_object), content_type='application/json')
 
 
-def bus_stops(request, route_id):
+def shuttle_route_stops(request, route_id):
     """
-    Retrieve a list of bus stops and return them in json.
+    Retrieve a list of shuttle stops and return them in json.
     """
     if not request.is_json() or route_id is None:
         raise Http404()
 
     json_object = {}
-    ucf_bus_api = BusRouteAPI(settings.BUS_WSDL, settings.BUS_APP_CODE, settings.BUS_COST_CENTER_ID)
-    bus_stops = ucf_bus_api.get_route_stops(route_id)
+    ucf_shuttle_api = ShuttleRouteAPI(settings.SHUTTLE_WSDL,
+                                  settings.SHUTTLE_APP_CODE,
+                                  settings.SHUTTLE_COST_CENTER_ID)
+    shuttle_stops = ucf_shuttle_api.get_route_stops(route_id)
     json_stop_list = []
-    for stop in bus_stops:
+    for stop in shuttle_stops:
         json_stop_list.append(stop.json())
     json_object['stops'] = json_stop_list
     return HttpResponse(json.dumps(json_object), content_type='application/json')
 
 
-def bus_gps(request, route_id):
+def shuttle_gps(request, route_id):
     """
-    Retrieve a list of bus gps locations and return them in json.
+    Retrieve a list of shuttle gps locations and return them in json.
     """
     if not request.is_json() or route_id is None:
         raise Http404()
 
     json_object = {}
-    ucf_bus_api = BusRouteAPI(settings.BUS_WSDL, settings.BUS_APP_CODE, settings.BUS_COST_CENTER_ID)
-    route_gps_list = ucf_bus_api.get_route_gps(route_id)
+    ucf_shuttle_api = ShuttleRouteAPI(settings.SHUTTLE_WSDL,
+                                  settings.SHUTTLE_APP_CODE,
+                                  settings.SHUTTLE_COST_CENTER_ID)
+    route_gps_list = ucf_shuttle_api.get_route_gps(route_id)
     json_gps_list = []
     for gps in route_gps_list:
         json_gps_list.append(gps.json())
@@ -716,23 +724,25 @@ class KMLTemplateView(TemplateView):
         return super(KMLTemplateView, self).render_to_response(context, **response_kwargs)
 
 
-class BusRoutePolyView(KMLTemplateView):
+class ShuttleRoutePolyView(KMLTemplateView):
     """
     Return KML for the route polygons.
     """
-    template_name = 'campus/bus/route-poly.kml'
+    template_name = 'campus/shuttle/route-poly.kml'
 
     def get_context_data(self, **kwargs):
         """
         Add route polys to context.
         """
-        context = super(BusRoutePolyView, self).get_context_data(**kwargs)
+        context = super(ShuttleRoutePolyView, self).get_context_data(**kwargs)
         route_id = self.kwargs.get('route_id')
         if route_id is None:
             raise Http404()
-        ucf_bus_api = BusRouteAPI(settings.BUS_WSDL, settings.BUS_APP_CODE, settings.BUS_COST_CENTER_ID)
-        route_lines = ucf_bus_api.get_route_poly(route_id)
-        route_info = ucf_bus_api.get_route_info(route_id)
+        ucf_shuttle_api = ShuttleRouteAPI(settings.SHUTTLE_WSDL,
+                                      settings.SHUTTLE_APP_CODE,
+                                      settings.SHUTTLE_COST_CENTER_ID)
+        route_lines = ucf_shuttle_api.get_route_poly(route_id)
+        route_info = ucf_shuttle_api.get_route_info(route_id)
         context['route_lines'] = route_lines
         context['route_info'] = route_info
         return context

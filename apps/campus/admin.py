@@ -211,18 +211,18 @@ class DiningLocationAdmin(admin.ModelAdmin):
 admin.site.register(campus.models.DiningLocation, DiningLocationAdmin)
 
 
-class BusCategoryAdmin(admin.ModelAdmin):
+class ShuttleCategoryAdmin(admin.ModelAdmin):
     search_fields = ('name',)
     list_display = ('name', 'id', )
     fields = ('name', )
-admin.site.register(campus.models.BusCategory, BusCategoryAdmin)
+admin.site.register(campus.models.ShuttleCategory, ShuttleCategoryAdmin)
 
 
-class BusRouteAdmin(admin.ModelAdmin):
+class ShuttleRouteAdmin(admin.ModelAdmin):
     search_fields = ('shortname',)
     list_display = ('id', 'shortname', 'category', 'description',)
     fields = ('id', 'shortname', 'category', 'description',)
-admin.site.register(campus.models.BusRoute, BusRouteAdmin)
+admin.site.register(campus.models.ShuttleRoute, ShuttleRouteAdmin)
 
 
 class SimpleSettingAdmin(admin.ModelAdmin):
