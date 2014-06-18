@@ -4,7 +4,7 @@
 import os
 import sys
 
-MAP_VERSION       = "1.7.9"
+MAP_VERSION       = "1.7.10"
 
 PROJECT_FOLDER    = os.path.dirname(os.path.abspath(__file__))
 APP_FOLDER        = os.path.join(PROJECT_FOLDER, 'apps')
@@ -42,6 +42,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 MIDDLEWARE_CLASSES = [
     'api.MapMiddleware',
     'apps.DisableCSRF', # :(
+    'apps.SecureRequiredMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
