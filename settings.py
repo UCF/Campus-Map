@@ -4,7 +4,7 @@
 import os
 import sys
 
-MAP_VERSION       = "1.7.8"
+MAP_VERSION       = "1.7.9"
 
 PROJECT_FOLDER    = os.path.dirname(os.path.abspath(__file__))
 APP_FOLDER        = os.path.join(PROJECT_FOLDER, 'apps')

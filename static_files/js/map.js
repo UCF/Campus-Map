@@ -645,7 +645,7 @@ var CampusMap = function(options) {
                             updateShuttleGpsData(layer);
                         }
                     });
-                }, 7000);
+                }, 4000);
             $('#refresh-shuttle-gps').click(function() {
                 if($(this).is(':checked')) {
                     shuttleInterval = setInterval(function() {
