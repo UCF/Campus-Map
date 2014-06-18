@@ -598,7 +598,7 @@ var CampusMap = function(options) {
                     (function() {
                         var shuttle_layer = new Layer(domId);
                         shuttle_layer.layer = new google.maps.KmlLayer(
-                                '/shuttles/' + route.id + '/poly/.kml',
+                                BASE_URL + '/shuttles/' + route.id + '/poly/.kml?&_=' + (new Date()).getTime(),
                                 {
                                     preserveViewport    : true,
                                     suppressInfoWindows : true
