@@ -540,7 +540,7 @@ var CampusMap = function(options) {
                                 stopMarker.setVisible(true);
                                 var route_names = '';
                                 for(var index in stop.routes) {
-                                    route_names += '<br><a class="route-link" href="#shuttle-' + stop.routes[index].shortname.replace(' ', '-') + '">' + stop.routes[index].shortname + '</a>';
+                                    route_names += '<br><a class="route-link" href="#shuttle-' + stop.routes[index].shortname.replace(/ /g, '-') + '">' + stop.routes[index].shortname + '</a>';
                                 }
                                 stopInfoBox.setContent('<div><b>Stop:</b> ' + stop.name + '<br><b>Routes:</b>' + route_names +'</div>');
                             } else {
@@ -555,7 +555,7 @@ var CampusMap = function(options) {
 
                                 var route_names = '';
                                 for(var index in stop.routes) {
-                                    route_names += '<br><a class="route-link" href="#shuttle-' + stop.routes[index].shortname.replace(' ', '-') + '">' + stop.routes[index].shortname + '</a>';
+                                    route_names += '<br><a class="route-link" href="#shuttle-' + stop.routes[index].shortname.replace(/ /g, '-') + '">' + stop.routes[index].shortname + '</a>';
                                 }
                                 stopInfoBox = new google.maps.InfoWindow({
                                     content: '<div><b>Stop:</b> ' + stop.name + '<br><b>Routes:</b>' + route_names + '</div>'
@@ -587,8 +587,8 @@ var CampusMap = function(options) {
 
             $.each(SHUTTLE_ROUTES.routes, function(index, route) {
                 // Append a new route label to menu
-                var domId = 'shuttle-' + route.shortname.replace(' ', '-');
-                var categoryDomId = route.category.replace(' ', '-').toLowerCase() + '-routes';
+                var domId = 'shuttle-' + route.shortname.replace(/ /g, '-');
+                var categoryDomId = route.category.replace(/ /g, '-').toLowerCase() + '-routes';
                 var cateogryDom = $('#' + categoryDomId);
                 var label = '<label><input type="checkbox" id="' + domId + '"> ' + route.shortname + '</label>';
                 cateogryDom.append(label);
@@ -597,6 +597,13 @@ var CampusMap = function(options) {
                 LAYER_MANAGER.register_layer(
                     (function() {
                         var shuttle_layer = new Layer(domId);
+                        shuttle_layer.layer = new google.maps.KmlLayer(
+                                BASE_URL + '/shuttles/' + route.id + '/poly/.kml?&_=' + (new Date()).getTime(),
+                                {
+                                    preserveViewport    : true,
+                                    suppressInfoWindows : true
+                                }
+                        )
                         shuttle_layer.markers = (function(routeId) {
                             var markers = [];
                             $.ajax({
