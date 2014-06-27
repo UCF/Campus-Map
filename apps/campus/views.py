@@ -365,7 +365,7 @@ def parking(request):
             l = l.__dict__
             for k,v in request.GET.items():
                 try:
-                    if l[k] == v: continue
+                    if k == 'v' or l[k] == v: continue
                     else: return False
                 except KeyError:
                     return False
