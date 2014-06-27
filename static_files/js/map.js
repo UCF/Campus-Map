@@ -661,7 +661,7 @@ var CampusMap = function(options) {
                                     updateShuttleGpsData(layer);
                                 }
                             });
-                        }, 7000);
+                        }, 4000);
                 } else {
                     clearInterval(shuttleInterval);
                 }
