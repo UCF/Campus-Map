@@ -365,6 +365,7 @@ def parking(request):
             l = l.__dict__
             for k,v in request.GET.items():
                 try:
+                    # ignoring 'v' because it used ensuring google doesn't cache the kml
                     if k == 'v' or l[k] == v: continue
                     else: return False
                 except KeyError:
