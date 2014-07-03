@@ -10,7 +10,7 @@ ALLOWED_HOSTS = ['map.ucf.edu']
 USE_X_FORWARDED_HOST = True
 
 ADMINS         = (
-	#('Your Name', 'your_email@domain.com'),
+    #('Your Name', 'your_email@domain.com'),
 )
 MANAGERS       = ADMINS
 
@@ -40,6 +40,13 @@ DATABASES = {
 
 # INTERNAL_IPS = ['127.0.0.1',]
 
+# Ficker API
+FLICKR_USER_ID = ''
+FLICKR_API_KEY = ''
+FLICKR_HOST = 'https://www.flickr.com'
+FLICKR_API = '/services/rest'
+FLICKR_METHOD = 'flickr.people.getPublicPhotos'
+FLICKR_TIMEOUT = 15
 
 # Read settings.py for more details about these settings
 #GOOGLE_CAN_SEE_ME = False
