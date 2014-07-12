@@ -116,41 +116,42 @@ class ShuttleRouteAPI(object):
             routes_response = self.client.service.GetRoutes(sAppCode=self.app_code,
                                                             sCostcenterId=self.cost_center_id,
                                                             nDate=date.today().strftime('%Y%m%d'))
-            xml_route_list = ET.fromstring(routes_response)
-            stored_shuttle_routes = ShuttleRoute.objects.all()
+            if routes_response is not None:
+                xml_route_list = ET.fromstring(routes_response)
+                stored_shuttle_routes = ShuttleRoute.objects.all()
 
-            route_list = {}
-            for xml_route in xml_route_list:
-                route_id = xml_route.find('ShadowRouteId').text
-                shortname = xml_route.find('Shortname').text
-                color = xml_route.find('RouteColor').text
-                description = xml_route.find('Direction').text
-                category = 'Other'
+                route_list = {}
+                for xml_route in xml_route_list:
+                    route_id = xml_route.find('ShadowRouteId').text
+                    shortname = xml_route.find('Shortname').text
+                    color = xml_route.find('RouteColor').text
+                    description = xml_route.find('Direction').text
+                    category = 'Other'
 
-                stored_route = None
-                try:
-                    stored_route = stored_shuttle_routes.get(id=route_id)
-                except ShuttleRoute.DoesNotExist:
-                    pass
+                    stored_route = None
+                    try:
+                        stored_route = stored_shuttle_routes.get(id=route_id)
+                    except ShuttleRoute.DoesNotExist:
+                        pass
 
-                if stored_route:
-                    if stored_route.shortname:
-                        shortname = stored_route.shortname
+                    if stored_route:
+                        if stored_route.shortname:
+                            shortname = stored_route.shortname
 
-                    if stored_route.description:
-                        description = stored_route.description
+                        if stored_route.description:
+                            description = stored_route.description
 
-                    if stored_route.category:
-                        category = stored_route.category.name
+                        if stored_route.category:
+                            category = stored_route.category.name
 
-                shortname = shortname.title()
+                    shortname = shortname.title()
 
-                if not color:
-                    color = 'ffffff00'
+                    if not color:
+                        color = 'ffffff00'
 
-                route_list[route_id] = RouteInfo(route_id, shortname, color, category, description)
+                    route_list[route_id] = RouteInfo(route_id, shortname, color, category, description)
 
-            self.route_list = route_list
+                self.route_list = route_list
         return self.route_list
 
     def get_route_info(self, route_id):
