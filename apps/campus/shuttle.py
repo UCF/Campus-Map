@@ -175,14 +175,15 @@ class ShuttleRouteAPI(object):
                                                           sCostCenterId=self.cost_center_id,
                                                           nDate=date.today().strftime('%Y%m%d'),
                                                           nShadowRouteId=route_id)
-            # Can't properly parse ampersand
-            stops_response = stops_response.replace('&', '&amp;');
-            xml_stop_list = ET.fromstring(stops_response)
-            for xml_stop in xml_stop_list:
-                stops.append(RouteStop(xml_stop.find('ShadowStopId').text,
-                                                     xml_stop.find('StopName').text,
-                                                     Point(lat=xml_stop.find('Lat').text,
-                                                           lon=xml_stop.find('Lon').text)))
+            if stops_response is not None:
+                # Can't properly parse ampersand
+                stops_response = stops_response.replace('&', '&amp;');
+                xml_stop_list = ET.fromstring(stops_response)
+                for xml_stop in xml_stop_list:
+                    stops.append(RouteStop(xml_stop.find('ShadowStopId').text,
+                                                         xml_stop.find('StopName').text,
+                                                         Point(lat=xml_stop.find('Lat').text,
+                                                               lon=xml_stop.find('Lon').text)))
         return stops
 
     def get_all_shuttle_stops_dict(self):
@@ -241,14 +242,14 @@ class ShuttleRouteAPI(object):
                                                                      nShadowRouteId=route_id,
                                                                      nShadowStopId=stop_id,
                                                                      nMaxPredictions=10)
-            xml_prediction_list = ET.fromstring(prediction_response)
-            vehicles = []
-            for xml_prediction in xml_prediction_list:
-                if xml_prediction.find('GPSTime').text and xml_prediction.find('Vehicle').text and xml_prediction.find('Vehicle').text not in vehicles:
-                    vehicles.append(xml_prediction.find('Vehicle').text);
-                    gps_list.append(ShuttleGps(xml_prediction.find('Vehicle').text,
-                                           Point(xml_prediction.find('Lat').text, xml_prediction.find('Lon').text),
-                                           xml_prediction.find('NextStop').text))
-
+            if prediction_response is not None:
+                xml_prediction_list = ET.fromstring(prediction_response)
+                vehicles = []
+                for xml_prediction in xml_prediction_list:
+                    if xml_prediction.find('GPSTime').text and xml_prediction.find('Vehicle').text and xml_prediction.find('Vehicle').text not in vehicles:
+                        vehicles.append(xml_prediction.find('Vehicle').text);
+                        gps_list.append(ShuttleGps(xml_prediction.find('Vehicle').text,
+                                               Point(xml_prediction.find('Lat').text, xml_prediction.find('Lon').text),
+                                               xml_prediction.find('NextStop').text))
 
         return gps_list
