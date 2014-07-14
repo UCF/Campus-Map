@@ -372,7 +372,8 @@ a.iclose:hover { background-position:0 -11px; }
     Misc back pages
 \******************************************************************************/
 .pdf { display:inline-block; line-height:18px; background:url(img/document-pdf-text.png) right top no-repeat; padding:0 20px 5px 0; overflow:hidden; }
-#printable h3 { clear:both; padding:20px 0 10px; margin:0; font-size:18px; }
+.printable { display: inline-block; margin-right: 60px;}
+.printable h3 { clear:both; padding:20px 0 10px; margin:0; font-size:18px; }
 #directions h3 { font-size:18px; padding:10px 0 0; margin:0; }
 #directions .routes p { padding-left: 15px; }
 #directions .routes h4 { padding:5px 0 10px; }
