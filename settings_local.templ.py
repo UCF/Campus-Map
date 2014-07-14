@@ -47,10 +47,10 @@ LOGGING = {
     'disable_existing_loggers':True,
     'filters': {
         'require_debug_true': {
-            '()': 'django.utils.log.RequiredDebugTrue',
+            '()': 'logs.RequiredDebugTrue',
         },
         'require_debug_false': {
-            '()': 'django.utils.log.RequiredDebugFalse',
+            '()': 'logs.RequiredDebugFalse',
         }
     },
     'formatters': {
@@ -70,17 +70,17 @@ LOGGING = {
     },
     'handlers': {
         'discard': {
-            'level' : 'ERROR',
+            'level' : 'DEBUG',
             'class' : 'django.utils.log.NullHandler'
         },
         'console': {
-            'level'     : 'ERROR',
+            'level'     : 'DEBUG',
             'class'     : 'logging.StreamHandler',
             'formatter' : 'concise',
             'filters'   : ['require_debug_true']
         },
         'file': {
-            'level'       : 'ERROR',
+            'level'       : 'DEBUG',
             'class'       : 'logging.handlers.RotatingFileHandler',
             'filename'    : '%s/application.log' % os.path.join(PROJECT_FOLDER, 'logs'),
             'maxBytes'    : 1024*1024*10, # 10 MB
@@ -90,13 +90,13 @@ LOGGING = {
         },
         # Request Specific Handlers
         'console_request': {
-            'level'       : 'ERROR',
+            'level'       : 'DEBUG',
             'class'       : 'logging.StreamHandler',
             'formatter'   : 'request_console_formatter',
             'filters'     : ['require_debug_true']
         },
         'file_request': {
-            'level'       : 'ERROR',
+            'level'       : 'DEBUG',
             'class'       : 'logging.handlers.RotatingFileHandler',
             'filename'    : '%s/request.log' % os.path.join(PROJECT_FOLDER, 'logs'),
             'maxBytes'    : 1024*1024*10, # 10 MB
@@ -108,17 +108,17 @@ LOGGING = {
     'loggers': {
         'django.db.backends': { # Supress SQL debug messages
             'handlers'  : ['discard'],
-            'level'     : 'ERROR',
+            'level'     : 'DEBUG',
             'propagate' : False
         },
         'django.request': {
             'handlers'  : ['console_request', 'file_request'],
-            'level'     : 'ERROR',
+            'level'     : 'DEBUG',
             'propagate' : False
         },
         '': {
             'handlers'  : ['console', 'file'],
-            'level'     : 'ERROR',
+            'level'     : 'DEBUG',
             'propagate' : False
         },
     }
