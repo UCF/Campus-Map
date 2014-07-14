@@ -1,5 +1,3 @@
-import os
-
 # production:
 #DEBUG                      = False
 #TEMPLATE_DEBUG             = DEBUG
@@ -40,6 +38,8 @@ DATABASES = {
     }
 }
 
+# Only use if you want to override the default logging in settings.py
+import os
 PROJECT_FOLDER    = os.path.dirname(os.path.abspath(__file__))
 
 LOGGING = {
