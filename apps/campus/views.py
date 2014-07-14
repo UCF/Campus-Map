@@ -146,8 +146,8 @@ def home(request, **kwargs):
         pass
 
     ucf_shuttle_api = ShuttleRouteAPI(settings.SHUTTLE_WSDL,
-                                  settings.SHUTTLE_APP_CODE,
-                                  settings.SHUTTLE_COST_CENTER_ID)
+                                      settings.SHUTTLE_APP_CODE,
+                                      settings.SHUTTLE_COST_CENTER_ID)
     shuttle_stops = ucf_shuttle_api.get_all_shuttle_stops_dict()
     shuttle_stops = sorted(shuttle_stops, key=lambda k: k['name'])
     context = {

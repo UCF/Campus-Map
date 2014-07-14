@@ -1,5 +1,6 @@
 from datetime import date
 import json
+import logging
 import urllib2
 import xml.etree.ElementTree as ET
 
@@ -7,6 +8,8 @@ from suds.client import Client
 from suds.plugin import MessagePlugin
 
 from campus.models import ShuttleRoute
+
+logger = logging.getLogger(__name__)
 
 
 class Point(object):
@@ -96,22 +99,17 @@ class ShuttleRouteAPI(object):
         self.app_code = app_code
         self.cost_center_id = cost_center_id
 
-        class NamespacePlugin(MessagePlugin):
-            def marshalled(self, context):
-                foo = context.envelope.getChild('Body').getChild[0]
-                foo.xmlns = "http://tempuri.org/"
-
         try:
-            self.client = Client(url=wsdl_url, plugins=[NamespacePlugin()], timeout=30)
+            self.client = Client(url=wsdl_url, timeout=30)
         except urllib2.URLError:
-            pass #allow application to run without the feature
+            #allow application to run without the feature
+            logger.error('Could not connect to shuttle API.')
 
     def get_routes(self):
         """
         Get the list of routes.
         """
         if not self.route_list and self.client is not None:
-            print 'Retrieving Routes'
 
             routes_response = self.client.service.GetRoutes(sAppCode=self.app_code,
                                                             sCostcenterId=self.cost_center_id,
@@ -152,6 +150,9 @@ class ShuttleRouteAPI(object):
                     route_list[route_id] = RouteInfo(route_id, shortname, color, category, description)
 
                 self.route_list = route_list
+            else:
+                logger.error('Bad response for shuttle routes.')
+
         return self.route_list
 
     def get_route_info(self, route_id):
@@ -184,6 +185,8 @@ class ShuttleRouteAPI(object):
                                                          xml_stop.find('StopName').text,
                                                          Point(lat=xml_stop.find('Lat').text,
                                                                lon=xml_stop.find('Lon').text)))
+            else:
+                logger.error('Bad response for shuttle stops.')
         return stops
 
     def get_all_shuttle_stops_dict(self):
@@ -224,6 +227,8 @@ class ShuttleRouteAPI(object):
                     to_point = Point(lat=xml_polygon.find('ToLat').text, lon=xml_polygon.find('ToLon').text)
                     line = Line(from_point, to_point)
                     lines.append(line)
+            else:
+                logger.error('Bad response for shuttle poly.')
         return lines
 
     def get_route_gps(self, route_id, stop_id=None):
@@ -251,5 +256,7 @@ class ShuttleRouteAPI(object):
                         gps_list.append(ShuttleGps(xml_prediction.find('Vehicle').text,
                                                Point(xml_prediction.find('Lat').text, xml_prediction.find('Lon').text),
                                                xml_prediction.find('NextStop').text))
+            else:
+                logger.error('Bad response for shuttle GPS.')
 
         return gps_list

@@ -1,3 +1,5 @@
+import os
+
 # production:
 #DEBUG                      = False
 #TEMPLATE_DEBUG             = DEBUG
@@ -38,7 +40,89 @@ DATABASES = {
     }
 }
 
-# INTERNAL_IPS = ['127.0.0.1',]
+PROJECT_FOLDER    = os.path.dirname(os.path.abspath(__file__))
+
+LOGGING = {
+    'version':1,
+    'disable_existing_loggers':True,
+    'filters': {
+        'require_debug_true': {
+            '()': 'django.utils.log.RequiredDebugTrue',
+        },
+        'require_debug_false': {
+            '()': 'django.utils.log.RequiredDebugFalse',
+        }
+    },
+    'formatters': {
+        'concise': {
+            'format':'\t'.join(['%(levelname)s','%(asctime)s','%(message)s']),
+        },
+        'talkative': {
+            'format':'\t'.join(['%(levelname)s','%(asctime)s','%(funcName)s','%(lineno)d','%(message)s']),
+        },
+        # Request Specific Formatters
+        'request_console_formatter':{
+            'format':'\t'.join(['%(levelname)s','%(asctime)s','%(message)s','%(exc_info)s']),
+        },
+        'request_file_formatter':{
+            'format':'\t'.join(['%(levelname)s','%(asctime)s','%(message)s','%(exc_info)s']),
+        },
+    },
+    'handlers': {
+        'discard': {
+            'level' : 'ERROR',
+            'class' : 'django.utils.log.NullHandler'
+        },
+        'console': {
+            'level'     : 'ERROR',
+            'class'     : 'logging.StreamHandler',
+            'formatter' : 'concise',
+            'filters'   : ['require_debug_true']
+        },
+        'file': {
+            'level'       : 'ERROR',
+            'class'       : 'logging.handlers.RotatingFileHandler',
+            'filename'    : '%s/application.log' % os.path.join(PROJECT_FOLDER, 'logs'),
+            'maxBytes'    : 1024*1024*10, # 10 MB
+            'backupCount' : 5,
+            'formatter'   : 'concise',
+            'filters'     : ['require_debug_false']
+        },
+        # Request Specific Handlers
+        'console_request': {
+            'level'       : 'ERROR',
+            'class'       : 'logging.StreamHandler',
+            'formatter'   : 'request_console_formatter',
+            'filters'     : ['require_debug_true']
+        },
+        'file_request': {
+            'level'       : 'ERROR',
+            'class'       : 'logging.handlers.RotatingFileHandler',
+            'filename'    : '%s/request.log' % os.path.join(PROJECT_FOLDER, 'logs'),
+            'maxBytes'    : 1024*1024*10, # 10 MB
+            'backupCount' : 5,
+            'formatter'   : 'request_file_formatter',
+            'filters'     : ['require_debug_false']
+        }
+    },
+    'loggers': {
+        'django.db.backends': { # Supress SQL debug messages
+            'handlers'  : ['discard'],
+            'level'     : 'ERROR',
+            'propagate' : False
+        },
+        'django.request': {
+            'handlers'  : ['console_request', 'file_request'],
+            'level'     : 'ERROR',
+            'propagate' : False
+        },
+        '': {
+            'handlers'  : ['console', 'file'],
+            'level'     : 'ERROR',
+            'propagate' : False
+        },
+    }
+}
 
 # Ficker API
 FLICKR_USER_ID = ''

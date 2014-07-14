@@ -10,7 +10,7 @@ templates/robots.txt
 .DS_Store
 Thumbs.db
 .svn
-logs/*.log
+logs/*.log*
 
 # Static Files
 static/*
