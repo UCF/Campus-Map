@@ -326,7 +326,11 @@ def location(request, loc, return_obj=False):
         groups_orgs.append((g, group_orgs(g)))
 
     latlng = location.get('googlemap_point')
-    geo_placename, geo_region = get_geo_data(latlng[0], latlng[1])
+    if latlng:
+        geo_placename, geo_region = get_geo_data(latlng[0], latlng[1])
+    else:
+        geo_placename = None
+        geo_region = None
 
     context = {
         'location'      : location,
