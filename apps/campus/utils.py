@@ -1,6 +1,10 @@
 import json
+import logging
 import urllib2
 import xml.etree.ElementTree as ET
+
+
+logger = logging.getLogger(__name__)
 
 
 class GoogleKmlFactory(object):
@@ -87,21 +91,24 @@ def get_geo_data(lat, lng):
     geo_state = None
     geo_country = None
     geo_url = 'http://maps.googleapis.com/maps/api/geocode/json?latlng=%s,%s&sensor=false' % (str(lat), str(lng),)
-    geo_request = json.load(urllib2.urlopen(geo_url))
-    geo_results = geo_request.get('results')
-    if len(geo_results):
-        for geo_addr in geo_results:
-            for geo_addr_comp in geo_addr.get('address_components'):
-                if geo_placename is None and 'locality' in geo_addr_comp.get('types'):
-                    geo_placename = geo_addr_comp.get('long_name')
+    try:
+        geo_request = json.load(urllib2.urlopen(geo_url, timeout=10))
+        geo_results = geo_request.get('results')
+        if len(geo_results):
+            for geo_addr in geo_results:
+                for geo_addr_comp in geo_addr.get('address_components'):
+                    if geo_placename is None and 'locality' in geo_addr_comp.get('types'):
+                        geo_placename = geo_addr_comp.get('long_name')
 
-                if geo_state is None and 'administrative_area_level_1' in geo_addr_comp.get('types'):
-                    geo_state = geo_addr_comp.get('short_name')
+                    if geo_state is None and 'administrative_area_level_1' in geo_addr_comp.get('types'):
+                        geo_state = geo_addr_comp.get('short_name')
 
-                if geo_country is None and 'country' in geo_addr_comp.get('types'):
-                    geo_country = geo_addr_comp.get('short_name')
+                    if geo_country is None and 'country' in geo_addr_comp.get('types'):
+                        geo_country = geo_addr_comp.get('short_name')
 
-                if geo_placename and geo_state and geo_country:
-                    return (geo_placename, geo_country + '-' + geo_state)
+                    if geo_placename and geo_state and geo_country:
+                        return (geo_placename, geo_country + '-' + geo_state)
+    except urllib2.URLError as e:
+        logger.error('Error getting geo data: ' + str(e))
 
     return (geo_placename, geo_country + '-' + geo_state if geo_country and geo_state else None)
