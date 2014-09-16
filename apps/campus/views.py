@@ -604,10 +604,33 @@ def backward_location(request):
     return HttpResponsePermanentRedirect(reverse('home'))
 
 
-class RegionalCampusListView(ListView):
-    model = RegionalCampus
-    context_object_name = 'campuses'
-    template_name = 'campus/regional-campuses.djt'
+def regional_campuses(request, campus=None):
+    from campus.models import RegionalCampus
+
+    # TODO - regional campuses API
+    if request.is_json():
+        response = HttpResponse(json.dumps("API not available for Regional Campuses"))
+        response['Content-type'] = 'application/json'
+        return response
+
+    if request.is_txt():
+        response = HttpResponse("API not available for Regional Campuses")
+        response['Content-type'] = 'text/plain; charset=utf-8'
+        return response
+
+    if campus:
+        try:
+            rc = RegionalCampus.objects.get(pk=campus)
+        except RegionalCampus.DoesNotExist:
+            raise Http404()
+        else:
+            return home(request, location=rc)
+
+    campuses = RegionalCampus.objects.all()
+    context = { "campuses": campuses }
+
+    return render_to_response('campus/regional-campuses.djt', context, context_instance=RequestContext(request))
+
 
 def shuttles(request):
     return home(request, shuttles=True)
