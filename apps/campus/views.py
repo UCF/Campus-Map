@@ -605,9 +605,6 @@ def backward_location(request):
 
 
 def regional_campuses(request, campus=None):
-    from campus.models import RegionalCampus
-
-    # TODO - regional campuses API
     if request.is_json():
         response = HttpResponse(json.dumps("API not available for Regional Campuses"))
         response['Content-type'] = 'application/json'

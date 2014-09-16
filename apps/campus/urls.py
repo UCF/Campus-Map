@@ -3,7 +3,6 @@ from django.conf.urls import url
 
 from campus.views import ShuttleRoutePolyView
 
-from campus.views import RegionalCampusListView
 import settings
 
 urlpatterns = patterns('campus.views',
