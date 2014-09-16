@@ -64,7 +64,7 @@ def home(request, **kwargs):
         if location is not None:
             loc_id = location.id
             del kwargs['location']
-            latlng = location.get('googlemap_point')
+            latlng = getattr(location, 'googlemap_point')
             geo_placename, geo_region = get_geo_data(latlng[0], latlng[1])
             geo_latlng = latlng
     else:
