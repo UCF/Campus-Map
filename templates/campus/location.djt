@@ -116,17 +116,6 @@
 		</div>
 		{% endif %}
 
-		{% if photos %}
-		<div id="flickr">
-			<h3><a href="http://www.flickr.com/photos/universityofcentralflorida/">Photos on Flickr</a></h3>
-			<p>
-			{% for p in photos %}
-				<a href="{{ p.url_z }}" title="{{ p.info }}"><img src="{{ p.url_sq }}" alt="{{ p.title }}"></a>
-			{% endfor %}
-			</p>
-		</div>
-		{% endif %}
-
 		{% if location.sketchup %}
 		<div id="sketchup">
 			{% comment %}
@@ -228,17 +217,6 @@ $(document).ready(function(){
 		infobox_location_id : "{{ location.id }}",
 		illustrated         : true
 	})
-});
-
-/**************************************************************************\
-	LightBox
-\**************************************************************************/
-$('#flickr a').lightBox({
-	imageLoading:'{{ STATIC_URL }}-/jquery.plugins/lightbox/images/lightbox-ico-loading.gif',
-	imageBtnPrev:'{{ STATIC_URL }}-/jquery.plugins/lightbox/images/lightbox-btn-prev.gif',
-	imageBtnNext:'{{ STATIC_URL }}-/jquery.plugins/lightbox/images/lightbox-btn-next.gif',
-	imageBtnClose:'{{ STATIC_URL }}-/jquery.plugins/lightbox/images/lightbox-btn-close.gif',
-	imageBlank:'{{ STATIC_URL }}-/jquery.plugins/lightbox/images/lightbox-blank.gif'
 });
 
 </script>

@@ -122,12 +122,6 @@ footer dd { padding:8px 0 0 8px; margin:0; }
 #profile .open { display:block; }
 #profile .org-info ul { margin-bottom:0; }
 #profile .loading { padding:30px; background-image:url('img/spinner.gif'); background-repeat:no-repeat; background-position:50px 10px; }
-#flickr { padding:35px 0 10px 5px; }
-#flickr h3 { font-size:16px; margin-bottom:12px; color:#919191; font-weight:200; }
-#flickr h3 a { color:#919191; border-bottom:1px dotted #AFAFAF; }
-#flickr h3 a:hover { border-bottom:1px solid #919191; }
-#flickr p { margin:0; padding:0 0 0 5px; }
-#flickr img { margin:3px; }
 #sketchup { padding:35px 0 0; }
 #sketchup a:hover img { cursor:pointer; border-color:#6688cc; }
 #sketchup img { }

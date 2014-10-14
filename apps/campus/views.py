@@ -280,8 +280,6 @@ def location(request, loc, return_obj=False):
         return location
 
     # show location profile
-    import flickr
-    photos = flickr.get_photos()
     tags = set()
     if location.get('id', False):
         tags.add( 'map%s' % location['id'].lower() )
@@ -289,14 +287,6 @@ def location(request, loc, return_obj=False):
         tags.add( 'map%s' % location['abbreviation'].lower() )
     if location.get('number', False):
         tags.add( 'map%s' % location['number'].lower() )
-    for p in list(photos):
-        ptags = set(p.tags.split(' ')).intersection(tags)
-        if(not bool(ptags)):
-            photos.remove(p)
-        else:
-            p.info = '<h2><a href="http://flickr.com/photos/universityofcentralflorida/%s/">%s</a></h2>' % (p.id, p.title)
-            if p.description.text:
-                p.info = "%s<p>%s</p>" % (p.info, p.description.text)
 
     # find organizations related to this location via the group it belongs to
     location_ctype = ContentType.objects.get(
@@ -338,7 +328,6 @@ def location(request, loc, return_obj=False):
         'orgs'          : location_orgs,
         'groups_orgs'   : groups_orgs,
         'org'           : org,
-        'photos'        : photos,
         'geo_placename' : geo_placename,
         'geo_region'    : geo_region,
     }

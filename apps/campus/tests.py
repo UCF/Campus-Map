@@ -98,7 +98,6 @@ class TestViews(TestCase):
         self.assertEquals(u'Millican Hall', response.context['org'][u'building'])
         self.assertIn({u'building': u'Millican Hall', u'name': u'Academic Affairs', u'phone': u'407-823-4376', u'bldg_id': 1, u'org_id': 354, u'id': 1451, u'dept_id': None, u'from_table': u'departments', u'department': None, u'organization': u'ACADEMIC AFFAIRS', u'email': None, u'room': u'338'},
                       response.context['org']['departments'])
-        self.assertIsNotNone(response.context['photos'])
         self.assertEquals('US-FL', response.context['geo_region'])
         self.assertEquals('Orlando', response.context['geo_placename'])
         self.assertEquals(u'[28.598854185535444, -81.202466958930960]', response.context['location'].googlemap_point)

@@ -124,14 +124,6 @@ LOGGING = {
     }
 }
 
-# Ficker API
-FLICKR_USER_ID = ''
-FLICKR_API_KEY = ''
-FLICKR_HOST = 'https://www.flickr.com'
-FLICKR_API = '/services/rest'
-FLICKR_METHOD = 'flickr.people.getPublicPhotos'
-FLICKR_TIMEOUT = 15
-
 # Read settings.py for more details about these settings
 #GOOGLE_CAN_SEE_ME = False
 #GOOGLE_LOOK_HERE  = "http://map.ucf.edu"
