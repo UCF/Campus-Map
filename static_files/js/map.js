@@ -620,7 +620,7 @@ var CampusMap = function(options) {
                                                 ),
                                                 map      : MAP,
                                                 title    : spot.name,
-                                                visible  : false,
+                                                visible  : false
                                             });
                                             var infoWindow = new google.maps.InfoWindow({
                                                 content: '<div>Stop: ' + spot.name + '</div>'

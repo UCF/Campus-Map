@@ -1,7 +1,7 @@
 {% load weather %}<!DOCTYPE HTML>
 <html>
 	<head>
-
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<title>{% block title %}UCF Campus Map, Orlando FL{% endblock %}</title>
 		<meta name="description" content="{% block meta-description %}in Orlando, FL; find buildings, locations, organizations and more at the University of Central Florida.{% endblock %}" />
 
