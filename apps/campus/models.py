@@ -259,7 +259,7 @@ class MapObj(models.Model):
 
         name.text     = self.title
         loc_code.text = self.id
-        if self.googlemap_point is not None:
+        if self.googlemap_point:
             lat.text, lon.text = self.googlemap_point[1:-1].replace(' ','').split(',')
 
         location.append(name)
