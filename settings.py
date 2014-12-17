@@ -10,7 +10,7 @@ PROJECT_FOLDER = os.path.dirname(os.path.abspath(__file__))
 APP_FOLDER = os.path.join(PROJECT_FOLDER, 'apps')
 INC_FOLDER = os.path.join(PROJECT_FOLDER, 'third-party')
 TEMPL_FOLDER = os.path.join(PROJECT_FOLDER, 'templates')
-ROOT_URLCONF = '.urls'
+ROOT_URLCONF = 'urls'
 LOGIN_URL = '/admin/'
 
 # Add local apps folder to python path
