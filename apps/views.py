@@ -4,7 +4,6 @@ import json
 import logging
 import re
 import sys
-import urllib
 
 from django.conf import settings
 from django.core.urlresolvers import reverse
@@ -21,12 +20,13 @@ from django.template import RequestContext
 from django.template import TemplateDoesNotExist
 from django.template.loader import get_template
 from django.utils.html import strip_tags
+import requests
 
 import campus.models
 from campus.views import home
-import settings
 
 logger = logging.getLogger(__name__)
+
 
 def page_not_found(request, **kwargs):
     error = sys.exc_value
@@ -34,14 +34,14 @@ def page_not_found(request, **kwargs):
     if len(error.args):
         error = error.args[0]
     if hasattr(error, 'get'):
-         error = "<code>%s</code> could not be found." % (error.get('path', request.path))
+        error = "<code>%s</code> could not be found." % (error.get('path', request.path))
     if not isinstance(error, unicode):
         error = error.__unicode__()
     if not bool(error):
         error = "<code>%s</code> could not be found." % (request.path)
 
     if request.is_json():
-        msg = { "error" : strip_tags(error) }
+        msg = {"error": strip_tags(error)}
         response = HttpResponseNotFound(json.dumps(msg))
         response['Content-type'] = 'application/json'
         return response
@@ -52,20 +52,21 @@ def page_not_found(request, **kwargs):
         response['Content-type'] = 'text/plain; charset=utf-8'
         return response
 
-    request.GET ={} # must clear query string
+    # must clear query string
+    request.GET = {}
     html = home(request, points=True, error=error)
     return HttpResponseNotFound(html)
 
 
 def server_error(request, **kwargs):
     t = loader.get_template('pages/500.djt')
-    context = { 'MEDIA_URL': settings.MEDIA_URL }
+    context = {'MEDIA_URL': settings.MEDIA_URL}
     return HttpResponseServerError(t.render(Context(context)))
 
 
 def print_layout(request):
-    loc         = request.GET.get('show', False)
-    error       = False
+    loc = request.GET.get('show', False)
+    error = False
     illustrated = request.GET.has_key('illustrated')
     if loc:
         try:
@@ -101,16 +102,16 @@ def pages(request, page=None):
 
 
 def organizations(request):
-    context = {'organizations': get_orgs() }
+    context = {'organizations': get_orgs()}
     orgs = get_orgs()['results']
     half = len(orgs) / 2
     error = None
     if not orgs:
         error = "Issue with phonebook search service"
     context = {
-        'error'    : error,
-        'orgs_one' : orgs[0:half],
-        'orgs_two' : orgs[half:]
+        'error': error,
+        'orgs_one': orgs[0:half],
+        'orgs_two': orgs[half:]
     }
 
     return render_to_response('pages/organizations.djt', context, context_instance=RequestContext(request))
@@ -127,10 +128,10 @@ def organization(request, id):
         building = campus.models.Building.objects.get(pk=str(org['bldg_id']))
     except campus.models.Building.DoesNotExist:
         pass
-    context = {'org': org, 'building':building }
+    context = {'org': org, 'building': building}
 
     if request.is_json():
-        context = {'org': org, 'building':building.json() }
+        context = {'org': org, 'building': building.json()}
         response = HttpResponse(json.dumps(context))
         response['Content-type'] = 'application/json'
         return response
@@ -147,27 +148,29 @@ def organization(request, id):
 
 
 def organization_search(q):
-    params = { 'use':'tableSearch',
-               'in':'organizations',
-               'search':q }
-    url = '?'.join([settings.PHONEBOOK, urllib.urlencode(params)])
+    params = {'use': 'tableSearch',
+              'in': 'organizations',
+              'search': q}
     try:
-        results = urllib.urlopen(url).read()
-        return json.loads(results)
+        results = requests.get(settings.PHONEBOOK,
+                               params=params,
+                               timeout=settings.REQUEST_TIMEOUT).json()
+        return results
     except:
         logger.error('Issue with organization search service')
         return None
 
 
 class Orgs:
-    url  = settings.PHONEBOOK + '?use=tableSearch&in=organizations&order_by=name&order=ASC'
     data = None
 
     @classmethod
     def fetch(cls):
+        payload = {'use': 'tableSearch', 'in': 'organizations', 'order_by': 'name', 'order': 'ASC'}
         try:
-            results  = urllib.urlopen(cls.url).read()
-            orgs     = json.loads(results)
+            orgs = requests.get(settings.PHONEBOOK,
+                                params=payload,
+                                timeout=settings.REQUEST_TIMEOUT).json()
             cls.data = orgs
             return True
         except:
@@ -184,10 +187,11 @@ def get_orgs():
 
 
 def get_depts():
-    url = settings.PHONEBOOK + '?use=tableSearch&in=departments&order_by=name&order=ASC'
+    payload = {'use': 'tableSearch', 'in': 'departments', 'order_by': 'name', 'order': 'ASC'}
     try:
-        results = urllib.urlopen(url).read()
-        depts = json.loads(results)
+        depts = requests.get(settings.PHONEBOOK,
+                             params=payload,
+                             timeout=settings.REQUEST_TIMEOUT).json()
     except:
         print "Issue with phonebook search service"
         return None
@@ -208,10 +212,11 @@ def get_org(id):
 
 
 def phonebook_search(q):
-    url = "%s?search=%s" % (settings.PHONEBOOK, q)
     try:
-        results = urllib.urlopen(url).read()
-        return json.loads(results)
+        results = requests.get(settings.PHONEBOOK,
+                               params={'search': q},
+                               timeout=settings.REQUEST_TIMEOUT).json()
+        return results
     except:
         print "Issue with phonebook search service"
         return None
@@ -226,11 +231,11 @@ def search(request):
     '''
     one day will search over all data available
     '''
-    found_entries = {'locations':[],'phonebook':[],'organizations':[]}
-    query_string  = request.GET.get('q', '').strip()
+    found_entries = {'locations': [], 'phonebook': [], 'organizations': []}
+    query_string = request.GET.get('q', '').strip()
 
     if bool(query_string):
-        orgs, locs, phones = ([],[],[])
+        orgs, locs, phones = ([], [], [])
 
         # Organization Search
         org_response = organization_search(query_string)
@@ -238,12 +243,12 @@ def search(request):
             orgs = org_response['results']
 
         # populate locations by name, abbreviation, and orgs
-        q1 = get_query(query_string, ['name',])
-        q2 = get_query(query_string, ['abbreviation',])
-        q3 = Q(pk = "~~~ no results ~~~")
+        q1 = get_query(query_string, ['name', ])
+        q2 = get_query(query_string, ['abbreviation', ])
+        q3 = Q(pk="~~~ no results ~~~")
         for org in orgs:
-            q3 = q3 | Q(pk = str(org['bldg_id']))
-        results = campus.models.MapObj.objects.filter(q1|q2|q3)
+            q3 = q3 | Q(pk=str(org['bldg_id']))
+        results = campus.models.MapObj.objects.filter(q1 | q2 | q3)
         locs = list(results)
 
         # Phonebook Search
@@ -252,34 +257,35 @@ def search(request):
             phones = phones_response['results']
 
         found_entries = {
-            'locations'     : locs,
-            'phonebook'     : phones,
-            'organizations' : orgs,
+            'locations': locs,
+            'phonebook': phones,
+            'organizations': orgs,
         }
 
     if request.is_bxml():
-        base_url  = request.build_absolute_uri(reverse('home'))[:-1]
+        base_url = request.build_absolute_uri(reverse('home'))[:-1]
         xml_locations = ElementTree.Element('Locations')
         for location in list(l.bxml(base_url=base_url) for l in found_entries['locations']):
-            xml_locations.append(location);
-        response = HttpResponse(ElementTree.tostring(xml_locations,encoding="UTF-8"))
+            xml_locations.append(location)
+        response = HttpResponse(ElementTree.tostring(xml_locations,
+                                                     encoding="UTF-8"))
         response['Content-type'] = 'application/xml'
         return response
 
     if request.is_json():
         def clean(item):
             return {
-                'type':item.__class__.__name__,
-                'name':item.name,
-                'id':item.pk,
-                'link':item.link}
+                'type': item.__class__.__name__,
+                'name': item.name,
+                'id': item.pk,
+                'link': item.link}
 
         found_entries['locations'] = map(clean, found_entries['locations'])
 
         search = {
-            'query'            : query_string,
-            'results'          : found_entries,
-            'results_page_url' : '%s?q=%s' % (reverse('search'), query_string)
+            'query': query_string,
+            'results': found_entries,
+            'results_page_url': '%s?q=%s' % (reverse('search'), query_string)
         }
         response = HttpResponse(json.dumps(search))
         response['Content-type'] = 'application/json'
@@ -307,7 +313,7 @@ def search(request):
 
         found_entries['locations'] = _locations
 
-        context = {'search':True, 'query':query_string, 'results':found_entries }
+        context = {'search': True, 'query': query_string, 'results': found_entries}
 
         return render_to_response('campus/search.djt', context, context_instance=RequestContext(request))
 
@@ -334,10 +340,12 @@ def get_query(query_string, search_fields):
         aims to search keywords within a model by testing the given search fields.
     '''
 
-    query = None # Query to search for every search term
+    # Query to search for every search term
+    query = None
     terms = normalize_query(query_string)
     for term in terms:
-        or_query = None # Query to search for a given term in each field
+        # Query to search for a given term in each field
+        or_query = None
         for field_name in search_fields:
             q = Q(**{"%s__icontains" % field_name: term})
             if or_query is None:

@@ -1,16 +1,20 @@
 import re
-import urllib
 
 from django import template
+from django.conf import settings
+import requests
 
-def weather(json_request = False, text_request = False):
+
+def weather(json_request=False, text_request=False):
     '''
     Yahoo Weather
     '''
     try:
 
-        f = urllib.urlopen("http://weather.yahoo.com/pbadge/?id=2466256&u=f&t=trans&l=navigation")
-        c = f.read()
+        f = requests.get('http://weather.yahoo.com/pbadge/',
+                         params={'id': 2466256, 'u': 'f', 't': 'trans', 'l': 'navigation'},
+                         timeout=settings.REQUEST_TIMEOUT)
+        c = f.text
         f.close()
 
         # OCD about HTML validation
@@ -25,7 +29,7 @@ def weather(json_request = False, text_request = False):
             description = fix.group(1)
             c = re.sub('<span class="efc"></span>', description, c)
         else:
-            return { 'weather': None, 'error':'Error parsing weather content' }
+            return {'weather': None, 'error': 'Error parsing weather content'}
 
         # fill json request
         find = re.search(r'<span>(\d+)<abbr title="Degree">', c)
@@ -34,25 +38,25 @@ def weather(json_request = False, text_request = False):
         else:
             temp = find.group(1)
 
-        w_json = { "temperature" : u'{0}\u00B0F'.format(temp), "description":description }
+        w_json = {"temperature": u'{0}\u00B0F'.format(temp), "description": description}
         w_text = u'temperature: {0}\u00B0F\ndescription: {1}'.format(temp, description)
 
         # grab just icon and description
         w = re.search('(<div class="navweatherimage[\s\S]+</div>)\s*(<div class="discription">[\s\S]+</div>)\s*<div class="floatright">', c)
         if w is not None:
-            w = "%s %s</div>" % ( w.group(1), w.group(2) )
+            w = "%s %s</div>" % (w.group(1), w.group(2))
         else:
-            return { 'weather': None, 'error':'Error parsing weather content' }
+            return {'weather': None, 'error': 'Error parsing weather content'}
 
     except IOError:
-        return { 'weather': None, 'error':'IOError with opening URL' }
+        return {'weather': None, 'error': 'IOError with opening URL'}
 
     if json_request:
         return w_json
     elif text_request:
         return w_text
     else:
-        return { 'weather': w }
+        return {'weather': w}
 
 register = template.Library()
 register.inclusion_tag("templatetags/weather.html")(weather)

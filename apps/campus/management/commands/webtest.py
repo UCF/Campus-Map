@@ -1,7 +1,8 @@
 import time
-import urllib2
 
 from django.core.management.base import BaseCommand
+import requests
+from requests.exceptions import MissingSchema
 
 
 '''
@@ -13,9 +14,9 @@ class Command(BaseCommand):
 
         if len(args):
             try:
-                urllib2.urlopen(args[0])
+                requests.get(args[0])
                 base = args[0]
-            except ValueError:
+            except MissingSchema:
                 base = "http://%s/" % args[0]
         else:
             print "No host given, using 'my.mac'"
@@ -53,9 +54,9 @@ class Command(BaseCommand):
             try:
                 url = base+u
                 print "%-75s " % url,
-                page = urllib2.urlopen(url, None, 10)
+                page = requests.get(url, timeout=10)
                 print "OK"
                 page.close()
 
-            except urllib2.URLError, e:
+            except Exception, e:
                 print "Fail: %s" % str(e)
