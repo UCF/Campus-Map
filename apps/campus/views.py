@@ -5,6 +5,7 @@ from time import time
 from time import mktime
 from xml.etree import ElementTree
 
+from django.conf import settings
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.auth.decorators import login_required
 from django.core import serializers
@@ -41,7 +42,6 @@ from campus.models import SimpleSetting
 from campus.shuttle import ShuttleRouteAPI
 from campus.templatetags.weather import weather
 from campus.utils import get_geo_data
-import settings
 
 
 def home(request, **kwargs):
