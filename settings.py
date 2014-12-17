@@ -4,23 +4,23 @@
 import os
 import sys
 
-MAP_VERSION       = "1.7.25"
+MAP_VERSION = "1.7.25"
 
-PROJECT_FOLDER    = os.path.dirname(os.path.abspath(__file__))
-APP_FOLDER        = os.path.join(PROJECT_FOLDER, 'apps')
-INC_FOLDER        = os.path.join(PROJECT_FOLDER, 'third-party')
-TEMPL_FOLDER      = os.path.join(PROJECT_FOLDER, 'templates')
-ROOT_URLCONF      = os.path.basename(PROJECT_FOLDER) + '.urls'
-LOGIN_URL         = '/admin/'
+PROJECT_FOLDER = os.path.dirname(os.path.abspath(__file__))
+APP_FOLDER = os.path.join(PROJECT_FOLDER, 'apps')
+INC_FOLDER = os.path.join(PROJECT_FOLDER, 'third-party')
+TEMPL_FOLDER = os.path.join(PROJECT_FOLDER, 'templates')
+ROOT_URLCONF = '.urls'
+LOGIN_URL = '/admin/'
 
 # Add local apps folder to python path
 sys.path.append(APP_FOLDER)
 sys.path.append(INC_FOLDER)
 
-TIME_ZONE         = 'America/New_York'
-LANGUAGE_CODE     = 'en-us'
-SITE_ID           = 1
-USE_I18N          = False
+TIME_ZONE = 'America/New_York'
+LANGUAGE_CODE = 'en-us'
+SITE_ID = 1
+USE_I18N = False
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
@@ -40,6 +40,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 )
 
 MIDDLEWARE_CLASSES = [
+    'api.MonkeyPatchHttpRequest',
     'api.MapMiddleware',
     'apps.DisableCSRF', # :(
     'apps.SecureRequiredMiddleware',
@@ -93,71 +94,71 @@ LOGGING = {
     },
     'formatters': {
         'concise': {
-            'format':'\t'.join(['%(levelname)s','%(asctime)s','%(message)s']),
+            'format': '\t'.join(['%(levelname)s','%(asctime)s','%(message)s']),
         },
         'talkative': {
-            'format':'\t'.join(['%(levelname)s','%(asctime)s','%(funcName)s','%(lineno)d','%(message)s']),
+            'format': '\t'.join(['%(levelname)s','%(asctime)s','%(funcName)s','%(lineno)d','%(message)s']),
         },
         # Request Specific Formatters
         'request_console_formatter':{
-            'format':'\t'.join(['%(levelname)s','%(asctime)s','%(message)s','%(exc_info)s']),
+            'format': '\t'.join(['%(levelname)s','%(asctime)s','%(message)s','%(exc_info)s']),
         },
         'request_file_formatter':{
-            'format':'\t'.join(['%(levelname)s','%(asctime)s','%(message)s','%(exc_info)s']),
+            'format': '\t'.join(['%(levelname)s','%(asctime)s','%(message)s','%(exc_info)s']),
         },
     },
     'handlers': {
         'discard': {
-            'level' : 'ERROR',
-            'class' : 'django.utils.log.NullHandler'
+            'level': 'ERROR',
+            'class': 'django.utils.log.NullHandler'
         },
         'console': {
-            'level'     : 'ERROR',
-            'class'     : 'logging.StreamHandler',
-            'formatter' : 'concise',
-            'filters'   : ['require_debug_true']
+            'level': 'ERROR',
+            'class': 'logging.StreamHandler',
+            'formatter': 'concise',
+            'filters': ['require_debug_true']
         },
         'file': {
-            'level'       : 'ERROR',
-            'class'       : 'logging.handlers.RotatingFileHandler',
-            'filename'    : '%s/application.log' % os.path.join(PROJECT_FOLDER, 'logs'),
-            'maxBytes'    : 1024*1024*10, # 10 MB
-            'backupCount' : 5,
-            'formatter'   : 'concise',
-            'filters'     : ['require_debug_false']
+            'level': 'ERROR',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': '%s/application.log' % os.path.join(PROJECT_FOLDER, 'logs'),
+            'maxBytes': 1024*1024*10, # 10 MB
+            'backupCount': 5,
+            'formatter': 'concise',
+            'filters': ['require_debug_false']
         },
         # Request Specific Handlers
         'console_request': {
-            'level'       : 'ERROR',
-            'class'       : 'logging.StreamHandler',
-            'formatter'   : 'request_console_formatter',
-            'filters'     : ['require_debug_true']
+            'level': 'ERROR',
+            'class': 'logging.StreamHandler',
+            'formatter': 'request_console_formatter',
+            'filters': ['require_debug_true']
         },
         'file_request': {
-            'level'       : 'ERROR',
-            'class'       : 'logging.handlers.RotatingFileHandler',
-            'filename'    : '%s/request.log' % os.path.join(PROJECT_FOLDER, 'logs'),
-            'maxBytes'    : 1024*1024*10, # 10 MB
-            'backupCount' : 5,
-            'formatter'   : 'request_file_formatter',
-            'filters'     : ['require_debug_false']
+            'level': 'ERROR',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': '%s/request.log' % os.path.join(PROJECT_FOLDER, 'logs'),
+            'maxBytes': 1024*1024*10, # 10 MB
+            'backupCount': 5,
+            'formatter': 'request_file_formatter',
+            'filters': ['require_debug_false']
         }
     },
     'loggers': {
         'django.db.backends': { # Supress SQL debug messages
-            'handlers'  : ['discard'],
-            'level'     : 'ERROR',
-            'propagate' : False
+            'handlers': ['discard'],
+            'level': 'ERROR',
+            'propagate': False
         },
         'django.request': {
-            'handlers'  : ['console_request', 'file_request'],
-            'level'     : 'ERROR',
-            'propagate' : False
+            'handlers': ['console_request', 'file_request'],
+            'level': 'ERROR',
+            'propagate': False
         },
         '': {
-            'handlers'  : ['console', 'file'],
-            'level'     : 'ERROR',
-            'propagate' : False
+            'handlers': ['console', 'file'],
+            'level': 'ERROR',
+            'propagate': False
         },
     }
 }
@@ -201,7 +202,7 @@ STATICFILES_FINDERS = (
 # locally or behind a firewall, this will not be possible.  If GOOGLE_CAN_SEE_ME
 # if false, will fall back to GOOGLE_LOOK_HERE (leave off trailing slash)
 GOOGLE_CAN_SEE_ME = True
-GOOGLE_LOOK_HERE  = "http://map.ucf.edu"
+GOOGLE_LOOK_HERE = "http://map.ucf.edu"
 
 # TODO: open all data to be indexed by a real search engine, otherwise
 # search returns a very basic (nearly useless) keymatch result

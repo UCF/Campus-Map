@@ -9,29 +9,29 @@ from django.views.generic import View
 log = logging.getLogger(__name__)
 
 formats = {
-    'json' : {
-        'mimetype' : 'application/json',
-        'content'  : '{"error":"%s"}',
+    'json': {
+        'mimetype': 'application/json',
+        'content': '{"error":"%s"}',
         },
-    'txt'  : {
-        'mimetype' : 'text/plain; charset=utf-8',
-        'content'  : '%s',
+    'txt': {
+        'mimetype': 'text/plain; charset=utf-8',
+        'content': '%s',
         },
-    'kml'  : {
-        'mimetype' : 'application/vnd.google-earth.kml+xml',
-        'content'  : '<?xml version="1.0"?><kml xmlns="http://www.opengis.net/kml/2.2"><Document><name>%s</name></Document></kml>',
+    'kml': {
+        'mimetype': 'application/vnd.google-earth.kml+xml',
+        'content': '<?xml version="1.0"?><kml xmlns="http://www.opengis.net/kml/2.2"><Document><name>%s</name></Document></kml>',
         },
-    'xml'  : {
-        'mimetype' : 'text/xml',
-        'content'  : '<?xml version="1.0"?><error>%s</error>',
+    'xml': {
+        'mimetype': 'text/xml',
+        'content': '<?xml version="1.0"?><error>%s</error>',
         },
-    'bxml' : {
-        'mimetype' : 'application/xml',
-        'content'  : '<?xml version="1.0"?><error>%s</error>',
+    'bxml': {
+        'mimetype': 'application/xml',
+        'content': '<?xml version="1.0"?><error>%s</error>',
         },
-    'ajax' : {
-        'mimetype' : 'text/html; charset=utf-8',
-        'content'  : '%s',
+    'ajax': {
+        'mimetype': 'text/html; charset=utf-8',
+        'content': '%s',
         },
 }
 
@@ -40,17 +40,19 @@ class HttpResponseNotImplemented(HttpResponse):
     status_code = 501
 
 
-def MonkeyPatchHttpRequest():
+class MonkeyPatchHttpRequest():
     '''
     Define is_<format> methods on the request object (called in base __init__.py)
     '''
-    for format, o in formats.items():
-        code = """def is_%s(self):
-                    import re
-                    return False if re.search('\.%s$', self.path) is None else True""" % (format, format)
-        scope = {}
-        exec code in scope
-        setattr(HttpRequest, 'is_%s' % format, scope['is_%s' % format])
+
+    def process_request(self, request):
+        for format, o in formats.items():
+            code = """def is_%s(self):
+                        import re
+                        return False if re.search('\.%s$', self.path) is None else True""" % (format, format)
+            scope = {}
+            exec code in scope
+            setattr(HttpRequest, 'is_%s' % format, scope['is_%s' % format])
 
 
 class MapMiddleware(object):
