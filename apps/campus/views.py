@@ -910,7 +910,7 @@ def weather(request):
         return response
 
     if request.is_json():
-        response = HttpResponse(json.dumps({'weather': None, 'error': 'IOError with opening URL'}))
+        response = HttpResponse(json.dumps(w_json))
         response['Content-type'] = 'application/json'
         return response
     elif request.is_txt():
