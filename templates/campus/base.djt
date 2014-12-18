@@ -1,5 +1,4 @@
 {% extends "base.djt"%}
-{% load weather %}
 
 {% block head %}
 {# IE is a dirty bastard.  Needs an absolute URL to work, thus needs to be here to have access to STATIC_URL #}
@@ -36,7 +35,7 @@
 		<div id="error" style="display:none;"></div>
 		{% endif %}
 
-		{% weather %}
+		<esi:include src="{% url 'weather'%}" />
 	</header>
 	<div id="canvas-wrap"><div id="map-canvas" style="width:100%; height:550px"></div></div>
 </div>

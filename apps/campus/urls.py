@@ -21,6 +21,7 @@ urlpatterns = patterns('campus.views',
     url(r'^shuttles/(?P<route_id>\d+)/stops/$', 'shuttle_route_stops', name='shuttle_route_stops'),
     url(r'^shuttles/(?P<route_id>\d+)/poly/$', ShuttleRoutePolyView.as_view(), name='shuttle_route_poly'),
     url(r'^shuttles/(?P<route_id>\d+)/gps/$', 'shuttle_gps', name='shuttle_gps'),
+    url(r'^weather/$', 'weather', name='weather'),
 
     url(r'^widget/$', 'widget', name='widget'),
 

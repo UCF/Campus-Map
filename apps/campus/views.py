@@ -24,6 +24,7 @@ from django.template import RequestContext
 from django.utils.datastructures import SortedDict
 from django.views.generic import ListView
 from django.views.generic import TemplateView
+import requests
 
 from campus.models import BikeRack
 from campus.models import Building
@@ -578,6 +579,7 @@ def location_html(loc, request, orgs=True):
     t = get_template(template)
     return t.render(c)
 
+
 def backward_location(request):
     '''
     Wraps location view to enable backwards compatibility with old campus
@@ -804,6 +806,7 @@ def data_dump(request):
     response['Content-type'] = 'application/json'
     return response
 
+
 def widget(request):
     '''
     Outputs information to build the map widget
@@ -886,3 +889,34 @@ def widget(request):
         template = 'widget/instructions.djt'
 
     return render_to_response(template, context, context_instance=RequestContext(request))
+
+
+def weather(request):
+    '''
+    Weather data that can be requested independantly (ESI).
+    '''
+    try:
+        response = requests.get(settings.WEATHER_URL,
+                                timeout=settings.REQUEST_TIMEOUT).json()
+
+
+        w_json = {"temperature": u'{0}\u00B0F'.format(response['tempN']), "description": response['condition']}
+        w_text = u'temperature: {0}\u00B0F\ndescription: {1}'.format(response['tempN'], response['condition'])
+
+        # grab just icon and description
+        html = '<div class="navweatherimage"><img src="' + response['imgSmall'] + '" title="' + response['condition'] + '" alt="' + response['condition'] + '" ></div><div class="discription">' + response['temp'] + ', ' + response['condition'] + '<div class="floatright">'
+    except Exception:
+        response = HttpResponse(json.dumps({'weather': None, 'error': 'IOError with opening URL'}))
+        response['Content-type'] = 'application/json'
+        return response
+
+    if request.is_json():
+        response = HttpResponse(json.dumps({'weather': None, 'error': 'IOError with opening URL'}))
+        response['Content-type'] = 'application/json'
+        return response
+    elif request.is_txt():
+        response = HttpResponse(w_text)
+        response['Content-type'] = 'text/plain; charset=utf-8'
+        return response
+    else:
+        return render_to_response('campus/weather.html', {'weather': html}, context_instance=RequestContext(request))
