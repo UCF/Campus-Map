@@ -128,6 +128,9 @@ LOGGING = {
 #GOOGLE_CAN_SEE_ME = False
 #GOOGLE_LOOK_HERE  = "http://map.ucf.edu"
 
+# Weather data URL
+WEATHER_URL = 'http://weather.smca.ucf.edu'
+
 SHUTTLE_WSDL = ''
 SHUTTLE_APP_CODE = ''
 SHUTTLE_COST_CENTER_ID = ''
