@@ -4,6 +4,7 @@ when you run "manage.py test".
 
 Replace this with more appropriate tests for your application.
 """
+from django.conf import settings
 from django.core.management import call_command
 from django.core.urlresolvers import resolve
 from django.core.urlresolvers import reverse
@@ -11,8 +12,6 @@ from django.test import TestCase
 from django.test.client import Client
 
 from campus import models
-import settings
-
 
 class TestViews(TestCase):
 

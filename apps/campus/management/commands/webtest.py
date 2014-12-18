@@ -1,20 +1,20 @@
 import time
 
 from django.core.management.base import BaseCommand
+from django.conf import settings
 import requests
 from requests.exceptions import MissingSchema
 
 
-'''
-    Check a series of URLs and make sure we get a response
-
-'''
 class Command(BaseCommand):
+    '''
+        Check a series of URLs and make sure we get a response
+    '''
     def handle(self, *args, **options):
 
         if len(args):
             try:
-                requests.get(args[0])
+                requests.get(args[0], timeout=settings.REQUEST_TIMEOUT)
                 base = args[0]
             except MissingSchema:
                 base = "http://%s/" % args[0]
@@ -54,7 +54,7 @@ class Command(BaseCommand):
             try:
                 url = base+u
                 print "%-75s " % url,
-                page = requests.get(url, timeout=10)
+                page = requests.get(url, timeout=settings.REQUEST_TIMEOUT)
                 print "OK"
                 page.close()
 

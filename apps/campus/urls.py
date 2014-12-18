@@ -1,9 +1,8 @@
+from django.conf import settings
 from django.conf.urls import patterns
 from django.conf.urls import url
 
 from campus.views import ShuttleRoutePolyView
-
-import settings
 
 urlpatterns = patterns('campus.views',
     url(r'^$', 'home', { 'points' : True }, name='home'),
