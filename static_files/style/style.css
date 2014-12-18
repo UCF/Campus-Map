@@ -342,10 +342,10 @@ a.iclose:hover { background-position:0 -11px; }
 #weather div { background-repeat:no-repeat; }
 .ie8 #weather .navweatherimage { background:transparent !important; }
 #weather .navweatherimage { width:61px; overflow:hidden; display:block; height:34px; float:left; }
-#weather .discription { position:absolute; left:35px; top:12px; color:#666; }
-#weather .discription a { color:#666; }
-#weather .discription span { font-size:18px; font-weight:bold; color:black; }
-#weather .discription abbr { border:0; }
+#weather .description { position:absolute; left:35px; top:12px; color:#666; }
+#weather .description a { color:#666; }
+#weather .description span { font-size:18px; font-weight:bold; color:black; }
+#weather .description abbr { border:0; }
 #weather .floatleft { white-space:nowrap; font-size:11px; }
 
 

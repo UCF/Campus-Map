@@ -892,7 +892,7 @@ def widget(request):
 
 def weather(request):
     '''
-    Weather data that can be requested independantly (ESI).
+    Weather data that can be requested independently (ESI).
     '''
     try:
         response = requests.get(settings.WEATHER_URL,
@@ -903,7 +903,7 @@ def weather(request):
         w_text = u'temperature: {0}\u00B0F\ndescription: {1}'.format(response['tempN'], response['condition'])
 
         # grab just icon and description
-        html = '<div class="navweatherimage"><img src="' + response['imgSmall'] + '" title="' + response['condition'] + '" alt="' + response['condition'] + '" ></div><div class="discription">' + response['temp'] + ', ' + response['condition'] + '</div>'
+        html = '<div class="navweatherimage"><img src="' + response['imgSmall'] + '" title="' + response['condition'] + '" alt="' + response['condition'] + '" ></div><div class="description">' + response['temp'] + ', ' + response['condition'] + '</div>'
     except Exception:
         response = HttpResponse(json.dumps({'weather': None, 'error': 'IOError with opening URL'}))
         response['Content-type'] = 'application/json'
