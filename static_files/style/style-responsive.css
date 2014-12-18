@@ -213,15 +213,16 @@
     float: none;
   }
 
+  #profile-image {
+    display: none;
+  }
+
 
   /* Embed fixes */
-  #cwrap,
-  #canvas,
   #sketchup {
     display: none;
   }
 
-/*
   #cwrap {
     height: 220px;
     padding: 0;
@@ -231,6 +232,7 @@
     height: 220px;
   }
 
+/*
   #sketchup #model {
     box-sizing: border-box;
     max-width: 430px;
