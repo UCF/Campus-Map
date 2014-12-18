@@ -40,7 +40,6 @@ from campus.models import RegionalCampus
 from campus.models import Sidewalk
 from campus.models import SimpleSetting
 from campus.shuttle import ShuttleRouteAPI
-from campus.templatetags.weather import weather
 from campus.utils import get_geo_data
 import settings
 
