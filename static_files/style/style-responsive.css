@@ -281,4 +281,10 @@
   nav ol li {
     margin-top: 5px;
   }
+
+
+  /* Weather */
+  #weather {
+    display: none;
+  }
 }
