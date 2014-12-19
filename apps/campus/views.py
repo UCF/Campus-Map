@@ -77,27 +77,6 @@ def home(request, **kwargs):
             geo_placename, geo_region = get_geo_data(latlng[0], latlng[1])
             geo_latlng = latlng
 
-    if request.is_json():
-        campus = {
-            "name"    : "UCF Campus Map",
-            "weather" : weather(json_request=True)
-        }
-        response = HttpResponse(json.dumps(campus))
-        response['Content-type'] = 'application/json'
-        return response
-
-    if request.is_txt():
-        text = u"UCF Campus Map - %s\n%s\n\n# Campus Address\n%s\n\n# Weather\n%s" % (
-                request.build_absolute_uri(reverse('home')),
-                "-"*78,
-                "4000 Central Florida Blvd. Orlando, Florida, 32816",
-                weather(text_request=True))
-
-
-        response = HttpResponse(text)
-        response['Content-type'] = 'text/plain; charset=utf-8'
-        return response
-
     # Filter home page locations to building, locations, and groups
     show = map(lambda c: ContentType.objects.get_for_model(c), (Building, Location, Group, ParkingLot, DiningLocation))
     mobs = MapObj.objects.filter(content_type__in=map(lambda c: c.id, show))
@@ -905,9 +884,12 @@ def weather(request):
         # grab just icon and description
         html = '<div class="navweatherimage"><img src="' + response['imgSmall'] + '" title="' + response['condition'] + '" alt="' + response['condition'] + '" ></div><div class="description">' + response['temp'] + ', ' + response['condition'] + '</div>'
     except Exception:
-        response = HttpResponse(json.dumps({'weather': None, 'error': 'IOError with opening URL'}))
-        response['Content-type'] = 'application/json'
-        return response
+        if request.is_json():
+            w_json = {'weather': None, 'error': 'IOError with opening URL'}
+        elif request.is_txt():
+            w_text = u'error IOError with opening URL'
+        else:
+            html = None
 
     if request.is_json():
         response = HttpResponse(json.dumps(w_json))
