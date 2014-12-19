@@ -6,6 +6,8 @@
 		<meta name="description" content="{% block meta-description %}in Orlando, FL; find buildings, locations, organizations and more at the University of Central Florida.{% endblock %}" />
 
 		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
 		<meta name="google-site-verification" content="" />
 		<link rel="shortcut icon" href="{{ STATIC_URL }}images/favicon.ico">
 		<link rel="apple-touch-icon" href="{{ STATIC_URL }}images/apple-touch-icon.png">
@@ -31,6 +33,7 @@
 
 		<!-- UCF Web Communications -->
 		<link href="{{ STATIC_URL }}style/style.css?{{map_version}}" rel="stylesheet">
+		<link href="{{ STATIC_URL }}style/style-responsive.css?{{map_version}}" rel="stylesheet">
 		{% block head %}{% endblock %}
 
 		{% if debug %}
