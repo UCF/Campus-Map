@@ -15,7 +15,6 @@ from django.db.utils import IntegrityError, DatabaseError
 from campus.admin import create_groupable_locations
 from campus.models import Group, GroupedLocation, MapObj, DiningLocation
 import campus
-import settings
 
 try:
     from _mysql_exceptions import OperationalError

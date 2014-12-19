@@ -1,7 +1,6 @@
 import datetime
 import json
 import logging
-import urllib
 from xml.etree.ElementTree import Element
 
 from django.conf import settings
@@ -16,12 +15,14 @@ from django.db.models.query import QuerySet
 from django.db.models.signals import m2m_changed, post_save
 from django.template.defaultfilters import slugify
 from django.template.defaultfilters import pluralize
+import requests
 from tinymce import models as tinymce_models
 
 import campus
 
 
 log = logging.getLogger(__name__)
+
 
 class MapQuerySet(QuerySet):
     '''
@@ -37,6 +38,7 @@ class MapQuerySet(QuerySet):
             return result.as_leaf_class()
         else:
             return result
+
     def __iter__(self):
         for item in super(MapQuerySet, self).__iter__():
             yield item.as_leaf_class()
@@ -48,7 +50,6 @@ class MapQuerySet(QuerySet):
             return result.as_leaf_class()
         else:
             return result
-
 
     def filter(self, *args, **kwargs):
         '''
@@ -68,7 +69,7 @@ class MapQuerySet(QuerySet):
             query = args[0]
         else:
             query = Q(**kwargs)
-        new_query   = Q(pk="~~~ no results ~~~")
+        new_query = Q(pk="~~~ no results ~~~")
         if query.connector != "OR":
             new_query = query
         else:
@@ -113,6 +114,7 @@ class MapQuerySet(QuerySet):
                 continue
         return mob_query
 
+
 class MapManager(models.Manager):
     def get_query_set(self):
         return MapQuerySet(self.model)
@@ -126,21 +128,20 @@ class MapManager(models.Manager):
 
 
 class MapObj(models.Model):
-    objects           = MapManager()
-    content_type      = models.ForeignKey(ContentType, editable=False, null=True)
-    id                = models.CharField(max_length=80, primary_key=True, help_text='<strong class="caution">Caution</strong>: changing may break external resources (used for links and images)')
-    name              = models.CharField(max_length=255, null=True)
-    image             = models.ImageField(upload_to='uploads/images')
-    description       = models.CharField(max_length=255, null=True)
-    profile           = tinymce_models.HTMLField(null=True)
-    googlemap_point   = models.CharField(max_length=255, null=True, help_text='E.g., <code>[28.6017, -81.2005]</code>')
+    objects = MapManager()
+    content_type = models.ForeignKey(ContentType, editable=False, null=True)
+    id = models.CharField(max_length=80, primary_key=True, help_text='<strong class="caution">Caution</strong>: changing may break external resources (used for links and images)')
+    name = models.CharField(max_length=255, null=True)
+    image = models.ImageField(upload_to='uploads/images')
+    description = models.CharField(max_length=255, null=True)
+    profile = tinymce_models.HTMLField(null=True)
+    googlemap_point = models.CharField(max_length=255, null=True, help_text='E.g., <code>[28.6017, -81.2005]</code>')
     illustrated_point = models.CharField(max_length=255, null=True)
-    poly_coords       = models.TextField(null=True)
-    modified          = models.DateTimeField(default=datetime.datetime.now)
-
+    poly_coords = models.TextField(null=True)
+    modified = models.DateTimeField(default=datetime.datetime.now)
 
     def __init__(self, *args, **kwargs):
-        for k,v in kwargs.items():
+        for k, v in kwargs.items():
             if v in ('', "None", "none", "null"):
                 kwargs[k] = None # makes the API a bit uniform
         if kwargs.get('id', False) and not isinstance(kwargs['id'], int):
@@ -158,13 +159,13 @@ class MapObj(models.Model):
         ''' retruns a subset of orgs '''
         from apps.views import get_orgs
         building_orgs = []
-        count    = 0
+        count = 0
         overflow = False
         for o in get_orgs()['results']:
             if self.pk == str(o['bldg_id']):
                 building_orgs.append(o)
         return {
-            "results" : building_orgs,
+            "results": building_orgs,
             "overflow": overflow
         }
     orgs = property(_orgs)
@@ -177,7 +178,7 @@ class MapObj(models.Model):
         """Returns a json serializable object for this instance"""
         obj = dict(self.__dict__)
 
-        for key,val in obj.items():
+        for key, val in obj.items():
 
             if key == "_state":
                 # prevents object.save() function from being destroyed
@@ -212,6 +213,7 @@ class MapObj(models.Model):
     def _kml_coords(self):
         if self.poly_coords == None:
             return None
+
         def flat(l):
             # recursive function to flatten array and create a a list of coordinates separated by a space
             str = ""
@@ -219,19 +221,19 @@ class MapObj(models.Model):
                 if type(i[0]) == type([]):
                     str += flat(i)
                 else:
-                    str += ("%.6f,%.6f ")  % (i[0], i[1])
+                    str += ("%.6f,%.6f ") % (i[0], i[1])
             return str
         arr = json.loads(self.poly_coords)
         return flat(arr)
     kml_coords = property(_kml_coords)
 
     def _link(self):
-        url = reverse('location', kwargs={'loc':self.id})
+        url = reverse('location', kwargs={'loc': self.id})
         return '<a href="%s%s/" data-pk="%s">%s</a>' % (url, slugify(self.name), self.id, self.title)
     link = property(_link)
 
     def _profile_link(self, base_url=''):
-        url = reverse('location', kwargs={'loc':self.id})
+        url = reverse('location', kwargs={'loc': self.id})
         slug = slugify(self.title)
         if slug in ("", None, False, "None", "none", "null") or slug == self.id:
             return '%s%s' % (base_url, url)
@@ -245,19 +247,19 @@ class MapObj(models.Model):
             Search requires name, unique building id, and geocode lat long in
             decimal format. Addtional attributes can also be included for search
         '''
-        base_url  = kwargs.pop('base_url', '')
+        base_url = kwargs.pop('base_url', '')
         name_only = kwargs.pop('name_only', False)
 
         location = Element('location') # Root
 
         # Required Attributes
-        name     = Element('name')
+        name = Element('name')
         loc_code = Element('location_code')
-        geocode  = Element('geocode')
-        lat      = Element('lat')
-        lon      = Element('lon')
+        geocode = Element('geocode')
+        lat = Element('lat')
+        lon = Element('lon')
 
-        name.text     = self.title
+        name.text = self.title
         loc_code.text = self.id
         if self.googlemap_point:
             lat.text, lon.text = self.googlemap_point[1:-1].replace(' ','').split(',')
@@ -271,17 +273,17 @@ class MapObj(models.Model):
 
             # Optional Attributes
             if self.image is not None:
-                image    = Element('image_url')
+                image = Element('image_url')
                 image.text = base_url + settings.MEDIA_URL + self.image
                 location.append(image)
 
             if self.description is not None:
-                desc     = Element('description')
+                desc = Element('description')
                 desc.text = self.description
                 location.append(desc)
 
             if len(self.orgs['results']) > 0:
-                orgs     = Element('organizations')
+                orgs = Element('organizations')
                 for org_data in self.orgs['results']:
                     org = Element('organization')
                     org.text = org_data['name']
@@ -301,7 +303,6 @@ class MapObj(models.Model):
             if not gl:
                 gl = GroupedLocation(content_type=self.content_type, object_pk=self.pk)
                 gl.save()
-
 
     def as_leaf_class(self):
         content_type = self.content_type
@@ -339,8 +340,8 @@ class RegionalCampus(MapObj):
 
 
 class Building(MapObj):
-    abbreviation      = models.CharField(max_length=50, null=True)
-    sketchup          = models.CharField(max_length=50, null=True, help_text="E.g., http://sketchup.google.com/3dwarehouse/details?mid=<code>54b7f313bf315a3a85622796b26c9e66</code>&prevstart=0")
+    abbreviation = models.CharField(max_length=50, null=True)
+    sketchup = models.CharField(max_length=50, null=True, help_text="E.g., http://sketchup.google.com/3dwarehouse/details?mid=<code>54b7f313bf315a3a85622796b26c9e66</code>&prevstart=0")
 
     def _number(self):
         return self.id
@@ -366,16 +367,18 @@ class Building(MapObj):
 
 
 parking_permit_colors = {
-    "B Permits"       : "cc0400", #red
-    "C Permits"       : "0052d9", #blue
-    "D Permits"       : "009a36", #green
-    "Housing Permits" : "ffba00", #orange
-    "Greek Row"       : "eb00e3", #pink
+    "B Permits": "cc0400", #red
+    "C Permits": "0052d9", #blue
+    "D Permits": "009a36", #green
+    "Housing Permits": "ffba00", #orange
+    "Greek Row": "eb00e3", #pink
 }
+
+
 class ParkingLot(MapObj):
-    permit_type  = models.CharField(max_length=255, null=True)
+    permit_type = models.CharField(max_length=255, null=True)
     abbreviation = models.CharField(max_length=50, null=True)
-    sketchup     = models.CharField(max_length=50, null=True, help_text="E.g., http://sketchup.google.com/3dwarehouse/details?mid=<code>54b7f313bf315a3a85622796b26c9e66</code>&prevstart=0")
+    sketchup = models.CharField(max_length=50, null=True, help_text="E.g., http://sketchup.google.com/3dwarehouse/details?mid=<code>54b7f313bf315a3a85622796b26c9e66</code>&prevstart=0")
 
     def _number(self):
         return self.id
@@ -474,7 +477,7 @@ class Sidewalk(models.Model):
 
     def clean(self, *args, **kwargs):
         # keep blanks out of coordinates
-        if self.poly_coords       == "": self.poly_coords       = None
+        if self.poly_coords == "": self.poly_coords = None
 
         # check poloy coordinates
         if self.poly_coords != None:
@@ -527,15 +530,16 @@ class DiningLocation(MapObj):
 
         # Talk to search service to get departments
         for org_id in cls.ORGANIZATION_IDS:
-            params = {'in':'departments','search':org_id}
+            params = {'in': 'departments', 'search': org_id}
             try:
-                url  = '?'.join([settings.PHONEBOOK, urllib.urlencode(params)])
-                page = urllib.urlopen(url)
+                page = requests.get(settings.PHONEBOOK,
+                                    params=params,
+                                    timeout=settings.REQUEST_TIMEOUT)
             except Exception, e:
                 log.error('Unabe to open URL %s: %s' % (url, str(e)))
             else:
                 try:
-                    depts = json.loads(page.read())
+                    depts = page.json()
                     depts['results']
                 except Exception, e:
                     log.error('Unable to parse JSON: %s' % str(e))
@@ -560,9 +564,9 @@ class DiningLocation(MapObj):
                                 # Assume the teledata is wrong
                                 pass
                             else:
-                                dining_loc.googlemap_point   = building.googlemap_point
+                                dining_loc.googlemap_point = building.googlemap_point
                                 dining_loc.illustrated_point = building.illustrated_point
-                                dining_loc.poly_coords       = building.poly_coords
+                                dining_loc.poly_coords = building.poly_coords
                         try:
                             dining_loc.save()
                         except Exception, e:
@@ -592,14 +596,14 @@ class GroupedLocationManager(models.Manager):
 
 
 class GroupedLocation(models.Model):
-    objects      = GroupedLocationManager()
+    objects = GroupedLocationManager()
 
-    object_pk    = models.CharField(max_length=255)
+    object_pk = models.CharField(max_length=255)
     content_type = models.ForeignKey(ContentType)
     content_object = generic.GenericForeignKey('content_type', 'object_pk')
 
     def __unicode__(self):
-        loc      = self.content_object
+        loc = self.content_object
         loc_name = str(loc)
         if not loc_name:
             loc_name = "#{0}".format(loc.pk)
@@ -625,9 +629,9 @@ class Group(MapObj):
     def json(self, **kw):
         obj = super(Group, self).json(**kw)
         locations = {}
-        locations['count']   = self.locations.count()
-        locations['ids']     = []
-        locations['links']   = []
+        locations['count'] = self.locations.count()
+        locations['ids'] = []
+        locations['links'] = []
         for l in self.locations.all():
             if l.content_object:
                 locations['ids'].append(l.content_object.id)
@@ -638,7 +642,7 @@ class Group(MapObj):
     @classmethod
     def update_coordinates(cls, **kwargs):
         sender = kwargs['instance']
-        sender.googlemap_point   = sender.midpoint('googlemap_point')
+        sender.googlemap_point = sender.midpoint('googlemap_point')
         sender.illustrated_point = sender.midpoint('illustrated_point')
         sender.save()
 
