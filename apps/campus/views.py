@@ -824,7 +824,7 @@ def widget(request):
         context['buildings'] = []
         for building_id in building_ids:
             try:
-                building = Building.objects.get(id=building_id)
+                building = MapObj.objects.get(id=building_id)
                 if context['illustrated']:
                     if building.illustrated_point is not None:
                         context['buildings'].append({
@@ -838,7 +838,7 @@ def widget(request):
                         'id'                : building.id,
                         'title'             : building.title
                     })
-            except Building.DoesNotExist:
+            except MapObj.DoesNotExist:
                 pass
 
         context['googlemap_center']   = json.dumps(None)
