@@ -166,7 +166,7 @@ def locations(request):
             type_filter = ()
             for l_type in types.split(','):
                 l_type = l_type.lower()
-                if l_type and l_type in ['regionalcampus', 'building', 'parkinglot', 'disabledparking', 'sidewalk', 'bikerack', 'emergencyphone', 'dininglocation']:
+                if l_type and l_type in ['location', 'regionalcampus', 'building', 'parkinglot', 'disabledparking', 'sidewalk', 'bikerack', 'emergencyphone', 'dininglocation']:
                     type_filter = type_filter + (l_type,)
             locations = locations.filter(content_type__model__in=type_filter)
 
