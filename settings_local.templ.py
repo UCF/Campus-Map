@@ -6,7 +6,7 @@
 DEBUG                      = True
 TEMPLATE_DEBUG             = DEBUG
 
-ALLOWED_HOSTS = ['map.ucf.edu']
+ALLOWED_HOSTS = ['map.ucf.edu', 'www.map.ucf.edu']
 USE_X_FORWARDED_HOST = True
 
 ADMINS         = (
