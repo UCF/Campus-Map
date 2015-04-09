@@ -1,5 +1,5 @@
-# About
-Campus map ... where are the bathrooms?
+# [UCF Campus Map - Main Campus and Other College Locations in Central FLorida](http://map.ucf.edu)
+Campus map ... find what you're looking for at UCF.
 
 ## Setup
 Ensure your environment has virtualenv and pip installed for python
