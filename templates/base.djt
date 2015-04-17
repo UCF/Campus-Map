@@ -34,6 +34,7 @@
 		<!-- UCF Web Communications -->
 		<link href="{{ STATIC_URL }}style/style.css?{{map_version}}" rel="stylesheet">
 		<link href="{{ STATIC_URL }}style/style-responsive.css?{{map_version}}" rel="stylesheet">
+		<link href="{{ STATIC_URL }}style/font-awesome.min.css" rel="stylesheet">
 		{% block head %}{% endblock %}
 
 		{% if debug %}

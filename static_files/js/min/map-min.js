@@ -1042,7 +1042,6 @@ var CampusMap = function(options) {
   function MobileMenu() {
 
     var $mobileMenu = $('#mobile-menu'),
-        $parkingKey = $('#parking-key'),
         $menuItem = $('.menu-item'),
         youAreHereMarker,
         youAreHereInfowindow = new google.maps.InfoWindow({
@@ -1123,20 +1122,18 @@ var CampusMap = function(options) {
 
       switch (dataMenu) {
         case 'location':
-          $parkingKey.slideUp();
           showLoading($loadingTarget);
           getLocation();
           break;
         case 'parking':
-          $target.next().slideDown();
-          LAYER_MANAGER.get_layer('parking').toggle();
+          console.log('parking');
+          toggleParking();
           break;
         case 'restaurants':
-          $parkingKey.slideUp();
+          console.log(LAYER_MANAGER.get_layer('food'));
           LAYER_MANAGER.get_layer('food').toggle();
           break;
         case 'shuttles':
-          $parkingKey.slideUp();
           window.location = '/shuttles/';
           break;
       }
@@ -1860,3 +1857,5 @@ $.fn.equalHeights = function(px) {
 	});
 	return this;
 }
+
+

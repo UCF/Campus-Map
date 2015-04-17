@@ -1,4 +1,4 @@
-# [UCF Campus Map - Main Campus and Other College Locations in Central FLorida](http://map.ucf.edu)
+# [UCF Campus Map - Main Campus and Other College Locations in Central Florida](http://map.ucf.edu)
 Campus map ... find what you're looking for at UCF.
 
 ## Setup

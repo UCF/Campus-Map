@@ -1,4 +1,5 @@
 {% extends "base.djt"%}
+{% load parking %}
 
 {% block head %}
 {# IE is a dirty bastard.  Needs an absolute URL to work, thus needs to be here to have access to STATIC_URL #}
@@ -23,8 +24,24 @@
 
 
 {% block body %}
+<div id="mobile-menu">
+	<ul>
+		<li class="header">UCF Campus Map</li>
+		<li class="menu-item" data-menu="location"><i class="fa fa-compass" data-icon="fa fa-compass"></i> Find Your Location</li>
+		<li class="menu-item" data-menu="parking"><i class="fa fa-car" data-icon="fa fa-car"></i> Parking</li>
+		<li id="parking-key">
+			<h3>Parking Permit Key</h3>
+			{% permits %}
+			<div><a class="item" href="http://parking.ucf.edu/maps/" target="blank">Download Parking Guide</a></div>
+			<div><a class="item" href="http://parking.ucf.edu/" target="blank">Parking Services Website</a></div>
+		</li>
+		<li class="menu-item" data-menu="restaurants"><i class="fa fa-cutlery" data-icon="fa fa-cutlery"></i> Food</li>
+		<li class="menu-item" data-menu="shuttles"><i class="fa fa-bus" data-icon="fa fa-bus"></i> Shuttles</li>
+	</ul>
+</div>
 <div id="map">
 	<header>
+		<a href="javascript:;" id="mobile-menu-trigger"><span>MENU</span> <i class="fa fa-bars fa-2x"></i></a>
 		<h1><a href="{% url 'home' %}">UCF Campus Map</a></h1>
 
 		{% if error %}
