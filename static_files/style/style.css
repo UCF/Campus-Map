@@ -862,6 +862,11 @@ img[src*="gstatic.com/"], img[src*="googleapis.com/"] {
 #mobile-menu li.header {
   background-color: #666;
   color: #fff;
+  height: 50px;
+}
+
+#mobile-menu li.header h3 {
+  padding: 13px 15px;
 }
 
 #mobile-menu li {

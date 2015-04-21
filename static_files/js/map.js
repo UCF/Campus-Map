@@ -252,9 +252,9 @@ var CampusMap = function(options) {
 				points_layer.markers = (function() {
 					var markers        = [],
 						images         = {
-							'Building'   : UTIL.get_google_image('yellow'),
-							'ParkingLot' : UTIL.get_google_image('yellow'),
-							'Group'      : UTIL.get_google_image('yellow2'),
+							'Building'   : UTIL.get_google_image('building'),
+							'ParkingLot' : UTIL.get_google_image('parking'),
+							'Group'      : UTIL.get_google_image('group'),
 							'Location'   : UTIL.get_google_image('blue')
 						},
 						map_point_type = 'ipoint';

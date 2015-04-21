@@ -4072,6 +4072,17 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
+	"\/static_files\/images\/markers\/group.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 1517,
+		"inputAbbreviatedPath": "\/static_files\/images\/markers\/group.png",
+		"outputAbbreviatedPath": "\/static_files\/images\/markers\/group.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/static_files\/images\/markers\/handicap.png": {
 		"fileType": 32768,
 		"ignore": 0,
@@ -4145,6 +4156,17 @@
 		"initialSize": 1734,
 		"inputAbbreviatedPath": "\/static_files\/images\/markers\/marker_sprite_blue.png",
 		"outputAbbreviatedPath": "\/static_files\/images\/markers\/marker_sprite_blue.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/static_files\/images\/markers\/parking.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 1863,
+		"inputAbbreviatedPath": "\/static_files\/images\/markers\/parking.png",
+		"outputAbbreviatedPath": "\/static_files\/images\/markers\/parking.png",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
