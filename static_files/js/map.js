@@ -365,8 +365,7 @@ var CampusMap = function(options) {
 													),
 													map       : MAP,
 													visible   : false,
-													icon      : icon,
-													shadow    : shadow
+													icon      : icon
 												})
 											);
 										}
