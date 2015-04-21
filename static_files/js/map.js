@@ -446,12 +446,9 @@ var CampusMap = function(options) {
 						adjustment      = 150000,
 						icon = new google.maps.MarkerImage(
 							STATIC_URL + 'images/markers/food.png',
-							new google.maps.Size(28, 28),  // dimensions
+							new google.maps.Size(36, 36),  // dimensions
 							new google.maps.Point(0,0),  // origin
-							new google.maps.Point(16,20), // anchor
-							new google.maps.Size(36, 36),
-							new google.maps.Point(0,0),
-							new google.maps.Point(10,13));
+							new google.maps.Point(16,20)); // anchor
 
 					$.ajax({
 						url      : DINING_URL,
