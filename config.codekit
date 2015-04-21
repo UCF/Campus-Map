@@ -4017,6 +4017,17 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
+	"\/static_files\/images\/markers\/building.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 1799,
+		"inputAbbreviatedPath": "\/static_files\/images\/markers\/building.png",
+		"outputAbbreviatedPath": "\/static_files\/images\/markers\/building.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/static_files\/images\/markers\/disabled.png": {
 		"fileType": 32768,
 		"ignore": 0,
@@ -4024,6 +4035,17 @@
 		"initialSize": 639,
 		"inputAbbreviatedPath": "\/static_files\/images\/markers\/disabled.png",
 		"outputAbbreviatedPath": "\/static_files\/images\/markers\/disabled.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/static_files\/images\/markers\/food.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 1768,
+		"inputAbbreviatedPath": "\/static_files\/images\/markers\/food.png",
+		"outputAbbreviatedPath": "\/static_files\/images\/markers\/food.png",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
@@ -4046,6 +4068,17 @@
 		"initialSize": 1221,
 		"inputAbbreviatedPath": "\/static_files\/images\/markers\/green-with-dot.png",
 		"outputAbbreviatedPath": "\/static_files\/images\/markers\/green-with-dot.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/static_files\/images\/markers\/handicap.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 2131,
+		"inputAbbreviatedPath": "\/static_files\/images\/markers\/handicap.png",
+		"outputAbbreviatedPath": "\/static_files\/images\/markers\/handicap.png",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
@@ -4156,6 +4189,17 @@
 		"initialSize": 483,
 		"inputAbbreviatedPath": "\/static_files\/images\/markers\/shadow.png",
 		"outputAbbreviatedPath": "\/static_files\/images\/markers\/shadow.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/static_files\/images\/markers\/shuttle.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 1926,
+		"inputAbbreviatedPath": "\/static_files\/images\/markers\/shuttle.png",
+		"outputAbbreviatedPath": "\/static_files\/images\/markers\/shuttle.png",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0

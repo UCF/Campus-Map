@@ -215,9 +215,9 @@ var CampusMap = function(options) {
 				points_layer.markers = (function() {
 					var markers        = [],
 						images         = {
-							'Building'   : UTIL.get_google_image('yellow'),
-							'ParkingLot' : UTIL.get_google_image('yellow'),
-							'Group'      : UTIL.get_google_image('yellow2'),
+							'Building'   : UTIL.get_google_image('building'),
+							'ParkingLot' : UTIL.get_google_image('parking'),
+							'Group'      : UTIL.get_google_image('group'),
 							'Location'   : UTIL.get_google_image('blue')
 						},
 						map_point_type = 'gpoint';
@@ -351,12 +351,6 @@ var CampusMap = function(options) {
 								var icon   = new google.maps.MarkerImage(
 										STATIC_URL + '/images/markers/marker_phone.png',
 										new google.maps.Size(20, 34)
-									),
-									shadow = new google.maps.MarkerImage(
-										STATIC_URL + '/images/markers/marker_phone.png',
-										new google.maps.Size(37,34),
-										new google.maps.Point(20, 0),
-										new google.maps.Point(10, 34)
 									);
 
 								if(typeof data.features != 'undefined') {
@@ -405,8 +399,8 @@ var CampusMap = function(options) {
 						async    : false,
 						success: function(data){
 							var icon   = new google.maps.MarkerImage(
-									STATIC_URL + 'images/markers/disabled.png',
-									new google.maps.Size(17, 17), //size
+									STATIC_URL + 'images/markers/handicap.png',
+									new google.maps.Size(20, 20), //size
 									new google.maps.Point(0, 0),  //origin
 									new google.maps.Point(10, 8)   //anchor
 								);
@@ -452,13 +446,11 @@ var CampusMap = function(options) {
 						existing_points = [],
 						adjustment      = 150000,
 						icon = new google.maps.MarkerImage(
-							STATIC_URL + 'images/markers/knife-fork.png',
+							STATIC_URL + 'images/markers/food.png',
 							new google.maps.Size(28, 28),  // dimensions
 							new google.maps.Point(0,0),  // origin
-							new google.maps.Point(16,20)), // anchor
-						shadow = new google.maps.MarkerImage(
-							STATIC_URL + 'images/markers/knife-fork-shadow.png',
-							new google.maps.Size(46, 22),
+							new google.maps.Point(16,20), // anchor
+							new google.maps.Size(36, 36),
 							new google.maps.Point(0,0),
 							new google.maps.Point(10,13));
 
@@ -506,7 +498,6 @@ var CampusMap = function(options) {
 									markers.push(
 										new google.maps.Marker({
 											icon     : icon,
-											shadow   : shadow,
 											position : new google.maps.LatLng(point[0], point[1]),
 											title    : feature.properties.name,
 											map      : MAP,
@@ -826,7 +817,7 @@ var CampusMap = function(options) {
                     // Add new GPS locations
                     $.each(data.locations, function(index, spot) {
                         var icon = new google.maps.MarkerImage(
-                            STATIC_URL + '/images/markers/map-shuttle.png',
+                            STATIC_URL + '/images/markers/shuttle.png',
                             new google.maps.Size(36, 36)
                         );
                         var gpsMarker = new google.maps.Marker({
@@ -1056,7 +1047,6 @@ var CampusMap = function(options) {
     }
 
     function closeMobileMenu() {
-      console.log('closeMobileMenu');
       $mobileMenu.removeClass('slide-out');
     }
 
@@ -1074,7 +1064,7 @@ var CampusMap = function(options) {
 
          // Hide the mobile menu when anything else is clicked
          if(!$target.closest('#mobile-menu').length && !$target.closest('#mobile-menu-trigger').length) {
-            if($mobileMenu.is(":visible")) {
+            if($mobileMenu.width() > 200) {
               closeMobileMenu();
             }
          }
