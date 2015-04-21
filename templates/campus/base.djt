@@ -26,17 +26,72 @@
 {% block body %}
 <div id="mobile-menu">
 	<ul>
-		<li class="header">UCF Campus Map</li>
-		<li class="menu-item" data-menu="location"><i class="fa fa-compass" data-icon="fa fa-compass"></i> Find Your Location</li>
-		<li class="menu-item" data-menu="parking"><i class="fa fa-car" data-icon="fa fa-car"></i> Parking</li>
-		<li id="parking-key">
-			<h3>Parking Permit Key</h3>
-			{% permits %}
-			<div><a class="item" href="http://parking.ucf.edu/maps/" target="blank">Download Parking Guide</a></div>
-			<div><a class="item" href="http://parking.ucf.edu/" target="blank">Parking Services Website</a></div>
+		<li class="header">
+			<h3>
+				<i class="fa fa-times pull-right close-icon"></i> UCF Campus Map
+			</h3>
 		</li>
-		<li class="menu-item" data-menu="restaurants"><i class="fa fa-cutlery" data-icon="fa fa-cutlery"></i> Food</li>
-		<li class="menu-item" data-menu="shuttles"><i class="fa fa-bus" data-icon="fa fa-bus"></i> Shuttles</li>
+
+		<li class="menu-item">
+			<h4 data-menu="location">
+				<i class="fa fa-compass loading-target" data-icon="fa fa-compass"></i> Find Your Location
+			</h4>
+		</li>
+
+		<li class="menu-item">
+			<h4 data-menu="parking">
+				<i class="fa fa-chevron-down pull-right toggle-icon"></i>
+				<i class="fa fa-car" data-icon="fa fa-car"></i> Parking
+			</h4>
+			<ul class="hidden">
+				<li id="parking-key">
+					<h5>Parking Permit Key</h5>
+					{% permits %}
+					<div><a class="item" href="http://parking.ucf.edu/maps/" target="blank">Download Parking Guide</a></div>
+					<div><a class="item" href="http://parking.ucf.edu/" target="blank">Parking Services Website</a></div>
+				</li>
+			</ul>
+		</li>
+
+		<li class="menu-item">
+			<h4 data-menu="food">
+				<i class="fa fa-cutlery" data-icon="fa fa-cutlery"></i> Food
+			</h4>
+		</li>
+
+		<li class="menu-item" data-menu-highlight="false">
+			<h4 data-menu="shuttles">
+				<i class="fa fa-chevron-down pull-right toggle-icon"></i>
+				<i class="fa fa-bus" data-icon="fa fa-bus"></i> Shuttles
+			</h4>
+			<ul class="hidden">
+				<li id="shuttle-menu">
+					<ul>
+						<li class="on-campus-routes" data-menu-highlight="false">
+						    <h5>
+								<i class="fa fa-chevron-down pull-right toggle-icon"></i>
+								On-Campus
+							</h5>
+						    <ul class="hidden"></ul>
+						</li>
+						<li class="off-campus-routes" data-menu-highlight="false">
+						    <h5>
+								<i class="fa fa-chevron-down pull-right toggle-icon"></i>
+								Off-Campus
+							</h5>
+						    <ul class="hidden"></ul>
+						</li>
+						<li class="other-routes" data-menu-highlight="false">
+						    <h5>
+								<i class="fa fa-chevron-down pull-right toggle-icon"></i>
+								Other
+							</h5>
+						    <ul class="hidden"></ul>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</li>
 	</ul>
 </div>
 <div id="map">
@@ -69,7 +124,7 @@
 	<div class="clear">&nbsp;</div>
 </footer>
 
-<div id="menu-wrap">
+<div id="menu-wrap" style="width: 100%; height: 100%">
 	{% include 'campus/menu.djt' %}
 </div>
 

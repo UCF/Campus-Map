@@ -1042,20 +1042,30 @@ var CampusMap = function(options) {
   function MobileMenu() {
 
     var $mobileMenu = $('#mobile-menu'),
-        $parkingKey = $('#parking-key'),
+        $shuttleMenu = $('#shuttle-menu'),
         $menuItem = $('.menu-item'),
         youAreHereMarker,
         youAreHereInfowindow = new google.maps.InfoWindow({
-          content: "<div>You are here!</div>"
+          content: '<div>You are here!</div>'
         }),
-        $loadingTarget;
+        $loadingTarget = $('.loading-target');
 
     function showMobileMenu() {
-      $mobileMenu.show();
+      $mobileMenu.addClass('slide-out');
+      $mobileMenu.height($( document ).height());
+    }
+
+    function closeMobileMenu() {
+      console.log('closeMobileMenu');
+      $mobileMenu.removeClass('slide-out');
     }
 
     function mobileMenuHandler() {
       $('#mobile-menu-trigger').click(showMobileMenu);
+    }
+
+    function closeMobileMenuIconHandler() {
+      $mobileMenu.find('.close-icon').click(closeMobileMenu);
     }
 
     function closeMobileMenuHandler() {
@@ -1064,27 +1074,14 @@ var CampusMap = function(options) {
 
          // Hide the mobile menu when anything else is clicked
          if(!$target.closest('#mobile-menu').length && !$target.closest('#mobile-menu-trigger').length) {
-           if($mobileMenu.is(":visible")) {
-             $mobileMenu.hide();
-           }
+            if($mobileMenu.is(":visible")) {
+              closeMobileMenu();
+            }
          }
       });
     }
 
-    function showLoading($target) {
-      hideLoading();
-      var $icon = $target.find('i');
-      $icon.removeClass();
-      $icon.addClass('fa fa-spinner fa-pulse');
-    }
-
-    function hideLoading() {
-      var $icon = $loadingTarget.find('i');
-      $icon.removeClass('fa fa-spinner fa-pulse');
-      $icon.addClass($icon.attr('data-icon'));
-    }
-
-    function getLocationMarker(position, $target) {
+    function getLocationMarker(position) {
       var markerLatLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 
       if(youAreHereMarker) {
@@ -1105,7 +1102,8 @@ var CampusMap = function(options) {
           youAreHereInfowindow.open(MAP,youAreHereMarker);
         });
       }
-      hideLoading();
+      $loadingTarget.closest('.menu-highlight').removeClass('menu-highlight');
+      $loadingTarget.toggleClass('fa-spinner fa-pulse fa-compass');
     }
 
     function getLocation() {
@@ -1116,31 +1114,56 @@ var CampusMap = function(options) {
       }
     }
 
+    function toggleMenu($target) {
+      var $menu = $target.closest('li'),
+          $subMenu = $menu.find('ul').eq(0);
+
+      if($target.is('label')) {
+        $menu.toggleClass('menu-highlight');
+      }
+
+      if(!$menu.attr('data-menu-highlight') || ($menu.attr('data-menu-highlight') && $menu.attr('data-menu-highlight') === true)) {
+        $menu.toggleClass('menu-highlight');
+      }
+
+      if($subMenu.length) {
+        $subMenu.slideToggle(function() {
+          $menu.find('.toggle-icon').eq(0).toggleClass('fa-chevron-down fa-chevron-up');
+        });
+      }
+    }
+
     function menuItem(e) {
       var $target = $(e.target),
-          dataMenu = $target.attr('data-menu');
-      $loadingTarget = $target;
+          dataMenu = $target.closest('h4').attr('data-menu');
+      toggleMenu($target);
 
       switch (dataMenu) {
         case 'location':
-          $parkingKey.slideUp();
-          showLoading($loadingTarget);
+          $loadingTarget.toggleClass('fa-spinner fa-pulse fa-compass');
           getLocation();
           break;
         case 'parking':
-          $target.next().slideDown();
           LAYER_MANAGER.get_layer('parking').toggle();
           break;
-        case 'restaurants':
-          $parkingKey.slideUp();
+        case 'food':
           LAYER_MANAGER.get_layer('food').toggle();
           break;
         case 'shuttles':
-          $parkingKey.slideUp();
-          window.location = '/shuttles/';
           break;
       }
 
+    }
+
+    function getShuttleMenu() {
+      $.each(SHUTTLE_ROUTES.routes, function(index, route) {
+        // Append a new route label to menu
+        var domId = 'shuttle-' + route.shortname.replace(/ /g, '-'),
+            categoryDomId = route.category.replace(/ /g, '-').toLowerCase() + '-routes',
+            cateogryDom = $shuttleMenu.find('.' + categoryDomId),
+            label = '<li><label><input type="checkbox" id="' + domId + '"> ' + route.shortname + '</label></li>';
+        cateogryDom.find('ul').append(label);
+      });
     }
 
     function menuItemHandler() {
@@ -1150,7 +1173,9 @@ var CampusMap = function(options) {
     function initMobileMenu() {
       mobileMenuHandler();
       closeMobileMenuHandler();
+      closeMobileMenuIconHandler();
       menuItemHandler();
+      getShuttleMenu();
     }
 
     initMobileMenu();

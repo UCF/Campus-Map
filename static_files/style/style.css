@@ -61,12 +61,6 @@ h4 {
 
 label {
   padding: 3px;
-  vertical-align: baseline;
-  border-radius: 2px;
-  -moz-border-radius: 2px;
-  -webkit-border-radius: 2px;
-  border: 1px solid #fafaf9;
-  border: 1px solid rgba(255, 255, 255, 0);
 }
 
 label.disabled {
@@ -80,25 +74,10 @@ label.disabled:hover {
 
 label:hover {
   cursor: pointer;
-  color: white;
 }
 
 label:not([class]):hover {
-  border: 1px solid rgb(103, 138, 199);
-  background: #6688cc;
-  background: -moz-linear-gradient(center top, rgb(109, 138, 204), rgb(123, 152, 217));
-  background: -webkit-gradient(linear, left top, left bottom, from(rgb(109, 138, 204)), to(rgb(123, 152, 217)));
-  border-radius: 3px;
-  -moz-border-radius: 3px;
-  -webkit-border-radius: 3px;
-  box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.35);
-  -webkit-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.35);
-  -moz-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.35);
-}
-
-.ie label:hover {
-  background: #7a97d8;
-  border: 1px solid #6688cc;
+  background: #ccc;
 }
 
 .ie label.disabled:hover {
@@ -110,10 +89,6 @@ label:not([class]):hover {
   margin: 0;
   width: 12px;
   vertical-align: middle;
-}
-
-.ie7 label input {
-  padding-left: 0;
 }
 
 input:active, input:focus {
@@ -187,6 +162,14 @@ li.r {
   padding: 18px 9px 36px;
   margin: 0 auto;
   clear: both;
+}
+
+.show {
+  display: block;
+}
+
+.hidden {
+  display: none;
 }
 
 .left {
@@ -270,7 +253,6 @@ nav ol li a:hover {
 
 #map {
   position: relative;
-  min-width: 556px;
 }
 
 #map header {
@@ -397,8 +379,18 @@ footer dd {
 \******************************************************************************/
 
 #canvas-wrap {
-  margin: 10px;
   border: 1px solid #aaa;
+  margin: 10px;
+}
+
+/* infoWindow close image distorted on small screens http://stackoverflow.com/questions/18387287/infowindow-closing-icon-not-showing-in-google-map */
+img[src*="gstatic.com/"], img[src*="googleapis.com/"] {
+  max-width: none !important;
+}
+
+/* Scrollbar added to the InfoWindow without this: http://stackoverflow.com/questions/14751558/google-maps-infowindow-vertical-scroll-appers-only-when-using-br */
+.gm-style-iw div {
+  overflow:visible !important;
 }
 
 #maptypes {
@@ -806,13 +798,43 @@ footer dd {
 
 #mobile-menu {
   background: #fff;
-  display: none;
   position: absolute;
   top: 0;
   right: 0;
   min-height: 100%;
-  width: 250px;
+  overflow: hidden;
+  width: 0;
   z-index: 10000;
+  -webkit-transition: width 0.5s; /* Safari */
+  transition: width 0.5s;
+}
+
+#mobile-menu.slide-out {
+  width: 250px;
+}
+
+#mobile-menu h3,
+#mobile-menu h4,
+#mobile-menu h5,
+#mobile-menu li label {
+  font-weight: normal;
+  margin: 0;
+  padding: 10px 15px;
+}
+
+#mobile-menu li table,
+#mobile-menu li a {
+  border-bottom: none;
+  display: block;
+  padding: 0 15px 10px;
+}
+
+#mobile-menu .close-icon,
+#mobile-menu .parking-toggle {
+  margin: -2px -5px 0;
+  opacity: 0.7;
+  padding: 5px;
+  cursor: pointer;
 }
 
 #mobile-menu-trigger {
@@ -834,37 +856,46 @@ footer dd {
 #mobile-menu ul {
   margin: 0;
   padding: 0;
+  width: 250px;
 }
 
 #mobile-menu li.header {
   background-color: #666;
   color: #fff;
-  padding-top: 14px;
-  height: 26px;
 }
 
 #mobile-menu li {
   border-bottom: solid 1px #ddd;
+  cursor: pointer;
   font-size: 18px;
   list-style: none;
-  padding: 10px 15px;
 }
 
-#mobile-menu li.menu-item {
-  cursor: pointer;
+#mobile-menu .menu-highlight {
+  color: #CC9900;
 }
 
-#mobile-menu li i {
-  margin-right: 10px;
+#mobile-menu ul li ul li {
+  background-color: #F8F8F8;
+  color: #555;
+  font-size: 16px;
 }
 
-#mobile-menu li#parking-key {
-  background-color: #eee;
-  display: none;
+#mobile-menu ul li ul {
+  border-top: solid 1px #F1F1F1;
 }
 
-#mobile-menu li#parking-key h3 {
-  margin: 0.5em 0;
+#mobile-menu ul li ul li ul li ul li {
+  background-color: #EBEBEB;
+}
+
+/* overide old css */
+#mobile-menu li label {
+  display: block;
+}
+
+#mobile-menu li label:hover {
+  background: none;
 }
 
 /******************************************************************************\
@@ -1140,8 +1171,10 @@ footer dd {
 }
 
 #menu-wrap {
+  height: auto !important;
   position: absolute;
   top: -5000px;
+  width: auto !important;
 }
 
 #menu-window {
