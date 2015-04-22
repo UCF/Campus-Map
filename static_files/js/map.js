@@ -1571,7 +1571,7 @@ var CampusMap = function(options) {
 												results.append('<li>' + loc.link + org_html + '</ul>');
 
 												if(org_loc_count > 11) {
-													results.append('<li class="more"><a href="' + data.response_page_url + '">More Results &hellip;</a></li>');
+													results.append('<li class="more"><a href="' + data.results_page_url + '">More Results &hellip;</a></li>');
 													return false;
 												}
 												org_loc_count++;
