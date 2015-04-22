@@ -1176,7 +1176,7 @@ img[src*="gstatic.com/"], img[src*="googleapis.com/"] {
 }
 
 #menu-wrap {
-  height: auto !important;
+  height: 100%;
   position: absolute;
   top: -5000px;
   width: auto !important;

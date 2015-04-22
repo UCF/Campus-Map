@@ -109,7 +109,7 @@
 
 		<esi:include src="{% url 'weather'%}" />
 	</header>
-	<div id="canvas-wrap"><div id="map-canvas" style="width:100%; height:550px"></div></div>
+	<div id="canvas-wrap"><div id="map-canvas"></div></div>
 </div>
 <footer>
 	<span class="left">
@@ -124,7 +124,7 @@
 	<div class="clear">&nbsp;</div>
 </footer>
 
-<div id="menu-wrap" style="width: 100%; height: 100%">
+<div id="menu-wrap">
 	{% include 'campus/menu.djt' %}
 </div>
 

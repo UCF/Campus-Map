@@ -1407,7 +1407,6 @@ var CampusMap = function(options) {
 		results = element.find(' > ul');
 
     function submitSearchForm () {
-      console.log('submit form');
       $('#search-form').submit();
     }
 
