@@ -883,7 +883,7 @@ var CampusMap = function(options) {
 	 	if(options.link != null) {
 	 		name = '<a href="' + options.link + '">' + name + '</a>';
 	 	}
-	 	content = $('<div class="iBox">' + name + '<a class="iclose"></a></div>');
+	 	content = $('<div class="iBox">' + name + '<a class="iclose">X</a></div>');
 
 	 	// Create a hidden test box to figure out the correct width
 	 	test_content = $('<div id="testBox" class="iBox">' + content + '</div>')[0];
@@ -895,7 +895,7 @@ var CampusMap = function(options) {
 	 		that.box.close();
 	 	});
 	 	content             = content[0];
-	 	content.style.width = test_content.offsetWidth + 'px';
+	 	// content.style.width = test_content.offsetWidth + 'px';
 
 	 	// Create the box and set it's position
 	 	this.box = new InfoBox({
