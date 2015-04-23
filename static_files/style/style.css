@@ -900,6 +900,13 @@ img[src*="gstatic.com/"], img[src*="googleapis.com/"] {
     Menu
 \******************************************************************************/
 
+
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 24px;
+  }
+}
+
 #menu {
   margin: 4px 5px 0 0;
   width: 230px;
