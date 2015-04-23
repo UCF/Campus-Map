@@ -807,7 +807,7 @@ img[src*="gstatic.com/"], img[src*="googleapis.com/"] {
 }
 
 #mobile-menu li table,
-#mobile-menu li a {
+#mobile-menu li#parking-key a {
   border-bottom: none;
   display: block;
   padding: 0 15px 10px;
@@ -862,6 +862,15 @@ img[src*="gstatic.com/"], img[src*="googleapis.com/"] {
 
 #mobile-menu .menu-highlight {
   color: #CC9900;
+}
+
+#mobile-menu .locations a {
+  color: #000;
+}
+
+#mobile-menu .fa-chevron-right {
+  color: #000;
+  margin-top: .3em;
 }
 
 #mobile-menu ul li ul li {

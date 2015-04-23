@@ -577,9 +577,9 @@ var CampusMap = function(options) {
                 // Append a new route label to menu
                 var domId = 'shuttle-' + route.shortname.replace(/ /g, '-');
                 var categoryDomId = route.category.replace(/ /g, '-').toLowerCase() + '-routes';
-                var cateogryDom = $('#' + categoryDomId);
+                var categoryDom = $('#' + categoryDomId);
                 var label = '<label><input type="checkbox" id="' + domId + '"> ' + route.shortname + '</label>';
-                cateogryDom.append(label);
+                categoryDom.append(label);
 
                 // Implementation detail for the shuttle route layer
                 LAYER_MANAGER.register_layer(
@@ -1146,9 +1146,9 @@ var CampusMap = function(options) {
         // Append a new route label to menu
         var domId = 'shuttle-' + route.shortname.replace(/ /g, '-'),
             categoryDomId = route.category.replace(/ /g, '-').toLowerCase() + '-routes',
-            cateogryDom = $shuttleMenu.find('.' + categoryDomId),
+            categoryDom = $shuttleMenu.find('.' + categoryDomId),
             label = '<li><label><input type="checkbox" id="' + domId + '"> ' + route.shortname + '</label></li>';
-        cateogryDom.find('ul').append(label);
+        categoryDom.find('ul').append(label);
       });
     }
 

@@ -38,6 +38,15 @@
 			</h4>
 		</li>
 
+		<li class="menu-item locations">
+			<a href="/locations/">
+				<h4 data-menu="locations-buildings">
+					<i class="fa fa-chevron-right pull-right"></i>
+					<i class="fa fa-building-o loading-target" data-icon="fa fa-building-o"></i> Locations &amp; Buildings
+				</h4>
+			</a>
+		</li>
+
 		<li class="menu-item">
 			<h4 data-menu="parking">
 				<i class="fa fa-chevron-down pull-right toggle-icon"></i>
