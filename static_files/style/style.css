@@ -383,6 +383,10 @@ footer dd {
   margin: 10px;
 }
 
+#map-canvas {
+  min-height: 300px;
+}
+
 /* infoWindow close image distorted on small screens http://stackoverflow.com/questions/18387287/infowindow-closing-icon-not-showing-in-google-map */
 img[src*="gstatic.com/"], img[src*="googleapis.com/"] {
   max-width: none !important;

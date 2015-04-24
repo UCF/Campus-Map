@@ -4,6 +4,7 @@ if($(window).width() <  768) {
   desktopWidth = true;
 }
 
+
 var CampusMap = function(options) {
 	var that = this,
 		default_options = {
@@ -1834,12 +1835,13 @@ var CampusMap = function(options) {
 
 		// Resize the map canvas to be 100% height and width
 		this.resize_canvas = function() {
-			var height = $(window).height(),
-				  blackbar = $('#UCFHBHeader') || $('#ucfhb'),
-          $mapCanvas = $('#map-canvas');
-			height -= blackbar ? blackbar.outerHeight() : 0;
-			height -= $('#map header').outerHeight() + $('footer').outerHeight(); // borders + margin
-			$mapCanvas.height(height);
+      var viewPort = Number($(window).height()),
+          ucfHeader = 100,
+          header = Number($('#map header').height()),
+          footer = Number($('footer').height()),
+          headerFooter = ucfHeader + header + footer,
+          height = viewPort - headerFooter;
+			$('#map-canvas').height(height);
 		}
 	}
 
