@@ -1128,9 +1128,34 @@ var CampusMap = function(options) {
       closeMobileMenu();
     }
 
+    function showError(error) {
+        switch(error.code) {
+            case error.PERMISSION_DENIED:
+                log("User denied the request for Geolocation.");
+                $loadingTarget.closest('.menu-highlight').removeClass('menu-highlight');
+                $loadingTarget.toggleClass('fa-spinner fa-pulse fa-compass');
+                break;
+            case error.POSITION_UNAVAILABLE:
+                alert("Location information is unavailable. Verify that GPS is enabled.");
+                $loadingTarget.closest('.menu-highlight').removeClass('menu-highlight');
+                $loadingTarget.toggleClass('fa-spinner fa-pulse fa-compass');
+                break;
+            case error.TIMEOUT:
+                alert("The request to get location timed out.");
+                $loadingTarget.closest('.menu-highlight').removeClass('menu-highlight');
+                $loadingTarget.toggleClass('fa-spinner fa-pulse fa-compass');
+                break;
+            case error.UNKNOWN_ERROR:
+                alert("Unable to get location.");
+                $loadingTarget.closest('.menu-highlight').removeClass('menu-highlight');
+                $loadingTarget.toggleClass('fa-spinner fa-pulse fa-compass');
+                break;
+        }
+    }
+
     function getLocation() {
       if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(getLocationMarker);
+          navigator.geolocation.getCurrentPosition(getLocationMarker, showError);
       } else {
           alert("Geolocation is not supported by this browser.");
           closeMobileMenu();

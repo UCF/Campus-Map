@@ -203,6 +203,10 @@
     margin-top: 20px;
   }
 
+  footer .right {
+    margin-top: 5px;
+  }
+
   /* Images */
   img {
     max-width: 100%;
@@ -271,7 +275,8 @@
 
   /* General layout, spacing improvements */
   header h1 {
-    margin-bottom: 5px;
+    font-size: 24px;
+    margin: 10px 10px 0;
   }
 
   nav ol li {

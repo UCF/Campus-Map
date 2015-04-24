@@ -786,12 +786,6 @@ img[src*="gstatic.com/"], img[src*="googleapis.com/"] {
     Mobile Menu
 \******************************************************************************/
 
-@media (max-width: 768px) {
-  header h1 {
-    font-size: 24px;
-  }
-}
-
 #mobile-menu {
   background: #fff;
   min-height: 100%;
@@ -854,6 +848,13 @@ img[src*="gstatic.com/"], img[src*="googleapis.com/"] {
   margin: 20px 10px 0 0;
   text-decoration: none;
 }
+
+@media (max-width: 768px) {
+  #mobile-menu-trigger {
+    margin: 10px 10px 0;
+  }
+}
+
 #mobile-menu-trigger span {
   font-size: 24px;
 }
