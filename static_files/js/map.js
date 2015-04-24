@@ -1092,6 +1092,7 @@ var CampusMap = function(options) {
       }
       $loadingTarget.closest('.menu-highlight').removeClass('menu-highlight');
       $loadingTarget.toggleClass('fa-spinner fa-pulse fa-compass');
+      closeMobileMenu();
     }
 
     function getLocation() {
@@ -1099,6 +1100,7 @@ var CampusMap = function(options) {
           navigator.geolocation.getCurrentPosition(getLocationMarker);
       } else {
           alert("Geolocation is not supported by this browser.");
+          closeMobileMenu();
       }
     }
 
@@ -1136,6 +1138,7 @@ var CampusMap = function(options) {
           break;
         case 'food':
           LAYER_MANAGER.get_layer('food').toggle();
+          closeMobileMenu();
           break;
         case 'shuttles':
           break;
