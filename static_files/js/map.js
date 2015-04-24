@@ -1,3 +1,9 @@
+
+var mobileWidth = false;
+if($(window).width() <  768) {
+  mobileWidth = true;
+}
+
 var CampusMap = function(options) {
 	var that = this,
 		default_options = {
@@ -182,205 +188,219 @@ var CampusMap = function(options) {
 	// Setup and configure the info boxes
 	INFO_MANAGER = new InfoManager();
 
-	if(!options.simple) {
-		// Setup and configure the layers
-		LAYER_MANAGER = new LayerManager();
+  	if(!options.simple) {
+  		// Setup and configure the layers
+  		LAYER_MANAGER = new LayerManager();
 
-		// Implementation details for the traffic layer
-		LAYER_MANAGER.register_layer(
-			(function() {
-				var traffic_layer   = new Layer('traffic');
-				traffic_layer.layer = new google.maps.TrafficLayer();
-				return traffic_layer;
-			})()
-		);
+      if(!mobileWidth) {
+    		// Implementation details for the traffic layer
+    		LAYER_MANAGER.register_layer(
+    			(function() {
+    				var traffic_layer   = new Layer('traffic');
+    				traffic_layer.layer = new google.maps.TrafficLayer();
+    				return traffic_layer;
+    			})()
+    		);
+      }
 
-		// Implementation details for the sidewalks layer
-		LAYER_MANAGER.register_layer(
-			(function() {
-				var sidewalk_layer = new Layer('sidewalks');
-				sidewalk_layer.layer = new google.maps.KmlLayer(
-						SIDEWALKS_KML_URL,
-						{
-							preserveViewport : true,
-							suppressInfoWindows: true,
-							clickable: false
-						}
-					);
-				return sidewalk_layer;
-			})()
-		);
+    if(!mobileWidth) {
+  		// Implementation details for the sidewalks layer
+  		LAYER_MANAGER.register_layer(
+  			(function() {
+  				var sidewalk_layer = new Layer('sidewalks');
+  				sidewalk_layer.layer = new google.maps.KmlLayer(
+  						SIDEWALKS_KML_URL,
+  						{
+  							preserveViewport : true,
+  							suppressInfoWindows: true,
+  							clickable: false
+  						}
+  					);
+  				return sidewalk_layer;
+  			})()
+  		);
+    }
 
-		// Implementation details for the points layer for the google maps layer
-		LAYER_MANAGER.register_layer(
-			(function() {
-				var points_layer     = new Layer('gpoints');
-				points_layer.markers = (function() {
-					var markers        = [],
-						images         = {
-							'Building'   : UTIL.get_google_image('building'),
-							'ParkingLot' : UTIL.get_google_image('parking'),
-							'Group'      : UTIL.get_google_image('group'),
-							'Location'   : UTIL.get_google_image('blue')
-						},
-						map_point_type = 'gpoint';
+    if(!mobileWidth) {
+  		// Implementation details for the points layer for the google maps layer
+  		LAYER_MANAGER.register_layer(
+  			(function() {
+  				var points_layer     = new Layer('gpoints');
+  				points_layer.markers = (function() {
+  					var markers        = [],
+  						images         = {
+  							'Building'   : UTIL.get_google_image('building'),
+  							'ParkingLot' : UTIL.get_google_image('parking'),
+  							'Group'      : UTIL.get_google_image('group'),
+  							'Location'   : UTIL.get_google_image('blue')
+  						},
+  						map_point_type = 'gpoint';
 
-					$.each(POINTS, function(index, point) {
-						var map_point = point[map_point_type],
-							marker    = null;
-						if(map_point != null && $.inArray(point.type, BASE_IGNORE_TYPES) == -1) {
-							marker = new google.maps.Marker({
-								position : new google.maps.LatLng(map_point[0], map_point[1]),
-								map      : MAP,
-								icon     : images[point.type],
-								location : index,
-								visible  : false
-							});
-							markers.push(marker);
-							google.maps.event.addListener(marker, 'click', function(event) {
-								UTIL.highlight_location(index);
-							});
-						}
-					});
-					return markers;
-				})();
-	 			return points_layer;
-			})()
-		);
+  					$.each(POINTS, function(index, point) {
+  						var map_point = point[map_point_type],
+  							marker    = null;
+  						if(map_point != null && $.inArray(point.type, BASE_IGNORE_TYPES) == -1) {
+  							marker = new google.maps.Marker({
+  								position : new google.maps.LatLng(map_point[0], map_point[1]),
+  								map      : MAP,
+  								icon     : images[point.type],
+  								location : index,
+  								visible  : false
+  							});
+  							markers.push(marker);
+  							google.maps.event.addListener(marker, 'click', function(event) {
+  								UTIL.highlight_location(index);
+  							});
+  						}
+  					});
+  					return markers;
+  				})();
+  	 			return points_layer;
+  			})()
+  		);
+    }
 
-		// Implementation details for the points layer
-		LAYER_MANAGER.register_layer(
-			(function() {
-				var points_layer     = new Layer('ipoints');
-				points_layer.markers = (function() {
-					var markers        = [],
-						images         = {
-							'Building'   : UTIL.get_google_image('building'),
-							'ParkingLot' : UTIL.get_google_image('parking'),
-							'Group'      : UTIL.get_google_image('group'),
-							'Location'   : UTIL.get_google_image('blue')
-						},
-						map_point_type = 'ipoint';
+    if(!mobileWidth) {
+  		// Implementation details for the points layer
+  		LAYER_MANAGER.register_layer(
+  			(function() {
+  				var points_layer     = new Layer('ipoints');
+  				points_layer.markers = (function() {
+  					var markers        = [],
+  						images         = {
+  							'Building'   : UTIL.get_google_image('building'),
+  							'ParkingLot' : UTIL.get_google_image('parking'),
+  							'Group'      : UTIL.get_google_image('group'),
+  							'Location'   : UTIL.get_google_image('blue')
+  						},
+  						map_point_type = 'ipoint';
 
-					$.each(POINTS, function(index, point) {
-						var map_point = point[map_point_type],
-							marker    = null;
-						if(map_point != null && $.inArray(point.type, BASE_IGNORE_TYPES) == -1) {
-							marker = new google.maps.Marker({
-								position : new google.maps.LatLng(map_point[0], map_point[1]),
-								map      : MAP,
-								icon     : images[point.type],
-								location : index,
-								visible  : false
-							});
-							markers.push(marker);
-							google.maps.event.addListener(marker, 'click', function(event) {
-								UTIL.highlight_location(index);
-							});
-						}
-					});
-					return markers;
-				})();
-	 			return points_layer;
-			})()
-		);
+  					$.each(POINTS, function(index, point) {
+  						var map_point = point[map_point_type],
+  							marker    = null;
+  						if(map_point != null && $.inArray(point.type, BASE_IGNORE_TYPES) == -1) {
+  							marker = new google.maps.Marker({
+  								position : new google.maps.LatLng(map_point[0], map_point[1]),
+  								map      : MAP,
+  								icon     : images[point.type],
+  								location : index,
+  								visible  : false
+  							});
+  							markers.push(marker);
+  							google.maps.event.addListener(marker, 'click', function(event) {
+  								UTIL.highlight_location(index);
+  							});
+  						}
+  					});
+  					return markers;
+  				})();
+  	 			return points_layer;
+  			})()
+  		);
+    }
 
 
-		// Implementation details for the buildings layer
-		LAYER_MANAGER.register_layer(
-			(function() {
-				var buildings_layer   = new Layer('buildings');
-				buildings_layer.layer = new google.maps.KmlLayer(
-					BUILDINGS_KML_URL,
-					{
-						preserveViewport    :true,
-						suppressInfoWindows :true,
-						clickable           :false
-					}
-				);
-				return buildings_layer;
-			})()
-		);
+    if(!mobileWidth) {
+  		// Implementation details for the buildings layer
+  		LAYER_MANAGER.register_layer(
+  			(function() {
+  				var buildings_layer   = new Layer('buildings');
+  				buildings_layer.layer = new google.maps.KmlLayer(
+  					BUILDINGS_KML_URL,
+  					{
+  						preserveViewport    :true,
+  						suppressInfoWindows :true,
+  						clickable           :false
+  					}
+  				);
+  				return buildings_layer;
+  			})()
+  		);
+    }
 
-		// Implementation details for the bikeracks layer
-		LAYER_MANAGER.register_layer(
-			(function() {
-				var bikeracks_layer  = new Layer('bikeracks');
-				bikeracks_layer.markers = (function() {
-					var markers = [];
-					$.ajax({
-						url     :BIKERACKS_URL,
-						dataType:'json',
-						async   :false,
-						success :
-							function(data, text_status, jq_xhr) {
-								if(typeof data.features != 'undefined') {
-									$.each(data.features, function(index, rack) {
-										if(rack.geometry && rack.geometry.coordinates) {
-											markers.push(
-												new google.maps.Marker({
-													clickable : false,
-													position  : new google.maps.LatLng(
-														rack.geometry.coordinates[0],
-														rack.geometry.coordinates[1]
-													),
-													map       : MAP,
-													visible   : false
-												})
-											);
-										}
-									});
-								}
-							}
-					});
-					return markers;
-				})();
-				return bikeracks_layer;
-			})()
-		);
+    if(!mobileWidth) {
+  		// Implementation details for the bikeracks layer
+  		LAYER_MANAGER.register_layer(
+  			(function() {
+  				var bikeracks_layer  = new Layer('bikeracks');
+  				bikeracks_layer.markers = (function() {
+  					var markers = [];
+  					$.ajax({
+  						url     :BIKERACKS_URL,
+  						dataType:'json',
+  						async   :false,
+  						success :
+  							function(data, text_status, jq_xhr) {
+  								if(typeof data.features != 'undefined') {
+  									$.each(data.features, function(index, rack) {
+  										if(rack.geometry && rack.geometry.coordinates) {
+  											markers.push(
+  												new google.maps.Marker({
+  													clickable : false,
+  													position  : new google.maps.LatLng(
+  														rack.geometry.coordinates[0],
+  														rack.geometry.coordinates[1]
+  													),
+  													map       : MAP,
+  													visible   : false
+  												})
+  											);
+  										}
+  									});
+  								}
+  							}
+  					});
+  					return markers;
+  				})();
+  				return bikeracks_layer;
+  			})()
+  		);
+    }
 
-		// Implementation details for the emergency phones layer
-		LAYER_MANAGER.register_layer(
-			(function() {
-				var phones_layer = new Layer('emergency-phones');
-				phones_layer.markers = (function() {
-					var markers = [];
-					$.ajax({
-						url     :PHONES_URL,
-						dataType:'json',
-						async   :false,
-						success :
-							function(data, text_status, jq_xhr) {
-								var icon   = new google.maps.MarkerImage(
-										STATIC_URL + '/images/markers/marker_phone.png',
-										new google.maps.Size(20, 34)
-									);
+    if(!mobileWidth) {
+  		// Implementation details for the emergency phones layer
+  		LAYER_MANAGER.register_layer(
+  			(function() {
+  				var phones_layer = new Layer('emergency-phones');
+  				phones_layer.markers = (function() {
+  					var markers = [];
+  					$.ajax({
+  						url     :PHONES_URL,
+  						dataType:'json',
+  						async   :false,
+  						success :
+  							function(data, text_status, jq_xhr) {
+  								var icon   = {
+  										url: STATIC_URL + '/images/markers/marker_phone.png',
+  										size: new google.maps.Size(20, 34)
+  								};
 
-								if(typeof data.features != 'undefined') {
-									$.each(data.features, function(index, rack) {
-										if(rack.geometry && rack.geometry.coordinates) {
-											markers.push(
-												new google.maps.Marker({
-													clickable : false,
-													position  : new google.maps.LatLng(
-														rack.geometry.coordinates[0],
-														rack.geometry.coordinates[1]
-													),
-													map       : MAP,
-													visible   : false,
-													icon      : icon
-												})
-											);
-										}
-									});
-								}
-							}
-					});
-					return markers;
-				})();
-				return phones_layer;
-			})()
-		);
+  								if(typeof data.features != 'undefined') {
+  									$.each(data.features, function(index, rack) {
+  										if(rack.geometry && rack.geometry.coordinates) {
+  											markers.push(
+  												new google.maps.Marker({
+  													clickable : false,
+  													position  : new google.maps.LatLng(
+  														rack.geometry.coordinates[0],
+  														rack.geometry.coordinates[1]
+  													),
+  													map       : MAP,
+  													visible   : false,
+  													icon      : icon
+  												})
+  											);
+  										}
+  									});
+  								}
+  							}
+  					});
+  					return markers;
+  				})();
+  				return phones_layer;
+  			})()
+  		);
+    }
 
 		// Implementation detail for the parking layer
 		LAYER_MANAGER.register_layer(
@@ -509,6 +529,8 @@ var CampusMap = function(options) {
 				return dining_layer;
 			})()
 		);
+
+    if(!mobileWidth) {
 
         (function() {
             $.each(SHUTTLE_STOPS, function(index, stop) {
@@ -656,6 +678,8 @@ var CampusMap = function(options) {
             });
         })();
 
+    } // End if !mobile
+
 		(function() {
 			var activated_layer = false;
 			// Activated layers
@@ -677,10 +701,13 @@ var CampusMap = function(options) {
 					}
 				}
 			});
-			if(!activated_layer) {
-				// Display the google map points layer when the  map loads
-				options.illustrated ? (LAYER_MANAGER.get_layer('ipoints')).toggle() : (LAYER_MANAGER.get_layer('gpoints')).toggle();
-			}
+
+      if(!mobileWidth) {
+  			if(!activated_layer) {
+  				// Display the google map points layer when the  map loads
+  				options.illustrated ? (LAYER_MANAGER.get_layer('ipoints')).toggle() : (LAYER_MANAGER.get_layer('gpoints')).toggle();
+  			}
+      }
 		})();
 
 
@@ -1138,21 +1165,8 @@ var CampusMap = function(options) {
           LAYER_MANAGER.get_layer('food').toggle();
           closeMobileMenu();
           break;
-        case 'shuttles':
-          break;
       }
 
-    }
-
-    function getShuttleMenu() {
-      $.each(SHUTTLE_ROUTES.routes, function(index, route) {
-        // Append a new route label to menu
-        var domId = 'shuttle-' + route.shortname.replace(/ /g, '-'),
-            categoryDomId = route.category.replace(/ /g, '-').toLowerCase() + '-routes',
-            categoryDom = $shuttleMenu.find('.' + categoryDomId),
-            label = '<li><label><input type="checkbox" id="' + domId + '"> ' + route.shortname + '</label></li>';
-        categoryDom.find('ul').append(label);
-      });
     }
 
     function menuItemHandler() {
@@ -1164,7 +1178,6 @@ var CampusMap = function(options) {
       closeMobileMenuHandler();
       closeMobileMenuIconHandler();
       menuItemHandler();
-      getShuttleMenu();
     }
 
     initMobileMenu();
@@ -1833,7 +1846,6 @@ var CampusMap = function(options) {
 
 var getZoom = function() {
 	$width = $(window).width();
-	console.log($width);
 
 	if ($width < 295) {
 		return 13;

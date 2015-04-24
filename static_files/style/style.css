@@ -886,7 +886,7 @@ img[src*="gstatic.com/"], img[src*="googleapis.com/"] {
   color: #CC9900;
 }
 
-#mobile-menu .locations a {
+#mobile-menu .link-menu-item a {
   color: #000;
 }
 
