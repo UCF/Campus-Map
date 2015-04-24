@@ -73,7 +73,8 @@ var CampusMap = function(options) {
 					} else {
 						ACTIVATED_LAYERS.push(part);
 					}
-				}			});
+				}
+      });
 		}
 	})();
 
@@ -397,12 +398,10 @@ var CampusMap = function(options) {
 						dataType : 'json',
 						async    : false,
 						success: function(data){
-							var icon   = new google.maps.MarkerImage(
-									STATIC_URL + 'images/markers/handicap.png',
-									new google.maps.Size(20, 20), //size
-									new google.maps.Point(0, 0),  //origin
-									new google.maps.Point(10, 8)   //anchor
-								);
+							var icon   = {
+                url: STATIC_URL + 'images/markers/handicap.png',
+                size: new google.maps.Size(25,25),
+              };
 							if(typeof data.handicap != 'undefined') {
 								$.each(data.handicap, function(index, spot) {
 									markers.push(
@@ -444,11 +443,10 @@ var CampusMap = function(options) {
 						},
 						existing_points = [],
 						adjustment      = 150000,
-						icon = new google.maps.MarkerImage(
-							STATIC_URL + 'images/markers/food.png',
-							new google.maps.Size(36, 36),  // dimensions
-							new google.maps.Point(0,0),  // origin
-							new google.maps.Point(16,20)); // anchor
+						icon = {
+							url: STATIC_URL + 'images/markers/food.png',
+							size: new google.maps.Size(25, 25)
+            };
 
 					$.ajax({
 						url      : DINING_URL,
@@ -812,11 +810,11 @@ var CampusMap = function(options) {
 
                     // Add new GPS locations
                     $.each(data.locations, function(index, spot) {
-                        var icon = new google.maps.MarkerImage(
-                            STATIC_URL + '/images/markers/shuttle.png',
-                            new google.maps.Size(36, 36)
-                        );
-                        var gpsMarker = new google.maps.Marker({
+                        var icon = {
+                            url: STATIC_URL + '/images/markers/shuttle.png',
+                            size: new google.maps.Size(25, 25)
+                        },
+                        gpsMarker = new google.maps.Marker({
                             position : new google.maps.LatLng(
                                 spot.lat,
                                 spot.lon
@@ -1313,7 +1311,7 @@ var CampusMap = function(options) {
 
 				if(settings.html) {
                     $('#menu-stage').empty();
-                    if (settings.html instanceof jQuery) {// tab two content
+                    if (settings.html instanceof jQuery) { // tab two content
                         settings.html.appendTo('#menu-stage');
                     } else {
                         $('#menu-stage').html(settings.html);
@@ -1326,7 +1324,7 @@ var CampusMap = function(options) {
 			}
 		}
 
-		// Add the menu to the map in the right uppper
+		// Add the menu to the map in the upper right
 		MAP.controls[google.maps.ControlPosition.RIGHT_TOP].push(container[0]);
 	}
 
@@ -1508,7 +1506,7 @@ var CampusMap = function(options) {
 								function(data, text_status, jq_xhr) {
 									results.empty();
 
-									if(typeof data.results != 'undefined') {
+									if(data.results && typeof data.results != 'undefined') {
 										var locs = data.results.locations,
 											orgs = data.results.organizations;
 
@@ -1663,11 +1661,11 @@ var CampusMap = function(options) {
 
 		// Returns URL of google icon based on specified color
 		this.get_google_image = function(color) {
-			return new google.maps.MarkerImage(
-				(STATIC_URL + 'images/markers/' + color + '.png'),
-				new google.maps.Size(19, 19),
-				new google.maps.Point(0,0),
-				new google.maps.Point(10,10));
+      var icon = {
+        url: STATIC_URL + 'images/markers/' + color + '.png',
+        size: new google.maps.Size(20, 20)
+      };
+			return icon;
 		}
 
 		// Creates an info box for a location and also executes arbitary function
@@ -1811,23 +1809,12 @@ var CampusMap = function(options) {
 
 		// Resize the map canvas to be 100% height and width
 		this.resize_canvas = function() {
-			var height = document.documentElement.clientHeight,
-				blackbar = document.getElementById('UCFHBHeader') || document.getElementById('ucfhb');
-
-			height -= blackbar ? blackbar.clientHeight : 0;
-			height -= $('#map header')[0].clientHeight;
-			height -= $('footer')[0].clientHeight;
-			height -= 2 + 17; // borders + margin
-
-			var canvas   = document.getElementById('map-canvas');
-			canvas.style.height = height + "px";
-
-			// iphone, hide url bar
-			if($.os.name === "iphone"){
-				height += 58;
-				document.getElementById('map-canvas').style.height = height + "px";
-				window.scrollTo(0, 1);
-			}
+			var height = $(window).height(),
+				  blackbar = $('#UCFHBHeader') || $('#ucfhb'),
+          $mapCanvas = $('#map-canvas');
+			height -= blackbar ? blackbar.outerHeight() : 0;
+			height -= $('#map header').outerHeight() + $('footer').outerHeight(); // borders + margin
+			$mapCanvas.height(height);
 		}
 	}
 

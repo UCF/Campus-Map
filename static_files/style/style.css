@@ -631,6 +631,7 @@ img[src*="gstatic.com/"], img[src*="googleapis.com/"] {
 }
 
 #search input {
+  font-size: 16px;
   outline: 0;
   float: left;
   width: 220px;
@@ -812,6 +813,19 @@ img[src*="gstatic.com/"], img[src*="googleapis.com/"] {
   font-weight: normal;
   margin: 0;
   padding: 10px 15px;
+}
+
+
+#mobile-menu h4 {
+  font-size: 16px;
+}
+
+#mobile-menu .fa-car {
+  font-size: 14px;
+}
+
+#mobile-menu i.icon {
+  width: 23px;
 }
 
 #mobile-menu li table,
@@ -1322,8 +1336,8 @@ img[src*="gstatic.com/"], img[src*="googleapis.com/"] {
 }
 
 #parking-key td img {
-  width: 17px;
-  height: 17px;
+  width: 20px !important;
+  height: 20px;
 }
 
 #shuttle-routes-content {

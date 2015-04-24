@@ -4281,6 +4281,28 @@
 		"outputStyle": 0,
 		"syntaxCheckerStyle": 0
 		},
+	"\/static_files\/js\/fontawesome-markers.min.js": {
+		"fileType": 64,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/static_files\/js\/fontawesome-markers.min.js",
+		"outputAbbreviatedPath": "\/static_files\/js\/min\/fontawesome-markers.min-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 0,
+		"syntaxCheckerStyle": 0
+		},
+	"\/static_files\/js\/map.js": {
+		"fileType": 64,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/static_files\/js\/map.js",
+		"outputAbbreviatedPath": "\/static_files\/js\/min\/map-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 0,
+		"syntaxCheckerStyle": 0
+		},
 	"\/static_files\/js\/min\/map-min.js": {
 		"fileType": 64,
 		"ignore": 1,
