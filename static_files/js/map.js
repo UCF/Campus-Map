@@ -85,8 +85,10 @@ var CampusMap = function(options) {
 
 	// Regular Google Map
 
+	$zoom = getZoom();
+
 	GMAP_OPTIONS = {
-		zoom: 16,
+		zoom: $zoom,
 		center: new google.maps.LatLng(28.6018,-81.1995),
 		mapTypeId: google.maps.MapTypeId.ROADMAP,
 		panControl: options.pan_control,
@@ -1088,6 +1090,7 @@ var CampusMap = function(options) {
       }
       $loadingTarget.closest('.menu-highlight').removeClass('menu-highlight');
       $loadingTarget.toggleClass('fa-spinner fa-pulse fa-compass');
+      closeMobileMenu();
     }
 
     function getLocation() {
@@ -1095,6 +1098,7 @@ var CampusMap = function(options) {
           navigator.geolocation.getCurrentPosition(getLocationMarker);
       } else {
           alert("Geolocation is not supported by this browser.");
+          closeMobileMenu();
       }
     }
 
@@ -1132,6 +1136,7 @@ var CampusMap = function(options) {
           break;
         case 'food':
           LAYER_MANAGER.get_layer('food').toggle();
+          closeMobileMenu();
           break;
         case 'shuttles':
           break;
@@ -1823,6 +1828,23 @@ var CampusMap = function(options) {
 		if(typeof console !== 'undefined') {
 			console.log(arguments);
 		}
+	}
+}
+
+var getZoom = function() {
+	$width = $(window).width();
+	console.log($width);
+
+	if ($width < 295) {
+		return 13;
+	} else if ( $width > 296 && $width < 465 ) {
+		return 14;
+	} else if ( $width > 466 && $width < 768 ) {
+		return 15;
+	} else if ( $width > 769 && $width < 1600 ) {
+		return 16;
+	} else {
+		return 17;
 	}
 }
 
