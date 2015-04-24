@@ -232,6 +232,11 @@
     height: 220px;
   }
 
+  #search > ul {
+    height: 325px;
+    overflow: scroll;
+  }
+
 /*
   #sketchup #model {
     box-sizing: border-box;
