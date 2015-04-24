@@ -824,7 +824,8 @@ img[src*="gstatic.com/"], img[src*="googleapis.com/"] {
   font-size: 14px;
 }
 
-#mobile-menu i.icon {
+#mobile-menu .icon {
+  display: inline-block;
   width: 23px;
 }
 

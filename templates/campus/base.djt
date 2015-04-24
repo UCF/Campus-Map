@@ -34,20 +34,20 @@
 
 		<li class="menu-item">
 			<h4 data-menu="location">
-				<i class="fa fa-compass loading-target icon" data-icon="fa fa-compass"></i> Find Your Location
+				<div class="icon"><i class="fa fa-compass loading-target" data-icon="fa fa-compass"></i></div> Find Your Location
 			</h4>
 		</li>
 
 		<li class="menu-item">
 			<h4 data-menu="food">
-				<i class="fa fa-cutlery icon" data-icon="fa fa-cutlery"></i> Food
+				<div class="icon"><i class="fa fa-cutlery" data-icon="fa fa-cutlery"></i></div> Food
 			</h4>
 		</li>
 
 		<li class="menu-item">
 			<h4 data-menu="parking">
 				<i class="fa fa-chevron-down pull-right toggle-icon"></i>
-				<i class="fa fa-car icon" data-icon="fa fa-car"></i> Parking
+				<div class="icon"><i class="fa fa-car" data-icon="fa fa-car"></i></div> Parking
 			</h4>
 			<ul class="hidden">
 				<li id="parking-key">
@@ -63,7 +63,7 @@
 			<a href="/locations/">
 				<h4 data-menu="locations-buildings">
 					<i class="fa fa-chevron-right pull-right"></i>
-					<i class="fa fa-building-o icon" data-icon="fa fa-building-o"></i> Locations &amp; Buildings
+					<div class="icon"><i class="fa fa-building-o" data-icon="fa fa-building-o"></i></div> Locations &amp; Buildings
 				</h4>
 			</a>
 		</li>
@@ -72,7 +72,7 @@
 			<a href="/organizations/">
 				<h4 data-menu="locations-buildings">
 					<i class="fa fa-chevron-right pull-right"></i>
-					<i class="fa fa-users icon" data-icon="fa fa-building-o"></i> Organizations &amp; Depts
+					<div class="icon"><i class="fa fa-users" data-icon="fa fa-building-o"></i></div> Organizations &amp; Depts
 				</h4>
 			</a>
 		</li>
@@ -81,7 +81,7 @@
 			<a href="http://www.veoliavision.com/shadow/Predictions_Mobile.aspx?ccid=99906">
 				<h4 data-menu="shuttles">
 					<i class="fa fa-chevron-right pull-right toggle-icon"></i>
-					<i class="fa fa-bus icon" data-icon="fa fa-bus"></i> Shuttles
+					<div class="icon"><i class="fa fa-bus" data-icon="fa fa-bus"></i></div> Shuttles
 				</h4>
 			</a>
 		</li>
