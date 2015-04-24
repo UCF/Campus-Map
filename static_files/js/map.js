@@ -1,7 +1,7 @@
 
-var mobileWidth = false;
+var desktopWidth = false;
 if($(window).width() <  768) {
-  mobileWidth = true;
+  desktopWidth = true;
 }
 
 var CampusMap = function(options) {
@@ -93,6 +93,21 @@ var CampusMap = function(options) {
 
 	$zoom = getZoom();
 
+  var mapTypes = {
+    mapTypeIds: []
+  };
+  if(!desktopWidth) {
+    mapTypes = {
+      mapTypeIds: [
+        google.maps.MapTypeId.ROADMAP,
+        google.maps.MapTypeId.SATELLITE,
+        google.maps.MapTypeId.HYBRID,
+        google.maps.MapTypeId.TERRAIN,
+        'illustrated'
+      ]
+    };
+  }
+
 	GMAP_OPTIONS = {
 		zoom: $zoom,
 		center: new google.maps.LatLng(28.6018,-81.1995),
@@ -111,15 +126,7 @@ var CampusMap = function(options) {
 			position: google.maps.ControlPosition.LEFT_TOP
 		},
 		mapTypeControl: options.map_type_control,
-		mapTypeControlOptions: {
-			mapTypeIds: [
-				google.maps.MapTypeId.ROADMAP,
-				google.maps.MapTypeId.SATELLITE,
-				google.maps.MapTypeId.HYBRID,
-				google.maps.MapTypeId.TERRAIN,
-				'illustrated'
-			]
-		}
+		mapTypeControlOptions: mapTypes
 	};
 
 	// Illustrated Map
@@ -192,7 +199,7 @@ var CampusMap = function(options) {
   		// Setup and configure the layers
   		LAYER_MANAGER = new LayerManager();
 
-      if(!mobileWidth) {
+      if(!desktopWidth) {
     		// Implementation details for the traffic layer
     		LAYER_MANAGER.register_layer(
     			(function() {
@@ -203,7 +210,7 @@ var CampusMap = function(options) {
     		);
       }
 
-    if(!mobileWidth) {
+    if(!desktopWidth) {
   		// Implementation details for the sidewalks layer
   		LAYER_MANAGER.register_layer(
   			(function() {
@@ -221,7 +228,7 @@ var CampusMap = function(options) {
   		);
     }
 
-    if(!mobileWidth) {
+    if(!desktopWidth) {
   		// Implementation details for the points layer for the google maps layer
   		LAYER_MANAGER.register_layer(
   			(function() {
@@ -260,7 +267,7 @@ var CampusMap = function(options) {
   		);
     }
 
-    if(!mobileWidth) {
+    if(!desktopWidth) {
   		// Implementation details for the points layer
   		LAYER_MANAGER.register_layer(
   			(function() {
@@ -300,7 +307,7 @@ var CampusMap = function(options) {
     }
 
 
-    if(!mobileWidth) {
+    if(!desktopWidth) {
   		// Implementation details for the buildings layer
   		LAYER_MANAGER.register_layer(
   			(function() {
@@ -318,7 +325,7 @@ var CampusMap = function(options) {
   		);
     }
 
-    if(!mobileWidth) {
+    if(!desktopWidth) {
   		// Implementation details for the bikeracks layer
   		LAYER_MANAGER.register_layer(
   			(function() {
@@ -357,7 +364,7 @@ var CampusMap = function(options) {
   		);
     }
 
-    if(!mobileWidth) {
+    if(!desktopWidth) {
   		// Implementation details for the emergency phones layer
   		LAYER_MANAGER.register_layer(
   			(function() {
@@ -530,7 +537,7 @@ var CampusMap = function(options) {
 			})()
 		);
 
-    if(!mobileWidth) {
+    if(!desktopWidth) {
 
         (function() {
             $.each(SHUTTLE_STOPS, function(index, stop) {
@@ -678,7 +685,7 @@ var CampusMap = function(options) {
             });
         })();
 
-    } // End if !mobile
+    } // End if desktop
 
 		(function() {
 			var activated_layer = false;
@@ -702,7 +709,7 @@ var CampusMap = function(options) {
 				}
 			});
 
-      if(!mobileWidth) {
+      if(!desktopWidth) {
   			if(!activated_layer) {
   				// Display the google map points layer when the  map loads
   				options.illustrated ? (LAYER_MANAGER.get_layer('ipoints')).toggle() : (LAYER_MANAGER.get_layer('gpoints')).toggle();
