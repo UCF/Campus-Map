@@ -663,7 +663,7 @@ img[src*="gstatic.com/"], img[src*="googleapis.com/"] {
   opacity: 0.8;
   padding: 8px;
   position: absolute;
-  top: 30px;
+  top: 36px;
   width: 253px;
 }
 

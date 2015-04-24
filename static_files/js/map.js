@@ -1406,10 +1406,12 @@ var CampusMap = function(options) {
 			input.type         = 'text';
 			input.name         = 'q';
 			input.autocomplete = 'off';
+      input.placeholder = 'Search Map';
 
       icon.className = 'fa fa-search fa-2x';
 
 			anchor.id = 'search-submit';
+      anchor.title = 'search icon';
       anchor.href = 'javascript:;';
       anchor.onclick = submitSearchForm;
 			anchor.appendChild(icon);
@@ -1532,7 +1534,7 @@ var CampusMap = function(options) {
 								function(data, text_status, jq_xhr) {
 									results.empty();
 
-									if(data.results && typeof data.results != 'undefined') {
+									if(data && data.results && typeof data.results != 'undefined') {
 										var locs = data.results.locations,
 											orgs = data.results.organizations;
 
