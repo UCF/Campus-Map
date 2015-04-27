@@ -192,16 +192,17 @@ li.r {
   height: 0;
 }
 
-.ie6 .clear {
-  height: 1px;
-  font-size: 1px;
-}
-
 header {
   width: 932px;
   padding: 0 9px;
   margin: 0 auto;
   position: relative;
+}
+
+#map header h1 {
+  border: none;
+  display: inline-block;
+  margin: 20px 0 0px;
 }
 
 header h1 {
@@ -257,18 +258,11 @@ nav ol li a:hover {
 
 #map header {
   margin: 0;
-  padding: 0 0 3px 0;
   overflow: hidden;
   display: block;
   width: 100%;
   position: relative;
   min-width: 59px;
-}
-
-#map header h1 {
-  border: 0;
-  padding: 0 0 0 4px;
-  width: 300px;
 }
 
 .ie #map * {
@@ -357,12 +351,6 @@ footer dd {
   background: #FFCED0;
 }
 
-.ie6 #error p, .ie7 #error p {
-  width: 400px;
-  display: block;
-  margin: 0 auto;
-}
-
 #error-close {
   display: block;
   width: 19px;
@@ -381,10 +369,11 @@ footer dd {
 #canvas-wrap {
   border: 1px solid #aaa;
   margin: 10px;
+  min-height: 300px;
 }
 
 #map-canvas {
-  min-height: 300px;
+  display: none;
 }
 
 /* infoWindow close image distorted on small screens http://stackoverflow.com/questions/18387287/infowindow-closing-icon-not-showing-in-google-map */
@@ -645,6 +634,19 @@ img[src*="gstatic.com/"], img[src*="googleapis.com/"] {
   line-height: 14px;
 }
 
+#search input::-webkit-input-placeholder {
+  padding-top: 2px;
+}
+#search input:-moz-placeholder { /* older Firefox*/
+  padding-top: 2px;
+}
+#search input::-moz-placeholder { /* Firefox 19+ */
+  padding-top: 2px;
+}
+#search input:-ms-input-placeholder {
+  padding-top: 2px;
+}
+
 #search a {
   float: left;
   display: block;
@@ -663,7 +665,7 @@ img[src*="gstatic.com/"], img[src*="googleapis.com/"] {
   opacity: 0.8;
   padding: 8px;
   position: absolute;
-  top: 36px;
+  top: 34px;
   width: 253px;
 }
 
@@ -689,7 +691,7 @@ img[src*="gstatic.com/"], img[src*="googleapis.com/"] {
 }
 
 #search > ul li > ul {
-  margin: 5px 0 15px 30px;
+  margin: 5px 0 10px 25px;
 }
 
 #search > ul li li {
@@ -737,11 +739,7 @@ img[src*="gstatic.com/"], img[src*="googleapis.com/"] {
 
 .ie #search > ul {
   margin-right: 0;
-  width: 250px
-}
-
-.ie6 #search {
-  width: 255px;
+  width: 250px;
 }
 
 .ie7 #search > ul li a {
@@ -845,7 +843,7 @@ img[src*="gstatic.com/"], img[src*="googleapis.com/"] {
 #mobile-menu-trigger {
   color: #000;
   float: right;
-  margin: 10px 10px 0;
+  margin: 17px 17px 0;
   text-decoration: none;
 }
 
@@ -1174,6 +1172,9 @@ img[src*="gstatic.com/"], img[src*="googleapis.com/"] {
 }
 
 #menu-wrap {
+  display: none;
+  top: 0;
+  right: 0;
   height: auto;
 }
 
@@ -1412,6 +1413,7 @@ img[src*="gstatic.com/"], img[src*="googleapis.com/"] {
   color: white;
   display:block;
   text-decoration: none;
+  padding-right: 10px;
 }
 
 .iBox a:hover {
@@ -1421,10 +1423,13 @@ img[src*="gstatic.com/"], img[src*="googleapis.com/"] {
 a.iclose {
   color: #bbb;
   float: right;
+  padding: 0 0 0 15px;
 }
 
 #testBox {
-  display: inline;
+  position:absolute;
+  top:0; left:-1500px;
+  display:inline;
 }
 
 .ie .iBox {

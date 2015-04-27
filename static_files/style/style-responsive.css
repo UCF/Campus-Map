@@ -194,7 +194,6 @@
 
   header h1 {
     font-size: 24px;
-    margin: 10px 10px 0;
   }
 }
 
@@ -255,7 +254,8 @@
 
   #search > ul {
     height: 325px;
-    overflow: auto;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
   }
   /*
     #sketchup #model {

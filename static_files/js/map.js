@@ -1,7 +1,7 @@
 
-var desktopWidth = false;
+var isDesktopWidth = true;
 if($(window).width() <  768) {
-  desktopWidth = true;
+  isDesktopWidth = false;
 }
 
 var CampusMap = function(options) {
@@ -60,6 +60,8 @@ var CampusMap = function(options) {
 		INFO_MANAGER  = null,
 		UTIL          = new Util();
 
+  UTIL.resize_canvas();
+
 	// Load the Google Maps JS
 	if(typeof google === 'undefined') {
 		log('Unable to load google code');
@@ -96,7 +98,7 @@ var CampusMap = function(options) {
   var mapTypes = {
     mapTypeIds: []
   };
-  if(!desktopWidth) {
+  if(isDesktopWidth) {
     mapTypes = {
       mapTypeIds: [
         google.maps.MapTypeId.ROADMAP,
@@ -180,7 +182,6 @@ var CampusMap = function(options) {
 	});
 
 	if(!options.simple) {
-		UTIL.resize_canvas();
 		$(window).resize(UTIL.resize_canvas);
 
 		// Setup and configure the search
@@ -199,7 +200,7 @@ var CampusMap = function(options) {
   		// Setup and configure the layers
   		LAYER_MANAGER = new LayerManager();
 
-      if(!desktopWidth) {
+      if(isDesktopWidth) {
     		// Implementation details for the traffic layer
     		LAYER_MANAGER.register_layer(
     			(function() {
@@ -210,7 +211,7 @@ var CampusMap = function(options) {
     		);
       }
 
-    if(!desktopWidth) {
+    if(isDesktopWidth) {
   		// Implementation details for the sidewalks layer
   		LAYER_MANAGER.register_layer(
   			(function() {
@@ -228,7 +229,7 @@ var CampusMap = function(options) {
   		);
     }
 
-    if(!desktopWidth) {
+    if(isDesktopWidth) {
   		// Implementation details for the points layer for the google maps layer
   		LAYER_MANAGER.register_layer(
   			(function() {
@@ -268,7 +269,7 @@ var CampusMap = function(options) {
   		);
     }
 
-    if(!desktopWidth) {
+    if(isDesktopWidth) {
   		// Implementation details for the points layer
   		LAYER_MANAGER.register_layer(
   			(function() {
@@ -308,7 +309,7 @@ var CampusMap = function(options) {
     }
 
 
-    if(!desktopWidth) {
+    if(isDesktopWidth) {
   		// Implementation details for the buildings layer
   		LAYER_MANAGER.register_layer(
   			(function() {
@@ -326,7 +327,7 @@ var CampusMap = function(options) {
   		);
     }
 
-    if(!desktopWidth) {
+    if(isDesktopWidth) {
   		// Implementation details for the bikeracks layer
   		LAYER_MANAGER.register_layer(
   			(function() {
@@ -370,7 +371,7 @@ var CampusMap = function(options) {
   		);
     }
 
-    if(!desktopWidth) {
+    if(isDesktopWidth) {
   		// Implementation details for the emergency phones layer
   		LAYER_MANAGER.register_layer(
   			(function() {
@@ -543,7 +544,7 @@ var CampusMap = function(options) {
 			})()
 		);
 
-    if(!desktopWidth) {
+    if(isDesktopWidth) {
 
         (function() {
             $.each(SHUTTLE_STOPS, function(index, stop) {
@@ -715,7 +716,7 @@ var CampusMap = function(options) {
 				}
 			});
 
-      if(!desktopWidth) {
+      if(isDesktopWidth) {
   			if(!activated_layer) {
   				// Display the google map points layer when the  map loads
   				options.illustrated ? (LAYER_MANAGER.get_layer('ipoints')).toggle() : (LAYER_MANAGER.get_layer('gpoints')).toggle();
@@ -1075,7 +1076,8 @@ var CampusMap = function(options) {
         youAreHereInfowindow = new google.maps.InfoWindow({
           content: '<div>You are here!</div>'
         }),
-        $loadingTarget = $('.loading-target');
+        $loadingTarget = $('.loading-target'),
+        locationTimoutId;
 
     function showMobileMenu() {
       $mobileMenu.addClass('slide-out');
@@ -1108,6 +1110,7 @@ var CampusMap = function(options) {
     }
 
     function getLocationMarker(position) {
+      clearTimeout(locationTimoutId);
       var markerLatLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude),
           icon   = {
               url: STATIC_URL + '/images/markers/location.png',
@@ -1139,36 +1142,39 @@ var CampusMap = function(options) {
     }
 
     function showError(error) {
+      clearTimeout(locationTimoutId);
+      $loadingTarget.closest('.menu-highlight').removeClass('menu-highlight');
+      $loadingTarget.toggleClass('fa-spinner fa-pulse fa-compass');
+
       switch(error.code) {
-          case error.PERMISSION_DENIED:
-              log("User denied the request for Geolocation.");
-              $loadingTarget.closest('.menu-highlight').removeClass('menu-highlight');
-              $loadingTarget.toggleClass('fa-spinner fa-pulse fa-compass');
-              break;
-          case error.POSITION_UNAVAILABLE:
-              alert("Location information is unavailable. Verify that GPS is enabled.");
-              $loadingTarget.closest('.menu-highlight').removeClass('menu-highlight');
-              $loadingTarget.toggleClass('fa-spinner fa-pulse fa-compass');
-              break;
-          case error.TIMEOUT:
-              alert("The request to get location timed out.");
-              $loadingTarget.closest('.menu-highlight').removeClass('menu-highlight');
-              $loadingTarget.toggleClass('fa-spinner fa-pulse fa-compass');
-              break;
-          case error.UNKNOWN_ERROR:
-              alert("Unable to get location.");
-              $loadingTarget.closest('.menu-highlight').removeClass('menu-highlight');
-              $loadingTarget.toggleClass('fa-spinner fa-pulse fa-compass');
-              break;
+        case error.PERMISSION_DENIED:
+            log("User denied the request for Geolocation.");
+            break;
+        case error.POSITION_UNAVAILABLE:
+            alert("Location information is unavailable. Verify that GPS is enabled.");
+            break;
+        case error.TIMEOUT:
+            alert("The request to get location timed out.");
+            break;
+        case error.UNKNOWN_ERROR:
+            alert("Unable to get location.");
+            break;
       }
+    }
+
+    function disabledGeoHandler() {
+      $loadingTarget.closest('.menu-highlight').removeClass('menu-highlight');
+      $loadingTarget.toggleClass('fa-spinner fa-pulse fa-compass');
+      alert("Location information is unavailable. Verify that GPS is enabled.");
     }
 
     function getLocation() {
       if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(getLocationMarker, showError);
+        locationTimoutId = setTimeout(disabledGeoHandler, 5000);
+        navigator.geolocation.getCurrentPosition(getLocationMarker, showError);
       } else {
-          alert("Geolocation is not supported by this browser.");
-          closeMobileMenu();
+        alert("Geolocation is not supported by this browser.");
+        closeMobileMenu();
       }
     }
 
@@ -1387,6 +1393,7 @@ var CampusMap = function(options) {
 
 		// Add the menu to the map in the upper right
 		MAP.controls[google.maps.ControlPosition.RIGHT_TOP].push(container[0]);
+    container.fadeIn();
 	}
 
 	/*********************************
@@ -1880,7 +1887,7 @@ var CampusMap = function(options) {
           footer = Number($('footer').height()),
           headerFooter = ucfHeader + header + footer,
           height = viewPort - headerFooter;
-			$('#map-canvas').height(height);
+			$('#map-canvas').height(height).fadeIn();
 		}
 	}
 
