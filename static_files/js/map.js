@@ -4,7 +4,6 @@ if($(window).width() <  768) {
   desktopWidth = true;
 }
 
-
 var CampusMap = function(options) {
 	var that = this,
 		default_options = {
@@ -240,7 +239,7 @@ var CampusMap = function(options) {
   							'Building'   : UTIL.get_google_image('building'),
   							'ParkingLot' : UTIL.get_google_image('parking'),
   							'Group'      : UTIL.get_google_image('group'),
-  							'Location'   : UTIL.get_google_image('blue')
+  							'Location'   : UTIL.get_google_image('location')
   						},
   						map_point_type = 'gpoint';
 
@@ -255,6 +254,7 @@ var CampusMap = function(options) {
   								location : index,
   								visible  : false
   							});
+
   							markers.push(marker);
   							google.maps.event.addListener(marker, 'click', function(event) {
   								UTIL.highlight_location(index);
@@ -332,7 +332,11 @@ var CampusMap = function(options) {
   			(function() {
   				var bikeracks_layer  = new Layer('bikeracks');
   				bikeracks_layer.markers = (function() {
-  					var markers = [];
+  					var markers = [],
+                icon   = {
+                    url: STATIC_URL + '/images/markers/bicycle.png',
+                    size: new google.maps.Size(25, 25)
+                };
   					$.ajax({
   						url     :BIKERACKS_URL,
   						dataType:'json',
@@ -349,6 +353,7 @@ var CampusMap = function(options) {
   														rack.geometry.coordinates[0],
   														rack.geometry.coordinates[1]
   													),
+                            icon: icon,
   													map       : MAP,
   													visible   : false
   												})
@@ -379,8 +384,8 @@ var CampusMap = function(options) {
   						success :
   							function(data, text_status, jq_xhr) {
   								var icon   = {
-  										url: STATIC_URL + '/images/markers/marker_phone.png',
-  										size: new google.maps.Size(20, 34)
+  										url: STATIC_URL + '/images/markers/phone.png',
+  										size: new google.maps.Size(25, 25)
   								};
 
   								if(typeof data.features != 'undefined') {
@@ -918,7 +923,7 @@ var CampusMap = function(options) {
 	 	if(options.link != null) {
 	 		name = '<a href="' + options.link + '">' + name + '</a>';
 	 	}
-	 	content = $('<div class="iBox">' + name + '<a class="iclose">X</a></div>');
+	 	content = $('<div class="iBox"><a class="iclose">X</a>' + name + '</div>');
 
 	 	// Create a hidden test box to figure out the correct width
 	 	test_content = $('<div id="testBox" class="iBox">' + content + '</div>')[0];
@@ -1103,7 +1108,11 @@ var CampusMap = function(options) {
     }
 
     function getLocationMarker(position) {
-      var markerLatLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+      var markerLatLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude),
+          icon   = {
+              url: STATIC_URL + '/images/markers/location.png',
+              size: new google.maps.Size(25, 25)
+          };
 
       if(youAreHereMarker) {
         youAreHereMarker.setPosition( markerLatLng );
@@ -1113,6 +1122,7 @@ var CampusMap = function(options) {
         youAreHereMarker = new google.maps.Marker({
           position: markerLatLng,
           map: MAP,
+          icon: icon,
           title: "You are here!"
         });
 
@@ -1129,28 +1139,28 @@ var CampusMap = function(options) {
     }
 
     function showError(error) {
-        switch(error.code) {
-            case error.PERMISSION_DENIED:
-                log("User denied the request for Geolocation.");
-                $loadingTarget.closest('.menu-highlight').removeClass('menu-highlight');
-                $loadingTarget.toggleClass('fa-spinner fa-pulse fa-compass');
-                break;
-            case error.POSITION_UNAVAILABLE:
-                alert("Location information is unavailable. Verify that GPS is enabled.");
-                $loadingTarget.closest('.menu-highlight').removeClass('menu-highlight');
-                $loadingTarget.toggleClass('fa-spinner fa-pulse fa-compass');
-                break;
-            case error.TIMEOUT:
-                alert("The request to get location timed out.");
-                $loadingTarget.closest('.menu-highlight').removeClass('menu-highlight');
-                $loadingTarget.toggleClass('fa-spinner fa-pulse fa-compass');
-                break;
-            case error.UNKNOWN_ERROR:
-                alert("Unable to get location.");
-                $loadingTarget.closest('.menu-highlight').removeClass('menu-highlight');
-                $loadingTarget.toggleClass('fa-spinner fa-pulse fa-compass');
-                break;
-        }
+      switch(error.code) {
+          case error.PERMISSION_DENIED:
+              log("User denied the request for Geolocation.");
+              $loadingTarget.closest('.menu-highlight').removeClass('menu-highlight');
+              $loadingTarget.toggleClass('fa-spinner fa-pulse fa-compass');
+              break;
+          case error.POSITION_UNAVAILABLE:
+              alert("Location information is unavailable. Verify that GPS is enabled.");
+              $loadingTarget.closest('.menu-highlight').removeClass('menu-highlight');
+              $loadingTarget.toggleClass('fa-spinner fa-pulse fa-compass');
+              break;
+          case error.TIMEOUT:
+              alert("The request to get location timed out.");
+              $loadingTarget.closest('.menu-highlight').removeClass('menu-highlight');
+              $loadingTarget.toggleClass('fa-spinner fa-pulse fa-compass');
+              break;
+          case error.UNKNOWN_ERROR:
+              alert("Unable to get location.");
+              $loadingTarget.closest('.menu-highlight').removeClass('menu-highlight');
+              $loadingTarget.toggleClass('fa-spinner fa-pulse fa-compass');
+              break;
+      }
     }
 
     function getLocation() {
@@ -1281,17 +1291,17 @@ var CampusMap = function(options) {
 						});
 					screen.show();
 				}
-			})
+			});
 
 		tab_one.click(function() {
 			that.change_tabs();
-		})
+		});
 		tab_two.click(function() {
 			that.change_tabs({
 				label:$(this).text(),
 				html :stage.html()
 			})
-		})
+		});
 
 		// There are two button in the upper right hand corner of the menu:
 		// email and print. They are updated based on various actions
@@ -1304,7 +1314,7 @@ var CampusMap = function(options) {
 				'body'    : escape("UCF Campus Map\nhttp://map.ucf.edu/"),
 				'print'   : BASE_URL + '/print/?',
 				'toggle_illustrated' : false
-			}
+			};
 
 			// setting
 			var s = $.extend({}, defaults, options);
@@ -1824,6 +1834,7 @@ var CampusMap = function(options) {
 					} else {
 						// Create the info box(es)
 						if(typeof data[point_type] != 'undefined' && data[point_type] != null) {
+
 							INFO_MANAGER.register(
 								new Info(
 									data[point_type],
@@ -1831,6 +1842,7 @@ var CampusMap = function(options) {
 									{link: data.profile_link}
 								)
 							);
+
 							if(!options.sublocation) {
 								CURRENT_LOCATION = location_id;
 								if(MENU != null) {
@@ -1896,6 +1908,22 @@ var getZoom = function() {
 	}
 }
 
+// Google Analytics Click Tracking
+
+function trackClick(e) {
+  var $target = $(e.target).closest('.ga-tracking'),
+      category = ($target.attr('data-category')) ? $target.attr('data-category') : '',
+      action = ($target.attr('data-action')) ? $target.attr('data-action') : '',
+      label = ($target.attr('data-label')) ? $target.attr('data-label') : '';
+  _gaq.push(['_trackEvent', category, action, label]);
+}
+
+function gaTracking () {
+  $('.ga-tracking').live('mousedown', trackClick);
+}
+
+$(gaTracking);
+
 /*--------------------------------------------------------------------
  * JQuery Plugin: "EqualHeights" & "EqualWidths"
  * by:	Scott Jehl, Todd Parker, Maggie Costello Wachs (http://www.filamentgroup.com)
@@ -1921,8 +1949,6 @@ $.fn.equalHeights = function(px) {
 		$(this).children().each(function(i){
 			if ($(this).height() > currentTallest) { currentTallest = $(this).height(); }
 		});
-		// for ie6, set height since min-height isn't supported
-		if ($.browser.msie && $.browser.version === 6.0) { $(this).children().css({'height': currentTallest}); }
 		$(this).children().css({'min-height': currentTallest});
 	});
 	return this;

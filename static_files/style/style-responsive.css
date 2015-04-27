@@ -179,6 +179,25 @@
   }
 }
 
+/* Menus */
+
+@media (min-width: 768px) {
+  #mobile-menu-trigger {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  #menu-wrap {
+    display: none;
+  }
+
+  header h1 {
+    font-size: 24px;
+    margin: 10px 10px 0;
+  }
+}
+
 @media (max-width: 950px) {
   /* Fix the background gradient that vanishes for some reason */
   html {
@@ -274,11 +293,6 @@
   }
 
   /* General layout, spacing improvements */
-  header h1 {
-    font-size: 24px;
-    margin: 10px 10px 0;
-  }
-
   nav ol li {
     margin-top: 5px;
   }

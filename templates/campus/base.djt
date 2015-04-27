@@ -28,24 +28,24 @@
 	<ul>
 		<li class="header">
 			<h3>
-				<i class="fa fa-times pull-right close-icon"></i> UCF Campus Map
+				<i class="fa fa-times pull-right close-icon ga-tracking" data-category="Mobile Menu" data-action="Click" data-label="Close"></i> UCF Campus Map
 			</h3>
 		</li>
 
 		<li class="menu-item">
-			<h4 data-menu="location">
+			<h4 data-menu="location" class="ga-tracking" data-category="Mobile Menu" data-action="Click" data-label="Find Your Location">
 				<div class="icon"><i class="fa fa-compass loading-target" data-icon="fa fa-compass"></i></div> Find Your Location
 			</h4>
 		</li>
 
 		<li class="menu-item">
-			<h4 data-menu="food">
+			<h4 data-menu="food" class="ga-tracking" data-category="Mobile Menu" data-action="Click" data-label="Food">
 				<div class="icon"><i class="fa fa-cutlery" data-icon="fa fa-cutlery"></i></div> Food
 			</h4>
 		</li>
 
 		<li class="menu-item">
-			<h4 data-menu="parking">
+			<h4 data-menu="parking" class="ga-tracking" data-category="Mobile Menu" data-action="Click" data-label="Parking">
 				<i class="fa fa-chevron-down pull-right toggle-icon"></i>
 				<div class="icon"><i class="fa fa-car" data-icon="fa fa-car"></i></div> Parking
 			</h4>
@@ -53,14 +53,22 @@
 				<li id="parking-key">
 					<h5>Parking Permit Key</h5>
 					{% permits %}
-					<div><a class="item" href="http://parking.ucf.edu/maps/" target="blank">Download Parking Guide</a></div>
-					<div><a class="item" href="http://parking.ucf.edu/" target="blank">Parking Services Website</a></div>
+					<div>
+						<a class="item" href="http://parking.ucf.edu/maps/" target="blank" class="ga-tracking" data-category="Mobile Menu" data-action="Click" data-label="Download Parking Guide">
+							Download Parking Guide
+						</a>
+					</div>
+					<div>
+						<a class="item" href="http://parking.ucf.edu/" target="blank" class="ga-tracking" data-category="Mobile Menu" data-action="Click" data-label="Parking Services Website">
+							Parking Services Website
+						</a>
+					</div>
 				</li>
 			</ul>
 		</li>
 
 		<li class="menu-item link-menu-item">
-			<a href="/locations/">
+			<a href="/locations/" class="ga-tracking" data-category="Mobile Menu" data-action="Click" data-label="Locations &amp; Buildings">
 				<h4 data-menu="locations-buildings">
 					<i class="fa fa-chevron-right pull-right"></i>
 					<div class="icon"><i class="fa fa-building-o" data-icon="fa fa-building-o"></i></div> Locations &amp; Buildings
@@ -69,7 +77,7 @@
 		</li>
 
 		<li class="menu-item link-menu-item">
-			<a href="/organizations/">
+			<a href="/organizations/" class="ga-tracking" data-category="Mobile Menu" data-action="Click" data-label="Organizations &amp; Depts">
 				<h4 data-menu="locations-buildings">
 					<i class="fa fa-chevron-right pull-right"></i>
 					<div class="icon"><i class="fa fa-users" data-icon="fa fa-building-o"></i></div> Organizations &amp; Depts
@@ -78,7 +86,7 @@
 		</li>
 
 		<li class="menu-item link-menu-item">
-			<a href="http://www.veoliavision.com/shadow/Predictions_Mobile.aspx?ccid=99906">
+			<a href="http://www.veoliavision.com/shadow/Predictions_Mobile.aspx?ccid=99906" class="ga-tracking" data-category="Mobile Menu" data-action="Click" data-label="Shuttles">
 				<h4 data-menu="shuttles">
 					<i class="fa fa-chevron-right pull-right toggle-icon"></i>
 					<div class="icon"><i class="fa fa-bus" data-icon="fa fa-bus"></i></div> Shuttles
@@ -89,7 +97,7 @@
 </nav>
 <div id="map">
 	<header>
-		<a href="javascript:;" id="mobile-menu-trigger"><span>MENU</span> <i class="fa fa-bars fa-2x"></i></a>
+		<a href="javascript:;" id="mobile-menu-trigger" class="ga-tracking" data-category="Mobile Menu" data-action="Click" data-label="Menu Open/Close"><span>MENU</span> <i class="fa fa-bars fa-2x"></i></a>
 		<h1><a href="{% url 'home' %}">UCF Campus Map</a></h1>
 
 		{% if error %}
