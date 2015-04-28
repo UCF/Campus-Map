@@ -789,7 +789,7 @@ var CampusMap = function(options) {
 		// pass #search-form ul as an argument
 		$('#search > ul > li:not(.more)')
 			.live('click', function() {
-				var location_id = SEARCH.current_location_id();
+				var location_id = $(this).find('a').attr('data-pk');
 				if(location_id) {
 
 					// Change menu tab to a loading indicator
@@ -813,7 +813,7 @@ var CampusMap = function(options) {
 			.find('a').live('click', function(e) {e.preventDefault()});
 
 		$('body').bind('search-result-highlighted', function(event) {
-			var location_id = SEARCH.current_location_id();
+			var location_id = $(this).find('a').attr('data-pk');
 			if(location_id) {
 				MENU.change_tabs({
 							label:'Location',
@@ -1454,7 +1454,6 @@ var CampusMap = function(options) {
 
 			anchor.id = 'search-submit';
       anchor.title = 'search icon';
-      anchor.href = 'javascript:;';
       anchor.onclick = submitSearchForm;
 			anchor.appendChild(icon);
 
@@ -1464,7 +1463,7 @@ var CampusMap = function(options) {
 			form.appendChild(input);
 			form.appendChild(anchor);
 
-			div.appendChild(form)
+			div.appendChild(form);
 			div.appendChild(ul);
 
 			return div;
@@ -1478,13 +1477,13 @@ var CampusMap = function(options) {
       $('#search-form').submit();
     }
 
-		$(document).click(function(e) {
-			var $target = $(e.target);
-      // Hide the search results when anything else is clicked
-			if(!$target.closest('#search-results').length) {
-				results.hide();
-			}
-		});
+    // Hide the search results when anything else is clicked
+    $(document).click(function(e) {
+      var $target = $(e.target);
+      if($target.closest('#search').length === 0) {
+        results.hide();
+      }
+    });
 
 		// Attach the typing events
 		input
@@ -1645,15 +1644,6 @@ var CampusMap = function(options) {
 
 		function abort_ajax() {
 			if(ajax != null) ajax.abort();
-		}
-
-		this.current_location_id = function() {
-			var li          = results.find('li.hover:not(.more)'),
-				location_id = null;
-			if(li.length && li.find('a').length && typeof li.find('a').attr('data-pk') != 'undefined') {
-				location_id = li.find('a').attr('data-pk');
-			}
-			return location_id;
 		}
 
 		this.hide_results = function() {
