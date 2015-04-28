@@ -58,6 +58,7 @@ var CampusMap = function(options) {
 		MENU          = null,
 		LAYER_MANAGER = null,
 		INFO_MANAGER  = null,
+    SEARCH_RESULTS_SIZE = 0,
 		UTIL          = new Util();
 
   UTIL.resize_canvas();
@@ -1553,13 +1554,7 @@ var CampusMap = function(options) {
 					} else {
 						results.empty().show();
 
-            var menuHeight = $('#map-canvas').height() - ($('#search').height() + 60);
-            // size search menu
-            if(menuHeight < 500) {
-              results.height(menuHeight);
-            } else {
-              results.height(500);
-            }
+            results.height(SEARCH_RESULTS_SIZE);
 
 						// Wait <timeout> duration between keypresses before doing search
 						clearTimeout(timer);
@@ -1882,8 +1877,19 @@ var CampusMap = function(options) {
           header = Number($('#map header').height()),
           footer = Number($('footer').height()),
           headerFooter = ucfHeader + header + footer,
-          height = viewPort - headerFooter;
+          height = viewPort - headerFooter,
+          menuHeight = height - ($('#search').height() + 90);
+
 			$('#map-canvas').height(height).fadeIn();
+
+      // set search menu height
+      if(SEARCH_RESULTS_SIZE === 0) {
+        if(menuHeight < 500) {
+          SEARCH_RESULTS_SIZE = menuHeight;
+        } else {
+          SEARCH_RESULTS_SIZE = 500;
+        }
+      }
 		}
 	}
 
