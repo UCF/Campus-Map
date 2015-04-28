@@ -1895,9 +1895,9 @@ var getZoom = function() {
 	$width = $(window).width();
 
 	if ($width < 295) {
-		return 13;
-	} else if ( $width > 296 && $width < 465 ) {
 		return 14;
+	} else if ( $width > 296 && $width < 465 ) {
+		return 15;
 	} else if ( $width > 466 && $width < 768 ) {
 		return 15;
 	} else if ( $width > 769 && $width < 1600 ) {

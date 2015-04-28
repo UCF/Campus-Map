@@ -724,11 +724,13 @@ img[src*="gstatic.com/"], img[src*="googleapis.com/"] {
   outline: none;
 }
 
+#search > ul > li.hover,
 #search > ul > li:hover {
   background: #555;
   background: rgba(255, 255, 255, .2);
 }
 
+#search > ul > li.hover li,
 #search > ul > li:hover li {
   color: #B5B5B5;
 }
@@ -1421,9 +1423,13 @@ img[src*="gstatic.com/"], img[src*="googleapis.com/"] {
 }
 
 a.iclose {
-  color: #bbb;
+  background-color: #ccc;
+  color: #000;
   float: right;
-  padding: 0 0 0 15px;
+  border-radius: 50%;
+  width: 13px;
+  padding: 2px 0px 3px 6px;
+  font-size: 11px;
 }
 
 #testBox {
