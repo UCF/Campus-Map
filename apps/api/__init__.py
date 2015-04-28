@@ -85,7 +85,7 @@ class MapMiddleware(object):
                     elif response.status_code == 500:
                         if settings.DEBUG: return response
                         rsp = dict(spec)
-                        rsp['content'] = spec['content'] % 'Server Error. Bummer'
+                        rsp['content'] = spec['content'] % 'Server Error.'
                         return HttpResponseServerError(**rsp)
                     else:
                         msg = spec['content'] % ('Error %s' % response.status_code)
