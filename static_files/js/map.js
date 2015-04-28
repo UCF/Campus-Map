@@ -813,7 +813,7 @@ var CampusMap = function(options) {
 			.find('a').live('click', function(e) {e.preventDefault()});
 
 		$('body').bind('search-result-highlighted', function(event) {
-			var location_id = $(this).find('a').attr('data-pk');
+			var location_id = $("#search-results").find('.hover').find('a').attr('data-pk');
 			if(location_id) {
 				MENU.change_tabs({
 							label:'Location',
@@ -1531,7 +1531,7 @@ var CampusMap = function(options) {
 					} else {
 						next = results.find('li:first');
 					}
-					next.addClass('hover')
+					next.addClass('hover');
 					$('body').trigger('search-result-highlighted', [next]);
 				} else if(keycode === KEYCODES.UP) { // Scroll up results
 					var current = results.find('.hover'),
@@ -1540,9 +1540,9 @@ var CampusMap = function(options) {
 						current.removeClass('hover');
 						next = current.prev();
 					} else {
-						next = results.find('li:last')
+						next = results.find('li:last');
 					}
-					next.addClass('hover')
+					next.addClass('hover');
 					$('body').trigger('search-result-highlighted', [next]);
 				} else if(keycode === KEYCODES.ESCAPE) { // Empty and hide results
 					abort_ajax();
