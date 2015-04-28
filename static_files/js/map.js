@@ -1393,7 +1393,6 @@ var CampusMap = function(options) {
 
 		// Add the menu to the map in the upper right
 		MAP.controls[google.maps.ControlPosition.RIGHT_TOP].push(container[0]);
-    container.fadeIn();
 	}
 
 	/*********************************
@@ -1478,17 +1477,6 @@ var CampusMap = function(options) {
       $('#search-form').submit();
     }
 
-		// Attach hover events
-		// For some realy i can't get this to work with the `results` object.
-		// So for now, reference directly
-		$('#search > ul > li:not(.more)')
-				.live('mouseover', function() {
-						$(this).addClass('hover');
-				})
-				.live('mouseleave', function() {
-						$(this).removeClass('hover');
-				});
-
 		$(document).click(function(e) {
 			var $target = $(e.target);
       // Hide the search results when anything else is clicked
@@ -1564,6 +1552,14 @@ var CampusMap = function(options) {
 						results.hide();
 					} else {
 						results.empty().show();
+
+            var menuHeight = $('#map-canvas').height() - ($('#search').height() + 60);
+            // size search menu
+            if(menuHeight < 500) {
+              results.height(menuHeight);
+            } else {
+              results.height(500);
+            }
 
 						// Wait <timeout> duration between keypresses before doing search
 						clearTimeout(timer);

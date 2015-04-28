@@ -658,7 +658,7 @@ img[src*="gstatic.com/"], img[src*="googleapis.com/"] {
   text-decoration: underline;
 }
 
-#search > ul {
+#search-results {
   background: black;
   left: 0;
   margin: 0;
@@ -669,13 +669,13 @@ img[src*="gstatic.com/"], img[src*="googleapis.com/"] {
   width: 253px;
 }
 
-#search > ul li {
+#search-results li {
   margin: 0;
   list-style: none;
   height: auto;
 }
 
-#search > ul li a {
+#search-results li a {
   float: none;
   display: block;
   height: auto;
@@ -686,15 +686,15 @@ img[src*="gstatic.com/"], img[src*="googleapis.com/"] {
   line-height: 1.1;
 }
 
-#search > ul > li {
+#search-results > li {
   padding: 3px 0;
 }
 
-#search > ul li > ul {
+#search-results li > ul {
   margin: 5px 0 10px 25px;
 }
 
-#search > ul li li {
+#search-results li li {
   color: #AAA;
   list-style-type: disc;
   margin-left: 8px;
@@ -724,12 +724,12 @@ img[src*="gstatic.com/"], img[src*="googleapis.com/"] {
   outline: none;
 }
 
-#search > ul > li.hover, #search > ul > li:hover {
+#search > ul > li:hover {
   background: #555;
   background: rgba(255, 255, 255, .2);
 }
 
-#search > ul > li.hover li, #search > ul > li:hover li {
+#search > ul > li:hover li {
   color: #B5B5B5;
 }
 
@@ -1172,10 +1172,10 @@ img[src*="gstatic.com/"], img[src*="googleapis.com/"] {
 }
 
 #menu-wrap {
-  display: none;
-  top: 0;
-  right: 0;
   height: auto;
+  position:absolute;
+  right: -300px;
+  top: 27px;
 }
 
 #menu-window {
