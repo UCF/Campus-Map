@@ -1,7 +1,9 @@
 import json
 import logging
-import urllib2
 import xml.etree.ElementTree as ET
+
+from django.conf import settings
+import requests
 
 
 logger = logging.getLogger(__name__)
@@ -90,9 +92,11 @@ def get_geo_data(lat, lng):
     geo_placename = None
     geo_state = None
     geo_country = None
-    geo_url = 'http://maps.googleapis.com/maps/api/geocode/json?latlng=%s,%s&sensor=false' % (str(lat), str(lng),)
+    geo_url = 'http://maps.googleapis.com/maps/api/geocode/json'
     try:
-        geo_request = json.load(urllib2.urlopen(geo_url, timeout=10))
+        geo_request = requests.get(geo_url,
+                                   params={'latlng': str(lat) + ',' + str(lng), 'sensor': 'false'},
+                                   timeout=settings.REQUEST_TIMEOUT).json()
         geo_results = geo_request.get('results')
         if len(geo_results):
             for geo_addr in geo_results:
@@ -108,7 +112,7 @@ def get_geo_data(lat, lng):
 
                     if geo_placename and geo_state and geo_country:
                         return (geo_placename, geo_country + '-' + geo_state)
-    except urllib2.URLError as e:
+    except Exception as e:
         logger.error('Error getting geo data: ' + str(e))
 
     return (geo_placename, geo_country + '-' + geo_state if geo_country and geo_state else None)

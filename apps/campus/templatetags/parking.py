@@ -1,6 +1,5 @@
 from django import template
-
-import settings
+from django.conf import settings
 
 register = template.Library()
 
@@ -22,7 +21,7 @@ def permits(*args):
         str += '<tr><td><div class="permit" style="%s">%s</div></td><td>%s</td>' % (
                 style, text[permit]['color'], text[permit]['label'] )
 
-    str += '<tr><td><img src="%simages/markers/disabled.png" alt="disabled icon"></td><td>Disabled Parking</td></tr>' % settings.STATIC_URL
+    str += '<tr><td><img src="%simages/markers/handicap.png" alt="disabled icon"></td><td>Disabled Parking</td></tr>' % settings.STATIC_URL
     str = '<table>%s</table>' % str
     return str
 register.simple_tag(permits)

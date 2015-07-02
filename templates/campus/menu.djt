@@ -46,9 +46,9 @@
 				<label><input type="checkbox" id="buildings"> Buildings</label>
 				<label><input type="checkbox" id="sidewalks"> Walking Paths</label>
 
-				<h3>Coming Soon:</h3>
+				<!-- <h3>Coming Soon:</h3>
 				<label class="disabled"><input type="checkbox" disabled="disabled"> Entrances/Exits</label>
-				<label class="disabled"><input type="checkbox" disabled="disabled"> Housing</label>
+				<label class="disabled"><input type="checkbox" disabled="disabled"> Housing</label> -->
 
 				<div class="more-menu">
 					<a class="prev nav" data-nav="1">&#9664; Previous Menu</a>

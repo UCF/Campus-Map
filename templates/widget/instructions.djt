@@ -5,26 +5,37 @@
 <script type="text/javascript">
 	$().ready(function() {
 		(function() {
-			var form       = $('#customize > form'),
-				base_html  = '<iframe ATTRS src="SRC" style="STYLE">ALT</iframe>';
+			var form         = $('#customize > form'),
+				base_html    = '<iframe ATTRS src="SRC" style="STYLE">ALT</iframe>',
+				filter_types = ['location', 'regionalcampus', 'building', 'dininglocation'];
 
 			// Populate location list
 			$.getJSON(
-				'{{ base_url }}/locations.json',
+				'{{ base_url }}/locations.json?types='.concat(filter_types.join(',')),
 				function(data) {
 					$.each(data, function(index, map_object) {
-						if(map_object.object_type == 'Building') {
-							var googlemap_point   = [0,0],
-								illustrated_point = [0,0];
-							if(map_object.googlemap_point != undefined) {
-								googlemap_point = map_object.googlemap_point;
+						var googlemap_point   = [0,0],
+							illustrated_point = [0,0],
+							map_object_name   = map_object.title;
+
+						// Locations use name and not title. As a default fallback
+						// we can use id.
+						if (!map_object_name) {
+							if (map_object.hasOwnProperty('name')) {
+								map_object_name = map_object.name;
+							} else {
+								map_object_name = map_object.id;
 							}
-							if(map_object.illustrated_point != undefined) {
-								illustrated_point = map_object.illustrated_point;
-							}
-							$('.widget_building_id:eq(0)')
-								.append('<option value="' + map_object.id + '" data-glat="' + googlemap_point[0] + '" data-glng="' + googlemap_point[1] + '" data-ilat="' + illustrated_point[0] + '" data-ilng="' + illustrated_point[1] + '">' +  map_object.title + '</option>')
 						}
+
+						if(map_object.googlemap_point != undefined) {
+							googlemap_point = map_object.googlemap_point;
+						}
+						if(map_object.illustrated_point != undefined) {
+							illustrated_point = map_object.illustrated_point;
+						}
+						$('.widget_building_id:eq(0)')
+							.append('<option value="' + map_object.id + '" data-glat="' + googlemap_point[0] + '" data-glng="' + googlemap_point[1] + '" data-ilat="' + illustrated_point[0] + '" data-ilng="' + illustrated_point[1] + '">' +  map_object_name + '</option>')
 					})
 				})
 			$('#add_location')

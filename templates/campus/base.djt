@@ -1,4 +1,5 @@
 {% extends "base.djt"%}
+{% load parking %}
 
 {% block head %}
 {# IE is a dirty bastard.  Needs an absolute URL to work, thus needs to be here to have access to STATIC_URL #}
@@ -23,8 +24,80 @@
 
 
 {% block body %}
+<nav id="mobile-menu" role="navigation" aria-label="main mobile navigation">
+	<ul>
+		<li class="header">
+			<h3>
+				<i class="fa fa-times pull-right close-icon ga-tracking" data-category="Mobile Menu" data-action="Click" data-label="Close"></i> UCF Campus Map
+			</h3>
+		</li>
+
+		<li class="menu-item">
+			<h4 data-menu="location" class="ga-tracking" data-category="Mobile Menu" data-action="Click" data-label="Find Your Location">
+				<div class="icon"><i class="fa fa-compass loading-target" data-icon="fa fa-compass"></i></div> Find Your Location
+			</h4>
+		</li>
+
+		<li class="menu-item">
+			<h4 data-menu="food" class="ga-tracking" data-category="Mobile Menu" data-action="Click" data-label="Food">
+				<div class="icon"><i class="fa fa-cutlery" data-icon="fa fa-cutlery"></i></div> Food
+			</h4>
+		</li>
+
+		<li class="menu-item">
+			<h4 data-menu="parking" class="ga-tracking" data-category="Mobile Menu" data-action="Click" data-label="Parking">
+				<i class="fa fa-chevron-down pull-right toggle-icon"></i>
+				<div class="icon"><i class="fa fa-car" data-icon="fa fa-car"></i></div> Parking
+			</h4>
+			<ul class="hidden">
+				<li id="parking-key">
+					<h5>Parking Permit Key</h5>
+					{% permits %}
+					<div>
+						<a class="item" href="http://parking.ucf.edu/maps/" target="blank" class="ga-tracking" data-category="Mobile Menu" data-action="Click" data-label="Download Parking Guide">
+							Download Parking Guide
+						</a>
+					</div>
+					<div>
+						<a class="item" href="http://parking.ucf.edu/" target="blank" class="ga-tracking" data-category="Mobile Menu" data-action="Click" data-label="Parking Services Website">
+							Parking Services Website
+						</a>
+					</div>
+				</li>
+			</ul>
+		</li>
+
+		<li class="menu-item link-menu-item">
+			<a href="/locations/" class="ga-tracking" data-category="Mobile Menu" data-action="Click" data-label="Locations &amp; Buildings">
+				<h4 data-menu="locations-buildings">
+					<i class="fa fa-chevron-right pull-right"></i>
+					<div class="icon"><i class="fa fa-building-o" data-icon="fa fa-building-o"></i></div> Locations &amp; Buildings
+				</h4>
+			</a>
+		</li>
+
+		<li class="menu-item link-menu-item">
+			<a href="/organizations/" class="ga-tracking" data-category="Mobile Menu" data-action="Click" data-label="Organizations &amp; Depts">
+				<h4 data-menu="locations-buildings">
+					<i class="fa fa-chevron-right pull-right"></i>
+					<div class="icon"><i class="fa fa-users" data-icon="fa fa-building-o"></i></div> Organizations &amp; Depts
+				</h4>
+			</a>
+		</li>
+
+		<li class="menu-item link-menu-item">
+			<a href="http://www.veoliavision.com/shadow/Predictions_Mobile.aspx?ccid=99906" class="ga-tracking" data-category="Mobile Menu" data-action="Click" data-label="Shuttles">
+				<h4 data-menu="shuttles">
+					<i class="fa fa-chevron-right pull-right toggle-icon"></i>
+					<div class="icon"><i class="fa fa-bus" data-icon="fa fa-bus"></i></div> Shuttles
+				</h4>
+			</a>
+		</li>
+	</ul>
+</nav>
 <div id="map">
 	<header>
+		<a href="javascript:;" id="mobile-menu-trigger" class="ga-tracking" data-category="Mobile Menu" data-action="Click" data-label="Menu Open/Close"><span>MENU</span> <i class="fa fa-bars fa-2x"></i></a>
 		<h1><a href="{% url 'home' %}">UCF Campus Map</a></h1>
 
 		{% if error %}
@@ -37,7 +110,7 @@
 
 		<esi:include src="{% url 'weather'%}" />
 	</header>
-	<div id="canvas-wrap"><div id="map-canvas" style="width:100%; height:550px"></div></div>
+	<div id="canvas-wrap"><div id="map-canvas"></div></div>
 </div>
 <footer>
 	<span class="left">
@@ -58,9 +131,8 @@
 
 {% endblock %}
 
-
 {% block js %}
-	<script src="{{ STATIC_URL }}js/map.js?{{ map_version }}" type="text/javascript"></script>
+	<script src="{{ STATIC_URL }}js/map.min.js?{{ map_version }}" type="text/javascript"></script>
 	<script src="//maps.googleapis.com/maps/api/js?sensor=false"></script>
 	<script src="{{ STATIC_URL }}-/gmaps-infobox/infobox.js?{{ map_version }}" type="text/javascript"></script>
 	<script type="text/javascript">

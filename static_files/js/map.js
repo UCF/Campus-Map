@@ -1,3 +1,9 @@
+
+var isDesktopWidth = true;
+if($(window).width() <  768) {
+  isDesktopWidth = false;
+}
+
 var CampusMap = function(options) {
 	var that = this,
 		default_options = {
@@ -52,7 +58,10 @@ var CampusMap = function(options) {
 		MENU          = null,
 		LAYER_MANAGER = null,
 		INFO_MANAGER  = null,
+    SEARCH_RESULTS_SIZE = 0,
 		UTIL          = new Util();
+
+  UTIL.resize_canvas();
 
 	// Load the Google Maps JS
 	if(typeof google === 'undefined') {
@@ -74,7 +83,7 @@ var CampusMap = function(options) {
 						ACTIVATED_LAYERS.push(part);
 					}
 				}
-			});
+      });
 		}
 	})();
 
@@ -85,8 +94,25 @@ var CampusMap = function(options) {
 
 	// Regular Google Map
 
+	$zoom = getZoom();
+
+  var mapTypes = {
+    mapTypeIds: []
+  };
+  if(isDesktopWidth) {
+    mapTypes = {
+      mapTypeIds: [
+        google.maps.MapTypeId.ROADMAP,
+        google.maps.MapTypeId.SATELLITE,
+        google.maps.MapTypeId.HYBRID,
+        google.maps.MapTypeId.TERRAIN,
+        'illustrated'
+      ]
+    };
+  }
+
 	GMAP_OPTIONS = {
-		zoom: 16,
+		zoom: $zoom,
 		center: new google.maps.LatLng(28.6018,-81.1995),
 		mapTypeId: google.maps.MapTypeId.ROADMAP,
 		panControl: options.pan_control,
@@ -103,16 +129,8 @@ var CampusMap = function(options) {
 			position: google.maps.ControlPosition.LEFT_TOP
 		},
 		mapTypeControl: options.map_type_control,
-		mapTypeControlOptions: {
-			mapTypeIds: [
-				google.maps.MapTypeId.ROADMAP,
-				google.maps.MapTypeId.SATELLITE,
-				google.maps.MapTypeId.HYBRID,
-				google.maps.MapTypeId.TERRAIN,
-				'illustrated'
-			]
-		}
-	}
+		mapTypeControlOptions: mapTypes
+	};
 
 	// Illustrated Map
 	IMAP_OPTIONS = {
@@ -123,7 +141,7 @@ var CampusMap = function(options) {
 		zoomControl       : options.zoom_control,
 		streetViewControl : options.street_view_control,
 		mapTypeControl    : options.map_type_control
-	}
+	};
 	IMAP_TYPE = {
 		tileSize : new google.maps.Size(256,256),
 		minZoom: 12,
@@ -137,7 +155,7 @@ var CampusMap = function(options) {
 		},
 		name : "Illustrated",
 		alt  : "Show illustrated map"
-	}
+	};
 
 
 	// Setup and configure the map
@@ -162,10 +180,9 @@ var CampusMap = function(options) {
 		if(CURRENT_LOCATION != null) {
 			UTIL.highlight_location(CURRENT_LOCATION);
 		}
-	})
+	});
 
 	if(!options.simple) {
-		UTIL.resize_canvas();
 		$(window).resize(UTIL.resize_canvas);
 
 		// Setup and configure the search
@@ -173,217 +190,232 @@ var CampusMap = function(options) {
 
 		// Setup and configure the menu
 		MENU = new Menu();
+
+    MOBILE_MENU = new MobileMenu();
 	}
 
 	// Setup and configure the info boxes
 	INFO_MANAGER = new InfoManager();
 
-	if(!options.simple) {
-		// Setup and configure the layers
-		LAYER_MANAGER = new LayerManager();
+  	if(!options.simple) {
+  		// Setup and configure the layers
+  		LAYER_MANAGER = new LayerManager();
 
-		// Implementation details for the traffic layer
-		LAYER_MANAGER.register_layer(
-			(function() {
-				var traffic_layer   = new Layer('traffic');
-				traffic_layer.layer = new google.maps.TrafficLayer();
-				return traffic_layer;
-			})()
-		);
+      if(isDesktopWidth) {
+    		// Implementation details for the traffic layer
+    		LAYER_MANAGER.register_layer(
+    			(function() {
+    				var traffic_layer   = new Layer('traffic');
+    				traffic_layer.layer = new google.maps.TrafficLayer();
+    				return traffic_layer;
+    			})()
+    		);
+      }
 
-		// Implementation details for the sidewalks layer
-		LAYER_MANAGER.register_layer(
-			(function() {
-				var sidewalk_layer = new Layer('sidewalks');
-				sidewalk_layer.layer = new google.maps.KmlLayer(
-						SIDEWALKS_KML_URL,
-						{
-							preserveViewport : true,
-							suppressInfoWindows: true,
-							clickable: false
-						}
-					);
-				return sidewalk_layer;
-			})()
-		);
+    if(isDesktopWidth) {
+  		// Implementation details for the sidewalks layer
+  		LAYER_MANAGER.register_layer(
+  			(function() {
+  				var sidewalk_layer = new Layer('sidewalks');
+  				sidewalk_layer.layer = new google.maps.KmlLayer(
+  						SIDEWALKS_KML_URL,
+  						{
+  							preserveViewport : true,
+  							suppressInfoWindows: true,
+  							clickable: false
+  						}
+  					);
+  				return sidewalk_layer;
+  			})()
+  		);
+    }
 
-		// Implementation details for the points layer for the google maps layer
-		LAYER_MANAGER.register_layer(
-			(function() {
-				var points_layer     = new Layer('gpoints');
-				points_layer.markers = (function() {
-					var markers        = [],
-						images         = {
-							'Building'   : UTIL.get_google_image('yellow'),
-							'ParkingLot' : UTIL.get_google_image('yellow'),
-							'Group'      : UTIL.get_google_image('yellow2'),
-							'Location'   : UTIL.get_google_image('blue')
-						},
-						map_point_type = 'gpoint';
+    if(isDesktopWidth) {
+  		// Implementation details for the points layer for the google maps layer
+  		LAYER_MANAGER.register_layer(
+  			(function() {
+  				var points_layer     = new Layer('gpoints');
+  				points_layer.markers = (function() {
+  					var markers        = [],
+  						images         = {
+  							'Building'   : UTIL.get_google_image('building'),
+  							'ParkingLot' : UTIL.get_google_image('parking'),
+  							'Group'      : UTIL.get_google_image('group'),
+  							'Location'   : UTIL.get_google_image('location')
+  						},
+  						map_point_type = 'gpoint';
 
-					$.each(POINTS, function(index, point) {
-						var map_point = point[map_point_type],
-							marker    = null;
-						if(map_point != null && $.inArray(point.type, BASE_IGNORE_TYPES) == -1) {
-							marker = new google.maps.Marker({
-								position : new google.maps.LatLng(map_point[0], map_point[1]),
-								map      : MAP,
-								icon     : images[point.type],
-								location : index,
-								visible  : false
-							})
-							markers.push(marker);
-							google.maps.event.addListener(marker, 'click', function(event) {
-								UTIL.highlight_location(index);
-							});
-						}
-					});
-					return markers;
-				})();
-	 			return points_layer;
-			})()
-		);
+  					$.each(POINTS, function(index, point) {
+  						var map_point = point[map_point_type],
+  							marker    = null;
+  						if(map_point != null && $.inArray(point.type, BASE_IGNORE_TYPES) == -1) {
+  							marker = new google.maps.Marker({
+  								position : new google.maps.LatLng(map_point[0], map_point[1]),
+  								map      : MAP,
+  								icon     : images[point.type],
+  								location : index,
+  								visible  : false
+  							});
 
-		// Implementation details for the points layer
-		LAYER_MANAGER.register_layer(
-			(function() {
-				var points_layer     = new Layer('ipoints');
-				points_layer.markers = (function() {
-					var markers        = [],
-						images         = {
-							'Building'   : UTIL.get_google_image('yellow'),
-							'ParkingLot' : UTIL.get_google_image('yellow'),
-							'Group'      : UTIL.get_google_image('yellow2'),
-							'Location'   : UTIL.get_google_image('blue')
-						},
-						map_point_type = 'ipoint';
+  							markers.push(marker);
+  							google.maps.event.addListener(marker, 'click', function(event) {
+  								UTIL.highlight_location(index);
+  							});
+  						}
+  					});
+  					return markers;
+  				})();
+  	 			return points_layer;
+  			})()
+  		);
+    }
 
-					$.each(POINTS, function(index, point) {
-						var map_point = point[map_point_type],
-							marker    = null;
-						if(map_point != null && $.inArray(point.type, BASE_IGNORE_TYPES) == -1) {
-							marker = new google.maps.Marker({
-								position : new google.maps.LatLng(map_point[0], map_point[1]),
-								map      : MAP,
-								icon     : images[point.type],
-								location : index,
-								visible  : false
-							})
-							markers.push(marker);
-							google.maps.event.addListener(marker, 'click', function(event) {
-								UTIL.highlight_location(index);
-							});
-						}
-					});
-					return markers;
-				})();
-	 			return points_layer;
-			})()
-		);
+    if(isDesktopWidth) {
+  		// Implementation details for the points layer
+  		LAYER_MANAGER.register_layer(
+  			(function() {
+  				var points_layer     = new Layer('ipoints');
+  				points_layer.markers = (function() {
+  					var markers        = [],
+  						images         = {
+  							'Building'   : UTIL.get_google_image('building'),
+  							'ParkingLot' : UTIL.get_google_image('parking'),
+  							'Group'      : UTIL.get_google_image('group'),
+  							'Location'   : UTIL.get_google_image('blue')
+  						},
+  						map_point_type = 'ipoint';
+
+  					$.each(POINTS, function(index, point) {
+  						var map_point = point[map_point_type],
+  							marker    = null;
+  						if(map_point != null && $.inArray(point.type, BASE_IGNORE_TYPES) == -1) {
+  							marker = new google.maps.Marker({
+  								position : new google.maps.LatLng(map_point[0], map_point[1]),
+  								map      : MAP,
+  								icon     : images[point.type],
+  								location : index,
+  								visible  : false
+  							});
+  							markers.push(marker);
+  							google.maps.event.addListener(marker, 'click', function(event) {
+  								UTIL.highlight_location(index);
+  							});
+  						}
+  					});
+  					return markers;
+  				})();
+  	 			return points_layer;
+  			})()
+  		);
+    }
 
 
-		// Implementation details for the buildings layer
-		LAYER_MANAGER.register_layer(
-			(function() {
-				var buildings_layer   = new Layer('buildings');
-				buildings_layer.layer = new google.maps.KmlLayer(
-					BUILDINGS_KML_URL,
-					{
-						preserveViewport    :true,
-						suppressInfoWindows :true,
-						clickable           :false
-					}
-				);
-				return buildings_layer;
-			})()
-		);
+    if(isDesktopWidth) {
+  		// Implementation details for the buildings layer
+  		LAYER_MANAGER.register_layer(
+  			(function() {
+  				var buildings_layer   = new Layer('buildings');
+  				buildings_layer.layer = new google.maps.KmlLayer(
+  					BUILDINGS_KML_URL,
+  					{
+  						preserveViewport    :true,
+  						suppressInfoWindows :true,
+  						clickable           :false
+  					}
+  				);
+  				return buildings_layer;
+  			})()
+  		);
+    }
 
-		// Implementation details for the bikeracks layer
-		LAYER_MANAGER.register_layer(
-			(function() {
-				var bikeracks_layer  = new Layer('bikeracks');
-				bikeracks_layer.markers = (function() {
-					var markers = [];
-					$.ajax({
-						url     :BIKERACKS_URL,
-						dataType:'json',
-						async   :false,
-						success :
-							function(data, text_status, jq_xhr) {
-								if(typeof data.features != 'undefined') {
-									$.each(data.features, function(index, rack) {
-										if(rack.geometry && rack.geometry.coordinates) {
-											markers.push(
-												new google.maps.Marker({
-													clickable : false,
-													position  : new google.maps.LatLng(
-														rack.geometry.coordinates[0],
-														rack.geometry.coordinates[1]
-													),
-													map       : MAP,
-													visible   : false
-												})
-											);
-										}
-									});
-								}
-							}
-					});
-					return markers;
-				})();
-				return bikeracks_layer;
-			})()
-		);
+    if(isDesktopWidth) {
+  		// Implementation details for the bikeracks layer
+  		LAYER_MANAGER.register_layer(
+  			(function() {
+  				var bikeracks_layer  = new Layer('bikeracks');
+  				bikeracks_layer.markers = (function() {
+  					var markers = [],
+                icon   = {
+                    url: STATIC_URL + '/images/markers/bicycle.png',
+                    size: new google.maps.Size(25, 25)
+                };
+  					$.ajax({
+  						url     :BIKERACKS_URL,
+  						dataType:'json',
+  						async   :false,
+  						success :
+  							function(data, text_status, jq_xhr) {
+  								if(typeof data.features != 'undefined') {
+  									$.each(data.features, function(index, rack) {
+  										if(rack.geometry && rack.geometry.coordinates) {
+  											markers.push(
+  												new google.maps.Marker({
+  													clickable : false,
+  													position  : new google.maps.LatLng(
+  														rack.geometry.coordinates[0],
+  														rack.geometry.coordinates[1]
+  													),
+                            icon: icon,
+  													map       : MAP,
+  													visible   : false
+  												})
+  											);
+  										}
+  									});
+  								}
+  							}
+  					});
+  					return markers;
+  				})();
+  				return bikeracks_layer;
+  			})()
+  		);
+    }
 
-		// Implementation details for the emergency phones layer
-		LAYER_MANAGER.register_layer(
-			(function() {
-				var phones_layer = new Layer('emergency-phones');
-				phones_layer.markers = (function() {
-					var markers = [];
-					$.ajax({
-						url     :PHONES_URL,
-						dataType:'json',
-						async   :false,
-						success :
-							function(data, text_status, jq_xhr) {
-								var icon   = new google.maps.MarkerImage(
-										STATIC_URL + '/images/markers/marker_phone.png',
-										new google.maps.Size(20, 34)
-									),
-									shadow = new google.maps.MarkerImage(
-										STATIC_URL + '/images/markers/marker_phone.png',
-										new google.maps.Size(37,34),
-										new google.maps.Point(20, 0),
-										new google.maps.Point(10, 34)
-									);
+    if(isDesktopWidth) {
+  		// Implementation details for the emergency phones layer
+  		LAYER_MANAGER.register_layer(
+  			(function() {
+  				var phones_layer = new Layer('emergency-phones');
+  				phones_layer.markers = (function() {
+  					var markers = [];
+  					$.ajax({
+  						url     :PHONES_URL,
+  						dataType:'json',
+  						async   :false,
+  						success :
+  							function(data, text_status, jq_xhr) {
+  								var icon   = {
+  										url: STATIC_URL + '/images/markers/phone.png',
+  										size: new google.maps.Size(25, 25)
+  								};
 
-								if(typeof data.features != 'undefined') {
-									$.each(data.features, function(index, rack) {
-										if(rack.geometry && rack.geometry.coordinates) {
-											markers.push(
-												new google.maps.Marker({
-													clickable : false,
-													position  : new google.maps.LatLng(
-														rack.geometry.coordinates[0],
-														rack.geometry.coordinates[1]
-													),
-													map       : MAP,
-													visible   : false,
-													icon      : icon,
-													shadow    : shadow
-												})
-											);
-										}
-									});
-								}
-							}
-					});
-					return markers;
-				})();
-				return phones_layer;
-			})()
-		);
+  								if(typeof data.features != 'undefined') {
+  									$.each(data.features, function(index, rack) {
+  										if(rack.geometry && rack.geometry.coordinates) {
+  											markers.push(
+  												new google.maps.Marker({
+  													clickable : false,
+  													position  : new google.maps.LatLng(
+  														rack.geometry.coordinates[0],
+  														rack.geometry.coordinates[1]
+  													),
+  													map       : MAP,
+  													visible   : false,
+  													icon      : icon
+  												})
+  											);
+  										}
+  									});
+  								}
+  							}
+  					});
+  					return markers;
+  				})();
+  				return phones_layer;
+  			})()
+  		);
+    }
 
 		// Implementation detail for the parking layer
 		LAYER_MANAGER.register_layer(
@@ -403,12 +435,10 @@ var CampusMap = function(options) {
 						dataType : 'json',
 						async    : false,
 						success: function(data){
-							var icon   = new google.maps.MarkerImage(
-									STATIC_URL + 'images/markers/disabled.png',
-									new google.maps.Size(17, 17), //size
-									new google.maps.Point(0, 0),  //origin
-									new google.maps.Point(10, 8)   //anchor
-								);
+							var icon   = {
+                url: STATIC_URL + 'images/markers/handicap.png',
+                size: new google.maps.Size(25,25),
+              };
 							if(typeof data.handicap != 'undefined') {
 								$.each(data.handicap, function(index, spot) {
 									markers.push(
@@ -450,16 +480,10 @@ var CampusMap = function(options) {
 						},
 						existing_points = [],
 						adjustment      = 150000,
-						icon = new google.maps.MarkerImage(
-							STATIC_URL + 'images/markers/knife-fork.png',
-							new google.maps.Size(28, 28),  // dimensions
-							new google.maps.Point(0,0),  // origin
-							new google.maps.Point(16,20)), // anchor
-						shadow = new google.maps.MarkerImage(
-							STATIC_URL + 'images/markers/knife-fork-shadow.png',
-							new google.maps.Size(46, 22),
-							new google.maps.Point(0,0),
-							new google.maps.Point(10,13));;
+						icon = {
+							url: STATIC_URL + 'images/markers/food.png',
+							size: new google.maps.Size(25, 25)
+            };
 
 					$.ajax({
 						url      : DINING_URL,
@@ -500,12 +524,11 @@ var CampusMap = function(options) {
 										}
 									});
 									if(!adjusted) {
-										existing_points.push(new ExistingPoint(point[0],point[1]))
+										existing_points.push(new ExistingPoint(point[0],point[1]));
 									}
 									markers.push(
 										new google.maps.Marker({
 											icon     : icon,
-											shadow   : shadow,
 											position : new google.maps.LatLng(point[0], point[1]),
 											title    : feature.properties.name,
 											map      : MAP,
@@ -521,6 +544,8 @@ var CampusMap = function(options) {
 				return dining_layer;
 			})()
 		);
+
+    if(isDesktopWidth) {
 
         (function() {
             $.each(SHUTTLE_STOPS, function(index, stop) {
@@ -589,9 +614,9 @@ var CampusMap = function(options) {
                 // Append a new route label to menu
                 var domId = 'shuttle-' + route.shortname.replace(/ /g, '-');
                 var categoryDomId = route.category.replace(/ /g, '-').toLowerCase() + '-routes';
-                var cateogryDom = $('#' + categoryDomId);
+                var categoryDom = $('#' + categoryDomId);
                 var label = '<label><input type="checkbox" id="' + domId + '"> ' + route.shortname + '</label>';
-                cateogryDom.append(label);
+                categoryDom.append(label);
 
                 // Implementation detail for the shuttle route layer
                 LAYER_MANAGER.register_layer(
@@ -603,7 +628,7 @@ var CampusMap = function(options) {
                                     preserveViewport    : true,
                                     suppressInfoWindows : true
                                 }
-                        )
+                        );
                         shuttle_layer.markers = (function(routeId) {
                             var markers = [];
                             $.ajax({
@@ -668,6 +693,8 @@ var CampusMap = function(options) {
             });
         })();
 
+    } // End if desktop
+
 		(function() {
 			var activated_layer = false;
 			// Activated layers
@@ -689,10 +716,13 @@ var CampusMap = function(options) {
 					}
 				}
 			});
-			if(!activated_layer) {
-				// Display the google map points layer when the  map loads
-				options.illustrated ? (LAYER_MANAGER.get_layer('ipoints')).toggle() : (LAYER_MANAGER.get_layer('gpoints')).toggle();
-			}
+
+      if(isDesktopWidth) {
+  			if(!activated_layer) {
+  				// Display the google map points layer when the  map loads
+  				options.illustrated ? (LAYER_MANAGER.get_layer('ipoints')).toggle() : (LAYER_MANAGER.get_layer('gpoints')).toggle();
+  			}
+      }
 		})();
 
 
@@ -759,7 +789,7 @@ var CampusMap = function(options) {
 		// pass #search-form ul as an argument
 		$('#search > ul > li:not(.more)')
 			.live('click', function() {
-				var location_id = SEARCH.current_location_id();
+				var location_id = $(this).find('a').attr('data-pk');
 				if(location_id) {
 
 					// Change menu tab to a loading indicator
@@ -783,7 +813,7 @@ var CampusMap = function(options) {
 			.find('a').live('click', function(e) {e.preventDefault()});
 
 		$('body').bind('search-result-highlighted', function(event) {
-			var location_id = SEARCH.current_location_id();
+			var location_id = $("#search-results").find('.hover').find('a').attr('data-pk');
 			if(location_id) {
 				MENU.change_tabs({
 							label:'Location',
@@ -824,11 +854,11 @@ var CampusMap = function(options) {
 
                     // Add new GPS locations
                     $.each(data.locations, function(index, spot) {
-                        var icon = new google.maps.MarkerImage(
-                            STATIC_URL + '/images/markers/map-shuttle.png',
-                            new google.maps.Size(36, 36)
-                        );
-                        var gpsMarker = new google.maps.Marker({
+                        var icon = {
+                            url: STATIC_URL + '/images/markers/shuttle.png',
+                            size: new google.maps.Size(25, 25)
+                        },
+                        gpsMarker = new google.maps.Marker({
                             position : new google.maps.LatLng(
                                 spot.lat,
                                 spot.lon
@@ -867,21 +897,21 @@ var CampusMap = function(options) {
 
 	 	this.register = function(info) {
 	 		that.infos.push(info);
-	 	}
+	 	};
 
 	 	this.clear = function() {
 	 		$.each(that.infos, function(index, info) {
 	 			info.close();
 	 		});
 	 		that.infos = [];
-	 	}
+	 	};
 
 	 }
 
 	 function Info(position, name, options) {
 	 	var that         = this,
 	 		lat_lng      = new google.maps.LatLng(position[0], position[1]),
-	 		content      =  null
+	 		content      =  null,
 	 		test_content = null,
 	 		default_options  = {
 	 			link : null,
@@ -895,7 +925,7 @@ var CampusMap = function(options) {
 	 	if(options.link != null) {
 	 		name = '<a href="' + options.link + '">' + name + '</a>';
 	 	}
-	 	content = $('<div class="iBox">' + name + '<a class="iclose"></a></div>');
+	 	content = $('<div class="iBox"><a class="iclose">X</a>' + name + '</div>');
 
 	 	// Create a hidden test box to figure out the correct width
 	 	test_content = $('<div id="testBox" class="iBox">' + content + '</div>')[0];
@@ -907,7 +937,7 @@ var CampusMap = function(options) {
 	 		that.box.close();
 	 	});
 	 	content             = content[0];
-	 	content.style.width = test_content.offsetWidth + 'px';
+	 	// content.style.width = test_content.offsetWidth + 'px';
 
 	 	// Create the box and set it's position
 	 	this.box = new InfoBox({
@@ -929,7 +959,7 @@ var CampusMap = function(options) {
 
 	 	this.close = function() {
 	 		that.box.close();
-	 	}
+	 	};
 	 }
 
 	/*********************************
@@ -951,17 +981,17 @@ var CampusMap = function(options) {
 				}
 			});
 			return layer;
-		}
+		};
 
 		this.load_all_layers = function() {
 			$.each(that.layers, function(index, layer) {
 				layer.toggle();
 			});
-		}
+		};
 
 		this.register_layer = function(layer) {
 			that.layers.push(layer);
-		}
+		};
 	}
 
 	function Layer(name) {
@@ -989,7 +1019,7 @@ var CampusMap = function(options) {
 
 		this.toggle = function() {
 			that.active ? that.deactivate() : that.activate();
-		}
+		};
 
 		this.activate = function() {
 			if(that.active != true) {
@@ -1008,7 +1038,7 @@ var CampusMap = function(options) {
                     updateShuttleGpsData(that);
                 }
 			}
-		}
+		};
 
 		this.deactivate = function() {
 			if(that.active != false) {
@@ -1027,8 +1057,181 @@ var CampusMap = function(options) {
                     });
                 }
 			}
-		}
+		};
 	}
+
+
+  /*********************************
+   *
+   * Mobile Menu
+   *
+   *********************************/
+
+
+  function MobileMenu() {
+
+    var $mobileMenu = $('#mobile-menu'),
+        $shuttleMenu = $('#shuttle-menu'),
+        $menuItem = $('.menu-item'),
+        youAreHereMarker,
+        youAreHereInfowindow = new google.maps.InfoWindow({
+          content: '<div>You are here!</div>'
+        }),
+        $loadingTarget = $('.loading-target'),
+        locationTimoutId;
+
+    function showMobileMenu() {
+      $mobileMenu.addClass('slide-out');
+      $mobileMenu.height($( document ).height());
+    }
+
+    function closeMobileMenu() {
+      $mobileMenu.removeClass('slide-out');
+    }
+
+    function mobileMenuHandler() {
+      $('#mobile-menu-trigger').click(showMobileMenu);
+    }
+
+    function closeMobileMenuIconHandler() {
+      $mobileMenu.find('.close-icon').click(closeMobileMenu);
+    }
+
+    function closeMobileMenuHandler() {
+      $(document).click(function(e) {
+        var $target = $(e.target);
+
+         // Hide the mobile menu when anything else is clicked
+         if(!$target.closest('#mobile-menu').length && !$target.closest('#mobile-menu-trigger').length) {
+            if($mobileMenu.width() > 200) {
+              closeMobileMenu();
+            }
+         }
+      });
+    }
+
+    function getLocationMarker(position) {
+      clearTimeout(locationTimoutId);
+      var markerLatLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude),
+          icon   = {
+              url: STATIC_URL + '/images/markers/location.png',
+              size: new google.maps.Size(25, 25)
+          };
+
+      if(youAreHereMarker) {
+        youAreHereMarker.setPosition( markerLatLng );
+        MAP.panTo( markerLatLng );
+        youAreHereInfowindow.open(MAP,youAreHereMarker);
+      } else {
+        youAreHereMarker = new google.maps.Marker({
+          position: markerLatLng,
+          map: MAP,
+          icon: icon,
+          title: "You are here!"
+        });
+
+        MAP.panTo(markerLatLng);
+        youAreHereInfowindow.open(MAP,youAreHereMarker);
+
+        google.maps.event.addListener(youAreHereMarker, 'click', function(event) {
+          youAreHereInfowindow.open(MAP,youAreHereMarker);
+        });
+      }
+      $loadingTarget.closest('.menu-highlight').removeClass('menu-highlight');
+      $loadingTarget.toggleClass('fa-spinner fa-pulse fa-compass');
+      closeMobileMenu();
+    }
+
+    function showError(error) {
+      clearTimeout(locationTimoutId);
+      $loadingTarget.closest('.menu-highlight').removeClass('menu-highlight');
+      $loadingTarget.toggleClass('fa-spinner fa-pulse fa-compass');
+
+      switch(error.code) {
+        case error.PERMISSION_DENIED:
+            log("User denied the request for Geolocation.");
+            break;
+        case error.POSITION_UNAVAILABLE:
+            alert("Location information is unavailable. Verify that GPS is enabled.");
+            break;
+        case error.TIMEOUT:
+            alert("The request to get location timed out.");
+            break;
+        case error.UNKNOWN_ERROR:
+            alert("Unable to get location.");
+            break;
+      }
+    }
+
+    function disabledGeoHandler() {
+      $loadingTarget.closest('.menu-highlight').removeClass('menu-highlight');
+      $loadingTarget.toggleClass('fa-spinner fa-pulse fa-compass');
+      alert("Location information is unavailable. Verify that GPS is enabled.");
+    }
+
+    function getLocation() {
+      if (navigator.geolocation) {
+        locationTimoutId = setTimeout(disabledGeoHandler, 5000);
+        navigator.geolocation.getCurrentPosition(getLocationMarker, showError);
+      } else {
+        alert("Geolocation is not supported by this browser.");
+        closeMobileMenu();
+      }
+    }
+
+    function toggleMenu($target) {
+      var $menu = $target.closest('li'),
+          $subMenu = $menu.find('ul').eq(0);
+
+      if($target.is('label')) {
+        $menu.toggleClass('menu-highlight');
+      }
+
+      if(!$menu.attr('data-menu-highlight') || ($menu.attr('data-menu-highlight') && $menu.attr('data-menu-highlight') === true)) {
+        $menu.toggleClass('menu-highlight');
+      }
+
+      if($subMenu.length) {
+        $subMenu.slideToggle(function() {
+          $menu.find('.toggle-icon').eq(0).toggleClass('fa-chevron-down fa-chevron-up');
+        });
+      }
+    }
+
+    function menuItem(e) {
+      var $target = $(e.target),
+          dataMenu = $target.closest('h4').attr('data-menu');
+      toggleMenu($target);
+
+      switch (dataMenu) {
+        case 'location':
+          $loadingTarget.toggleClass('fa-spinner fa-pulse fa-compass');
+          getLocation();
+          break;
+        case 'parking':
+          LAYER_MANAGER.get_layer('parking').toggle();
+          break;
+        case 'food':
+          LAYER_MANAGER.get_layer('food').toggle();
+          closeMobileMenu();
+          break;
+      }
+
+    }
+
+    function menuItemHandler() {
+      $menuItem.click(menuItem);
+    }
+
+    function initMobileMenu() {
+      mobileMenuHandler();
+      closeMobileMenuHandler();
+      closeMobileMenuIconHandler();
+      menuItemHandler();
+    }
+
+    initMobileMenu();
+  }
 
 	/*********************************
 	 *
@@ -1095,17 +1298,17 @@ var CampusMap = function(options) {
 						});
 					screen.show();
 				}
-			})
+			});
 
 		tab_one.click(function() {
 			that.change_tabs();
-		})
+		});
 		tab_two.click(function() {
 			that.change_tabs({
 				label:$(this).text(),
 				html :stage.html()
 			})
-		})
+		});
 
 		// There are two button in the upper right hand corner of the menu:
 		// email and print. They are updated based on various actions
@@ -1118,7 +1321,7 @@ var CampusMap = function(options) {
 				'body'    : escape("UCF Campus Map\nhttp://map.ucf.edu/"),
 				'print'   : BASE_URL + '/print/?',
 				'toggle_illustrated' : false
-			}
+			};
 
 			// setting
 			var s = $.extend({}, defaults, options);
@@ -1176,7 +1379,7 @@ var CampusMap = function(options) {
 
 				if(settings.html) {
                     $('#menu-stage').empty();
-                    if (settings.html instanceof jQuery) {// tab two content
+                    if (settings.html instanceof jQuery) { // tab two content
                         settings.html.appendTo('#menu-stage');
                     } else {
                         $('#menu-stage').html(settings.html);
@@ -1189,7 +1392,7 @@ var CampusMap = function(options) {
 			}
 		}
 
-		// Add the menu to the map in the right uppper
+		// Add the menu to the map in the upper right
 		MAP.controls[google.maps.ControlPosition.RIGHT_TOP].push(container[0]);
 	}
 
@@ -1232,6 +1435,7 @@ var CampusMap = function(options) {
 			form   = document.createElement('form');
 			input  = document.createElement('input');
 			anchor = document.createElement('a');
+      icon = document.createElement('i');
 			ul     = document.createElement('ul');
 
 			div.id        = 'search';
@@ -1244,10 +1448,14 @@ var CampusMap = function(options) {
 			input.type         = 'text';
 			input.name         = 'q';
 			input.autocomplete = 'off';
+      input.placeholder = 'Search Map';
+
+      icon.className = 'fa fa-search fa-2x';
 
 			anchor.id = 'search-submit';
-			anchor.onclick = '$(\'#search-form\').submit()';
-			anchor.appendChild(document.createTextNode('search'));
+      anchor.title = 'search icon';
+      anchor.onclick = submitSearchForm;
+			anchor.appendChild(icon);
 
 			ul.id = 'search-results';
 			ul.style.display = 'none';
@@ -1255,7 +1463,7 @@ var CampusMap = function(options) {
 			form.appendChild(input);
 			form.appendChild(anchor);
 
-			div.appendChild(form)
+			div.appendChild(form);
 			div.appendChild(ul);
 
 			return div;
@@ -1265,24 +1473,17 @@ var CampusMap = function(options) {
 		input   = element.find('input');
 		results = element.find(' > ul');
 
-		// Attach hover events
-		// For some realy i can't get this to work with the `results` object.
-		// So for now, reference directly
-		$('#search > ul > li:not(.more)')
-				.live('mouseover', function() {
-						$(this).addClass('hover');
-				})
-				.live('mouseleave', function() {
-						$(this).removeClass('hover');
-				})
+    function submitSearchForm () {
+      $('#search-form').submit();
+    }
 
-		// Hide the search results when anything else is clicked
-		$(document).click(function(e) {
-			var target = $(e.target);
-			if(target != results || !target.inArray(results.find('*'))) {
-				results.hide();
-			}
-		})
+    // Hide the search results when anything else is clicked
+    $(document).click(function(e) {
+      var $target = $(e.target);
+      if($target.closest('#search').length === 0) {
+        results.hide();
+      }
+    });
 
 		// Attach the typing events
 		input
@@ -1330,7 +1531,7 @@ var CampusMap = function(options) {
 					} else {
 						next = results.find('li:first');
 					}
-					next.addClass('hover')
+					next.addClass('hover');
 					$('body').trigger('search-result-highlighted', [next]);
 				} else if(keycode === KEYCODES.UP) { // Scroll up results
 					var current = results.find('.hover'),
@@ -1339,9 +1540,9 @@ var CampusMap = function(options) {
 						current.removeClass('hover');
 						next = current.prev();
 					} else {
-						next = results.find('li:last')
+						next = results.find('li:last');
 					}
-					next.addClass('hover')
+					next.addClass('hover');
 					$('body').trigger('search-result-highlighted', [next]);
 				} else if(keycode === KEYCODES.ESCAPE) { // Empty and hide results
 					abort_ajax();
@@ -1351,6 +1552,8 @@ var CampusMap = function(options) {
 						results.hide();
 					} else {
 						results.empty().show();
+
+            results.height(SEARCH_RESULTS_SIZE);
 
 						// Wait <timeout> duration between keypresses before doing search
 						clearTimeout(timer);
@@ -1363,7 +1566,7 @@ var CampusMap = function(options) {
 								function(data, text_status, jq_xhr) {
 									results.empty();
 
-									if(typeof data.results != 'undefined') {
+									if(data && data.results && typeof data.results != 'undefined') {
 										var locs = data.results.locations,
 											orgs = data.results.organizations;
 
@@ -1425,7 +1628,7 @@ var CampusMap = function(options) {
 												results.append('<li>' + loc.link + org_html + '</ul>');
 
 												if(org_loc_count > 11) {
-													results.append('<li class="more"><a href="' + data.response_page_url + '">More Results &hellip;</a></li>');
+													results.append('<li class="more"><a href="' + data.results_page_url + '">More Results &hellip;</a></li>');
 													return false;
 												}
 												org_loc_count++;
@@ -1441,15 +1644,6 @@ var CampusMap = function(options) {
 
 		function abort_ajax() {
 			if(ajax != null) ajax.abort();
-		}
-
-		this.current_location_id = function() {
-			var li          = results.find('li.hover:not(.more)'),
-				location_id = null;
-			if(li.length && li.find('a').length && typeof li.find('a').attr('data-pk') != 'undefined') {
-				location_id = li.find('a').attr('data-pk');
-			}
-			return location_id;
 		}
 
 		this.hide_results = function() {
@@ -1518,11 +1712,11 @@ var CampusMap = function(options) {
 
 		// Returns URL of google icon based on specified color
 		this.get_google_image = function(color) {
-			return new google.maps.MarkerImage(
-				(STATIC_URL + 'images/markers/' + color + '.png'),
-				new google.maps.Size(19, 19),
-				new google.maps.Point(0,0),
-				new google.maps.Point(10,10));
+      var icon = {
+        url: STATIC_URL + 'images/markers/' + color + '.png',
+        size: new google.maps.Size(20, 20)
+      };
+			return icon;
 		}
 
 		// Creates an info box for a location and also executes arbitary function
@@ -1628,6 +1822,7 @@ var CampusMap = function(options) {
 					} else {
 						// Create the info box(es)
 						if(typeof data[point_type] != 'undefined' && data[point_type] != null) {
+
 							INFO_MANAGER.register(
 								new Info(
 									data[point_type],
@@ -1635,6 +1830,7 @@ var CampusMap = function(options) {
 									{link: data.profile_link}
 								)
 							);
+
 							if(!options.sublocation) {
 								CURRENT_LOCATION = location_id;
 								if(MENU != null) {
@@ -1664,25 +1860,26 @@ var CampusMap = function(options) {
 			return Math.acos(Math.sin(a_lat)*Math.sin(b_lat) + Math.cos(a_lat)*Math.cos(b_lat) * Math.cos(b_lng-a_lng)) * R;
 		}
 
-		// Resize teh map canvase to be 100% height and width
+		// Resize the map canvas to be 100% height and width
 		this.resize_canvas = function() {
-			var height = document.documentElement.clientHeight,
-				blackbar = document.getElementById('UCFHBHeader') || document.getElementById('ucfhb');
+      var viewPort = Number($(window).height()),
+          ucfHeader = 100,
+          header = Number($('#map header').height()),
+          footer = Number($('footer').height()),
+          headerFooter = ucfHeader + header + footer,
+          height = viewPort - headerFooter,
+          menuHeight = height - ($('#search').height() + 90);
 
-			height -= blackbar ? blackbar.clientHeight : 0;
-			height -= $('#map header')[0].clientHeight;
-			height -= $('footer')[0].clientHeight;
-			height -= 2 + 17; // borders + margin
+			$('#map-canvas').height(height).fadeIn();
 
-			var canvas   = document.getElementById('map-canvas');
-			canvas.style.height = height + "px";
-
-			// iphone, hide url bar
-			if($.os.name === "iphone"){
-				height += 58;
-				document.getElementById('map-canvas').style.height = height + "px";
-				window.scrollTo(0, 1);
-			}
+      // set search menu height
+      if(SEARCH_RESULTS_SIZE === 0) {
+        if(menuHeight < 500) {
+          SEARCH_RESULTS_SIZE = menuHeight;
+        } else {
+          SEARCH_RESULTS_SIZE = 500;
+        }
+      }
 		}
 	}
 
@@ -1693,6 +1890,38 @@ var CampusMap = function(options) {
 		}
 	}
 }
+
+var getZoom = function() {
+	$width = $(window).width();
+
+	if ($width < 295) {
+		return 14;
+	} else if ( $width > 296 && $width < 465 ) {
+		return 15;
+	} else if ( $width > 466 && $width < 768 ) {
+		return 15;
+	} else if ( $width > 769 && $width < 1600 ) {
+		return 16;
+	} else {
+		return 17;
+	}
+}
+
+// Google Analytics Click Tracking
+
+function trackClick(e) {
+  var $target = $(e.target).closest('.ga-tracking'),
+      category = ($target.attr('data-category')) ? $target.attr('data-category') : '',
+      action = ($target.attr('data-action')) ? $target.attr('data-action') : '',
+      label = ($target.attr('data-label')) ? $target.attr('data-label') : '';
+  _gaq.push(['_trackEvent', category, action, label]);
+}
+
+function gaTracking () {
+  $('.ga-tracking').live('mousedown', trackClick);
+}
+
+$(gaTracking);
 
 /*--------------------------------------------------------------------
  * JQuery Plugin: "EqualHeights" & "EqualWidths"
@@ -1719,8 +1948,6 @@ $.fn.equalHeights = function(px) {
 		$(this).children().each(function(i){
 			if ($(this).height() > currentTallest) { currentTallest = $(this).height(); }
 		});
-		// for ie6, set height since min-height isn't supported
-		if ($.browser.msie && $.browser.version === 6.0) { $(this).children().css({'height': currentTallest}); }
 		$(this).children().css({'min-height': currentTallest});
 	});
 	return this;
