@@ -20,3 +20,27 @@ Once you have an image at resolution 10240x6144, you can use the attached photos
 not used:
 `17          1152        80x48                   20480 x 12288`
 
+-- Post Script Actions --
+The map applications requires a particular directory structure for the tile images. Use the following structure:
+
+```
+.
++-- white.png
++-- zoom-12
+|	+-- 12-0-0.jpg
+|	+-- 12-0-1.jpg
+|	+-- ...
++-- zoom-13
+|	+-- 13-0-0.jpg
+|	+-- 13-0-1.jpg
+|	+-- ...
++--	...
+```
+
+Unfortunately, the script will output the files with the format `[0-5]_x_x.jpg` with the 0 image being a full size image (which we do not use). To quickly rename the files you can use the `rename` utility (available for install with apt, yum and brew). Once installed use the following command to mass rename the files:
+
+`rename 's/^1/12/' 1-*.jpg`
+
+`rename 's/^2/13/' 2-*.jpg` and so on.
+
+Then use a `mv` command to get the files in the appropriate directories: `mv 12-*.jpg zoom-12/`, `mv 13-*.jpg zoom-13/` and so on.
