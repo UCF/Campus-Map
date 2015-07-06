@@ -147,7 +147,7 @@ function cutTiles(options, tickCallback) {
 	var bgColorHex = new SolidColor();
 	bgColorHex.rgb.hexValue = options.bgColor;
 	app.backgroundColor = bgColorHex;
-	curDoc.resizeCanvas(options.tileSize * Math.pow(2, maxZoomLevel), options.tileSize * Math.pow(2, maxZoomLevel), AnchorPosition.MIDDLECENTER);
+	curDoc.resizeCanvas(options.tileSize * Math.pow(2, maxZoomLevel), options.tileSize * Math.pow(2, maxZoomLevel), AnchorPosition.TOPLEFT);
 
 	// Store current zoom level
 	var zoomLevel = maxZoomLevel;
