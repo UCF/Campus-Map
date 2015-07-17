@@ -1,7 +1,117 @@
 {
 "CodeKitInfo": "This is a CodeKit 2.x project configuration file. It is designed to sync project settings across multiple machines. MODIFYING THE CONTENTS OF THIS FILE IS A POOR LIFE DECISION. If you do so, you will likely cause CodeKit to crash. This file is not useful unless accompanied by the project that created it in CodeKit 2. This file is not backwards-compatible with CodeKit 1.x. For more information, see: http:\/\/incident57.com\/codekit",
-"creatorBuild": "18493",
+"creatorBuild": "18902",
 "files": {
+	"\/apps\/campus\/fixtures\/__mapobjects.json": {
+		"fileType": 524288,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/apps\/campus\/fixtures\/__mapobjects.json",
+		"orderOutput": 0,
+		"outputAbbreviatedPath": "\/apps\/campus\/fixtures\/__mapobjects-min.json",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1
+		},
+	"\/apps\/campus\/fixtures\/bikeracks.json": {
+		"fileType": 524288,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/apps\/campus\/fixtures\/bikeracks.json",
+		"orderOutput": 0,
+		"outputAbbreviatedPath": "\/apps\/campus\/fixtures\/bikeracks-min.json",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1
+		},
+	"\/apps\/campus\/fixtures\/buildings.json": {
+		"fileType": 524288,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/apps\/campus\/fixtures\/buildings.json",
+		"orderOutput": 0,
+		"outputAbbreviatedPath": "\/apps\/campus\/fixtures\/buildings-min.json",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1
+		},
+	"\/apps\/campus\/fixtures\/campuses.json": {
+		"fileType": 524288,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/apps\/campus\/fixtures\/campuses.json",
+		"orderOutput": 0,
+		"outputAbbreviatedPath": "\/apps\/campus\/fixtures\/campuses-min.json",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1
+		},
+	"\/apps\/campus\/fixtures\/disabledparking.json": {
+		"fileType": 524288,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/apps\/campus\/fixtures\/disabledparking.json",
+		"orderOutput": 0,
+		"outputAbbreviatedPath": "\/apps\/campus\/fixtures\/disabledparking-min.json",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1
+		},
+	"\/apps\/campus\/fixtures\/groups.json": {
+		"fileType": 524288,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/apps\/campus\/fixtures\/groups.json",
+		"orderOutput": 0,
+		"outputAbbreviatedPath": "\/apps\/campus\/fixtures\/groups-min.json",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1
+		},
+	"\/apps\/campus\/fixtures\/locations.json": {
+		"fileType": 524288,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/apps\/campus\/fixtures\/locations.json",
+		"orderOutput": 0,
+		"outputAbbreviatedPath": "\/apps\/campus\/fixtures\/locations-min.json",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1
+		},
+	"\/apps\/campus\/fixtures\/parkinglots.json": {
+		"fileType": 524288,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/apps\/campus\/fixtures\/parkinglots.json",
+		"orderOutput": 0,
+		"outputAbbreviatedPath": "\/apps\/campus\/fixtures\/parkinglots-min.json",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1
+		},
+	"\/apps\/campus\/fixtures\/phones.json": {
+		"fileType": 524288,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/apps\/campus\/fixtures\/phones.json",
+		"orderOutput": 0,
+		"outputAbbreviatedPath": "\/apps\/campus\/fixtures\/phones-min.json",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1
+		},
+	"\/apps\/campus\/fixtures\/sidewalks.json": {
+		"fileType": 524288,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/apps\/campus\/fixtures\/sidewalks.json",
+		"orderOutput": 0,
+		"outputAbbreviatedPath": "\/apps\/campus\/fixtures\/sidewalks-min.json",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1
+		},
 	"\/apps\/tinymce\/templates\/tinymce\/filebrowser.js": {
 		"fileType": 64,
 		"ignore": 0,
@@ -32,6 +142,105 @@
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 0
+		},
+	"\/data\/bike racks\/bike_racks_export.json": {
+		"fileType": 524288,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/data\/bike racks\/bike_racks_export.json",
+		"orderOutput": 0,
+		"outputAbbreviatedPath": "\/data\/bike racks\/bike_racks_export-min.json",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1
+		},
+	"\/data\/bluelight phones\/emergency_phones_export.json": {
+		"fileType": 524288,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/data\/bluelight phones\/emergency_phones_export.json",
+		"orderOutput": 0,
+		"outputAbbreviatedPath": "\/data\/bluelight phones\/emergency_phones_export-min.json",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1
+		},
+	"\/data\/buildings\/buildings_export.json": {
+		"fileType": 524288,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/data\/buildings\/buildings_export.json",
+		"orderOutput": 0,
+		"outputAbbreviatedPath": "\/data\/buildings\/buildings_export-min.json",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1
+		},
+	"\/data\/buildings\/old_map_dump.json": {
+		"fileType": 524288,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/data\/buildings\/old_map_dump.json",
+		"orderOutput": 0,
+		"outputAbbreviatedPath": "\/data\/buildings\/old_map_dump-min.json",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1
+		},
+	"\/data\/export-import\/ArcGIS Export Comparison\/new_shp_export.json": {
+		"fileType": 524288,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/data\/export-import\/ArcGIS Export Comparison\/new_shp_export.json",
+		"orderOutput": 0,
+		"outputAbbreviatedPath": "\/data\/export-import\/ArcGIS Export Comparison\/new_shp_export-min.json",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1
+		},
+	"\/data\/export-import\/ArcGIS Export Comparison\/old_shp_export.json": {
+		"fileType": 524288,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/data\/export-import\/ArcGIS Export Comparison\/old_shp_export.json",
+		"orderOutput": 0,
+		"outputAbbreviatedPath": "\/data\/export-import\/ArcGIS Export Comparison\/old_shp_export-min.json",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1
+		},
+	"\/data\/export-import\/ArcGIS Export Comparison\/rewrite_new_export.json": {
+		"fileType": 524288,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/data\/export-import\/ArcGIS Export Comparison\/rewrite_new_export.json",
+		"orderOutput": 0,
+		"outputAbbreviatedPath": "\/data\/export-import\/ArcGIS Export Comparison\/rewrite_new_export-min.json",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1
+		},
+	"\/data\/export-import\/ArcGIS Export Comparison\/rewrite_old_export.json": {
+		"fileType": 524288,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/data\/export-import\/ArcGIS Export Comparison\/rewrite_old_export.json",
+		"orderOutput": 0,
+		"outputAbbreviatedPath": "\/data\/export-import\/ArcGIS Export Comparison\/rewrite_old_export-min.json",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1
+		},
+	"\/data\/export-import\/Import ArcGIS Updates\/buildings_shp_export.json": {
+		"fileType": 524288,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/data\/export-import\/Import ArcGIS Updates\/buildings_shp_export.json",
+		"orderOutput": 0,
+		"outputAbbreviatedPath": "\/data\/export-import\/Import ArcGIS Updates\/buildings_shp_export-min.json",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1
 		},
 	"\/data\/illustrated map\/map-tiles\/white.png": {
 		"fileType": 32768,
@@ -2860,6 +3069,28 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
+	"\/data\/parking lots\/parking_lots_export.json": {
+		"fileType": 524288,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/data\/parking lots\/parking_lots_export.json",
+		"orderOutput": 0,
+		"outputAbbreviatedPath": "\/data\/parking lots\/parking_lots_export-min.json",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1
+		},
+	"\/data\/sidewalks\/sidewalks_export.json": {
+		"fileType": 524288,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/data\/sidewalks\/sidewalks_export.json",
+		"orderOutput": 0,
+		"outputAbbreviatedPath": "\/data\/sidewalks\/sidewalks_export-min.json",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1
+		},
 	"\/static_files\/-\/blueprint-0.9\/ie.css": {
 		"fileType": 16,
 		"ignore": 0,
@@ -4006,6 +4237,17 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
+	"\/static_files\/images\/markers\/bicycle.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 2106,
+		"inputAbbreviatedPath": "\/static_files\/images\/markers\/bicycle.png",
+		"outputAbbreviatedPath": "\/static_files\/images\/markers\/bicycle.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/static_files\/images\/markers\/blue.png": {
 		"fileType": 32768,
 		"ignore": 0,
@@ -4116,6 +4358,17 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
+	"\/static_files\/images\/markers\/location.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 1770,
+		"inputAbbreviatedPath": "\/static_files\/images\/markers\/location.png",
+		"outputAbbreviatedPath": "\/static_files\/images\/markers\/location.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/static_files\/images\/markers\/map-shuttle.png": {
 		"fileType": 32768,
 		"ignore": 0,
@@ -4167,6 +4420,17 @@
 		"initialSize": 1863,
 		"inputAbbreviatedPath": "\/static_files\/images\/markers\/parking.png",
 		"outputAbbreviatedPath": "\/static_files\/images\/markers\/parking.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/static_files\/images\/markers\/phone.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 1755,
+		"inputAbbreviatedPath": "\/static_files\/images\/markers\/phone.png",
+		"outputAbbreviatedPath": "\/static_files\/images\/markers\/phone.png",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
@@ -4287,6 +4551,17 @@
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/static_files\/js\/map.js",
 		"outputAbbreviatedPath": "\/static_files\/js\/map.min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 0
+		},
+	"\/static_files\/js\/map.min.js": {
+		"fileType": 64,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/static_files\/js\/map.min.js",
+		"outputAbbreviatedPath": "\/static_files\/js\/map.min.min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
@@ -6725,7 +7000,7 @@
 	},
 "hooks": [
 	],
-"lastSavedByUser": "RJ Bruneel",
+"lastSavedByUser": "James Barnes",
 "manualImportLinks": {
 	},
 "projectAttributes": {
@@ -6996,6 +7271,10 @@
 			"active": 0,
 			"flagValue": -1
 			},
+		"futurehostile": {
+			"active": 0,
+			"flagValue": -1
+			},
 		"globalstrict": {
 			"active": 0,
 			"flagValue": -1
@@ -7082,6 +7361,10 @@
 			},
 		"noarg": {
 			"active": 1,
+			"flagValue": -1
+			},
+		"nocomma": {
+			"active": 0,
 			"flagValue": -1
 			},
 		"node": {
@@ -7182,6 +7465,10 @@
 			},
 		"unused": {
 			"active": 1,
+			"flagValue": -1
+			},
+		"varstmt": {
+			"active": 0,
 			"flagValue": -1
 			},
 		"withstmt": {
@@ -7307,6 +7594,14 @@
 			"flagValue": -1
 			}
 		},
+	"jsonAutoOutputPathEnabled": 0,
+	"jsonAutoOutputPathFilenamePattern": "*-min.json",
+	"jsonAutoOutputPathRelativePath": "",
+	"jsonAutoOutputPathReplace1": "",
+	"jsonAutoOutputPathReplace2": "",
+	"jsonAutoOutputPathStyle": 0,
+	"jsonOrderOutput": 0,
+	"jsonOutputStyle": 1,
 	"kitAutoOutputPathEnabled": 1,
 	"kitAutoOutputPathFilenamePattern": "*.html",
 	"kitAutoOutputPathRelativePath": "",
@@ -7334,9 +7629,18 @@
 	"markdownAutoOutputPathReplace1": "",
 	"markdownAutoOutputPathReplace2": "",
 	"markdownAutoOutputPathStyle": 0,
+	"markdownCriticStyle": 0,
 	"markdownEnableFootnotes": 0,
-	"markdownEnableSmartyPants": 1,
-	"markdownExpandTabs": 1,
+	"markdownEnableLabels": 1,
+	"markdownEnableSmartQuotes": 1,
+	"markdownEscapeLineBreaks": 0,
+	"markdownMaskEmailAddresses": 1,
+	"markdownOutputFormat": 0,
+	"markdownOutputStyle": 0,
+	"markdownParseMetadata": 1,
+	"markdownProcessHTML": 0,
+	"markdownRandomFootnoteNumbers": 0,
+	"markdownUseCompatibilityMode": 0,
 	"reloadFileURLs": 0,
 	"sassAutoOutputPathEnabled": 1,
 	"sassAutoOutputPathFilenamePattern": "*.css",
@@ -7392,6 +7696,10 @@
 	"uglifyDefinesString": "",
 	"uglifyFlags2": {
 		"ascii-only": {
+			"active": 0,
+			"flagValue": -1
+			},
+		"bare-returns": {
 			"active": 0,
 			"flagValue": -1
 			},
@@ -7472,6 +7780,10 @@
 			"flagValue": -1
 			},
 		"keep_fargs": {
+			"active": 0,
+			"flagValue": -1
+			},
+		"keep_fnames": {
 			"active": 0,
 			"flagValue": -1
 			},
