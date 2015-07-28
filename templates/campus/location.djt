@@ -118,12 +118,8 @@
 
 		{% if location.sketchup %}
 		<div id="sketchup">
-			{% comment %}
-			<h3 class="light"><a href="http://sketchup.google.com/3dwarehouse/details?mid={{ location.sketchup }}">3D Model</a></h3>
-			<p><a href="http://sketchup.google.com/3dwarehouse/details?mid={{ location.sketchup }}"><img src="http://sketchup.google.com/3dwarehouse/download?mid={{ location.sketchup }}&amp;rtyp=lt&amp;ctyp=other" alt="{{ location.name }}"></a></p>
-			{% endcomment %}
 			<div id="model">
-				<iframe scrolling="no" src="http://sketchup.google.com/3dwarehouse/mini?etyp=sw&amp;tb=auto&amp;width=430&amp;height=300&amp;logo=false&amp;mid={{ location.sketchup }}"></iframe>
+				<iframe scrolling="no" src="https://3dwarehouse.sketchup.com/embed.html?width=430&amp;height=300&amp;logo=false&amp;mid={{ location.sketchup }}"></iframe>
 			</div>
 		</div>
 		{% endif %}
