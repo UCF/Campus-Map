@@ -119,7 +119,7 @@
 		{% if location.sketchup %}
 		<div id="sketchup">
 			<div id="model">
-				<iframe scrolling="no" src="https://3dwarehouse.sketchup.com/embed.html?width=430&amp;height=300&amp;logo=false&amp;mid={{ location.sketchup }}"></iframe>
+				<iframe scrolling="no" src="https://3dwarehouse.sketchup.com/embed.html?width=430&amp;height=300&amp;mid={{ location.sketchup }}"></iframe>
 			</div>
 		</div>
 		{% endif %}
