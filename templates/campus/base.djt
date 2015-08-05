@@ -158,7 +158,6 @@
 					"sidewalks_kml" : "{{ sidewalks_kml }}",
 					"bikeracks"     : "{% url 'bikeracks' %}.json",
 					"phones"        : "{% url 'emergency_phones' %}.json",
-					"stations"      : "{% url 'electric_charging_stations' %}.json",
 					"base_url"      : "{{ base_url }}"
 				},
 				"base_ignore_types"   : {{ base_ignore_types|safe }},
