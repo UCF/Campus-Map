@@ -497,6 +497,10 @@ class EmergencyPhone(MapObj):
     pass
 
 
+class ElectricChargingStation(MapObj):
+    pass
+
+
 class DiningLocation(MapObj):
 
     # Group definition that all DiningLocation objects should
