@@ -132,7 +132,7 @@ class ElectricChargingStationAdminForm(MapObjForm):
         model = campus.models.ElectricChargingStation
 
 class ElectricChargingStationAdmin(admin.ModelAdmin):
-    form = ElectricChargingStationAdminForm
+    form = DisabledParkingAdminForm
 admin.site.register(campus.models.ElectricChargingStation, ElectricChargingStationAdmin)
 
 

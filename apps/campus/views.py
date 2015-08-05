@@ -480,7 +480,7 @@ def electric_charging_stations(request):
         for e in ecs:
             text += "\n%*d: %s" % (2, e.id, e.googlemap_point)
         response = HttpResponse(text)
-        response['Content-type'] = 'text/plain; charset=utf-8'
+        response['Content-type'] = 'text/plain; charset=uft-8'
         return response
 
     return home(request, electric_charging_stations=True, ev_goe=obj)
