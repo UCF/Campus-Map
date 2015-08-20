@@ -131,7 +131,7 @@
 		'<script src="{{ STATIC_URL }}-/jquery-ui-1.8.4/js/jquery-ui-1.8.4.custom.min.js"><\/script>')</script>
 	<script src="{{ STATIC_URL }}-/jquery.plugins/browser.js"></script>
 	<script src="{{ STATIC_URL }}-/jquery.plugins/cookie.js"></script>
-	<script type="text/javascript" src="//universityheader.ucf.edu/bar/js/university-header.js"></script>
+	<script type="text/javascript" id="ucfhb-script" src="//universityheader.ucf.edu/bar/js/university-header.js?use-1200-breakpoint=1"></script>
 
 	{% block js %}{% endblock %}
 
