@@ -851,8 +851,12 @@ img[src*="gstatic.com/"], img[src*="googleapis.com/"] {
 
 #mobile-menu-trigger span {
   font-size: 18px;
-}
+}  
 
+#mobile-menu-trigger i {
+    font-size: 1.5em;
+}
+  
 #mobile-menu ul {
   margin: 0;
   padding: 0;
