@@ -11,6 +11,8 @@ if '/usr/lib64/python2.6/site-packages' in sys.path:
 if '/usr/lib/python2.6/site-packages' in sys.path:
     sys.path.remove('/usr/lib/python2.6/site-packages')
 
+import newrelic.agent
+newrelic.agent.initialize('/var/www/apps/unify-events/src/newrelic.ini')
 
 def main(project, path_to_parent, settings="settings"):
     settings_module = '.'.join([project, settings])
