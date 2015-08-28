@@ -171,7 +171,7 @@ var CampusMap = function(options) {
 		MAP.setCenter(options.center);
 		if(type == 'illustrated') {
 			gpoints.deactivate();
-			ipoints.activate();ds
+			ipoints.activate();
 		} else {
 			ipoints.deactivate();
 			gpoints.activate();
@@ -619,7 +619,6 @@ var CampusMap = function(options) {
                 categoryDom.append(label);
 
                 if (SHUTTLE_STOPS.length > 0) {
-                	console.log("Entering shuttle stops/routes logic.");
 	                // Implementation detail for the shuttle route layer
 	                LAYER_MANAGER.register_layer(
 	                    (function() {
