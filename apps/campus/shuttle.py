@@ -100,10 +100,12 @@ class ShuttleRouteAPI(object):
         self.cost_center_id = cost_center_id
 
         try:
-            self.client = Client(url=wsdl_url, timeout=30)
+            self.client = Client(url=wsdl_url, timeout=10)
         except urllib2.URLError:
             #allow application to run without the feature
             logger.error('Could not connect to shuttle API.')
+        except Exception, e:
+            logger.error('Generic exception connecting to shuttle API', e.value)
 
     def get_routes(self):
         """
@@ -111,9 +113,14 @@ class ShuttleRouteAPI(object):
         """
         if not self.route_list and self.client is not None:
 
-            routes_response = self.client.service.GetRoutes(sAppCode=self.app_code,
+            try:
+                routes_response = self.client.service.GetRoutes(sAppCode=self.app_code,
                                                             sCostcenterId=self.cost_center_id,
                                                             nDate=date.today().strftime('%Y%m%d'))
+            except Exception, e:
+                logger.error('Could not retrieve routes', e.message)
+                return None
+
             if routes_response is not None:
                 xml_route_list = ET.fromstring(routes_response)
                 stored_shuttle_routes = ShuttleRoute.objects.all()
@@ -176,6 +183,7 @@ class ShuttleRouteAPI(object):
                                                           sCostCenterId=self.cost_center_id,
                                                           nDate=date.today().strftime('%Y%m%d'),
                                                           nShadowRouteId=route_id)
+
             if stops_response is not None:
                 # Can't properly parse ampersand
                 stops_response = stops_response.replace('&', '&amp;');
@@ -194,21 +202,22 @@ class ShuttleRouteAPI(object):
         Get all the shuttle stops
         """
         routes = self.get_routes()
-
         stops = {}
-        for route_id, route_info in routes.iteritems():
-            route_stops = self.get_route_stops(route_id)
-            for stop in route_stops:
-                if stop.id not in stops.keys():
-                    stop_dict = stop.json()
-                    stop_dict['routes'] = []
-                else:
-                    stop_dict = stops[stop.id]
+        if routes is not None:
 
-                stop_dict['routes'].append({'id': route_info.id, 'shortname': route_info.shortname})
-                stops[stop.id] = stop_dict
+            for route_id, route_info in routes.iteritems():
+                route_stops = self.get_route_stops(route_id)
+                for stop in route_stops:
+                    if stop.id not in stops.keys():
+                        stop_dict = stop.json()
+                        stop_dict['routes'] = []
+                    else:
+                        stop_dict = stops[stop.id]
 
-        stops = list(stops.values())
+                    stop_dict['routes'].append({'id': route_info.id, 'shortname': route_info.shortname})
+                    stops[stop.id] = stop_dict
+
+            stops = list(stops.values())
         return stops
 
     def get_route_poly(self, route_id):

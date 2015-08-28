@@ -99,18 +99,20 @@
             <option value="">Select a Stop</option>
             </select>
         </div>
-        <h3 class="c">Routes</h3>
-        <div>
-            <label><input type="checkbox" id="refresh-shuttle-gps" checked="checked"> Track Shuttles in Real-time</label>
-        </div>
-        <div id="on-campus-routes">
-            <h4>On-Campus</h4>
-        </div>
-        <div id="off-campus-routes">
-            <h4>Off-Campus</h4>
-        </div>
-        <div id="other-routes">
-            <h4>Other</h4>
+        <div id="route-information">
+	        <h3 class="c">Routes</h3>
+	        <div>
+	            <label><input type="checkbox" id="refresh-shuttle-gps" checked="checked"> Track Shuttles in Real-time</label>
+	        </div>
+	        <div id="on-campus-routes">
+	            <h4>On-Campus</h4>
+	        </div>
+	        <div id="off-campus-routes">
+	            <h4>Off-Campus</h4>
+	        </div>
+	        <div id="other-routes">
+	            <h4>Other</h4>
+	        </div>
         </div>
     </div>
 </div>

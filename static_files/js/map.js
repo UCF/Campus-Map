@@ -171,7 +171,7 @@ var CampusMap = function(options) {
 		MAP.setCenter(options.center);
 		if(type == 'illustrated') {
 			gpoints.deactivate();
-			ipoints.activate();
+			ipoints.activate();ds
 		} else {
 			ipoints.deactivate();
 			gpoints.activate();
@@ -618,56 +618,59 @@ var CampusMap = function(options) {
                 var label = '<label><input type="checkbox" id="' + domId + '"> ' + route.shortname + '</label>';
                 categoryDom.append(label);
 
-                // Implementation detail for the shuttle route layer
-                LAYER_MANAGER.register_layer(
-                    (function() {
-                        var shuttle_layer = new Layer(domId);
-                        shuttle_layer.layer = new google.maps.KmlLayer(
-                                BASE_URL + '/shuttles/' + route.id + '/poly/.kml?&_=' + (new Date()).getTime(),
-                                {
-                                    preserveViewport    : true,
-                                    suppressInfoWindows : true
-                                }
-                        );
-                        shuttle_layer.markers = (function(routeId) {
-                            var markers = [];
-                            $.ajax({
-                                url      : '/shuttles/' + routeId + '/stops/.json',
-                                dataType : 'json',
-                                async    : true,
-                                success: function(data){
-                                    if(typeof data.stops != 'undefined') {
-                                        $.each(data.stops, function(index, spot) {
-                                            var stopMarker = new google.maps.Marker({
-                                                position : new google.maps.LatLng(
-                                                    spot.lat,
-                                                    spot.lon
-                                                ),
-                                                map      : MAP,
-                                                title    : spot.name,
-                                                visible  : false
-                                            });
-                                            var infoWindow = new google.maps.InfoWindow({
-                                                content: '<div>Stop: ' + spot.name + '</div>'
-                                            });
+                if (SHUTTLE_STOPS.length > 0) {
+                	console.log("Entering shuttle stops/routes logic.");
+	                // Implementation detail for the shuttle route layer
+	                LAYER_MANAGER.register_layer(
+	                    (function() {
+	                        var shuttle_layer = new Layer(domId);
+	                        shuttle_layer.layer = new google.maps.KmlLayer(
+	                                BASE_URL + '/shuttles/' + route.id + '/poly/.kml?&_=' + (new Date()).getTime(),
+	                                {
+	                                    preserveViewport    : true,
+	                                    suppressInfoWindows : true
+	                                }
+	                        );
+	                        shuttle_layer.markers = (function(routeId) {
+	                            var markers = [];
+	                            $.ajax({
+	                                url      : '/shuttles/' + routeId + '/stops/.json',
+	                                dataType : 'json',
+	                                async    : true,
+	                                success: function(data){
+	                                    if(typeof data.stops != 'undefined') {
+	                                        $.each(data.stops, function(index, spot) {
+	                                            var stopMarker = new google.maps.Marker({
+	                                                position : new google.maps.LatLng(
+	                                                    spot.lat,
+	                                                    spot.lon
+	                                                ),
+	                                                map      : MAP,
+	                                                title    : spot.name,
+	                                                visible  : false
+	                                            });
+	                                            var infoWindow = new google.maps.InfoWindow({
+	                                                content: '<div>Stop: ' + spot.name + '</div>'
+	                                            });
 
-                                            google.maps.event.addListener(stopMarker, 'click', function() {
-                                                infoWindow.open(MAP, stopMarker);
-                                            });
+	                                            google.maps.event.addListener(stopMarker, 'click', function() {
+	                                                infoWindow.open(MAP, stopMarker);
+	                                            });
 
-                                            markers.push(stopMarker);
-                                        });
-                                    }
-                                }
-                            });
-                            return markers;
-                        })(route.id);
+	                                            markers.push(stopMarker);
+	                                        });
+	                                    }
+	                                }
+	                            });
+	                            return markers;
+	                        })(route.id);
 
-                        shuttle_layer.shuttleRouteId = route.id;
+	                        shuttle_layer.shuttleRouteId = route.id;
 
-                        return shuttle_layer;
-                    })()
-                );
+	                        return shuttle_layer;
+	                    })()
+	                );
+								}
             });
 
             var shuttleInterval =
@@ -748,37 +751,39 @@ var CampusMap = function(options) {
 						layer.toggle();
 					});
 			});
+          // Add click event to Shuttle Routes
+          var checkbox = $('input[type="checkbox"][id="shuttle-routes"], .shuttle-routes-btn');
+          checkbox.click(function() {
+              if($(this).is(':checked')) {
+                  MENU.change_tabs({
+                      'label':'Shuttles',
+                      'html' :$('#shuttle-routes-content').clone(true, true).show()
+                  });
+              }
+          });
 
-            // Add click event to Shuttle Routes
-            var checkbox = $('input[type="checkbox"][id="shuttle-routes"], .shuttle-routes-btn');
-            checkbox.click(function() {
-                if($(this).is(':checked')) {
-                    MENU.change_tabs({
-                        'label':'Shuttles',
-                        'html' :$('#shuttle-routes-content').clone(true, true).show()
-                    });
-                }
-            });
+          // Add click event to Shuttle Route Information
+          var shuttleInfoButton = $('#shuttle-info-button');
+          shuttleInfoButton.click(function(event) {
+              event.preventDefault();
+              MENU.change_tabs({
+                  'label' : 'Shuttles',
+                  'html'  : $('#shuttle-info').clone(true, true).show()
+              });
+          });
 
-            // Add click event to Shuttle Route Information
-            var shuttleInfoButton = $('#shuttle-info-button');
-            shuttleInfoButton.click(function(event) {
-                event.preventDefault();
-                MENU.change_tabs({
-                    'label' : 'Shuttles',
-                    'html'  : $('#shuttle-info').clone(true, true).show()
-                });
-            });
+          // Add back button for route info or any other buttons that go to the routes menu
+          var checkbox = $('.shuttle-routes-btn');
+          checkbox.click(function() {
+              MENU.change_tabs({
+                  'label':'Shuttles',
+                  'html' :$('#shuttle-routes-content').clone(true, true).show()
+              });
+          });
 
-            // Add back button for route info or any other buttons that go to the routes menu
-            var checkbox = $('.shuttle-routes-btn');
-            checkbox.click(function() {
-                MENU.change_tabs({
-                    'label':'Shuttles',
-                    'html' :$('#shuttle-routes-content').clone(true, true).show()
-                });
-            });
-
+          if (SHUTTLE_STOPS == 0) {
+          	$('#route-information').hide();
+          }
 		})();
 
 

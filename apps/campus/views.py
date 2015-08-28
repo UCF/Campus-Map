@@ -612,8 +612,9 @@ def get_shuttle_routes_dict(ucf_shuttle_api=None):
     ucf_shuttle_routes = ucf_shuttle_api.get_routes()
     route_list = []
     route_dict = {}
-    for route_id, route in ucf_shuttle_routes.iteritems():
-        route_list.append(route.json())
+    if ucf_shuttle_routes is not None:
+        for route_id, route in ucf_shuttle_routes.iteritems():
+            route_list.append(route.json())
 
     def string_number_cmp(x, y):
         try:
