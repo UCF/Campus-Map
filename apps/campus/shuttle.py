@@ -8,6 +8,7 @@ from suds.client import Client
 from suds.plugin import MessagePlugin
 
 from campus.models import ShuttleRoute
+from campus.models import ShuttleStop
 
 logger = logging.getLogger(__name__)
 
@@ -117,6 +118,7 @@ class ShuttleRouteAPI(object):
                 routes_response = self.client.service.GetRoutes(sAppCode=self.app_code,
                                                             sCostcenterId=self.cost_center_id,
                                                             nDate=date.today().strftime('%Y%m%d'))
+                print routes_response
             except Exception, e:
                 logger.error('Could not retrieve routes', e.message)
                 return None
@@ -201,12 +203,13 @@ class ShuttleRouteAPI(object):
         """
         Get all the shuttle stops
         """
-        routes = self.get_routes()
+        routes = ShuttleRoute.objects.all()
+        stored_stops = ShuttleStop.objects.all()
         stops = {}
         if routes is not None:
 
-            for route_id, route_info in routes.iteritems():
-                route_stops = self.get_route_stops(route_id)
+            for route in routes:
+                route_stops = stored_stops.filter(route_id=route.id)
                 for stop in route_stops:
                     if stop.id not in stops.keys():
                         stop_dict = stop.json()
@@ -214,7 +217,7 @@ class ShuttleRouteAPI(object):
                     else:
                         stop_dict = stops[stop.id]
 
-                    stop_dict['routes'].append({'id': route_info.id, 'shortname': route_info.shortname})
+                    stop_dict['routes'].append({'id': route.id, 'shortname': route.shortname})
                     stops[stop.id] = stop_dict
 
             stops = list(stops.values())

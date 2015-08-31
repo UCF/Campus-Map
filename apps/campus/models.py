@@ -681,9 +681,28 @@ class ShuttleCategory(models.Model):
 class ShuttleRoute(models.Model):
     id = models.CharField(max_length=80, primary_key=True, help_text='<strong class="caution">Caution</strong>: changing may break external resources (used for links and images)')
     shortname = models.CharField(max_length=80, null=True, blank=True)
+    color = models.CharField(max_length=7, null=True, blank=True)
     description = models.TextField(null=True, blank=True)
     category = models.ForeignKey(ShuttleCategory, related_name='shuttle_routes')
 
+    def __unicode__(self):
+        return u'%s' % (self.shortname)
+
+    def json(self):
+        return {'id': self.id, 'shortname': self.shortname, 'color': self.color, 'description': self.description, 'category': self.category.name}
+
+class ShuttleStop(models.Model):
+    id = models.CharField(max_length=80, primary_key=True, help_text='<strong class="caution">Caution</strong>: changing may break external resources (used for links and images)')
+    name = models.CharField(max_length=80, null=True, blank=True)
+    lon = models.FloatField(null=True, blank=True)
+    lat = models.FloatField(null=True, blank=True)
+    route = models.ForeignKey(ShuttleRoute, related_name='shuttle_stops')
+
+    def __unicode__(self):
+        return u'%s' % (self.name)
+
+    def json(self):
+        return {'id': self.id, 'name': self.name, 'lat': self.lat, 'lon': self.lon}
 
 class SimpleSetting(models.Model):
     name = models.CharField(max_length=80)

@@ -222,6 +222,9 @@ class ShuttleRouteAdmin(admin.ModelAdmin):
     fields = ('id', 'shortname', 'category', 'description',)
 admin.site.register(campus.models.ShuttleRoute, ShuttleRouteAdmin)
 
+class ShuttleStopAdmin(admin.ModelAdmin):
+    search_fields = ('name',)
+admin.site.register(campus.models.ShuttleStop, ShuttleStopAdmin)
 
 class SimpleSettingAdmin(admin.ModelAdmin):
     search_fields = ('name',)

@@ -40,6 +40,8 @@ from campus.models import ParkingLot
 from campus.models import RegionalCampus
 from campus.models import Sidewalk
 from campus.models import SimpleSetting
+from campus.models import ShuttleRoute
+from campus.models import ShuttleStop
 from campus.shuttle import ShuttleRouteAPI
 from campus.utils import get_geo_data
 
@@ -145,7 +147,7 @@ def home(request, **kwargs):
         'loc_url'            : loc,
         'base_url'           : request.build_absolute_uri(reverse('home'))[:-1],
         'error'              : error,
-        'shuttle_routes'     : json.dumps(get_shuttle_routes_dict(ucf_shuttle_api)),
+        'shuttle_routes'     : json.dumps(get_shuttle_routes_dict()),
         'shuttle_stops'      : json.dumps(shuttle_stops),
         'shuttle_info'       : shuttle_info,
         # These points are not displayed on the base tempalte but they
@@ -601,19 +603,15 @@ def regional_campuses(request, campus=None):
 def shuttles(request):
     return home(request, shuttles=True)
 
-def get_shuttle_routes_dict(ucf_shuttle_api=None):
+def get_shuttle_routes_dict():
     """
     Get the shuttle routes
     """
-    if ucf_shuttle_api is None:
-        ucf_shuttle_api = ShuttleRouteAPI(settings.SHUTTLE_WSDL,
-                                      settings.SHUTTLE_APP_CODE,
-                                      settings.SHUTTLE_COST_CENTER_ID)
-    ucf_shuttle_routes = ucf_shuttle_api.get_routes()
+    ucf_shuttle_routes = ShuttleRoute.objects.all()
     route_list = []
     route_dict = {}
     if ucf_shuttle_routes is not None:
-        for route_id, route in ucf_shuttle_routes.iteritems():
+        for route in ucf_shuttle_routes:
             route_list.append(route.json())
 
     def string_number_cmp(x, y):
@@ -668,10 +666,8 @@ def shuttle_route_stops(request, route_id):
         raise Http404()
 
     json_object = {}
-    ucf_shuttle_api = ShuttleRouteAPI(settings.SHUTTLE_WSDL,
-                                  settings.SHUTTLE_APP_CODE,
-                                  settings.SHUTTLE_COST_CENTER_ID)
-    shuttle_stops = ucf_shuttle_api.get_route_stops(route_id)
+    shuttle_stops = ShuttleStop.objects.filter(route_id=route_id)
+    print shuttle_stops
     json_stop_list = []
     for stop in shuttle_stops:
         json_stop_list.append(stop.json())
