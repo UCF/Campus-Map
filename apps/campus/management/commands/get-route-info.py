@@ -45,27 +45,27 @@ class Command(BaseCommand):
                 else:
                     self.create_stop(stop, route)
 
-    def get_category(self, catName):
-        category = ShuttleCategory.objects.filter(name=catName)
+    def get_category(self, cat_name):
+        category = ShuttleCategory.objects.filter(name=cat_name)
         if len(category) > 0:
             return category[0]
         else:
-            category = ShuttleCategory(name=catName)
+            category = ShuttleCategory(name=cat_name)
             category.save()
             return category
 
-    def update_stop(self, existingStop, stopInfo, route):
-        existingStop.name = stopInfo.name
-        existingStop.lon = stopInfo.point.lon
-        existingStop.lat = stopInfo.point.lat
-        existingStop.route = route
-        existingStop.save()
+    def update_stop(self, existing_stop, stop_info, route):
+        existing_stop.name = stop_info.name
+        existing_stop.lon = stop_info.point.lon
+        existing_stop.lat = stop_info.point.lat
+        existing_stop.route = route
+        existing_stop.save()
 
-    def create_stop(self, stopInfo, route):
-        newStop = ShuttleStop()
-        newStop.id = stopInfo.id
-        newStop.name = stopInfo.name
-        newStop.lon = stopInfo.point.lon
-        newStop.lat = stopInfo.point.lat
-        newStop.route = route
-        newStop.save()
+    def create_stop(self, stop_info, route):
+        new_stop = ShuttleStop()
+        new_stop.id = stop_info.id
+        new_stop.name = stop_info.name
+        new_stop.lon = stop_info.point.lon
+        new_stop.lat = stop_info.point.lat
+        new_stop.route = route
+        new_stop.save()
