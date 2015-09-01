@@ -536,7 +536,7 @@ class DiningLocation(MapObj):
                                     params=params,
                                     timeout=settings.REQUEST_TIMEOUT)
             except Exception, e:
-                log.error('Unabe to open URL %s: %s' % (url, str(e)))
+                log.error('Unable to open URL %s: %s' % (settings.PHONEBOOK, str(e)))
             else:
                 try:
                     depts = page.json()
