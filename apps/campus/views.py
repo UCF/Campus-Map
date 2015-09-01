@@ -667,7 +667,6 @@ def shuttle_route_stops(request, route_id):
 
     json_object = {}
     shuttle_stops = ShuttleStop.objects.filter(route_id=route_id)
-    print shuttle_stops
     json_stop_list = []
     for stop in shuttle_stops:
         json_stop_list.append(stop.json())
