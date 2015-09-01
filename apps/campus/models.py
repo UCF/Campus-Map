@@ -693,10 +693,10 @@ class ShuttleRoute(models.Model):
 
 class ShuttleStop(models.Model):
     id = models.AutoField(primary_key=True)
-    stop_id = models.CharField(max_length=80, null=True, blank=True, help_text='<strong class="caution">Caution</strong>: changing may break external resources (used for links and images)')
+    stop_id = models.CharField(max_length=80, null=False, blank=False, default=0, help_text='<strong class="caution">Caution</strong>: changing may break external resources (used for links and images)')
     name = models.CharField(max_length=80, null=True, blank=True)
-    lon = models.FloatField(null=True, blank=True)
-    lat = models.FloatField(null=True, blank=True)
+    lon = models.FloatField(null=False, blank=False, default=0)
+    lat = models.FloatField(null=False, blank=False, default=0)
     route = models.ForeignKey(ShuttleRoute, related_name='shuttle_stops')
 
     def __unicode__(self):

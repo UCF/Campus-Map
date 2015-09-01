@@ -1,4 +1,3 @@
-import campus
 import settings
 
 from campus.models import *
@@ -23,7 +22,6 @@ class Command(BaseCommand):
 
         for route_id, route in shuttle_routes.iteritems():
             ex_route = ShuttleRoute.objects.filter(id=route_id)
-            assign_route = None
             if len(ex_route) > 0:
                 ex_route = ex_route[0]
                 ex_route.shortname = route.shortname
@@ -51,22 +49,6 @@ class Command(BaseCommand):
             for stop in shuttle_stops:
                 self.create_stop(stop, route)
 
-    def get_category(self, cat_name):
-        category = ShuttleCategory.objects.filter(name=cat_name)
-        if len(category) > 0:
-            return category[0]
-        else:
-            category = ShuttleCategory(name=cat_name)
-            category.save()
-            return category
-
-    def update_stop(self, existing_stop, stop_info, route):
-        existing_stop.name = stop_info.name
-        existing_stop.lon = stop_info.point.lon
-        existing_stop.lat = stop_info.point.lat
-        existing_stop.route = route
-        existing_stop.save()
-
     def create_stop(self, stop_info, route):
         new_stop = ShuttleStop()
         new_stop.stop_id = stop_info.id
@@ -75,3 +57,12 @@ class Command(BaseCommand):
         new_stop.lat = stop_info.point.lat
         new_stop.route = route
         new_stop.save()
+
+    def get_category(self, cat_name):
+        category = ShuttleCategory.objects.filter(name=cat_name)
+        if len(category) > 0:
+            return category[0]
+        else:
+            category = ShuttleCategory(name=cat_name)
+            category.save()
+            return category
