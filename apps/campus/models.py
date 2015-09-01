@@ -692,7 +692,8 @@ class ShuttleRoute(models.Model):
         return {'id': self.id, 'shortname': self.shortname, 'color': self.color, 'description': self.description, 'category': self.category.name}
 
 class ShuttleStop(models.Model):
-    id = models.CharField(max_length=80, primary_key=True, help_text='<strong class="caution">Caution</strong>: changing may break external resources (used for links and images)')
+    id = models.AutoField(primary_key=True)
+    stop_id = models.CharField(max_length=80, null=True, blank=True, help_text='<strong class="caution">Caution</strong>: changing may break external resources (used for links and images)')
     name = models.CharField(max_length=80, null=True, blank=True)
     lon = models.FloatField(null=True, blank=True)
     lat = models.FloatField(null=True, blank=True)
@@ -702,7 +703,7 @@ class ShuttleStop(models.Model):
         return u'%s' % (self.name)
 
     def json(self):
-        return {'id': self.id, 'name': self.name, 'lat': self.lat, 'lon': self.lon}
+        return {'id': self.stop_id, 'name': self.name, 'lat': self.lat, 'lon': self.lon}
 
 class SimpleSetting(models.Model):
     name = models.CharField(max_length=80)

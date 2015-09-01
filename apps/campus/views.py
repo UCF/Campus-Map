@@ -129,7 +129,7 @@ def home(request, **kwargs):
     ucf_shuttle_api = ShuttleRouteAPI(settings.SHUTTLE_WSDL,
                                       settings.SHUTTLE_APP_CODE,
                                       settings.SHUTTLE_COST_CENTER_ID)
-    shuttle_stops = ucf_shuttle_api.get_all_shuttle_stops_dict()
+    shuttle_stops = ucf_shuttle_api.get_all_shuttle_stops_dict_from_db()
     shuttle_stops = sorted(shuttle_stops, key=lambda k: k['name'])
     context = {
         'infobox_location_id': json.dumps(loc_id),

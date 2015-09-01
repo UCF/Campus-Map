@@ -8,6 +8,7 @@ from suds.client import Client
 from suds.plugin import MessagePlugin
 
 from campus.models import ShuttleRoute
+from campus.models import ShuttleStop
 
 logger = logging.getLogger(__name__)
 
@@ -197,7 +198,7 @@ class ShuttleRouteAPI(object):
                 logger.error('Bad response for shuttle stops.')
         return stops
 
-    def get_all_shuttle_stops_dict(self, ):
+    def get_all_shuttle_stops_dict(self):
         """
         Get all the shuttle stops
         """
@@ -216,6 +217,29 @@ class ShuttleRouteAPI(object):
 
                     stop_dict['routes'].append({'id': route_info.id, 'shortname': route_info.shortname})
                     stops[stop.id] = stop_dict
+
+            stops = list(stops.values())
+        return stops
+
+    def get_all_shuttle_stops_dict_from_db(self):
+        """
+        Get all the shuttle stops from db
+        """
+        routes = ShuttleRoute.objects.all()
+        stops = {}
+
+        if routes is not None:
+            for route in routes:
+                route_stops = ShuttleStop.objects.all()
+                for stop in route_stops:
+                    if stop.stop_id not in stops.keys():
+                        stop_dict = stop.json()
+                        stop_dict['routes'] = []
+                    else:
+                        stop_dict = stops[stop.stop_id]
+
+                    stop_dict['routes'].append({'id': route.id, 'shortname': route.shortname})
+                    stops[stop.stop_id] = stop_dict
 
             stops = list(stops.values())
         return stops

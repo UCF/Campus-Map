@@ -8,6 +8,17 @@ from django.db import models
 class Migration(SchemaMigration):
 
     def forwards(self, orm):
+        # Adding model 'ShuttleStop'
+        db.create_table(u'campus_shuttlestop', (
+            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
+            ('stop_id', self.gf('django.db.models.fields.CharField')(max_length=80, null=True, blank=True)),
+            ('name', self.gf('django.db.models.fields.CharField')(max_length=80, null=True, blank=True)),
+            ('lon', self.gf('django.db.models.fields.FloatField')(null=True, blank=True)),
+            ('lat', self.gf('django.db.models.fields.FloatField')(null=True, blank=True)),
+            ('route', self.gf('django.db.models.fields.related.ForeignKey')(related_name='shuttle_stops', to=orm['campus.ShuttleRoute'])),
+        ))
+        db.send_create_signal(u'campus', ['ShuttleStop'])
+
         # Adding field 'ShuttleRoute.color'
         db.add_column(u'campus_shuttleroute', 'color',
                       self.gf('django.db.models.fields.CharField')(max_length=7, null=True, blank=True),
@@ -15,6 +26,9 @@ class Migration(SchemaMigration):
 
 
     def backwards(self, orm):
+        # Deleting model 'ShuttleStop'
+        db.delete_table(u'campus_shuttlestop')
+
         # Deleting field 'ShuttleRoute.color'
         db.delete_column(u'campus_shuttleroute', 'color')
 
@@ -97,10 +111,12 @@ class Migration(SchemaMigration):
         },
         u'campus.shuttlestop': {
             'Meta': {'object_name': 'ShuttleStop'},
-            'id': ('django.db.models.fields.CharField', [], {'max_length': '80', 'primary_key': 'True'}),
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'lat': ('django.db.models.fields.FloatField', [], {'null': 'True', 'blank': 'True'}),
             'lon': ('django.db.models.fields.FloatField', [], {'null': 'True', 'blank': 'True'}),
-            'name': ('django.db.models.fields.CharField', [], {'max_length': '80', 'null': 'True', 'blank': 'True'})
+            'name': ('django.db.models.fields.CharField', [], {'max_length': '80', 'null': 'True', 'blank': 'True'}),
+            'route': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'shuttle_stops'", 'to': u"orm['campus.ShuttleRoute']"}),
+            'stop_id': ('django.db.models.fields.CharField', [], {'max_length': '80', 'null': 'True', 'blank': 'True'})
         },
         u'campus.sidewalk': {
             'Meta': {'object_name': 'Sidewalk'},
