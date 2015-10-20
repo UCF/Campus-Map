@@ -28,6 +28,7 @@
 					<label><input type="checkbox" id="food"> Food</label>
 					<label><input type="checkbox" id="bikeracks"> Bike Racks</label>
 					<label><input type="checkbox" id="emergency-phones"> Emergency</label>
+					<label><input type="checkbox" id="charging-stations"> EV Charging</label>
                     <label><input type="checkbox" id="shuttle-routes"> Shuttles</label>
 				</div>
 				<div class="more-menu">

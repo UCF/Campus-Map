@@ -2860,6 +2860,1225 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/static\/admin\/css\/base.css": {
+		"fileType": 16,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/static\/admin\/css\/base.css",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/static\/admin\/css\/changelists.css": {
+		"fileType": 16,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/static\/admin\/css\/changelists.css",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/static\/admin\/css\/dashboard.css": {
+		"fileType": 16,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/static\/admin\/css\/dashboard.css",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/static\/admin\/css\/forms.css": {
+		"fileType": 16,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/static\/admin\/css\/forms.css",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/static\/admin\/css\/ie.css": {
+		"fileType": 16,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/static\/admin\/css\/ie.css",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/static\/admin\/css\/login.css": {
+		"fileType": 16,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/static\/admin\/css\/login.css",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/static\/admin\/css\/rtl.css": {
+		"fileType": 16,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/static\/admin\/css\/rtl.css",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/static\/admin\/css\/widgets.css": {
+		"fileType": 16,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/static\/admin\/css\/widgets.css",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/static\/admin\/img\/gis\/move_vertex_off.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 711,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/static\/admin\/img\/gis\/move_vertex_off.png",
+		"outputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/static\/admin\/img\/gis\/move_vertex_off.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/static\/admin\/img\/gis\/move_vertex_on.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 506,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/static\/admin\/img\/gis\/move_vertex_on.png",
+		"outputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/static\/admin\/img\/gis\/move_vertex_on.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/static\/admin\/img\/icon_searchbox.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 667,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/static\/admin\/img\/icon_searchbox.png",
+		"outputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/static\/admin\/img\/icon_searchbox.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/static\/admin\/img\/inline-delete-8bit.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 477,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/static\/admin\/img\/inline-delete-8bit.png",
+		"outputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/static\/admin\/img\/inline-delete-8bit.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/static\/admin\/img\/inline-delete.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 781,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/static\/admin\/img\/inline-delete.png",
+		"outputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/static\/admin\/img\/inline-delete.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/static\/admin\/img\/inline-restore-8bit.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 447,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/static\/admin\/img\/inline-restore-8bit.png",
+		"outputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/static\/admin\/img\/inline-restore-8bit.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/static\/admin\/img\/inline-restore.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 623,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/static\/admin\/img\/inline-restore.png",
+		"outputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/static\/admin\/img\/inline-restore.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/static\/admin\/js\/actions.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/static\/admin\/js\/actions.js",
+		"outputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/static\/admin\/js\/actions.min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/static\/admin\/js\/actions.min.js": {
+		"fileType": 64,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/static\/admin\/js\/actions.min.js",
+		"outputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/static\/admin\/js\/actions.min.min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/static\/admin\/js\/admin\/DateTimeShortcuts.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/static\/admin\/js\/admin\/DateTimeShortcuts.js",
+		"outputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/static\/admin\/js\/admin\/DateTimeShortcuts.min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/static\/admin\/js\/admin\/RelatedObjectLookups.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/static\/admin\/js\/admin\/RelatedObjectLookups.js",
+		"outputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/static\/admin\/js\/admin\/RelatedObjectLookups.min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/static\/admin\/js\/calendar.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/static\/admin\/js\/calendar.js",
+		"outputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/static\/admin\/js\/calendar.min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/static\/admin\/js\/collapse.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/static\/admin\/js\/collapse.js",
+		"outputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/static\/admin\/js\/collapse.min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/static\/admin\/js\/collapse.min.js": {
+		"fileType": 64,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/static\/admin\/js\/collapse.min.js",
+		"outputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/static\/admin\/js\/collapse.min.min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/static\/admin\/js\/core.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/static\/admin\/js\/core.js",
+		"outputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/static\/admin\/js\/core.min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/static\/admin\/js\/inlines.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/static\/admin\/js\/inlines.js",
+		"outputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/static\/admin\/js\/inlines.min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/static\/admin\/js\/inlines.min.js": {
+		"fileType": 64,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/static\/admin\/js\/inlines.min.js",
+		"outputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/static\/admin\/js\/inlines.min.min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/static\/admin\/js\/jquery.init.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/static\/admin\/js\/jquery.init.js",
+		"outputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/static\/admin\/js\/jquery.init.min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/static\/admin\/js\/jquery.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/static\/admin\/js\/jquery.js",
+		"outputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/static\/admin\/js\/jquery.min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/static\/admin\/js\/jquery.min.js": {
+		"fileType": 64,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/static\/admin\/js\/jquery.min.js",
+		"outputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/static\/admin\/js\/jquery.min.min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/static\/admin\/js\/prepopulate.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/static\/admin\/js\/prepopulate.js",
+		"outputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/static\/admin\/js\/prepopulate.min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/static\/admin\/js\/prepopulate.min.js": {
+		"fileType": 64,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/static\/admin\/js\/prepopulate.min.js",
+		"outputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/static\/admin\/js\/prepopulate.min.min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/static\/admin\/js\/SelectBox.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/static\/admin\/js\/SelectBox.js",
+		"outputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/static\/admin\/js\/SelectBox.min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/static\/admin\/js\/SelectFilter2.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/static\/admin\/js\/SelectFilter2.js",
+		"outputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/static\/admin\/js\/SelectFilter2.min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/static\/admin\/js\/timeparse.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/static\/admin\/js\/timeparse.js",
+		"outputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/static\/admin\/js\/timeparse.min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/static\/admin\/js\/urlify.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/static\/admin\/js\/urlify.js",
+		"outputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/static\/admin\/js\/urlify.min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/templates\/admin\/404.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/templates\/admin\/404.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/templates\/admin\/500.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/templates\/admin\/500.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/templates\/admin\/actions.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/templates\/admin\/actions.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/templates\/admin\/app_index.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/templates\/admin\/app_index.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/templates\/admin\/auth\/user\/add_form.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/templates\/admin\/auth\/user\/add_form.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/templates\/admin\/auth\/user\/change_password.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/templates\/admin\/auth\/user\/change_password.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/templates\/admin\/base.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/templates\/admin\/base.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/templates\/admin\/base_site.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/templates\/admin\/base_site.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/templates\/admin\/change_form.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/templates\/admin\/change_form.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/templates\/admin\/change_list.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/templates\/admin\/change_list.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/templates\/admin\/change_list_results.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/templates\/admin\/change_list_results.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/templates\/admin\/date_hierarchy.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/templates\/admin\/date_hierarchy.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/templates\/admin\/delete_confirmation.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/templates\/admin\/delete_confirmation.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/templates\/admin\/delete_selected_confirmation.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/templates\/admin\/delete_selected_confirmation.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/templates\/admin\/edit_inline\/stacked.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/templates\/admin\/edit_inline\/stacked.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/templates\/admin\/edit_inline\/tabular.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/templates\/admin\/edit_inline\/tabular.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/templates\/admin\/filter.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/templates\/admin\/filter.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/templates\/admin\/includes\/fieldset.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/templates\/admin\/includes\/fieldset.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/templates\/admin\/index.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/templates\/admin\/index.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/templates\/admin\/invalid_setup.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/templates\/admin\/invalid_setup.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/templates\/admin\/login.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/templates\/admin\/login.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/templates\/admin\/object_history.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/templates\/admin\/object_history.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/templates\/admin\/pagination.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/templates\/admin\/pagination.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/templates\/admin\/popup_response.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/templates\/admin\/popup_response.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/templates\/admin\/prepopulated_fields_js.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/templates\/admin\/prepopulated_fields_js.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/templates\/admin\/search_form.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/templates\/admin\/search_form.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/templates\/admin\/submit_line.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/templates\/admin\/submit_line.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/templates\/registration\/logged_out.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/templates\/registration\/logged_out.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/templates\/registration\/password_change_done.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/templates\/registration\/password_change_done.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/templates\/registration\/password_change_form.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/templates\/registration\/password_change_form.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/templates\/registration\/password_reset_complete.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/templates\/registration\/password_reset_complete.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/templates\/registration\/password_reset_confirm.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/templates\/registration\/password_reset_confirm.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/templates\/registration\/password_reset_done.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/templates\/registration\/password_reset_done.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/templates\/registration\/password_reset_email.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/templates\/registration\/password_reset_email.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/templates\/registration\/password_reset_form.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/templates\/registration\/password_reset_form.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admindocs\/templates\/admin_doc\/bookmarklets.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admindocs\/templates\/admin_doc\/bookmarklets.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admindocs\/templates\/admin_doc\/index.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admindocs\/templates\/admin_doc\/index.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admindocs\/templates\/admin_doc\/missing_docutils.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admindocs\/templates\/admin_doc\/missing_docutils.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admindocs\/templates\/admin_doc\/model_detail.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admindocs\/templates\/admin_doc\/model_detail.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admindocs\/templates\/admin_doc\/model_index.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admindocs\/templates\/admin_doc\/model_index.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admindocs\/templates\/admin_doc\/template_detail.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admindocs\/templates\/admin_doc\/template_detail.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admindocs\/templates\/admin_doc\/template_filter_index.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admindocs\/templates\/admin_doc\/template_filter_index.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admindocs\/templates\/admin_doc\/template_tag_index.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admindocs\/templates\/admin_doc\/template_tag_index.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admindocs\/templates\/admin_doc\/view_detail.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admindocs\/templates\/admin_doc\/view_detail.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admindocs\/templates\/admin_doc\/view_index.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admindocs\/templates\/admin_doc\/view_index.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/auth\/tests\/templates\/context_processors\/auth_attrs_access.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/auth\/tests\/templates\/context_processors\/auth_attrs_access.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/auth\/tests\/templates\/context_processors\/auth_attrs_messages.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/auth\/tests\/templates\/context_processors\/auth_attrs_messages.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/auth\/tests\/templates\/context_processors\/auth_attrs_no_access.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/auth\/tests\/templates\/context_processors\/auth_attrs_no_access.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/auth\/tests\/templates\/context_processors\/auth_attrs_perm_in_perms.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/auth\/tests\/templates\/context_processors\/auth_attrs_perm_in_perms.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/auth\/tests\/templates\/context_processors\/auth_attrs_perms.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/auth\/tests\/templates\/context_processors\/auth_attrs_perms.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/auth\/tests\/templates\/context_processors\/auth_attrs_test_access.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/auth\/tests\/templates\/context_processors\/auth_attrs_test_access.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/auth\/tests\/templates\/context_processors\/auth_attrs_user.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/auth\/tests\/templates\/context_processors\/auth_attrs_user.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/auth\/tests\/templates\/registration\/logged_out.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/auth\/tests\/templates\/registration\/logged_out.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/auth\/tests\/templates\/registration\/login.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/auth\/tests\/templates\/registration\/login.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/auth\/tests\/templates\/registration\/password_change_form.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/auth\/tests\/templates\/registration\/password_change_form.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/auth\/tests\/templates\/registration\/password_reset_complete.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/auth\/tests\/templates\/registration\/password_reset_complete.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/auth\/tests\/templates\/registration\/password_reset_confirm.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/auth\/tests\/templates\/registration\/password_reset_confirm.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/auth\/tests\/templates\/registration\/password_reset_done.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/auth\/tests\/templates\/registration\/password_reset_done.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/auth\/tests\/templates\/registration\/password_reset_email.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/auth\/tests\/templates\/registration\/password_reset_email.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/auth\/tests\/templates\/registration\/password_reset_form.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/auth\/tests\/templates\/registration\/password_reset_form.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/comments\/templates\/comments\/400-debug.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/comments\/templates\/comments\/400-debug.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/comments\/templates\/comments\/approve.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/comments\/templates\/comments\/approve.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/comments\/templates\/comments\/approved.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/comments\/templates\/comments\/approved.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/comments\/templates\/comments\/base.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/comments\/templates\/comments\/base.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/comments\/templates\/comments\/delete.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/comments\/templates\/comments\/delete.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/comments\/templates\/comments\/deleted.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/comments\/templates\/comments\/deleted.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/comments\/templates\/comments\/flag.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/comments\/templates\/comments\/flag.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/comments\/templates\/comments\/flagged.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/comments\/templates\/comments\/flagged.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/comments\/templates\/comments\/form.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/comments\/templates\/comments\/form.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/comments\/templates\/comments\/list.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/comments\/templates\/comments\/list.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/comments\/templates\/comments\/posted.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/comments\/templates\/comments\/posted.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/comments\/templates\/comments\/preview.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/comments\/templates\/comments\/preview.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/flatpages\/tests\/templates\/404.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/flatpages\/tests\/templates\/404.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/flatpages\/tests\/templates\/flatpages\/default.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/flatpages\/tests\/templates\/flatpages\/default.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/flatpages\/tests\/templates\/registration\/login.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/flatpages\/tests\/templates\/registration\/login.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/formtools\/templates\/formtools\/form.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/formtools\/templates\/formtools\/form.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/formtools\/templates\/formtools\/preview.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/formtools\/templates\/formtools\/preview.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/formtools\/templates\/formtools\/wizard\/wizard_form.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/formtools\/templates\/formtools\/wizard\/wizard_form.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/formtools\/tests\/templates\/404.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/formtools\/tests\/templates\/404.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/formtools\/tests\/templates\/base.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/formtools\/tests\/templates\/base.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/formtools\/tests\/templates\/forms\/wizard.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/formtools\/tests\/templates\/forms\/wizard.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/formtools\/tests\/wizard\/wizardtests\/templates\/other_wizard_form.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/formtools\/tests\/wizard\/wizardtests\/templates\/other_wizard_form.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/gis\/static\/gis\/js\/OLMapWidget.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/gis\/static\/gis\/js\/OLMapWidget.js",
+		"outputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/gis\/static\/gis\/js\/OLMapWidget.min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/gis\/templates\/gis\/admin\/openlayers.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/gis\/templates\/gis\/admin\/openlayers.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/gis\/templates\/gis\/admin\/openlayers.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/gis\/templates\/gis\/admin\/openlayers.js",
+		"outputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/gis\/templates\/gis\/admin\/openlayers.min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/gis\/templates\/gis\/admin\/osm.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/gis\/templates\/gis\/admin\/osm.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/gis\/templates\/gis\/admin\/osm.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/gis\/templates\/gis\/admin\/osm.js",
+		"outputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/gis\/templates\/gis\/admin\/osm.min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/gis\/templates\/gis\/google\/google-map.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/gis\/templates\/gis\/google\/google-map.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/gis\/templates\/gis\/google\/google-map.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/gis\/templates\/gis\/google\/google-map.js",
+		"outputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/gis\/templates\/gis\/google\/google-map.min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/gis\/templates\/gis\/google\/google-multi.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/gis\/templates\/gis\/google\/google-multi.js",
+		"outputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/gis\/templates\/gis\/google\/google-multi.min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/gis\/templates\/gis\/google\/google-single.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/gis\/templates\/gis\/google\/google-single.js",
+		"outputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/gis\/templates\/gis\/google\/google-single.min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/gis\/templates\/gis\/openlayers-osm.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/gis\/templates\/gis\/openlayers-osm.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/gis\/templates\/gis\/openlayers.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/gis\/templates\/gis\/openlayers.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/PIL\/OleFileIO-README.md": {
+		"enableFootnoteSupport": 0,
+		"enableSmartyPants": 1,
+		"expandTabs": 1,
+		"fileType": 4096,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/PIL\/OleFileIO-README.md",
+		"outputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/PIL\/OleFileIO-README.html",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
 	"\/static_files\/-\/blueprint-0.9\/ie.css": {
 		"fileType": 16,
 		"ignore": 0,
@@ -4006,6 +5225,17 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
+	"\/static_files\/images\/markers\/bicycle.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 2106,
+		"inputAbbreviatedPath": "\/static_files\/images\/markers\/bicycle.png",
+		"outputAbbreviatedPath": "\/static_files\/images\/markers\/bicycle.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/static_files\/images\/markers\/blue.png": {
 		"fileType": 32768,
 		"ignore": 0,
@@ -4035,6 +5265,17 @@
 		"initialSize": 639,
 		"inputAbbreviatedPath": "\/static_files\/images\/markers\/disabled.png",
 		"outputAbbreviatedPath": "\/static_files\/images\/markers\/disabled.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/static_files\/images\/markers\/ev.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 1426,
+		"inputAbbreviatedPath": "\/static_files\/images\/markers\/ev.png",
+		"outputAbbreviatedPath": "\/static_files\/images\/markers\/ev.png",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
@@ -4116,6 +5357,17 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
+	"\/static_files\/images\/markers\/location.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 1770,
+		"inputAbbreviatedPath": "\/static_files\/images\/markers\/location.png",
+		"outputAbbreviatedPath": "\/static_files\/images\/markers\/location.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/static_files\/images\/markers\/map-shuttle.png": {
 		"fileType": 32768,
 		"ignore": 0,
@@ -4167,6 +5419,17 @@
 		"initialSize": 1863,
 		"inputAbbreviatedPath": "\/static_files\/images\/markers\/parking.png",
 		"outputAbbreviatedPath": "\/static_files\/images\/markers\/parking.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/static_files\/images\/markers\/phone.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 1755,
+		"inputAbbreviatedPath": "\/static_files\/images\/markers\/phone.png",
+		"outputAbbreviatedPath": "\/static_files\/images\/markers\/phone.png",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
@@ -6725,7 +7988,7 @@
 	},
 "hooks": [
 	],
-"lastSavedByUser": "RJ Bruneel",
+"lastSavedByUser": "Keegan Berry",
 "manualImportLinks": {
 	},
 "projectAttributes": {

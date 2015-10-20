@@ -31,6 +31,7 @@ from campus.models import BikeRack
 from campus.models import Building
 from campus.models import DiningLocation
 from campus.models import DisabledParking
+from campus.models import ElectricChargingStation
 from campus.models import EmergencyPhone
 from campus.models import Group
 from campus.models import GroupedLocation
@@ -444,6 +445,47 @@ def bikeracks(request):
         return response
 
     return home(request, bikeracks=True, bikeracks_geo=obj)
+
+def electric_charging_stations(request):
+    ecs = ElectricChargingStation.objects.all()
+
+    url = request.build_absolute_uri(reverse('electric_charging_stations'))
+
+    arr = []
+    for e in ecs:
+        station = {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": json.loads("%s" % e.googlemap_point)
+            }
+        }
+        arr.append(station)
+    obj = {
+        "name": "UCF Electric Vehicle Charging Stations",
+        "source": "University of Central Florida",
+        "url": url + ".json",
+        "type": "FeatureCollection",
+        "features": arr
+    }
+
+    if request.is_json():
+        response = HttpResponse(json.dumps(obj, indent=4))
+        response['Content-type'] = 'application/json'
+        return response
+
+    if request.is_txt():
+        text = "University of Central Florida\nCampus Map: Electric Vehicle Charging Stations\n%s\n%s\n" % (
+                url + ".txt",
+                "-"*78)
+
+        for e in ecs:
+            text += "\n%*d: %s" % (2, e.id, e.googlemap_point)
+        response = HttpResponse(text)
+        response['Content-type'] = 'text/plain; charset=utf-8'
+        return response
+
+    return home(request, electric_charging_stations=True, ev_goe=obj)
 
 def emergency_phones(request):
     '''
