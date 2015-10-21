@@ -851,12 +851,12 @@ img[src*="gstatic.com/"], img[src*="googleapis.com/"] {
 
 #mobile-menu-trigger span {
   font-size: 18px;
-}  
+}
 
 #mobile-menu-trigger i {
     font-size: 1.5em;
 }
-  
+
 #mobile-menu ul {
   margin: 0;
   padding: 0;
@@ -1395,6 +1395,7 @@ img[src*="gstatic.com/"], img[src*="googleapis.com/"] {
   font-weight: 400;
   padding: 5px 0;
 }
+
 /******************************************************************************\
     Black google map infobox
 \******************************************************************************/

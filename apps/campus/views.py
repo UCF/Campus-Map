@@ -33,6 +33,7 @@ from campus.models import DiningLocation
 from campus.models import DisabledParking
 from campus.models import ElectricChargingStation
 from campus.models import EmergencyPhone
+from campus.models import EmergencyAED
 from campus.models import Group
 from campus.models import GroupedLocation
 from campus.models import Location
@@ -169,7 +170,7 @@ def locations(request):
             type_filter = ()
             for l_type in types.split(','):
                 l_type = l_type.lower()
-                if l_type and l_type in ['location', 'regionalcampus', 'building', 'parkinglot', 'disabledparking', 'sidewalk', 'bikerack', 'emergencyphone', 'dininglocation']:
+                if l_type and l_type in ['location', 'regionalcampus', 'building', 'parkinglot', 'disabledparking', 'sidewalk', 'bikerack', 'emergencyphone', 'emergencyaed', 'dininglocation']:
                     type_filter = type_filter + (l_type,)
             locations = locations.filter(content_type__model__in=type_filter)
 
@@ -530,6 +531,50 @@ def emergency_phones(request):
         return response
 
     return home(request, emergency_phones=True, phone_geo=obj)
+
+def emergency_aeds(request):
+    '''
+    Mostly an API wrapper (very similar to bike racks, probably should abstract this a bit)
+    '''
+    aeds = EmergencyAED.objects.all()
+
+    url = request.build_absolute_uri(reverse('emergency_aeds'))
+
+    # trying to stick to the  geojson spec: http://geojson.org/geojson-spec.html
+    arr = []
+    for p in aeds:
+        aed = {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": json.loads( "%s" % p.googlemap_point)
+            }
+        }
+        arr.append(aed)
+    obj = {
+        "name"     : "UCF AED Location",
+        "source"   : "University of Central Florida",
+        "url"      : url + ".json",
+        "type"     : "FeatureCollection",
+        "features" : arr
+    }
+
+    if request.is_json():
+        response = HttpResponse(json.dumps(obj, indent=4))
+        response['Content-type'] = 'application/json'
+        return response
+
+    if request.is_txt():
+        text = "University of Central Florida\nCampus Map: AED Locations\n%s\n%s\n" % (
+                    url + ".txt",
+                    "-"*78)
+        for p in aeds:
+            text += "\n%*d: %s" %(2, p.id, p.googlemap_point)
+        response = HttpResponse(text)
+        response['Content-type'] = 'text/plain; charset=utf-8'
+        return response
+
+    return home(request, emergency_aeds=True, aeg_geo=obj)
 
 def dining(request):
     '''

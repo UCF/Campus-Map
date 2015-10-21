@@ -6,6 +6,7 @@ from django.core.management.base import BaseCommand
 from apps.campus.models import BikeRack
 from apps.campus.models import Building
 from apps.campus.models import EmergencyPhone
+from apps.campus.models import EmergencyAED
 from apps.campus.models import Group
 from apps.campus.models import GroupedLocation
 from apps.campus.models import Location
@@ -69,6 +70,16 @@ class Command(BaseCommand):
         objects = json.loads(txt)
         for o in objects:
             o['fields']['id'] = "phone-%s" % o['pk']
+            new = EmergencyPhone.objects.create(**o['fields'])
+            print new.id, new.name
+
+        # emergency aeds
+        f = open(os.path.join(path, 'aeds.json'), 'r')
+        txt = f.read()
+        f.close()
+        objects = json.loads(txt)
+        for o in objects:
+            o['fields']['id'] = "aed-%s" % o['pk']
             new = EmergencyPhone.objects.create(**o['fields'])
             print new.id, new.name
 

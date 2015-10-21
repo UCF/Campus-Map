@@ -25,6 +25,7 @@ class Command(BaseCommand):
             ("group"           , "groups.json"),
             ("location"        , "locations.json"),
             ("emergencyphone"  , "phones.json"),
+            ("emergencyaed"    , "aeds.json"),
             ("parkinglot"      , "parkinglots.json"),
             ("sidewalk"        , "sidewalks.json"),
             ("disabledparking" , "disabledparking.json"),

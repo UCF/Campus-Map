@@ -5225,6 +5225,17 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
+	"\/static_files\/images\/markers\/aed.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 1695,
+		"inputAbbreviatedPath": "\/static_files\/images\/markers\/aed.png",
+		"outputAbbreviatedPath": "\/static_files\/images\/markers\/aed.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/static_files\/images\/markers\/bicycle.png": {
 		"fileType": 32768,
 		"ignore": 0,
@@ -5550,6 +5561,17 @@
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/static_files\/js\/map.js",
 		"outputAbbreviatedPath": "\/static_files\/js\/map.min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 0
+		},
+	"\/static_files\/js\/map.min.js": {
+		"fileType": 64,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/static_files\/js\/map.min.js",
+		"outputAbbreviatedPath": "\/static_files\/js\/map.min.min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,

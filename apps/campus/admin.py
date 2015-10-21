@@ -136,6 +136,29 @@ class ElectricChargingStationAdmin(admin.ModelAdmin):
 admin.site.register(campus.models.ElectricChargingStation, ElectricChargingStationAdmin)
 
 
+
+
+
+class EmergencyAEDAdminForm(MapObjForm):
+    class Meta:
+        model = campus.models.EmergencyAED
+        exclude = ['profile', 'poly_coords', 'image']
+
+class EmergencyAEDAdmin(admin.ModelAdmin):
+    list_display = ('id', 'name')
+    prepopulated_fields = {'id': ('name',)}
+    fields = ('id', 'name', 'googlemap_point', 'illustrated_point')
+    actions = None
+    change_form_template = 'admin/maps_point_selector.djt'
+    form                 = EmergencyAEDAdminForm
+admin.site.register(campus.models.EmergencyAED, EmergencyAEDAdmin)
+
+
+# class EmergencyAEDAdmin(admin.ModelAdmin):
+#     form = EmergencyAEDAdminForm
+# admin.site.register(campus.models.EmergencyAED, EmergencyAEDAdmin)
+
+
 class ParkingLotAdminForm(MapObjForm):
     class Meta:
         model = campus.models.ParkingLot

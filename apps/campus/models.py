@@ -492,10 +492,11 @@ class Sidewalk(models.Model):
 class BikeRack(MapObj):
     pass
 
-
 class EmergencyPhone(MapObj):
     pass
 
+class EmergencyAED(MapObj):
+    pass
 
 class ElectricChargingStation(MapObj):
     pass

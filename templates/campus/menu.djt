@@ -27,9 +27,11 @@
 					<label><input type="checkbox" id="traffic"> Traffic</label>
 					<label><input type="checkbox" id="food"> Food</label>
 					<label><input type="checkbox" id="bikeracks"> Bike Racks</label>
-					<label><input type="checkbox" id="emergency-phones"> Emergency</label>
+					<label><input type="checkbox" id="emergency"> Emergency</label>
+					<!-- <label><input type="checkbox" id="emergency-phones"> Emergency</label> -->
 					<label><input type="checkbox" id="charging-stations"> EV Charging</label>
                     <label><input type="checkbox" id="shuttle-routes"> Shuttles</label>
+                    <!-- <label><input type="checkbox" id="aed-locations"> AED Locations</label> -->
 				</div>
 				<div class="more-menu">
 					<span>&nbsp;</span>
@@ -127,6 +129,19 @@
     </div>
 </div>
 
-
-
-
+<div style="display:none;" id="emergency-content">
+    <div id="aed-locations">
+			<h3>Emergency Options:</h3>
+	    <div>
+				<label><input type="checkbox" class="init-checked" id="emergency-phones"> Emergency Phones</label>
+			</div>
+			<div>
+				<label><input type="checkbox" class="init-checked" id="aed-locations"> AEDs</label>
+			</div>
+		</div>
+		<div>
+			<h3>Having an Emergency?</h3>
+			<a class="item" id="dail-emergency-number" href="tel:911">Dial 911</a>
+		</div>
+    </div>
+</div>

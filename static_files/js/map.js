@@ -39,6 +39,7 @@ var CampusMap = function(options) {
 		SIDEWALKS_KML_URL = options.urls['sidewalks_kml'],
 		BIKERACKS_URL     = options.urls['bikeracks'],
 		PHONES_URL        = options.urls['phones'],
+    AEDS_URL          = options.urls['aeds'],
 		STATIONS_URL      = options.urls['stations'],
 		BASE_URL          = options.urls['base_url'],
 
@@ -374,48 +375,92 @@ var CampusMap = function(options) {
     }
 
     if(isDesktopWidth) {
-  		// Implementation details for the emergency phones layer
-  		LAYER_MANAGER.register_layer(
-  			(function() {
-  				var phones_layer = new Layer('emergency-phones');
-  				phones_layer.markers = (function() {
-  					var markers = [];
-  					$.ajax({
-  						url     :PHONES_URL,
-  						dataType:'json',
-  						async   :false,
-  						success :
-  							function(data, text_status, jq_xhr) {
-  								var icon   = {
-  										url: STATIC_URL + '/images/markers/phone.png',
-  										size: new google.maps.Size(25, 25)
-  								};
+      // Implementation details for the emergency phones layer
+      LAYER_MANAGER.register_layer(
+        (function() {
+          var phones_layer = new Layer('emergency-phones');
+          phones_layer.markers = (function() {
+            var markers = [];
+            $.ajax({
+              url     :PHONES_URL,
+              dataType:'json',
+              async   :false,
+              success :
+                function(data, text_status, jq_xhr) {
+                  var icon   = {
+                      url: STATIC_URL + '/images/markers/phone.png',
+                      size: new google.maps.Size(25, 25)
+                  };
 
-  								if(typeof data.features != 'undefined') {
-  									$.each(data.features, function(index, rack) {
-  										if(rack.geometry && rack.geometry.coordinates) {
-  											markers.push(
-  												new google.maps.Marker({
-  													clickable : false,
-  													position  : new google.maps.LatLng(
-  														rack.geometry.coordinates[0],
-  														rack.geometry.coordinates[1]
-  													),
-  													map       : MAP,
-  													visible   : false,
-  													icon      : icon
-  												})
-  											);
-  										}
-  									});
-  								}
-  							}
-  					});
-  					return markers;
-  				})();
-  				return phones_layer;
-  			})()
-  		);
+                  if(typeof data.features != 'undefined') {
+                    $.each(data.features, function(index, rack) {
+                      if(rack.geometry && rack.geometry.coordinates) {
+                        markers.push(
+                          new google.maps.Marker({
+                            clickable : false,
+                            position  : new google.maps.LatLng(
+                              rack.geometry.coordinates[0],
+                              rack.geometry.coordinates[1]
+                            ),
+                            map       : MAP,
+                            visible   : false,
+                            icon      : icon
+                          })
+                        );
+                      }
+                    });
+                  }
+                }
+            });
+            return markers;
+          })();
+          return phones_layer;
+        })()
+      );
+    }
+    if(isDesktopWidth) {
+      // Implementation details for the aeds layer
+      LAYER_MANAGER.register_layer(
+        (function() {
+          var aeds_layer = new Layer('aed-locations');
+          aeds_layer.markers = (function() {
+            var markers = [];
+            $.ajax({
+              url     :AEDS_URL,
+              dataType:'json',
+              async   :false,
+              success :
+                function(data, text_status, jq_xhr) {
+                  var icon   = {
+                      url: STATIC_URL + '/images/markers/aed.png',
+                      size: new google.maps.Size(32, 32)
+                  };
+
+                  if(typeof data.features != 'undefined') {
+                    $.each(data.features, function(index, rack) {
+                      if(rack.geometry && rack.geometry.coordinates) {
+                        markers.push(
+                          new google.maps.Marker({
+                            clickable : false,
+                            position  : new google.maps.LatLng(
+                              rack.geometry.coordinates[0],
+                              rack.geometry.coordinates[1]
+                            ),
+                            map       : MAP,
+                            visible   : false,
+                            icon      : icon
+                          })
+                        );
+                      }
+                    });
+                  }
+                }
+            });
+            return markers;
+          })();
+          return aeds_layer;
+        })()
+      );
     }
     if(isDesktopWidth) {
   		// Implementation details for the ev cahrging station layer
@@ -796,8 +841,8 @@ var CampusMap = function(options) {
 					});
 			});
           // Add click event to Shuttle Routes
-          var checkbox = $('input[type="checkbox"][id="shuttle-routes"], .shuttle-routes-btn');
-          checkbox.click(function() {
+          var shuttle_checkbox = $('input[type="checkbox"][id="shuttle-routes"], .shuttle-routes-btn');
+          shuttle_checkbox.click(function() {
               if($(this).is(':checked')) {
                   MENU.change_tabs({
                       'label':'Shuttles',
@@ -817,8 +862,8 @@ var CampusMap = function(options) {
           });
 
           // Add back button for route info or any other buttons that go to the routes menu
-          var checkbox = $('.shuttle-routes-btn');
-          checkbox.click(function() {
+          var shuttle_checkbox = $('.shuttle-routes-btn');
+          shuttle_checkbox.click(function() {
               MENU.change_tabs({
                   'label':'Shuttles',
                   'html' :$('#shuttle-routes-content').clone(true, true).show()
@@ -828,6 +873,31 @@ var CampusMap = function(options) {
           if (SHUTTLE_STOPS == 0) {
           	$('#route-information').hide();
           }
+
+          // Add click event to Emergency box
+          var emergency_checkbox = $('input[type="checkbox"][id="emergency"], .emergency-btn');
+          emergency_checkbox.click(function() {
+              if($(this).is(':checked')) {
+                  var $html = $('#emergency-content').clone(true, true).show();
+                  MENU.change_tabs({
+                      'label': 'Emergency',
+                      'html' : $html
+                  }, function() {
+                    $html.find('.init-checked:not(:checked)').trigger('click');
+                  });
+
+              }
+          });
+
+          // Add back button for route info or any other buttons that go to the routes menu
+          var emergency_checkbox = $('.emergency-btn');
+          emergency_checkbox.click(function() {
+              MENU.change_tabs({
+                  'label':'Emergency',
+                  'html' :$('#emergency-content').clone(true, true).show()
+              });
+          });
+
 		})();
 
 
@@ -1404,7 +1474,7 @@ var CampusMap = function(options) {
 		}
 		this.change_buttons();
 
-		this.change_tabs = function(options) {
+		this.change_tabs = function(options, callback) {
 			var defaults = {
 				'label':false,
 				'html' :false
@@ -1435,7 +1505,8 @@ var CampusMap = function(options) {
                     }
 				}
 
-				menu.animate({'margin-left':-690}, 300);
+        menu.animate({'margin-left':-690}, 300, callback);
+
 				reset_tab_gap();
 				menu.equalHeights();
 			}
@@ -1443,6 +1514,11 @@ var CampusMap = function(options) {
 
 		// Add the menu to the map in the upper right
 		MAP.controls[google.maps.ControlPosition.RIGHT_TOP].push(container[0]);
+
+    if (typeof callback !== 'undefined' && typeof callback === 'function') {
+      console.log('callback!');
+      callback();
+    }
 	}
 
 	/*********************************
