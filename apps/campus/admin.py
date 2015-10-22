@@ -120,6 +120,7 @@ class DisabledParkingAdminForm(MapObjForm):
     class Meta:
         model = campus.models.DisabledParking
 
+
 class DisabledParkingAdmin(admin.ModelAdmin):
     fields = ('description', 'num_spaces', 'googlemap_point', 'illustrated_point')
     actions = None
@@ -127,22 +128,22 @@ class DisabledParkingAdmin(admin.ModelAdmin):
     change_form_template = 'admin/maps_point_selector.djt'
 admin.site.register(campus.models.DisabledParking, DisabledParkingAdmin)
 
+
 class ElectricChargingStationAdminForm(MapObjForm):
     class Meta:
         model = campus.models.ElectricChargingStation
+
 
 class ElectricChargingStationAdmin(admin.ModelAdmin):
     form = ElectricChargingStationAdminForm
 admin.site.register(campus.models.ElectricChargingStation, ElectricChargingStationAdmin)
 
 
-
-
-
 class EmergencyAEDAdminForm(MapObjForm):
     class Meta:
         model = campus.models.EmergencyAED
         exclude = ['profile', 'poly_coords', 'image']
+
 
 class EmergencyAEDAdmin(admin.ModelAdmin):
     list_display = ('name', 'id')

@@ -825,12 +825,11 @@ var CampusMap = function(options) {
 					checkbox = $('input[type="checkbox"][id="' + layer.name + '"]');
 
 				if(layer.active) {
-          check_emergency = (layer.name.search("emergency") == -1) ? false : true;
-          if (check_emergency) {
-            // TODO: do this better
-            console.log('init check emergency');
-            $('#emergency').attr('checked', true);
-          }
+					// check the emergency box if one of the emergency options
+					// should be set by default
+					if (layer.name.search("emergency") !== -1) {
+						$('#emergency').attr('checked', true);
+					}
 					checkbox.attr('checked', 'checked');
 				}
 
@@ -880,29 +879,17 @@ var CampusMap = function(options) {
           	$('#route-information').hide();
           }
 
-          // Add click event to Emergency box
-          var emergency_checkbox = $('input[type="checkbox"][id="emergency"], .emergency-btn');
-          emergency_checkbox.click(function() {
-              //if($(this).is(':checked')) {
-                  var $html = $('#emergency-content').clone(true, true).show();
-                  MENU.change_tabs({
-                      'label': 'Emergency',
-                      'html' : $html
-                  }, function() {
-                    $html.find('.init-checked:not(:checked)').trigger('click');
-                  });
-
-              //}
-          });
-
-          // Add back button for route info or any other buttons that go to the routes menu
-          var emergency_checkbox = $('.emergency-btn');
-          emergency_checkbox.click(function() {
-              MENU.change_tabs({
-                  'label':'Emergency',
-                  'html' :$('#emergency-content').clone(true, true).show()
-              });
-          });
+					// Add click event to Emergency box
+					var emergency_checkbox = $('input[type="checkbox"][id="emergency"], .emergency-btn');
+					emergency_checkbox.click(function() {
+							var $html = $('#emergency-content').clone(true, true).show();
+							MENU.change_tabs({
+									'label': 'Emergency',
+									'html' : $html
+								}, function() {
+								$html.find('.init-checked:not(:checked)').trigger('click');
+							});
+					});
 
 		})();
 
@@ -1511,7 +1498,7 @@ var CampusMap = function(options) {
                     }
 				}
 
-        menu.animate({'margin-left':-690}, 300, callback);
+				menu.animate({'margin-left':-690}, 300, callback);
 
 				reset_tab_gap();
 				menu.equalHeights();
@@ -1521,10 +1508,10 @@ var CampusMap = function(options) {
 		// Add the menu to the map in the upper right
 		MAP.controls[google.maps.ControlPosition.RIGHT_TOP].push(container[0]);
 
-    if (typeof callback !== 'undefined' && typeof callback === 'function') {
-      console.log('callback!');
-      callback();
-    }
+		// Call callback function if one is supplied
+		if (typeof callback !== 'undefined' && typeof callback === 'function') {
+			callback();
+		}
 	}
 
 	/*********************************
