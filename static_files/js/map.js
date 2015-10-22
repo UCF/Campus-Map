@@ -825,6 +825,12 @@ var CampusMap = function(options) {
 					checkbox = $('input[type="checkbox"][id="' + layer.name + '"]');
 
 				if(layer.active) {
+          check_emergency = (layer.name.search("emergency") == -1) ? false : true;
+          if (check_emergency) {
+            // TODO: do this better
+            console.log('init check emergency');
+            $('#emergency').attr('checked', true);
+          }
 					checkbox.attr('checked', 'checked');
 				}
 
@@ -877,7 +883,7 @@ var CampusMap = function(options) {
           // Add click event to Emergency box
           var emergency_checkbox = $('input[type="checkbox"][id="emergency"], .emergency-btn');
           emergency_checkbox.click(function() {
-              if($(this).is(':checked')) {
+              //if($(this).is(':checked')) {
                   var $html = $('#emergency-content').clone(true, true).show();
                   MENU.change_tabs({
                       'label': 'Emergency',
@@ -886,7 +892,7 @@ var CampusMap = function(options) {
                     $html.find('.init-checked:not(:checked)').trigger('click');
                   });
 
-              }
+              //}
           });
 
           // Add back button for route info or any other buttons that go to the routes menu
