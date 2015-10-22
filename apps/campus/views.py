@@ -534,13 +534,12 @@ def emergency_phones(request):
 
 def emergency_aeds(request):
     '''
-    Mostly an API wrapper (very similar to bike racks, probably should abstract this a bit)
+    Mostly an API wrapper
     '''
     aeds = EmergencyAED.objects.all()
 
     url = request.build_absolute_uri(reverse('emergency_aeds'))
 
-    # trying to stick to the  geojson spec: http://geojson.org/geojson-spec.html
     arr = []
     for p in aeds:
         aed = {
@@ -552,7 +551,7 @@ def emergency_aeds(request):
         }
         arr.append(aed)
     obj = {
-        "name"     : "UCF AED Location",
+        "name"     : "UCF AED Locations",
         "source"   : "University of Central Florida",
         "url"      : url + ".json",
         "type"     : "FeatureCollection",
