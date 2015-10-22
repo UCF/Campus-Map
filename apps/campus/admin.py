@@ -155,11 +155,6 @@ class EmergencyAEDAdmin(admin.ModelAdmin):
 admin.site.register(campus.models.EmergencyAED, EmergencyAEDAdmin)
 
 
-# class EmergencyAEDAdmin(admin.ModelAdmin):
-#     form = EmergencyAEDAdminForm
-# admin.site.register(campus.models.EmergencyAED, EmergencyAEDAdmin)
-
-
 class ParkingLotAdminForm(MapObjForm):
     class Meta:
         model = campus.models.ParkingLot
