@@ -374,94 +374,93 @@ var CampusMap = function(options) {
   		);
     }
 
-    if(isDesktopWidth) {
-      // Implementation details for the emergency phones layer
-      LAYER_MANAGER.register_layer(
-        (function() {
-          var phones_layer = new Layer('emergency-phones');
-          phones_layer.markers = (function() {
-            var markers = [];
-            $.ajax({
-              url     :PHONES_URL,
-              dataType:'json',
-              async   :false,
-              success :
-                function(data, text_status, jq_xhr) {
-                  var icon   = {
-                      url: STATIC_URL + '/images/markers/phone.png',
-                      size: new google.maps.Size(25, 25)
-                  };
+    // Implementation details for the emergency phones layer
+    LAYER_MANAGER.register_layer(
+      (function() {
+        var phones_layer = new Layer('emergency-phones');
+        phones_layer.markers = (function() {
+          var markers = [];
+          $.ajax({
+            url     :PHONES_URL,
+            dataType:'json',
+            async   :false,
+            success :
+              function(data, text_status, jq_xhr) {
+                var icon   = {
+                    url: STATIC_URL + '/images/markers/phone.png',
+                    size: new google.maps.Size(25, 25)
+                };
 
-                  if(typeof data.features != 'undefined') {
-                    $.each(data.features, function(index, rack) {
-                      if(rack.geometry && rack.geometry.coordinates) {
-                        markers.push(
-                          new google.maps.Marker({
-                            clickable : false,
-                            position  : new google.maps.LatLng(
-                              rack.geometry.coordinates[0],
-                              rack.geometry.coordinates[1]
-                            ),
-                            map       : MAP,
-                            visible   : false,
-                            icon      : icon
-                          })
-                        );
-                      }
-                    });
-                  }
+                if(typeof data.features != 'undefined') {
+                  $.each(data.features, function(index, rack) {
+                    if(rack.geometry && rack.geometry.coordinates) {
+                      markers.push(
+                        new google.maps.Marker({
+                          clickable : false,
+                          position  : new google.maps.LatLng(
+                            rack.geometry.coordinates[0],
+                            rack.geometry.coordinates[1]
+                          ),
+                          map       : MAP,
+                          visible   : false,
+                          icon      : icon
+                        })
+                      );
+                    }
+                  });
                 }
-            });
-            return markers;
-          })();
-          return phones_layer;
-        })()
-      );
-    }
-    if(isDesktopWidth) {
-      // Implementation details for the aeds layer
-      LAYER_MANAGER.register_layer(
-        (function() {
-          var aeds_layer = new Layer('emergency-aeds');
-          aeds_layer.markers = (function() {
-            var markers = [];
-            $.ajax({
-              url     :AEDS_URL,
-              dataType:'json',
-              async   :false,
-              success :
-                function(data, text_status, jq_xhr) {
-                  var icon   = {
-                      url: STATIC_URL + '/images/markers/aed.png',
-                      size: new google.maps.Size(32, 32)
-                  };
+              }
+          });
+          return markers;
+        })();
+        return phones_layer;
+      })()
+    );
 
-                  if(typeof data.features != 'undefined') {
-                    $.each(data.features, function(index, rack) {
-                      if(rack.geometry && rack.geometry.coordinates) {
-                        markers.push(
-                          new google.maps.Marker({
-                            clickable : false,
-                            position  : new google.maps.LatLng(
-                              rack.geometry.coordinates[0],
-                              rack.geometry.coordinates[1]
-                            ),
-                            map       : MAP,
-                            visible   : false,
-                            icon      : icon
-                          })
-                        );
-                      }
-                    });
-                  }
+    // Implementation details for the aeds layer
+    LAYER_MANAGER.register_layer(
+      (function() {
+        var aeds_layer = new Layer('emergency-aeds');
+        aeds_layer.markers = (function() {
+          var markers = [];
+          $.ajax({
+            url     :AEDS_URL,
+            dataType:'json',
+            async   :false,
+            success :
+              function(data, text_status, jq_xhr) {
+                var icon   = {
+                    url: STATIC_URL + '/images/markers/aed.png',
+                    size: new google.maps.Size(32, 32)
+                };
+
+                if(typeof data.features != 'undefined') {
+                  $.each(data.features, function(index, rack) {
+                    if(rack.geometry && rack.geometry.coordinates) {
+                      markers.push(
+                        new google.maps.Marker({
+                          clickable : false,
+                          position  : new google.maps.LatLng(
+                            rack.geometry.coordinates[0],
+                            rack.geometry.coordinates[1]
+                          ),
+                          map       : MAP,
+                          visible   : false,
+                          icon      : icon
+                        })
+                      );
+                    }
+                  });
                 }
-            });
-            return markers;
-          })();
-          return aeds_layer;
-        })()
-      );
-    }
+              }
+          });
+          return markers;
+        })();
+        return aeds_layer;
+      })()
+    );
+
+
     if(isDesktopWidth) {
   		// Implementation details for the ev cahrging station layer
   		LAYER_MANAGER.register_layer(
@@ -1322,6 +1321,10 @@ var CampusMap = function(options) {
           break;
         case 'parking':
           LAYER_MANAGER.get_layer('parking').toggle();
+          break;
+        case 'emergency':
+          LAYER_MANAGER.get_layer('emergency-phones').toggle();
+          LAYER_MANAGER.get_layer('emergency-aeds').toggle();
           break;
         case 'food':
           LAYER_MANAGER.get_layer('food').toggle();

@@ -1410,9 +1410,20 @@ img[src*="gstatic.com/"], img[src*="googleapis.com/"] {
   margin-top: 5px;
 }
 
-#menu #call911{
+#mobile-menu .emergency-resources h6{
+  padding: 10px 15px 5px 15px;
+}
+
+#mobile-menu .emergency-resources a {
+  padding: 6px 0px;
+  margin: 0 15px;
+}
+
+#call911,
+#menu #call911,
+#mobile-menu #call911 {
   display:inline-block;
-  border:1px solid black;
+  border: 1px solid black;
   border-radius:5px;
   -webkit-border-radius:5px;
   -moz-border-radius:5px;
@@ -1421,12 +1432,17 @@ img[src*="gstatic.com/"], img[src*="googleapis.com/"] {
   text-shadow: 0 1px 0 rgba(0, 0, 0, .5);
   text-decoration:none;
   background: #FF0707;
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#F00), to(#9F0000));
+  background: -moz-linear-gradient(top,  #F00,  #9F0000);
   margin-bottom:5px;
   padding: 8px 10px;
   width: 185px;
-  background-image: url(img/phone-white.png);
-  background-position: 95% center;
-  background-repeat: no-repeat;
+  vertical-align: baseline;
+}
+
+#call911 .fa-phone {
+  font-size: 17px;
+  float: right;
 }
 
 /******************************************************************************\
