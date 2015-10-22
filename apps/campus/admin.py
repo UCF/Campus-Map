@@ -145,7 +145,7 @@ class EmergencyAEDAdminForm(MapObjForm):
         exclude = ['profile', 'poly_coords', 'image']
 
 class EmergencyAEDAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name')
+    list_display = ('name', 'id')
     prepopulated_fields = {'id': ('name',)}
     fields = ('id', 'name', 'googlemap_point', 'illustrated_point')
     actions = None

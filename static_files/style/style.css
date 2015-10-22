@@ -1092,6 +1092,16 @@ img[src*="gstatic.com/"], img[src*="googleapis.com/"] {
   font-size: 13px;
 }
 
+#menu h4.inline {
+  display: inline-block;
+
+}
+
+#menu h4.inline:after {
+  content: ": ";
+}
+
+
 #menu .item {
   background: white;
   background: rgba(255, 255, 255, .8);
@@ -1394,6 +1404,29 @@ img[src*="gstatic.com/"], img[src*="googleapis.com/"] {
   line-height: 12px;
   font-weight: 400;
   padding: 5px 0;
+}
+
+#menu #emergency-options div h4 {
+  margin-top: 5px;
+}
+
+#menu #call911{
+  display:inline-block;
+  border:1px solid black;
+  border-radius:5px;
+  -webkit-border-radius:5px;
+  -moz-border-radius:5px;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, .5);
+  text-decoration:none;
+  background: #FF0707;
+  margin-bottom:5px;
+  padding: 8px 10px;
+  width: 185px;
+  background-image: url(img/phone-white.png);
+  background-position: 95% center;
+  background-repeat: no-repeat;
 }
 
 /******************************************************************************\

@@ -129,17 +129,36 @@
 
 <div style="display:none;" id="emergency-content">
     <div id="emergency-options">
-			<h3>Emergency Options:</h3>
+			<h3>Emergency Resources</h3>
 	    <div>
 				<label><input type="checkbox" class="init-checked" id="emergency-phones"> Emergency Phones</label>
 			</div>
 			<div>
 				<label><input type="checkbox" class="init-checked" id="emergency-aeds"> AEDs</label>
 			</div>
+			<h3>Emergency Contacts:</h3>
+			<a class="item" id="call911" href="tel:911">Emergency Call 911</a>
+			<div>
+				<h4>Univeristy Police</h4>
+				<a href="tel:4078235555">407-823-5555</a>
+			</div>
+			<div>
+				<h4>Safety Escort Patrol Services [SEPS]</h4>
+				<a href="tel:4078232424">407-823-2424</a>
+			</div>
+			<div>
+				<h4>Victim Services</h4>
+				<a href="tel:4078232425">407-823-2425</a>
+			</div>
+			<div>
+				<h4>Victim Services (after hours)</h4>
+				<a href="tel:4078235555">407-823-5555</a>
+			</div>
+			<div>
+				<h4>Parking Services</h4>
+				<a href="tel:4078235812">407-823-5812</a>
+			</div>
 		</div>
-		<div>
-			<h3>Having an Emergency?</h3>
-			<a class="item" id="dail-emergency-number" href="tel:911">Dial 911</a>
-		</div>
-    </div>
+</div>
+
 </div>
