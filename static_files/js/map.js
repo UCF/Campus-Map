@@ -422,7 +422,7 @@ var CampusMap = function(options) {
       // Implementation details for the aeds layer
       LAYER_MANAGER.register_layer(
         (function() {
-          var aeds_layer = new Layer('aed-locations');
+          var aeds_layer = new Layer('emergency-aeds');
           aeds_layer.markers = (function() {
             var markers = [];
             $.ajax({

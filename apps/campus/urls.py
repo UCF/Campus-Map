@@ -1,6 +1,7 @@
 from django.conf import settings
 from django.conf.urls import patterns
 from django.conf.urls import url
+from django.views.generic import RedirectView
 
 from campus.views import ShuttleRoutePolyView
 
@@ -13,7 +14,9 @@ urlpatterns = patterns('campus.views',
     url(r'^bikeracks/$', 'bikeracks', name='bikeracks'),
     url(r'^charging-stations', 'electric_charging_stations', name='electric_charging_stations'),
     url(r'^emergency-phones/$', 'emergency_phones', name='emergency_phones'),
-    url(r'^aeds/$', 'emergency_aeds', name='emergency_aeds'),
+    url(r'^phones/$', RedirectView.as_view(pattern_name='emergency_phones')),
+    url(r'^emergency-aeds/$', 'emergency_aeds', name='emergency_aeds'),
+    url(r'^aeds/$', RedirectView.as_view(pattern_name='emergency_aeds')),
     url(r'^parking/$', 'parking', name='parking'),
     url(r'^food/$', 'dining', name='dining'),
     url(r'^regional-campuses/((?P<campus>[\w-]+)/)?$', 'regional_campuses', name='regional'),
