@@ -1511,7 +1511,7 @@ var CampusMap = function(options) {
                     }
 				}
 
-				menu.animate({'margin-left':-690}, 300, callback);
+				menu.animate({'margin-left':-690}, 300);
 
 				reset_tab_gap();
 				menu.equalHeights();
