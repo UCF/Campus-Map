@@ -1323,8 +1323,18 @@ var CampusMap = function(options) {
           LAYER_MANAGER.get_layer('parking').toggle();
           break;
         case 'emergency':
-          LAYER_MANAGER.get_layer('emergency-phones').toggle();
-          LAYER_MANAGER.get_layer('emergency-aeds').toggle();
+          var phones_layer = LAYER_MANAGER.get_layer('emergency-phones');
+          var aeds_layer = LAYER_MANAGER.get_layer('emergency-aeds');
+          console.log(phones_layer)
+          console.log(aeds_layer)
+
+          if (phones_layer.active == true && aeds_layer.active == true) {
+            phones_layer.deactivate();
+            aeds_layer.deactivate();
+          } else {
+            phones_layer.activate();
+            aeds_layer.activate();
+          }
           break;
         case 'food':
           LAYER_MANAGER.get_layer('food').toggle();

@@ -1406,7 +1406,7 @@ img[src*="gstatic.com/"], img[src*="googleapis.com/"] {
   padding: 5px 0;
 }
 
-#menu #emergency-options div h4 {
+#menu .emergency-options div h4 {
   margin-top: 5px;
 }
 
@@ -1443,6 +1443,19 @@ img[src*="gstatic.com/"], img[src*="googleapis.com/"] {
 #call911 .fa-phone {
   font-size: 17px;
   float: right;
+}
+
+#mobile-menu .icon.marker {
+  padding-left: 15px;
+}
+
+#mobile-menu .icon.marker,
+#mobile-menu .icon.marker img {
+  vertical-align: middle;
+}
+
+#mobile-menu .key > div {
+  padding-bottom: 10px;
 }
 
 /******************************************************************************\

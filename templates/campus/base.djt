@@ -101,12 +101,22 @@
 			</h4>
 			<ul class="hidden">
 				<li class="emergency-resources">
-<!-- 					<div>
-						<label><input type="checkbox" class="init-checked" id="emergency-phones"> Emergency Phones</label>
+					<h5>Resources Key</h5>
+					<div class="key">
+						<div>
+							<span class="icon marker">
+								<img src="/static/images/markers/phone.png" alt="disabled icon">
+							</span>
+							Emergency Phones
+						</div>
+						<div>
+							<span class="icon marker">
+								<img src="/static/images/markers/aed.png" alt="disabled icon">
+							</span>
+							AED Locations
+						</div>
 					</div>
-					<div>
-						<label><input type="checkbox" class="init-checked" id="emergency-aeds"> AEDs</label>
-					</div> -->
+
 					<h5>Emergency Contacts:</h5>
 					<a class="item" id="call911" href="tel:911">Emergency Call 911 <i class="fa fa-phone"></i></a>
 						<h6>Univeristy Police</h6>
