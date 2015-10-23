@@ -29,7 +29,7 @@
 					<label><input type="checkbox" id="bikeracks"> Bike Racks</label>
 					<label><input type="checkbox" id="emergency"> Emergency</label>
 					<label><input type="checkbox" id="charging-stations"> EV Charging</label>
-                    <label><input type="checkbox" id="shuttle-routes"> Shuttles</label>
+					<label><input type="checkbox" id="shuttle-routes"> Shuttles</label>
 				</div>
 				<div class="more-menu">
 					<span>&nbsp;</span>
@@ -128,37 +128,37 @@
 </div>
 
 <div style="display:none;" id="emergency-content">
-    <div class="emergency-options">
-			<h3>Emergency Resources</h3>
-	    <div>
-				<label><input type="checkbox" class="init-checked" id="emergency-phones"> Emergency Phones</label>
-			</div>
-			<div>
-				<label><input type="checkbox" class="init-checked" id="emergency-aeds"> AEDs</label>
-			</div>
-			<h3>Emergency Contacts:</h3>
-			<a class="item" id="call911" href="tel:911">Emergency Call 911 <i class="fa fa-phone"></i></a>
-			<div>
-				<h4>Univeristy Police</h4>
-				<a href="tel:1-407-823-5555">407-823-5555</a>
-			</div>
-			<div>
-				<h4>Safety Escort Patrol Services</h4>
-				<a href="tel:1-407-823-2424">407-823-2424</a>
-			</div>
-			<div>
-				<h4>Victim Services</h4>
-				<a href="tel:1-407-823-2425">407-823-2425</a>
-			</div>
-			<div>
-				<h4>Victim Services (after hours)</h4>
-				<a href="tel:1-407-823-5555">407-823-5555</a>
-			</div>
-			<div>
-				<h4>Parking Services</h4>
-				<a href="tel:1-407-823-5812">407-823-5812</a>
-			</div>
+	<div class="emergency-options">
+		<h3>Emergency Resources</h3>
+		<div>
+			<label><input type="checkbox" class="init-checked" id="emergency-phones"> Emergency Phones</label>
 		</div>
+		<div>
+			<label><input type="checkbox" class="init-checked" id="emergency-aeds"> AEDs</label>
+		</div>
+		<h3>Emergency Contacts:</h3>
+		<a class="item" id="call911" href="tel:911">Emergency Call 911 <i class="fa fa-phone"></i></a>
+		<div>
+			<h4>Univeristy Police</h4>
+			<a href="tel:1-407-823-5555">407-823-5555</a>
+		</div>
+		<div>
+			<h4>Safety Escort Patrol Services</h4>
+			<a href="tel:1-407-823-2424">407-823-2424</a>
+		</div>
+		<div>
+			<h4>Victim Services</h4>
+			<a href="tel:1-407-823-2425">407-823-2425</a>
+		</div>
+		<div>
+			<h4>Victim Services (after hours)</h4>
+			<a href="tel:1-407-823-5555">407-823-5555</a>
+		</div>
+		<div>
+			<h4>Parking Services</h4>
+			<a href="tel:1-407-823-5812">407-823-5812</a>
+		</div>
+	</div>
 </div>
 
 </div>
