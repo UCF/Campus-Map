@@ -823,6 +823,9 @@ var CampusMap = function(options) {
 				var name     = layer.name,
 					checkbox = $('input[type="checkbox"][id="' + layer.name + '"]');
 
+				var phones_layer = LAYER_MANAGER.get_layer('emergency-phones');
+				var aeds_layer = LAYER_MANAGER.get_layer('emergency-aeds');
+
 				if(layer.active) {
 					// check the emergency box if one of the emergency options
 					// should be set by default
@@ -841,7 +844,15 @@ var CampusMap = function(options) {
 								'html' :$('#parking-key-content').html()
 							});
 						}
+
 						layer.toggle();
+
+						// Uncheck emergency checkbox when other emergency items have all
+						// been unchecked
+						if (phones_layer.active == false && aeds_layer.active == false) {
+							$('#emergency').attr('checked', false);
+						}
+
 					});
 			});
           // Add click event to Shuttle Routes
@@ -886,7 +897,10 @@ var CampusMap = function(options) {
 									'label': 'Emergency',
 									'html' : $html
 								}, function() {
-								$html.find('.init-checked:not(:checked)').trigger('click');
+									$html.find('.init-checked:not(:checked)').attr('checked', true);
+									emergency_checkbox.attr('checked', true);
+									LAYER_MANAGER.get_layer('emergency-phones').activate();
+									LAYER_MANAGER.get_layer('emergency-aeds').activate();
 							});
 					});
 
@@ -1325,8 +1339,6 @@ var CampusMap = function(options) {
         case 'emergency':
           var phones_layer = LAYER_MANAGER.get_layer('emergency-phones');
           var aeds_layer = LAYER_MANAGER.get_layer('emergency-aeds');
-          console.log(phones_layer)
-          console.log(aeds_layer)
 
           if (phones_layer.active == true && aeds_layer.active == true) {
             phones_layer.deactivate();
@@ -1516,15 +1528,17 @@ var CampusMap = function(options) {
 				reset_tab_gap();
 				menu.equalHeights();
 			}
+
+
+			// Call callback function if one is supplied
+			if (typeof callback !== 'undefined' && typeof callback === 'function') {
+				callback();
+			}
+
 		}
 
 		// Add the menu to the map in the upper right
 		MAP.controls[google.maps.ControlPosition.RIGHT_TOP].push(container[0]);
-
-		// Call callback function if one is supplied
-		if (typeof callback !== 'undefined' && typeof callback === 'function') {
-			callback();
-		}
 	}
 
 	/*********************************

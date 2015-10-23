@@ -1281,6 +1281,7 @@ img[src*="gstatic.com/"], img[src*="googleapis.com/"] {
 
 #menu-1 #layers {
   margin-bottom: 20px;
+  padding-bottom: 20px;
 }
 
 #menu .more-menu {
