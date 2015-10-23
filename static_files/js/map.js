@@ -39,7 +39,7 @@ var CampusMap = function(options) {
 		SIDEWALKS_KML_URL = options.urls['sidewalks_kml'],
 		BIKERACKS_URL     = options.urls['bikeracks'],
 		PHONES_URL        = options.urls['phones'],
-    AEDS_URL          = options.urls['aeds'],
+		AEDS_URL          = options.urls['aeds'],
 		STATIONS_URL      = options.urls['stations'],
 		BASE_URL          = options.urls['base_url'],
 
@@ -374,137 +374,137 @@ var CampusMap = function(options) {
   		);
     }
 
-    // Implementation details for the emergency phones layer
-    LAYER_MANAGER.register_layer(
-      (function() {
-        var phones_layer = new Layer('emergency-phones');
-        phones_layer.markers = (function() {
-          var markers = [];
-          $.ajax({
-            url     :PHONES_URL,
-            dataType:'json',
-            async   :false,
-            success :
-              function(data, text_status, jq_xhr) {
-                var icon   = {
-                    url: STATIC_URL + '/images/markers/phone.png',
-                    size: new google.maps.Size(25, 25)
-                };
+		// Implementation details for the emergency phones layer
+		LAYER_MANAGER.register_layer(
+			(function() {
+				var phones_layer = new Layer('emergency-phones');
+				phones_layer.markers = (function() {
+					var markers = [];
+					$.ajax({
+						url     :PHONES_URL,
+						dataType:'json',
+						async   :false,
+						success :
+							function(data, text_status, jq_xhr) {
+								var icon   = {
+										url: STATIC_URL + '/images/markers/phone.png',
+										size: new google.maps.Size(25, 25)
+								};
 
-                if(typeof data.features != 'undefined') {
-                  $.each(data.features, function(index, rack) {
-                    if(rack.geometry && rack.geometry.coordinates) {
-                      markers.push(
-                        new google.maps.Marker({
-                          clickable : false,
-                          position  : new google.maps.LatLng(
-                            rack.geometry.coordinates[0],
-                            rack.geometry.coordinates[1]
-                          ),
-                          map       : MAP,
-                          visible   : false,
-                          icon      : icon
-                        })
-                      );
-                    }
-                  });
-                }
-              }
-          });
-          return markers;
-        })();
-        return phones_layer;
-      })()
-    );
+								if(typeof data.features != 'undefined') {
+									$.each(data.features, function(index, rack) {
+										if(rack.geometry && rack.geometry.coordinates) {
+											markers.push(
+												new google.maps.Marker({
+													clickable : false,
+													position  : new google.maps.LatLng(
+														rack.geometry.coordinates[0],
+														rack.geometry.coordinates[1]
+													),
+													map       : MAP,
+													visible   : false,
+													icon      : icon
+												})
+											);
+										}
+									});
+								}
+							}
+					});
+					return markers;
+				})();
+				return phones_layer;
+			})()
+		);
 
-    // Implementation details for the aeds layer
-    LAYER_MANAGER.register_layer(
-      (function() {
-        var aeds_layer = new Layer('emergency-aeds');
-        aeds_layer.markers = (function() {
-          var markers = [];
-          $.ajax({
-            url     :AEDS_URL,
-            dataType:'json',
-            async   :false,
-            success :
-              function(data, text_status, jq_xhr) {
-                var icon   = {
-                    url: STATIC_URL + '/images/markers/aed.png',
-                    size: new google.maps.Size(32, 32)
-                };
+		// Implementation details for the aeds layer
+		LAYER_MANAGER.register_layer(
+			(function() {
+				var aeds_layer = new Layer('emergency-aeds');
+				aeds_layer.markers = (function() {
+					var markers = [];
+					$.ajax({
+						url     :AEDS_URL,
+						dataType:'json',
+						async   :false,
+						success :
+							function(data, text_status, jq_xhr) {
+								var icon   = {
+										url: STATIC_URL + '/images/markers/aed.png',
+										size: new google.maps.Size(32, 32)
+								};
 
-                if(typeof data.features != 'undefined') {
-                  $.each(data.features, function(index, rack) {
-                    if(rack.geometry && rack.geometry.coordinates) {
-                      markers.push(
-                        new google.maps.Marker({
-                          clickable : false,
-                          position  : new google.maps.LatLng(
-                            rack.geometry.coordinates[0],
-                            rack.geometry.coordinates[1]
-                          ),
-                          map       : MAP,
-                          visible   : false,
-                          icon      : icon
-                        })
-                      );
-                    }
-                  });
-                }
-              }
-          });
-          return markers;
-        })();
-        return aeds_layer;
-      })()
-    );
+								if(typeof data.features != 'undefined') {
+									$.each(data.features, function(index, rack) {
+										if(rack.geometry && rack.geometry.coordinates) {
+											markers.push(
+												new google.maps.Marker({
+													clickable : false,
+													position  : new google.maps.LatLng(
+														rack.geometry.coordinates[0],
+														rack.geometry.coordinates[1]
+													),
+													map       : MAP,
+													visible   : false,
+													icon      : icon
+												})
+											);
+										}
+									});
+								}
+							}
+					});
+					return markers;
+				})();
+				return aeds_layer;
+			})()
+		);
 
 
-    if(isDesktopWidth) {
-  		// Implementation details for the ev cahrging station layer
-  		LAYER_MANAGER.register_layer(
-  			(function() {
-  				var stations_layer = new Layer('charging-stations');
-  				stations_layer.markers = (function() {
-  					var markers = [];
-  					$.ajax({
-  						url     :STATIONS_URL,
-  						dataType:'json',
-  						async   :false,
-  						success :
-  							function(data, text_status, jq_xhr) {
-  								var icon   = {
-  										url: STATIC_URL + '/images/markers/ev.png',
-  										size: new google.maps.Size(32, 32)
-  								};
+		if(isDesktopWidth) {
+			// Implementation details for the ev cahrging station layer
+			LAYER_MANAGER.register_layer(
+				(function() {
+					var stations_layer = new Layer('charging-stations');
+					stations_layer.markers = (function() {
+						var markers = [];
+						$.ajax({
+							url     :STATIONS_URL,
+							dataType:'json',
+							async   :false,
+							success :
+								function(data, text_status, jq_xhr) {
+									var icon   = {
+											url: STATIC_URL + '/images/markers/ev.png',
+											size: new google.maps.Size(32, 32)
+									};
 
-  								if(typeof data.features != 'undefined') {
-  									$.each(data.features, function(index, rack) {
-  										if(rack.geometry && rack.geometry.coordinates) {
-  											markers.push(
-  												new google.maps.Marker({
-  													clickable : false,
-  													position  : new google.maps.LatLng(
-  														rack.geometry.coordinates[0],
-  														rack.geometry.coordinates[1]
-  													),
-  													map       : MAP,
-  													visible   : false,
-  													icon      : icon
-  												})
-  											);
-  										}
-  									});
-  								}
-  							}
-  					});
-  					return markers;
-  				})();
-  				return stations_layer;
-  			})()
-  		);
-    }
+									if(typeof data.features != 'undefined') {
+										$.each(data.features, function(index, rack) {
+											if(rack.geometry && rack.geometry.coordinates) {
+												markers.push(
+													new google.maps.Marker({
+														clickable : false,
+														position  : new google.maps.LatLng(
+															rack.geometry.coordinates[0],
+															rack.geometry.coordinates[1]
+														),
+														map       : MAP,
+														visible   : false,
+														icon      : icon
+													})
+												);
+											}
+										});
+									}
+								}
+						});
+						return markers;
+					})();
+					return stations_layer;
+				})()
+			);
+		}
 
 		// Implementation detail for the parking layer
 		LAYER_MANAGER.register_layer(
