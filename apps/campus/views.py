@@ -486,7 +486,7 @@ def electric_charging_stations(request):
         response['Content-type'] = 'text/plain; charset=utf-8'
         return response
 
-    return home(request, electric_charging_stations=True, ev_goe=obj)
+    return home(request, electric_charging_stations=True, ev_geo=obj)
 
 def emergency_phones(request):
     '''

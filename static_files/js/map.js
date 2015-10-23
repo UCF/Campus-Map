@@ -856,7 +856,7 @@ var CampusMap = function(options) {
 					});
 			});
           // Add click event to Shuttle Routes
-          var shuttle_checkbox = $('input[type="checkbox"][id="shuttle-routes"], .shuttle-routes-btn');
+          var shuttle_checkbox = $('#shuttle-routes, .shuttle-routes-btn');
           shuttle_checkbox.click(function() {
               if($(this).is(':checked')) {
                   MENU.change_tabs({
@@ -890,7 +890,7 @@ var CampusMap = function(options) {
           }
 
 					// Add click event to Emergency box
-					var emergency_checkbox = $('input[type="checkbox"][id="emergency"], .emergency-btn');
+					var emergency_checkbox = $('#emergency, .emergency-btn');
 					emergency_checkbox.click(function() {
 							var $html = $('#emergency-content').clone(true, true).show();
 							MENU.change_tabs({

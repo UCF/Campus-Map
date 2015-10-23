@@ -80,7 +80,7 @@ class Command(BaseCommand):
         objects = json.loads(txt)
         for o in objects:
             o['fields']['id'] = "aed-%s" % o['pk']
-            new = EmergencyPhone.objects.create(**o['fields'])
+            new = EmergencyAED.objects.create(**o['fields'])
             print new.id, new.name
 
         # bike racks
