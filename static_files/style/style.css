@@ -1281,7 +1281,7 @@ img[src*="gstatic.com/"], img[src*="googleapis.com/"] {
 
 #menu-1 #layers {
   margin-bottom: 20px;
-  padding-bottom: 20px;
+  padding-bottom: 40px;
 }
 
 #menu .more-menu {
@@ -1408,10 +1408,31 @@ img[src*="gstatic.com/"], img[src*="googleapis.com/"] {
 }
 
 #menu .emergency-options div h4 {
-  margin-top: 5px;
+  margin-top: 12px;
+  margin-bottom: 2px;
 }
 
-#mobile-menu .emergency-resources h6{
+#menu .emergency-options div.first h4 {
+  margin-top: 6px;
+}
+
+#menu .emergency-options div a {
+  font-size: 13px;
+}
+
+#menu .emergency-options .emergency-contacts-heading {
+  padding-top: 10px;
+}
+
+#menu .emergency-options .emergency-phones-wrapper label {
+  min-width: 75px;
+}
+
+#menu .emergency-options .emergency-aeds-wrapper label {
+  min-width: 50px;
+}
+
+#mobile-menu .emergency-resources h6 {
   padding: 10px 15px 5px 15px;
 }
 

@@ -28,7 +28,7 @@
 					<label><input type="checkbox" id="food"> Food</label>
 					<label><input type="checkbox" id="bikeracks"> Bike Racks</label>
 					<label><input type="checkbox" id="emergency"> Emergency</label>
-					{# <!-- <label><input type="checkbox" id="charging-stations"> EV Charging</label> --> #}
+					<label><input type="checkbox" id="charging-stations"> EV Charging</label>
 					<label><input type="checkbox" id="shuttle-routes"> Shuttles</label>
 				</div>
 				<div class="more-menu">
@@ -130,15 +130,15 @@
 <div style="display:none;" id="emergency-content">
 	<div class="emergency-options">
 		<h3>Emergency Resources</h3>
-		<div>
+		<div class="emergency-phones-wrapper">
 			<label><input type="checkbox" class="init-checked" id="emergency-phones"> Emergency Phones</label>
 		</div>
-		<div>
+		<div class="emergency-aeds-wrapper">
 			<label><input type="checkbox" class="init-checked" id="emergency-aeds"> AEDs</label>
 		</div>
-		<h3>Emergency Contacts:</h3>
+		<h3 class="emergency-contacts-heading">Emergency Contacts:</h3>
 		<a class="item" id="call911" href="tel:911">Emergency Call 911 <i class="fa fa-phone"></i></a>
-		<div>
+		<div class="first">
 			<h4>Univeristy Police</h4>
 			<a href="tel:1-407-823-5555">407-823-5555</a>
 		</div>

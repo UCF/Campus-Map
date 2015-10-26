@@ -488,6 +488,49 @@ def electric_charging_stations(request):
 
     return home(request, electric_charging_stations=True, ev_geo=obj)
 
+def emergency_all(request):
+    '''
+    Mostly an API wrapper
+    '''
+    aeds = EmergencyAED.objects.all()
+
+    url = request.build_absolute_uri(reverse('emergency_aeds'))
+
+    arr = []
+    for p in aeds:
+        aed = {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": json.loads( "%s" % p.googlemap_point)
+            }
+        }
+        arr.append(aed)
+    obj = {
+        "name"     : "UCF AED Locations",
+        "source"   : "University of Central Florida",
+        "url"      : url + ".json",
+        "type"     : "FeatureCollection",
+        "features" : arr
+    }
+
+    if request.is_json():
+        response = HttpResponse(json.dumps(obj, indent=4))
+        response['Content-type'] = 'application/json'
+        return response
+
+    if request.is_txt():
+        text = "University of Central Florida\nCampus Map: AED Locations\n%s\n%s\n" % (
+                    url + ".txt",
+                    "-"*78)
+        for p in aeds:
+            text += "\n%*d: %s" %(2, p.id, p.googlemap_point)
+        response = HttpResponse(text)
+        response['Content-type'] = 'text/plain; charset=utf-8'
+        return response
+
+    return home(request, emergency_aeds=True, aeg_geo=obj)
+
 def emergency_phones(request):
     '''
     Mostly an API wrapper (very similar to bike racks, probably shoudl abstract this a bit)
