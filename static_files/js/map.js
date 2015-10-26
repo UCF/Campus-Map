@@ -431,7 +431,7 @@ var CampusMap = function(options) {
 							function(data, text_status, jq_xhr) {
 								var icon   = {
 										url: STATIC_URL + '/images/markers/aed.png',
-										size: new google.maps.Size(32, 32)
+										size: new google.maps.Size(25, 25)
 								};
 
 								if(typeof data.features != 'undefined') {
