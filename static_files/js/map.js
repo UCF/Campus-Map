@@ -19,6 +19,11 @@ var CampusMap = function(options) {
 
 		options = $.extend({}, default_options, options);
 
+		var emergencyLayers = [
+			'emergency-aeds',
+			'emergency-phones'
+		];
+
 	var POINTS            = options.points,
 
         // Shuttle Route information
@@ -81,6 +86,10 @@ var CampusMap = function(options) {
 				if(part != 'map' && part != '') {
 					if(part == 'illustrated') {
 						options.illustrated = true;
+					} else if (part == 'emergency') {
+						for (l in emergencyLayers) {
+							ACTIVATED_LAYERS.push(emergencyLayers[l]);
+						}
 					} else {
 						ACTIVATED_LAYERS.push(part);
 					}
@@ -823,9 +832,6 @@ var CampusMap = function(options) {
 				var name     = layer.name,
 					checkbox = $('input[type="checkbox"][id="' + layer.name + '"]');
 
-				var phones_layer = LAYER_MANAGER.get_layer('emergency-phones');
-				var aeds_layer = LAYER_MANAGER.get_layer('emergency-aeds');
-
 				if(layer.active) {
 					// check the emergency box if one of the emergency options
 					// should be set by default
@@ -847,12 +853,13 @@ var CampusMap = function(options) {
 
 						layer.toggle();
 
-						// Uncheck emergency checkbox when other emergency items have all
-						// been unchecked
-						if (phones_layer.active == false && aeds_layer.active == false) {
-							$('#emergency').attr('checked', false);
+						var emIsActive = false;
+						for (l in emergencyLayers) {
+							if (LAYER_MANAGER.get_layer(emergencyLayers[l]).active == true) {
+								emIsActive = true;
+							}
 						}
-
+						$('#emergency').attr('checked', emIsActive);
 					});
 			});
           // Add click event to Shuttle Routes
@@ -900,12 +907,15 @@ var CampusMap = function(options) {
 									}, function() {
 										$html.find('.init-checked:not(:checked)').attr('checked', true);
 										emergency_checkbox.attr('checked', true);
-										LAYER_MANAGER.get_layer('emergency-phones').activate();
-										LAYER_MANAGER.get_layer('emergency-aeds').activate();
+
+										for (l in emergencyLayers) {
+											LAYER_MANAGER.get_layer(emergencyLayers[l]).activate();
+										}
 								});
 							} else {
-									LAYER_MANAGER.get_layer('emergency-phones').deactivate();
-									LAYER_MANAGER.get_layer('emergency-aeds').deactivate();
+										for (l in emergencyLayers) {
+											LAYER_MANAGER.get_layer(emergencyLayers[l]).deactivate();
+										}
 									$('#emergency-content input[type="checkbox"](:checked)').attr('checked', false);
 							}
 					});
@@ -1343,16 +1353,21 @@ var CampusMap = function(options) {
           LAYER_MANAGER.get_layer('parking').toggle();
           break;
         case 'emergency':
-          var phones_layer = LAYER_MANAGER.get_layer('emergency-phones');
-          var aeds_layer = LAYER_MANAGER.get_layer('emergency-aeds');
+          var emIsActive = true;
+					for (l in emergencyLayers) {
+						if (LAYER_MANAGER.get_layer(emergencyLayers[l]).active != true) {
+							emIsActive = false;
+						}
+					}
+					for (l in emergencyLayers) {
+						if (emIsActive == true) {
+							LAYER_MANAGER.get_layer(emergencyLayers[l]).deactivate();
+						} else {
+							LAYER_MANAGER.get_layer(emergencyLayers[l]).activate();
+						}
+					}
 
-          if (phones_layer.active == true && aeds_layer.active == true) {
-            phones_layer.deactivate();
-            aeds_layer.deactivate();
-          } else {
-            phones_layer.activate();
-            aeds_layer.activate();
-          }
+
           break;
         case 'food':
           LAYER_MANAGER.get_layer('food').toggle();
