@@ -118,7 +118,8 @@ var CampusMap = function(options) {
         google.maps.MapTypeId.HYBRID,
         google.maps.MapTypeId.TERRAIN,
         'illustrated'
-      ]
+      ],
+      position: google.maps.ControlPosition.RIGHT_BOTTOM
     };
   }
 
@@ -128,16 +129,16 @@ var CampusMap = function(options) {
 		mapTypeId: google.maps.MapTypeId.ROADMAP,
 		panControl: options.pan_control,
 		panControlOptions: {
-			position: google.maps.ControlPosition.LEFT_TOP
+			position: google.maps.ControlPosition.RIGHT_BOTTOM
 		},
 		zoomControl: options.zoom_control,
 		zoomControlOptions: {
 			style: google.maps.ZoomControlStyle.LARGE,
-			position: google.maps.ControlPosition.LEFT_TOP
+			position: google.maps.ControlPosition.LEFT_BOTTOM
 		},
 		streetViewControl: options.street_view_control,
 		streetViewControlOptions: {
-			position: google.maps.ControlPosition.LEFT_TOP
+			position: google.maps.ControlPosition.LEFT_BOTTOM
 		},
 		mapTypeControl: options.map_type_control,
 		mapTypeControlOptions: mapTypes
