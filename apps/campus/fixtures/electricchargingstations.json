@@ -1,0 +1,17 @@
+[
+    {
+        "pk": "chrg-1",
+        "model": "campus.electricchargingstation",
+        "fields": {}
+    },
+    {
+        "pk": "chrg-2",
+        "model": "campus.electricchargingstation",
+        "fields": {}
+    },
+    {
+        "pk": "chrg-3",
+        "model": "campus.electricchargingstation",
+        "fields": {}
+    }
+]

@@ -7988,5 +7988,56 @@
             "googlemap_point": "[28.604929805477738, -81.206463450363150]",
             "description": null
         }
+    },
+    {
+        "pk": "chrg-1",
+        "model": "campus.mapobj",
+        "fields": {
+            "profile": null,
+            "name": null,
+            "image": null,
+            "poly_coords": null,
+            "illustrated_point": "[85.04522100329471, -179.97706443071365]",
+            "content_type": [
+                "campus",
+                "electricchargingstation"
+            ],
+            "googlemap_point": "[28.604274, -81.198515]",
+            "description": "Memory Mall"
+        }
+    },
+    {
+        "pk": "chrg-2",
+        "model": "campus.mapobj",
+        "fields": {
+            "profile": null,
+            "name": null,
+            "image": null,
+            "poly_coords": null,
+            "illustrated_point": "[85.04522100329471, -179.97706443071365]",
+            "content_type": [
+                "campus",
+                "electricchargingstation"
+            ],
+            "googlemap_point": "[28.599613, -81.205016]",
+            "description": "Parking Garage A"
+        }
+    },
+    {
+        "pk": "chrg-3",
+        "model": "campus.mapobj",
+        "fields": {
+            "profile": null,
+            "name": null,
+            "image": null,
+            "poly_coords": null,
+            "illustrated_point": "[85.04406963076245, -179.96432796120644]",
+            "content_type": [
+                "campus",
+                "electricchargingstation"
+            ],
+            "googlemap_point": "[28.596836, -81.203086]",
+            "description": "Visitor Information Center"
+        }
     }
 ]
