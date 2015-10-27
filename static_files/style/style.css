@@ -260,7 +260,6 @@ nav ol li a:hover {
   margin: 0;
   overflow: hidden;
   display: block;
-  /*width: 100%;*/
   position: relative;
   min-width: 59px;
 }
@@ -796,7 +795,6 @@ img[src*="gstatic.com/"], img[src*="googleapis.com/"] {
   background: #fff;
   min-height: 100%;
   opacity: .9;
-  /*overflow: hidden;*/
   overflow-x: hidden;
   position: absolute;
   right: 0;
