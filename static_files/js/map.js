@@ -892,16 +892,22 @@ var CampusMap = function(options) {
 					// Add click event to Emergency box
 					var emergency_checkbox = $('#emergency, .emergency-btn');
 					emergency_checkbox.click(function() {
-							var $html = $('#emergency-content').clone(true, true).show();
-							MENU.change_tabs({
-									'label': 'Emergency',
-									'html' : $html
-								}, function() {
-									$html.find('.init-checked:not(:checked)').attr('checked', true);
-									emergency_checkbox.attr('checked', true);
-									LAYER_MANAGER.get_layer('emergency-phones').activate();
-									LAYER_MANAGER.get_layer('emergency-aeds').activate();
-							});
+							if($(this).is(':checked')) {
+								var $html = $('#emergency-content').clone(true, true).show();
+								MENU.change_tabs({
+										'label': 'Emergency',
+										'html' : $html
+									}, function() {
+										$html.find('.init-checked:not(:checked)').attr('checked', true);
+										emergency_checkbox.attr('checked', true);
+										LAYER_MANAGER.get_layer('emergency-phones').activate();
+										LAYER_MANAGER.get_layer('emergency-aeds').activate();
+								});
+							} else {
+									LAYER_MANAGER.get_layer('emergency-phones').deactivate();
+									LAYER_MANAGER.get_layer('emergency-aeds').deactivate();
+									$('#emergency-content input[type="checkbox"](:checked)').attr('checked', false);
+							}
 					});
 
 		})();
