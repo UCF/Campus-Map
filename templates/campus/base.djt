@@ -104,13 +104,13 @@
 					<h5>Resources Key</h5>
 					<div class="key">
 						<div>
-							<span class="icon marker">
+							<span class="icon marker phone">
 								<img src="/static/images/markers/phone.png" alt="disabled icon">
 							</span>
 							Emergency Phones
 						</div>
 						<div>
-							<span class="icon marker">
+							<span class="icon marker aed">
 								<img src="/static/images/markers/aed.png" alt="disabled icon">
 							</span>
 							AED Locations

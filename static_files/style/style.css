@@ -260,7 +260,7 @@ nav ol li a:hover {
   margin: 0;
   overflow: hidden;
   display: block;
-  width: 100%;
+  /*width: 100%;*/
   position: relative;
   min-width: 59px;
 }
@@ -623,6 +623,12 @@ img[src*="gstatic.com/"], img[src*="googleapis.com/"] {
   width: 257px;
 }
 
+/* forcing a left of 0 because the maps api is adding 20px to this on mobile devices */
+#search {
+  left: 0 !important;
+}
+
+
 #search input {
   font-size: 15px;
   outline: 0;
@@ -790,7 +796,8 @@ img[src*="gstatic.com/"], img[src*="googleapis.com/"] {
   background: #fff;
   min-height: 100%;
   opacity: .9;
-  overflow: hidden;
+  /*overflow: hidden;*/
+  overflow-x: hidden;
   position: absolute;
   right: 0;
   top: 0;
@@ -1432,6 +1439,10 @@ img[src*="gstatic.com/"], img[src*="googleapis.com/"] {
   min-width: 50px;
 }
 
+#mobile-menu .emergency-resources {
+  padding-bottom: 35px;
+}
+
 #mobile-menu .emergency-resources h6 {
   padding: 10px 15px 5px 15px;
 }
@@ -1469,6 +1480,11 @@ img[src*="gstatic.com/"], img[src*="googleapis.com/"] {
 
 #mobile-menu .icon.marker {
   padding-left: 15px;
+  padding-bottom: 3px;
+}
+
+#mobile-menu .icon.marker.aed {
+  padding-bottom: 4px;
 }
 
 #mobile-menu .icon.marker,
