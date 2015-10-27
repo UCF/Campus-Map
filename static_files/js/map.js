@@ -1353,7 +1353,7 @@ var CampusMap = function(options) {
           LAYER_MANAGER.get_layer('parking').toggle();
           break;
         case 'emergency':
-          var emIsActive = true;
+					var emIsActive = true;
 					for (l in emergencyLayers) {
 						if (LAYER_MANAGER.get_layer(emergencyLayers[l]).active != true) {
 							emIsActive = false;
