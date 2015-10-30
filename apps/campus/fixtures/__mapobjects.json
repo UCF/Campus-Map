@@ -8000,7 +8000,7 @@
             "illustrated_point": "[85.04522100329471, -179.97706443071365]",
             "content_type": [
                 "campus",
-                "electric_charging_stations"
+                "electricchargingstation"
             ],
             "googlemap_point": "[28.604274, -81.198515]",
             "description": "Memory Mall"
@@ -8017,7 +8017,7 @@
             "illustrated_point": "[85.04522100329471, -179.97706443071365]",
             "content_type": [
                 "campus",
-                "electric_charging_stations"
+                "electricchargingstation"
             ],
             "googlemap_point": "[28.599613, -81.205016]",
             "description": "Parking Garage A"
@@ -8034,7 +8034,7 @@
             "illustrated_point": "[85.04406963076245, -179.96432796120644]",
             "content_type": [
                 "campus",
-                "electric_charging_stations"
+                "electricchargingstation"
             ],
             "googlemap_point": "[28.596836, -81.203086]",
             "description": "Visitor Information Center"
