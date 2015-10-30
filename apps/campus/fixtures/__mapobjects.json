@@ -7993,10 +7993,6 @@
         "pk": "chrg-1",
         "model": "campus.mapobj",
         "fields": {
-            "profile": null,
-            "name": null,
-            "image": null,
-            "poly_coords": null,
             "illustrated_point": "[85.04522100329471, -179.97706443071365]",
             "content_type": [
                 "campus",
@@ -8010,10 +8006,6 @@
         "pk": "chrg-2",
         "model": "campus.mapobj",
         "fields": {
-            "profile": null,
-            "name": null,
-            "image": null,
-            "poly_coords": null,
             "illustrated_point": "[85.04522100329471, -179.97706443071365]",
             "content_type": [
                 "campus",
@@ -8027,10 +8019,6 @@
         "pk": "chrg-3",
         "model": "campus.mapobj",
         "fields": {
-            "profile": null,
-            "name": null,
-            "image": null,
-            "poly_coords": null,
             "illustrated_point": "[85.04406963076245, -179.96432796120644]",
             "content_type": [
                 "campus",
