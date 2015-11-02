@@ -66,9 +66,11 @@ class Command(BaseCommand):
 
     def reset_sql(self):
         tables = self.table_names()
-        sql = ''
+
+        sql = 'SET FOREIGN_KEY_CHECKS=0;\n'
         for name in tables:
             sql += "DROP TABLE `%s`;\n" % name
+        sql += 'SET FOREIGN_KEY_CHECKS=1;\n'
         return sql
 
     def handle(self, *args, **options):
@@ -90,15 +92,23 @@ class Command(BaseCommand):
         Sometimes we have to jump back/forth between map versions and the
         models/tablenames between the two are not yet knows.  The sql is now
         generated directly from in information schema
+
+        Noreset argument allows to run the campusdata command
+        without data being removed
         '''
-        for i in range(2):
-            sql = self.reset_sql()
-            error = self.run_query(sql)
-        if error:
-            print "Failed to update the db :("
-            print type(error)
-            print error
-            return
+        noreset = "noreset" in args
+
+        if noreset == True:
+            print "Database will not be reset."
+        else:
+            for i in range(2):
+                sql = self.reset_sql()
+                error = self.run_query(sql)
+            if error:
+                print "Failed to update the db :("
+                print type(error)
+                print error
+                return
 
         #syncdb
         call_command('syncdb', verbosity=0, interactive=False)
@@ -132,7 +142,12 @@ class Command(BaseCommand):
             mob = qs.get(id=g['pk'])
             mob = mob.__dict__
             mob.pop('_state')
-            Group.objects.create(**mob)
+
+            if noreset:
+                obj, created = Group.objects.get_or_create(**mob)
+
+            else:
+                Group.objects.create(**mob)
 
             '''
             when / if groups get additional attributes, will have to extend importer here
@@ -164,6 +179,5 @@ class Command(BaseCommand):
                     sys.stdout.write(".")
                     sys.stdout.flush()
                 count = count +1
-        print
 
         print "All done. The map nom'd all the data and is happy."
