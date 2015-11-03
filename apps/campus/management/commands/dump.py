@@ -29,6 +29,7 @@ class Command(BaseCommand):
             ("parkinglot"      , "parkinglots.json"),
             ("sidewalk"        , "sidewalks.json"),
             ("disabledparking" , "disabledparking.json"),
+            ("electricchargingstation" , "electricchargingstations.json"),
         ]
 
 
@@ -43,6 +44,7 @@ class Command(BaseCommand):
             sys.stdout = sys.__stdout__
             txt = output.getvalue()
             f.write(txt)
+            print txt
             f.close
 
         # mapobjects has to be done uniquely
