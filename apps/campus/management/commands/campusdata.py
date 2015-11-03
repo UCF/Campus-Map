@@ -67,10 +67,9 @@ class Command(BaseCommand):
     def reset_sql(self):
         tables = self.table_names()
 
-        sql = 'SET FOREIGN_KEY_CHECKS=0;\n'
+        sql = ''
         for name in tables:
             sql += "DROP TABLE `%s`;\n" % name
-        sql += 'SET FOREIGN_KEY_CHECKS=1;\n'
         return sql
 
     def handle(self, *args, **options):
