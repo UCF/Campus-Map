@@ -97,7 +97,7 @@ class Command(BaseCommand):
         '''
         noreset = "noreset" in args
 
-        if noreset == True:
+        if noreset:
             print "Database will not be reset."
         else:
             for i in range(2):
