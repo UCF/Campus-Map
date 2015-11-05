@@ -128,8 +128,7 @@ def home(request, **kwargs):
     except SimpleSetting.DoesNotExist:
         pass
 
-    aeds_all = EmergencyAED.objects.all()
-    aeds_available = aeds_all.count() > 0
+    aeds_available = EmergencyAED.objects.all().count() > 0
 
     ucf_shuttle_api = ShuttleRouteAPI(settings.SHUTTLE_WSDL,
                                       settings.SHUTTLE_APP_CODE,
