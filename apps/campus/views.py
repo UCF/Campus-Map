@@ -128,6 +128,9 @@ def home(request, **kwargs):
     except SimpleSetting.DoesNotExist:
         pass
 
+    aeds_all = EmergencyAED.objects.all()
+    aeds_available = aeds_all.count() > 0
+
     ucf_shuttle_api = ShuttleRouteAPI(settings.SHUTTLE_WSDL,
                                       settings.SHUTTLE_APP_CODE,
                                       settings.SHUTTLE_COST_CENTER_ID)
@@ -152,6 +155,7 @@ def home(request, **kwargs):
         'shuttle_routes'     : json.dumps(get_shuttle_routes_dict()),
         'shuttle_stops'      : json.dumps(shuttle_stops),
         'shuttle_info'       : shuttle_info,
+        'aeds_available'     : aeds_available,
         # These points are not displayed on the base tempalte but they
         # still need to be here to be available for searching infoboxes, etc.
         'base_ignore_types'  : json.dumps(['DiningLocation'])

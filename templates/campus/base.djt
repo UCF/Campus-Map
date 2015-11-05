@@ -109,12 +109,15 @@
 							</span>
 							Emergency Phones
 						</div>
-						<div>
-							<span class="icon marker aed">
-								<img src="/static/images/markers/aed.png" alt="disabled icon">
-							</span>
-							AED Locations
-						</div>
+						{% if aeds_available %}
+							<div>
+								<span class="icon marker aed">
+									<img src="/static/images/markers/aed.png" alt="disabled icon">
+								</span>
+								AED Locations
+							</div>
+						{% endif %}
+
 					</div>
 
 					<h5>Emergency Contacts:</h5>

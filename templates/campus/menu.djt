@@ -133,9 +133,11 @@
 		<div class="emergency-phones-wrapper">
 			<label><input type="checkbox" class="init-checked" id="emergency-phones"> Emergency Phones</label>
 		</div>
+		{% if aeds_available %}
 		<div class="emergency-aeds-wrapper">
 			<label><input type="checkbox" class="init-checked" id="emergency-aeds"> AEDs</label>
 		</div>
+		{% endif %}
 		<h3 class="emergency-contacts-heading">Emergency Contacts:</h3>
 		<a class="item" id="call911" href="tel:911">Emergency Call 911 <i class="fa fa-phone"></i></a>
 		<div class="first">
