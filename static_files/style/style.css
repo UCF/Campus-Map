@@ -193,8 +193,8 @@ li.r {
 }
 
 header {
-  width: 932px;
-  padding: 0 9px;
+  width: 100%;
+  padding: 0;
   margin: 0 auto;
   position: relative;
 }
@@ -202,7 +202,7 @@ header {
 #map header h1 {
   border: none;
   display: inline-block;
-  margin: 20px 0 0px;
+  margin: 20px 0 0 11px;
 }
 
 header h1 {
@@ -632,11 +632,12 @@ img[src*="gstatic.com/"], img[src*="googleapis.com/"] {
   font-size: 15px;
   outline: 0;
   float: left;
-  width: 220px;
+  width: 216px;
   border: 0;
-  padding: 3px;
+  padding: 3px 5px;
   margin: 0;
   line-height: 14px;
+  font-family: Roboto, Arial, sans-serif;
 }
 
 #search input::-webkit-input-placeholder {
@@ -1554,7 +1555,7 @@ a.iclose {
 #weather {
   position: absolute;
   top: 0;
-  right: 0;
+  right: 11px;
   z-index: 2;
 }
 
@@ -1571,18 +1572,17 @@ a.iclose {
 }
 
 #weather .navweatherimage {
-  width: 61px;
+  width: 34px;
   overflow: hidden;
   display: block;
   height: 34px;
-  float: left;
+  float: right;
 }
 
 #weather .description {
-  position: absolute;
-  left: 35px;
-  top: 12px;
   color: #666;
+  padding: 8px 40px 0 0;
+  text-align: right;
 }
 
 #weather .description a {
