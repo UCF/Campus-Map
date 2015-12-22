@@ -41,14 +41,14 @@ h1 a:hover {
 h2 {
   font-size: 23px;
   color: #FF7700;
-  font-family: 'Helvetica Neue Light', 'Helvetica Light', 'HelveticaLight', 'Helvetica-Light', "Helvetica Neue", Helvetica;
-  font-weight: 200;
+  font-family: 'Open Sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 300;
   letter-spacing: 1px;
   margin: 5px 0 10px;
 }
 
 h3 {
-  font-family: Helvetica, sans-serif;
+  font-family: 'Open Sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 h3 a {
@@ -56,7 +56,8 @@ h3 a {
 }
 
 h4 {
-  font-family: "Trebuchet MS", sans-serif;
+  font-family: 'Open Sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 400;
 }
 
 label {
@@ -132,7 +133,7 @@ a.button {
 }
 
 .light {
-  font-family: 'Helvetica Neue Light', 'Helvetica Light', 'HelveticaLight', 'Helvetica-Light', "Helvetica Neue", Helvetica;
+  font-family: 'Open Sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 200;
   letter-spacing: 1px;
 }
@@ -193,10 +194,15 @@ li.r {
 }
 
 header {
-  width: 100%;
-  padding: 0;
+  width: 932px;
+  padding: 0 9px;
   margin: 0 auto;
   position: relative;
+}
+
+#map header {
+  width: 100%;
+  padding: 0;
 }
 
 #map header h1 {
@@ -563,7 +569,7 @@ img[src*="gstatic.com/"], img[src*="googleapis.com/"] {
 #jquery-lightbox h2 {
   font-size: 16px;
   line-height: 1.2;
-  font-family: 'Helvetica Neue Light', 'Helvetica Light', 'HelveticaLight', 'Helvetica-Light', "Helvetica Neue", Helvetica;
+  font-family: 'Open Sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 200;
   letter-spacing: 1px;
 }
@@ -1102,7 +1108,8 @@ img[src*="gstatic.com/"], img[src*="googleapis.com/"] {
 #menu h3 {
   margin: 0;
   padding: 4px 0;
-  font-family: helvetica;
+  font-family: 'Open Sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 700;
   clear: both;
   font-size: 13px;
 }
