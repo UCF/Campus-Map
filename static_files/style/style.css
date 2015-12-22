@@ -202,7 +202,7 @@ header {
 #map header h1 {
   border: none;
   display: inline-block;
-  margin: 20px 0 0 11px;
+  margin: 20px 0 0 14px;
 }
 
 header h1 {
@@ -276,6 +276,9 @@ footer {
   display: block;
   overflow: hidden;
   clear: both;
+
+  font-family: 'Open Sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 400;
 }
 
 footer a {
@@ -364,6 +367,12 @@ footer dd {
 /******************************************************************************\
     Google Map
 \******************************************************************************/
+
+.gm-style {
+  font-family: 'Open Sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+}
 
 #canvas-wrap {
   border: 1px solid #aaa;
