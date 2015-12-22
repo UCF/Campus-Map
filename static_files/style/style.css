@@ -1547,10 +1547,16 @@ a.iclose {
   color: #000;
   float: right;
   border-radius: 50%;
-  width: 13px;
-  padding: 2px 0px 3px 6px;
-  font-size: 11px;
+  padding: 0px 4px;
+  font-size: 18px;
+  line-height: 1;
 }
+
+a.iclose:hover {
+  background-color: #AFAFAF;
+  text-decoration: none;
+}
+
 
 #testBox {
   position:absolute;
