@@ -5262,7 +5262,7 @@
 		"fileType": 32768,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"initialSize": 1799,
+		"initialSize": 1420,
 		"inputAbbreviatedPath": "\/static_files\/images\/markers\/building.png",
 		"outputAbbreviatedPath": "\/static_files\/images\/markers\/building.png",
 		"outputPathIsOutsideProject": 0,
@@ -7978,6 +7978,15 @@
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/static_files\/style\/style-responsive.css",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/static_files\/style\/style.css": {
+		"fileType": 16,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/static_files\/style\/style.css",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
