@@ -1068,7 +1068,7 @@ var CampusMap = function(options) {
 	 		name = '<a href="' + options.link + '">' + name + '</a>';
 	 	}
 
-	 	content = $('<div class="iBox"><a class="iclose"><i class="fa fa-times"></i></a>' + name + '</div>');
+	 	content = $('<div class="iBox"><a class="iclose"></a>' + name + '</div>');
 
 	 	// Create a hidden test box to figure out the correct width
 	 	test_content = $('<div id="testBox" class="iBox">' + content + '</div>')[0];

@@ -383,6 +383,8 @@ footer dd {
   font-weight: 400;
   font-size: 14px;
   color: #555;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 #canvas-wrap {
@@ -1548,20 +1550,25 @@ img[src*="gstatic.com/"], img[src*="googleapis.com/"] {
 }
 
 a.iclose {
-  background-color: #ccc;
   color: #000;
   float: right;
   border-radius: 50%;
-  padding: 1px 3px 1px 4px;
+  padding: 0;
   font-size: 14px;
-  line-height: 1;
   font-weight: 100;
+  height: 16px;
+  width: 16px;
+  line-height: 16px;
+  background: url('close-x.png') no-repeat 50% 50%;
+  background-color: #ccc;
+  background-size: 50%;
 }
 
 a.iclose:hover {
   background-color: #AFAFAF;
   text-decoration: none;
 }
+
 
 
 #testBox {
