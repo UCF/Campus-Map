@@ -155,6 +155,7 @@ def home(request, **kwargs):
         'shuttle_stops'      : json.dumps(shuttle_stops),
         'shuttle_info'       : shuttle_info,
         'aeds_available'     : aeds_available,
+        'cloud_typography'   : settings.CLOUD_TYPOGRAPHY_KEY,
         # These points are not displayed on the base tempalte but they
         # still need to be here to be available for searching infoboxes, etc.
         'base_ignore_types'  : json.dumps(['DiningLocation'])

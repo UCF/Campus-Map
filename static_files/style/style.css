@@ -45,14 +45,14 @@ h1 a:hover {
 h2 {
   font-size: 23px;
   color: #FF7700;
-  font-family: 'Poppins', "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Gotham SSm A", "Gotham SSm B", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 400;
   letter-spacing: 1px;
   margin: 5px 0 10px;
 }
 
 h3 {
-  font-family: 'Poppins', "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Gotham SSm A", "Gotham SSm B", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 h3 a {
@@ -60,7 +60,7 @@ h3 a {
 }
 
 h4 {
-  font-family: 'Poppins', "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Gotham SSm A", "Gotham SSm B", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 400;
 }
 
@@ -137,7 +137,7 @@ a.button {
 }
 
 .light {
-  font-family: 'Poppins', "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Gotham SSm A", "Gotham SSm B", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 300;
   letter-spacing: 1px;
 }
@@ -287,7 +287,7 @@ footer {
   overflow: hidden;
   clear: both;
 
-  font-family: 'Poppins', "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Gotham SSm A", "Gotham SSm B", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 300;
 }
 
@@ -379,7 +379,7 @@ footer dd {
 \******************************************************************************/
 
 .gm-style {
-  font-family: 'Poppins', "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Gotham SSm A", "Gotham SSm B", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 400;
   font-size: 14px;
   color: #555;
@@ -576,7 +576,7 @@ img[src*="gstatic.com/"], img[src*="googleapis.com/"] {
 #jquery-lightbox h2 {
   font-size: 16px;
   line-height: 1.2;
-  font-family: 'Poppins', "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Gotham SSm A", "Gotham SSm B", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 300;
   letter-spacing: 1px;
 }
@@ -1115,7 +1115,7 @@ img[src*="gstatic.com/"], img[src*="googleapis.com/"] {
 #menu h3 {
   margin: 0;
   padding: 4px 0;
-  font-family: 'Poppins', "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Gotham SSm A", "Gotham SSm B", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 500;
   clear: both;
   font-size: 13px;
