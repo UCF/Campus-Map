@@ -28,9 +28,6 @@
 		<!-- jquery UI -->
 		<link href="{{ STATIC_URL }}-/jquery-ui-1.8.4/css/ui-lightness/jquery-ui-1.8.4.custom.css" rel="stylesheet" />
 
-		<!-- Google Fonts -->
-		<link href='https://fonts.googleapis.com/css?family=Poppins:400,500,300' rel='stylesheet' type='text/css'>
-
 		<!-- UCF Header and Stylesheets -->
 		<link href="//www.ucf.edu/css/global.css" rel="stylesheet">
 
