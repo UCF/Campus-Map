@@ -31,9 +31,6 @@
 		<!-- Google Fonts -->
 		<link href='https://fonts.googleapis.com/css?family=Poppins:400,500,300' rel='stylesheet' type='text/css'>
 
-		<!-- Hoefler & Co Cloud.Typography Web Fonts -->
-		<link rel="stylesheet" type="text/css" href="{{ cloud_typography }}" />
-
 		<!-- UCF Header and Stylesheets -->
 		<link href="//www.ucf.edu/css/global.css" rel="stylesheet">
 
