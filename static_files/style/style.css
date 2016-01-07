@@ -136,6 +136,10 @@ a.button {
   -webkit-border-radius: 4px;
 }
 
+.smaller {
+  font-size: 12px;
+}
+
 .light {
   font-family: "Gotham SSm A", "Gotham SSm B", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 300;

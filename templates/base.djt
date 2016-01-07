@@ -114,7 +114,7 @@
 				</dl>
 			</div>
 
-			<div class="right">
+			<div class="right smaller">
 				<a href="{% url 'page' 'regional-campuses' %}">Regional Campuses</a> |
 				<a href="{% url 'home' %}?show=college-of-medicine">College of Medicine</a> |
 				<a href="{% url 'home' %}?show=downtown">Downtown</a> |
