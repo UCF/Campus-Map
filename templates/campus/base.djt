@@ -3,11 +3,6 @@
 
 {% block head %}
 
-{% if cloud_typography %}
-		<!-- Hoefler & Co Cloud.Typography Web Fonts -->
-		<link rel="stylesheet" type="text/css" href="{{ cloud_typography }}" />
-{% endif %}
-
 {# IE is a dirty bastard.  Needs an absolute URL to work, thus needs to be here to have access to STATIC_URL #}
 <style>
 .ie #menu h2 a .r         { background:none !important; filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src="{{ STATIC_URL }}style/img/ie-sux/tab-dark-light.png", sizingMethod="crop"); zoom:1; }

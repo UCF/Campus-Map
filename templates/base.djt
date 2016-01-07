@@ -31,6 +31,12 @@
 		<!-- UCF Header and Stylesheets -->
 		<link href="//www.ucf.edu/css/global.css" rel="stylesheet">
 
+
+		{% if cloud_typography %}
+				<!-- Hoefler & Co Cloud.Typography Web Fonts -->
+				<link rel="stylesheet" type="text/css" href="{{ cloud_typography }}" />
+		{% endif %}
+
 		<!-- UCF Web Communications -->
 		<link href="{{ STATIC_URL }}style/style.css?{{map_version}}" rel="stylesheet">
 		<link href="{{ STATIC_URL }}style/style-responsive.css?{{map_version}}" rel="stylesheet">

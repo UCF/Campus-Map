@@ -40,4 +40,7 @@ def map_context(request):
     base_url = request.build_absolute_uri(reverse('home'))[:-1]
     context_extras['base_url'] = base_url
 
+    if settings.CLOUD_TYPOGRAPHY_URL:
+        context_extras['cloud_typography'] = settings.CLOUD_TYPOGRAPHY_URL
+
     return context_extras
