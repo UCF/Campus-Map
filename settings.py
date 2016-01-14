@@ -198,9 +198,6 @@ STATICFILES_FINDERS = (
 #    'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
 
-# Hoefler & Co Cloud.Typography Web Fonts url
-CLOUD_TYPOGRAPHY_URL = None
-
 # For Google to render KML layers, it needs to import the map data.  If working
 # locally or behind a firewall, this will not be possible.  If GOOGLE_CAN_SEE_ME
 # if false, will fall back to GOOGLE_LOOK_HERE (leave off trailing slash)
