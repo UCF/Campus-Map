@@ -214,7 +214,7 @@
 					"base_url"      : "{{ base_url }}"
 				},
 				"base_ignore_types"   : {{ base_ignore_types|safe }},
-				"infobox_location_id" : {{ infobox_location_id|safe }},
+				"infobox_location_id" : {{ infobox_location_id }},
 				"points"              : {{ points|safe }},
                 "shuttle_routes"      : {{ shuttle_routes|safe }},
                 "shuttle_stops"       : {{ shuttle_stops|safe }},
