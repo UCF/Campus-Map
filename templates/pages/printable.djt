@@ -14,13 +14,13 @@
 <div>
     <div class="printable">
         <h3>Illustrated Campus Map</h3>
-        <a href="http://cdn.ucf.edu/map/printable/UCF-Campus-Map-2014.pdf" class="pdf">Download UCF Illustrated Folding Map</a>
-        <br><a href="http://cdn.ucf.edu/map/printable/UCF-Campus-Map-2014.pdf"><img src="http://cdn.ucf.edu/map/printable/illustrated.jpg" alt="color printable map"></a>
+        <a href="http://cdn.ucf.edu/map/printable/UCF-Campus-Map-2015.pdf" class="pdf">Download UCF Illustrated Folding Map</a>
+        <br><a href="http://cdn.ucf.edu/map/printable/UCF-Campus-Map-2015.pdf"><img src="http://cdn.ucf.edu/map/printable/UCF-Campus-Map-2015-thumb.jpg" alt="UCF color printable illustrated campus map"></a>
     </div>
     <div class="printable">
         <h3>Transportation Guide</h3>
-        <a href="http://parking.ucf.edu/files/2014/07/UCF-Shuttle-Transportation-Guide-Fall-2014.pdf " class="pdf">Download Shuttle Schedule and Routes</a>
-        <br><a href="http://parking.ucf.edu/files/2014/07/UCF-Shuttle-Transportation-Guide-Fall-2014.pdf"><img src="http://cdn.ucf.edu/map/printable/downloadable-shuttle-guide.jpg" alt="color printable map"></a>
+        <a href="http://parking.ucf.edu/files/2011/09/1503PKS133-Shuttle-Brochure-Fall-2015-vFsmall1.pdf" class="pdf">Download Shuttle Schedule and Routes</a>
+        <br><a href="http://parking.ucf.edu/files/2011/09/1503PKS133-Shuttle-Brochure-Fall-2015-vFsmall1.pdf"><img src="http://cdn.ucf.edu/map/printable/UCF-Campus-Shuttle-Map-2015-thumb.jpg" alt="UCF color printable illustrated campus shuttle map"></a>
     </div>
 </div>
 {% endblock %}
