@@ -1,8 +1,9 @@
 from django import template
-from re import sub
+from re import sub as replace
 
 register = template.Library()
 
-@register.filter(name='only_nums')
-def allow_only_ints(value):
-    return sub('[^\d]', '', value)
+
+@register.filter(name='whitelist')
+def whitelist(value):
+    return replace('[^\da-zA-Z\-_]', '', value)
