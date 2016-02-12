@@ -46,8 +46,8 @@ var CampusMap = function(options) {
 		PHONES_URL        = options.urls['phones'],
 		AEDS_URL          = options.urls['aeds'],
 		STATIONS_URL      = options.urls['stations'],
-    BASE_URL          = options.urls['base_url'],
-    QUERY             = search_query_get,
+		BASE_URL          = options.urls['base_url'],
+		QUERY             = search_query_get,
 
 		SIMPLE = options.simple,
 		// Simple really means the map on the profile pages.
