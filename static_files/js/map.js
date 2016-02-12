@@ -199,7 +199,7 @@ var CampusMap = function(options) {
 		$(window).resize(UTIL.resize_canvas);
 
 		// Setup and configure the search
-		SEARCH = new Search(QUERY);
+		SEARCH = new Search();
 
 		// Setup and configure the menu
 		MENU = new Menu();
