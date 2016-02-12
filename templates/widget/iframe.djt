@@ -113,7 +113,7 @@
 						map_point_latlng = new google.maps.LatLng(building.googlemap_point[0],building.googlemap_point[1]);
 					}
 
-					// if(map_point_latlng != null) {
+					if(map_point_latlng != null) {
 						// Map is really small and infobox would be too big
 						// Place a marker instead
 						if(width < 175 || height < 175) {
@@ -149,7 +149,7 @@
 							infobox.open(map);
 						}
 						if(buildings.length == 1) map.panTo(map_point_latlng);
-					//}
+					}
 				}
 			}
 		)();
