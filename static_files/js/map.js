@@ -1570,7 +1570,7 @@ var CampusMap = function(options) {
 	 * Search
 	 *
 	 *********************************/
-	function Search(search_term) {
+	function Search() {
 
 		var that    = this,
 			element = null,
@@ -1736,7 +1736,7 @@ var CampusMap = function(options) {
     // check if query is sent in
     if (QUERY !== '') {
       input.val(QUERY);
-      performSearch(QUERY);
+      performSearch();
     }
 
     function submitSearchForm () {
