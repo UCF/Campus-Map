@@ -1,7 +1,128 @@
 {
 "CodeKitInfo": "This is a CodeKit 2.x project configuration file. It is designed to sync project settings across multiple machines. MODIFYING THE CONTENTS OF THIS FILE IS A POOR LIFE DECISION. If you do so, you will likely cause CodeKit to crash. This file is not useful unless accompanied by the project that created it in CodeKit 2. This file is not backwards-compatible with CodeKit 1.x. For more information, see: http:\/\/incident57.com\/codekit",
-"creatorBuild": "18493",
+"creatorBuild": "19115",
 "files": {
+	"\/apps\/campus\/fixtures\/__mapobjects.json": {
+		"fileType": 524288,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/apps\/campus\/fixtures\/__mapobjects.json",
+		"orderOutput": 0,
+		"outputAbbreviatedPath": "\/apps\/campus\/fixtures\/__mapobjects-min.json",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1
+		},
+	"\/apps\/campus\/fixtures\/bikeracks.json": {
+		"fileType": 524288,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/apps\/campus\/fixtures\/bikeracks.json",
+		"orderOutput": 0,
+		"outputAbbreviatedPath": "\/apps\/campus\/fixtures\/bikeracks-min.json",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1
+		},
+	"\/apps\/campus\/fixtures\/buildings.json": {
+		"fileType": 524288,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/apps\/campus\/fixtures\/buildings.json",
+		"orderOutput": 0,
+		"outputAbbreviatedPath": "\/apps\/campus\/fixtures\/buildings-min.json",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1
+		},
+	"\/apps\/campus\/fixtures\/campuses.json": {
+		"fileType": 524288,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/apps\/campus\/fixtures\/campuses.json",
+		"orderOutput": 0,
+		"outputAbbreviatedPath": "\/apps\/campus\/fixtures\/campuses-min.json",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1
+		},
+	"\/apps\/campus\/fixtures\/disabledparking.json": {
+		"fileType": 524288,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/apps\/campus\/fixtures\/disabledparking.json",
+		"orderOutput": 0,
+		"outputAbbreviatedPath": "\/apps\/campus\/fixtures\/disabledparking-min.json",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1
+		},
+	"\/apps\/campus\/fixtures\/electricchargingstations.json": {
+		"fileType": 524288,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/apps\/campus\/fixtures\/electricchargingstations.json",
+		"orderOutput": 0,
+		"outputAbbreviatedPath": "\/apps\/campus\/fixtures\/electricchargingstations-min.json",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1
+		},
+	"\/apps\/campus\/fixtures\/groups.json": {
+		"fileType": 524288,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/apps\/campus\/fixtures\/groups.json",
+		"orderOutput": 0,
+		"outputAbbreviatedPath": "\/apps\/campus\/fixtures\/groups-min.json",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1
+		},
+	"\/apps\/campus\/fixtures\/locations.json": {
+		"fileType": 524288,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/apps\/campus\/fixtures\/locations.json",
+		"orderOutput": 0,
+		"outputAbbreviatedPath": "\/apps\/campus\/fixtures\/locations-min.json",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1
+		},
+	"\/apps\/campus\/fixtures\/parkinglots.json": {
+		"fileType": 524288,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/apps\/campus\/fixtures\/parkinglots.json",
+		"orderOutput": 0,
+		"outputAbbreviatedPath": "\/apps\/campus\/fixtures\/parkinglots-min.json",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1
+		},
+	"\/apps\/campus\/fixtures\/phones.json": {
+		"fileType": 524288,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/apps\/campus\/fixtures\/phones.json",
+		"orderOutput": 0,
+		"outputAbbreviatedPath": "\/apps\/campus\/fixtures\/phones-min.json",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1
+		},
+	"\/apps\/campus\/fixtures\/sidewalks.json": {
+		"fileType": 524288,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/apps\/campus\/fixtures\/sidewalks.json",
+		"orderOutput": 0,
+		"outputAbbreviatedPath": "\/apps\/campus\/fixtures\/sidewalks-min.json",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1
+		},
 	"\/apps\/tinymce\/templates\/tinymce\/filebrowser.js": {
 		"fileType": 64,
 		"ignore": 0,
@@ -32,6 +153,105 @@
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 0
+		},
+	"\/data\/bike racks\/bike_racks_export.json": {
+		"fileType": 524288,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/data\/bike racks\/bike_racks_export.json",
+		"orderOutput": 0,
+		"outputAbbreviatedPath": "\/data\/bike racks\/bike_racks_export-min.json",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1
+		},
+	"\/data\/bluelight phones\/emergency_phones_export.json": {
+		"fileType": 524288,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/data\/bluelight phones\/emergency_phones_export.json",
+		"orderOutput": 0,
+		"outputAbbreviatedPath": "\/data\/bluelight phones\/emergency_phones_export-min.json",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1
+		},
+	"\/data\/buildings\/buildings_export.json": {
+		"fileType": 524288,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/data\/buildings\/buildings_export.json",
+		"orderOutput": 0,
+		"outputAbbreviatedPath": "\/data\/buildings\/buildings_export-min.json",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1
+		},
+	"\/data\/buildings\/old_map_dump.json": {
+		"fileType": 524288,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/data\/buildings\/old_map_dump.json",
+		"orderOutput": 0,
+		"outputAbbreviatedPath": "\/data\/buildings\/old_map_dump-min.json",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1
+		},
+	"\/data\/export-import\/ArcGIS Export Comparison\/new_shp_export.json": {
+		"fileType": 524288,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/data\/export-import\/ArcGIS Export Comparison\/new_shp_export.json",
+		"orderOutput": 0,
+		"outputAbbreviatedPath": "\/data\/export-import\/ArcGIS Export Comparison\/new_shp_export-min.json",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1
+		},
+	"\/data\/export-import\/ArcGIS Export Comparison\/old_shp_export.json": {
+		"fileType": 524288,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/data\/export-import\/ArcGIS Export Comparison\/old_shp_export.json",
+		"orderOutput": 0,
+		"outputAbbreviatedPath": "\/data\/export-import\/ArcGIS Export Comparison\/old_shp_export-min.json",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1
+		},
+	"\/data\/export-import\/ArcGIS Export Comparison\/rewrite_new_export.json": {
+		"fileType": 524288,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/data\/export-import\/ArcGIS Export Comparison\/rewrite_new_export.json",
+		"orderOutput": 0,
+		"outputAbbreviatedPath": "\/data\/export-import\/ArcGIS Export Comparison\/rewrite_new_export-min.json",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1
+		},
+	"\/data\/export-import\/ArcGIS Export Comparison\/rewrite_old_export.json": {
+		"fileType": 524288,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/data\/export-import\/ArcGIS Export Comparison\/rewrite_old_export.json",
+		"orderOutput": 0,
+		"outputAbbreviatedPath": "\/data\/export-import\/ArcGIS Export Comparison\/rewrite_old_export-min.json",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1
+		},
+	"\/data\/export-import\/Import ArcGIS Updates\/buildings_shp_export.json": {
+		"fileType": 524288,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/data\/export-import\/Import ArcGIS Updates\/buildings_shp_export.json",
+		"orderOutput": 0,
+		"outputAbbreviatedPath": "\/data\/export-import\/Import ArcGIS Updates\/buildings_shp_export-min.json",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1
 		},
 	"\/data\/illustrated map\/map-tiles\/white.png": {
 		"fileType": 32768,
@@ -2860,6 +3080,28 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
+	"\/data\/parking lots\/parking_lots_export.json": {
+		"fileType": 524288,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/data\/parking lots\/parking_lots_export.json",
+		"orderOutput": 0,
+		"outputAbbreviatedPath": "\/data\/parking lots\/parking_lots_export-min.json",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1
+		},
+	"\/data\/sidewalks\/sidewalks_export.json": {
+		"fileType": 524288,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/data\/sidewalks\/sidewalks_export.json",
+		"orderOutput": 0,
+		"outputAbbreviatedPath": "\/data\/sidewalks\/sidewalks_export-min.json",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1
+		},
 	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/admin\/static\/admin\/css\/base.css": {
 		"fileType": 16,
 		"ignore": 0,
@@ -3623,6 +3865,50 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/auth\/fixtures\/authtestdata.json": {
+		"fileType": 524288,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/auth\/fixtures\/authtestdata.json",
+		"orderOutput": 0,
+		"outputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/auth\/fixtures\/authtestdata-min.json",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/auth\/fixtures\/custom_user.json": {
+		"fileType": 524288,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/auth\/fixtures\/custom_user.json",
+		"orderOutput": 0,
+		"outputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/auth\/fixtures\/custom_user-min.json",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/auth\/fixtures\/natural.json": {
+		"fileType": 524288,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/auth\/fixtures\/natural.json",
+		"orderOutput": 0,
+		"outputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/auth\/fixtures\/natural-min.json",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/auth\/fixtures\/regular.json": {
+		"fileType": 524288,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/auth\/fixtures\/regular.json",
+		"orderOutput": 0,
+		"outputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/auth\/fixtures\/regular-min.json",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1
+		},
 	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/auth\/tests\/templates\/context_processors\/auth_attrs_access.html": {
 		"fileType": 8192,
 		"ignore": 0,
@@ -3866,6 +4152,28 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/flatpages\/fixtures\/example_site.json": {
+		"fileType": 524288,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/flatpages\/fixtures\/example_site.json",
+		"orderOutput": 0,
+		"outputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/flatpages\/fixtures\/example_site-min.json",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/flatpages\/fixtures\/sample_flatpages.json": {
+		"fileType": 524288,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/flatpages\/fixtures\/sample_flatpages.json",
+		"orderOutput": 0,
+		"outputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/flatpages\/fixtures\/sample_flatpages-min.json",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1
+		},
 	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/flatpages\/tests\/templates\/404.html": {
 		"fileType": 8192,
 		"ignore": 0,
@@ -4067,17 +4375,48 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/gis\/tests\/data\/geometries.json": {
+		"fileType": 524288,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/gis\/tests\/data\/geometries.json",
+		"orderOutput": 0,
+		"outputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/gis\/tests\/data\/geometries-min.json",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1
+		},
+	"\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/gis\/tests\/geogapp\/fixtures\/initial_data.json": {
+		"fileType": 524288,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/gis\/tests\/geogapp\/fixtures\/initial_data.json",
+		"orderOutput": 0,
+		"outputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/django\/contrib\/gis\/tests\/geogapp\/fixtures\/initial_data-min.json",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1
+		},
 	"\/ENV\/lib\/python2.7\/site-packages\/PIL\/OleFileIO-README.md": {
-		"enableFootnoteSupport": 0,
-		"enableSmartyPants": 1,
-		"expandTabs": 1,
+		"criticStyle": 0,
+		"enableFootnotes": 0,
+		"enableLabels": 1,
+		"enableSmartQuotes": 1,
+		"escapeLineBreaks": 0,
 		"fileType": 4096,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/PIL\/OleFileIO-README.md",
+		"maskEmailAddresses": 1,
 		"outputAbbreviatedPath": "\/ENV\/lib\/python2.7\/site-packages\/PIL\/OleFileIO-README.html",
+		"outputFormat": 0,
 		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 0,
+		"parseMetadata": 1,
+		"processHTML": 0,
+		"randomFootnoteNumbers": 0,
+		"useCompatibilityMode": 0
 		},
 	"\/static_files\/-\/blueprint-0.9\/ie.css": {
 		"fileType": 16,
@@ -5144,6 +5483,258 @@
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/static_files\/-\/yui-3.1.1\/reset-fonts-base.css",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/static_files\/fonts\/hfj\/407192\/086523AB8D06C5153.css": {
+		"fileType": 16,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/static_files\/fonts\/hfj\/407192\/086523AB8D06C5153.css",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/static_files\/fonts\/hfj\/407192\/0A18C955851F519EA.css": {
+		"fileType": 16,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/static_files\/fonts\/hfj\/407192\/0A18C955851F519EA.css",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/static_files\/fonts\/hfj\/407192\/11DFB7E871E776A50.css": {
+		"fileType": 16,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/static_files\/fonts\/hfj\/407192\/11DFB7E871E776A50.css",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/static_files\/fonts\/hfj\/407192\/139247F8FBF002496.css": {
+		"fileType": 16,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/static_files\/fonts\/hfj\/407192\/139247F8FBF002496.css",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/static_files\/fonts\/hfj\/407192\/14EACBC9ABCBDF3CA.css": {
+		"fileType": 16,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/static_files\/fonts\/hfj\/407192\/14EACBC9ABCBDF3CA.css",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/static_files\/fonts\/hfj\/407192\/2A5A88828E3B92029.css": {
+		"fileType": 16,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/static_files\/fonts\/hfj\/407192\/2A5A88828E3B92029.css",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/static_files\/fonts\/hfj\/407192\/3AE2D0292A3C61381.css": {
+		"fileType": 16,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/static_files\/fonts\/hfj\/407192\/3AE2D0292A3C61381.css",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/static_files\/fonts\/hfj\/407192\/44529DE87291F45AF.css": {
+		"fileType": 16,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/static_files\/fonts\/hfj\/407192\/44529DE87291F45AF.css",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/static_files\/fonts\/hfj\/407192\/6595A9EC5ECA452C9.css": {
+		"fileType": 16,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/static_files\/fonts\/hfj\/407192\/6595A9EC5ECA452C9.css",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/static_files\/fonts\/hfj\/407192\/732F31BD2D0C94407.css": {
+		"fileType": 16,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/static_files\/fonts\/hfj\/407192\/732F31BD2D0C94407.css",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/static_files\/fonts\/hfj\/407192\/8EBD0A416015D4A2F.css": {
+		"fileType": 16,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/static_files\/fonts\/hfj\/407192\/8EBD0A416015D4A2F.css",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/static_files\/fonts\/hfj\/407192\/94AF9193A2E57B706.css": {
+		"fileType": 16,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/static_files\/fonts\/hfj\/407192\/94AF9193A2E57B706.css",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/static_files\/fonts\/hfj\/407192\/99362F9DEBDA362FD.css": {
+		"fileType": 16,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/static_files\/fonts\/hfj\/407192\/99362F9DEBDA362FD.css",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/static_files\/fonts\/hfj\/407192\/9AD5C8507D1349487.css": {
+		"fileType": 16,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/static_files\/fonts\/hfj\/407192\/9AD5C8507D1349487.css",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/static_files\/fonts\/hfj\/407192\/9B89F1B181B8B29C5.css": {
+		"fileType": 16,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/static_files\/fonts\/hfj\/407192\/9B89F1B181B8B29C5.css",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/static_files\/fonts\/hfj\/407192\/9F5E8A96D880B4908.css": {
+		"fileType": 16,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/static_files\/fonts\/hfj\/407192\/9F5E8A96D880B4908.css",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/static_files\/fonts\/hfj\/407192\/B090BAAEF201E82B4.css": {
+		"fileType": 16,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/static_files\/fonts\/hfj\/407192\/B090BAAEF201E82B4.css",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/static_files\/fonts\/hfj\/407192\/B15E79C93716116A8.css": {
+		"fileType": 16,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/static_files\/fonts\/hfj\/407192\/B15E79C93716116A8.css",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/static_files\/fonts\/hfj\/407192\/BAF23028D853EEBC1.css": {
+		"fileType": 16,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/static_files\/fonts\/hfj\/407192\/BAF23028D853EEBC1.css",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/static_files\/fonts\/hfj\/407192\/CA7C82B50A3165B8D.css": {
+		"fileType": 16,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/static_files\/fonts\/hfj\/407192\/CA7C82B50A3165B8D.css",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/static_files\/fonts\/hfj\/407192\/CCE0763B1DADB477D.css": {
+		"fileType": 16,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/static_files\/fonts\/hfj\/407192\/CCE0763B1DADB477D.css",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/static_files\/fonts\/hfj\/407192\/D7ED6B5E3348DA57C.css": {
+		"fileType": 16,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/static_files\/fonts\/hfj\/407192\/D7ED6B5E3348DA57C.css",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/static_files\/fonts\/hfj\/407192\/D90198BF73D83F60C.css": {
+		"fileType": 16,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/static_files\/fonts\/hfj\/407192\/D90198BF73D83F60C.css",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/static_files\/fonts\/hfj\/407192\/DD58BDE0F9A031758.css": {
+		"fileType": 16,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/static_files\/fonts\/hfj\/407192\/DD58BDE0F9A031758.css",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/static_files\/fonts\/hfj\/407192\/DE9B9C33221E13FC1.css": {
+		"fileType": 16,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/static_files\/fonts\/hfj\/407192\/DE9B9C33221E13FC1.css",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/static_files\/fonts\/hfj\/407192\/DED43BC49223A93E1.css": {
+		"fileType": 16,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/static_files\/fonts\/hfj\/407192\/DED43BC49223A93E1.css",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/static_files\/fonts\/hfj\/407192\/F163E6C1C7A716612.css": {
+		"fileType": 16,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/static_files\/fonts\/hfj\/407192\/F163E6C1C7A716612.css",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/static_files\/fonts\/hfj\/407192\/F230DE2C51CCF4180.css": {
+		"fileType": 16,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/static_files\/fonts\/hfj\/407192\/F230DE2C51CCF4180.css",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
@@ -7689,6 +8280,17 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
+	"\/static_files\/style\/close-x.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 1167,
+		"inputAbbreviatedPath": "\/static_files\/style\/close-x.png",
+		"outputAbbreviatedPath": "\/static_files\/style\/close-x.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/static_files\/style\/font-awesome.min.css": {
 		"fileType": 16,
 		"ignore": 0,
@@ -8121,8 +8723,16 @@
 			"active": 0,
 			"flagValue": -1
 			},
+		"no_nested_string_interpolation": {
+			"active": 1,
+			"flagValue": -1
+			},
 		"no_plusplus": {
 			"active": 0,
+			"flagValue": -1
+			},
+		"no_private_function_fat_arrows": {
+			"active": 1,
 			"flagValue": -1
 			},
 		"no_stand_alone_at": {
@@ -8131,6 +8741,10 @@
 			},
 		"no_tabs": {
 			"active": 1,
+			"flagValue": -1
+			},
+		"no_this": {
+			"active": 0,
 			"flagValue": -1
 			},
 		"no_throwing_strings": {
@@ -8292,6 +8906,10 @@
 			"active": 0,
 			"flagValue": -1
 			},
+		"futurehostile": {
+			"active": 0,
+			"flagValue": -1
+			},
 		"globalstrict": {
 			"active": 0,
 			"flagValue": -1
@@ -8378,6 +8996,10 @@
 			},
 		"noarg": {
 			"active": 1,
+			"flagValue": -1
+			},
+		"nocomma": {
+			"active": 0,
 			"flagValue": -1
 			},
 		"node": {
@@ -8480,6 +9102,10 @@
 			"active": 1,
 			"flagValue": -1
 			},
+		"varstmt": {
+			"active": 0,
+			"flagValue": -1
+			},
 		"withstmt": {
 			"active": 0,
 			"flagValue": -1
@@ -8498,10 +9124,6 @@
 			}
 		},
 	"jsLintFlags2": {
-		"ass": {
-			"active": 0,
-			"flagValue": -1
-			},
 		"bitwise": {
 			"active": 0,
 			"flagValue": -1
@@ -8510,15 +9132,7 @@
 			"active": 1,
 			"flagValue": -1
 			},
-		"closure": {
-			"active": 0,
-			"flagValue": -1
-			},
-		"continue": {
-			"active": 0,
-			"flagValue": -1
-			},
-		"debug": {
+		"couch": {
 			"active": 0,
 			"flagValue": -1
 			},
@@ -8526,75 +9140,27 @@
 			"active": 1,
 			"flagValue": -1
 			},
-		"eqeq": {
+		"es6": {
 			"active": 0,
 			"flagValue": -1
 			},
-		"evil": {
+		"eval": {
 			"active": 0,
 			"flagValue": -1
 			},
-		"forin": {
+		"for": {
 			"active": 0,
 			"flagValue": -1
-			},
-		"indent": {
-			"active": 0,
-			"flagValue": 4
 			},
 		"maxlen": {
 			"active": 0,
 			"flagValue": 150
 			},
-		"newcap": {
-			"active": 0,
-			"flagValue": -1
-			},
 		"node": {
 			"active": 0,
 			"flagValue": -1
 			},
-		"nomen": {
-			"active": 0,
-			"flagValue": -1
-			},
-		"plusplus": {
-			"active": 0,
-			"flagValue": -1
-			},
-		"properties": {
-			"active": 0,
-			"flagValue": -1
-			},
-		"regexp": {
-			"active": 0,
-			"flagValue": -1
-			},
-		"rhino": {
-			"active": 0,
-			"flagValue": -1
-			},
-		"sloppy": {
-			"active": 0,
-			"flagValue": -1
-			},
-		"stupid": {
-			"active": 0,
-			"flagValue": -1
-			},
-		"sub": {
-			"active": 0,
-			"flagValue": -1
-			},
-		"todo": {
-			"active": 0,
-			"flagValue": -1
-			},
-		"unparam": {
-			"active": 0,
-			"flagValue": -1
-			},
-		"vars": {
+		"this": {
 			"active": 0,
 			"flagValue": -1
 			},
@@ -8603,6 +9169,14 @@
 			"flagValue": -1
 			}
 		},
+	"jsonAutoOutputPathEnabled": 0,
+	"jsonAutoOutputPathFilenamePattern": "*-min.json",
+	"jsonAutoOutputPathRelativePath": "",
+	"jsonAutoOutputPathReplace1": "",
+	"jsonAutoOutputPathReplace2": "",
+	"jsonAutoOutputPathStyle": 0,
+	"jsonOrderOutput": 0,
+	"jsonOutputStyle": 1,
 	"kitAutoOutputPathEnabled": 1,
 	"kitAutoOutputPathFilenamePattern": "*.html",
 	"kitAutoOutputPathRelativePath": "",
@@ -8630,9 +9204,18 @@
 	"markdownAutoOutputPathReplace1": "",
 	"markdownAutoOutputPathReplace2": "",
 	"markdownAutoOutputPathStyle": 0,
+	"markdownCriticStyle": 0,
 	"markdownEnableFootnotes": 0,
-	"markdownEnableSmartyPants": 1,
-	"markdownExpandTabs": 1,
+	"markdownEnableLabels": 1,
+	"markdownEnableSmartQuotes": 1,
+	"markdownEscapeLineBreaks": 0,
+	"markdownMaskEmailAddresses": 1,
+	"markdownOutputFormat": 0,
+	"markdownOutputStyle": 0,
+	"markdownParseMetadata": 1,
+	"markdownProcessHTML": 0,
+	"markdownRandomFootnoteNumbers": 0,
+	"markdownUseCompatibilityMode": 0,
 	"reloadFileURLs": 0,
 	"sassAutoOutputPathEnabled": 1,
 	"sassAutoOutputPathFilenamePattern": "*.css",
@@ -8678,7 +9261,9 @@
 	"typescriptAutoOutputPathStyle": 2,
 	"typescriptCreateDeclarationFile": 0,
 	"typescriptCreateSourceMap": 0,
+	"typescriptJSXMode": 0,
 	"typescriptMinifyOutput": 0,
+	"typescriptModuleResolutionType": 0,
 	"typescriptModuleType": 0,
 	"typescriptNoImplicitAny": 0,
 	"typescriptPreserveConstEnums": 0,
@@ -8688,6 +9273,10 @@
 	"uglifyDefinesString": "",
 	"uglifyFlags2": {
 		"ascii-only": {
+			"active": 0,
+			"flagValue": -1
+			},
+		"bare-returns": {
 			"active": 0,
 			"flagValue": -1
 			},
@@ -8768,6 +9357,10 @@
 			"flagValue": -1
 			},
 		"keep_fargs": {
+			"active": 0,
+			"flagValue": -1
+			},
+		"keep_fnames": {
 			"active": 0,
 			"flagValue": -1
 			},

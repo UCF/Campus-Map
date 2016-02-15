@@ -1658,6 +1658,7 @@ var CampusMap = function(options) {
                       // Keep track of the total amount of locations and organizations
                       // we are displaying. We don't want to go over 11 or else the
                       // results list will be too long
+                      var results_html = '';
                       var org_loc_count = 0;
                       $.each(best_matches.concat(better_matches, good_matches), function(index, loc) {
                         var org_html = '';
@@ -1668,14 +1669,15 @@ var CampusMap = function(options) {
                         });
                         if(org_html != '') org_html = '<ul>' + org_html + '</ul>';
 
-                        results.append('<li>' + loc.link + org_html + '</ul>');
+                        results_html += '<li>' + loc.link + org_html + '</ul>';
 
                         if(org_loc_count > 11) {
-                          results.append('<li class="more"><a href="' + data.results_page_url + '">More Results &hellip;</a></li>');
+                          results_html += '<li class="more"><a href="' + data.results_page_url + '">More Results &hellip;</a></li>';
                           return false;
                         }
                         org_loc_count++;
                       });
+                      results.append(results_html);
                     }
                   }
                 }
@@ -1736,7 +1738,7 @@ var CampusMap = function(options) {
     // check if query is sent in
     if (QUERY !== '') {
       input.val(QUERY);
-      performSearch();
+      performSearch(QUERY);
     }
 
     function submitSearchForm () {

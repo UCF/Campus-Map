@@ -11,6 +11,8 @@ templates/robots.txt
 Thumbs.db
 .svn
 logs/*.log*
+map.sqlite3.db
+ENV
 
 # Static Files
 static/*
