@@ -138,6 +138,9 @@
 	<script src="{{ STATIC_URL }}-/jquery.plugins/browser.js"></script>
 	<script src="{{ STATIC_URL }}-/jquery.plugins/cookie.js"></script>
 	<script type="text/javascript" id="ucfhb-script" src="//universityheader.ucf.edu/bar/js/university-header.js?use-1200-breakpoint=1"></script>
+	<script type="text/javascript">
+		var search_query_get = "{{search_query_get}}";
+	</script>
 
 	{% block js %}{% endblock %}
 

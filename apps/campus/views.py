@@ -57,8 +57,11 @@ def home(request, **kwargs):
     '''
     date = int(time())
 
-    # process query string
+    # process show id
     loc_id = request.GET.get('show', None)
+
+    # process search string
+    search_query = request.GET.get('s', None)
 
     geo_placename = None
     geo_region = None
@@ -156,6 +159,7 @@ def home(request, **kwargs):
         'shuttle_info'       : shuttle_info,
         'aeds_available'     : aeds_available,
         'cloud_typography'   : settings.CLOUD_TYPOGRAPHY_URL,
+        'search_query_get'   : search_query,
         # These points are not displayed on the base tempalte but they
         # still need to be here to be available for searching infoboxes, etc.
         'base_ignore_types'  : json.dumps(['DiningLocation'])

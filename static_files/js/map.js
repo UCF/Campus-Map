@@ -47,6 +47,7 @@ var CampusMap = function(options) {
 		AEDS_URL          = options.urls['aeds'],
 		STATIONS_URL      = options.urls['stations'],
 		BASE_URL          = options.urls['base_url'],
+		QUERY             = search_query_get,
 
 		SIMPLE = options.simple,
 		// Simple really means the map on the profile pages.
@@ -1570,6 +1571,7 @@ var CampusMap = function(options) {
 	 *
 	 *********************************/
 	function Search() {
+
 		var that    = this,
 			element = null,
 			input   = null,
@@ -1590,6 +1592,98 @@ var CampusMap = function(options) {
 				UP         :38,
 				ESCAPE     :27
 			};
+
+      var performSearch = function(search_query) {
+          results.empty().show();
+
+            results.height(SEARCH_RESULTS_SIZE);
+
+            // Wait <timeout> duration between keypresses before doing search
+            clearTimeout(timer);
+            timer = setTimeout(function() {
+              results.append('<li><a data-pk="searching">Searching&hellip;</a></li>');
+
+              ajax = $.getJSON(
+                [SEARCH_URL, 'json'].join('.'),
+                {q:search_query},
+                function(data, text_status, jq_xhr) {
+                  results.empty();
+
+                  if(data && data.results && typeof data.results != 'undefined') {
+                    var locs = data.results.locations,
+                      orgs = data.results.organizations;
+
+                    if(!locs.length) { // There weren't any results
+                      results.append('<li><a data-pk="null">No results</a></li>');
+                    } else {
+
+                      // Because of the way the search returns results,
+                      // we need to check to see if the location name
+                      // actually contains the search term. It could be that
+                      // an organization under the location contains the search query
+                      // but the location name itself does not. We want to ignore
+                      // those results. We also want to prioritize locations
+                      // with organization matches to those without organization
+                      // matches. We dont' display just organizations.
+
+                      var best_matches   = [], // locations with organizations where the search term is the name
+                        better_matches = [], // locations with organizations where the search term isn't in the name
+                        good_matches   = []; // locations without organizations where the search term is in the name
+
+                      $.each(locs, function(index, loc) {
+                        var org_list             = '',
+                          highlighted_loc_link = UTIL.highlight_term(loc.link, search_query, true);
+
+                        // Associate organizations with their locations
+                        loc.orgs = [];
+                        $.each(orgs, function(_index, org) {
+                          if(loc.id == org.bldg_id) {
+                            // Hightlight the search query in the org name
+                            org.name = UTIL.highlight_term(org.name, search_query);
+                            loc.orgs.push(org);
+                          }
+                        });
+
+                        if(loc.orgs.length && loc.link != highlighted_loc_link) {
+                          loc.link = highlighted_loc_link;
+                          best_matches.push(loc);
+                        } else if(loc.orgs.length) {
+                          better_matches.push(loc);
+                        } else if(loc.link != highlighted_loc_link) {
+                          loc.link = highlighted_loc_link;
+                          good_matches.push(loc);
+                        }
+                      });
+
+                      // Keep track of the total amount of locations and organizations
+                      // we are displaying. We don't want to go over 11 or else the
+                      // results list will be too long
+                      var results_html = '';
+                      var org_loc_count = 0;
+                      $.each(best_matches.concat(better_matches, good_matches), function(index, loc) {
+                        var org_html = '';
+
+                        org_loc_count += loc.orgs.length;
+                        $.each(loc.orgs, function(_index, org) {
+                          org_html += '<li>' + org.name + '</li>';
+                        });
+                        if(org_html != '') org_html = '<ul>' + org_html + '</ul>';
+
+                        results_html += '<li>' + loc.link + org_html + '</ul>';
+
+                        if(org_loc_count > 11) {
+                          results_html += '<li class="more"><a href="' + data.results_page_url + '">More Results &hellip;</a></li>';
+                          return false;
+                        }
+                        org_loc_count++;
+                      });
+                      results.append(results_html);
+                    }
+                  }
+                }
+              );
+            }, timeout);
+      };
 
 		// Create and populate the search element
 		element = (function() {
@@ -1640,6 +1734,12 @@ var CampusMap = function(options) {
 		element = $(element);
 		input   = element.find('input');
 		results = element.find(' > ul');
+
+    // check if query is sent in
+    if (QUERY !== '' && QUERY !== 'None') {
+      input.val(QUERY);
+      performSearch(QUERY);
+    }
 
     function submitSearchForm () {
       $('#search-form').submit();
@@ -1719,93 +1819,7 @@ var CampusMap = function(options) {
 					if(search_query === '') {
 						results.hide();
 					} else {
-						results.empty().show();
-
-            results.height(SEARCH_RESULTS_SIZE);
-
-						// Wait <timeout> duration between keypresses before doing search
-						clearTimeout(timer);
-						timer = setTimeout(function() {
-							results.append('<li><a data-pk="searching">Searching&hellip;</a></li>');
-
-							ajax = $.getJSON(
-								[SEARCH_URL, 'json'].join('.'),
-								{q:search_query},
-								function(data, text_status, jq_xhr) {
-									results.empty();
-
-									if(data && data.results && typeof data.results != 'undefined') {
-										var locs = data.results.locations,
-											orgs = data.results.organizations;
-
-										if(!locs.length) { // There weren't any results
-											results.append('<li><a data-pk="null">No results</a></li>');
-										} else {
-
-											// Because of the way the search returns results,
-											// we need to check to see if the location name
-											// actually contains the search term. It could be that
-											// an organization under the location contains the search query
-											// but the location name itself does not. We want to ignore
-											// those results. We also want to prioritize locations
-											// with organization matches to those without organization
-											// matches. We dont' display just organizations.
-
-											var best_matches   = [], // locations with organizations where the search term is the name
-												better_matches = [], // locations with organizations where the search term isn't in the name
-												good_matches   = []; // locations without organizations where the search term is in the name
-
-											$.each(locs, function(index, loc) {
-												var org_list             = '',
-													highlighted_loc_link = UTIL.highlight_term(loc.link, search_query, true);
-
-												// Associate organizations with their locations
-												loc.orgs = [];
-												$.each(orgs, function(_index, org) {
-													if(loc.id == org.bldg_id) {
-														// Hightlight the search query in the org name
-														org.name = UTIL.highlight_term(org.name, search_query);
-														loc.orgs.push(org);
-													}
-												});
-
-												if(loc.orgs.length && loc.link != highlighted_loc_link) {
-													loc.link = highlighted_loc_link;
-													best_matches.push(loc);
-												} else if(loc.orgs.length) {
-													better_matches.push(loc);
-												} else if(loc.link != highlighted_loc_link) {
-													loc.link = highlighted_loc_link;
-													good_matches.push(loc);
-												}
-											});
-
-											// Keep track of the total amount of locations and organizations
-											// we are displaying. We don't want to go over 11 or else the
-											// results list will be too long
-											var org_loc_count = 0;
-											$.each(best_matches.concat(better_matches, good_matches), function(index, loc) {
-												var org_html = '';
-
-												org_loc_count += loc.orgs.length;
-												$.each(loc.orgs, function(_index, org) {
-													org_html += '<li>' + org.name + '</li>';
-												});
-												if(org_html != '') org_html = '<ul>' + org_html + '</ul>';
-
-												results.append('<li>' + loc.link + org_html + '</ul>');
-
-												if(org_loc_count > 11) {
-													results.append('<li class="more"><a href="' + data.results_page_url + '">More Results &hellip;</a></li>');
-													return false;
-												}
-												org_loc_count++;
-											});
-										}
-									}
-								}
-							);
-						}, timeout);
+	           performSearch(search_query);
 					}
 				}
 			});
