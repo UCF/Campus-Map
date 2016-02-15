@@ -60,9 +60,8 @@ def home(request, **kwargs):
     # process show id
     loc_id = request.GET.get('show', None)
 
-
     # process search string
-    search_query = request.GET.get('q', None)
+    search_query = request.GET.get('s', None)
 
     geo_placename = None
     geo_region = None

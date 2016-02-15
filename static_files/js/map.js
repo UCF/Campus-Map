@@ -1736,7 +1736,7 @@ var CampusMap = function(options) {
 		results = element.find(' > ul');
 
     // check if query is sent in
-    if (QUERY !== '') {
+    if (QUERY !== '' && QUERY !== 'None') {
       input.val(QUERY);
       performSearch(QUERY);
     }
