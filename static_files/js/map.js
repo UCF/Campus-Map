@@ -1864,7 +1864,7 @@ var CampusMap = function(options) {
 			} else {
 				filename = 'zoom-' + zoom + '/' + zoom + '-' + coordinate.x + '-' + coordinate.y + '.jpg';
 			}
-			return 'url("http://cdn.ucf.edu/map/tiles/' + filename + '?_=' + new Date().getTime() + '")';
+			return 'url("https://cdn.ucf.edu/map/tiles/' + filename + '?_=' + new Date().getTime() + '")';
 		}
 
 		// Wraps a specified term with start and end wraps. Preserves capitalization.

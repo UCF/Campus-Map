@@ -130,7 +130,7 @@ $(document).ready(function(){
 	  var div = ownerDocument.createElement('DIV');
 	  div.style.width = this.tileSize.width + 'px';
 	  div.style.height = this.tileSize.height + 'px';
-	  div.style.backgroundImage = 'url("http://cdn.ucf.edu/map/tiles/' + getTileUrl(coord, zoom) + '?_=' + new Date().getTime() + '")';
+	  div.style.backgroundImage = 'url("https://cdn.ucf.edu/map/tiles/' + getTileUrl(coord, zoom) + '?_=' + new Date().getTime() + '")';
 	  return div;
 	};
 
