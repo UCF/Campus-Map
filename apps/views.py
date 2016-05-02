@@ -225,14 +225,14 @@ def phonebook_search(q):
 def group_search(q):
     groups = campus.models.Group.objects.filter(name__icontains=q)
     return groups
-
-
+    
 def search(request):
     '''
     one day will search over all data available
     '''
     found_entries = {'locations': [], 'phonebook': [], 'organizations': []}
     query_string = request.GET.get('q', '').strip()
+    extended = request.GET.get('extended', False) in ['1', 'true', 'True']
 
     if bool(query_string):
         orgs, locs, phones = ([], [], [])
@@ -279,8 +279,14 @@ def search(request):
                 'name': item.name,
                 'id': item.pk,
                 'link': item.link}
+        
+        def extended_meta(item):
+            return item.json()
 
-        found_entries['locations'] = map(clean, found_entries['locations'])
+        if extended:
+            found_entries['locations'] = map(extended_meta, found_entries['locations'])
+        else:
+            found_entries['locations'] = map(clean, found_entries['locations'])
 
         search = {
             'query': query_string,
