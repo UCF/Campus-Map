@@ -92,35 +92,8 @@
 	</div>
 </div>
 
-<div style="display:none;" id="shuttle-routes-content">
-    <div id="shuttle-routes">
-        <a class="item" id="shuttle-info-button" href="#shuttle-info">Information <img src="{{ STATIC_URL }}images/info-icon.png" alt="Shuttle Information"></a>
-        <div id="shuttle-stop-wrapper">
-            <select>
-            <option value="">Select a Stop</option>
-            </select>
-        </div>
-        <div id="route-information">
-	        <h3 class="c">Routes</h3>
-	        <div>
-	            <label><input type="checkbox" id="refresh-shuttle-gps" checked="checked"> Track Shuttles in Real-time</label>
-	        </div>
-	        <div id="on-campus-routes">
-	            <h4>On-Campus</h4>
-	        </div>
-	        <div id="off-campus-routes">
-	            <h4>Off-Campus</h4>
-	        </div>
-	        <div id="other-routes">
-	            <h4>Other</h4>
-	        </div>
-        </div>
-    </div>
-</div>
-
 <div style="display:none;" id="shuttle-info">
     <div class="shuttle-info-wrapper" >
-    <a class="item shuttle-routes-btn">Back to Shuttles</a>
         {% if shuttle_info %}
             {{ shuttle_info|safe }}
         {% endif %}
