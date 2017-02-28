@@ -116,9 +116,8 @@ def home(request, **kwargs):
         buildings_kml = "%s%s.kml?v=%s" % (settings.GOOGLE_LOOK_HERE, reverse('locations')[:-1], v)
         sidewalks_kml = "%s%s.kml?v=%s" % (settings.GOOGLE_LOOK_HERE, reverse('sidewalks')[:-1], v)
         parking_kml   = "%s%s.kml?v=%s" % (settings.GOOGLE_LOOK_HERE, reverse('parking')[:-1], v)
-    loc = "%s.json" % reverse('location', kwargs={'loc':'foo'})
-    loc = loc.replace('foo', '%s')
-    kwargs['map'] = 'gmap';
+    loc   = "%s.json" % (request.build_absolute_uri(reverse('locations')[:-1]))
+    kwargs['map'] = 'gmap'
 
     error = kwargs.get('error', None)
     if error:
