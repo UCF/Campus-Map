@@ -131,10 +131,6 @@ LOGGING = {
 # Weather data URL
 WEATHER_URL = 'http://weather.smca.ucf.edu'
 
-SHUTTLE_WSDL = ''
-SHUTTLE_APP_CODE = ''
-SHUTTLE_COST_CENTER_ID = ''
-
 # Hoefler & Co Cloud.Typography Web Fonts url
 # e.g. //cloud.typography.com/730568/6694752/css/fonts.css
 CLOUD_TYPOGRAPHY_URL = None
