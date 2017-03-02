@@ -42,9 +42,6 @@ from campus.models import ParkingLot
 from campus.models import RegionalCampus
 from campus.models import Sidewalk
 from campus.models import SimpleSetting
-from campus.models import ShuttleRoute
-from campus.models import ShuttleStop
-from campus.shuttle import ShuttleRouteAPI
 from campus.utils import get_geo_data
 
 
@@ -132,11 +129,6 @@ def home(request, **kwargs):
 
     aeds_available = EmergencyAED.objects.all().count() > 0
 
-    ucf_shuttle_api = ShuttleRouteAPI(settings.SHUTTLE_WSDL,
-                                      settings.SHUTTLE_APP_CODE,
-                                      settings.SHUTTLE_COST_CENTER_ID)
-    shuttle_stops = ucf_shuttle_api.get_all_shuttle_stops_dict_from_db()
-    shuttle_stops = sorted(shuttle_stops, key=lambda k: k['name'])
     context = {
         'infobox_location_id': json.dumps(loc_id),
         'geo_placename'      : geo_placename,
@@ -153,8 +145,6 @@ def home(request, **kwargs):
         'loc_url'            : loc,
         'base_url'           : request.build_absolute_uri(reverse('home'))[:-1],
         'error'              : error,
-        'shuttle_routes'     : json.dumps(get_shuttle_routes_dict()),
-        'shuttle_stops'      : json.dumps(shuttle_stops),
         'shuttle_info'       : shuttle_info,
         'aeds_available'     : aeds_available,
         'cloud_typography'   : settings.CLOUD_TYPOGRAPHY_URL,
@@ -738,140 +728,6 @@ def regional_campuses(request, campus=None):
 
 def shuttles(request):
     return home(request, shuttles=True)
-
-def get_shuttle_routes_dict():
-    """
-    Get the shuttle routes
-    """
-    ucf_shuttle_routes = ShuttleRoute.objects.all()
-    route_list = []
-    route_dict = {}
-    if ucf_shuttle_routes is not None:
-        for route in ucf_shuttle_routes:
-            route_list.append(route.json())
-
-    def string_number_cmp(x, y):
-        try:
-            x = x['shortname']
-            xsplit = x.split(' ')
-            xsplit_len = len(xsplit)
-            route_num = xsplit[xsplit_len - 1]
-            if int(route_num) > -1 and len(route_num) == 1:
-                xsplit[xsplit_len - 1] = '0'
-                xsplit.append(route_num)
-                x = ' '.join(xsplit)
-        except ValueError:
-            pass
-
-        try:
-            y = y['shortname']
-            ysplit = y.split(' ')
-            ysplit_len = len(ysplit)
-            route_num = ysplit[ysplit_len - 1]
-            if int(route_num) > -1 and len(route_num) == 1:
-                ysplit[ysplit_len - 1] = '0'
-                ysplit.append(route_num)
-                y = ' '.join(ysplit)
-        except ValueError:
-            pass
-
-        return cmp(x.lower(), y.lower())
-
-    sorted_route_list = sorted(route_list, cmp=string_number_cmp)
-    route_dict['routes'] = sorted_route_list
-    return route_dict
-
-
-def shuttle_routes(request):
-    """
-    Retrieve a list of shuttle routes and return them in json.
-    """
-
-    if not request.is_json():
-        raise Http404()
-
-    json_object = get_shuttle_routes_dict()
-    return HttpResponse(json.dumps(json_object), content_type='application/json')
-
-
-def shuttle_route_stops(request, route_id):
-    """
-    Retrieve a list of shuttle stops and return them in json.
-    """
-    if not request.is_json() or route_id is None:
-        raise Http404()
-
-    json_object = {}
-    shuttle_stops = ShuttleStop.objects.filter(route_id=route_id)
-    json_stop_list = []
-    for stop in shuttle_stops:
-        json_stop_list.append(stop.json())
-    json_object['stops'] = json_stop_list
-    return HttpResponse(json.dumps(json_object), content_type='application/json')
-
-
-def shuttle_gps(request, route_id):
-    """
-    Retrieve a list of shuttle gps locations and return them in json.
-    """
-    if not request.is_json() or route_id is None:
-        raise Http404()
-
-    json_object = {}
-    ucf_shuttle_api = ShuttleRouteAPI(settings.SHUTTLE_WSDL,
-                                  settings.SHUTTLE_APP_CODE,
-                                  settings.SHUTTLE_COST_CENTER_ID)
-    route_gps_list = ucf_shuttle_api.get_route_gps(route_id)
-    json_gps_list = []
-    for gps in route_gps_list:
-        json_gps_list.append(gps.json())
-    json_object['locations'] = json_gps_list
-    return HttpResponse(json.dumps(json_object), content_type='application/json')
-
-
-class KMLTemplateView(TemplateView):
-    """
-    Only allows KML requests to execute.
-    """
-
-    def get(self, request, *args, **kwargs):
-        """
-        Determine if KML otherwise 404.
-        """
-        if not request.is_kml():
-            raise Http404()
-        return super(KMLTemplateView, self).get(request, *args, **kwargs)
-
-    def render_to_response(self, context, **response_kwargs):
-        """
-        Ensure the right response type
-        """
-        response_kwargs['content_type'] = 'application/vnd.google-earth.kml+xml'
-        return super(KMLTemplateView, self).render_to_response(context, **response_kwargs)
-
-
-class ShuttleRoutePolyView(KMLTemplateView):
-    """
-    Return KML for the route polygons.
-    """
-    template_name = 'campus/shuttle/route-poly.kml'
-
-    def get_context_data(self, **kwargs):
-        """
-        Add route polys to context.
-        """
-        context = super(ShuttleRoutePolyView, self).get_context_data(**kwargs)
-        route_id = self.kwargs.get('route_id')
-        if route_id is None:
-            raise Http404()
-        ucf_shuttle_api = ShuttleRouteAPI(settings.SHUTTLE_WSDL,
-                                      settings.SHUTTLE_APP_CODE,
-                                      settings.SHUTTLE_COST_CENTER_ID)
-        route_lines = ucf_shuttle_api.get_route_poly(route_id)
-        route_info = ucf_shuttle_api.get_route_info(route_id)
-        context['route_lines'] = route_lines
-        context['route_info'] = route_info
-        return context
 
 
 def data_dump(request):

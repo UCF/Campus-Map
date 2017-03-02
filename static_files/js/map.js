@@ -646,12 +646,7 @@ var CampusMap = function(options) {
 			// Activated layers
 			$.each(ACTIVATED_LAYERS, function(index, layer_name) {
 				var layer = LAYER_MANAGER.get_layer(layer_name);
-				if (layer_name == 'shuttles') {
-					MENU.change_tabs({
-						'label':'Shuttles',
-						'html' :$('#shuttle-routes-content').clone(true, true).show()
-					});
-				} else if(layer != null) {
+				if(layer != null) {
 					layer.activate();
 					activated_layer = true;
 					if(layer.name == 'parking') {
@@ -810,55 +805,6 @@ var CampusMap = function(options) {
 		UTIL.highlight_location(options.infobox_location_id, {pan:true});
 	}
 
-    function updateShuttleGpsData(layer) {
-        var markers = [];
-        $.ajax({
-            url      : '/shuttles/' + layer.shuttleRouteId + '/gps/.json',
-            dataType : 'json',
-            async: true,
-            success: function(data) {
-                if(typeof data.locations != 'undefined') {
-
-                    // Remove old GPS locations
-                    if(layer.gpsMarkers != null) {
-                        $.each(layer.gpsMarkers, function (index, oldGpsMarker) {
-                            oldGpsMarker.setMap(null);
-                        });
-                    }
-
-                    // Add new GPS locations
-                    $.each(data.locations, function(index, spot) {
-                        var icon = {
-                            url: STATIC_URL + '/images/markers/shuttle.png',
-                            size: new google.maps.Size(25, 25)
-                        },
-                        gpsMarker = new google.maps.Marker({
-                            position : new google.maps.LatLng(
-                                spot.lat,
-                                spot.lon
-                            ),
-                            map     : MAP,
-                            title   : spot.name,
-                            visible : layer.active,
-                            icon    : icon,
-                        });
-                        var infoWindow = new google.maps.InfoWindow({
-                            content: '<div>Shuttle ' + spot.id + '</div>'
-                        });
-
-                        google.maps.event.addListener(gpsMarker, 'click', function() {
-                            infoWindow.open(MAP, gpsMarker);
-                        });
-
-                        markers.push(gpsMarker);
-                    });
-                }
-
-                layer.gpsMarkers = markers;
-            }
-        });
-    }
-
 	/*********************************
 	 *
 	 * InfoBox
@@ -989,7 +935,6 @@ var CampusMap = function(options) {
 		this.name       = name;
 		this.layer      = null; // the actual Google Maps layer on the map, if applicable
 		this.markers    = null; // the actual Google Maps markers on the map, if applicable
-        this.shuttleRouteId = null;
         this.gpsMarkers = null; // Google marker for gps data that can be used to refresh on an interval (unlike markers)
 
 		this.toggle = function() {
@@ -1007,11 +952,6 @@ var CampusMap = function(options) {
 						marker.setVisible(true);
 					});
 				}
-
-                // Get the latest GPS data
-                if(that.shuttleRouteId != null) {
-                    updateShuttleGpsData(that);
-                }
 			}
 		};
 
@@ -1046,7 +986,6 @@ var CampusMap = function(options) {
   function MobileMenu() {
 
     var $mobileMenu = $('#mobile-menu'),
-        $shuttleMenu = $('#shuttle-menu'),
         $menuItem = $('.menu-item'),
         youAreHereMarker,
         youAreHereInfowindow = new google.maps.InfoWindow({
