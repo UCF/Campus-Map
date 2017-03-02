@@ -7,7 +7,7 @@ html {
 }
 
 body {
-  background: white;
+  background: white url(img/gradient.png) repeat-x;
   min-width: 974px;
 }
 

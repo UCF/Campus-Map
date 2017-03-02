@@ -646,7 +646,12 @@ var CampusMap = function(options) {
 			// Activated layers
 			$.each(ACTIVATED_LAYERS, function(index, layer_name) {
 				var layer = LAYER_MANAGER.get_layer(layer_name);
-				if(layer != null) {
+				if (layer_name == 'shuttles') {
+					MENU.change_tabs({
+						'label':'Shuttles',
+						'html' :$('#shuttle-routes-content').clone(true, true).show()
+					});
+				} else if(layer != null) {
 					layer.activate();
 					activated_layer = true;
 					if(layer.name == 'parking') {
@@ -712,6 +717,16 @@ var CampusMap = function(options) {
                       'html' :$('#shuttle-info').clone(true, true).show()
                   });
               }
+          });
+
+          // Add click event to Shuttle Route Information
+          var shuttleInfoButton = $('#shuttle-info-button');
+          shuttleInfoButton.click(function(event) {
+              event.preventDefault();
+              MENU.change_tabs({
+                  'label' : 'Shuttles',
+                  'html'  : $('#shuttle-info').clone(true, true).show()
+              });
           });
 
 			// Add click event to Emergency box
@@ -794,6 +809,55 @@ var CampusMap = function(options) {
 	if(options.infobox_location_id != null) {
 		UTIL.highlight_location(options.infobox_location_id, {pan:true});
 	}
+
+    function updateShuttleGpsData(layer) {
+        var markers = [];
+        $.ajax({
+            url      : '/shuttles/' + layer.shuttleRouteId + '/gps/.json',
+            dataType : 'json',
+            async: true,
+            success: function(data) {
+                if(typeof data.locations != 'undefined') {
+
+                    // Remove old GPS locations
+                    if(layer.gpsMarkers != null) {
+                        $.each(layer.gpsMarkers, function (index, oldGpsMarker) {
+                            oldGpsMarker.setMap(null);
+                        });
+                    }
+
+                    // Add new GPS locations
+                    $.each(data.locations, function(index, spot) {
+                        var icon = {
+                            url: STATIC_URL + '/images/markers/shuttle.png',
+                            size: new google.maps.Size(25, 25)
+                        },
+                        gpsMarker = new google.maps.Marker({
+                            position : new google.maps.LatLng(
+                                spot.lat,
+                                spot.lon
+                            ),
+                            map     : MAP,
+                            title   : spot.name,
+                            visible : layer.active,
+                            icon    : icon,
+                        });
+                        var infoWindow = new google.maps.InfoWindow({
+                            content: '<div>Shuttle ' + spot.id + '</div>'
+                        });
+
+                        google.maps.event.addListener(gpsMarker, 'click', function() {
+                            infoWindow.open(MAP, gpsMarker);
+                        });
+
+                        markers.push(gpsMarker);
+                    });
+                }
+
+                layer.gpsMarkers = markers;
+            }
+        });
+    }
 
 	/*********************************
 	 *
@@ -925,6 +989,7 @@ var CampusMap = function(options) {
 		this.name       = name;
 		this.layer      = null; // the actual Google Maps layer on the map, if applicable
 		this.markers    = null; // the actual Google Maps markers on the map, if applicable
+        this.shuttleRouteId = null;
         this.gpsMarkers = null; // Google marker for gps data that can be used to refresh on an interval (unlike markers)
 
 		this.toggle = function() {
@@ -942,6 +1007,11 @@ var CampusMap = function(options) {
 						marker.setVisible(true);
 					});
 				}
+
+                // Get the latest GPS data
+                if(that.shuttleRouteId != null) {
+                    updateShuttleGpsData(that);
+                }
 			}
 		};
 
@@ -976,6 +1046,7 @@ var CampusMap = function(options) {
   function MobileMenu() {
 
     var $mobileMenu = $('#mobile-menu'),
+        $shuttleMenu = $('#shuttle-menu'),
         $menuItem = $('.menu-item'),
         youAreHereMarker,
         youAreHereInfowindow = new google.maps.InfoWindow({
@@ -1672,120 +1743,118 @@ var CampusMap = function(options) {
 				sublocation       : false
 			}, options);
 
-			if (!options.sublocation) INFO_MANAGER.clear();
+			if(!options.sublocation) INFO_MANAGER.clear();
 
-			if (location_id !== 'null') {
-				$.ajax({
-					url: LOCATION_URL.replace('%s', location_id),
-					dataType: 'json',
-					success: function (data, text_status, jq_xhr) {
-						var map_type = MAP.mapTypeId;
-						var point_type = (map_type === 'illustrated') ? 'illustrated_point' : 'googlemap_point',
-							default_zoom = (map_type === 'illustrated') ? IMAP_OPTIONS.zoom : GMAP_OPTIONS.zoom,
-							default_center = (map_type === 'illustrated') ? IMAP_OPTIONS.center : GMAP_OPTIONS.center;
+			$.ajax({
+				url      :LOCATION_URL.replace('%s', location_id),
+				dataType :'json',
+				success  : function(data, text_status, jq_xhr) {
+					var map_type       = MAP.mapTypeId;
+					var point_type     = (map_type === 'illustrated') ? 'illustrated_point' : 'googlemap_point',
+						default_zoom   = (map_type === 'illustrated') ? IMAP_OPTIONS.zoom : GMAP_OPTIONS.zoom,
+						default_center = (map_type === 'illustrated') ? IMAP_OPTIONS.center : GMAP_OPTIONS.center;
 
-						if (typeof options.func != 'undefined') {
-							options.func(data);
-						}
+					if(typeof options.func != 'undefined') {
+						options.func(data);
+					}
 
-						if (data.object_type == 'Group') {
-							CURRENT_LOCATION = location_id;
-							// Pan to the group center point
-							MAP.panTo((new google.maps.LatLng(data[point_type][0], data[point_type][1])));
+					if(data.object_type == 'Group') {
+						CURRENT_LOCATION = location_id;
+						// Pan to the group center point
+						MAP.panTo((new google.maps.LatLng(data[point_type][0], data[point_type][1])));
 
-							$.each(data.locations.ids, function (index, sub_location_id) {
-								that.highlight_location(sub_location_id, { sublocation: true });
-								if (index == (data.locations.ids.length - 1)) {
-									$('body').bind('highlight-location-loaded', function (event, event_location_id) {
-										if (event_location_id == sub_location_id) {
-											$('body').unbind('highlight-location-loaded');
-											if (typeof data[point_type] != 'undefined') {
-												var points = [],
-													distance_total = 0,
-													distance_count = 0,
-													average_distance = null,
-													zoom = null,
-													interval = .09,
-													increment = .05;
+						$.each(data.locations.ids, function(index, sub_location_id) {
+							that.highlight_location(sub_location_id, {sublocation:true});
+							if(index == (data.locations.ids.length - 1)) {
+								$('body').bind('highlight-location-loaded', function(event, event_location_id) {
+									if(event_location_id == sub_location_id) {
+										$('body').unbind('highlight-location-loaded');
+										if(typeof data[point_type] != 'undefined') {
+											var points           = [],
+												distance_total   = 0,
+												distance_count   = 0,
+												average_distance = null,
+												zoom             = null,
+												interval         = .09,
+												increment        = .05;
 
-												if (SIMPLE) {
+											if(SIMPLE) {
+												zoom = 16;
+											} else {
+												if(map_type == 'illustrated') {
 													zoom = 16;
 												} else {
-													if (map_type == 'illustrated') {
-														zoom = 16;
-													} else {
-														zoom = 19;
-													}
-												}
-
-												// Collect the position of each infobox
-												$.each(INFO_MANAGER.infos, function (index, info) {
-													var pos = info.box.getPosition();
-													if (pos != null) points.push(pos);
-												});
-
-												// Caculate the average distance between them
-												$.each(points, function (index, point) {
-													$.each(points, function (_index, cpoint) {
-														if (index != _index) {
-															var distance = that.calc_distance(point, cpoint);
-															if (distance > 0) {
-																distance_total += distance;
-																distance_count += 1;
-															}
-														}
-													});
-												});
-												average_distance = distance_total / distance_count;
-												// Iterate to figure out the zoom
-												while (average_distance > interval) {
-													interval += increment;
-													zoom -= 1;
-												}
-
-												if (SIMPLE) {
-													MAP.setZoom(zoom - 1);
-												} else {
-													if (map_type == 'illustrated') {
-														if (zoom < 12) zoom = 12;
-														if (zoom > 16) zoom = 16;
-													} else {
-														zoom = (zoom < 15) ? 15 : zoom;
-													}
-													MAP.setZoom(zoom);
+													zoom = 19;
 												}
 											}
+
+											// Collect the position of each infobox
+											$.each(INFO_MANAGER.infos, function(index, info) {
+												var pos = info.box.getPosition();
+												if(pos != null) points.push(pos);
+											});
+
+											// Caculate the average distance between them
+											$.each(points, function(index, point) {
+												$.each(points, function(_index, cpoint) {
+													if(index != _index) {
+														var distance = that.calc_distance(point, cpoint);
+														if(distance > 0) {
+															distance_total += distance;
+															distance_count += 1;
+														}
+													}
+												});
+											});
+											average_distance = distance_total / distance_count;
+											// Iterate to figure out the zoom
+											while(average_distance > interval) {
+												interval += increment;
+												zoom     -= 1;
+											}
+
+											if(SIMPLE) {
+												MAP.setZoom(zoom - 1);
+											} else {
+												if(map_type == 'illustrated') {
+													if(zoom < 12) zoom = 12;
+													if(zoom > 16) zoom = 16;
+												} else {
+													zoom = (zoom < 15) ? 15 : zoom;
+												}
+												MAP.setZoom(zoom);
+											}
 										}
-									});
-								}
-							});
-							if (MENU != null) {
-								MENU.change_buttons({ 'loc_id': location_id, 'title': data.name });
-							}
-						} else {
-							// Create the info box(es)
-							if (typeof data[point_type] != 'undefined' && data[point_type] != null) {
-
-								INFO_MANAGER.register(
-									new Info(
-										data[point_type],
-										data.name,
-										{ link: data.profile_link }
-									)
-								);
-
-								if (!options.sublocation) {
-									CURRENT_LOCATION = location_id;
-									if (MENU != null) {
-										MENU.change_buttons({ 'loc_id': location_id, 'title': data.name });
 									}
-								}
-								$('body').trigger('highlight-location-loaded', [location_id]);
+								});
 							}
+						});
+						if(MENU != null) {
+							MENU.change_buttons({'loc_id':location_id, 'title': data.name});
+						}
+					} else {
+						// Create the info box(es)
+						if(typeof data[point_type] != 'undefined' && data[point_type] != null) {
+
+							INFO_MANAGER.register(
+								new Info(
+									data[point_type],
+									data.name,
+									{link: data.profile_link}
+								)
+							);
+
+							if(!options.sublocation) {
+								CURRENT_LOCATION = location_id;
+								if(MENU != null) {
+									MENU.change_buttons({'loc_id':location_id, 'title': data.name});
+								}
+							}
+							$('body').trigger('highlight-location-loaded', [location_id]);
 						}
 					}
-				});
-			}
+				}
+			});
 		}
 
 		// Calculate the distance between two Google LatLng objects

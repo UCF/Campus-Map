@@ -79,6 +79,7 @@
 			<li><a href="{% url 'emergency_phones' %}">Blue Light Emergency Phones</a></li>
 			<li><a href="{% url 'emergency_aeds' %}">Automated External Defibrillators (AEDs)</a></li>
 			<li><a href="{% url 'sidewalks' %}">Walking Paths</a></li>
+			<li><a href="{% url 'shuttles' %}">Shuttles</a></li>
 			<li><a href="{% url 'electric_charging_stations' %}">EV Charging Stations</a></li>
 		</ul>
 

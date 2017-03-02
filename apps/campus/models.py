@@ -673,6 +673,43 @@ class Group(MapObj):
 m2m_changed.connect(Group.update_coordinates, sender=Group.locations.through)
 
 
+class ShuttleCategory(models.Model):
+    name = models.CharField(max_length=80)
+
+    def __unicode__(self):
+        return u'%s' % (self.name)
+
+    class Meta:
+        verbose_name_plural = 'Shuttle categories'
+
+
+class ShuttleRoute(models.Model):
+    id = models.CharField(max_length=80, primary_key=True, help_text='<strong class="caution">Caution</strong>: changing may break external resources (used for links and images)')
+    shortname = models.CharField(max_length=80, null=True, blank=True)
+    color = models.CharField(max_length=7, null=True, blank=True)
+    description = models.TextField(null=True, blank=True)
+    category = models.ForeignKey(ShuttleCategory, related_name='shuttle_routes')
+
+    def __unicode__(self):
+        return u'%s' % (self.shortname)
+
+    def json(self):
+        return {'id': self.id, 'shortname': self.shortname, 'color': self.color, 'description': self.description, 'category': self.category.name}
+
+class ShuttleStop(models.Model):
+    id = models.AutoField(primary_key=True)
+    stop_id = models.CharField(max_length=80, null=False, blank=False, default=0, help_text='<strong class="caution">Caution</strong>: changing may break external resources (used for links and images)')
+    name = models.CharField(max_length=80, null=True, blank=True)
+    lon = models.FloatField(null=False, blank=False, default=0)
+    lat = models.FloatField(null=False, blank=False, default=0)
+    route = models.ForeignKey(ShuttleRoute, related_name='shuttle_stops')
+
+    def __unicode__(self):
+        return u'%s' % (self.name)
+
+    def json(self):
+        return {'id': self.stop_id, 'name': self.name, 'lat': self.lat, 'lon': self.lon}
+
 class SimpleSetting(models.Model):
     name = models.CharField(max_length=80)
     value = tinymce_models.HTMLField(null=True)

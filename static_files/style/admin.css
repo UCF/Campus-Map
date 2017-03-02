@@ -3,7 +3,7 @@
 \******************************************************************************/
 
 #header a,
-#header a:link,
+#header a:link, 
 #header a:visited { color:#FAD46A; }
 #header { padding:0 0 2px 0; color:white; background:black url('img/admin_gradient.png') repeat-x bottom left; }
 #header h1 {color:white; display:inline; }
@@ -18,7 +18,7 @@
 .clear {clear:both; height:1px; font-size:1px; overflow:hidden; }
 
 #slide .right { border:1px solid #ccc; }
-#slide .vLargeTextField,
+#slide .vLargeTextField, 
 #slide .vXMLLargeTextField { width:98%; }
 #preview { padding:1em; }
 #preview h2 { margin:0; padding:0 0 .5em 0; }
