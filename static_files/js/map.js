@@ -107,6 +107,7 @@ var CampusMap = function(options) {
   var mapTypes = {
     mapTypeIds: []
   };
+
   if(isDesktopWidth) {
     mapTypes = {
       mapTypeIds: [
@@ -469,7 +470,7 @@ var CampusMap = function(options) {
 
 
 		if(isDesktopWidth) {
-			// Implementation details for the ev cahrging station layer
+			// Implementation details for the ev charging station layer
 			LAYER_MANAGER.register_layer(
 				(function() {
 					var stations_layer = new Layer('charging-stations');
@@ -842,7 +843,7 @@ var CampusMap = function(options) {
 	 	options = $.extend({}, default_options, options);
 
 	 	// Wrap the text in a link if neccessary
-	 	if(options.link != null) {
+	 	if(options.link !== null) {
 	 		name = '<a href="' + options.link + '">' + name + '</a>';
 	 	}
 
