@@ -1880,7 +1880,7 @@ function trackShuttleClick(e) {
 
 function gaTracking() {
 	$('.ga-tracking').live('mousedown', trackClick);
-	$('.shuttle-info-wrapper').live('mousedown', 'a', trackShuttleClick)
+	$('.shuttle-info-wrapper').delegate('a', 'mousedown', trackShuttleClick);
 }
 
 $(gaTracking);
