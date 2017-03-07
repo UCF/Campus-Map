@@ -56,12 +56,12 @@
 					<h5>Parking Permit Key</h5>
 					{% permits %}
 					<div>
-						<a class="item" href="http://parking.ucf.edu/maps/" target="blank" class="ga-tracking" data-category="Mobile Menu" data-action="Click" data-label="Download Parking Guide">
+						<a class="item ga-tracking" href="http://parking.ucf.edu/maps/" target="blank" data-category="Mobile Menu" data-action="Click" data-label="Download Parking Guide">
 							Download Parking Guide
 						</a>
 					</div>
 					<div>
-						<a class="item" href="http://parking.ucf.edu/" target="blank" class="ga-tracking" data-category="Mobile Menu" data-action="Click" data-label="Parking Services Website">
+						<a class="item ga-tracking" href="http://parking.ucf.edu/" target="blank" data-category="Mobile Menu" data-action="Click" data-label="Parking Services Website">
 							Parking Services Website
 						</a>
 					</div>

@@ -1870,8 +1870,17 @@ function trackClick(e) {
   _gaq.push(['_trackEvent', category, action, label]);
 }
 
-function gaTracking () {
-  $('.ga-tracking').live('mousedown', trackClick);
+function trackShuttleClick(e) {
+  var $target = $(e.target),
+      category = 'Shuttle Info',
+      action = 'click',
+      label = $target.text();
+  _gaq.push(['_trackEvent', category, action, label]);
+}
+
+function gaTracking() {
+	$('.ga-tracking').live('mousedown', trackClick);
+	$('.shuttle-info-wrapper').live('mousedown', 'a', trackShuttleClick)
 }
 
 $(gaTracking);
