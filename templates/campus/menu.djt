@@ -23,13 +23,13 @@
 				<a class="item" href="{% url 'locations' %}">Locations &amp; Buildings</a>
 				<a class="item" href="{% url 'organizations' %}">Organizations &amp; Depts</a>
 				<div id="layers" class="clearfix">
-					<label><input type="checkbox" id="parking"> Parking</label>
-					<label><input type="checkbox" id="traffic"> Traffic</label>
-					<label><input type="checkbox" id="food"> Food</label>
-					<label><input type="checkbox" id="bikeracks"> Bike Racks</label>
-					<label><input type="checkbox" id="shuttle-routes"> Shuttles</label>
-					<label><input type="checkbox" id="charging-stations"> EV Charging</label>
-					<label><input type="checkbox" id="emergency"> Emergency</label>
+					<label class="ga-tracking" data-category="Desktop Menu" data-action="Click" data-label="parking"><input type="checkbox" id="parking"> Parking</label>
+					<label class="ga-tracking" data-category="Desktop Menu" data-action="Click" data-label="traffic"><input type="checkbox" id="traffic"> Traffic</label>
+					<label class="ga-tracking" data-category="Desktop Menu" data-action="Click" data-label="food"><input type="checkbox" id="food"> Food</label>
+					<label class="ga-tracking" data-category="Desktop Menu" data-action="Click" data-label="bike"><input type="checkbox" id="bikeracks"> Bike Racks</label>
+					<label class="ga-tracking" data-category="Desktop Menu" data-action="Click" data-label="shuttles"><input type="checkbox" id="shuttle-routes"> Shuttles</label>
+					<label class="ga-tracking" data-category="Desktop Menu" data-action="Click" data-label="charging"><input type="checkbox" id="charging-stations"> EV Charging</label>
+					<label class="ga-tracking" data-category="Desktop Menu" data-action="Click" data-label="emergency"><input type="checkbox" id="emergency"> Emergency</label>
 				</div>
 				<div class="more-menu">
 					<span>&nbsp;</span>
@@ -87,40 +87,13 @@
 			<h3>Parking Permit Key</h3>
 			{% permits %}
 		</div>
-		<a class="item" href="http://parking.ucf.edu/maps/" target="blank">Download Parking Guide</a>
-		<a class="item" href="http://parking.ucf.edu/" target="blank">Parking Services Website</a>
+		<a class="item ga-tracking" href="http://parking.ucf.edu/maps/" target="blank" data-category="Desktop Menu" data-action="Click" data-label="Download Parking Guide">Download Parking Guide</a>
+		<a class="item ga-tracking" href="http://parking.ucf.edu/" target="blank" data-category="Desktop Menu" data-action="Click" data-label="Download Parking Guide">Parking Services Website</a>
 	</div>
-</div>
-
-<div style="display:none;" id="shuttle-routes-content">
-    <div id="shuttle-routes">
-        <a class="item" id="shuttle-info-button" href="#shuttle-info">Information <img src="{{ STATIC_URL }}images/info-icon.png" alt="Shuttle Information"></a>
-        <div id="shuttle-stop-wrapper">
-            <select>
-            <option value="">Select a Stop</option>
-            </select>
-        </div>
-        <div id="route-information">
-	        <h3 class="c">Routes</h3>
-	        <div>
-	            <label><input type="checkbox" id="refresh-shuttle-gps" checked="checked"> Track Shuttles in Real-time</label>
-	        </div>
-	        <div id="on-campus-routes">
-	            <h4>On-Campus</h4>
-	        </div>
-	        <div id="off-campus-routes">
-	            <h4>Off-Campus</h4>
-	        </div>
-	        <div id="other-routes">
-	            <h4>Other</h4>
-	        </div>
-        </div>
-    </div>
 </div>
 
 <div style="display:none;" id="shuttle-info">
     <div class="shuttle-info-wrapper" >
-    <a class="item shuttle-routes-btn">Back to Shuttles</a>
         {% if shuttle_info %}
             {{ shuttle_info|safe }}
         {% endif %}

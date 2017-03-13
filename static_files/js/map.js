@@ -26,10 +26,6 @@ var CampusMap = function(options) {
 
 	var POINTS            = options.points,
 
-        // Shuttle Route information
-        SHUTTLE_ROUTES    = options.shuttle_routes,
-        SHUTTLE_STOPS     = options.shuttle_stops,
-
 		// Ignore these point types on the base points layer
 		BASE_IGNORE_TYPES = options.base_ignore_types,
 
@@ -111,6 +107,7 @@ var CampusMap = function(options) {
   var mapTypes = {
     mapTypeIds: []
   };
+
   if(isDesktopWidth) {
     mapTypes = {
       mapTypeIds: [
@@ -473,7 +470,7 @@ var CampusMap = function(options) {
 
 
 		if(isDesktopWidth) {
-			// Implementation details for the ev cahrging station layer
+			// Implementation details for the ev charging station layer
 			LAYER_MANAGER.register_layer(
 				(function() {
 					var stations_layer = new Layer('charging-stations');
@@ -645,169 +642,12 @@ var CampusMap = function(options) {
 			})()
 		);
 
-    if(isDesktopWidth) {
-
-        (function() {
-            $.each(SHUTTLE_STOPS, function(index, stop) {
-                $('#shuttle-stop-wrapper select').append($("<option></option>").attr('value', stop.id).text(stop.name));
-            });
-
-            var stopMarker = null;
-            var stopInfoBox = null;
-            $('#shuttle-stop-wrapper select').change(function() {
-                var value = $(this).val();
-                if (value != '') {
-                    for (var key in SHUTTLE_STOPS) {
-                        stop = SHUTTLE_STOPS[key];
-                        if (stop.id == value) {
-                            if (stopMarker != null) {
-                                stopMarker.setPosition(new google.maps.LatLng(stop.lat, stop.lon));
-                                stopMarker.setVisible(true);
-                                var route_names = '';
-                                for(var index in stop.routes) {
-                                    route_names += '<br><a class="route-link" href="#shuttle-' + stop.routes[index].shortname.replace(/ /g, '-') + '">' + stop.routes[index].shortname + '</a>';
-                                }
-                                stopInfoBox.setContent('<div><b>Stop:</b> ' + stop.name + '<br><b>Routes:</b>' + route_names +'</div>');
-                            } else {
-                                stopMarker = new google.maps.Marker({
-                                    position : new google.maps.LatLng(
-                                        stop.lat,
-                                        stop.lon
-                                    ),
-                                    map      : MAP,
-                                    title    : stop.name
-                                });
-
-                                var route_names = '';
-                                for(var index in stop.routes) {
-                                    route_names += '<br><a class="route-link" href="#shuttle-' + stop.routes[index].shortname.replace(/ /g, '-') + '">' + stop.routes[index].shortname + '</a>';
-                                }
-                                stopInfoBox = new google.maps.InfoWindow({
-                                    content: '<div><b>Stop:</b> ' + stop.name + '<br><b>Routes:</b>' + route_names + '</div>'
-                                });
-
-                                google.maps.event.addListener(stopMarker, 'click', function() {
-                                    stopInfoBox.open(MAP, stopMarker);
-                                });
-                            }
-                            stopInfoBox.open(MAP, stopMarker);
-                            MAP.panTo(new google.maps.LatLng(stop.lat, stop.lon));
-                            break;
-                        }
-                    }
-                } else {
-                    if (stopMarker != null) {
-                        stopMarker.setVisible(false);
-                        stopInfoBox.close();
-                    }
-                }
-            });
-
-            // actively set click event to Info Windows set above
-            $('.route-link').live('click', function(e) {
-                e.preventDefault();
-                var link = $(this);
-                $(link.attr('href')).click();
-            });
-
-            $.each(SHUTTLE_ROUTES.routes, function(index, route) {
-                // Append a new route label to menu
-                var domId = 'shuttle-' + route.shortname.replace(/ /g, '-');
-                var categoryDomId = route.category.replace(/ /g, '-').toLowerCase() + '-routes';
-                var categoryDom = $('#' + categoryDomId);
-                var label = '<label><input type="checkbox" id="' + domId + '"> ' + route.shortname + '</label>';
-                categoryDom.append(label);
-
-                if (SHUTTLE_STOPS.length > 0) {
-	                // Implementation detail for the shuttle route layer
-	                LAYER_MANAGER.register_layer(
-	                    (function() {
-	                        var shuttle_layer = new Layer(domId);
-	                        shuttle_layer.layer = new google.maps.KmlLayer(
-	                                BASE_URL + '/shuttles/' + route.id + '/poly/.kml?&_=' + (new Date()).getTime(),
-	                                {
-	                                    preserveViewport    : true,
-	                                    suppressInfoWindows : true
-	                                }
-	                        );
-	                        shuttle_layer.markers = (function(routeId) {
-	                            var markers = [];
-	                            $.ajax({
-	                                url      : '/shuttles/' + routeId + '/stops/.json',
-	                                dataType : 'json',
-	                                async    : true,
-	                                success: function(data){
-	                                    if(typeof data.stops != 'undefined') {
-	                                        $.each(data.stops, function(index, spot) {
-	                                            var stopMarker = new google.maps.Marker({
-	                                                position : new google.maps.LatLng(
-	                                                    spot.lat,
-	                                                    spot.lon
-	                                                ),
-	                                                map      : MAP,
-	                                                title    : spot.name,
-	                                                visible  : false
-	                                            });
-	                                            var infoWindow = new google.maps.InfoWindow({
-	                                                content: '<div>Stop: ' + spot.name + '</div>'
-	                                            });
-
-	                                            google.maps.event.addListener(stopMarker, 'click', function() {
-	                                                infoWindow.open(MAP, stopMarker);
-	                                            });
-
-	                                            markers.push(stopMarker);
-	                                        });
-	                                    }
-	                                }
-	                            });
-	                            return markers;
-	                        })(route.id);
-
-	                        shuttle_layer.shuttleRouteId = route.id;
-
-	                        return shuttle_layer;
-	                    })()
-	                );
-								}
-            });
-
-            var shuttleInterval =
-                setInterval(function() {
-                    $.each(LAYER_MANAGER.layers, function(index, layer) {
-                        if (layer.shuttleRouteId != null && layer.active) {
-                            updateShuttleGpsData(layer);
-                        }
-                    });
-                }, 4000);
-            $('#refresh-shuttle-gps').click(function() {
-                if($(this).is(':checked')) {
-                    shuttleInterval = setInterval(function() {
-                            $.each(LAYER_MANAGER.layers, function(index, layer) {
-                                if (layer.shuttleRouteId != null && layer.active) {
-                                    updateShuttleGpsData(layer);
-                                }
-                            });
-                        }, 4000);
-                } else {
-                    clearInterval(shuttleInterval);
-                }
-            });
-        })();
-
-    } // End if desktop
-
 		(function() {
 			var activated_layer = false;
 			// Activated layers
 			$.each(ACTIVATED_LAYERS, function(index, layer_name) {
 				var layer = LAYER_MANAGER.get_layer(layer_name);
-				if (layer_name == 'shuttles') {
-					MENU.change_tabs({
-						'label':'Shuttles',
-						'html' :$('#shuttle-routes-content').clone(true, true).show()
-					});
-				} else if(layer != null) {
+				if(layer != null) {
 					layer.activate();
 					activated_layer = true;
 					if(layer.name == 'parking') {
@@ -865,12 +705,12 @@ var CampusMap = function(options) {
 					});
 			});
           // Add click event to Shuttle Routes
-          var shuttle_checkbox = $('#shuttle-routes, .shuttle-routes-btn');
-          shuttle_checkbox.click(function() {
+          var shuttle_checkbox = $('#shuttle-routes');
+		  shuttle_checkbox.click(function () {
               if($(this).is(':checked')) {
                   MENU.change_tabs({
                       'label':'Shuttles',
-                      'html' :$('#shuttle-routes-content').clone(true, true).show()
+                      'html' :$('#shuttle-info').clone(true, true).show()
                   });
               }
           });
@@ -885,42 +725,29 @@ var CampusMap = function(options) {
               });
           });
 
-          // Add back button for route info or any other buttons that go to the routes menu
-          var shuttle_checkbox = $('.shuttle-routes-btn');
-          shuttle_checkbox.click(function() {
-              MENU.change_tabs({
-                  'label':'Shuttles',
-                  'html' :$('#shuttle-routes-content').clone(true, true).show()
-              });
-          });
+			// Add click event to Emergency box
+			var emergency_checkbox = $('#emergency, .emergency-btn');
+			emergency_checkbox.click(function() {
+					if($(this).is(':checked')) {
+						var $html = $('#emergency-content').clone(true, true).show();
+						MENU.change_tabs({
+								'label': 'Emergency',
+								'html' : $html
+							}, function() {
+								$html.find('.init-checked:not(:checked)').attr('checked', true);
+								emergency_checkbox.attr('checked', true);
 
-          if (SHUTTLE_STOPS == 0) {
-          	$('#route-information').hide();
-          }
-
-					// Add click event to Emergency box
-					var emergency_checkbox = $('#emergency, .emergency-btn');
-					emergency_checkbox.click(function() {
-							if($(this).is(':checked')) {
-								var $html = $('#emergency-content').clone(true, true).show();
-								MENU.change_tabs({
-										'label': 'Emergency',
-										'html' : $html
-									}, function() {
-										$html.find('.init-checked:not(:checked)').attr('checked', true);
-										emergency_checkbox.attr('checked', true);
-
-										for (l in emergencyLayers) {
-											LAYER_MANAGER.get_layer(emergencyLayers[l]).activate();
-										}
-								});
-							} else {
-										for (l in emergencyLayers) {
-											LAYER_MANAGER.get_layer(emergencyLayers[l]).deactivate();
-										}
-									$('#emergency-content input[type="checkbox"](:checked)').attr('checked', false);
-							}
-					});
+								for (l in emergencyLayers) {
+									LAYER_MANAGER.get_layer(emergencyLayers[l]).activate();
+								}
+						});
+					} else {
+								for (l in emergencyLayers) {
+									LAYER_MANAGER.get_layer(emergencyLayers[l]).deactivate();
+								}
+							$('#emergency-content input[type="checkbox"](:checked)').attr('checked', false);
+					}
+			});
 
 		})();
 
@@ -979,55 +806,6 @@ var CampusMap = function(options) {
 		UTIL.highlight_location(options.infobox_location_id, {pan:true});
 	}
 
-    function updateShuttleGpsData(layer) {
-        var markers = [];
-        $.ajax({
-            url      : '/shuttles/' + layer.shuttleRouteId + '/gps/.json',
-            dataType : 'json',
-            async: true,
-            success: function(data) {
-                if(typeof data.locations != 'undefined') {
-
-                    // Remove old GPS locations
-                    if(layer.gpsMarkers != null) {
-                        $.each(layer.gpsMarkers, function (index, oldGpsMarker) {
-                            oldGpsMarker.setMap(null);
-                        });
-                    }
-
-                    // Add new GPS locations
-                    $.each(data.locations, function(index, spot) {
-                        var icon = {
-                            url: STATIC_URL + '/images/markers/shuttle.png',
-                            size: new google.maps.Size(25, 25)
-                        },
-                        gpsMarker = new google.maps.Marker({
-                            position : new google.maps.LatLng(
-                                spot.lat,
-                                spot.lon
-                            ),
-                            map     : MAP,
-                            title   : spot.name,
-                            visible : layer.active,
-                            icon    : icon,
-                        });
-                        var infoWindow = new google.maps.InfoWindow({
-                            content: '<div>Shuttle ' + spot.id + '</div>'
-                        });
-
-                        google.maps.event.addListener(gpsMarker, 'click', function() {
-                            infoWindow.open(MAP, gpsMarker);
-                        });
-
-                        markers.push(gpsMarker);
-                    });
-                }
-
-                layer.gpsMarkers = markers;
-            }
-        });
-    }
-
 	/*********************************
 	 *
 	 * InfoBox
@@ -1065,7 +843,7 @@ var CampusMap = function(options) {
 	 	options = $.extend({}, default_options, options);
 
 	 	// Wrap the text in a link if neccessary
-	 	if(options.link != null) {
+	 	if(options.link !== null) {
 	 		name = '<a href="' + options.link + '">' + name + '</a>';
 	 	}
 
@@ -1158,7 +936,6 @@ var CampusMap = function(options) {
 		this.name       = name;
 		this.layer      = null; // the actual Google Maps layer on the map, if applicable
 		this.markers    = null; // the actual Google Maps markers on the map, if applicable
-        this.shuttleRouteId = null;
         this.gpsMarkers = null; // Google marker for gps data that can be used to refresh on an interval (unlike markers)
 
 		this.toggle = function() {
@@ -1176,11 +953,6 @@ var CampusMap = function(options) {
 						marker.setVisible(true);
 					});
 				}
-
-                // Get the latest GPS data
-                if(that.shuttleRouteId != null) {
-                    updateShuttleGpsData(that);
-                }
 			}
 		};
 
@@ -1215,7 +987,6 @@ var CampusMap = function(options) {
   function MobileMenu() {
 
     var $mobileMenu = $('#mobile-menu'),
-        $shuttleMenu = $('#shuttle-menu'),
         $menuItem = $('.menu-item'),
         youAreHereMarker,
         youAreHereInfowindow = new google.maps.InfoWindow({
@@ -2099,8 +1870,17 @@ function trackClick(e) {
   _gaq.push(['_trackEvent', category, action, label]);
 }
 
-function gaTracking () {
-  $('.ga-tracking').live('mousedown', trackClick);
+function trackShuttleClick(e) {
+  var $target = $(e.target),
+      category = 'Shuttle Info',
+      action = 'click',
+      label = $target.text();
+  _gaq.push(['_trackEvent', category, action, label]);
+}
+
+function gaTracking() {
+	$('.ga-tracking').live('mousedown', trackClick);
+	$('.shuttle-info-wrapper').delegate('a', 'mousedown', trackShuttleClick);
 }
 
 $(gaTracking);

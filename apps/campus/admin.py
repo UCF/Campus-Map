@@ -234,24 +234,6 @@ class DiningLocationAdmin(admin.ModelAdmin):
     form                 = DiningLocationForm
 admin.site.register(campus.models.DiningLocation, DiningLocationAdmin)
 
-
-class ShuttleCategoryAdmin(admin.ModelAdmin):
-    search_fields = ('name',)
-    list_display = ('name', 'id', )
-    fields = ('name', )
-admin.site.register(campus.models.ShuttleCategory, ShuttleCategoryAdmin)
-
-
-class ShuttleRouteAdmin(admin.ModelAdmin):
-    search_fields = ('shortname',)
-    list_display = ('id', 'shortname', 'category', 'description',)
-    fields = ('id', 'shortname', 'category', 'description',)
-admin.site.register(campus.models.ShuttleRoute, ShuttleRouteAdmin)
-
-class ShuttleStopAdmin(admin.ModelAdmin):
-    search_fields = ('name',)
-admin.site.register(campus.models.ShuttleStop, ShuttleStopAdmin)
-
 class SimpleSettingAdmin(admin.ModelAdmin):
     search_fields = ('name',)
     list_display = ('name',)
