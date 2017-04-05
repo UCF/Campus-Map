@@ -795,7 +795,8 @@ var CampusMap = function(options) {
 						func: function(data) {
 							// Populate the menu tab
 							MENU.change_tabs({'html':data.info});
-						}
+						},
+						pan: true
 					}
 				);
 			}
@@ -1284,14 +1285,15 @@ var CampusMap = function(options) {
 			// update print button
 			if(illustrated) s.print = s.print + '&illustrated';
 			$('#print').attr('href', s.print);
-		}
+		};
 		this.change_buttons();
 
 		this.change_tabs = function(options, callback) {
+
 			var defaults = {
 				'label':false,
 				'html' :false
-			}
+			};
 
 			var settings = $.extend({}, defaults, options);
 
@@ -1685,8 +1687,14 @@ var CampusMap = function(options) {
 
 			if(!options.sublocation) INFO_MANAGER.clear();
 
+			var url = LOCATION_URL;
+
+			if ( location_id !== 'null' ) {
+				var url = LOCATION_URL.replace('.json', '/' + location_id + '.json');
+			}
+
 			$.ajax({
-				url      :LOCATION_URL.replace('%s', location_id),
+				url      :url,
 				dataType :'json',
 				success  : function(data, text_status, jq_xhr) {
 					var map_type       = MAP.mapTypeId;
@@ -1790,6 +1798,7 @@ var CampusMap = function(options) {
 									MENU.change_buttons({'loc_id':location_id, 'title': data.name});
 								}
 							}
+							MAP.panTo((new google.maps.LatLng(data[point_type][0], data[point_type][1])));
 							$('body').trigger('highlight-location-loaded', [location_id]);
 						}
 					}
