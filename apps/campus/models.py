@@ -161,9 +161,11 @@ class MapObj(models.Model):
         building_orgs = []
         count = 0
         overflow = False
-        for o in get_orgs()['results']:
-            if self.pk == str(o['bldg_id']):
-                building_orgs.append(o)
+        orgs = get_orgs()
+        if orgs:
+            for o in orgs['results']:
+                if self.pk == str(o['bldg_id']):
+                    building_orgs.append(o)
         return {
             "results": building_orgs,
             "overflow": overflow
