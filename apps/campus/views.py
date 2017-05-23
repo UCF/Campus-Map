@@ -22,6 +22,7 @@ from django.shortcuts import render_to_response
 from django.shortcuts import get_object_or_404
 from django.template.loader import get_template
 from django.template import RequestContext
+from django.template import TemplateDoesNotExist
 from django.utils.datastructures import SortedDict
 from django.views.generic import ListView
 from django.views.generic import TemplateView
@@ -682,9 +683,12 @@ def location_html(loc, request, orgs=True):
             'orgs'      : orgs,
             'group'     : group }
     c = RequestContext(request, d)
-    t = get_template(template)
-    return t.render(c)
-
+    try:
+        t = get_template(template)
+        return t.render(c)
+    except TemplateDoesNotExist, tne:
+        error = '%s does not exist.' % location_type
+        raise Http404(error)
 
 def backward_location(request):
     '''
