@@ -45,7 +45,6 @@ from campus.models import Sidewalk
 from campus.models import SimpleSetting
 from campus.utils import get_geo_data
 
-
 def home(request, **kwargs):
     '''
     Renders the main google map.
@@ -687,8 +686,9 @@ def location_html(loc, request, orgs=True):
         t = get_template(template)
         return t.render(c)
     except TemplateDoesNotExist, tne:
-        error = '%s does not exist.' % location_type
-        raise Http404(error)
+        raise Http404()
+    except Exception, e:
+        raise Http404()
 
 def backward_location(request):
     '''
