@@ -22,6 +22,7 @@ from django.shortcuts import render_to_response
 from django.shortcuts import get_object_or_404
 from django.template.loader import get_template
 from django.template import RequestContext
+from django.template import TemplateDoesNotExist
 from django.utils.datastructures import SortedDict
 from django.views.generic import ListView
 from django.views.generic import TemplateView
@@ -43,7 +44,6 @@ from campus.models import RegionalCampus
 from campus.models import Sidewalk
 from campus.models import SimpleSetting
 from campus.utils import get_geo_data
-
 
 def home(request, **kwargs):
     '''
@@ -682,9 +682,13 @@ def location_html(loc, request, orgs=True):
             'orgs'      : orgs,
             'group'     : group }
     c = RequestContext(request, d)
-    t = get_template(template)
-    return t.render(c)
-
+    try:
+        t = get_template(template)
+        return t.render(c)
+    except TemplateDoesNotExist, tne:
+        raise Http404()
+    except Exception, e:
+        raise Http404()
 
 def backward_location(request):
     '''
