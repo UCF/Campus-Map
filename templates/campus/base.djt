@@ -56,12 +56,12 @@
 					<h5>Parking Permit Key</h5>
 					{% permits %}
 					<div>
-						<a class="item ga-tracking" href="http://parking.ucf.edu/maps/" target="blank" data-category="Mobile Menu" data-action="Click" data-label="Download Parking Guide">
+						<a class="item ga-tracking" href="https://parking.ucf.edu/maps/" target="blank" data-category="Mobile Menu" data-action="Click" data-label="Download Parking Guide">
 							Download Parking Guide
 						</a>
 					</div>
 					<div>
-						<a class="item ga-tracking" href="http://parking.ucf.edu/" target="blank" data-category="Mobile Menu" data-action="Click" data-label="Parking Services Website">
+						<a class="item ga-tracking" href="https://parking.ucf.edu/" target="blank" data-category="Mobile Menu" data-action="Click" data-label="Parking Services Website">
 							Parking Services Website
 						</a>
 					</div>
@@ -88,7 +88,7 @@
 		</li>
 
 		<li class="menu-item link-menu-item">
-			<a href="http://www.transitoms.com/Shadow/Predictions_Mobile.aspx?ccid=99906" class="ga-tracking" data-category="Mobile Menu" data-action="Click" data-label="Shuttles">
+			<a href="https://www.transitoms.com/Shadow/Predictions_Mobile.aspx?ccid=99906" class="ga-tracking" data-category="Mobile Menu" data-action="Click" data-label="Shuttles">
 				<h4 data-menu="shuttles">
 					<i class="fa fa-chevron-right pull-right toggle-icon"></i>
 					<div class="icon"><i class="fa fa-bus" data-icon="fa fa-bus"></i></div> Shuttles

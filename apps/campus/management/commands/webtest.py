@@ -17,7 +17,7 @@ class Command(BaseCommand):
                 requests.get(args[0], timeout=settings.REQUEST_TIMEOUT)
                 base = args[0]
             except MissingSchema:
-                base = "http://%s/" % args[0]
+                base = "https://%s/" % args[0]
         else:
             print "No host given, using 'my.mac'"
             base = "http://my.mac/"

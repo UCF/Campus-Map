@@ -202,14 +202,14 @@ STATICFILES_FINDERS = (
 # locally or behind a firewall, this will not be possible.  If GOOGLE_CAN_SEE_ME
 # if false, will fall back to GOOGLE_LOOK_HERE (leave off trailing slash)
 GOOGLE_CAN_SEE_ME = True
-GOOGLE_LOOK_HERE = "http://map.ucf.edu"
+GOOGLE_LOOK_HERE = "https://map.ucf.edu"
 
 # TODO: open all data to be indexed by a real search engine, otherwise
 # search returns a very basic (nearly useless) keymatch result
 SEARCH_ENGINE = None
 
 # Phonebook search service url
-PHONEBOOK = "http://search.smca.ucf.edu/service.php"
+PHONEBOOK = "https://search.smca.ucf.edu/service.php"
 
 LOGIN_REDIRECT_URL = '/admin/'
 
