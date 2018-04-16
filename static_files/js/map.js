@@ -1690,7 +1690,7 @@ var CampusMap = function(options) {
 			var url = LOCATION_URL;
 
 			if ( location_id !== 'null' ) {
-				var url = LOCATION_URL.replace('.json', '/' + location_id + '.json');
+				url = LOCATION_URL.replace('.json', '/' + location_id + '.json');
 			}
 
 			$.ajax({
