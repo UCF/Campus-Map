@@ -1683,15 +1683,15 @@ var CampusMap = function(options) {
 				pan               : false,
 				reset_zoom_center : true,
 				sublocation       : false
-			}, options);
+      }, options);
 
 			if(!options.sublocation) INFO_MANAGER.clear();
 
-			var url = LOCATION_URL;
+      var url = LOCATION_URL;
 
 			if ( location_id !== 'null' ) {
-				var url = LOCATION_URL.replace('.json', '/' + location_id + '.json');
-			}
+				url = LOCATION_URL.replace('%s', location_id);
+      }
 
 			$.ajax({
 				url      :url,
