@@ -1251,7 +1251,7 @@ var CampusMap = function(options) {
 				'loc_id'  : false,
 				'title'   : false,
 				'subject' : "UCF Campus Map",
-				'body'    : escape("UCF Campus Map\nhttp://map.ucf.edu/"),
+				'body'    : escape("UCF Campus Map\nhttps://map.ucf.edu/"),
 				'print'   : BASE_URL + '/print/?',
 				'toggle_illustrated' : false
 			};

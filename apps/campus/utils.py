@@ -92,7 +92,7 @@ def get_geo_data(lat, lng):
     geo_placename = None
     geo_state = None
     geo_country = None
-    geo_url = 'http://maps.googleapis.com/maps/api/geocode/json'
+    geo_url = 'https://maps.googleapis.com/maps/api/geocode/json'
     try:
         geo_request = requests.get(geo_url,
                                    params={'latlng': str(lat) + ',' + str(lng), 'sensor': 'false'},

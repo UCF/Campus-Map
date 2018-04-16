@@ -9,7 +9,7 @@
 {% block wrap %}
 <div id="regional-campuses">
 	<h2>Regional Campuses</h2>
-	<p><strong><a href="http://regionalcampuses.ucf.edu/">http://regionalcampuses.ucf.edu/</a></strong></p>
+	<p><strong><a href="https://www.connect.ucf.edu/">https://www.connect.ucf.edu/</a></strong></p>
 
 	{% if not campuses %}
 		<p>Coming Soon!</p>
