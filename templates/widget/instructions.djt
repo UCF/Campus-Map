@@ -77,7 +77,7 @@
 					iframe_style          = undefined,
 					iframe_attrs          = [],
 					style_params          = [],
-					static_base_url       = 'http://maps.googleapis.com/maps/api/staticmap',
+					static_base_url       = 'https://maps.googleapis.com/maps/api/staticmap',
 					static_params         = [],
 					static_default_center = [28.6018,-81.1995],
 					map_base_url          = '{{base_url}}';

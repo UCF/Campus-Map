@@ -23,7 +23,7 @@ class Command(BaseCommand):
         features = []
         for m in MapObj.objects.all():
 
-            properties = m.json(base_url='http://map.ucf.edu')
+            properties = m.json(base_url='https://map.ucf.edu')
             properties.pop('link', None)
             coords = properties.pop('poly_coords', None)
             if not coords:

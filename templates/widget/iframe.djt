@@ -173,7 +173,7 @@
 	</head>
 	<body>
 		{% if title %}
-		<h1>{% if building %}<a target="_blank" href="{{ base_url }}?show={{ building.id }}">{{title}}</a>{% else %}<a href="http://map.ucf.edu" target="_blank">{{title}}</a>{% endif %}</h1>
+		<h1>{% if building %}<a target="_blank" href="{{ base_url }}?show={{ building.id }}">{{title}}</a>{% else %}<a href="https://map.ucf.edu" target="_blank">{{title}}</a>{% endif %}</h1>
 		{% endif %}
 		<div id="map"></div>
 		<div id="info-box"></div>

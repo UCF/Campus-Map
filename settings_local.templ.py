@@ -126,7 +126,7 @@ LOGGING = {
 
 # Read settings.py for more details about these settings
 #GOOGLE_CAN_SEE_ME = False
-#GOOGLE_LOOK_HERE  = "http://map.ucf.edu"
+#GOOGLE_LOOK_HERE  = "https://map.ucf.edu"
 
 # Weather data URL
 WEATHER_URL = 'http://weather.smca.ucf.edu'

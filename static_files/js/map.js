@@ -1251,7 +1251,7 @@ var CampusMap = function(options) {
 				'loc_id'  : false,
 				'title'   : false,
 				'subject' : "UCF Campus Map",
-				'body'    : escape("UCF Campus Map\nhttp://map.ucf.edu/"),
+				'body'    : escape("UCF Campus Map\nhttps://map.ucf.edu/"),
 				'print'   : BASE_URL + '/print/?',
 				'toggle_illustrated' : false
 			};
@@ -1690,7 +1690,7 @@ var CampusMap = function(options) {
 			var url = LOCATION_URL;
 
 			if ( location_id !== 'null' ) {
-				var url = LOCATION_URL.replace('.json', '/' + location_id + '.json');
+				url = LOCATION_URL.replace('.json', '/' + location_id + '.json');
 			}
 
 			$.ajax({

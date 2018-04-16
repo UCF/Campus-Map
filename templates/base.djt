@@ -12,10 +12,9 @@
 		<link rel="shortcut icon" href="{{ STATIC_URL }}images/favicon.ico">
 		<link rel="apple-touch-icon" href="{{ STATIC_URL }}images/apple-touch-icon.png">
 
-		<link rel="canonical" href="{% block rel-canonical %}http://map.ucf.edu/{% endblock %}" />
+		<link rel="canonical" href="{% block rel-canonical %}https://map.ucf.edu/{% endblock %}" />
 
 		<!-- HTML5 compatibility -->
-		<!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 		<style> article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { display: block; } </style>
 
 		<!-- YUI reset-fonts-base -->
@@ -120,7 +119,7 @@
 				<a href="{% url 'home' %}?show=downtown">Downtown</a> |
 				<a href="{% url 'home' %}?show=rosen-college">Rosen College</a>
 
-				<a id="logo" href="http://www.ucf.edu/">UCF Stands For Opportunity</a>
+				<a id="logo" href="https://www.ucf.edu/">UCF Stands For Opportunity</a>
 			</div>
 
 			<div class="clear">&nbsp;</div>
