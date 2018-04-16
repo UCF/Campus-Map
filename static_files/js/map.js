@@ -1683,7 +1683,7 @@ var CampusMap = function(options) {
 				pan               : false,
 				reset_zoom_center : true,
 				sublocation       : false
-      }, options);
+			}, options);
 
 			if(!options.sublocation) INFO_MANAGER.clear();
 
