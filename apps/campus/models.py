@@ -541,7 +541,8 @@ class DiningLocation(MapObj):
             try:
                 page = requests.get(settings.PHONEBOOK,
                                     params=params,
-                                    timeout=settings.REQUEST_TIMEOUT)
+                                    timeout=settings.REQUEST_TIMEOUT,
+                                    verify=False)
             except Exception, e:
                 log.error('Unable to open URL %s: %s' % (settings.PHONEBOOK, str(e)))
             else:
