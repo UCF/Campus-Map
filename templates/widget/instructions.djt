@@ -190,6 +190,7 @@
 					static_params.push('size=' + width + 'x' + height);
 					static_params.push('maptype=roadmap');
 					static_params.push('sensor=false');
+					static_params.push('key={{ google_api_key }}');
 					static_src = encodeURI(static_base_url + '?' + static_params.join('&'));
 
 					// Put together the final IFRAME HTML
