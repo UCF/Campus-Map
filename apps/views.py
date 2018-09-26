@@ -154,7 +154,8 @@ def organization_search(q):
     try:
         results = requests.get(settings.PHONEBOOK,
                                params=params,
-                               timeout=settings.REQUEST_TIMEOUT).json()
+                               timeout=settings.REQUEST_TIMEOUT,
+                               verify=False).json()
         return results
     except:
         logger.error('Issue with organization search service')
@@ -170,7 +171,8 @@ class Orgs:
         try:
             orgs = requests.get(settings.PHONEBOOK,
                                 params=payload,
-                                timeout=settings.REQUEST_TIMEOUT).json()
+                                timeout=settings.REQUEST_TIMEOUT,
+                                verify=False).json()
             cls.data = orgs
             return True
         except:
@@ -191,7 +193,8 @@ def get_depts():
     try:
         depts = requests.get(settings.PHONEBOOK,
                              params=payload,
-                             timeout=settings.REQUEST_TIMEOUT).json()
+                             timeout=settings.REQUEST_TIMEOUT,
+                             verify=False).json()
     except:
         print "Issue with phonebook search service"
         return None
@@ -215,7 +218,8 @@ def phonebook_search(q):
     try:
         results = requests.get(settings.PHONEBOOK,
                                params={'search': q},
-                               timeout=settings.REQUEST_TIMEOUT).json()
+                               timeout=settings.REQUEST_TIMEOUT,
+                               verify=False).json()
         return results
     except:
         print "Issue with phonebook search service"
@@ -225,7 +229,7 @@ def phonebook_search(q):
 def group_search(q):
     groups = campus.models.Group.objects.filter(name__icontains=q)
     return groups
-    
+
 def search(request):
     '''
     one day will search over all data available
@@ -279,7 +283,7 @@ def search(request):
                 'name': item.name,
                 'id': item.pk,
                 'link': item.link}
-        
+
         def extended_meta(item):
             return item.json()
 

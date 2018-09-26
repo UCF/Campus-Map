@@ -43,4 +43,6 @@ def map_context(request):
     if settings.CLOUD_TYPOGRAPHY_URL:
         context_extras['cloud_typography'] = settings.CLOUD_TYPOGRAPHY_URL
 
+    context_extras['google_api_key'] = settings.GOOGLE_API_KEY
+
     return context_extras
