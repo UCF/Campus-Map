@@ -156,7 +156,7 @@
 {% block js %}
 <script src="{{ STATIC_URL }}-/jquery.plugins/lightbox/js/jquery.lightbox-0.5.min.js"></script>
 <script src="{{ STATIC_URL }}js/map.js?{{map_version}}" type="text/javascript"></script>
-<script src="//maps.googleapis.com/maps/api/js?sensor=false"></script>
+<script src="//maps.googleapis.com/maps/api/js?key={{ google_api_key }}&sensor=false"></script>
 <script src="{{ STATIC_URL }}-/gmaps-infobox/infobox.js?{{ map_version }}" type="text/javascript"></script>
 <script>
 
