@@ -10,7 +10,7 @@
 <div id="directions">
 	<h2>Google Directions</h2>
 
-	<p>What is your address?</p>
+	<p>Enter your address</p>
 	<form method="get" action="https://maps.google.com/maps">
 		<input type="text" name="saddr">
 		<input type="hidden" name="daddr" value="UCF Progress Energy Welcome Center 32816-3551">
@@ -35,8 +35,6 @@
 		<br><br>
 	</div>
 	<div class="clear">&nbsp;<br></div>
-	<p>You can also use the Zip+4 to route mail directly to specific departments.</p>
-	<p><a href="https://hospitality.ucf.edu/files/2011/08/Directions-to-campus.pdf">Directions to Rosen College of Hospitality Management</a>.</p>
 
 	<h3>Directions to the UCF Main Campus:</h3>
 

@@ -27,7 +27,7 @@
 			{% if location.image %}
 				<img src="{{ location.image.url }}"><br><br>
 			{% endif %}
-			This location needs a profile, <a href="mailto:webcom@ucf.edu?subject=Campus Map Location Profile&amp;Body={{ location.name }}">do you have one?</a>
+			This location needs a profile, <a href="mailto:webcom@ucf.edu?subject=Campus Map Location Profile&amp;Body={{ location.name }}">submit and profile</a>.
 		{% else %}
 			{{ location.profile|safe }}
 		{% endif %}
@@ -100,10 +100,10 @@
 		</div>
 		{% endif %}
 
-		<iframe width="100%" height="300" frameborder="0" style="border:0"
-			src="https://www.google.com/maps/embed/v1/view?key={{ google_api_key }}&center={{location.googlemap_point.0}},{{location.googlemap_point.1}}&zoom=18" allowfullscreen></iframe>
+		<iframe width="100%" height="300" frameborder="0" style="border:1px solid #ccc"
+			src="https://www.google.com/maps/embed/v1/view?key={{ google_api_key }}&center={{location.googlemap_point.0}},{{location.googlemap_point.1}}&zoom=17" allowfullscreen></iframe>
 
-		<div id="map-go"><a href="/?show={{ location.id }}">show on map</a></div>
+		<div id="map-go"><a href="/?show={{ location.id }}">View {{ location.name }} on Map &gt;</a></div>
 
 		{% if orgs and location.locations %}
 		<div id="group-locations">

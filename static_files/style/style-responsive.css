@@ -252,14 +252,6 @@
     -webkit-overflow-scrolling: touch;
   }
 
-  /*
-   * Hide "show on map" links, since users on small
-   * devices would not be directed to a user-friendly map
-   */
-  #map-go {
-    display: none;
-  }
-
   /* Prevent table overflow on Locations pg */
   table#buildings td:nth-child(3n) {
     word-break: break-all;

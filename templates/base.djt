@@ -83,8 +83,7 @@
 				<li><a href="{% url 'organizations' %}">Organizations</a></li>
 				<li><a href="{% url 'locations' %}">Locations</a></li>
 				<li><a href="{% url 'page' 'printable' %}">Printable Map</a></li>
-				<li><a href="{% url 'page' 'directions' %}">Directions</a></li>
-				<li class="last"><a href="{% url 'page' 'about' %}">About</a></li>
+				<li class="last"><a href="{% url 'page' 'directions' %}">Directions</a></li>
 			</ol>
 		</nav>
 		{% endblock %}
@@ -98,32 +97,26 @@
 	</div><!--/wrap -->
 
 	<footer>
-		<div class="wrap">
-			<div class="left">
-				<dl>
-					<dt>Mailing Address:</dt>
-					<dd>
-						4000 Central Florida Blvd.<br>
-						Orlando, FL, 32816
-					</dd>
-					<dt>Contact</dt>
-					<dd>
-						Phone: (407) 823-2000
-					</dd>
-				</dl>
-			</div>
 
-			<div class="right smaller">
-				<a href="{% url 'page' 'regional-campuses' %}">Regional Campuses</a> |
-				<a href="{% url 'home' %}?show=college-of-medicine">College of Medicine</a> |
-				<a href="{% url 'home' %}?show=downtown">Downtown</a> |
-				<a href="{% url 'home' %}?show=rosen-college">Rosen College</a>
-
-				<a id="logo" href="https://www.ucf.edu/">UCF Stands For Opportunity</a>
-			</div>
-
-			<div class="clear">&nbsp;</div>
+		<div class="title">
+			<a href="https://www.ucf.edu/">University of Central Florida</a>
 		</div>
+
+		<div class="nav">
+			<a href="{% url 'page' 'regional-campuses' %}">Regional Campuses</a> |
+			<a href="{% url 'home' %}?show=college-of-medicine">College of Medicine</a> |
+			<a href="{% url 'home' %}?show=downtown">Downtown</a> |
+			<a href="{% url 'home' %}?show=rosen-college">Rosen College</a>
+		</div>
+
+		<div class="address">
+			4000 Central Florida Blvd. Orlando, Florida, 32816 | <a href="tel:4078232000">407.823.2000</a>
+		</div>
+
+		<div class="copyright">
+			&copy; <a href="https://www.ucf.edu/">University of Central Florida</a>
+		</div>
+
 	</footer>
 
 {% endblock %}{# /body #}
