@@ -38,13 +38,9 @@ h1 a {
   padding-left: 10px;
 }
 
-h1 a:hover {
-  color: #D10020;
-}
-
 h2 {
   font-size: 23px;
-  color: #FF7700;
+  color: #000000;
   font-family: "Gotham SSm A", "Gotham SSm B", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 400;
   letter-spacing: 1px;
@@ -262,7 +258,6 @@ nav ol li a {
 }
 
 nav ol li a:hover {
-  color: #ed1c24;
   text-decoration: underline;
 }
 
@@ -320,9 +315,9 @@ footer dl {
 }
 
 footer dt {
-  color: #ff6d02;
+  color: #FFFFFF;
   font-style: italic;
-  font-weight: normal;
+  font-weight: bold;
   padding-top: 12px;
   margin: 0;
 }
@@ -436,14 +431,8 @@ img[src*="gstatic.com/"], img[src*="googleapis.com/"] {
 \******************************************************************************/
 
 #locations h2 a {
-  color: #FF7700;
+  color: #000000;
   text-decoration: none;
-  border-bottom: 1px dotted #FFAF6B;
-}
-
-#locations h2 a:hover {
-  color: #F30;
-  border-bottom: 1px solid #FF6748;
 }
 
 #profile ul li {
@@ -793,7 +782,6 @@ img[src*="gstatic.com/"], img[src*="googleapis.com/"] {
 
 #flat_search #results > h3 {
   font-size: 120%;
-  color: #FF7700;
 }
 
 #flat_search #results > ul {
