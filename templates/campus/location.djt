@@ -100,14 +100,10 @@
 		</div>
 		{% endif %}
 
-		{% if location.illustrated_point %}
-		<a href="/?show={{ location.id }}">
-			<img width="430" height="300" alt=""
-				src="https://maps.googleapis.com/maps/api/staticmap?center={{location.googlemap_point.0}},{{location.googlemap_point.1}}&zoom=17&size=430x300&maptype=roadmap&markers=color:black%7C{{location.googlemap_point.0}},{{location.googlemap_point.1}}&key={{ google_api_key }}">
-		</a>
+		<iframe width="100%" height="300" frameborder="0" style="border:0"
+			src="https://www.google.com/maps/embed/v1/view?key={{ google_api_key }}&center={{location.googlemap_point.0}},{{location.googlemap_point.1}}&zoom=18" allowfullscreen></iframe>
 
 		<div id="map-go"><a href="/?show={{ location.id }}">show on map</a></div>
-		{% endif %}
 
 		{% if orgs and location.locations %}
 		<div id="group-locations">
@@ -117,14 +113,6 @@
 				<li>{{ l|safe }}</li>
 				{% endfor %}
 			</ul>
-		</div>
-		{% endif %}
-
-		{% if location.sketchup %}
-		<div id="sketchup">
-			<div id="model">
-				<iframe src="https://3dwarehouse.sketchup.com/embed.html?width=430&amp;height=300&amp;mid={{ location.sketchup }}" scrolling="no" marginheight="0" marginwidth="0" frameborder="0" allowfullscreen></iframe>
-			</div>
 		</div>
 		{% endif %}
 

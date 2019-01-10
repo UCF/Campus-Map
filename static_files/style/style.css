@@ -396,11 +396,6 @@ footer dd {
   display: none;
 }
 
-/* infoWindow close image distorted on small screens http://stackoverflow.com/questions/18387287/infowindow-closing-icon-not-showing-in-google-map */
-img[src*="gstatic.com/"], img[src*="googleapis.com/"] {
-  max-width: none !important;
-}
-
 /* Scrollbar added to the InfoWindow without this: http://stackoverflow.com/questions/14751558/google-maps-infowindow-vertical-scroll-appers-only-when-using-br */
 .gm-style-iw div {
   overflow:visible !important;
@@ -537,34 +532,6 @@ img[src*="gstatic.com/"], img[src*="googleapis.com/"] {
   background-position: 50px 10px;
 }
 
-#sketchup {
-  padding: 35px 0 0;
-}
-
-#sketchup a:hover img {
-  cursor: pointer;
-  border-color: #6688cc;
-}
-
-#sketchup img {}
-
-#sketchup #model {
-  width: 100%;
-  border: 1px solid #DADADA;
-  padding: 4px;
-  border-radius: 3px;
-}
-
-#sketchup iframe {
-  margin: 0;
-  border: 0;
-  height: 300px;
-  width: 430px;
-}
-
-#sketchup h3 {
-  font-weight: 400;
-}
 
 #jquery-lightbox h2 {
   font-size: 16px;
