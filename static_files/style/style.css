@@ -312,7 +312,6 @@ footer {
   font-family: "Gotham SSm A", "Gotham SSm B", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
   margin: 0;
-  padding: 60px 10px;
   text-align: center;
 }
 
@@ -325,6 +324,7 @@ footer a:hover {
 }
 
 footer .title {
+  margin-top: 60px;
   margin-bottom: 30px;
 }
 
@@ -341,7 +341,9 @@ footer .title a:hover {
 }
 
 footer .nav {
+  background-color: #616161;
   margin-bottom: 30px;
+  padding: 20px 0;
 }
 
 footer .nav a,
@@ -357,6 +359,10 @@ footer a:hover {
 footer .address {
   margin-top: 30px;
   margin-bottom: 5px;
+}
+
+footer .copyright {
+  padding-bottom: 60px;
 }
 
 #error {
