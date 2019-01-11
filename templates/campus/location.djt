@@ -31,7 +31,7 @@
 		</div>
 
 		<form id="directions-form" method="get" action="https://maps.google.com/maps" target="_blank">
-			<label for="saddr">Enter your address: </label><br>
+			<div class="directions-label">Enter your address: </div>
 			<input type="text" name="saddr">
 			<input type="hidden" name="daddr" value="{{location.googlemap_point.0}},{{location.googlemap_point.1}}">
 			<input type="submit" value="get directions">

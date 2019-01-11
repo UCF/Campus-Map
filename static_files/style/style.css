@@ -294,8 +294,12 @@ nav ol li a:hover {
 }
 
 #directions-form {
-  margin-top: 10px;
+  margin-top: 5px;
   margin-bottom: 25px;
+}
+
+.directions-label {
+  margin-bottom: 5px;
 }
 
 footer {
