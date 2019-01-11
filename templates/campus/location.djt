@@ -24,14 +24,25 @@
 		<div id="profile-copy">
 		{% if not location.profile or location.profile == "None" %}
 		{# if no profile, display image on the left #}
-			{% if location.image %}
-				<img src="{{ location.image.url }}"><br><br>
-			{% endif %}
 			This location needs a profile, <a href="mailto:webcom@ucf.edu?subject=Campus Map Location Profile&amp;Body={{ location.name }}">submit a profile</a>.
 		{% else %}
 			{{ location.profile|safe }}
 		{% endif %}
 		</div>
+
+		{% if location.profile and location.profile != "None" %}
+		<div id="profile-image">
+			{% if location.image %}
+				<img src="{{ location.image.url }}" alt="">
+			{% endif %}
+		</div>
+		{% endif %}
+
+		<form id="directions-form" method="get" action="https://maps.google.com/maps">
+			<input type="text" name="saddr">
+			<input type="hidden" name="daddr" value="UCF Progress Energy Welcome Center 32816-3551">
+			<input type="submit" value="get directions">
+		</form>
 
 		{% if orgs %}
 			<h3>Organizations:</h3>
@@ -92,18 +103,10 @@
 	</div>
 	<div class="span-11 last" id="profile-right">
 
-		{% if location.profile and location.profile != "None" %}
-		<div id="profile-image">
-			{% if location.image %}
-				<img src="{{ location.image.url }}">
-			{% endif %}
-		</div>
-		{% endif %}
-
 		<iframe width="100%" height="300" frameborder="0" style="border:1px solid #ccc"
-			src="https://www.google.com/maps/embed/v1/view?key={{ google_api_key }}&center={{location.googlemap_point.0}},{{location.googlemap_point.1}}&zoom=17" allowfullscreen></iframe>
+			src="https://www.google.com/maps/embed/v1/view?key={{ google_api_key }}&center={{location.googlemap_point.0}},{{location.googlemap_point.1}}&maptype=satellite&zoom=18" allowfullscreen></iframe>
 
-		<div id="map-go"><a href="/?show={{ location.id }}">View {{ location.name }} on Map &gt;</a></div>
+		<div id="map-go"><a href="/?show={{ location.id }}">View {{ location.name }} on Map</a></div>
 
 		{% if orgs and location.locations %}
 		<div id="group-locations">
