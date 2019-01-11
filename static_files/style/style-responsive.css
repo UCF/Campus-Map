@@ -172,11 +172,6 @@
   body {
     min-width: 0;
   }
-
-  /* Prevent padding on .wrap from overflowing */
-  footer .wrap {
-    box-sizing: border-box;
-  }
 }
 
 /* Menus */
@@ -205,8 +200,7 @@
 
   /* Reset primary fixed width wrappers */
   #wrap,
-  header,
-  footer .wrap {
+  header {
     width: auto;
   }
 
@@ -219,10 +213,6 @@
 
   .right {
     margin-top: 20px;
-  }
-
-  footer .right {
-    margin-top: 5px;
   }
 
   /* Images */
@@ -275,5 +265,17 @@
   /* Weather */
   #weather {
     display: none;
+  }
+
+  footer .title a {
+    font-size: 18px;
+  }
+
+  footer .nav a {
+    font-size: 14px;
+  }
+
+  footer .address {
+    font-size: 10px;
   }
 }
