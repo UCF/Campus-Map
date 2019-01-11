@@ -27,7 +27,7 @@
 			{% if location.image %}
 				<img src="{{ location.image.url }}"><br><br>
 			{% endif %}
-			This location needs a profile, <a href="mailto:webcom@ucf.edu?subject=Campus Map Location Profile&amp;Body={{ location.name }}">submit and profile</a>.
+			This location needs a profile, <a href="mailto:webcom@ucf.edu?subject=Campus Map Location Profile&amp;Body={{ location.name }}">submit a profile</a>.
 		{% else %}
 			{{ location.profile|safe }}
 		{% endif %}
