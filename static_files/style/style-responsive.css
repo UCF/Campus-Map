@@ -193,10 +193,6 @@
 }
 
 @media (max-width: 950px) {
-  /* Fix the background gradient that vanishes for some reason */
-  html {
-    background: initial;
-  }
 
   /* Reset primary fixed width wrappers */
   #wrap,
@@ -277,5 +273,9 @@
 
   footer .address {
     font-size: 10px;
+  }
+
+  footer .ucf-footer-nav {
+    display: none;
   }
 }

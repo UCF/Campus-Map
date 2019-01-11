@@ -306,11 +306,16 @@ nav ol li a:hover {
   margin-bottom: 5px;
 }
 
+.footer-wrap {
+  padding-bottom: 20px;
+  background: #3e3e3e;
+}
+
 footer {
   background: #3e3e3e;
   color: white;
   font-family: "Gotham SSm A", "Gotham SSm B", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 14px;
+  font-size: 12px;
   margin: 0;
   text-align: center;
 }
@@ -324,8 +329,8 @@ footer a:hover {
 }
 
 footer .title {
-  margin-top: 60px;
-  margin-bottom: 30px;
+  margin-top: 15px;
+  margin-bottom: 10px;
 }
 
 footer .title a {
@@ -343,7 +348,7 @@ footer .title a:hover {
 footer .nav {
   background-color: #616161;
   margin-bottom: 30px;
-  padding: 20px 0;
+  padding: 10px 0;
 }
 
 footer .nav a,
@@ -357,12 +362,8 @@ footer a:hover {
 }
 
 footer .address {
-  margin-top: 30px;
+  margin-top: 15px;
   margin-bottom: 5px;
-}
-
-footer .copyright {
-  padding-bottom: 60px;
 }
 
 #error {
