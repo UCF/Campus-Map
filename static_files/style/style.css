@@ -346,14 +346,12 @@ footer .nav {
 
 footer .nav a,
 footer .ucf-footer-nav a {
-  text-decoration: none;
   display: inline-block;
   padding: 0 10px;
 }
 
-footer .nav a:hover,
-footer .ucf-footer-nav a  {
-  text-decoration: underline;
+footer a:hover {
+  text-decoration: none;
 }
 
 footer .address {
