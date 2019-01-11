@@ -10,7 +10,7 @@
 	<h2>Search</h2>
 	<form method="get" action="{% url 'search' %}">
 		<input type="text" name="q" value="{{ query }}">
-		<input type="submit">
+		<input type="submit" value="Search">
 	</form>
 
 	{% if query %}

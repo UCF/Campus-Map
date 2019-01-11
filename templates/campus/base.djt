@@ -164,18 +164,8 @@
 	</header>
 	<div id="canvas-wrap"><div id="map-canvas"></div></div>
 </div>
-<footer>
-	<span class="left">
-		<a href="{% url 'page' 'directions'%}">4000 Central Florida Blvd.  Orlando, FL 32816</a>
-	</span>
-	<span class="right">
-		<a href="{% url 'page' 'regional-campuses' %}">Regional Campuses</a> |
-		<a href="{% url 'home' %}?show=college-of-medicine">College of Medicine</a> |
-		<a href="{% url 'home' %}?show=downtown">Downtown</a> |
-		<a href="{% url 'home' %}?show=rosen-college">Rosen College</a>
-	</span>
-	<div class="clear">&nbsp;</div>
-</footer>
+
+{% include 'footer.html' %}
 
 <div id="menu-wrap">
 	{% include 'campus/menu.djt' %}

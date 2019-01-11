@@ -76,18 +76,6 @@
 	<header>
 		<h1><a href="{% url 'home' %}">UCF Campus Map</a></h1>
 		<esi:include src="{% url 'weather'%}" />
-		{% block nav %}
-		<nav>
-			<ol>
-				<li><a href="{% url 'search' %}">Search</a></li>
-				<li><a href="{% url 'organizations' %}">Organizations</a></li>
-				<li><a href="{% url 'locations' %}">Locations</a></li>
-				<li><a href="{% url 'page' 'printable' %}">Printable Map</a></li>
-				<li><a href="{% url 'page' 'directions' %}">Directions</a></li>
-				<li class="last"><a href="{% url 'page' 'about' %}">About</a></li>
-			</ol>
-		</nav>
-		{% endblock %}
 	</header>
 
 
@@ -97,34 +85,7 @@
 	{% endblock %}
 	</div><!--/wrap -->
 
-	<footer>
-		<div class="wrap">
-			<div class="left">
-				<dl>
-					<dt>Mailing Address:</dt>
-					<dd>
-						4000 Central Florida Blvd.<br>
-						Orlando, FL, 32816
-					</dd>
-					<dt>Contact</dt>
-					<dd>
-						Phone: (407) 823-2000
-					</dd>
-				</dl>
-			</div>
-
-			<div class="right smaller">
-				<a href="{% url 'page' 'regional-campuses' %}">Regional Campuses</a> |
-				<a href="{% url 'home' %}?show=college-of-medicine">College of Medicine</a> |
-				<a href="{% url 'home' %}?show=downtown">Downtown</a> |
-				<a href="{% url 'home' %}?show=rosen-college">Rosen College</a>
-
-				<a id="logo" href="https://www.ucf.edu/">UCF Stands For Opportunity</a>
-			</div>
-
-			<div class="clear">&nbsp;</div>
-		</div>
-	</footer>
+	{% include 'footer.html' %}
 
 {% endblock %}{# /body #}
 
