@@ -76,17 +76,6 @@
 	<header>
 		<h1><a href="{% url 'home' %}">UCF Campus Map</a></h1>
 		<esi:include src="{% url 'weather'%}" />
-		{% block nav %}
-		<nav>
-			<ol>
-				<li><a href="{% url 'search' %}">Search</a></li>
-				<li><a href="{% url 'organizations' %}">Organizations</a></li>
-				<li><a href="{% url 'locations' %}">Locations</a></li>
-				<li><a href="{% url 'page' 'printable' %}">Printable Map</a></li>
-				<li class="last"><a href="{% url 'page' 'directions' %}">Directions</a></li>
-			</ol>
-		</nav>
-		{% endblock %}
 	</header>
 
 
@@ -96,28 +85,7 @@
 	{% endblock %}
 	</div><!--/wrap -->
 
-	<footer>
-
-		<div class="title">
-			<a href="https://www.ucf.edu/">University of Central Florida</a>
-		</div>
-
-		<div class="nav">
-			<a href="{% url 'page' 'regional-campuses' %}">Regional Campuses</a> |
-			<a href="{% url 'home' %}?show=college-of-medicine">College of Medicine</a> |
-			<a href="{% url 'home' %}?show=downtown">Downtown</a> |
-			<a href="{% url 'home' %}?show=rosen-college">Rosen College</a>
-		</div>
-
-		<div class="address">
-			4000 Central Florida Blvd. Orlando, Florida, 32816 | <a href="tel:4078232000">407.823.2000</a>
-		</div>
-
-		<div class="copyright">
-			&copy; <a href="https://www.ucf.edu/">University of Central Florida</a>
-		</div>
-
-	</footer>
+	{% include 'footer.html' %}
 
 {% endblock %}{# /body #}
 
