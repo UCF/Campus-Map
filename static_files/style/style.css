@@ -1549,20 +1549,6 @@ a.iclose:hover {
 #regional-campuses .rc img {
   width: 220px;
   height: 122px;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 6px;
-  -moz-box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 6px;
-  background-color: white;
-  border-radius: 5px;
-  padding: 5px;
-}
-
-#regional-campuses .rc a:hover img {
-  -webkit-box-shadow: rgba(255, 109, 3, 0.3) 0px 0px 6px;
-  -moz-box-shadow: rgba(255, 109, 3, 0.3) 0px 0px 6px;
-}
-
-.ie #regional-campuses .rc img {
-  border: 1px solid #ccc;
 }
 
 #regional-campuses .rc-clear {
