@@ -30,6 +30,13 @@
 		{% endif %}
 		</div>
 
+		<form id="directions-form" method="get" action="https://maps.google.com/maps" target="_blank">
+			<label for="saddr">Enter your address: </label><br>
+			<input type="text" name="saddr">
+			<input type="hidden" name="daddr" value="{{location.googlemap_point.0}},{{location.googlemap_point.1}}">
+			<input type="submit" value="get directions">
+		</form>
+
 		{% if location.profile and location.profile != "None" %}
 		<div id="profile-image">
 			{% if location.image %}
@@ -37,12 +44,6 @@
 			{% endif %}
 		</div>
 		{% endif %}
-
-		<form id="directions-form" method="get" action="https://maps.google.com/maps">
-			<input type="text" name="saddr">
-			<input type="hidden" name="daddr" value="UCF Progress Energy Welcome Center 32816-3551">
-			<input type="submit" value="get directions">
-		</form>
 
 		{% if orgs %}
 			<h3>Organizations:</h3>
@@ -103,10 +104,10 @@
 	</div>
 	<div class="span-11 last" id="profile-right">
 
-		<iframe width="100%" height="300" frameborder="0" style="border:1px solid #ccc"
+		<iframe width="100%" height="300" frameborder="0"
 			src="https://www.google.com/maps/embed/v1/view?key={{ google_api_key }}&center={{location.googlemap_point.0}},{{location.googlemap_point.1}}&maptype=satellite&zoom=18" allowfullscreen></iframe>
 
-		<div id="map-go"><a href="/?show={{ location.id }}">View {{ location.name }} on Map</a></div>
+		<div id="map-go"><a href="/?show={{ location.id }}" class="btn">View {{ location.name }} on the map</a></div>
 
 		{% if orgs and location.locations %}
 		<div id="group-locations">
