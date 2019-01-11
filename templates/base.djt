@@ -88,6 +88,7 @@
 	<footer>
 
 		<div class="nav">
+			<a href="{% url 'home' %}">Main Campus</a> |
 			<a href="{% url 'page' 'regional-campuses' %}">Regional Campuses</a> |
 			<a href="{% url 'home' %}?show=college-of-medicine">College of Medicine</a> |
 			<a href="{% url 'home' %}?show=downtown">Downtown</a> |
