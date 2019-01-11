@@ -10,7 +10,7 @@
 
 	<div class="span-13 append-1">
 
-		<h2> Buildings </h2>
+		<h2> Locations </h2>
 
 		{% if buildings %}
 			<table id="buildings" class="tablesorter">
