@@ -85,7 +85,9 @@
 	{% endblock %}
 	</div><!--/wrap -->
 
+<div class="footer-wrap">
 	{% include 'footer.html' %}
+</div>
 
 {% endblock %}{# /body #}
 
