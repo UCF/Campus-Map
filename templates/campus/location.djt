@@ -19,6 +19,12 @@
 		</div>
 	</h2>
 
+	{% if location.address %}
+	<div class="address">
+		{{ location.address }}
+	</div>
+	{% endif %}
+
 	<div class="{% if location.object_type == 'RegionalCampus' %}span-7{% else %}span-12{% endif %}">
 
 		<div id="profile-copy">

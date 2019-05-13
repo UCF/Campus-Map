@@ -343,7 +343,7 @@ class RegionalCampus(MapObj):
 
 class Building(MapObj):
     abbreviation = models.CharField(max_length=50, null=True)
-    address = models.CharField(max_length=50, null=True)
+    address = models.CharField(max_length=255, null=True)
     sketchup = models.CharField(max_length=50, null=True, help_text="E.g., https://3dwarehouse.sketchup.com/model.html?id=<code>54b7f313bf315a3a85622796b26c9e66</code>")
 
     def _number(self):
