@@ -135,7 +135,6 @@ class MapObj(models.Model):
     image = models.ImageField(upload_to='uploads/images')
     description = models.CharField(max_length=255, null=True)
     profile = tinymce_models.HTMLField(null=True)
-    address = models.CharField(max_length=255, null=True)
     googlemap_point = models.CharField(max_length=255, null=True, help_text='E.g., <code>[28.6017, -81.2005]</code>')
     illustrated_point = models.CharField(max_length=255, null=True)
     poly_coords = models.TextField(null=True)
@@ -344,6 +343,7 @@ class RegionalCampus(MapObj):
 
 class Building(MapObj):
     abbreviation = models.CharField(max_length=50, null=True)
+    address = models.CharField(max_length=255, null=True)
     sketchup = models.CharField(max_length=50, null=True, help_text="E.g., https://3dwarehouse.sketchup.com/model.html?id=<code>54b7f313bf315a3a85622796b26c9e66</code>")
 
     def _number(self):
@@ -506,6 +506,7 @@ class ElectricChargingStation(MapObj):
 
 
 class DiningLocation(MapObj):
+    address = models.CharField(max_length=255, null=True)
 
     # Group definition that all DiningLocation objects should
     # exist in

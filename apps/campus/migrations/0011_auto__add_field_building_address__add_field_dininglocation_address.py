@@ -8,15 +8,23 @@ from django.db import models
 class Migration(SchemaMigration):
 
     def forwards(self, orm):
-        # Adding field 'MapObj.address'
-        db.add_column(u'campus_mapobj', 'address',
+        # Adding field 'Building.address'
+        db.add_column(u'campus_building', 'address',
+                      self.gf('django.db.models.fields.CharField')(max_length=255, null=True),
+                      keep_default=False)
+
+        # Adding field 'DiningLocation.address'
+        db.add_column(u'campus_dininglocation', 'address',
                       self.gf('django.db.models.fields.CharField')(max_length=255, null=True),
                       keep_default=False)
 
 
     def backwards(self, orm):
-        # Deleting field 'MapObj.address'
-        db.delete_column(u'campus_mapobj', 'address')
+        # Deleting field 'Building.address'
+        db.delete_column(u'campus_building', 'address')
+
+        # Deleting field 'DiningLocation.address'
+        db.delete_column(u'campus_dininglocation', 'address')
 
 
     models = {
@@ -27,11 +35,13 @@ class Migration(SchemaMigration):
         u'campus.building': {
             'Meta': {'ordering': "('name', 'id')", 'object_name': 'Building', '_ormbases': [u'campus.MapObj']},
             'abbreviation': ('django.db.models.fields.CharField', [], {'max_length': '50', 'null': 'True'}),
+            'address': ('django.db.models.fields.CharField', [], {'max_length': '255', 'null': 'True'}),
             u'mapobj_ptr': ('django.db.models.fields.related.OneToOneField', [], {'to': u"orm['campus.MapObj']", 'unique': 'True', 'primary_key': 'True'}),
             'sketchup': ('django.db.models.fields.CharField', [], {'max_length': '50', 'null': 'True'})
         },
         u'campus.dininglocation': {
             'Meta': {'ordering': "('name',)", 'object_name': 'DiningLocation', '_ormbases': [u'campus.MapObj']},
+            'address': ('django.db.models.fields.CharField', [], {'max_length': '255', 'null': 'True'}),
             u'mapobj_ptr': ('django.db.models.fields.related.OneToOneField', [], {'to': u"orm['campus.MapObj']", 'unique': 'True', 'primary_key': 'True'})
         },
         u'campus.disabledparking': {
@@ -68,7 +78,6 @@ class Migration(SchemaMigration):
         },
         u'campus.mapobj': {
             'Meta': {'ordering': "('name',)", 'object_name': 'MapObj'},
-            'address': ('django.db.models.fields.CharField', [], {'max_length': '255', 'null': 'True'}),
             'content_type': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['contenttypes.ContentType']", 'null': 'True'}),
             'description': ('django.db.models.fields.CharField', [], {'max_length': '255', 'null': 'True'}),
             'googlemap_point': ('django.db.models.fields.CharField', [], {'max_length': '255', 'null': 'True'}),

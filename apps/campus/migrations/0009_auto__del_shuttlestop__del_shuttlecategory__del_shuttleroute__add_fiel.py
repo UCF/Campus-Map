@@ -17,12 +17,6 @@ class Migration(SchemaMigration):
         # Deleting model 'ShuttleRoute'
         db.delete_table(u'campus_shuttleroute')
 
-        # Adding field 'Building.address'
-        db.add_column(u'campus_building', 'address',
-                      self.gf('django.db.models.fields.CharField')(max_length=255, null=True),
-                      keep_default=False)
-
-
     def backwards(self, orm):
         # Adding model 'ShuttleStop'
         db.create_table(u'campus_shuttlestop', (
@@ -52,9 +46,6 @@ class Migration(SchemaMigration):
         ))
         db.send_create_signal(u'campus', ['ShuttleRoute'])
 
-        # Deleting field 'Building.address'
-        db.delete_column(u'campus_building', 'address')
-
 
     models = {
         u'campus.bikerack': {
@@ -64,7 +55,6 @@ class Migration(SchemaMigration):
         u'campus.building': {
             'Meta': {'ordering': "('name', 'id')", 'object_name': 'Building', '_ormbases': [u'campus.MapObj']},
             'abbreviation': ('django.db.models.fields.CharField', [], {'max_length': '50', 'null': 'True'}),
-            'address': ('django.db.models.fields.CharField', [], {'max_length': '255', 'null': 'True'}),
             u'mapobj_ptr': ('django.db.models.fields.related.OneToOneField', [], {'to': u"orm['campus.MapObj']", 'unique': 'True', 'primary_key': 'True'}),
             'sketchup': ('django.db.models.fields.CharField', [], {'max_length': '50', 'null': 'True'})
         },
