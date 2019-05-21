@@ -2,10 +2,6 @@ import sys
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
-# Migration commands
-# python manage.py schemamigration campus --auto
-# python manage.py migrate campus
-
 import csv
 
 from django.core.management.base import BaseCommand, CommandError
@@ -32,7 +28,6 @@ class Command(BaseCommand):
                 for row in reader:
                     try:
                         building = Building.objects.get(pk=row[0])
-                        # building = Building.objects.get(abbreviation=row[2])
                         building.address = row[3]
                         building.save()
                         self.stdout.write('Address: ' + building.address)
