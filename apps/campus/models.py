@@ -573,7 +573,6 @@ class DiningLocation(MapObj):
                                 # Assume the teledata is wrong
                                 pass
                             else:
-                                dining_loc.address = building.address
                                 dining_loc.googlemap_point = building.googlemap_point
                                 dining_loc.illustrated_point = building.illustrated_point
                                 dining_loc.poly_coords = building.poly_coords
