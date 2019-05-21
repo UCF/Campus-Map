@@ -506,6 +506,7 @@ class ElectricChargingStation(MapObj):
 
 
 class DiningLocation(MapObj):
+    address = models.CharField(max_length=255, null=True)
 
     # Group definition that all DiningLocation objects should
     # exist in

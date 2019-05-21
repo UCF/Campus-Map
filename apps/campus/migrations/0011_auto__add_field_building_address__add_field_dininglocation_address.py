@@ -8,43 +8,23 @@ from django.db import models
 class Migration(SchemaMigration):
 
     def forwards(self, orm):
-        # Deleting model 'ShuttleStop'
-        db.delete_table(u'campus_shuttlestop')
+        # Adding field 'Building.address'
+        db.add_column(u'campus_building', 'address',
+                      self.gf('django.db.models.fields.CharField')(max_length=255, null=True),
+                      keep_default=False)
 
-        # Deleting model 'ShuttleCategory'
-        db.delete_table(u'campus_shuttlecategory')
+        # Adding field 'DiningLocation.address'
+        db.add_column(u'campus_dininglocation', 'address',
+                      self.gf('django.db.models.fields.CharField')(max_length=255, null=True),
+                      keep_default=False)
 
-        # Deleting model 'ShuttleRoute'
-        db.delete_table(u'campus_shuttleroute')
 
     def backwards(self, orm):
-        # Adding model 'ShuttleStop'
-        db.create_table(u'campus_shuttlestop', (
-            ('name', self.gf('django.db.models.fields.CharField')(max_length=80, null=True, blank=True)),
-            ('route', self.gf('django.db.models.fields.related.ForeignKey')(related_name='shuttle_stops', to=orm['campus.ShuttleRoute'])),
-            ('lon', self.gf('django.db.models.fields.FloatField')(default=0)),
-            ('stop_id', self.gf('django.db.models.fields.CharField')(default=0, max_length=80)),
-            ('lat', self.gf('django.db.models.fields.FloatField')(default=0)),
-            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-        ))
-        db.send_create_signal(u'campus', ['ShuttleStop'])
+        # Deleting field 'Building.address'
+        db.delete_column(u'campus_building', 'address')
 
-        # Adding model 'ShuttleCategory'
-        db.create_table(u'campus_shuttlecategory', (
-            (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('name', self.gf('django.db.models.fields.CharField')(max_length=80)),
-        ))
-        db.send_create_signal(u'campus', ['ShuttleCategory'])
-
-        # Adding model 'ShuttleRoute'
-        db.create_table(u'campus_shuttleroute', (
-            ('category', self.gf('django.db.models.fields.related.ForeignKey')(related_name='shuttle_routes', to=orm['campus.ShuttleCategory'])),
-            ('description', self.gf('django.db.models.fields.TextField')(null=True, blank=True)),
-            ('color', self.gf('django.db.models.fields.CharField')(max_length=7, null=True, blank=True)),
-            ('shortname', self.gf('django.db.models.fields.CharField')(max_length=80, null=True, blank=True)),
-            ('id', self.gf('django.db.models.fields.CharField')(max_length=80, primary_key=True)),
-        ))
-        db.send_create_signal(u'campus', ['ShuttleRoute'])
+        # Deleting field 'DiningLocation.address'
+        db.delete_column(u'campus_dininglocation', 'address')
 
 
     models = {
@@ -55,11 +35,13 @@ class Migration(SchemaMigration):
         u'campus.building': {
             'Meta': {'ordering': "('name', 'id')", 'object_name': 'Building', '_ormbases': [u'campus.MapObj']},
             'abbreviation': ('django.db.models.fields.CharField', [], {'max_length': '50', 'null': 'True'}),
+            'address': ('django.db.models.fields.CharField', [], {'max_length': '255', 'null': 'True'}),
             u'mapobj_ptr': ('django.db.models.fields.related.OneToOneField', [], {'to': u"orm['campus.MapObj']", 'unique': 'True', 'primary_key': 'True'}),
             'sketchup': ('django.db.models.fields.CharField', [], {'max_length': '50', 'null': 'True'})
         },
         u'campus.dininglocation': {
             'Meta': {'ordering': "('name',)", 'object_name': 'DiningLocation', '_ormbases': [u'campus.MapObj']},
+            'address': ('django.db.models.fields.CharField', [], {'max_length': '255', 'null': 'True'}),
             u'mapobj_ptr': ('django.db.models.fields.related.OneToOneField', [], {'to': u"orm['campus.MapObj']", 'unique': 'True', 'primary_key': 'True'})
         },
         u'campus.disabledparking': {

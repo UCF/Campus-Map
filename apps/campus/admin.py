@@ -228,7 +228,7 @@ class DiningLocationForm(MapObjForm):
 class DiningLocationAdmin(admin.ModelAdmin):
     list_display = ('name', 'id')
     prepopulated_fields = {'id': ('name',)}
-    fields = ('name', 'id', 'googlemap_point', 'illustrated_point')
+    fields = ('name', 'id', 'address', 'googlemap_point', 'illustrated_point')
     actions = None
     change_form_template = 'admin/maps_point_selector.djt'
     form                 = DiningLocationForm
