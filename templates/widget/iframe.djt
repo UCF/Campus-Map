@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8" />
 		<title>Widget - UCF Campus Map</title>
-		<script type="text/javascript" src="//maps.googleapis.com/maps/api/js?key={{ google_api_key }}&sensor=false"></script>
+		<script type="text/javascript" src="//maps.googleapis.com/maps/api/js?key={{ google_api_key }}"></script>
 		<script type="text/javascript" src="{{ STATIC_URL }}-/gmaps-infobox/infobox.js"></script>
 		<script type="text/javascript">
 			(window.onload = function() {

@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>UCF Campus Map</title>
-	<script src="//maps.google.com/maps/api/js?key={{ google_api_key }}&sensor=false" type="text/javascript" ></script>
+	<script src="//maps.google.com/maps/api/js?key={{ google_api_key }}" type="text/javascript" ></script>
 	<style>
 		body, html { background:none; }
 		#wrap { width:700px; margin:0 auto; position:relative; padding-bottom:40px; }
