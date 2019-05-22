@@ -336,7 +336,7 @@ function createExampleGoogleMapsHtml(options, extension) {
 	fileOut.writeln('	</head>');
 	fileOut.writeln('	<body>');
 	fileOut.writeln('		<div id="map"><span class="loading">loading tiles...</span></div>');
-	fileOut.writeln('		<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>');
+	fileOut.writeln('		<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js"></script>');
 	fileOut.writeln('		<script>');
 	fileOut.writeln('');
 	fileOut.writeln('');

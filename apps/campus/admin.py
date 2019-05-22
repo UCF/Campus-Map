@@ -85,7 +85,7 @@ class BuildingAdmin(admin.ModelAdmin):
     list_display = ('name', 'id', 'abbreviation')
     search_fields = ['name', 'id', 'abbreviation']
     prepopulated_fields = {'id':('name',)}
-    fields = ('name', 'id', 'abbreviation', 'image', 'description', 'profile', 'sketchup', 'googlemap_point', 'illustrated_point', 'poly_coords')
+    fields = ('name', 'id', 'abbreviation', 'image', 'address', 'description', 'profile', 'sketchup', 'googlemap_point', 'illustrated_point', 'poly_coords')
     actions = None
     change_form_template = 'admin/maps_point_selector.djt'
     form = BuildingForm
@@ -228,7 +228,7 @@ class DiningLocationForm(MapObjForm):
 class DiningLocationAdmin(admin.ModelAdmin):
     list_display = ('name', 'id')
     prepopulated_fields = {'id': ('name',)}
-    fields = ('name', 'id', 'googlemap_point', 'illustrated_point')
+    fields = ('name', 'id', 'address', 'googlemap_point', 'illustrated_point')
     actions = None
     change_form_template = 'admin/maps_point_selector.djt'
     form                 = DiningLocationForm

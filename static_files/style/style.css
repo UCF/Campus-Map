@@ -491,6 +491,10 @@ footer .address {
   margin-right: 10px;
 }
 
+#profile .address {
+  margin-bottom: 10px;
+}
+
 #profile h3 {
   margin: 5px 0 0;
 }
