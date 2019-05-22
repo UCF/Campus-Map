@@ -1,10 +1,6 @@
 import csv
 
-from django.core.management.base import BaseCommand, CommandError
-from django.conf import settings
-from django.db import connection, transaction
-from django.db.utils import IntegrityError, DatabaseError
-
+from django.core.management.base import BaseCommand
 from apps.campus.models import Building
 
 class Command(BaseCommand):
