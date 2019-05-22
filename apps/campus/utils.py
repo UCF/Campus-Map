@@ -96,7 +96,7 @@ def get_geo_data(lat, lng):
     try:
         geo_request = requests.get(geo_url,
                                    params={'latlng': str(
-                                       lat) + ',' + str(lng), 'sensor': 'false', 'key': settings.GOOGLE_API_KEY},
+                                       lat) + ',' + str(lng), 'key': settings.GOOGLE_API_KEY},
                                    timeout=settings.REQUEST_TIMEOUT).json()
         geo_results = geo_request.get('results')
         if len(geo_results):

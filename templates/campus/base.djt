@@ -175,7 +175,7 @@
 
 {% block js %}
 	<script src="{{ STATIC_URL }}js/map.min.js?{{ map_version }}" type="text/javascript"></script>
-	<script src="//maps.googleapis.com/maps/api/js?key={{ google_api_key }}&sensor=false"></script>
+	<script src="//maps.googleapis.com/maps/api/js?key={{ google_api_key }}"></script>
 	<script src="{{ STATIC_URL }}-/gmaps-infobox/infobox.js?{{ map_version }}" type="text/javascript"></script>
 	<script type="text/javascript">
 		$(document).ready(function(){
