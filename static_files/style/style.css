@@ -162,11 +162,6 @@ a.button {
   letter-spacing: 1px;
 }
 
-.mono {
-  color: #21759B;
-  font-family: monospace;
-}
-
 .c {
   text-align: center;
 }
@@ -448,7 +443,6 @@ footer .address {
 \******************************************************************************/
 
 #locations h2 a {
-  color: #000000;
   text-decoration: none;
 }
 
@@ -457,7 +451,6 @@ footer .address {
 }
 
 #profile ul.grey {
-  color: #A0A0A0;
   padding-bottom: 6px;
 }
 
@@ -471,28 +464,22 @@ footer .address {
 
 #profile h2 {
   font-size: 28px;
-  text-transform: uppercase;
-  padding-bottom: 10px;
+  padding-bottom: 0;
+  margin-bottom: 3px;
+  font-weight: 600;
 }
 
 #profile h2 .sub {
   padding-top: 4px;
-  font-weight: 10px;
-  color: #919191;
-  font-size: 16px;
+  font-size: 15px;
+  font-weight: normal;
   line-height: 18px;
   text-transform: capitalize;
   letter-spacing: 0;
 }
 
 #profile h2 .sub span {
-  color: #333;
-  font-family: monospace;
-  margin-right: 10px;
-}
-
-#profile .address {
-  margin-bottom: 10px;
+  margin-right: 20px;
 }
 
 #profile h3 {
@@ -505,6 +492,7 @@ footer .address {
 
 #profile-copy {
   padding: 0 15px 15px 0;
+  margin-top: 20px;
 }
 
 #cwrap {
