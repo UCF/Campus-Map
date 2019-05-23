@@ -179,7 +179,7 @@ li.r {
 
 #wrap {
   width: 932px;
-  padding: 18px 9px 36px;
+  padding: 8px 9px 40px;
   margin: 0 auto;
   clear: both;
 }
@@ -484,6 +484,10 @@ footer .address {
 
 #profile h3 {
   margin: 5px 0 0;
+}
+
+#profile-right {
+  margin-top: 48px;
 }
 
 #profile-image {
