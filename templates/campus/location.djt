@@ -10,16 +10,30 @@
 
 <div id="profile">
 
-	<h2>
-		{{ location.name }}
-		<div class="sub">
-			{% if location.number %}Location ID: <span>{{ location.number }}</span>{% endif %}
-			{% if location.abbreviation %}Abbreviation: <span>{{ location.abbreviation }}</span>{% endif %}
-			{% ifequal location.type 'Group' %}Group ID: <span>{{ location.id }}</span>{% endifequal %}
-		</div>
-	</h2>
-
 	<div class="{% if location.object_type == 'RegionalCampus' %}span-7{% else %}span-12{% endif %}">
+
+		{% if location.address %}
+		<address>
+		{% endif %}
+
+			<h2>
+				{{ location.name }}
+				<div class="sub">
+					{% if location.number %}Location ID: <span>{{ location.number }}</span>{% endif %}
+					{% if location.abbreviation %}Abbreviation: <span>{{ location.abbreviation }}</span>{% endif %}
+					{% ifequal location.type 'Group' %}Group ID: <span>{{ location.id }}</span>{% endifequal %}
+				</div>
+			</h2>
+
+			{% if location.address %}
+			<div class="address">
+				{{ location.address }}
+			</div>
+			{% endif %}
+
+		{% if location.address %}
+		</address>
+		{% endif %}
 
 		<div id="profile-copy">
 		{% if not location.profile or location.profile == "None" %}

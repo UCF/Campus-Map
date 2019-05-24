@@ -19,3 +19,6 @@ static/*
 
 # Uploads
 media/*
+
+#vscode settings
+.vscode/*
