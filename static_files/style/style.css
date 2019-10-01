@@ -406,7 +406,6 @@ footer .address {
 #canvas-wrap {
   border: 1px solid #aaa;
   margin: 10px;
-  min-height: 300px;
 }
 
 #map-canvas {
