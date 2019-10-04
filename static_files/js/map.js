@@ -843,7 +843,7 @@ var CampusMap = function(options) {
 
 	 	options = $.extend({}, default_options, options);
 
-     // Wrap the text in a link if neccessary
+    // Wrap the text in a link if neccessary
 	 	if(options.link !== null) {
 	 		name = '<a href="' + options.link + '">' + name + '</a>';
 	 	}
