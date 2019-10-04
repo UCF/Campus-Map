@@ -231,11 +231,20 @@ class MapObj(models.Model):
 
     def _link(self):
         url = reverse('location', kwargs={'loc': self.id})
-        return '<a href="%s%s/" data-pk="%s">%s</a>' % (url, slugify(self.name), self.id, self.title)
+
+        if self.object_type in settings.REDIRECT_TYPES:
+            url = "{0}{1}".format(settings.LOCATION_REDIRECT_BASE, slugify(self.name))
+
+        return '<a href="%s/" data-pk="%s">%s</a>' % (url, self.id, self.title)
     link = property(_link)
 
     def _profile_link(self, base_url=''):
         url = reverse('location', kwargs={'loc': self.id})
+
+        if self.object_type in settings.REDIRECT_TYPES:
+            url = "{0}{1}".format(settings.LOCATION_REDIRECT_BASE, slugify(self.name))
+            return url
+
         slug = slugify(self.title)
         if slug in ("", None, False, "None", "none", "null") or slug == self.id:
             return '%s%s' % (base_url, url)
