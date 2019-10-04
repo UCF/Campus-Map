@@ -410,6 +410,7 @@ footer .address {
 
 #map-canvas {
   display: none;
+  min-height: 300px;
 }
 
 /* Scrollbar added to the InfoWindow without this: http://stackoverflow.com/questions/14751558/google-maps-infowindow-vertical-scroll-appers-only-when-using-br */
