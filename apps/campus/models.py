@@ -241,8 +241,9 @@ class MapObj(models.Model):
     def _profile_link(self, base_url=''):
         url = reverse('location', kwargs={'loc': self.id})
 
-        if self._object_type in settings.REDIRECT_TYPES:
+        if self.object_type in settings.REDIRECT_TYPES:
             url = "{0}{1}".format(settings.LOCATION_REDIRECT_BASE, slugify(self.name))
+            return url
 
         slug = slugify(self.title)
         if slug in ("", None, False, "None", "none", "null") or slug == self.id:
