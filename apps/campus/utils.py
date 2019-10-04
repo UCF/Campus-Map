@@ -117,3 +117,17 @@ def get_geo_data(lat, lng):
         logger.error('Error getting geo data: ' + str(e))
 
     return (geo_placename, geo_country + '-' + geo_state if geo_country and geo_state else None)
+
+def get_external_link(endpoint):
+    """
+    Contactonates the
+    """
+    url_base= trailingslashit(settings.LOCATION_REDIRECT_BASE)
+    endpoint = trailingslashit(endpoint)
+    return "{0}{1}".format(url_base, endpoint)
+
+def trailingslashit(url):
+    if url.endswith('/'):
+        return url
+
+    return "{0}/".format(url)
