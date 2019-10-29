@@ -7,11 +7,11 @@ def permits(*args):
     from campus.models import parking_permit_colors
 
     text = {
+        "D Permits"       : {'color': 'green',  'label': '&ldquo;D&rdquo; (Students/Visitors)'},
         "B Permits"       : {'color': 'red',    'label': '&ldquo;B&rdquo; (Faculty)'},
         "C Permits"       : {'color': 'blue',   'label': '&ldquo;C&rdquo; (Staff)'},
-        "D Permits"       : {'color': 'green',  'label': '&ldquo;D&rdquo; (Students/Visitor)'},
-        "Housing Permits" : {'color': 'orange', 'label': 'Housing Permits'},
-        "Greek Row"       : {'color': 'pink',   'label': 'Greek Row'},
+        "Housing Permits" : {'color': 'orange', 'label': '&ldquo;R&rdquo; (Residents)'},
+        "Towers"          : {'color': 'purple', 'label': 'Towers'}
     }
 
     str = '<thead><tr><th>Permit Color</th><th>Permit Type</th></tr></thead>'
