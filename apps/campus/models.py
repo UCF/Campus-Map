@@ -381,6 +381,7 @@ class Building(MapObj):
 parking_permit_colors = OrderedDict()
 
 parking_permit_colors["D Permits"] = "009a36" #green
+parking_permit_colors["Events Garage"] = "985700" #brown
 parking_permit_colors["B Permits"] = "cc0400" #red
 parking_permit_colors["C Permits"] = "0052d9" #blue
 parking_permit_colors["Housing Permits"] = "ffba00" #orange
