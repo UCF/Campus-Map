@@ -1,6 +1,7 @@
 import datetime
 import json
 import logging
+from collections import OrderedDict
 from xml.etree.ElementTree import Element
 
 from django.conf import settings
@@ -377,14 +378,14 @@ class Building(MapObj):
     class Meta:
         ordering = ("name", "id")
 
+parking_permit_colors = OrderedDict()
 
-parking_permit_colors = {
-    "B Permits": "cc0400", #red
-    "C Permits": "0052d9", #blue
-    "D Permits": "009a36", #green
-    "Housing Permits": "ffba00", #orange
-    "Greek Row": "eb00e3", #pink
-}
+parking_permit_colors["D Permits"] = "009a36" #green
+parking_permit_colors["Events Garage"] = "985700" #brown
+parking_permit_colors["B Permits"] = "cc0400" #red
+parking_permit_colors["C Permits"] = "0052d9" #blue
+parking_permit_colors["Housing Permits"] = "ffba00" #orange
+parking_permit_colors["Towers"] = "6700d9" #purple
 
 
 class ParkingLot(MapObj):
