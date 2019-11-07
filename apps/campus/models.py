@@ -348,7 +348,7 @@ class Location(MapObj):
 class RegionalCampus(MapObj):
 
     class Meta:
-        verbose_name_plural = "Regional Campuses"
+        verbose_name_plural = "UCF Connect Locations"
 
 
 class Building(MapObj):
@@ -380,12 +380,12 @@ class Building(MapObj):
 
 parking_permit_colors = OrderedDict()
 
-parking_permit_colors["D Permits"] = "009a36" #green
-parking_permit_colors["Events Garage"] = "985700" #brown
-parking_permit_colors["B Permits"] = "cc0400" #red
-parking_permit_colors["C Permits"] = "0052d9" #blue
-parking_permit_colors["Housing Permits"] = "ffba00" #orange
-parking_permit_colors["Towers"] = "6700d9" #purple
+parking_permit_colors["D Permits"] = "06a54f" #green
+parking_permit_colors["Events Garage"] = "bea149" #metalic
+parking_permit_colors["B Permits"] = "ee1c23" #red
+parking_permit_colors["C Permits"] = "02aeef" #blue
+parking_permit_colors["Housing Permits"] = "f47720" #orange
+parking_permit_colors["Towers"] = "bc1b8d" #purple
 
 
 class ParkingLot(MapObj):

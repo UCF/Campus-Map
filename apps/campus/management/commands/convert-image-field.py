@@ -70,9 +70,9 @@ class Command(BaseCommand):
 
     def register_rc_images(self):
         '''
-            Assign the copied Regional Campus images to their respective locations
+            Assign the copied UCF Connect location images to their respective locations
         '''
-        sys.stdout.write('Assigning regional campus images to MapObj entries...')
+        sys.stdout.write('Assigning UCF Connect location images to MapObj entries...')
 
         cursor = connection.cursor()
         for campus in RegionalCampus.objects.all():
