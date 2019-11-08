@@ -10,7 +10,7 @@
 
 <div id="profile">
 
-	<div class="{% if location.object_type == 'RegionalCampus' %}span-7{% else %}span-12{% endif %}">
+	<div class="span-12">
 
 		{% if location.address %}
 		<address>

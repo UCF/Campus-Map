@@ -32,7 +32,7 @@ class Command(BaseCommand):
             new = Building.objects.create(**b['fields'])
             print new.id, new.name
 
-        # regional campuses
+        # ucf connect locations
         f = open(os.path.join(path, 'campuses.json'), 'r')
         txt = f.read()
         f.close()
