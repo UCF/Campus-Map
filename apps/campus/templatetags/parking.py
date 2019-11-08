@@ -8,6 +8,7 @@ def permits(*args):
 
     text = {
         "D Permits"       : {'color': 'green',  'label': '&ldquo;D&rdquo; (Students/Visitors)'},
+        "Events Garage"   : {'color': 'brown',  'label': 'Events Garage'},
         "B Permits"       : {'color': 'red',    'label': '&ldquo;B&rdquo; (Faculty)'},
         "C Permits"       : {'color': 'blue',   'label': '&ldquo;C&rdquo; (Staff)'},
         "Housing Permits" : {'color': 'orange', 'label': '&ldquo;R&rdquo; (Residents)'},

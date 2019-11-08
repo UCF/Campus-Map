@@ -48,7 +48,7 @@ class MapObjForm(ModelForm):
             coords = self.cleaned_data['poly_coords']
             if coords: json.loads(coords)
         except KeyError:
-            pass # poly cords not used (like regional campuses)
+            pass # poly cords not used (like ucf connect locations)
         except ValueError:
             raise ValidationError("Invalid polygon coordinates (not json serializable)")
 
@@ -57,7 +57,7 @@ class MapObjForm(ModelForm):
             point = self.cleaned_data['illustrated_point']
             if point: json.loads(point)
         except KeyError:
-            pass # poly cords not used (like regional campuses)
+            pass # poly cords not used (like ucf connect locations)
         except ValueError:
             raise ValidationError("Invalid Illustrated Map Point (not json serializable)")
 

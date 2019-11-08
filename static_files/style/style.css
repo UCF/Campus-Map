@@ -487,11 +487,15 @@ footer .address {
 }
 
 #profile-right {
-  margin-top: 48px;
+  margin-top: 12px;
 }
 
 #profile-image {
   padding-bottom: 15px;
+}
+
+#profile-image img {
+  width: 100%;
 }
 
 #profile-copy {
@@ -1553,7 +1557,7 @@ a.iclose:hover {
   font-size: 11px;
 }
 /******************************************************************************\
-    Regional Campuses
+    UCF Connect Locations
 \******************************************************************************/
 
 #regional-campuses .rc {

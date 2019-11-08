@@ -713,12 +713,12 @@ def backward_location(request):
 
 def regional_campuses(request, campus=None):
     if request.is_json():
-        response = HttpResponse(json.dumps("API not available for Regional Campuses"))
+        response = HttpResponse(json.dumps("API not available for UCF Connect Locations"))
         response['Content-type'] = 'application/json'
         return response
 
     if request.is_txt():
-        response = HttpResponse("API not available for Regional Campuses")
+        response = HttpResponse("API not available for UCF Connect Locations")
         response['Content-type'] = 'text/plain; charset=utf-8'
         return response
 
