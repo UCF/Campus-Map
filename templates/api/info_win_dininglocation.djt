@@ -6,9 +6,9 @@
 
 {% else %}
 
-	<a href="{{ base_url }}{{ location.profile_link }}" class="item">{{ location.name }}</a>
+	<a href="{{ location.profile_link }}" class="item">{{ location.name }}</a>
 
-	<a class="item" href="{{ base_url }}{{ location.profile_link }}">
+	<a class="item" href="{{ location.profile_link }}">
 		{% if location.image %}
 			<img src="{{ location.image.url }}">
 		{%else%}
