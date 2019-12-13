@@ -124,20 +124,21 @@
 
 					<h5>Emergency Contacts:</h5>
 					<a class="item" id="call911" href="tel:911">Emergency Call 911 <i class="fa fa-phone"></i></a>
-						<h6>Univeristy Police</h6>
-						<a href="tel:4078235555">407-823-5555</a>
+					<h6>Univeristy Police</h6>
+					<a href="tel:+14078235555">407-823-5555</a>
 
-						<h6>Safety Escort Patrol Services</h6>
-						<a href="tel:4078232424">407-823-2424</a>
+					<h6>Knight Ride</h6>
+					<a href="tel:+14078232424">407-823-2424</a>
 
-						<h6>Victim Services</h6>
-						<a href="tel:4078232425">407-823-2425</a>
+					<h6>Victim Services</h6>
+					<a href="tel:+14078232425">407-823-2425</a>
 
-						<h6>Victim Serv. (after hours)</h6>
-						<a href="tel:4078235555">407-823-5555</a>
+					<h6>Victim Services<br>(24/7 Hotline)</h6>
+					<a href="tel:+14078231200">407-823-1200</a><br>
+					<a href="tel:+14078236868">TEXT: 407-823-6868</a>
 
-						<h6>Parking Services</h6>
-						<a href="tel:4078235812">407-823-5812</a>
+					<h6>Parking Services</h6>
+					<a href="tel:+14078235812">407-823-5812</a>
 
 
 				</li>
@@ -164,18 +165,8 @@
 	</header>
 	<div id="canvas-wrap"><div id="map-canvas"></div></div>
 </div>
-<footer>
-	<span class="left">
-		<a href="{% url 'page' 'directions'%}">4000 Central Florida Blvd.  Orlando, FL 32816</a>
-	</span>
-	<span class="right">
-		<a href="{% url 'page' 'regional-campuses' %}">Regional Campuses</a> |
-		<a href="{% url 'home' %}?show=college-of-medicine">College of Medicine</a> |
-		<a href="{% url 'home' %}?show=downtown">Downtown</a> |
-		<a href="{% url 'home' %}?show=rosen-college">Rosen College</a>
-	</span>
-	<div class="clear">&nbsp;</div>
-</footer>
+
+{% include 'footer.html' %}
 
 <div id="menu-wrap">
 	{% include 'campus/menu.djt' %}
@@ -185,7 +176,7 @@
 
 {% block js %}
 	<script src="{{ STATIC_URL }}js/map.min.js?{{ map_version }}" type="text/javascript"></script>
-	<script src="//maps.googleapis.com/maps/api/js?key={{ google_api_key }}&sensor=false"></script>
+	<script src="//maps.googleapis.com/maps/api/js?key={{ google_api_key }}"></script>
 	<script src="{{ STATIC_URL }}-/gmaps-infobox/infobox.js?{{ map_version }}" type="text/javascript"></script>
 	<script type="text/javascript">
 		$(document).ready(function(){

@@ -1,14 +1,14 @@
 {% extends "base.djt"%}
 
-{% block title %}Regional Campuses - {{block.super}}{% endblock %}
+{% block title %}UCF Connect Locations - {{block.super}}{% endblock %}
 
-{% block meta-description %}Use the UCF Campus Map to find Regional Campuses {{ block.super }}{% endblock %}
+{% block meta-description %}Use the UCF Campus Map to find UCF Connect Locations {{ block.super }}{% endblock %}
 
 {% block rel-canonical %}{{ base_url }}{% url 'page' 'regional-campuses' %}{% endblock %}
 
 {% block wrap %}
 <div id="regional-campuses">
-	<h2>Regional Campuses</h2>
+	<h2>UCF Connect Locations</h2>
 	<p><strong><a href="https://www.connect.ucf.edu/">https://www.connect.ucf.edu/</a></strong></p>
 
 	{% if not campuses %}

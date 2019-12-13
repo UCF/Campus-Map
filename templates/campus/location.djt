@@ -10,28 +10,54 @@
 
 <div id="profile">
 
-	<h2>
-		{{ location.name }}
-		<div class="sub">
-			{% if location.number %}Location ID: <span>{{ location.number }}</span>{% endif %}
-			{% if location.abbreviation %}Abbreviation: <span>{{ location.abbreviation }}</span>{% endif %}
-			{% ifequal location.type 'Group' %}Group ID: <span>{{ location.id }}</span>{% endifequal %}
-		</div>
-	</h2>
+	<div class="span-12">
 
-	<div class="{% if location.object_type == 'RegionalCampus' %}span-7{% else %}span-12{% endif %}">
+		{% if location.address %}
+		<address>
+		{% endif %}
+
+			<h2>
+				{{ location.name }}
+				<div class="sub">
+					{% if location.number %}Location ID: <span>{{ location.number }}</span>{% endif %}
+					{% if location.abbreviation %}Abbreviation: <span>{{ location.abbreviation }}</span>{% endif %}
+					{% ifequal location.type 'Group' %}Group ID: <span>{{ location.id }}</span>{% endifequal %}
+				</div>
+			</h2>
+
+			{% if location.address %}
+			<div class="address">
+				{{ location.address }}
+			</div>
+			{% endif %}
+
+		{% if location.address %}
+		</address>
+		{% endif %}
 
 		<div id="profile-copy">
 		{% if not location.profile or location.profile == "None" %}
 		{# if no profile, display image on the left #}
-			{% if location.image %}
-				<img src="{{ location.image.url }}"><br><br>
-			{% endif %}
-			This location needs a profile, <a href="mailto:webcom@ucf.edu?subject=Campus Map Location Profile&amp;Body={{ location.name }}">do you have one?</a>
+			This location needs a profile, <a href="mailto:webcom@ucf.edu?subject=Campus Map Location Profile&amp;Body={{ location.name }}">submit a profile</a>.
 		{% else %}
 			{{ location.profile|safe }}
 		{% endif %}
 		</div>
+
+		<form id="directions-form" method="get" action="https://maps.google.com/maps" target="_blank">
+			<div class="directions-label">Enter your address: </div>
+			<input type="text" name="saddr">
+			<input type="hidden" name="daddr" value="{{location.googlemap_point.0}},{{location.googlemap_point.1}}">
+			<input type="submit" value="get directions">
+		</form>
+
+		{% if location.profile and location.profile != "None" %}
+		<div id="profile-image">
+			{% if location.image %}
+				<img src="{{ location.image.url }}" alt="">
+			{% endif %}
+		</div>
+		{% endif %}
 
 		{% if orgs %}
 			<h3>Organizations:</h3>
@@ -92,18 +118,10 @@
 	</div>
 	<div class="span-11 last" id="profile-right">
 
-		{% if location.profile and location.profile != "None" %}
-		<div id="profile-image">
-			{% if location.image %}
-				<img src="{{ location.image.url }}">
-			{% endif %}
-		</div>
-		{% endif %}
+		<iframe width="100%" height="300" frameborder="0"
+			src="https://www.google.com/maps/embed/v1/view?key={{ google_api_key }}&center={{location.googlemap_point.0}},{{location.googlemap_point.1}}&maptype=satellite&zoom=18" allowfullscreen></iframe>
 
-		{% if location.illustrated_point %}
-		<div id="cwrap"><div id="canvas"></div></div>
-		<div id="map-go"><a href="/?show={{ location.id }}">show on map</a></div>
-		{% endif %}
+		<div id="map-go"><a href="/?show={{ location.id }}" class="btn">View {{ location.name }} on the map</a></div>
 
 		{% if orgs and location.locations %}
 		<div id="group-locations">
@@ -113,14 +131,6 @@
 				<li>{{ l|safe }}</li>
 				{% endfor %}
 			</ul>
-		</div>
-		{% endif %}
-
-		{% if location.sketchup %}
-		<div id="sketchup">
-			<div id="model">
-				<iframe src="https://3dwarehouse.sketchup.com/embed.html?width=430&amp;height=300&amp;mid={{ location.sketchup }}" scrolling="no" marginheight="0" marginwidth="0" frameborder="0" allowfullscreen></iframe>
-			</div>
 		</div>
 		{% endif %}
 
@@ -154,10 +164,6 @@
 {% endblock %}
 
 {% block js %}
-<script src="{{ STATIC_URL }}-/jquery.plugins/lightbox/js/jquery.lightbox-0.5.min.js"></script>
-<script src="{{ STATIC_URL }}js/map.js?{{map_version}}" type="text/javascript"></script>
-<script src="//maps.googleapis.com/maps/api/js?key={{ google_api_key }}&sensor=false"></script>
-<script src="{{ STATIC_URL }}-/gmaps-infobox/infobox.js?{{ map_version }}" type="text/javascript"></script>
 <script>
 
 /**************************************************************************\
@@ -198,21 +204,6 @@ $(document).ready(function(){
 		var scroll = $(org).offset().top - 26;
 		$('html,body').animate({scrollTop: scroll}, 'slow');
 	}
-
-	new CampusMap({
-		urls : {
-			static   : "{{ STATIC_URL }}",
-			location : "{{ loc_url }}"
-		},
-		simple              : true,
-		canvas_id           : 'canvas',
-		pan_control         : false,
-		zoom_control        : false,
-		street_view_control : false,
-		map_type_control    : false,
-		infobox_location_id : "{{ location.id }}",
-		illustrated         : true
-	})
 });
 
 </script>

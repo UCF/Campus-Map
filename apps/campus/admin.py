@@ -48,7 +48,7 @@ class MapObjForm(ModelForm):
             coords = self.cleaned_data['poly_coords']
             if coords: json.loads(coords)
         except KeyError:
-            pass # poly cords not used (like regional campuses)
+            pass # poly cords not used (like ucf connect locations)
         except ValueError:
             raise ValidationError("Invalid polygon coordinates (not json serializable)")
 
@@ -57,7 +57,7 @@ class MapObjForm(ModelForm):
             point = self.cleaned_data['illustrated_point']
             if point: json.loads(point)
         except KeyError:
-            pass # poly cords not used (like regional campuses)
+            pass # poly cords not used (like ucf connect locations)
         except ValueError:
             raise ValidationError("Invalid Illustrated Map Point (not json serializable)")
 
@@ -85,7 +85,7 @@ class BuildingAdmin(admin.ModelAdmin):
     list_display = ('name', 'id', 'abbreviation')
     search_fields = ['name', 'id', 'abbreviation']
     prepopulated_fields = {'id':('name',)}
-    fields = ('name', 'id', 'abbreviation', 'image', 'description', 'profile', 'sketchup', 'googlemap_point', 'illustrated_point', 'poly_coords')
+    fields = ('name', 'id', 'abbreviation', 'image', 'address', 'description', 'profile', 'sketchup', 'googlemap_point', 'illustrated_point', 'poly_coords')
     actions = None
     change_form_template = 'admin/maps_point_selector.djt'
     form = BuildingForm
@@ -228,7 +228,7 @@ class DiningLocationForm(MapObjForm):
 class DiningLocationAdmin(admin.ModelAdmin):
     list_display = ('name', 'id')
     prepopulated_fields = {'id': ('name',)}
-    fields = ('name', 'id', 'googlemap_point', 'illustrated_point')
+    fields = ('name', 'id', 'address', 'googlemap_point', 'illustrated_point')
     actions = None
     change_form_template = 'admin/maps_point_selector.djt'
     form                 = DiningLocationForm

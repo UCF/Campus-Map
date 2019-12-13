@@ -115,23 +115,24 @@
 		<a class="item" id="call911" href="tel:911">Emergency Call 911 <i class="fa fa-phone"></i></a>
 		<div class="first">
 			<h4>Univeristy Police</h4>
-			<a href="tel:1-407-823-5555">407-823-5555</a>
+			<a href="tel:+14078235555">407-823-5555</a>
 		</div>
 		<div>
-			<h4>Safety Escort Patrol Services</h4>
-			<a href="tel:1-407-823-2424">407-823-2424</a>
+			<h4>Knight Ride</h4>
+			<a href="tel:+14078232424">407-823-2424</a>
 		</div>
 		<div>
 			<h4>Victim Services</h4>
-			<a href="tel:1-407-823-2425">407-823-2425</a>
+			<a href="tel:+14078232425">407-823-2425</a>
 		</div>
 		<div>
-			<h4>Victim Services (after hours)</h4>
-			<a href="tel:1-407-823-5555">407-823-5555</a>
+			<h4>Victim Services (24/7 Hotline)</h4>
+			<a href="tel:+14078231200">407-823-1200</a><br>
+			<a href="tel:+14078236868">TEXT: 407-823-6868</a>
 		</div>
 		<div>
 			<h4>Parking Services</h4>
-			<a href="tel:1-407-823-5812">407-823-5812</a>
+			<a href="tel:+14078235812">407-823-5812</a>
 		</div>
 	</div>
 </div>

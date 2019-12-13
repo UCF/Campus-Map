@@ -8,14 +8,10 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
-		<meta name="google-site-verification" content="" />
 		<link rel="shortcut icon" href="{{ STATIC_URL }}images/favicon.ico">
 		<link rel="apple-touch-icon" href="{{ STATIC_URL }}images/apple-touch-icon.png">
 
 		<link rel="canonical" href="{% block rel-canonical %}https://map.ucf.edu/{% endblock %}" />
-
-		<!-- HTML5 compatibility -->
-		<style> article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { display: block; } </style>
 
 		<!-- YUI reset-fonts-base -->
 		<link href="{{ STATIC_URL }}-/yui-3.1.1/reset-fonts-base.css" rel="stylesheet" media="screen, projection">
@@ -27,10 +23,6 @@
 		<!-- jquery UI -->
 		<link href="{{ STATIC_URL }}-/jquery-ui-1.8.4/css/ui-lightness/jquery-ui-1.8.4.custom.css" rel="stylesheet" />
 
-		<!-- UCF Header and Stylesheets -->
-		<link href="//www.ucf.edu/css/global.css" rel="stylesheet">
-
-
 		{% if cloud_typography %}
 				<!-- Hoefler & Co Cloud.Typography Web Fonts -->
 				<link rel="stylesheet" type="text/css" href="{{ cloud_typography }}" />
@@ -41,12 +33,6 @@
 		<link href="{{ STATIC_URL }}style/style-responsive.css?{{map_version}}" rel="stylesheet">
 		<link href="{{ STATIC_URL }}style/font-awesome.min.css" rel="stylesheet">
 		{% block head %}{% endblock %}
-
-		{% if debug %}
-		<!--[if IE]>
-		{# <script type="text/javascript" src="//getfirebug.com/firebug-lite.js#startOpened"></script> #}
-		<![endif]-->
-		{% endif %}
 
 		{% if not debug %}
 		<meta name="google-site-verification" content="8hYa3fslnyoRE8vg6COo48-GCMdi5Kd-1qFpQTTXSIw" />
@@ -63,11 +49,7 @@
 
 	</head>
 
-<!--[if lt IE 7 ]>  <body class="ie ie6"> <![endif]-->
-<!--[if IE 7 ]>     <body class="ie ie7"> <![endif]-->
-<!--[if IE 8 ]>     <body class="ie ie8"> <![endif]-->
-<!--[if IE 9 ]>     <body class="ie ie9"> <![endif]-->
-<!--[if (gt IE 9)|!(IE)]><!--> <body> <!--<![endif]-->
+<body>
 
 <!-- University Header -->
 <div id="ucfhb"></div>
@@ -76,18 +58,6 @@
 	<header>
 		<h1><a href="{% url 'home' %}">UCF Campus Map</a></h1>
 		<esi:include src="{% url 'weather'%}" />
-		{% block nav %}
-		<nav>
-			<ol>
-				<li><a href="{% url 'search' %}">Search</a></li>
-				<li><a href="{% url 'organizations' %}">Organizations</a></li>
-				<li><a href="{% url 'locations' %}">Locations</a></li>
-				<li><a href="{% url 'page' 'printable' %}">Printable Map</a></li>
-				<li><a href="{% url 'page' 'directions' %}">Directions</a></li>
-				<li class="last"><a href="{% url 'page' 'about' %}">About</a></li>
-			</ol>
-		</nav>
-		{% endblock %}
 	</header>
 
 
@@ -97,34 +67,9 @@
 	{% endblock %}
 	</div><!--/wrap -->
 
-	<footer>
-		<div class="wrap">
-			<div class="left">
-				<dl>
-					<dt>Mailing Address:</dt>
-					<dd>
-						4000 Central Florida Blvd.<br>
-						Orlando, FL, 32816
-					</dd>
-					<dt>Contact</dt>
-					<dd>
-						Phone: (407) 823-2000
-					</dd>
-				</dl>
-			</div>
-
-			<div class="right smaller">
-				<a href="{% url 'page' 'regional-campuses' %}">Regional Campuses</a> |
-				<a href="{% url 'home' %}?show=college-of-medicine">College of Medicine</a> |
-				<a href="{% url 'home' %}?show=downtown">Downtown</a> |
-				<a href="{% url 'home' %}?show=rosen-college">Rosen College</a>
-
-				<a id="logo" href="https://www.ucf.edu/">UCF Stands For Opportunity</a>
-			</div>
-
-			<div class="clear">&nbsp;</div>
-		</div>
-	</footer>
+<div class="footer-wrap">
+	{% include 'footer.html' %}
+</div>
 
 {% endblock %}{# /body #}
 

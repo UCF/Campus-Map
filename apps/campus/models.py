@@ -1,6 +1,7 @@
 import datetime
 import json
 import logging
+from collections import OrderedDict
 from xml.etree.ElementTree import Element
 
 from django.conf import settings
@@ -231,11 +232,20 @@ class MapObj(models.Model):
 
     def _link(self):
         url = reverse('location', kwargs={'loc': self.id})
-        return '<a href="%s%s/" data-pk="%s">%s</a>' % (url, slugify(self.name), self.id, self.title)
+
+        if self.object_type in settings.REDIRECT_TYPES:
+            url = "{0}{1}".format(settings.LOCATION_REDIRECT_BASE, slugify(self.name))
+
+        return '<a href="%s/" data-pk="%s">%s</a>' % (url, self.id, self.title)
     link = property(_link)
 
     def _profile_link(self, base_url=''):
         url = reverse('location', kwargs={'loc': self.id})
+
+        if self.object_type in settings.REDIRECT_TYPES:
+            url = "{0}{1}".format(settings.LOCATION_REDIRECT_BASE, slugify(self.name))
+            return url
+
         slug = slugify(self.title)
         if slug in ("", None, False, "None", "none", "null") or slug == self.id:
             return '%s%s' % (base_url, url)
@@ -338,11 +348,12 @@ class Location(MapObj):
 class RegionalCampus(MapObj):
 
     class Meta:
-        verbose_name_plural = "Regional Campuses"
+        verbose_name_plural = "UCF Connect Locations"
 
 
 class Building(MapObj):
     abbreviation = models.CharField(max_length=50, null=True)
+    address = models.CharField(max_length=255, null=True)
     sketchup = models.CharField(max_length=50, null=True, help_text="E.g., https://3dwarehouse.sketchup.com/model.html?id=<code>54b7f313bf315a3a85622796b26c9e66</code>")
 
     def _number(self):
@@ -367,14 +378,14 @@ class Building(MapObj):
     class Meta:
         ordering = ("name", "id")
 
+parking_permit_colors = OrderedDict()
 
-parking_permit_colors = {
-    "B Permits": "cc0400", #red
-    "C Permits": "0052d9", #blue
-    "D Permits": "009a36", #green
-    "Housing Permits": "ffba00", #orange
-    "Greek Row": "eb00e3", #pink
-}
+parking_permit_colors["D Permits"] = "06a54f" #green
+parking_permit_colors["Events Garage"] = "bea149" #metalic
+parking_permit_colors["B Permits"] = "ee1c23" #red
+parking_permit_colors["C Permits"] = "02aeef" #blue
+parking_permit_colors["Housing Permits"] = "f47720" #orange
+parking_permit_colors["Towers"] = "bc1b8d" #purple
 
 
 class ParkingLot(MapObj):
@@ -505,6 +516,7 @@ class ElectricChargingStation(MapObj):
 
 
 class DiningLocation(MapObj):
+    address = models.CharField(max_length=255, null=True)
 
     # Group definition that all DiningLocation objects should
     # exist in

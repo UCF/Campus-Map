@@ -172,11 +172,6 @@
   body {
     min-width: 0;
   }
-
-  /* Prevent padding on .wrap from overflowing */
-  footer .wrap {
-    box-sizing: border-box;
-  }
 }
 
 /* Menus */
@@ -198,15 +193,10 @@
 }
 
 @media (max-width: 950px) {
-  /* Fix the background gradient that vanishes for some reason */
-  html {
-    background: initial;
-  }
 
   /* Reset primary fixed width wrappers */
   #wrap,
-  header,
-  footer .wrap {
+  header {
     width: auto;
   }
 
@@ -219,10 +209,6 @@
 
   .right {
     margin-top: 20px;
-  }
-
-  footer .right {
-    margin-top: 5px;
   }
 
   /* Images */
@@ -238,11 +224,6 @@
     display: none;
   }
 
-  /* Embed fixes */
-  #sketchup {
-    display: none;
-  }
-
   #cwrap {
     height: 220px;
     padding: 0;
@@ -255,25 +236,6 @@
   #search-results {
     overflow-y: scroll;
     -webkit-overflow-scrolling: touch;
-  }
-  /*
-    #sketchup #model {
-      box-sizing: border-box;
-      max-width: 430px;
-    }
-
-    #sketchup iframe {
-      max-width: 430px;
-      width: 100%;
-      height: 220px;
-    }
-  */
-  /*
-   * Hide "show on map" links, since users on small
-   * devices would not be directed to a user-friendly map
-   */
-  #map-go {
-    display: none;
   }
 
   /* Prevent table overflow on Locations pg */
@@ -298,6 +260,22 @@
 
   /* Weather */
   #weather {
+    display: none;
+  }
+
+  footer .title a {
+    font-size: 18px;
+  }
+
+  footer .nav a {
+    font-size: 14px;
+  }
+
+  footer .address {
+    font-size: 10px;
+  }
+
+  footer .ucf-footer-nav {
     display: none;
   }
 }

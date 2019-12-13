@@ -5,6 +5,7 @@ from time import time
 from time import mktime
 from xml.etree import ElementTree
 
+from django.template.defaultfilters import slugify
 from django.conf import settings
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.auth.decorators import login_required
@@ -44,6 +45,7 @@ from campus.models import RegionalCampus
 from campus.models import Sidewalk
 from campus.models import SimpleSetting
 from campus.utils import get_geo_data
+from campus.utils import get_external_link
 
 def home(request, **kwargs):
     '''
@@ -229,6 +231,10 @@ def location(request, loc, return_obj=False):
         location_orgs = location._orgs()['results']
     except MapObj.DoesNotExist:
         raise Http404("Location ID <code>%s</code> could not be found" % (loc))
+
+    if location.object_type in settings.REDIRECT_TYPES and not request.is_json():
+        url = get_external_link(slugify(location.name))
+        return HttpResponsePermanentRedirect(url)
 
     base_url = request.build_absolute_uri(reverse('home'))[:-1]
     html = location_html(location, request)
@@ -707,12 +713,12 @@ def backward_location(request):
 
 def regional_campuses(request, campus=None):
     if request.is_json():
-        response = HttpResponse(json.dumps("API not available for Regional Campuses"))
+        response = HttpResponse(json.dumps("API not available for UCF Connect Locations"))
         response['Content-type'] = 'application/json'
         return response
 
     if request.is_txt():
-        response = HttpResponse("API not available for Regional Campuses")
+        response = HttpResponse("API not available for UCF Connect Locations")
         response['Content-type'] = 'text/plain; charset=utf-8'
         return response
 

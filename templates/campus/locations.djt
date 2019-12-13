@@ -10,7 +10,7 @@
 
 	<div class="span-13 append-1">
 
-		<h2> Buildings </h2>
+		<h2> Locations </h2>
 
 		{% if buildings %}
 			<table id="buildings" class="tablesorter">
@@ -60,7 +60,7 @@
 			<p>No groups found.</p>
 		{% endif %}
 
-		<h2><a href="{% url 'regional' %}">Regional Campuses</a></h2>
+		<h2><a href="{% url 'regional' %}">UCF Connect Locations</a></h2>
 		{% if campuses %}
 			<ul>
 			{% for c in campuses %}

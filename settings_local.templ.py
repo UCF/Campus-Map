@@ -148,3 +148,11 @@ CSRF_COOKIE_SECURE = HTTPS_SUPPORT
 REQUEST_TIMEOUT = 10
 
 GOOGLE_API_KEY = ''
+
+LOCATION_REDIRECT_BASE = 'https://www.ucf.edu/location/'
+
+REDIRECT_TYPES = [
+    'Location',
+    'DiningLocation',
+    'Building'
+]
