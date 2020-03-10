@@ -148,8 +148,7 @@ def organization(request, id):
 
 
 def organization_search(q):
-    params = {'use': 'tableSearch',
-              'in': 'organizations',
+    params = {'use': 'organizations',
               'search': q}
     try:
         results = requests.get(settings.PHONEBOOK,
@@ -167,9 +166,9 @@ class Orgs:
 
     @classmethod
     def fetch(cls):
-        payload = {'use': 'tableSearch', 'in': 'organizations', 'order_by': 'name', 'order': 'ASC'}
+        payload = {'ordering': 'name'}
         try:
-            orgs = requests.get(settings.PHONEBOOK,
+            orgs = requests.get(settings.PHONEBOOK + 'organizations/',
                                 params=payload,
                                 timeout=settings.REQUEST_TIMEOUT,
                                 verify=False).json()
@@ -189,9 +188,9 @@ def get_orgs():
 
 
 def get_depts():
-    payload = {'use': 'tableSearch', 'in': 'departments', 'order_by': 'name', 'order': 'ASC'}
+    payload = {'ordering': 'name'}
     try:
-        depts = requests.get(settings.PHONEBOOK,
+        depts = requests.get(settings.PHONEBOOK + 'departments/',
                              params=payload,
                              timeout=settings.REQUEST_TIMEOUT,
                              verify=False).json()

@@ -549,9 +549,9 @@ class DiningLocation(MapObj):
 
         # Talk to search service to get departments
         for org_id in cls.ORGANIZATION_IDS:
-            params = {'in': 'departments', 'search': org_id}
+            params = {'org__import_id': org_id}
             try:
-                page = requests.get(settings.PHONEBOOK,
+                page = requests.get(settings.PHONEBOOK + 'departments/',
                                     params=params,
                                     timeout=settings.REQUEST_TIMEOUT,
                                     verify=False)

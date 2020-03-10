@@ -209,7 +209,7 @@ GOOGLE_LOOK_HERE = "https://map.ucf.edu"
 SEARCH_ENGINE = None
 
 # Phonebook search service url
-PHONEBOOK = "https://search.smca.ucf.edu/service.php"
+PHONEBOOK = "https://search.cm.ucf.edu/api/v1/teledata/"
 
 LOGIN_REDIRECT_URL = '/admin/'
 
