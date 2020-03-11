@@ -125,7 +125,7 @@ def organization(request, id):
     building = None
     try:
         from campus.models import Building
-        building = campus.models.Building.objects.get(pk=str(org['bldg_id']))
+        building = campus.models.Building.objects.get(pk=str(org['bldg']['import_id']))
     except campus.models.Building.DoesNotExist:
         pass
     context = {'org': org, 'building': building}
@@ -204,11 +204,11 @@ def get_depts():
 def get_org(id):
     orgs = get_orgs()
     for o in orgs['results']:
-        if str(o['id']) == id:
+        if str(o['import_id']) == id:
             depts = get_depts()
             o['departments'] = []
             for d in depts['results']:
-                if str(d['org_id']) == id and d['name'] is not None:
+                if str(d['org']['import_id']) == id and d['name'] is not None:
                     o['departments'].append(d)
             return o
 
@@ -250,7 +250,7 @@ def search(request):
         q2 = get_query(query_string, ['abbreviation', ])
         q3 = Q(pk="~~~ no results ~~~")
         for org in orgs:
-            q3 = q3 | Q(pk=str(org['bldg_id']))
+            q3 = q3 | Q(pk=str(org['bldg']['import_id']))
         results = campus.models.MapObj.objects.filter(q1 | q2 | q3)
         locs = list(results)
 
@@ -306,13 +306,13 @@ def search(request):
         for loc in found_entries['locations']:
             query_match = loc.name.lower().find(query_string.lower())
             for org in found_entries['organizations']:
-                if str(org['bldg_id']) == loc.pk and query_match != -1:
+                if str(org['bldg']['import_id']) == loc.pk and query_match != -1:
                     _locations.append(loc)
                     break
 
         for loc in found_entries['locations']:
             for org in found_entries['organizations']:
-                if str(org['bldg_id']) == loc.pk and loc not in _locations:
+                if str(org['bldg']['import_id']) == loc.pk and loc not in _locations:
                     _locations.append(loc)
                     break
 

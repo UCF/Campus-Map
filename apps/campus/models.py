@@ -165,7 +165,7 @@ class MapObj(models.Model):
         orgs = get_orgs()
         if orgs:
             for o in orgs['results']:
-                if self.pk == str(o['bldg_id']):
+                if self.pk == str(o['bldg']['import_id']):
                     building_orgs.append(o)
         return {
             "results": building_orgs,
@@ -569,17 +569,17 @@ class DiningLocation(MapObj):
                     for dept in depts['results']:
                         # Check existence
                         try:
-                            dining_loc = cls.objects.get(id=dept['id'])
+                            dining_loc = cls.objects.get(id=dept['import_id'])
                         except DiningLocation.DoesNotExist:
-                            dining_loc = cls(id=dept['id'])
+                            dining_loc = cls(id=dept['import_id'])
 
                         # Update name and building details
                         dining_loc.name = dept['name']
 
                         # Look up associated building to fill in coordinates
-                        if dept['bldg_id'] is not None:
+                        if dept['bldg']['import_id'] is not None:
                             try:
-                                building = Building.objects.get(id=dept['bldg_id'])
+                                building = Building.objects.get(id=dept['bldg']['import_id'])
                             except Building.DoesNotExist:
                                 # Assume the teledata is wrong
                                 pass

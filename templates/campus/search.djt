@@ -27,7 +27,7 @@
 				</a>
 				<ul>
 				{% for org in orgs %}
-					{% if org.bldg_id == loc.pk %}
+					{% if org.bldg.id == loc.pk %}
 						<li>{{ org.name|highlight_term:query|safe }}</li>
 					{% endif %}
 				{% endfor %}

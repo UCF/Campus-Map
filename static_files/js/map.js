@@ -1410,7 +1410,7 @@ var CampusMap = function(options) {
                         // Associate organizations with their locations
                         loc.orgs = [];
                         $.each(orgs, function(_index, org) {
-                          if(loc.id == org.bldg_id) {
+                          if(loc.id == org.bldg.id) {
                             // Hightlight the search query in the org name
                             org.name = UTIL.highlight_term(org.name, search_query);
                             loc.orgs.push(org);
