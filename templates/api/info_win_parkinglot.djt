@@ -40,7 +40,7 @@
 			<li><a href="{{ base_url }}{% url 'locations' %}/{{ o.bldg_id }}/{{ o.building|slugify }}/?org={{ o.id }}">{{ o.name }}</a></li>
 		{% endfor %}
 		{% if location.orgs.overflow %}
-			<li class="c"><a href="{{ base_url }}{{ location.profile_link }}">-- View All --</a></li>
+			<li class="c"><a href="{{ location.profile_link }}">-- View All --</a></li>
 		{% endif %}
 		</ul>
 	</div>
