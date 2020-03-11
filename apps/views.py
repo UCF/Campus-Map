@@ -250,7 +250,7 @@ def search(request):
         q2 = get_query(query_string, ['abbreviation', ])
         q3 = Q(pk="~~~ no results ~~~")
         for org in orgs:
-            q3 = q3 | Q(pk=str(org['bldg']['import_id']))
+            q3 = q3 | Q(pk=str(org['bldg_id']))
         results = campus.models.MapObj.objects.filter(q1 | q2 | q3)
         locs = list(results)
 
