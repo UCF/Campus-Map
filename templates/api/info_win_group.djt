@@ -33,7 +33,7 @@
 			<li><a href="{{ base_url }}/?show={{ l.id }}" onclick="return Campus.infoBox.show('{{ l.name }}', {{ l.googlemap_point }}, '{{ l.profile_link }}');">{{ l.name }}</a></li>
 		{% endfor %}
 		{% if group.overflow %}
-			<li class="c"><a href="{{ base_url }}{{ location.profile_link }}">-- View All --</a></li>
+			<li class="c"><a href="{{ location.profile_link }}">-- View All --</a></li>
 		{% endif %}
 		</ul>
 	</div>

@@ -35,7 +35,7 @@
 			<li><a href="{{ base_url }}{% url 'locations' %}/{{ o.bldg.id }}/{{ o.building|slugify }}/?org={{ o.id }}">{{ o.name }}</a></li>
 			{% endif %}
 			{% if forloop.counter == 5  %}
-				<li class="c"><a href="{{ base_url }}{{ location.profile_link }}">-- View All --</a></li>
+				<li class="c"><a href="{{ location.profile_link }}">-- View All --</a></li>
 			{% endif %}
 		{% endfor %}
 		</ul>
