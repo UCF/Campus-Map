@@ -37,7 +37,7 @@
 		<h3>Organizations</h3>
 		<ul>
 		{% for o in location.orgs.results %}
-			<li><a href="{{ base_url }}{% url 'locations' %}/{{ o.bldg.id }}/{{ o.building|slugify }}/?org={{ o.id }}">{{ o.name }}</a></li>
+			<li><a href="{{ base_url }}{% url 'locations' %}{{ o.bldg.id }}/{{ o.bldg.name|slugify }}/?org={{ o.id }}">{{ o.name }}</a></li>
 		{% endfor %}
 		{% if location.orgs.overflow %}
 			<li class="c"><a href="{{ location.profile_link }}">-- View All --</a></li>
