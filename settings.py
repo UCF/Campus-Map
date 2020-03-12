@@ -208,9 +208,6 @@ GOOGLE_LOOK_HERE = "https://map.ucf.edu"
 # search returns a very basic (nearly useless) keymatch result
 SEARCH_ENGINE = None
 
-# Phonebook search service url
-PHONEBOOK = "https://search.smca.ucf.edu/service.php"
-
 LOGIN_REDIRECT_URL = '/admin/'
 
 TEST_RUNNER = 'utils.DisableLoggingTestRunner'
