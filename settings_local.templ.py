@@ -156,3 +156,6 @@ REDIRECT_TYPES = [
     'DiningLocation',
     'Building'
 ]
+
+# Phonebook search service url
+PHONEBOOK = 'https://search.cm.ucf.edu/api/v1/teledata/'
