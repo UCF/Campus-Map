@@ -1,6 +1,7 @@
 Django==1.6.3
 newrelic==2.20.1.18
 MySQL-python==1.2.5
+gunicorn==19.7.1
 Pillow==2.4.0
 South==0.8.4
 requests==2.5.0
