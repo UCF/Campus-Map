@@ -53,6 +53,8 @@ MIDDLEWARE_CLASSES = [
 
 TEMPLATE_DIRS = (TEMPL_FOLDER,)
 
+WSGI_APPLICATION = 'wsgi.application'
+
 INSTALLED_APPS = (
     'campus',
     'django.contrib.admin',
