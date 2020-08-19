@@ -25,7 +25,7 @@ class Command(BaseCommand):
 
     _NEW_UPLOAD_PATH = os.path.join(settings.MEDIA_ROOT, 'uploads')
 
-    _OLD_IMAGE_PATH = os.path.join(settings.PROJECT_FOLDER, 'data', 'images')
+    _OLD_IMAGE_PATH = os.path.join(settings.BASE_DIR, 'data', 'images')
     _NEW_IMAGE_PATH = os.path.join(_NEW_UPLOAD_PATH,'images')
 
     _RELATIVE_IMAGE_PATH = 'uploads/images'

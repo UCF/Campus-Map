@@ -5,16 +5,14 @@ from time import time
 from time import mktime
 from xml.etree import ElementTree
 
+from django.apps import apps
 from django.template.defaultfilters import slugify
 from django.conf import settings
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.auth.decorators import login_required
 from django.core import serializers
-from django.core.management.commands.dumpdata import sort_dependencies
 from django.core.urlresolvers import reverse
 from django.core.urlresolvers import get_script_prefix
-from django.db.models import get_app
-from django.db.models import get_apps
 from django.http import HttpResponse
 from django.http import HttpResponseNotFound
 from django.http import Http404
@@ -24,7 +22,6 @@ from django.shortcuts import get_object_or_404
 from django.template.loader import get_template
 from django.template import RequestContext
 from django.template import TemplateDoesNotExist
-from django.utils.datastructures import SortedDict
 from django.views.generic import ListView
 from django.views.generic import TemplateView
 import requests
@@ -747,8 +744,10 @@ def data_dump(request):
         return response
 
     #if wanted all apps, but only want campus
-    #app_list = SortedDict([(app, None) for app in get_apps()])
-    app_list = SortedDict([(get_app('campus'), None)])
+    app_list = []
+    for app_config in apps.get_app_configs():
+        if app_config.label in ['campus']:
+            app_list.append((app_config, None))
 
     # Now collate the objects to be serialized.
     objects = []
@@ -762,7 +761,7 @@ def data_dump(request):
         else:
             return self.pk
 
-    for model in sort_dependencies(app_list.items()):
+    for model in serializers.sort_dependencies(app_list):
         # skip groupedlocation model (not needed since Group uses natural keys)
         if model == GroupedLocation:
             continue

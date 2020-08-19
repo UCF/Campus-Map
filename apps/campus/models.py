@@ -5,7 +5,7 @@ from collections import OrderedDict
 from xml.etree.ElementTree import Element
 
 from django.conf import settings
-from django.contrib.contenttypes import generic
+from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
 from django.core.urlresolvers import reverse
 from django.core.exceptions import FieldError
@@ -620,7 +620,7 @@ class GroupedLocation(models.Model):
 
     object_pk = models.CharField(max_length=255)
     content_type = models.ForeignKey(ContentType)
-    content_object = generic.GenericForeignKey('content_type', 'object_pk')
+    content_object = GenericForeignKey('content_type', 'object_pk')
 
     def __unicode__(self):
         loc = self.content_object
@@ -644,7 +644,7 @@ class GroupedLocation(models.Model):
 
 
 class Group(MapObj):
-    locations = models.ManyToManyField(GroupedLocation, null=True)
+    locations = models.ManyToManyField(GroupedLocation)
 
     def json(self, **kw):
         obj = super(Group, self).json(**kw)

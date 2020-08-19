@@ -74,11 +74,13 @@ class MapObjForm(ModelForm):
 
     class Meta:
         model = campus.models.MapObj
+        fields = '__all__'
 
 
 class BuildingForm(MapObjForm):
     class Meta:
         model = campus.models.Building
+        fields = '__all__'
 
 
 class BuildingAdmin(admin.ModelAdmin):
@@ -95,6 +97,7 @@ admin.site.register(campus.models.Building, BuildingAdmin)
 class RegionalAdminForm(MapObjForm):
     class Meta:
         model = campus.models.RegionalCampus
+        fields = '__all__'
 
 
 class RegionalAdmin(admin.ModelAdmin):
@@ -119,6 +122,7 @@ admin.site.register(campus.models.Location, LocationAdmin)
 class DisabledParkingAdminForm(MapObjForm):
     class Meta:
         model = campus.models.DisabledParking
+        fields = '__all__'
 
 
 class DisabledParkingAdmin(admin.ModelAdmin):
@@ -132,6 +136,7 @@ admin.site.register(campus.models.DisabledParking, DisabledParkingAdmin)
 class ElectricChargingStationAdminForm(MapObjForm):
     class Meta:
         model = campus.models.ElectricChargingStation
+        fields = '__all__'
 
 
 class ElectricChargingStationAdmin(admin.ModelAdmin):
@@ -158,6 +163,7 @@ admin.site.register(campus.models.EmergencyAED, EmergencyAEDAdmin)
 class ParkingLotAdminForm(MapObjForm):
     class Meta:
         model = campus.models.ParkingLot
+        fields = '__all__'
 
 
 class ParkingLotAdmin(admin.ModelAdmin):
@@ -202,6 +208,7 @@ def create_groupable_locations(**kwargs):
 class GroupForm(MapObjForm):
     class Meta:
         model = campus.models.Group
+        fields = '__all__'
 
 
 class GroupAdmin(admin.ModelAdmin):
@@ -223,6 +230,7 @@ admin.site.register(campus.models.Group, GroupAdmin)
 class DiningLocationForm(MapObjForm):
     class Meta:
         model = campus.models.DiningLocation
+        fields = '__all__'
 
 
 class DiningLocationAdmin(admin.ModelAdmin):

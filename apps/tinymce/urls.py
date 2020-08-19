@@ -3,12 +3,14 @@
 
 from django.conf.urls import *
 
-urlpatterns = patterns('tinymce.views',
-    url(r'^js/textareas/(?P<name>.+)/$', 'textareas_js', name='tinymce-js'),
-    url(r'^js/textareas/(?P<name>.+)/(?P<lang>.*)$', 'textareas_js', name='tinymce-js-lang'),
-    url(r'^spellchecker/$', 'spell_check'),
-    url(r'^flatpages_link_list/$', 'flatpages_link_list'),
-    url(r'^compressor/$', 'compressor', name='tinymce-compressor'),
-    url(r'^filebrowser/$', 'filebrowser', name='tinymce-filebrowser'),
-    url(r'^preview/(?P<name>.+)/$', 'preview', name='tinymce-preview'),
-)
+from tinymce import views
+
+urlpatterns = [
+    url(r'^js/textareas/(?P<name>.+)/$', views.textareas_js, name='tinymce.views.tinymce-js'),
+    url(r'^js/textareas/(?P<name>.+)/(?P<lang>.*)$', views.textareas_js, name='tinymce.views.tinymce-js-lang'),
+    url(r'^spellchecker/$', views.spell_check),
+    url(r'^flatpages_link_list/$', views.flatpages_link_list),
+    url(r'^compressor/$', views.compressor, name='tinymce.views.tinymce-compressor'),
+    url(r'^filebrowser/$', views.filebrowser, name='tinymce.views.tinymce-filebrowser'),
+    url(r'^preview/(?P<name>.+)/$', views.preview, name='tinymce.views.tinymce-preview'),
+]
