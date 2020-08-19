@@ -151,7 +151,7 @@
 <div id="map">
 	<header>
 		<a href="javascript:;" id="mobile-menu-trigger" class="ga-tracking" data-category="Mobile Menu" data-action="Click" data-label="Menu Open/Close"><span>MENU</span> <i class="fa fa-bars fa-2x"></i></a>
-		<h1><a href="{% url 'home' %}">UCF Campus Map</a></h1>
+		<h1><a href="{% url 'campus.views.home' %}">UCF Campus Map</a></h1>
 
 		{% if error %}
 		<div id="error">
@@ -161,7 +161,7 @@
 		<div id="error" style="display:none;"></div>
 		{% endif %}
 
-		<esi:include src="{% url 'weather'%}" />
+		<esi:include src="{% url 'campus.views.weather'%}" />
 	</header>
 	<div id="canvas-wrap"><div id="map-canvas"></div></div>
 </div>
@@ -199,10 +199,10 @@
 					"parking_kml"   : "{{ parking_kml}}",
 					"buildings_kml" : "{{ buildings_kml }}",
 					"sidewalks_kml" : "{{ sidewalks_kml }}",
-					"bikeracks"     : "{% url 'bikeracks' %}.json",
-					"phones"        : "{% url 'emergency_phones' %}.json",
-					"aeds"          : "{% url 'emergency_aeds' %}.json",
-					"stations"      : "{% url 'electric_charging_stations' %}.json",
+					"bikeracks"     : "{% url 'campus.views.bikeracks' %}.json",
+					"phones"        : "{% url 'campus.views.emergency_phones' %}.json",
+					"aeds"          : "{% url 'campus.views.emergency_aeds' %}.json",
+					"stations"      : "{% url 'campus.views.electric_charging_stations' %}.json",
 					"base_url"      : "{{ base_url }}"
 				},
 				"base_ignore_types"   : {{ base_ignore_types|safe }},

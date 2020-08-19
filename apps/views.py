@@ -266,7 +266,7 @@ def search(request):
         }
 
     if request.is_bxml():
-        base_url = request.build_absolute_uri(reverse('home'))[:-1]
+        base_url = request.build_absolute_uri(reverse('campus.views.home'))[:-1]
         xml_locations = ElementTree.Element('Locations')
         for location in list(l.bxml(base_url=base_url) for l in found_entries['locations']):
             xml_locations.append(location)

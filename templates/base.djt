@@ -56,8 +56,8 @@
 
 {% block body %}
 	<header>
-		<h1><a href="{% url 'home' %}">UCF Campus Map</a></h1>
-		<esi:include src="{% url 'weather'%}" />
+		<h1><a href="{% url 'campus.views.home' %}">UCF Campus Map</a></h1>
+		<esi:include src="{% url 'campus.views.weather'%}" />
 	</header>
 
 

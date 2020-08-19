@@ -37,7 +37,7 @@ def map_context(request):
     else:
         context_extras['map_version'] = settings.MAP_VERSION
 
-    base_url = request.build_absolute_uri(reverse('home'))[:-1]
+    base_url = request.build_absolute_uri(reverse('campus.views.home'))[:-1]
     context_extras['base_url'] = base_url
 
     if settings.CLOUD_TYPOGRAPHY_URL:

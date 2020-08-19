@@ -105,14 +105,14 @@ def home(request, **kwargs):
         v = str(mktime(latest_mapobj.modified.timetuple()))
 
     if settings.GOOGLE_CAN_SEE_ME:
-        buildings_kml = "%s.kml?v=%s" % (request.build_absolute_uri(reverse('locations')[:-1]), v)
-        sidewalks_kml = "%s.kml?v=%s" % (request.build_absolute_uri(reverse('sidewalks')[:-1]), v)
-        parking_kml   = "%s.kml?v=%s" % (request.build_absolute_uri(reverse('parking')[:-1]), v)
+        buildings_kml = "%s.kml?v=%s" % (request.build_absolute_uri(reverse('campus.views.locations')[:-1]), v)
+        sidewalks_kml = "%s.kml?v=%s" % (request.build_absolute_uri(reverse('campus.views.sidewalks')[:-1]), v)
+        parking_kml   = "%s.kml?v=%s" % (request.build_absolute_uri(reverse('campus.views.parking')[:-1]), v)
     else:
-        buildings_kml = "%s%s.kml?v=%s" % (settings.GOOGLE_LOOK_HERE, reverse('locations')[:-1], v)
-        sidewalks_kml = "%s%s.kml?v=%s" % (settings.GOOGLE_LOOK_HERE, reverse('sidewalks')[:-1], v)
-        parking_kml   = "%s%s.kml?v=%s" % (settings.GOOGLE_LOOK_HERE, reverse('parking')[:-1], v)
-    loc = "%s.json" % (request.build_absolute_uri(reverse('locations')[:-1]))
+        buildings_kml = "%s%s.kml?v=%s" % (settings.GOOGLE_LOOK_HERE, reverse('campus.views.locations')[:-1], v)
+        sidewalks_kml = "%s%s.kml?v=%s" % (settings.GOOGLE_LOOK_HERE, reverse('campus.views.sidewalks')[:-1], v)
+        parking_kml   = "%s%s.kml?v=%s" % (settings.GOOGLE_LOOK_HERE, reverse('campus.views.parking')[:-1], v)
+    loc = "%s.json" % (request.build_absolute_uri(reverse('campus.views.locations')[:-1]))
     kwargs['map'] = 'gmap'
 
     error = kwargs.get('error', None)
@@ -139,10 +139,10 @@ def home(request, **kwargs):
         'buildings_kml'      : buildings_kml,
         'sidewalks_kml'      : sidewalks_kml,
         'parking_kml'        : parking_kml,
-        'parking_json'       : reverse('parking') + '.json',
-        'dining_json'        : reverse('dining') + '.json',
+        'parking_json'       : reverse('campus.views.parking') + '.json',
+        'dining_json'        : reverse('campus.views.dining') + '.json',
         'loc_url'            : loc,
-        'base_url'           : request.build_absolute_uri(reverse('home'))[:-1],
+        'base_url'           : request.build_absolute_uri(reverse('campus.views.home'))[:-1],
         'error'              : error,
         'shuttle_info'       : shuttle_info,
         'aeds_available'     : aeds_available,
@@ -158,7 +158,7 @@ def home(request, **kwargs):
 
 def locations(request):
     locations = MapObj.objects.all()
-    base_url  = request.build_absolute_uri(reverse('home'))[:-1]
+    base_url  = request.build_absolute_uri(reverse('campus.views.home'))[:-1]
 
     if request.is_json():
         types = request.GET.get('types')
@@ -233,7 +233,7 @@ def location(request, loc, return_obj=False):
         url = get_external_link(slugify(location.name))
         return HttpResponsePermanentRedirect(url)
 
-    base_url = request.build_absolute_uri(reverse('home'))[:-1]
+    base_url = request.build_absolute_uri(reverse('campus.views.home'))[:-1]
     html = location_html(location, request)
 
     location_image = location.image
@@ -307,7 +307,7 @@ def location(request, loc, return_obj=False):
 
     context = {
         'location'      : location,
-        'loc_url'       : reverse('location', kwargs={'loc':'foo'}).replace('/foo/', '') + '.json',
+        'loc_url'       : reverse('campus.views.location', kwargs={'loc':'foo'}).replace('/foo/', '') + '.json',
         'orgs'          : location_orgs,
         'groups_orgs'   : groups_orgs,
         'org'           : org,
@@ -361,7 +361,7 @@ def sidewalks(request):
     '''
     sidewalks = Sidewalk.objects.all()
 
-    url = request.build_absolute_uri(reverse('sidewalks'))
+    url = request.build_absolute_uri(reverse('campus.views.sidewalks'))
 
     if request.is_kml():
         response = render_to_response('api/sidewalks.kml', { 'sidewalks':sidewalks })
@@ -409,7 +409,7 @@ def bikeracks(request):
     '''
     bikeracks = BikeRack.objects.all()
 
-    url = request.build_absolute_uri(reverse('bikeracks'))
+    url = request.build_absolute_uri(reverse('campus.views.bikeracks'))
 
     # trying to stick to the  geojson spec: http://geojson.org/geojson-spec.html
     arr = []
@@ -450,7 +450,7 @@ def bikeracks(request):
 def electric_charging_stations(request):
     ecs = ElectricChargingStation.objects.all()
 
-    url = request.build_absolute_uri(reverse('electric_charging_stations'))
+    url = request.build_absolute_uri(reverse('campus.views.electric_charging_stations'))
 
     arr = []
     for e in ecs:
@@ -494,7 +494,7 @@ def emergency_all(request):
     '''
     aeds = EmergencyAED.objects.all()
 
-    url = request.build_absolute_uri(reverse('emergency_aeds'))
+    url = request.build_absolute_uri(reverse('campus.views.emergency_aeds'))
 
     arr = []
     for p in aeds:
@@ -537,7 +537,7 @@ def emergency_phones(request):
     '''
     phones = EmergencyPhone.objects.all()
 
-    url = request.build_absolute_uri(reverse('emergency_phones'))
+    url = request.build_absolute_uri(reverse('campus.views.emergency_phones'))
 
     # trying to stick to the  geojson spec: http://geojson.org/geojson-spec.html
     arr = []
@@ -581,7 +581,7 @@ def emergency_aeds(request):
     '''
     aeds = EmergencyAED.objects.all()
 
-    url = request.build_absolute_uri(reverse('emergency_aeds'))
+    url = request.build_absolute_uri(reverse('campus.views.emergency_aeds'))
 
     arr = []
     for p in aeds:
@@ -639,7 +639,7 @@ def dining(request):
     obj = {
         'name'    :'UCF Dining Locations',
         'source'  :'University of Central Florida',
-        'url'     :request.build_absolute_uri(reverse('dining')) + '.json',
+        'url'     :request.build_absolute_uri(reverse('campus.views.dining')) + '.json',
         'type'    :'FeatureCollection',
         'features':arr
         }
@@ -665,7 +665,7 @@ def location_html(loc, request, orgs=True):
     TODO
     This really should be a model method, but it's time to go home
     '''
-    base_url = request.build_absolute_uri(reverse('home'))[:-1]
+    base_url = request.build_absolute_uri(reverse('campus.views.home'))[:-1]
     context  = { 'location':loc, 'base_url':base_url }
     location_type = loc.__class__.__name__.lower()
     template = 'api/info_win_%s.djt' % (location_type)
@@ -703,9 +703,9 @@ def backward_location(request):
     select = request.GET.get('select', None)
 
     if select is not None and select.startswith('b_') and len(select) > 2:
-        url = '?'.join([reverse('home'), urllib.urlencode({'show':select[2:]})])
+        url = '?'.join([reverse('campus.views.home'), urllib.urlencode({'show':select[2:]})])
         return HttpResponsePermanentRedirect(url)
-    return HttpResponsePermanentRedirect(reverse('home'))
+    return HttpResponsePermanentRedirect(reverse('campus.views.home'))
 
 
 def regional_campuses(request, campus=None):

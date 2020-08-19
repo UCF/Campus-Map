@@ -17,8 +17,8 @@
 
 		{% for c in campuses %}
 		<div class="rc {% cycle 'rc-clear' '' '' %}">
-			<h3><a href="{% url 'regional' %}{{ c.id }}/">{{ c.name }}</a></h3>
-			<p>{% if c.image %}<a href="{% url 'regional' %}{{ c.id }}/"><img src="{{ c.image.url }}" /></a>{% endif %}</p>
+			<h3><a href="{% url 'campus.views.regional' %}{{ c.id }}/">{{ c.name }}</a></h3>
+			<p>{% if c.image %}<a href="{% url 'campus.views.regional' %}{{ c.id }}/"><img src="{{ c.image.url }}" /></a>{% endif %}</p>
 			{{ c.profile|safe }}
 		</div>
 

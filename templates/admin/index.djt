@@ -24,7 +24,7 @@
 		<div class="module">
 			<h2>Management</h2>
 			<ul>
-				<li><a href="{% url 'dump_data' %}UCF Campus Map {%now "Y-m-d" %}.json">Data Export</a> <span>(right-click, save as)</span></li>
+				<li><a href="{% url 'campus.views.dump_data' %}UCF Campus Map {%now "Y-m-d" %}.json">Data Export</a> <span>(right-click, save as)</span></li>
 			</ul>
 		</div>
 	</div>

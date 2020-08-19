@@ -78,7 +78,7 @@
 		Campus.map = map;
 		Campus.menu = { "show" : function(){} };
 		Campus.info();
-		var link = '<a href="{% url 'location' building.number %}">{{ building.name }} &raquo;</a>';
+		var link = '<a href="{% url 'campus.views.location' building.number %}">{{ building.name }} &raquo;</a>';
 		Campus.infoBox.show(link, latlng);
 
 	});

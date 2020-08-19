@@ -231,7 +231,7 @@ class MapObj(models.Model):
     kml_coords = property(_kml_coords)
 
     def _link(self):
-        url = reverse('location', kwargs={'loc': self.id})
+        url = reverse('campus.views.location', kwargs={'loc': self.id})
 
         if self.object_type in settings.REDIRECT_TYPES:
             url = "{0}{1}".format(settings.LOCATION_REDIRECT_BASE, slugify(self.name))
@@ -240,7 +240,7 @@ class MapObj(models.Model):
     link = property(_link)
 
     def _profile_link(self, base_url=''):
-        url = reverse('location', kwargs={'loc': self.id})
+        url = reverse('campus.views.location', kwargs={'loc': self.id})
 
         if self.object_type in settings.REDIRECT_TYPES:
             url = "{0}{1}".format(settings.LOCATION_REDIRECT_BASE, slugify(self.name))
