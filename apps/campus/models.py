@@ -19,8 +19,6 @@ from django.template.defaultfilters import pluralize
 import requests
 from tinymce import models as tinymce_models
 
-import campus
-
 
 log = logging.getLogger(__name__)
 
