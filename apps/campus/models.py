@@ -335,6 +335,7 @@ class MapObj(models.Model):
         return u'%s' % (self.name)
 
     class Meta:
+        app_label = 'campus'
         ordering = ("name",)
 
 
@@ -342,12 +343,14 @@ class Location(MapObj):
     '''
     I don't like this name.  Maybe "miscellaneous locations" or "greater ucf"
     '''
-    pass
+    class Meta:
+        app_label = 'campus'
 
 
 class RegionalCampus(MapObj):
 
     class Meta:
+        app_label = 'campus'
         verbose_name_plural = "UCF Connect Locations"
 
 
@@ -377,6 +380,7 @@ class Building(MapObj):
 
     class Meta:
         ordering = ("name", "id")
+        app_label = 'campus'
 
 parking_permit_colors = OrderedDict()
 
@@ -432,6 +436,9 @@ class ParkingLot(MapObj):
         obj['title'] = self.title
         return obj
 
+    class Meta:
+        app_label = 'campus'
+
 
 class DisabledParking(MapObj):
     num_spaces = models.IntegerField(null=True)
@@ -461,6 +468,7 @@ class DisabledParking(MapObj):
             return self.description
 
     class Meta:
+        app_label = 'campus'
         verbose_name_plural = "Handicap Parking"
 
 
@@ -501,18 +509,25 @@ class Sidewalk(models.Model):
 
         super(Sidewalk, self).clean(*args, **kwargs)
 
+    class Meta:
+        app_label = 'campus'
+
 
 class BikeRack(MapObj):
-    pass
+    class Meta:
+        app_label = 'campus'
 
 class EmergencyPhone(MapObj):
-    pass
+    class Meta:
+        app_label = 'campus'
 
 class EmergencyAED(MapObj):
-    pass
+    class Meta:
+        app_label = 'campus'
 
 class ElectricChargingStation(MapObj):
-    pass
+    class Meta:
+        app_label = 'campus'
 
 
 class DiningLocation(MapObj):
@@ -596,6 +611,9 @@ class DiningLocation(MapObj):
                         if created:
                             group.locations.add(grouped_location)
 
+    class Meta:
+        app_label = 'campus'
+
 
 class GroupedLocationManager(models.Manager):
     '''
@@ -641,6 +659,7 @@ class GroupedLocation(models.Model):
 
     class Meta:
         unique_together = (('object_pk', 'content_type'),)
+        app_label = 'campus'
 
 
 class Group(MapObj):
@@ -685,9 +704,15 @@ class Group(MapObj):
     def __unicode__(self):
         return self.name
 
+    class Meta:
+        app_label = 'campus'
+
 m2m_changed.connect(Group.update_coordinates, sender=Group.locations.through)
 
 
 class SimpleSetting(models.Model):
     name = models.CharField(max_length=80)
     value = tinymce_models.HTMLField(null=True)
+
+    class Meta:
+        app_label = 'campus'
