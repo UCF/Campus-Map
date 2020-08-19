@@ -13,7 +13,7 @@ from django.http import Http404
 from django.http import HttpResponse
 from django.http import HttpResponseNotFound
 from django.http import HttpResponseServerError
-from django.shortcuts import render_to_response
+from django.shortcuts import render
 from django.template import Context
 from django.template import loader
 from django.template import RequestContext
@@ -75,7 +75,7 @@ def print_layout(request):
             loc = False
             error = "Location not found"
 
-    return render_to_response('pages/print.djt', locals(), context_instance=RequestContext(request))
+    return render(request, 'pages/print.djt', locals())
 
 
 def pages(request, page=None):
@@ -98,7 +98,7 @@ def pages(request, page=None):
         response['Content-type'] = 'text/plain; charset=utf-8'
         return response
 
-    return render_to_response(template, {'page': page}, context_instance=RequestContext(request))
+    return render(request, template, {'page': page})
 
 
 def organizations(request):
@@ -114,7 +114,7 @@ def organizations(request):
         'orgs_two': orgs[half:]
     }
 
-    return render_to_response('pages/organizations.djt', context, context_instance=RequestContext(request))
+    return render(request, 'pages/organizations.djt', context)
 
 
 def organization(request, id):
@@ -144,7 +144,7 @@ def organization(request, id):
     else:
         template = 'pages/organization.djt'
 
-    return render_to_response(template, context, context_instance=RequestContext(request))
+    return render(request, template, context)
 
 
 def organization_search(q):
@@ -324,7 +324,7 @@ def search(request):
 
         context = {'search': True, 'query': query_string, 'results': found_entries}
 
-        return render_to_response('campus/search.djt', context, context_instance=RequestContext(request))
+        return render(request, 'campus/search.djt', context)
 
 
 # thanks:  http://www.julienphalip.com/blog/2008/08/16/adding-search-django-site-snap/

@@ -17,7 +17,7 @@ from django.http import HttpResponse
 from django.http import HttpResponseNotFound
 from django.http import Http404
 from django.http import HttpResponsePermanentRedirect
-from django.shortcuts import render_to_response
+from django.shortcuts import render
 from django.shortcuts import get_object_or_404
 from django.template.loader import get_template
 from django.template import RequestContext
@@ -153,7 +153,7 @@ def home(request, **kwargs):
         'base_ignore_types'  : json.dumps(['DiningLocation'])
     }
 
-    return render_to_response('campus/base.djt', context, context_instance=RequestContext(request))
+    return render(request, 'campus/base.djt', context)
 
 
 def locations(request):
@@ -185,7 +185,7 @@ def locations(request):
             'base_url': base_url,
             'MEDIA_URL': settings.MEDIA_URL,
         }
-        response = render_to_response('api/locations.kml', context)
+        response = render(request, 'api/locations.kml', context)
         response['Content-type'] = 'application/vnd.google-earth.kml+xml'
         return response
 
@@ -214,7 +214,7 @@ def locations(request):
         elif(l.object_type == 'Group'):
                 context['groups'].append(l)
 
-    return render_to_response('campus/locations.djt', context, context_instance=RequestContext(request))
+    return render(request, 'campus/locations.djt', context)
 
 
 def location(request, loc, return_obj=False):
@@ -315,7 +315,7 @@ def location(request, loc, return_obj=False):
         'geo_region'    : geo_region,
     }
 
-    return render_to_response('campus/location.djt', context, context_instance=RequestContext(request))
+    return render(request, 'campus/location.djt', context)
 
 
 def parking(request):
@@ -348,7 +348,7 @@ def parking(request):
                     return False
             return True
         lots = filter(parking_filter, lots)
-        response = render_to_response('api/parking.kml', { 'parking':lots })
+        response = render(request, 'api/parking.kml', { 'parking':lots })
         response['Content-type'] = 'application/vnd.google-earth.kml+xml'
         return response
 
@@ -364,7 +364,7 @@ def sidewalks(request):
     url = request.build_absolute_uri(reverse('campus.views.sidewalks'))
 
     if request.is_kml():
-        response = render_to_response('api/sidewalks.kml', { 'sidewalks':sidewalks })
+        response = render(request, 'api/sidewalks.kml', { 'sidewalks':sidewalks })
         response['Content-type'] = 'application/vnd.google-earth.kml+xml'
         return response
 
@@ -730,7 +730,7 @@ def regional_campuses(request, campus=None):
     campuses = RegionalCampus.objects.all()
     context = { "campuses": campuses }
 
-    return render_to_response('campus/regional-campuses.djt', context, context_instance=RequestContext(request))
+    return render(request, 'campus/regional-campuses.djt')
 
 
 def shuttles(request):
@@ -863,7 +863,7 @@ def widget(request):
     else:
         template = 'widget/instructions.djt'
 
-    return render_to_response(template, context, context_instance=RequestContext(request))
+    return render(request, template, context)
 
 
 def weather(request):
@@ -898,4 +898,4 @@ def weather(request):
         response['Content-type'] = 'text/plain; charset=utf-8'
         return response
     else:
-        return render_to_response('campus/weather.html', {'weather': html}, context_instance=RequestContext(request))
+        return render(request, 'campus/weather.html', {'weather': html})
