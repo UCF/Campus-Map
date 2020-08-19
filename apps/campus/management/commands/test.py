@@ -5,7 +5,7 @@ import os
 from django.core.management import call_command
 from django.core.management.base import BaseCommand
 
-from apps.campus.models import MapObj
+from campus.models import MapObj
 '''
 	This file is used only for testing code.
 	to use, in your Campus Map project:
