@@ -666,8 +666,9 @@ def location_html(loc, request, orgs=True):
     This really should be a model method, but it's time to go home
     '''
     base_url = request.build_absolute_uri(reverse('campus.views.home'))[:-1]
-    context  = { 'location':loc, 'base_url':base_url }
     location_type = loc.object_type
+    loc = loc.as_leaf_class()
+    context  = { 'location':loc, 'base_url':base_url }
     template = 'api/info_win_%s.djt' % (location_type)
     group = { "overflow" : False, "locations" : False }
     if location_type == 'group':
@@ -687,9 +688,10 @@ def location_html(loc, request, orgs=True):
         'group'     : group
     })
     c = RequestContext(request, context)
+    c = c.flatten()
     try:
         t = get_template(template)
-        return t.render(c.flatten())
+        return t.render(c)
     except TemplateDoesNotExist, tne:
         raise Http404()
     except Exception, e:
