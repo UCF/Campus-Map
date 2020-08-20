@@ -2,6 +2,7 @@ import inspect
 import sys
 
 from django.db import models
+from django.apps import apps
 from django.contrib import admin
 from django.core.exceptions import ValidationError
 from django.forms import CharField
@@ -180,7 +181,7 @@ def create_groupable_locations(**kwargs):
 
     ''' ensure all campus locations are groupable '''
     for ct in ContentType.objects.filter(app_label="campus"):
-        model = models.get_model("campus", ct.model)
+        model = apps.get_model("campus", ct.model)
 
         ''' clean up content type, unused content types are created from going back/forth between map version and renaming models '''
         if model is None:

@@ -138,6 +138,7 @@ class MapObj(models.Model):
     illustrated_point = models.CharField(max_length=255, null=True)
     poly_coords = models.TextField(null=True)
     modified = models.DateTimeField(default=datetime.datetime.now)
+    abbreviation = models.CharField(max_length=50, null=True)
 
     def __init__(self, *args, **kwargs):
         for k, v in kwargs.items():
@@ -353,7 +354,6 @@ class RegionalCampus(MapObj):
 
 
 class Building(MapObj):
-    abbreviation = models.CharField(max_length=50, null=True)
     address = models.CharField(max_length=255, null=True)
     sketchup = models.CharField(max_length=50, null=True, help_text="E.g., https://3dwarehouse.sketchup.com/model.html?id=<code>54b7f313bf315a3a85622796b26c9e66</code>")
 
@@ -392,7 +392,6 @@ parking_permit_colors["Towers"] = "bc1b8d" #purple
 
 class ParkingLot(MapObj):
     permit_type = models.CharField(max_length=255, null=True)
-    abbreviation = models.CharField(max_length=50, null=True)
     sketchup = models.CharField(max_length=50, null=True, help_text="E.g., https://3dwarehouse.sketchup.com/model.html?id=<code>54b7f313bf315a3a85622796b26c9e66</code>")
 
     def _number(self):
