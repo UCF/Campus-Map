@@ -248,10 +248,10 @@ var CampusMap = function(options) {
   				points_layer.markers = (function() {
   					var markers        = [],
   						images         = {
-  							'Building'   : UTIL.get_google_image('building'),
-  							'ParkingLot' : UTIL.get_google_image('parking'),
-  							'Group'      : UTIL.get_google_image('group'),
-  							'Location'   : UTIL.get_google_image('location')
+  							'building'   : UTIL.get_google_image('building'),
+  							'parkinglot' : UTIL.get_google_image('parking'),
+  							'group'      : UTIL.get_google_image('group'),
+  							'location'   : UTIL.get_google_image('location')
   						},
   						map_point_type = 'gpoint';
 
@@ -288,10 +288,10 @@ var CampusMap = function(options) {
   				points_layer.markers = (function() {
   					var markers        = [],
   						images         = {
-  							'Building'   : UTIL.get_google_image('building'),
-  							'ParkingLot' : UTIL.get_google_image('parking'),
-  							'Group'      : UTIL.get_google_image('group'),
-  							'Location'   : UTIL.get_google_image('blue')
+  							'building'   : UTIL.get_google_image('building'),
+  							'parkinglot' : UTIL.get_google_image('parking'),
+  							'group'      : UTIL.get_google_image('group'),
+  							'location'   : UTIL.get_google_image('blue')
   						},
   						map_point_type = 'ipoint';
 
