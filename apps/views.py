@@ -153,8 +153,7 @@ def organization_search(q):
     try:
         results = requests.get(settings.PHONEBOOK,
                                params=params,
-                               timeout=settings.REQUEST_TIMEOUT,
-                               verify=False).json()
+                               timeout=settings.REQUEST_TIMEOUT).json()
         return results
     except:
         logger.error('Issue with organization search service')
@@ -170,8 +169,7 @@ class Orgs:
         try:
             orgs = requests.get(settings.PHONEBOOK + 'organizations/',
                                 params=payload,
-                                timeout=settings.REQUEST_TIMEOUT,
-                                verify=False).json()
+                                timeout=settings.REQUEST_TIMEOUT).json()
             cls.data = orgs
             return True
         except:
@@ -192,8 +190,7 @@ def get_depts():
     try:
         depts = requests.get(settings.PHONEBOOK + 'departments/',
                              params=payload,
-                             timeout=settings.REQUEST_TIMEOUT,
-                             verify=False).json()
+                             timeout=settings.REQUEST_TIMEOUT).json()
     except:
         print "Issue with phonebook search service"
         return None
@@ -217,8 +214,7 @@ def phonebook_search(q):
     try:
         results = requests.get(settings.PHONEBOOK,
                                params={'search': q},
-                               timeout=settings.REQUEST_TIMEOUT,
-                               verify=False).json()
+                               timeout=settings.REQUEST_TIMEOUT).json()
         return results
     except:
         print "Issue with phonebook search service"

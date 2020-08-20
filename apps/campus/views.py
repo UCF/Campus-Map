@@ -872,8 +872,7 @@ def weather(request):
     '''
     try:
         response = requests.get(settings.WEATHER_URL,
-                                timeout=settings.REQUEST_TIMEOUT,
-                                verify=False).json()
+                                timeout=settings.REQUEST_TIMEOUT).json()
 
 
         w_json = {"temperature": u'{0}\u00B0F'.format(response['tempN']), "description": response['condition']}
