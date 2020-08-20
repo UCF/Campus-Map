@@ -1,5 +1,6 @@
 from django.conf import settings
 from django.conf.urls import *
+from django.conf.urls.static import static
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.views.generic import RedirectView
 from django.views.generic import TemplateView
@@ -8,6 +9,7 @@ from django.contrib.auth.views import password_reset, password_reset_done, passw
 from api import formats, handle_request
 from campus import views as campus_views
 import views
+import settings
 
 from django.contrib import admin
 admin.autodiscover()
@@ -51,6 +53,8 @@ urlpatterns += [
 ]
 
 urlpatterns += staticfiles_urlpatterns()
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 handler404 = views.page_not_found
 handler500 = views.server_error
