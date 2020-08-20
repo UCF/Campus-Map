@@ -172,9 +172,9 @@ class MapObj(models.Model):
         }
     orgs = property(_orgs)
 
-    def _object_type(self):
-        return self.__class__.__name__
-    object_type = property(_object_type)
+    @property
+    def object_type(self):
+        return self.content_type.model
 
     def json(self, base_url=''):
         """Returns a json serializable object for this instance"""
@@ -328,6 +328,9 @@ class MapObj(models.Model):
             Remove all line breaks from poly coord text so it
             can be evaled by JavaScript
         '''
+        if self.poly_coords is None:
+            return ''
+
         return self.poly_coords.replace('\n', '').replace('\r', '')
 
     def __unicode__(self):
@@ -393,6 +396,8 @@ parking_permit_colors["Towers"] = "bc1b8d" #purple
 class ParkingLot(MapObj):
     permit_type = models.CharField(max_length=255, null=True)
     sketchup = models.CharField(max_length=50, null=True, help_text="E.g., https://3dwarehouse.sketchup.com/model.html?id=<code>54b7f313bf315a3a85622796b26c9e66</code>")
+
+
 
     def _number(self):
         return self.id
@@ -522,9 +527,19 @@ class EmergencyAED(MapObj):
     class Meta:
         app_label = 'campus'
 
+    def __str__(self):
+        return str(self.id)
+
 class ElectricChargingStation(MapObj):
     class Meta:
         app_label = 'campus'
+
+    def __str__(self):
+        return str(self.id)
+
+
+
+
 
 
 class DiningLocation(MapObj):
