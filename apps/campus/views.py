@@ -25,6 +25,7 @@ from django.template import TemplateDoesNotExist
 from django.views.generic import ListView
 from django.views.generic import TemplateView
 import requests
+import settings
 
 from campus.models import BikeRack
 from campus.models import Building
@@ -100,7 +101,7 @@ def home(request, **kwargs):
     """
     map_objs = MapObj.objects.order_by('-modified')
     v = str(time())
-    if map_objs.count():
+    if not settings.DEBUG and map_objs.count():
         latest_mapobj = map_objs[0]
         v = str(mktime(latest_mapobj.modified.timetuple()))
 
