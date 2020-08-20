@@ -681,12 +681,15 @@ def location_html(loc, request, orgs=True):
                 break
 
     # create info HTML using template
-    d = {   'location'  : loc,
-            'orgs'      : orgs,
-            'group'     : group }
+    context.update({
+        'location'  : loc,
+        'orgs'      : orgs,
+        'group'     : group
+    })
+    c = RequestContext(request, context)
     try:
         t = get_template(template)
-        return t.render(d)
+        return t.render(c.flatten())
     except TemplateDoesNotExist, tne:
         raise Http404()
     except Exception, e:
