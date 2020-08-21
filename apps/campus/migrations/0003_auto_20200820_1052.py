@@ -12,19 +12,28 @@ def abbr_forwards(apps, schema_editor):
     db_alias = schema_editor.connection.alias
 
     for bldg in Building.objects.using(db_alias).all():
-        abbr = bldg.abbreviation # TODO returns None because field doesn't exist on the model anymore? grab via sql instead?
+        abbr = bldg.abbreviation
         bldg.__class__ = MapObj
         bldg.abbreviation_migrated = abbr
         bldg.save()
     for plot in ParkingLot.objects.using(db_alias).all():
-        abbr = plot.abbreviation # TODO returns None because field doesn't exist on the model anymore? grab via sql instead?
+        abbr = plot.abbreviation
         plot.__class__ = MapObj
         plot.abbreviation_migrated = abbr
         plot.save()
 
 def abbr_backwards(apps, schema_editor):
-    # TODO
-    return
+    MapObj = apps.get_model('campus', 'MapObj')
+    db_alias = schema_editor.connection.alias
+
+    for obj in MapObj.objects.using(db_alias).filter(abbreviation_migrated__isnull=False):
+        abbr = obj.abbreviation_migrated
+        content_type = obj.content_type
+        leaf_model_name = content_type.model
+        leaf_model = apps.get_model('campus', leaf_model_name)
+        obj.__class__ = leaf_model
+        obj.abbreviation = abbr
+        obj.save()
 
 
 class Migration(migrations.Migration):
