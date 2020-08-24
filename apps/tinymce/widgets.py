@@ -7,15 +7,15 @@ http://code.djangoproject.com/wiki/CustomWidgetsTinyMCE
 """
 
 import json
+from collections import OrderedDict
 
 from django import forms
 from django.conf import settings
 from django.contrib.admin import widgets as admin_widgets
 from django.core.urlresolvers import reverse
-from django.forms.widgets import flatatt
+from django.forms.utils import flatatt
 from django.utils.encoding import smart_unicode
 from django.utils.html import escape
-from django.utils.datastructures import SortedDict
 from django.utils.safestring import mark_safe
 from django.utils.translation import get_language, ugettext as _
 import tinymce.settings
@@ -103,7 +103,7 @@ def get_language_config(content_language=None):
     config = {}
     config['language'] = language
 
-    lang_names = SortedDict()
+    lang_names = OrderedDict()
     for lang, name in settings.LANGUAGES:
         if lang[:2] not in lang_names: lang_names[lang[:2]] = []
         lang_names[lang[:2]].append(_(name))

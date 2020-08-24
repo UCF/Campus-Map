@@ -8,7 +8,7 @@ from django.core.management import call_command
 from django.core.management.base import BaseCommand
 from django.db.models import Q
 
-from apps.campus.models import MapObj
+from campus.models import MapObj
 import campus
 '''
     This was needed at some point (testing 3rd party system for displaying geodata)

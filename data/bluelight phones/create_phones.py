@@ -4,7 +4,7 @@
 import sys, os, json
 os.environ['DJANGO_SETTINGS_MODULE'] = 'settings'
 sys.path.append(os.path.abspath('../../'))
-from apps.campus.models import EmergencyPhone
+from campus.models import EmergencyPhone
 from django.core.exceptions import ValidationError
 
 # must update sqlite db name since it is a relative path

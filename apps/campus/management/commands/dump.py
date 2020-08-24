@@ -8,8 +8,8 @@ from django.core.management import call_command
 from django.core.management.base import BaseCommand
 from django.db.models import Q
 
-from apps.campus.models import MapObj
-import campus
+from campus.models import MapObj
+import settings
 '''
     This file is used only for testing code
 '''
@@ -33,7 +33,7 @@ class Command(BaseCommand):
         ]
 
 
-        path = os.path.join(os.path.dirname(campus.__file__), 'fixtures')
+        path = os.path.join(settings.BASE_DIR, 'apps/campus/fixtures')
         for model,file in model_file:
 
             print "dumping %s ..." % model

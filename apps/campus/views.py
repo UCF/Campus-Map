@@ -5,29 +5,27 @@ from time import time
 from time import mktime
 from xml.etree import ElementTree
 
+from django.apps import apps
 from django.template.defaultfilters import slugify
 from django.conf import settings
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.auth.decorators import login_required
 from django.core import serializers
-from django.core.management.commands.dumpdata import sort_dependencies
 from django.core.urlresolvers import reverse
 from django.core.urlresolvers import get_script_prefix
-from django.db.models import get_app
-from django.db.models import get_apps
 from django.http import HttpResponse
 from django.http import HttpResponseNotFound
 from django.http import Http404
 from django.http import HttpResponsePermanentRedirect
-from django.shortcuts import render_to_response
+from django.shortcuts import render
 from django.shortcuts import get_object_or_404
 from django.template.loader import get_template
 from django.template import RequestContext
 from django.template import TemplateDoesNotExist
-from django.utils.datastructures import SortedDict
 from django.views.generic import ListView
 from django.views.generic import TemplateView
 import requests
+import settings
 
 from campus.models import BikeRack
 from campus.models import Building
@@ -103,19 +101,19 @@ def home(request, **kwargs):
     """
     map_objs = MapObj.objects.order_by('-modified')
     v = str(time())
-    if map_objs.count():
+    if not settings.DEBUG and map_objs.count():
         latest_mapobj = map_objs[0]
         v = str(mktime(latest_mapobj.modified.timetuple()))
 
     if settings.GOOGLE_CAN_SEE_ME:
-        buildings_kml = "%s.kml?v=%s" % (request.build_absolute_uri(reverse('locations')[:-1]), v)
-        sidewalks_kml = "%s.kml?v=%s" % (request.build_absolute_uri(reverse('sidewalks')[:-1]), v)
-        parking_kml   = "%s.kml?v=%s" % (request.build_absolute_uri(reverse('parking')[:-1]), v)
+        buildings_kml = "%s.kml?v=%s" % (request.build_absolute_uri(reverse('campus.views.locations')[:-1]), v)
+        sidewalks_kml = "%s.kml?v=%s" % (request.build_absolute_uri(reverse('campus.views.sidewalks')[:-1]), v)
+        parking_kml   = "%s.kml?v=%s" % (request.build_absolute_uri(reverse('campus.views.parking')[:-1]), v)
     else:
-        buildings_kml = "%s%s.kml?v=%s" % (settings.GOOGLE_LOOK_HERE, reverse('locations')[:-1], v)
-        sidewalks_kml = "%s%s.kml?v=%s" % (settings.GOOGLE_LOOK_HERE, reverse('sidewalks')[:-1], v)
-        parking_kml   = "%s%s.kml?v=%s" % (settings.GOOGLE_LOOK_HERE, reverse('parking')[:-1], v)
-    loc = "%s.json" % (request.build_absolute_uri(reverse('locations')[:-1]))
+        buildings_kml = "%s%s.kml?v=%s" % (settings.GOOGLE_LOOK_HERE, reverse('campus.views.locations')[:-1], v)
+        sidewalks_kml = "%s%s.kml?v=%s" % (settings.GOOGLE_LOOK_HERE, reverse('campus.views.sidewalks')[:-1], v)
+        parking_kml   = "%s%s.kml?v=%s" % (settings.GOOGLE_LOOK_HERE, reverse('campus.views.parking')[:-1], v)
+    loc = "%s.json" % (request.build_absolute_uri(reverse('campus.views.locations')[:-1]))
     kwargs['map'] = 'gmap'
 
     error = kwargs.get('error', None)
@@ -142,10 +140,10 @@ def home(request, **kwargs):
         'buildings_kml'      : buildings_kml,
         'sidewalks_kml'      : sidewalks_kml,
         'parking_kml'        : parking_kml,
-        'parking_json'       : reverse('parking') + '.json',
-        'dining_json'        : reverse('dining') + '.json',
+        'parking_json'       : reverse('campus.views.parking') + '.json',
+        'dining_json'        : reverse('campus.views.dining') + '.json',
         'loc_url'            : loc,
-        'base_url'           : request.build_absolute_uri(reverse('home'))[:-1],
+        'base_url'           : request.build_absolute_uri(reverse('campus.views.home'))[:-1],
         'error'              : error,
         'shuttle_info'       : shuttle_info,
         'aeds_available'     : aeds_available,
@@ -156,12 +154,12 @@ def home(request, **kwargs):
         'base_ignore_types'  : json.dumps(['DiningLocation'])
     }
 
-    return render_to_response('campus/base.djt', context, context_instance=RequestContext(request))
+    return render(request, 'campus/base.djt', context)
 
 
 def locations(request):
     locations = MapObj.objects.all()
-    base_url  = request.build_absolute_uri(reverse('home'))[:-1]
+    base_url  = request.build_absolute_uri(reverse('campus.views.home'))[:-1]
 
     if request.is_json():
         types = request.GET.get('types')
@@ -188,7 +186,7 @@ def locations(request):
             'base_url': base_url,
             'MEDIA_URL': settings.MEDIA_URL,
         }
-        response = render_to_response('api/locations.kml', context)
+        response = render(request, 'api/locations.kml', context)
         response['Content-type'] = 'application/vnd.google-earth.kml+xml'
         return response
 
@@ -217,7 +215,7 @@ def locations(request):
         elif(l.object_type == 'Group'):
                 context['groups'].append(l)
 
-    return render_to_response('campus/locations.djt', context, context_instance=RequestContext(request))
+    return render(request, 'campus/locations.djt', context)
 
 
 def location(request, loc, return_obj=False):
@@ -236,7 +234,7 @@ def location(request, loc, return_obj=False):
         url = get_external_link(slugify(location.name))
         return HttpResponsePermanentRedirect(url)
 
-    base_url = request.build_absolute_uri(reverse('home'))[:-1]
+    base_url = request.build_absolute_uri(reverse('campus.views.home'))[:-1]
     html = location_html(location, request)
 
     location_image = location.image
@@ -310,7 +308,7 @@ def location(request, loc, return_obj=False):
 
     context = {
         'location'      : location,
-        'loc_url'       : reverse('location', kwargs={'loc':'foo'}).replace('/foo/', '') + '.json',
+        'loc_url'       : reverse('campus.views.location', kwargs={'loc':'foo'}).replace('/foo/', '') + '.json',
         'orgs'          : location_orgs,
         'groups_orgs'   : groups_orgs,
         'org'           : org,
@@ -318,7 +316,7 @@ def location(request, loc, return_obj=False):
         'geo_region'    : geo_region,
     }
 
-    return render_to_response('campus/location.djt', context, context_instance=RequestContext(request))
+    return render(request, 'campus/location.djt', context)
 
 
 def parking(request):
@@ -351,7 +349,7 @@ def parking(request):
                     return False
             return True
         lots = filter(parking_filter, lots)
-        response = render_to_response('api/parking.kml', { 'parking':lots })
+        response = render(request, 'api/parking.kml', { 'parking':lots })
         response['Content-type'] = 'application/vnd.google-earth.kml+xml'
         return response
 
@@ -364,10 +362,10 @@ def sidewalks(request):
     '''
     sidewalks = Sidewalk.objects.all()
 
-    url = request.build_absolute_uri(reverse('sidewalks'))
+    url = request.build_absolute_uri(reverse('campus.views.sidewalks'))
 
     if request.is_kml():
-        response = render_to_response('api/sidewalks.kml', { 'sidewalks':sidewalks })
+        response = render(request, 'api/sidewalks.kml', { 'sidewalks':sidewalks })
         response['Content-type'] = 'application/vnd.google-earth.kml+xml'
         return response
 
@@ -412,7 +410,7 @@ def bikeracks(request):
     '''
     bikeracks = BikeRack.objects.all()
 
-    url = request.build_absolute_uri(reverse('bikeracks'))
+    url = request.build_absolute_uri(reverse('campus.views.bikeracks'))
 
     # trying to stick to the  geojson spec: http://geojson.org/geojson-spec.html
     arr = []
@@ -453,7 +451,7 @@ def bikeracks(request):
 def electric_charging_stations(request):
     ecs = ElectricChargingStation.objects.all()
 
-    url = request.build_absolute_uri(reverse('electric_charging_stations'))
+    url = request.build_absolute_uri(reverse('campus.views.electric_charging_stations'))
 
     arr = []
     for e in ecs:
@@ -497,7 +495,7 @@ def emergency_all(request):
     '''
     aeds = EmergencyAED.objects.all()
 
-    url = request.build_absolute_uri(reverse('emergency_aeds'))
+    url = request.build_absolute_uri(reverse('campus.views.emergency_aeds'))
 
     arr = []
     for p in aeds:
@@ -540,7 +538,7 @@ def emergency_phones(request):
     '''
     phones = EmergencyPhone.objects.all()
 
-    url = request.build_absolute_uri(reverse('emergency_phones'))
+    url = request.build_absolute_uri(reverse('campus.views.emergency_phones'))
 
     # trying to stick to the  geojson spec: http://geojson.org/geojson-spec.html
     arr = []
@@ -584,7 +582,7 @@ def emergency_aeds(request):
     '''
     aeds = EmergencyAED.objects.all()
 
-    url = request.build_absolute_uri(reverse('emergency_aeds'))
+    url = request.build_absolute_uri(reverse('campus.views.emergency_aeds'))
 
     arr = []
     for p in aeds:
@@ -642,7 +640,7 @@ def dining(request):
     obj = {
         'name'    :'UCF Dining Locations',
         'source'  :'University of Central Florida',
-        'url'     :request.build_absolute_uri(reverse('dining')) + '.json',
+        'url'     :request.build_absolute_uri(reverse('campus.views.dining')) + '.json',
         'type'    :'FeatureCollection',
         'features':arr
         }
@@ -668,9 +666,10 @@ def location_html(loc, request, orgs=True):
     TODO
     This really should be a model method, but it's time to go home
     '''
-    base_url = request.build_absolute_uri(reverse('home'))[:-1]
+    base_url = request.build_absolute_uri(reverse('campus.views.home'))[:-1]
+    location_type = loc.object_type
+    loc = loc.as_leaf_class()
     context  = { 'location':loc, 'base_url':base_url }
-    location_type = loc.__class__.__name__.lower()
     template = 'api/info_win_%s.djt' % (location_type)
     group = { "overflow" : False, "locations" : False }
     if location_type == 'group':
@@ -684,10 +683,13 @@ def location_html(loc, request, orgs=True):
                 break
 
     # create info HTML using template
-    d = {   'location'  : loc,
-            'orgs'      : orgs,
-            'group'     : group }
-    c = RequestContext(request, d)
+    context.update({
+        'location'  : loc,
+        'orgs'      : orgs,
+        'group'     : group
+    })
+    c = RequestContext(request, context)
+    c = c.flatten()
     try:
         t = get_template(template)
         return t.render(c)
@@ -706,9 +708,9 @@ def backward_location(request):
     select = request.GET.get('select', None)
 
     if select is not None and select.startswith('b_') and len(select) > 2:
-        url = '?'.join([reverse('home'), urllib.urlencode({'show':select[2:]})])
+        url = '?'.join([reverse('campus.views.home'), urllib.urlencode({'show':select[2:]})])
         return HttpResponsePermanentRedirect(url)
-    return HttpResponsePermanentRedirect(reverse('home'))
+    return HttpResponsePermanentRedirect(reverse('campus.views.home'))
 
 
 def regional_campuses(request, campus=None):
@@ -733,7 +735,7 @@ def regional_campuses(request, campus=None):
     campuses = RegionalCampus.objects.all()
     context = { "campuses": campuses }
 
-    return render_to_response('campus/regional-campuses.djt', context, context_instance=RequestContext(request))
+    return render(request, 'campus/regional-campuses.djt')
 
 
 def shuttles(request):
@@ -747,8 +749,10 @@ def data_dump(request):
         return response
 
     #if wanted all apps, but only want campus
-    #app_list = SortedDict([(app, None) for app in get_apps()])
-    app_list = SortedDict([(get_app('campus'), None)])
+    app_list = []
+    for app_config in apps.get_app_configs():
+        if app_config.label in ['campus']:
+            app_list.append((app_config, None))
 
     # Now collate the objects to be serialized.
     objects = []
@@ -762,7 +766,7 @@ def data_dump(request):
         else:
             return self.pk
 
-    for model in sort_dependencies(app_list.items()):
+    for model in serializers.sort_dependencies(app_list):
         # skip groupedlocation model (not needed since Group uses natural keys)
         if model == GroupedLocation:
             continue
@@ -864,7 +868,7 @@ def widget(request):
     else:
         template = 'widget/instructions.djt'
 
-    return render_to_response(template, context, context_instance=RequestContext(request))
+    return render(request, template, context)
 
 
 def weather(request):
@@ -873,8 +877,7 @@ def weather(request):
     '''
     try:
         response = requests.get(settings.WEATHER_URL,
-                                timeout=settings.REQUEST_TIMEOUT,
-                                verify=False).json()
+                                timeout=settings.REQUEST_TIMEOUT).json()
 
 
         w_json = {"temperature": u'{0}\u00B0F'.format(response['tempN']), "description": response['condition']}
@@ -899,4 +902,4 @@ def weather(request):
         response['Content-type'] = 'text/plain; charset=utf-8'
         return response
     else:
-        return render_to_response('campus/weather.html', {'weather': html}, context_instance=RequestContext(request))
+        return render(request, 'campus/weather.html', {'weather': html})

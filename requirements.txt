@@ -1,8 +1,9 @@
-Django==1.6.3
-newrelic==2.20.1.18
-MySQL-python==1.2.5
+certifi==2020.6.20
+chardet==3.0.4
+Django==1.11.29
 gunicorn==19.7.1
-Pillow==2.4.0
-South==0.8.4
-requests==2.5.0
-suds==0.4
+idna==2.10
+Pillow==6.2.2
+pytz==2020.1
+requests==2.24.0
+urllib3==1.25.10

@@ -5,7 +5,7 @@ from collections import OrderedDict
 from xml.etree.ElementTree import Element
 
 from django.conf import settings
-from django.contrib.contenttypes import generic
+from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
 from django.core.urlresolvers import reverse
 from django.core.exceptions import FieldError
@@ -18,8 +18,6 @@ from django.template.defaultfilters import slugify
 from django.template.defaultfilters import pluralize
 import requests
 from tinymce import models as tinymce_models
-
-import campus
 
 
 log = logging.getLogger(__name__)
@@ -140,6 +138,7 @@ class MapObj(models.Model):
     illustrated_point = models.CharField(max_length=255, null=True)
     poly_coords = models.TextField(null=True)
     modified = models.DateTimeField(default=datetime.datetime.now)
+    abbreviation = models.CharField(max_length=50, null=True)
 
     def __init__(self, *args, **kwargs):
         for k, v in kwargs.items():
@@ -173,9 +172,9 @@ class MapObj(models.Model):
         }
     orgs = property(_orgs)
 
-    def _object_type(self):
-        return self.__class__.__name__
-    object_type = property(_object_type)
+    @property
+    def object_type(self):
+        return self.content_type.model
 
     def json(self, base_url=''):
         """Returns a json serializable object for this instance"""
@@ -231,7 +230,7 @@ class MapObj(models.Model):
     kml_coords = property(_kml_coords)
 
     def _link(self):
-        url = reverse('location', kwargs={'loc': self.id})
+        url = reverse('campus.views.location', kwargs={'loc': self.id})
 
         if self.object_type in settings.REDIRECT_TYPES:
             url = "{0}{1}".format(settings.LOCATION_REDIRECT_BASE, slugify(self.name))
@@ -240,7 +239,7 @@ class MapObj(models.Model):
     link = property(_link)
 
     def _profile_link(self, base_url=''):
-        url = reverse('location', kwargs={'loc': self.id})
+        url = reverse('campus.views.location', kwargs={'loc': self.id})
 
         if self.object_type in settings.REDIRECT_TYPES:
             url = "{0}{1}".format(settings.LOCATION_REDIRECT_BASE, slugify(self.name))
@@ -329,12 +328,16 @@ class MapObj(models.Model):
             Remove all line breaks from poly coord text so it
             can be evaled by JavaScript
         '''
+        if self.poly_coords is None:
+            return ''
+
         return self.poly_coords.replace('\n', '').replace('\r', '')
 
     def __unicode__(self):
         return u'%s' % (self.name)
 
     class Meta:
+        app_label = 'campus'
         ordering = ("name",)
 
 
@@ -342,17 +345,18 @@ class Location(MapObj):
     '''
     I don't like this name.  Maybe "miscellaneous locations" or "greater ucf"
     '''
-    pass
+    class Meta:
+        app_label = 'campus'
 
 
 class RegionalCampus(MapObj):
 
     class Meta:
+        app_label = 'campus'
         verbose_name_plural = "UCF Connect Locations"
 
 
 class Building(MapObj):
-    abbreviation = models.CharField(max_length=50, null=True)
     address = models.CharField(max_length=255, null=True)
     sketchup = models.CharField(max_length=50, null=True, help_text="E.g., https://3dwarehouse.sketchup.com/model.html?id=<code>54b7f313bf315a3a85622796b26c9e66</code>")
 
@@ -377,6 +381,7 @@ class Building(MapObj):
 
     class Meta:
         ordering = ("name", "id")
+        app_label = 'campus'
 
 parking_permit_colors = OrderedDict()
 
@@ -390,8 +395,9 @@ parking_permit_colors["Towers"] = "bc1b8d" #purple
 
 class ParkingLot(MapObj):
     permit_type = models.CharField(max_length=255, null=True)
-    abbreviation = models.CharField(max_length=50, null=True)
     sketchup = models.CharField(max_length=50, null=True, help_text="E.g., https://3dwarehouse.sketchup.com/model.html?id=<code>54b7f313bf315a3a85622796b26c9e66</code>")
+
+
 
     def _number(self):
         return self.id
@@ -432,6 +438,9 @@ class ParkingLot(MapObj):
         obj['title'] = self.title
         return obj
 
+    class Meta:
+        app_label = 'campus'
+
 
 class DisabledParking(MapObj):
     num_spaces = models.IntegerField(null=True)
@@ -461,6 +470,7 @@ class DisabledParking(MapObj):
             return self.description
 
     class Meta:
+        app_label = 'campus'
         verbose_name_plural = "Handicap Parking"
 
 
@@ -501,18 +511,35 @@ class Sidewalk(models.Model):
 
         super(Sidewalk, self).clean(*args, **kwargs)
 
+    class Meta:
+        app_label = 'campus'
+
 
 class BikeRack(MapObj):
-    pass
+    class Meta:
+        app_label = 'campus'
 
 class EmergencyPhone(MapObj):
-    pass
+    class Meta:
+        app_label = 'campus'
 
 class EmergencyAED(MapObj):
-    pass
+    class Meta:
+        app_label = 'campus'
+
+    def __str__(self):
+        return str(self.id)
 
 class ElectricChargingStation(MapObj):
-    pass
+    class Meta:
+        app_label = 'campus'
+
+    def __str__(self):
+        return str(self.id)
+
+
+
+
 
 
 class DiningLocation(MapObj):
@@ -553,8 +580,7 @@ class DiningLocation(MapObj):
             try:
                 page = requests.get(settings.PHONEBOOK + 'departments/',
                                     params=params,
-                                    timeout=settings.REQUEST_TIMEOUT,
-                                    verify=False)
+                                    timeout=settings.REQUEST_TIMEOUT)
             except Exception, e:
                 log.error('Unable to open URL %s: %s' % (settings.PHONEBOOK, str(e)))
             else:
@@ -596,6 +622,9 @@ class DiningLocation(MapObj):
                         if created:
                             group.locations.add(grouped_location)
 
+    class Meta:
+        app_label = 'campus'
+
 
 class GroupedLocationManager(models.Manager):
     '''
@@ -620,7 +649,7 @@ class GroupedLocation(models.Model):
 
     object_pk = models.CharField(max_length=255)
     content_type = models.ForeignKey(ContentType)
-    content_object = generic.GenericForeignKey('content_type', 'object_pk')
+    content_object = GenericForeignKey('content_type', 'object_pk')
 
     def __unicode__(self):
         loc = self.content_object
@@ -641,10 +670,11 @@ class GroupedLocation(models.Model):
 
     class Meta:
         unique_together = (('object_pk', 'content_type'),)
+        app_label = 'campus'
 
 
 class Group(MapObj):
-    locations = models.ManyToManyField(GroupedLocation, null=True)
+    locations = models.ManyToManyField(GroupedLocation)
 
     def json(self, **kw):
         obj = super(Group, self).json(**kw)
@@ -685,9 +715,15 @@ class Group(MapObj):
     def __unicode__(self):
         return self.name
 
+    class Meta:
+        app_label = 'campus'
+
 m2m_changed.connect(Group.update_coordinates, sender=Group.locations.through)
 
 
 class SimpleSetting(models.Model):
     name = models.CharField(max_length=80)
     value = tinymce_models.HTMLField(null=True)
+
+    class Meta:
+        app_label = 'campus'

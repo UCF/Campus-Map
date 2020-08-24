@@ -4,7 +4,7 @@
 import sys, os, json
 os.environ['DJANGO_SETTINGS_MODULE'] = 'settings'
 sys.path.append(os.path.abspath('../../'))
-from apps.campus.models import ParkingLot
+from campus.models import ParkingLot
 from django.core.exceptions import ValidationError
 
 # must update sqlite db name since it is a relative path
@@ -29,7 +29,7 @@ for o in objects['features']:
 	new['number']      = o['properties']['Number']
 	new['name']        = o['properties']['Name']
 	new['permit_type'] = o['properties']['Permit_typ']
-	
+
 	new = ParkingLot.objects.create(**new)
 	count += 1
 

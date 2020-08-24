@@ -4,7 +4,7 @@
 <Document>
 
 <name>UCF Campus Map Locations</name>
-<atom:link href="{{ base_url }}{% url 'locations' %}.kml" />
+<atom:link href="{{ base_url }}{% url 'campus.views.locations' %}.kml" />
 <atom:author>University of Central Florida</atom:author>
 
 <Schema name="location" id="location">

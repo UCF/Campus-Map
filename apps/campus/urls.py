@@ -1,30 +1,30 @@
 from django.conf import settings
-from django.conf.urls import patterns
 from django.conf.urls import url
 from django.views.generic import RedirectView
 
-urlpatterns = patterns('campus.views',
-    url(r'^$', 'home', { 'points' : True }, name='home'),
-    url(r'^locations/$', 'locations', name='locations'),
-    url(r'^locations/(?P<loc>[\w-]+)/([^/]+/)??$', 'location', name='location'),
-    url(r'^illustrated/$', 'home', name='illustrated'),
-    url(r'^sidewalks/$', 'sidewalks', name='sidewalks'),
-    url(r'^bikeracks/$', 'bikeracks', name='bikeracks'),
-    url(r'^charging-stations', 'electric_charging_stations', name='electric_charging_stations'),
-    url(r'^emergency-phones/$', 'emergency_phones', name='emergency_phones'),
-    url(r'^phones/$', RedirectView.as_view(pattern_name='emergency_phones')),
-    url(r'^emergency-aeds/$', 'emergency_aeds', name='emergency_aeds'),
-    url(r'^emergency/$', 'emergency_all', name='emergency_all'),
-    url(r'^aeds/$', RedirectView.as_view(pattern_name='emergency_aeds')),
-    url(r'^parking/$', 'parking', name='parking'),
-    url(r'^food/$', 'dining', name='dining'),
-    url(r'^regional-campuses/((?P<campus>[\w-]+)/)?$', 'regional_campuses', name='regional'),
-    url(r'^shuttles/$', 'shuttles', name='shuttles'),
-    url(r'^weather/$', 'weather', name='weather'),
+from campus import views
 
-    url(r'^widget/$', 'widget', name='widget'),
+urlpatterns = [
+    url(r'^$', views.home, { 'points' : True }, name='campus.views.home'),
+    url(r'^locations/$', views.locations, name='campus.views.locations'),
+    url(r'^locations/(?P<loc>[\w-]+)/([^/]+/)??$', views.location, name='campus.views.location'),
+    url(r'^illustrated/$', views.home, name='campus.views.illustrated'),
+    url(r'^sidewalks/$', views.sidewalks, name='campus.views.sidewalks'),
+    url(r'^bikeracks/$', views.bikeracks, name='campus.views.bikeracks'),
+    url(r'^charging-stations', views.electric_charging_stations, name='campus.views.electric_charging_stations'),
+    url(r'^emergency-phones/$', views.emergency_phones, name='campus.views.emergency_phones'),
+    url(r'^phones/$', RedirectView.as_view(pattern_name='campus.views.emergency_phones')),
+    url(r'^emergency-aeds/$', views.emergency_aeds, name='campus.views.emergency_aeds'),
+    url(r'^emergency/$', views.emergency_all, name='campus.views.emergency_all'),
+    url(r'^aeds/$', RedirectView.as_view(pattern_name='campus.views.emergency_aeds')),
+    url(r'^parking/$', views.parking, name='campus.views.parking'),
+    url(r'^food/$', views.dining, name='campus.views.dining'),
+    url(r'^regional-campuses/((?P<campus>[\w-]+)/)?$', views.regional_campuses, name='campus.views.regional'),
+    url(r'^shuttles/$', views.shuttles, name='campus.views.shuttles'),
+    url(r'^weather/$', views.weather, name='campus.views.weather'),
+
+    url(r'^widget/$', views.widget, name='campus.views.widget'),
 
     # campus admin views
-    url(r'^admin/dump/', 'data_dump', name='dump_data'),
-
-)
+    url(r'^admin/dump/', views.data_dump, name='campus.views.dump_data')
+]
