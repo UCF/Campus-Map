@@ -61,6 +61,7 @@ MIDDLEWARE_CLASSES = [
 WSGI_APPLICATION = 'wsgi.application'
 
 INSTALLED_APPS = (
+    'core',
     'campus',
     'django.contrib.admin',
     'django.contrib.auth',
