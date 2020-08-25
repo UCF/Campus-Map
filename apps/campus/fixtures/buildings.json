@@ -1,1754 +1,1754 @@
 [
-    {
-        "pk": "12150", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": null, 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "406", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "ADLT", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "410", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "ATO", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "404", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "AXD", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "152", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": null, 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "55", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "SA55", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "56", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "SA56", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "57", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "SA57", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "58", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "SA58", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "59", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "SA59", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "50", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "ARNA", 
-            "sketchup": "54b7f313bf315a3a85622796b26c9e66"
-        }
-    }, 
-    {
-        "pk": "51a", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "VAB", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "625", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "LS25", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "402", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "BPW", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "630", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "LS30", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "71", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "BYC", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "basefield", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": null, 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "3251", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": null, 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "601", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "LS01", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "20", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "BL", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "124", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "BTG", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "92", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "BFRC", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "8114", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "BMRA", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "30", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "BREV", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "135", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "BHNS", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "7h", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "FC-A", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "95", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "BAH", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "100", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "PRS", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "45", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "BA", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "94", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "BA2", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "607", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "MOD7", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "609", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "MOD3", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "53", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "CROL", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "622", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "LS22", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "140", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "CSEL", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "541", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "TR41", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "81", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "MMC", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "8111", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "CPS", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "u4", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": null, 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "5", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "CH", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "85", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "CIH", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "611", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "MOD5", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "612", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "MOD1", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "613", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "MOD2", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "626", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "M009", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "627", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "M010", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "628", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "M011", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "79", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "CL1", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "18", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "CNH", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "87", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "CAH", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "54", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "CS", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "13", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "CC1", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "29", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "CC2", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "27", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "COUN", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "529", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "CRTR", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "540", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "TR40", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "24", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "CRSC", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "403", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "TRID", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "dgc", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": null, 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "629", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "MO12", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "28", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "ECC", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "21", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "ED", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "49", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "EOC", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "350", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "EST", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "76", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "ERL", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "44", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "EFL", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "40", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "ENGR", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "91", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "ENG2", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "319", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "ENP", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "525", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "TR25", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "16", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "FSC", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "610", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "MOD4", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "126", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "FAI", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "7g", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "FC-G", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "351", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "FS65", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "86", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "FLH", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "footpracfld", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": null, 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "66", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "SA66", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "67", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "SA67", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "68", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "SA68", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "69", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "SA69", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "70", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "SA70", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "116", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "HEC", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "80", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "HPA", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "90", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "HPA2", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "127", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "HC", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "108", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "AV08", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "109", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "AV09", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "110", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "AV10", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "111", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "AV11", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "112", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "AV12", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "113", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "AV13", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "114", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "AV14", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "115", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "AV15", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "73", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "HAB", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "14", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "PH", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "12601", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": null, 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "12423", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": null, 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "8112", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "BNT", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "82", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "JBF", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "26", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "JTWC", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "407", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "KDLT", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "413", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "KSIG", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "pl", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": null, 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "50b", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "KTRS", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "137", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "KP1", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "12351", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": null, 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "11805", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": null, 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "65", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "SA65", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "9", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "LAH", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "118", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "LPS", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "33", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "COMN", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "2", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "LR", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "7ab", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "FC-A", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "7aa", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "FC-D", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "12", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "MAP", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "memorymall", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": null, 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "u5", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": null, 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "1", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "MH", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "122", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "MIRC", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "326", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "NRP", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "329", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "NRP", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "128", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "NFH", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "75", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "COMM", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "101", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "AV1", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "102", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "AV2", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "103", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "AV3", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "104", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "AV4", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "105", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "AV5", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "106", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "AV6", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "107", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "AV7", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "74", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "OBSV", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "7c", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "FC-C", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "546", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "T546", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "31", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "ORNG", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "8113", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "OTC3", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "8120", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "OTC5", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "8121", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "OTC6", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "10", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "OSH", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "u1", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": null, 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "78", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "PG-I", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "8119", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "P2", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "60", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "SA60", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "61", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "SA61", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "62", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "SA62", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "63", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "SA63", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "64", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "SA64", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "119", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "PAC", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "m119", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "PAC", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "t119", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "PAC", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "25", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "PESP", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "121", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "PS", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "514", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "PL", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "405", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "PIBP", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "11", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "POH", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "22", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "PRNT", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "96", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "UWC", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "99", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "PSY", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "150", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "PSB", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "501", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "ROTC", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "503", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": null, 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "504", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": null, 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "505", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": null, 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "u3", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": null, 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "321", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "RFM", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "320", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "RSFR", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "318", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "RSP", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "317", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "RSSP", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "88", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "RWC", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "327", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "RC", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "pond", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": null, 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "310", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "KSK", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "19", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "RH", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "8102", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "PVL", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "614", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "LS14", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "623", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "LS23", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "rosen-college-apartments", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": null, 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "7b", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "FC-B", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "7e", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "FC-E", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "32", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "SEMN", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "409", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "SAEP", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "412", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "SCHI", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "411", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "SPE", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "8125", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "STTC", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "socpracfld", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": null, 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "125", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "SBS", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "4", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "SWRL", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "7f", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "FC-F", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "52", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "STUN", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "84", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "SUH", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "535", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": null, 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "93", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "TA", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "3259", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "IRIF", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "3267", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "IRIF", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "pp", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": null, 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "50c", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": null, 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "6", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "TH", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "12001", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": null, 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "129", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "T1", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "130", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "T2", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "132", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "T3", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "133", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "T4", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "142", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "TS", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "12000", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": null, 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "408", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "UCFH", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "117", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "WAF", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "8110", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "UTC", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "8118", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "UTWR", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "3", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "UTI", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "veterans-commemorative-site", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": null, 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "153", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "VPI", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "51", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "VAB", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "8", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "VOH", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "301", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "WT", 
-            "sketchup": "77b2c2ed2aa81063ee773c66db57ea71"
-        }
-    }, 
-    {
-        "pk": "38", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "WD1", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "39", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "WD2", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "77", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "WDSC", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "608", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "MOD8", 
-            "sketchup": null
-        }
-    }, 
-    {
-        "pk": "401", 
-        "model": "campus.building", 
-        "fields": {
-            "abbreviation": "ZETA", 
-            "sketchup": null
-        }
+{
+    "model": "campus.building",
+    "pk": "12150",
+    "fields": {
+        "address": null,
+        "sketchup": null
     }
+},
+{
+    "model": "campus.building",
+    "pk": "406",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "410",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "404",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "152",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "55",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "56",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "57",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "58",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "59",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "50",
+    "fields": {
+        "address": null,
+        "sketchup": "54b7f313bf315a3a85622796b26c9e66"
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "51a",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "625",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "402",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "630",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "71",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "basefield",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "3251",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "601",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "20",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "124",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "92",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "8114",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "30",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "135",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "7h",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "95",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "100",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "45",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "94",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "607",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "609",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "53",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "622",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "140",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "541",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "81",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "8111",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "u4",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "5",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "85",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "611",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "612",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "613",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "626",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "627",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "628",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "79",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "18",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "87",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "54",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "13",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "29",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "27",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "529",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "540",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "24",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "403",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "dgc",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "629",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "28",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "21",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "49",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "350",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "76",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "44",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "40",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "91",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "319",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "525",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "16",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "610",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "126",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "7g",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "351",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "86",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "footpracfld",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "66",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "67",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "68",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "69",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "70",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "116",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "80",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "90",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "127",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "108",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "109",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "110",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "111",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "112",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "113",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "114",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "115",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "73",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "14",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "12601",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "12423",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "8112",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "82",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "26",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "407",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "413",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "pl",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "50b",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "137",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "12351",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "11805",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "65",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "9",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "118",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "33",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "2",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "7ab",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "7aa",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "12",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "memorymall",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "u5",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "1",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "122",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "326",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "329",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "128",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "75",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "101",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "102",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "103",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "104",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "105",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "106",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "107",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "74",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "7c",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "546",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "31",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "8113",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "8120",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "8121",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "10",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "u1",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "78",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "8119",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "60",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "61",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "62",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "63",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "64",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "119",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "m119",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "t119",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "25",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "121",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "514",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "405",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "11",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "22",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "96",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "99",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "150",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "501",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "503",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "504",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "505",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "u3",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "321",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "320",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "318",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "317",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "88",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "327",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "pond",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "310",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "19",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "8102",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "614",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "623",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "rosen-college-apartments",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "7b",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "7e",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "32",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "409",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "412",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "411",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "8125",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "socpracfld",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "125",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "4",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "7f",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "52",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "84",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "535",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "93",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "3259",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "3267",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "pp",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "50c",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "6",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "12001",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "129",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "130",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "132",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "133",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "142",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "12000",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "408",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "117",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "8110",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "8118",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "3",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "veterans-commemorative-site",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "153",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "51",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "8",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "301",
+    "fields": {
+        "address": null,
+        "sketchup": "77b2c2ed2aa81063ee773c66db57ea71"
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "38",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "39",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "77",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "608",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+},
+{
+    "model": "campus.building",
+    "pk": "401",
+    "fields": {
+        "address": null,
+        "sketchup": null
+    }
+}
 ]
