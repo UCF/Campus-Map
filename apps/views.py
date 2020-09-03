@@ -111,7 +111,7 @@ def organizations(request):
 def organization(request, id):
     org = get_org(id)
     if not org:
-        raise Http404("Organization ID could not be found" % (id))
+        raise Http404("Organization ID could not be found")
 
     building = None
     try:
