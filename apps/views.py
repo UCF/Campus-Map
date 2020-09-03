@@ -34,11 +34,11 @@ def page_not_found(request, **kwargs):
     if len(error.args):
         error = error.args[0]
     if hasattr(error, 'get'):
-        error = "<code>%s</code> could not be found." % (error.get('path', request.path))
+        error = "This page could not be found." % (error.get('path', request.path))
     if not isinstance(error, unicode):
         error = error.__unicode__()
     if not bool(error):
-        error = "<code>%s</code> could not be found." % (request.path)
+        error = "This page could not be found." % (request.path)
 
     if request.is_json():
         msg = {"error": strip_tags(error)}
@@ -120,7 +120,7 @@ def organizations(request):
 def organization(request, id):
     org = get_org(id)
     if not org:
-        raise Http404("Organization ID <code>%s</code> could not be found" % (id))
+        raise Http404("Organization ID This page could not be found" % (id))
 
     building = None
     try:
