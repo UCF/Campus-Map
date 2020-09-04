@@ -29,16 +29,7 @@ logger = logging.getLogger(__name__)
 
 
 def page_not_found(request, **kwargs):
-    error = sys.exc_value
-
-    if len(error.args):
-        error = error.args[0]
-    if hasattr(error, 'get'):
-        error = "<code>%s</code> could not be found." % (error.get('path', request.path))
-    if not isinstance(error, unicode):
-        error = error.__unicode__()
-    if not bool(error):
-        error = "<code>%s</code> could not be found." % (request.path)
+    error = "The requested resource could not be found."
 
     if request.is_json():
         msg = {"error": strip_tags(error)}
@@ -120,7 +111,7 @@ def organizations(request):
 def organization(request, id):
     org = get_org(id)
     if not org:
-        raise Http404("Organization ID <code>%s</code> could not be found" % (id))
+        raise Http404("Organization ID could not be found")
 
     building = None
     try:
