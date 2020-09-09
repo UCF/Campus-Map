@@ -230,7 +230,7 @@ def location(request, loc, return_obj=False):
         location = MapObj.objects.get(pk=loc)
         location_orgs = location._orgs()['results']
     except MapObj.DoesNotExist:
-        raise Http404("Location ID This page could not be found" % (loc))
+        raise Http404("Location ID could not be found")
 
     if location.object_type in settings.REDIRECT_TYPES and not request.is_json():
         url = get_external_link(slugify(location.name))
