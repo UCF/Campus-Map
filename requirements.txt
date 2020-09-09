@@ -1,4 +1,4 @@
-Django==1.6.3
+Django==1.11.29
 newrelic==2.20.1.18
 MySQL-python==1.2.5
 gunicorn==19.7.1
