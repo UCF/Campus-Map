@@ -1,7 +1,7 @@
 import json
 import os.path
 import re
-import StringIO
+import io
 import sys
 import warnings
 
@@ -74,7 +74,7 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
 
-        print "Crunching datas:"
+        print("Crunching datas:")
 
         '''
         Reset Campus
@@ -108,13 +108,13 @@ class Command(BaseCommand):
                 fixture = m.group('fixture')
                 if fixture == "groups":
                     continue # skip groups, must run last
-                print "  Updating %s ..." % fixture
+                print(("  Updating %s ..." % fixture))
                 call_command('loaddata', fixture, verbosity=0, interactive=False)
 
         # Groups
         #   for the m2m relation, create all GroupedLocation instances
         #   had to wait until all locations and contenttypes initiated
-        print "  Updating groups ..."
+        print("  Updating groups ...")
         with open(os.path.join(path, 'groups.json'), 'r') as f: txt = f.read()
         groups = json.loads(txt)
         for g in groups[:]:
@@ -136,10 +136,10 @@ class Command(BaseCommand):
         sys.stdout.write("  Updating content types ")
         create_groupable_locations(verbosity=1)
         sys.stdout.flush()
-        print
+        print()
 
         # Create/Update DiningLocations from search service
-        print '  Updating dining ...'
+        print('  Updating dining ...')
         DiningLocation.refresh()
 
         sys.stdout.write("  Updating m2m locations ")
@@ -157,4 +157,4 @@ class Command(BaseCommand):
                     sys.stdout.flush()
                 count = count +1
 
-        print "All done. The map nom'd all the data and is happy."
+        print("All done. The map nom'd all the data and is happy.")

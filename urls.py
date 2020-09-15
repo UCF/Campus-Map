@@ -9,7 +9,7 @@ from django.contrib.auth.views import password_reset, password_reset_done, passw
 from api import formats, handle_request
 from campus import views as campus_views
 import views
-import settings
+from . import settings
 
 from django.contrib import admin
 admin.autodiscover()

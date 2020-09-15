@@ -15,15 +15,15 @@ from campus.models import MapObj
 def prompt():
 	''' keep me, I'm useful '''
 	while(True):
-		i = raw_input("Accept? [y/n] ")
+		i = eval(input("Accept? [y/n] "))
 		if(i == 'y'):
-			print
+			print()
 			return True
 		elif(i == 'n'):
-			print
+			print()
 			return False
 		else:
-			print "what?"
+			print("what?")
 
 class Command(BaseCommand):
 

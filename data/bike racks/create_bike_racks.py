@@ -22,7 +22,7 @@ racks = json.loads(txt)
 count = 0
 for r in racks['features']:
 	if r['geometry'] is None:
-		print "No Geometry. Skipped"
+		print("No Geometry. Skipped")
 		continue
 	new = {}
 	new['id']              = r['properties']['ID']
@@ -31,4 +31,4 @@ for r in racks['features']:
 	new = BikeRack.objects.create(**new)
 	count += 1
 
-print "%d bike racks plotted" % (count,)
+print(("%d bike racks plotted" % (count,)))

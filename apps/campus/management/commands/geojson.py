@@ -1,4 +1,4 @@
-import StringIO
+import io
 import sys
 import json
 import os
@@ -40,7 +40,7 @@ class Command(BaseCommand):
                 'profile_link'      : 'prof_link',
             }
 
-            for k,v in properties.items():
+            for k,v in list(properties.items()):
                 properties[k] = str(v)
                 if v in ("", "None", "none", "null"):
                     v = None
@@ -73,5 +73,5 @@ class Command(BaseCommand):
         f = open(path, 'w')
         f.write(geo)
         f.close()
-        print "Exported to %s" % path
+        print(("Exported to %s" % path))
 

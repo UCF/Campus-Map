@@ -22,11 +22,11 @@ objects = json.loads(txt)
 count = 0
 for o in objects['features']:
 	if o['geometry'] is None:
-		print "No Geometry. Skipped"
+		print("No Geometry. Skipped")
 		continue
 	new = {}
 	new['googlemap_point'] = "[%f, %f]" % (o['geometry']['coordinates'][1], o['geometry']['coordinates'][0])
 	new = EmergencyPhone.objects.create(**new)
 	count += 1
 
-print "%d emergency phones created" % (count,)
+print(("%d emergency phones created" % (count,)))

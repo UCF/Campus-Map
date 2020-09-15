@@ -63,7 +63,7 @@ class TinyMCE(forms.Textarea):
         mce_config['strict_loading_mode'] = 1
         mce_json = json.dumps(mce_config)
 
-        html = [u'<textarea%s>%s</textarea>' % (flatatt(final_attrs), escape(value))]
+        html = ['<textarea%s>%s</textarea>' % (flatatt(final_attrs), escape(value))]
         if tinymce.settings.USE_COMPRESSOR:
             compressor_config = {
                 'plugins': mce_config.get('plugins', ''),
@@ -73,10 +73,10 @@ class TinyMCE(forms.Textarea):
                 'debug': False,
             }
             compressor_json = json.dumps(compressor_config)
-            html.append(u'<script type="text/javascript">tinyMCE_GZ.init(%s)</script>' % compressor_json)
-        html.append(u'<script type="text/javascript">tinyMCE.init(%s)</script>' % mce_json)
+            html.append('<script type="text/javascript">tinyMCE_GZ.init(%s)</script>' % compressor_json)
+        html.append('<script type="text/javascript">tinyMCE.init(%s)</script>' % mce_json)
 
-        return mark_safe(u'\n'.join(html))
+        return mark_safe('\n'.join(html))
 
     def _media(self):
         if tinymce.settings.USE_COMPRESSOR:
@@ -108,12 +108,12 @@ def get_language_config(content_language=None):
         if lang[:2] not in lang_names: lang_names[lang[:2]] = []
         lang_names[lang[:2]].append(_(name))
     sp_langs = []
-    for lang, names in lang_names.items():
+    for lang, names in list(lang_names.items()):
         if lang == content_language:
             default = '+'
         else:
             default = ''
-        sp_langs.append(u'%s%s=%s' % (default, ' / '.join(names), lang))
+        sp_langs.append('%s%s=%s' % (default, ' / '.join(names), lang))
 
     config['spellchecker_languages'] = ','.join(sp_langs)
 

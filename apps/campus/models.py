@@ -18,6 +18,7 @@ from django.template.defaultfilters import slugify
 from django.template.defaultfilters import pluralize
 import requests
 from tinymce import models as tinymce_models
+from functools import reduce
 
 
 log = logging.getLogger(__name__)
@@ -141,7 +142,7 @@ class MapObj(models.Model):
     abbreviation = models.CharField(max_length=50, null=True)
 
     def __init__(self, *args, **kwargs):
-        for k, v in kwargs.items():
+        for k, v in list(kwargs.items()):
             if v in ('', "None", "none", "null"):
                 kwargs[k] = None # makes the API a bit uniform
         if kwargs.get('id', False) and not isinstance(kwargs['id'], int):
@@ -180,7 +181,7 @@ class MapObj(models.Model):
         """Returns a json serializable object for this instance"""
         obj = dict(self.__dict__)
 
-        for key, val in obj.items():
+        for key, val in list(obj.items()):
 
             if key == "_state":
                 # prevents object.save() function from being destroyed
@@ -199,7 +200,7 @@ class MapObj(models.Model):
                     obj[key] = json.loads(str(obj[key]))
                 continue
 
-            if isinstance(val, unicode) or isinstance(val, bool) or val==None:
+            if isinstance(val, str) or isinstance(val, bool) or val==None:
                 continue
 
             # super dumb, concerning floats http://code.djangoproject.com/ticket/3324
@@ -334,7 +335,7 @@ class MapObj(models.Model):
         return self.poly_coords.replace('\n', '').replace('\r', '')
 
     def __unicode__(self):
-        return u'%s' % (self.name)
+        return '%s' % (self.name)
 
     class Meta:
         app_label = 'campus'
@@ -462,7 +463,7 @@ class DisabledParking(MapObj):
 
     def __unicode__(self):
         if self.num_spaces:
-            return u'%s (%s space%s)' % (self.description, self.num_spaces, pluralize(self.num_spaces))
+            return '%s (%s space%s)' % (self.description, self.num_spaces, pluralize(self.num_spaces))
         else:
             str = self.description.strip()
             if str == '':
@@ -567,7 +568,7 @@ class DiningLocation(MapObj):
             group = Group(**cls.GROUP)
             try:
                 group.save()
-            except Exception, e:
+            except Exception as e:
                 log.error('Unable to save group: %s' % str(e))
 
         dining_loc_ctype = ContentType.objects.get(
@@ -581,13 +582,13 @@ class DiningLocation(MapObj):
                 page = requests.get(settings.PHONEBOOK + 'departments/',
                                     params=params,
                                     timeout=settings.REQUEST_TIMEOUT)
-            except Exception, e:
+            except Exception as e:
                 log.error('Unable to open URL %s: %s' % (settings.PHONEBOOK, str(e)))
             else:
                 try:
                     depts = page.json()
                     depts['results']
-                except Exception, e:
+                except Exception as e:
                     log.error('Unable to parse JSON: %s' % str(e))
                 except KeyError:
                     log.error('Malformed JSON response. Expecting `results` key.')
@@ -615,7 +616,7 @@ class DiningLocation(MapObj):
                                 dining_loc.poly_coords = building.poly_coords
                         try:
                             dining_loc.save()
-                        except Exception, e:
+                        except Exception as e:
                             log.error('Unable to save dining location: %s' % str(e))
 
                         grouped_location, created = GroupedLocation.objects.get_or_create(object_pk=dining_loc.pk,content_type=dining_loc_ctype)

@@ -40,9 +40,9 @@ class TestViews(TestCase):
         Test home page
         """
         response = self.client.get('/')
-        self.assertEquals(response.status_code, 200)
+        self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed('campus/base.djt')
-        self.assertEquals('null', response.context['infobox_location_id'])
+        self.assertEqual('null', response.context['infobox_location_id'])
         self.assertIsNone(response.context['geo_placename'])
         self.assertIsNone(response.context['geo_region'])
         self.assertIsNone(response.context['geo_latlng'])
@@ -60,16 +60,16 @@ class TestViews(TestCase):
         Test map location (?show=1)
         """
         response = self.client.get('/?show=1')
-        self.assertEquals(200, response.status_code)
+        self.assertEqual(200, response.status_code)
         self.assertTemplateUsed('campus/base.djt')
-        self.assertEquals('"1"', response.context['infobox_location_id'])
+        self.assertEqual('"1"', response.context['infobox_location_id'])
 
     def test_page(self):
         """
         Test the url.py page functionality
         """
         response = self.client.get('/printable/')
-        self.assertEquals(200, response.status_code)
+        self.assertEqual(200, response.status_code)
         self.assertTemplateUsed('pages/printable.djt')
 
     def test_organizations(self):
@@ -77,11 +77,11 @@ class TestViews(TestCase):
         Test organizations
         """
         response = self.client.get('/organizations/')
-        self.assertEquals(response.status_code, 200)
+        self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed('pages/organizations.djt')
-        self.assertIn({u'building': u'Millican Hall', u'name': u'ACADEMIC AFFAIRS', u'phone': u'407-823-2302', u'bldg_id': 1, u'org_id': None, u'id': 354, u'dept_id': None, u'from_table': u'organizations', u'department': None, u'organization': None, u'email': None, u'room': u'338'},
+        self.assertIn({'building': 'Millican Hall', 'name': 'ACADEMIC AFFAIRS', 'phone': '407-823-2302', 'bldg_id': 1, 'org_id': None, 'id': 354, 'dept_id': None, 'from_table': 'organizations', 'department': None, 'organization': None, 'email': None, 'room': '338'},
                       response.context['orgs_one'])
-        self.assertIn({u'building': u'Knights Plaza', u'name': u'KNIGHTS PLAZA', u'phone': u'407-882-8600', u'bldg_id': 137, u'org_id': None, u'id': 527, u'dept_id': None, u'from_table': u'organizations', u'department': None, u'organization': None, u'email': None, u'room': None},
+        self.assertIn({'building': 'Knights Plaza', 'name': 'KNIGHTS PLAZA', 'phone': '407-882-8600', 'bldg_id': 137, 'org_id': None, 'id': 527, 'dept_id': None, 'from_table': 'organizations', 'department': None, 'organization': None, 'email': None, 'room': None},
                       response.context['orgs_two'])
 
     def test_organization(self):
@@ -89,13 +89,13 @@ class TestViews(TestCase):
         Test organization
         """
         response = self.client.get('/locations/1/millican-hall/?org=354')
-        self.assertEquals(200, response.status_code)
+        self.assertEqual(200, response.status_code)
         self.assertTemplateUsed('pages/location.djt')
-        self.assertEquals(u'Millican Hall', response.context['location'].name)
-        self.assertEquals(u'Millican Hall', response.context['org'][u'building'])
-        self.assertIn({u'building': u'Millican Hall', u'name': u'Academic Affairs', u'phone': u'407-823-4376', u'bldg_id': 1, u'org_id': 354, u'id': 1451, u'dept_id': None, u'from_table': u'departments', u'department': None, u'organization': u'ACADEMIC AFFAIRS', u'email': None, u'room': u'338'},
+        self.assertEqual('Millican Hall', response.context['location'].name)
+        self.assertEqual('Millican Hall', response.context['org']['building'])
+        self.assertIn({'building': 'Millican Hall', 'name': 'Academic Affairs', 'phone': '407-823-4376', 'bldg_id': 1, 'org_id': 354, 'id': 1451, 'dept_id': None, 'from_table': 'departments', 'department': None, 'organization': 'ACADEMIC AFFAIRS', 'email': None, 'room': '338'},
                       response.context['org']['departments'])
-        self.assertEquals('US-FL', response.context['geo_region'])
-        self.assertEquals('Orlando', response.context['geo_placename'])
-        self.assertEquals(u'[28.598854185535444, -81.202466958930960]', response.context['location'].googlemap_point)
+        self.assertEqual('US-FL', response.context['geo_region'])
+        self.assertEqual('Orlando', response.context['geo_placename'])
+        self.assertEqual('[28.598854185535444, -81.202466958930960]', response.context['location'].googlemap_point)
 

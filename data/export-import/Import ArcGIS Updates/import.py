@@ -13,8 +13,8 @@ if 'sqlite3' in db:
 	settings.DATABASES['default']['NAME'] = os.path.abspath('../../../') + '/' + db
 
 filename = "buildings_shp_export.json"
-print "Reading contents of", filename, "..."
-print
+print(("Reading contents of", filename, "..."))
+print()
 
 # update buildings from the authoritative source
 f = open(filename)
@@ -31,18 +31,18 @@ out.write("%s %s\n\n" % ('>'*20, datetime.now().strftime("%A %B %d, %Y %H:%M")))
 
 def prompt():
 	while(True):
-		i = raw_input("Accept? [y/n] ")
+		i = eval(input("Accept? [y/n] "))
 		if(i == 'y'):
-			print
+			print()
 			return True
 		elif(i == 'n'):
-			print
+			print()
 			return False
 		else:
-			print "what?"
+			print("what?")
 
 def map_url(coords):
-	import urllib
+	import urllib.request, urllib.parse, urllib.error
 	if coords == None or coords == "null" or coords == "None":
 		return "None"
 
@@ -59,7 +59,7 @@ def map_url(coords):
 	arr  = json.loads(coords)
 	data = flat(arr)
 	url  = "http://www.gpsvisualizer.com/map_input?form=google&google_wpt_filter_sort=0&form:data=%s%s" % (
-	           urllib.quote("longitude,latitude\n"), urllib.quote(data) )
+	           urllib.parse.quote("longitude,latitude\n"), urllib.parse.quote(data) )
 	return url
 
 def coords(obj):
@@ -68,7 +68,7 @@ def coords(obj):
 	else:
 		try: obj_coords = obj['geometry']['coordinates']
 		except: obj_coords = None
-		return unicode(json.dumps(obj_coords, ensure_ascii=False ))
+		return str(json.dumps(obj_coords, ensure_ascii=False ))
 
 def abbr(obj):
 	if isinstance(obj, Building):
@@ -77,7 +77,7 @@ def abbr(obj):
 		return "(none)" if not bool(obj['properties']['Abrev']) else obj['properties']['Abrev']
 
 def printo(str):
-	print str
+	print(str)
 	out.write(str)
 	out.write("\n")
 
@@ -93,10 +93,10 @@ for a in arcgis[:]:
 		for i,d in enumerate(duplicates):
 			printo("#%s\n  %s [%s]\n  %s\n" % (i+1, d['properties']['Name'], d['properties']['Num'], coords(d)))
 
-		select = raw_input("Select which to keep (1-%s, 0 for none): " % len(duplicates))
+		select = eval(input("Select which to keep (1-%s, 0 for none): " % len(duplicates)))
 		try: select = int(select)
 		except ValueError: select = 0
-		print
+		print()
 
 		for i,d in enumerate(duplicates):
 			if (i+1) == select:
@@ -109,7 +109,7 @@ printo("\n{0}\n  Inspecting Updates \n{0}\n".format("-"*78))
 # check for invalid numbers
 for i,b in enumerate(arcgis[:]):
 	if b['properties']['Num'] != b['properties']['Num'].lower():
-		print "Uppercase Number: %s, %s" % (b['properties']['Name'], b['properties']['Num'])
+		print(("Uppercase Number: %s, %s" % (b['properties']['Name'], b['properties']['Num'])))
 		arcgis[i]['properties']['Num'] = b['properties']['Num'].lower()
 
 printo('\n')
@@ -122,10 +122,10 @@ for ab in arcgis[:]:
 
 			# update name
 			if not ab['properties']['Name'] == cb.name:
-				print "%s [id: %s]\n%s" % (cb.name, cb.number, '-'*50)
-				print "Name change (from/to):"
-				print ' ', cb.name
-				print ' ', ab['properties']['Name']
+				print(("%s [id: %s]\n%s" % (cb.name, cb.number, '-'*50)))
+				print("Name change (from/to):")
+				print((' ', cb.name))
+				print((' ', ab['properties']['Name']))
 				if(prompt()):
 					b = Building.objects.get( pk=ab['properties']['Num'] )
 					b.name = ab['properties']['Name']
@@ -138,10 +138,10 @@ for ab in arcgis[:]:
 
 			#update abbreviation
 			if not ab['properties']['Abrev'] == cb.abbreviation:
-				print "%s [id: %s]\n%s" % (cb.name, cb.number, '-'*50)
-				print "Abreviation change from/to:"
-				print ' ', abbr(cb)
-				print ' ', abbr(ab)
+				print(("%s [id: %s]\n%s" % (cb.name, cb.number, '-'*50)))
+				print("Abreviation change from/to:")
+				print((' ', abbr(cb)))
+				print((' ', abbr(ab)))
 				if(prompt()):
 					b = Building.objects.get( pk=ab['properties']['Num'] )
 					b.abbreviation = ab['properties']['Abrev']
@@ -155,12 +155,12 @@ for ab in arcgis[:]:
 			#update coords
 			try: ab_coords = ab['geometry']['coordinates']
 			except: ab_coords = None
-			ab_coords = unicode(json.dumps(ab_coords, ensure_ascii=False ))
+			ab_coords = str(json.dumps(ab_coords, ensure_ascii=False ))
 			if not ab_coords == cb.poly_coords:
-				print "%s [id: %s]\n%s" % (cb.name, cb.number, '-'*50)
-				print "Coordinates changeded from/to:"
-				print ' - Old Coords:', map_url(cb.poly_coords)
-				print ' - New Coords:', map_url(ab_coords)
+				print(("%s [id: %s]\n%s" % (cb.name, cb.number, '-'*50)))
+				print("Coordinates changeded from/to:")
+				print((' - Old Coords:', map_url(cb.poly_coords)))
+				print((' - New Coords:', map_url(ab_coords)))
 				if(prompt()):
 					# update coords
 					b = Building.objects.get( pk=ab['properties']['Num'] )
@@ -175,8 +175,8 @@ for ab in arcgis[:]:
 						out_str = "\n{0}\n  Error - Unable to save building \n{0}\n  Error: {1}\n  Building: {2}\n  Geometry: {3}\n\n".format(
 							"X"*78, e_str, ab['properties'], ab_coords)
 						out.write(out_str)
-						print
-						print out_str
+						print()
+						print(out_str)
 				else:
 					out.write("XXXXX Rejected Coordinates, %s XXXXX\n" % cb.name)
 					out.write("  %s\n  %s\n\n" % (coords(cb), coords(ab)))
@@ -188,21 +188,21 @@ for ab in arcgis[:]:
 
 if len(arcgis):
 	# print preview list
-	print "\n{0}\n  New Buildings \n{0}\n".format("-"*78)
+	print(("\n{0}\n  New Buildings \n{0}\n".format("-"*78)))
 	for b in arcgis[:]:
-		print b['properties']['Name']
-		print " Num: ", b['properties']['Num']
-		print " Abbrev: ", abbr(b)
-		print " Coords: ", coords(b)
-		print
+		print((b['properties']['Name']))
+		print((" Num: ", b['properties']['Num']))
+		print((" Abbrev: ", abbr(b)))
+		print((" Coords: ", coords(b)))
+		print()
 
-print "\n{0}\n  New Buildings\nCreate Points as they're created (easiest way) \n{0}\n".format("-"*78)
+print(("\n{0}\n  New Buildings\nCreate Points as they're created (easiest way) \n{0}\n".format("-"*78)))
 if not len(arcgis):
 	print("  None.\n")
 for b in arcgis[:]:
 
-	print "New Building: %s, %s" % (b['properties']['Num'], b['properties']['Name'])
-	print "  coords: %s" % map_url(coords(b))
+	print(("New Building: %s, %s" % (b['properties']['Num'], b['properties']['Name'])))
+	print(("  coords: %s" % map_url(coords(b))))
 	if(not prompt()):
 		continue
 
@@ -211,7 +211,7 @@ for b in arcgis[:]:
 	except Building.DoesNotExist:
 		pass
 	else:
-		print "\n\nERROR: How did I get here? This building should not exist: %s\n\nExiting.\n\n" % b
+		print(("\n\nERROR: How did I get here? This building should not exist: %s\n\nExiting.\n\n" % b))
 		exit()
 
 	new = {}
@@ -224,7 +224,7 @@ for b in arcgis[:]:
 		nb.clean()
 		nb.save()
 	except ValidationError as e:
-		print "Unable to save building: {0} Skipped:\n  Items: {1}\n  Geometry: {1}\n\n".format(e.messages[0], b['properties'], b['geometry']['coordinates'])
+		print(("Unable to save building: {0} Skipped:\n  Items: {1}\n  Geometry: {1}\n\n".format(e.messages[0], b['properties'], b['geometry']['coordinates'])))
 		continue
 	else:
 		out.write("Created New Building:\n")
@@ -242,21 +242,21 @@ def merge(new, old):
 		  or bool(new.illustrated_point)
 		  or bool(new.googlemap_point)
 		  or bool(new.description)):
-		print "New building has some valued filled and is not ready for merge"
-		print new.json()
+		print("New building has some valued filled and is not ready for merge")
+		print((new.json()))
 		return False
 
 	# make sure that we aren't loosing data
 	if bool(old.poly_coords) and not bool(new.poly_coords):
-		print "Loosing data with poly_coords, not sure if this is intentional"
+		print("Loosing data with poly_coords, not sure if this is intentional")
 		return False
 
 	if bool(old.name) and not bool(new.name):
-		print "New name is blank, that's not good"
+		print("New name is blank, that's not good")
 		return False
 
 	if bool(old.abbreviation) and not bool(new.abbreviation):
-		print "Loosing data abbreviation, not sure if this is intentional"
+		print("Loosing data abbreviation, not sure if this is intentional")
 		return False
 
 
@@ -270,9 +270,9 @@ def merge(new, old):
 	new.googlemap_point   = old.googlemap_point
 	new.description       = old.description
 
-	print "New and Old (will be deleted):"
-	print "  %s" % str(new.json())
-	print "  %s" % str(old.json())
+	print("New and Old (will be deleted):")
+	print(("  %s" % str(new.json())))
+	print(("  %s" % str(old.json())))
 
 	if(prompt()):
 		new.save()
@@ -297,17 +297,17 @@ if len(cmap):
 		orphans.write("  Preview Coords: %s\n" % map_url(coords(b)))
 		orphans.write("\n")
 orphans.close()
-print "Orphans preview written to orphans.txt"
+print("Orphans preview written to orphans.txt")
 
 
 printo("\n\n{0}\n  Buildings Orphaned \n{0}\n".format("-"*78))
 if not len(cmap):
 	printo("  None.\n")
 for b in cmap:
-	print "%s" % b.name
-	print"  number: %s\n  abbreviation: %s\n  coords: %s" % (b.number, abbr(b), coords(b))
+	print(("%s" % b.name))
+	print(("  number: %s\n  abbreviation: %s\n  coords: %s" % (b.number, abbr(b), coords(b))))
 	while(True):
-		i = raw_input("Keep [k], Delete [d], or Merge [m] ? ")
+		i = eval(input("Keep [k], Delete [d], or Merge [m] ? "))
 		if(i == 'k'):
 			out.write("%s\n" % b.name)
 			out.write("  number: %s\n  abbreviation: %s\n  coords: %s\n\n" % (b.number, abbr(b), coords(b)))
@@ -321,17 +321,17 @@ for b in cmap:
 		elif(i == 'm'):
 			go = True
 			while(go):
-				pk = raw_input("Building number to merge with? ")
+				pk = eval(input("Building number to merge with? "))
 				try:
 					new = Building.objects.get( pk=pk )
 				except Building.DoesNotExist:
-					print "Building not found."
+					print("Building not found.")
 				finally:
 					go = merge(new, b)
 			break
 		else:
-			print "what?"
-	print "\n"
+			print("what?")
+	print("\n")
 	out.flush()
 
 
@@ -342,5 +342,5 @@ for b in arcgis:
 	out.write("%s\n\n" % b['properties'])
 
 
-print "Results printed 'import-results.txt'"
+print("Results printed 'import-results.txt'")
 out.close()

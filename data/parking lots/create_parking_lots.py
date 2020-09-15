@@ -22,7 +22,7 @@ objects = json.loads(txt)
 count = 0
 for o in objects['features']:
 	if o['geometry'] is None:
-		print "No Geometry. Skipped"
+		print("No Geometry. Skipped")
 		continue
 	new = {}
 	new['poly_coords'] = o['geometry']['coordinates']
@@ -33,4 +33,4 @@ for o in objects['features']:
 	new = ParkingLot.objects.create(**new)
 	count += 1
 
-print "%d parking lots created" % (count,)
+print(("%d parking lots created" % (count,)))

@@ -23,17 +23,17 @@ for nb in new['features'][:]:
 		
 		if ob['properties']['Num'] == nb['properties']['Num']:
 			if ob['geometry'] != nb['geometry']:
-				print ob['properties']['Name']
-				print " ", ob['geometry']
-				print " ", nb['geometry']
+				print((ob['properties']['Name']))
+				print((" ", ob['geometry']))
+				print((" ", nb['geometry']))
 			old['features'].remove(ob)
 			new['features'].remove(nb)
 			break
 
-print "\n{0}\n  New Buildings \n{0}".format("-"*78)
+print(("\n{0}\n  New Buildings \n{0}".format("-"*78)))
 for nb in new['features']:
-	print nb['properties']['Name'], nb['geometry']
+	print((nb['properties']['Name'], nb['geometry']))
 
-print "\n\n{0}\n  Deleted Buildings \n{0}".format("-"*78)
+print(("\n\n{0}\n  Deleted Buildings \n{0}".format("-"*78)))
 for ob in old['features']:
-	print ob['properties']['Name'], ob['geometry']
+	print((ob['properties']['Name'], ob['geometry']))

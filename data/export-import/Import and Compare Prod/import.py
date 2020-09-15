@@ -14,7 +14,7 @@ if 'sqlite3' in db:
 	settings.DATABASES['default']['NAME'] = os.path.abspath('../../../') + '/' + db
 
 
-print "Looking at desktop for map export ..."
+print("Looking at desktop for map export ...")
 path = os.path.expanduser('~/Desktop/')
 files = os.listdir(path)
 files.sort()
@@ -23,12 +23,12 @@ export = None
 for f in files:
 	m = re.match(r"(?P<export>.+)\.json$", f)
 	if m:
-		print 'Continue with "%s"?' % f
+		print(('Continue with "%s"?' % f))
 		if prompt():
 			export = f
 			break
 if not export:
-	print "Export not found.  Goodbye."
+	print("Export not found.  Goodbye.")
 	exit()
 
 # output
@@ -61,7 +61,7 @@ results = {
 def compare(mob, o):
 	mob = mob.__dict__
 	mob.pop('_state', None)
-	for k,v in o['fields'].items():
+	for k,v in list(o['fields'].items()):
 		try:
 			if not mob[k]==v:
 				
@@ -154,8 +154,8 @@ for o in prod:
 			else: results['Missing locally'] = 1
 
 printo("\n\nResults:")
-for k,v in results.items():
+for k,v in list(results.items()):
 	printo("  %s: %-5s" % (k,v))
 
-print
-print "Output in import-results.txt"
+print()
+print("Output in import-results.txt")

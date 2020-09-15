@@ -1,6 +1,6 @@
 import json
 import re
-import urllib
+import urllib.request, urllib.parse, urllib.error
 from time import time
 from time import mktime
 from xml.etree import ElementTree
@@ -44,6 +44,7 @@ from campus.models import Sidewalk
 from campus.models import SimpleSetting
 from campus.utils import get_geo_data
 from campus.utils import get_external_link
+from functools import reduce
 
 def home(request, **kwargs):
     '''
@@ -82,8 +83,8 @@ def home(request, **kwargs):
             geo_latlng = latlng
 
     # Filter home page locations to building, locations, and groups
-    show = map(lambda c: ContentType.objects.get_for_model(c), (Building, Location, Group, ParkingLot, DiningLocation))
-    mobs = MapObj.objects.filter(content_type__in=map(lambda c: c.id, show))
+    show = [ContentType.objects.get_for_model(c) for c in (Building, Location, Group, ParkingLot, DiningLocation)]
+    mobs = MapObj.objects.filter(content_type__in=[c.id for c in show])
     points = {}
     for o in mobs:
         o = o.json()
@@ -340,7 +341,7 @@ def parking(request):
             if not request.GET:
                 return True
             l = l.__dict__
-            for k,v in request.GET.items():
+            for k,v in list(request.GET.items()):
                 try:
                     # ignoring 'v' because it used ensuring google doesn't cache the kml
                     if k == 'v' or l[k] == v: continue
@@ -348,7 +349,7 @@ def parking(request):
                 except KeyError:
                     return False
             return True
-        lots = filter(parking_filter, lots)
+        lots = list(filter(parking_filter, lots))
         response = render(request, 'api/parking.kml', { 'parking':lots })
         response['Content-type'] = 'application/vnd.google-earth.kml+xml'
         return response
@@ -693,9 +694,9 @@ def location_html(loc, request, orgs=True):
     try:
         t = get_template(template)
         return t.render(c)
-    except TemplateDoesNotExist, tne:
+    except TemplateDoesNotExist as tne:
         raise Http404()
-    except Exception, e:
+    except Exception as e:
         raise Http404()
 
 def backward_location(request):
@@ -708,7 +709,7 @@ def backward_location(request):
     select = request.GET.get('select', None)
 
     if select is not None and select.startswith('b_') and len(select) > 2:
-        url = '?'.join([reverse('campus.views.home'), urllib.urlencode({'show':select[2:]})])
+        url = '?'.join([reverse('campus.views.home'), urllib.parse.urlencode({'show':select[2:]})])
         return HttpResponsePermanentRedirect(url)
     return HttpResponsePermanentRedirect(reverse('campus.views.home'))
 
@@ -779,7 +780,7 @@ def data_dump(request):
             objects.extend( sorted(model.objects.all(), key=ordering) )
     try:
         data = serializers.serialize('json', objects, indent=4, use_natural_keys=True)
-    except Exception, e:
+    except Exception as e:
         data = serializers.serialize('json', "ERORR!")
 
     response = HttpResponse(data)
@@ -880,8 +881,8 @@ def weather(request):
                                 timeout=settings.REQUEST_TIMEOUT).json()
 
 
-        w_json = {"temperature": u'{0}\u00B0F'.format(response['tempN']), "description": response['condition']}
-        w_text = u'temperature: {0}\u00B0F\ndescription: {1}'.format(response['tempN'], response['condition'])
+        w_json = {"temperature": '{0}\\u00B0F'.format(response['tempN']), "description": response['condition']}
+        w_text = 'temperature: {0}\\u00B0F\ndescription: {1}'.format(response['tempN'], response['condition'])
 
         # grab just icon and description
         html = '<div class="navweatherimage"><img src="' + response['imgSmall'] + '" title="' + response['condition'] + '" alt="' + response['condition'] + '" ></div><div class="description">' + response['temp'] + ', ' + response['condition'] + '</div>'
@@ -889,7 +890,7 @@ def weather(request):
         if request.is_json():
             w_json = {'weather': None, 'error': 'IOError with opening URL'}
         elif request.is_txt():
-            w_text = u'error IOError with opening URL'
+            w_text = 'error IOError with opening URL'
         else:
             html = None
 

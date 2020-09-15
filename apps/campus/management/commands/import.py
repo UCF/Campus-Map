@@ -30,7 +30,7 @@ class Command(BaseCommand):
         for b in buildings:
             b['fields']['id'] = b['pk']
             new = Building.objects.create(**b['fields'])
-            print new.id, new.name
+            print(new.id, new.name)
 
         # ucf connect locations
         f = open(os.path.join(path, 'campuses.json'), 'r')
@@ -40,7 +40,7 @@ class Command(BaseCommand):
         for o in objects:
             o['fields']['id'] = o['pk']
             new = RegionalCampus.objects.create(**o['fields'])
-            print new.id, new.name
+            print(new.id, new.name)
 
 
         # locations
@@ -51,7 +51,7 @@ class Command(BaseCommand):
         for o in objects:
             o['fields']['id'] = o['pk']
             new = Location.objects.create(**o['fields'])
-            print new.id, new.name
+            print(new.id, new.name)
 
         # parking lots
         f = open(os.path.join(path, 'parkinglots.json'), 'r')
@@ -61,7 +61,7 @@ class Command(BaseCommand):
         for o in objects:
             o['fields']['id'] = "parkinglot-%s" % o['pk']
             new = ParkingLot.objects.create(**o['fields'])
-            print new.id, new.name
+            print(new.id, new.name)
 
         # emergency phones
         f = open(os.path.join(path, 'phones.json'), 'r')
@@ -71,7 +71,7 @@ class Command(BaseCommand):
         for o in objects:
             o['fields']['id'] = "phone-%s" % o['pk']
             new = EmergencyPhone.objects.create(**o['fields'])
-            print new.id, new.name
+            print(new.id, new.name)
 
         # emergency aeds
         f = open(os.path.join(path, 'aeds.json'), 'r')
@@ -81,7 +81,7 @@ class Command(BaseCommand):
         for o in objects:
             o['fields']['id'] = "aed-%s" % o['pk']
             new = EmergencyAED.objects.create(**o['fields'])
-            print new.id, new.name
+            print(new.id, new.name)
 
         # bike racks
         f = open(os.path.join(path, 'bikeracks.json'), 'r')
@@ -91,7 +91,7 @@ class Command(BaseCommand):
         for o in objects:
             o['fields']['id'] = "bikerack-%s" % o['pk']
             new = BikeRack.objects.create(**o['fields'])
-            print new.id, new.name
+            print(new.id, new.name)
 
         create_groupable_locations()
 
@@ -104,9 +104,9 @@ class Command(BaseCommand):
             o['fields']['id'] = o['pk']
             locations = o['fields'].pop('locations')
             new = Group.objects.create(**o['fields'])
-            print new.id
+            print(new.id)
             for l in locations:
-                print "adding %s" % l,
+                print("adding %s" % l, end=' ')
                 gl = GroupedLocation.objects.get_by_natural_key(l[0], l[1])
-                print gl
+                print(gl)
                 new.locations.add(gl)

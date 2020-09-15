@@ -1,6 +1,6 @@
 import json
 import os
-import StringIO
+import io
 import sys
 
 from django.core import serializers
@@ -36,9 +36,9 @@ class Command(BaseCommand):
         path = os.path.join(settings.BASE_DIR, 'apps/campus/fixtures')
         for model,file in model_file:
 
-            print "dumping %s ..." % model
+            print(("dumping %s ..." % model))
             f = open(os.path.join(path, file), 'w')
-            output = StringIO.StringIO()
+            output = io.StringIO()
             sys.stdout = output
             call_command('dumpdata', 'campus.%s' % model, indent=4, use_natural_keys=True)
             sys.stdout = sys.__stdout__
@@ -47,7 +47,7 @@ class Command(BaseCommand):
             f.close
 
         # mapobjects has to be done uniquely
-        print "dumping mapobjects ..."
+        print("dumping mapobjects ...")
         mobs = MapObj.objects.mob_filter(Q())
         f = open(os.path.join(path, '__mapobjects.json'), 'w')
         txt = serializers.serialize('json', mobs, indent=4, use_natural_keys=True)

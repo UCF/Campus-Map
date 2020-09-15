@@ -11,14 +11,14 @@ from django.template.defaultfilters import slugify
 from tinymce.widgets import AdminTinyMCE
 
 import campus
-from models import *
+from .models import *
 
 
 class MapObjForm(ModelForm):
     def __init__(self, *args, **kwargs):
         # extending field options to add "required=False"
         # allows me to create models without "blank=True" everwhere, don't want blanks
-        for field,form_field in self.base_fields.items():
+        for field,form_field in list(self.base_fields.items()):
             if field in ('name', 'id'):
                 continue
             try:
@@ -37,7 +37,7 @@ class MapObjForm(ModelForm):
             return super(MapObjForm, self).clean(*args, **kwargs)
 
         # keep blanks out of data (makes the API more uniform)
-        for k,v in self.cleaned_data.items():
+        for k,v in list(self.cleaned_data.items()):
             try:
                 if v.strip() in (None, "", "None", "none", "null"):
                     self.cleaned_data[k] = None

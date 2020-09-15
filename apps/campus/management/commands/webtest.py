@@ -19,7 +19,7 @@ class Command(BaseCommand):
             except MissingSchema:
                 base = "https://%s/" % args[0]
         else:
-            print "No host given, using 'my.mac'"
+            print("No host given, using 'my.mac'")
             base = "http://my.mac/"
 
         from settings import MAP_VERSION
@@ -53,10 +53,10 @@ class Command(BaseCommand):
         for u in url_strings:
             try:
                 url = base+u
-                print "%-75s " % url,
+                print("%-75s " % url, end=' ')
                 page = requests.get(url, timeout=settings.REQUEST_TIMEOUT)
-                print "OK"
+                print("OK")
                 page.close()
 
-            except Exception, e:
-                print "Fail: %s" % str(e)
+            except Exception as e:
+                print("Fail: %s" % str(e))

@@ -22,11 +22,11 @@ sidewalks = json.loads(txt)
 count = 0
 for s in sidewalks['features']:
 	if s['geometry'] is None:
-		print "No Geometry. Skipped"
+		print("No Geometry. Skipped")
 		continue
 	new = {}
 	new['poly_coords']   = s['geometry']['coordinates']
 	new = Sidewalk.objects.create(**new)
 	count += 1
 
-print "%d sidewalks created" % (count,)
+print(("%d sidewalks created" % (count,)))

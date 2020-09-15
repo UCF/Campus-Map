@@ -2,18 +2,18 @@ from datetime import datetime
 
 def prompt():
 	while(True):
-		i = raw_input("Accept? [y/n] ")
+		i = eval(input("Accept? [y/n] "))
 		if(i == 'y'): 
-			print
+			print()
 			return True
 		elif(i == 'n'): 
-			print
+			print()
 			return False
 		else: 
-			print "what?"
+			print("what?")
 
 def map_url(coords):
-	import urllib
+	import urllib.request, urllib.parse, urllib.error
 	if coords == None or coords == "null" or coords == "None":
 		return "None"
 	
@@ -30,7 +30,7 @@ def map_url(coords):
 	arr  = json.loads(coords)
 	data = flat(arr)
 	url  = "http://www.gpsvisualizer.com/map_input?form=google&google_wpt_filter_sort=0&form:data=%s%s" % ( 
-	           urllib.quote("longitude,latitude\n"), urllib.quote(data) )
+	           urllib.parse.quote("longitude,latitude\n"), urllib.parse.quote(data) )
 	return url
 
 def coords(obj):
@@ -39,7 +39,7 @@ def coords(obj):
 	else:
 		try: obj_coords = obj['geometry']['coordinates']
 		except: obj_coords = None
-		return unicode(json.dumps(obj_coords, ensure_ascii=False ))
+		return str(json.dumps(obj_coords, ensure_ascii=False ))
 
 def abbr(obj):
 	if isinstance(obj, Building):
@@ -56,6 +56,6 @@ def printo(str, file=False):
 		out.write("\n\n%s %s\n\n" % ('>'*20, datetime.now().strftime("%A %B %d, %Y %H:%M")))
 		return
 	
-	print str
+	print(str)
 	out.write(str)
 	out.write("\n")

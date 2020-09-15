@@ -46,12 +46,12 @@ class MonkeyPatchHttpRequest():
     '''
 
     def process_request(self, request):
-        for format, o in formats.items():
+        for format, o in list(formats.items()):
             code = """def is_%s(self):
                         import re
                         return False if re.search('\.%s$', self.path) is None else True""" % (format, format)
             scope = {}
-            exec code in scope
+            exec(code, scope)
             setattr(HttpRequest, 'is_%s' % format, scope['is_%s' % format])
 
 
@@ -69,7 +69,7 @@ class MapMiddleware(object):
         '''
         Make sure reponses have right mime type and return Not Implemented server error when appropriate
         '''
-        for format,spec in formats.items():
+        for format,spec in list(formats.items()):
             is_api_call = getattr(request, 'is_%s' % format)
             if is_api_call():
                 # view returned bad content type, assuming not implemented

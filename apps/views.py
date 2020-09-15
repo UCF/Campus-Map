@@ -22,7 +22,7 @@ from django.template.loader import get_template
 from django.utils.html import strip_tags
 import requests
 
-from campus.views import home
+from .campus.views import home
 
 logger = logging.getLogger(__name__)
 
@@ -57,10 +57,10 @@ def server_error(request, **kwargs):
 def print_layout(request):
     loc = request.GET.get('show', False)
     error = False
-    illustrated = request.GET.has_key('illustrated')
+    illustrated = 'illustrated' in request.GET
     if loc:
         try:
-            from campus.models import MapObj
+            from .campus.models import MapObj
             loc = MapObj.objects.get(id=loc)
         except MapObj.DoesNotExist:
             loc = False
@@ -115,7 +115,7 @@ def organization(request, id):
 
     building = None
     try:
-        from campus.models import Building
+        from .campus.models import Building
         building = campus.models.Building.objects.get(pk=str(org['bldg']['import_id']))
     except campus.models.Building.DoesNotExist:
         pass
@@ -171,7 +171,7 @@ def get_orgs():
     if Orgs.data is None:
         result = Orgs.fetch()
         if not result:
-            print "Issue with phonebook search service"
+            print("Issue with phonebook search service")
             return None
     return Orgs.data
 
@@ -183,7 +183,7 @@ def get_depts():
                              params=payload,
                              timeout=settings.REQUEST_TIMEOUT).json()
     except:
-        print "Issue with phonebook search service"
+        print("Issue with phonebook search service")
         return None
 
     return depts
@@ -208,7 +208,7 @@ def phonebook_search(q):
                                timeout=settings.REQUEST_TIMEOUT).json()
         return results
     except:
-        print "Issue with phonebook search service"
+        print("Issue with phonebook search service")
         return None
 
 
@@ -238,7 +238,7 @@ def search(request):
         q3 = Q(pk="~~~ no results ~~~")
         for org in orgs:
             q3 = q3 | Q(pk=str(org['bldg_id']))
-        from campus.models import MapObj
+        from .campus.models import MapObj
         results = MapObj.objects.filter(q1 | q2 | q3)
         locs = list(results)
 
@@ -275,9 +275,9 @@ def search(request):
             return item.json()
 
         if extended:
-            found_entries['locations'] = map(extended_meta, found_entries['locations'])
+            found_entries['locations'] = list(map(extended_meta, found_entries['locations']))
         else:
-            found_entries['locations'] = map(clean, found_entries['locations'])
+            found_entries['locations'] = list(map(clean, found_entries['locations']))
 
         search = {
             'query': query_string,
