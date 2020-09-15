@@ -13,7 +13,7 @@ from django.http import Http404
 from django.http import HttpResponse
 from django.http import HttpResponseNotFound
 from django.http import HttpResponseServerError
-from django.shortcuts import render_to_response
+from django.shortcuts import render
 from django.template import Context
 from django.template import loader
 from django.template import RequestContext
@@ -22,7 +22,6 @@ from django.template.loader import get_template
 from django.utils.html import strip_tags
 import requests
 
-import campus.models
 from campus.views import home
 
 logger = logging.getLogger(__name__)
@@ -61,12 +60,13 @@ def print_layout(request):
     illustrated = request.GET.has_key('illustrated')
     if loc:
         try:
-            loc = campus.models.MapObj.objects.get(id=loc)
+            from campus.models import MapObj
+            loc = MapObj.objects.get(id=loc)
         except MapObj.DoesNotExist:
             loc = False
             error = "Location not found"
 
-    return render_to_response('pages/print.djt', locals(), context_instance=RequestContext(request))
+    return render(request, 'pages/print.djt', locals())
 
 
 def pages(request, page=None):
@@ -89,7 +89,7 @@ def pages(request, page=None):
         response['Content-type'] = 'text/plain; charset=utf-8'
         return response
 
-    return render_to_response(template, {'page': page}, context_instance=RequestContext(request))
+    return render(request, template, {'page': page})
 
 
 def organizations(request):
@@ -105,7 +105,7 @@ def organizations(request):
         'orgs_two': orgs[half:]
     }
 
-    return render_to_response('pages/organizations.djt', context, context_instance=RequestContext(request))
+    return render(request, 'pages/organizations.djt', context)
 
 
 def organization(request, id):
@@ -135,7 +135,7 @@ def organization(request, id):
     else:
         template = 'pages/organization.djt'
 
-    return render_to_response(template, context, context_instance=RequestContext(request))
+    return render(request, template, context)
 
 
 def organization_search(q):
@@ -144,8 +144,7 @@ def organization_search(q):
     try:
         results = requests.get(settings.PHONEBOOK,
                                params=params,
-                               timeout=settings.REQUEST_TIMEOUT,
-                               verify=False).json()
+                               timeout=settings.REQUEST_TIMEOUT).json()
         return results
     except:
         logger.error('Issue with organization search service')
@@ -161,8 +160,7 @@ class Orgs:
         try:
             orgs = requests.get(settings.PHONEBOOK + 'organizations/',
                                 params=payload,
-                                timeout=settings.REQUEST_TIMEOUT,
-                                verify=False).json()
+                                timeout=settings.REQUEST_TIMEOUT).json()
             cls.data = orgs
             return True
         except:
@@ -183,8 +181,7 @@ def get_depts():
     try:
         depts = requests.get(settings.PHONEBOOK + 'departments/',
                              params=payload,
-                             timeout=settings.REQUEST_TIMEOUT,
-                             verify=False).json()
+                             timeout=settings.REQUEST_TIMEOUT).json()
     except:
         print "Issue with phonebook search service"
         return None
@@ -208,8 +205,7 @@ def phonebook_search(q):
     try:
         results = requests.get(settings.PHONEBOOK,
                                params={'search': q},
-                               timeout=settings.REQUEST_TIMEOUT,
-                               verify=False).json()
+                               timeout=settings.REQUEST_TIMEOUT).json()
         return results
     except:
         print "Issue with phonebook search service"
@@ -242,7 +238,8 @@ def search(request):
         q3 = Q(pk="~~~ no results ~~~")
         for org in orgs:
             q3 = q3 | Q(pk=str(org['bldg_id']))
-        results = campus.models.MapObj.objects.filter(q1 | q2 | q3)
+        from campus.models import MapObj
+        results = MapObj.objects.filter(q1 | q2 | q3)
         locs = list(results)
 
         # Phonebook Search
@@ -257,7 +254,7 @@ def search(request):
         }
 
     if request.is_bxml():
-        base_url = request.build_absolute_uri(reverse('home'))[:-1]
+        base_url = request.build_absolute_uri(reverse('campus.views.home'))[:-1]
         xml_locations = ElementTree.Element('Locations')
         for location in list(l.bxml(base_url=base_url) for l in found_entries['locations']):
             xml_locations.append(location)
@@ -315,7 +312,7 @@ def search(request):
 
         context = {'search': True, 'query': query_string, 'results': found_entries}
 
-        return render_to_response('campus/search.djt', context, context_instance=RequestContext(request))
+        return render(request, 'campus/search.djt', context)
 
 
 # thanks:  http://www.julienphalip.com/blog/2008/08/16/adding-search-django-site-snap/

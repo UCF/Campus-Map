@@ -1,7 +1,7 @@
 import csv
 
 from django.core.management.base import BaseCommand
-from apps.campus.models import Building
+from campus.models import Building
 
 class Command(BaseCommand):
 

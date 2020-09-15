@@ -2,7 +2,7 @@
 import sys, os, json
 os.environ['DJANGO_SETTINGS_MODULE'] = 'settings'
 sys.path.append(os.path.abspath('../../../'))
-from apps.campus.models import Building
+from campus.models import Building
 from django.core.exceptions import ValidationError
 from datetime import datetime
 
@@ -32,20 +32,20 @@ out.write("%s %s\n\n" % ('>'*20, datetime.now().strftime("%A %B %d, %Y %H:%M")))
 def prompt():
 	while(True):
 		i = raw_input("Accept? [y/n] ")
-		if(i == 'y'): 
+		if(i == 'y'):
 			print
 			return True
-		elif(i == 'n'): 
+		elif(i == 'n'):
 			print
 			return False
-		else: 
+		else:
 			print "what?"
 
 def map_url(coords):
 	import urllib
 	if coords == None or coords == "null" or coords == "None":
 		return "None"
-	
+
 	def flat(l):
 		# recursive function to flatten array and create a a list of coordinates separated by a space
 		str = ""
@@ -55,10 +55,10 @@ def map_url(coords):
 			else:
 				str += ("%.6f,%.6f\n")  % (i[0], i[1])
 		return str
-	
+
 	arr  = json.loads(coords)
 	data = flat(arr)
-	url  = "http://www.gpsvisualizer.com/map_input?form=google&google_wpt_filter_sort=0&form:data=%s%s" % ( 
+	url  = "http://www.gpsvisualizer.com/map_input?form=google&google_wpt_filter_sort=0&form:data=%s%s" % (
 	           urllib.quote("longitude,latitude\n"), urllib.quote(data) )
 	return url
 
@@ -92,12 +92,12 @@ for a in arcgis[:]:
 		printo("\n{0}\n  Found Duplicates \n{0}".format("-"*78))
 		for i,d in enumerate(duplicates):
 			printo("#%s\n  %s [%s]\n  %s\n" % (i+1, d['properties']['Name'], d['properties']['Num'], coords(d)))
-		
+
 		select = raw_input("Select which to keep (1-%s, 0 for none): " % len(duplicates))
 		try: select = int(select)
 		except ValueError: select = 0
 		print
-		
+
 		for i,d in enumerate(duplicates):
 			if (i+1) == select:
 				continue
@@ -111,15 +111,15 @@ for i,b in enumerate(arcgis[:]):
 	if b['properties']['Num'] != b['properties']['Num'].lower():
 		print "Uppercase Number: %s, %s" % (b['properties']['Name'], b['properties']['Num'])
 		arcgis[i]['properties']['Num'] = b['properties']['Num'].lower()
-		
+
 printo('\n')
 
 for ab in arcgis[:]:
-	
+
 	# look for it campus map
 	for cb in cmap[:]:
 		if ab['properties']['Num'] == cb.number:
-			
+
 			# update name
 			if not ab['properties']['Name'] == cb.name:
 				print "%s [id: %s]\n%s" % (cb.name, cb.number, '-'*50)
@@ -135,7 +135,7 @@ for ab in arcgis[:]:
 				else:
 					out.write("XXXXX Rejected Name Change, ID:%s XXXXX\n" % cb.number)
 					out.write('  %s\n  %s\n\n' % (cb.name, ab['properties']['Name']))
-					
+
 			#update abbreviation
 			if not ab['properties']['Abrev'] == cb.abbreviation:
 				print "%s [id: %s]\n%s" % (cb.name, cb.number, '-'*50)
@@ -151,7 +151,7 @@ for ab in arcgis[:]:
 				else:
 					out.write("XXXXX Rejected Abbreviation Change, %s XXXXX\n" % cb.name)
 					out.write('  %s\n  %s\n\n' % (abbr(cb), abbr(ab)))
-			
+
 			#update coords
 			try: ab_coords = ab['geometry']['coordinates']
 			except: ab_coords = None
@@ -180,7 +180,7 @@ for ab in arcgis[:]:
 				else:
 					out.write("XXXXX Rejected Coordinates, %s XXXXX\n" % cb.name)
 					out.write("  %s\n  %s\n\n" % (coords(cb), coords(ab)))
-			
+
 			# item exists in old data, remove from both
 			arcgis.remove(ab)
 			cmap.remove(cb)
@@ -200,12 +200,12 @@ print "\n{0}\n  New Buildings\nCreate Points as they're created (easiest way) \n
 if not len(arcgis):
 	print("  None.\n")
 for b in arcgis[:]:
-	
+
 	print "New Building: %s, %s" % (b['properties']['Num'], b['properties']['Name'])
 	print "  coords: %s" % map_url(coords(b))
 	if(not prompt()):
 		continue
-	
+
 	try:
 		building = Building.objects.get( pk=b['properties']['Num'] )
 	except Building.DoesNotExist:
@@ -213,7 +213,7 @@ for b in arcgis[:]:
 	else:
 		print "\n\nERROR: How did I get here? This building should not exist: %s\n\nExiting.\n\n" % b
 		exit()
-	
+
 	new = {}
 	new['number']        = b['properties']['Num']
 	new['name']          = b['properties']['Name']
@@ -230,7 +230,7 @@ for b in arcgis[:]:
 		out.write("Created New Building:\n")
 		out.write("  %s\n\n" % str(nb.json()))
 		arcgis.remove(b)
-	
+
 	out.flush()
 
 
@@ -245,23 +245,23 @@ def merge(new, old):
 		print "New building has some valued filled and is not ready for merge"
 		print new.json()
 		return False
-	
+
 	# make sure that we aren't loosing data
 	if bool(old.poly_coords) and not bool(new.poly_coords):
 		print "Loosing data with poly_coords, not sure if this is intentional"
 		return False
-	
+
 	if bool(old.name) and not bool(new.name):
 		print "New name is blank, that's not good"
 		return False
-	
+
 	if bool(old.abbreviation) and not bool(new.abbreviation):
 		print "Loosing data abbreviation, not sure if this is intentional"
 		return False
-	
-	
+
+
 	old_json = old.json()
-	
+
 	# merge simpson
 	new.profile           = old.profile
 	new.image             = old.image
@@ -269,11 +269,11 @@ def merge(new, old):
 	new.illustrated_point = old.illustrated_point
 	new.googlemap_point   = old.googlemap_point
 	new.description       = old.description
-	
+
 	print "New and Old (will be deleted):"
 	print "  %s" % str(new.json())
 	print "  %s" % str(old.json())
-	
+
 	if(prompt()):
 		new.save()
 		old.delete()
@@ -308,11 +308,11 @@ for b in cmap:
 	print"  number: %s\n  abbreviation: %s\n  coords: %s" % (b.number, abbr(b), coords(b))
 	while(True):
 		i = raw_input("Keep [k], Delete [d], or Merge [m] ? ")
-		if(i == 'k'): 
+		if(i == 'k'):
 			out.write("%s\n" % b.name)
 			out.write("  number: %s\n  abbreviation: %s\n  coords: %s\n\n" % (b.number, abbr(b), coords(b)))
 			break
-		elif(i == 'd'): 
+		elif(i == 'd'):
 			Building.objects.get( pk=b.number ).delete()
 			out.write("Deleted Building:\n")
 			out.write("  %s [id: %s]" % (b.name, b.number))
@@ -329,7 +329,7 @@ for b in cmap:
 				finally:
 					go = merge(new, b)
 			break
-		else: 
+		else:
 			print "what?"
 	print "\n"
 	out.flush()

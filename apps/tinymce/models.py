@@ -19,7 +19,3 @@ class HTMLField(models.TextField):
             defaults['widget'] = tinymce_widgets.AdminTinyMCE
 
         return super(HTMLField, self).formfield(**defaults)
-
-
-from south.modelsinspector import add_introspection_rules
-add_introspection_rules([], ["^tinymce\.models\.HTMLField"])

@@ -13,7 +13,7 @@
 	<p>
 		In the mean time, try appending
 		<code><a href="{% url 'search' %}.json?q=union">.json</a></code> or
-		<code><a href="{% url 'home' %}.txt">.txt</a></code> to any url.
+		<code><a href="{% url 'campus.views.home' %}.txt">.txt</a></code> to any url.
 	</p>
 
 {% endblock %}

@@ -4,7 +4,7 @@
 
 {% block meta-description %}Use the UCF Campus Map to find {{ location.name }} {{ block.super }} {{ location.profile|striptags|slice:":100" }}{% endblock %}
 
-{% block rel-canonical %}{{ base_url }}{% url 'location' location.id %}{{ location.title|slugify }}/{% endblock %}
+{% block rel-canonical %}{{ base_url }}{% url 'campus.views.location' location.id %}{{ location.title|slugify }}/{% endblock %}
 
 {% block wrap %}
 

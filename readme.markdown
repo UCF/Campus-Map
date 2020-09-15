@@ -14,12 +14,16 @@ Ensure your environment has virtualenv and pip installed for python
         pip install -r src/requirements.txt
 7. Setup local settings using the local_settings.templ.py file
 8. Setup templates/robots.txt using templates/robots.templ.txt
-9. Sync the database
+9. Run an initial deployment of the project
 
-        python manage.py syncdb
-10. Collect static files
+        python manage.py deploy
 
-        python manage.py collectstatic -cl
+    This command handles migration, static file collection, and initial
+    loading of campus app fixtures if no data is available yet in the db
+    (see "Working with the Data" below.)
+
+Upon completing these steps, you should be able to start Django
+(`python manage.py runserver`) successfully.
 
 ## Working with the Data
 

@@ -3,15 +3,15 @@ import os
 
 from django.core.management.base import BaseCommand
 
-from apps.campus.models import BikeRack
-from apps.campus.models import Building
-from apps.campus.models import EmergencyPhone
-from apps.campus.models import EmergencyAED
-from apps.campus.models import Group
-from apps.campus.models import GroupedLocation
-from apps.campus.models import Location
-from apps.campus.models import ParkingLot
-from apps.campus.models import RegionalCampus
+from campus.models import BikeRack
+from campus.models import Building
+from campus.models import EmergencyPhone
+from campus.models import EmergencyAED
+from campus.models import Group
+from campus.models import GroupedLocation
+from campus.models import Location
+from campus.models import ParkingLot
+from campus.models import RegionalCampus
 from campus.admin import create_groupable_locations
 import campus
 
