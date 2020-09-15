@@ -151,7 +151,7 @@ def home(request, **kwargs):
         'search_query_get'   : search_query,
         # These points are not displayed on the base tempalte but they
         # still need to be here to be available for searching infoboxes, etc.
-        'base_ignore_types'  : json.dumps(['DiningLocation'])
+        'base_ignore_types'  : json.dumps(['dininglocation'])
     }
 
     return render(request, 'campus/base.djt', context)
