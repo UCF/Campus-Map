@@ -1,29 +1,34 @@
 from time import time
 
 from django.conf import settings
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.http import HttpResponsePermanentRedirect
 
 
 class DisableCSRF(object):
-    ''' sad panda '''
-    def process_view(self, request, callback, callback_args, callback_kwargs):
+    def __init__(self, get_response):
+        self.get_response = get_response
+
+    def __call__(self, request):
         setattr(request, '_dont_enforce_csrf_checks', True)
 
+        return self.get_response(request)
 
 class SecureRequiredMiddleware(object):
-    def __init__(self):
+    def __init__(self, get_response):
         self.paths = getattr(settings, 'SECURE_REQUIRED_PATHS')
         self.enabled = self.paths and getattr(settings, 'HTTPS_SUPPORT')
+        self.get_response = get_response
 
-    def process_request(self, request):
+    def __call__(self, request):
         if self.enabled and not request.is_secure():
             for path in self.paths:
                 if request.get_full_path().startswith(path):
                     request_url = request.build_absolute_uri(request.get_full_path())
                     secure_url = request_url.replace('http://', 'https://')
                     return HttpResponsePermanentRedirect(secure_url)
-        return None
+
+        return self.get_response(request)
 
 
 def map_context(request):

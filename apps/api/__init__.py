@@ -1,8 +1,10 @@
 import re
 import logging
 
+import types
+
 from django.conf import settings
-from django.core.urlresolvers import reverse, resolve, Resolver404
+from django.urls import reverse, resolve, Resolver404
 from django.http import HttpResponse, HttpRequest, HttpResponseNotFound, HttpResponseServerError
 from django.views.generic import View
 
@@ -45,19 +47,41 @@ class MonkeyPatchHttpRequest():
     Define is_<format> methods on the request object (called in base __init__.py)
     '''
 
-    def process_request(self, request):
-        for format, o in list(formats.items()):
-            code = """def is_%s(self):
-                        import re
-                        return False if re.search('\.%s$', self.path) is None else True""" % (format, format)
-            scope = {}
-            exec(code, scope)
-            setattr(HttpRequest, 'is_%s' % format, scope['is_%s' % format])
+    def __init__(self, get_response):
+        self.get_response = get_response
 
+    def __call__(self, request):
+        request.is_bxml = types.MethodType(is_bxml, request)
+        request.is_kml = types.MethodType(is_kml, request)
+        request.is_json = types.MethodType(is_json, request)
+        request.is_txt = types.MethodType(is_txt, request)
+        request.is_xml = types.MethodType(is_xml, request)
+
+        return self.get_response(request)
+
+def is_bxml(self):
+    return False if re.search('\.bxml$', self.path) is None else True
+
+def is_kml(self):
+    return False if re.search('\.kml$', self.path) is None else True
+
+def is_json(self):
+    return False if re.search('\.json$', self.path) is None else True
+
+def is_txt(self):
+    return False if re.search('\.txt$', self.path) is None else True
+
+def is_xml(self):
+    return False if re.search('\.xml$', self.path) is None else True
 
 class MapMiddleware(object):
 
-    def process_response(self, request, response):
+    def __init__(self, get_response):
+        self.get_response = get_response
+
+    def __call__(self, request):
+        response = self.get_response(request)
+
         '''
         Cross-domain XHR using the html5 postMessage API.
         Not using Access Control anywhere in map, so only implementing here and not also in process_request

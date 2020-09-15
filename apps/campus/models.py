@@ -7,7 +7,7 @@ from xml.etree.ElementTree import Element
 from django.conf import settings
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.core.exceptions import FieldError
 from django.core.exceptions import ValidationError
 from django.db import models
@@ -129,7 +129,7 @@ class MapManager(models.Manager):
 
 class MapObj(models.Model):
     objects = MapManager()
-    content_type = models.ForeignKey(ContentType, editable=False, null=True)
+    content_type = models.ForeignKey(ContentType, editable=False, null=True, on_delete=models.CASCADE)
     id = models.CharField(max_length=80, primary_key=True, help_text='<strong class="caution">Caution</strong>: changing may break external resources (used for links and images)')
     name = models.CharField(max_length=255, null=True)
     image = models.ImageField(upload_to='uploads/images')
@@ -649,7 +649,7 @@ class GroupedLocation(models.Model):
     objects = GroupedLocationManager()
 
     object_pk = models.CharField(max_length=255)
-    content_type = models.ForeignKey(ContentType)
+    content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
     content_object = GenericForeignKey('content_type', 'object_pk')
 
     def __unicode__(self):

@@ -11,8 +11,8 @@ from django.conf import settings
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.auth.decorators import login_required
 from django.core import serializers
-from django.core.urlresolvers import reverse
-from django.core.urlresolvers import get_script_prefix
+from django.urls import reverse
+from django.urls import get_script_prefix
 from django.http import HttpResponse
 from django.http import HttpResponseNotFound
 from django.http import Http404

@@ -6,8 +6,8 @@ import re
 import sys
 
 from django.conf import settings
-from django.core.urlresolvers import reverse
-from django.core.urlresolvers import Resolver404
+from django.urls import reverse
+from django.urls import Resolver404
 from django.db.models import Q
 from django.http import Http404
 from django.http import HttpResponse
@@ -22,12 +22,12 @@ from django.template.loader import get_template
 from django.utils.html import strip_tags
 import requests
 
-from .campus.views import home
+from campus.views import home
 
 logger = logging.getLogger(__name__)
 
 
-def page_not_found(request, **kwargs):
+def page_not_found(request, exception):
     error = "The requested resource could not be found."
 
     if request.is_json():

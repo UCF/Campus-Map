@@ -3,7 +3,7 @@
 import json
 
 import logging
-from django.core import urlresolvers
+from django import urls
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.template import RequestContext, loader
@@ -123,5 +123,5 @@ def render_to_js_vardef(var_name, var_value):
 
 def filebrowser(request):
     fb_url = "%s://%s%s" % (request.is_secure() and 'https' or 'http',
-            request.get_host(), urlresolvers.reverse('filebrowser-index'))
+            request.get_host(), urls.reverse('filebrowser-index'))
     return render(request, 'tinymce/filebrowser.js', {'fb_url': fb_url})

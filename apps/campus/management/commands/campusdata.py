@@ -109,7 +109,7 @@ class Command(BaseCommand):
                 if fixture == "groups":
                     continue # skip groups, must run last
                 print(("  Updating %s ..." % fixture))
-                call_command('loaddata', fixture, verbosity=0, interactive=False)
+                call_command('loaddata', fixture, verbosity=0)
 
         # Groups
         #   for the m2m relation, create all GroupedLocation instances

@@ -46,7 +46,7 @@ TEMPLATES = [
     },
 ]
 
-MIDDLEWARE_CLASSES = [
+MIDDLEWARE = [
     'api.MonkeyPatchHttpRequest',
     'api.MapMiddleware',
     'apps.DisableCSRF', # :(
@@ -66,6 +66,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
+    'django.contrib.messages',
     'django.contrib.sessions',
     'django.contrib.staticfiles',
     'django.contrib.sites',
