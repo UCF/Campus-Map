@@ -46,7 +46,7 @@ class TinyMCE(forms.Textarea):
             content_language = mce_attrs.get('language', None)
         self.content_language = content_language
 
-    def render(self, name, value, attrs=None):
+    def render(self, name, value, attrs=None, renderer=None):
         if value is None: value = ''
         value = smart_text(value)
         final_attrs = self.build_attrs(attrs)
