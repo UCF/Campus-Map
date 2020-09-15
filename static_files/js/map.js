@@ -249,7 +249,6 @@ var CampusMap = function(options) {
             var markers        = [],
               images         = {
                 'building'      : UTIL.get_google_image('building'),
-                'dininglocation': UTIL.get_google_image('building'),
                 'parkinglot'    : UTIL.get_google_image('parking'),
                 'group'         : UTIL.get_google_image('group'),
                 'location'      : UTIL.get_google_image('location')
@@ -290,7 +289,6 @@ var CampusMap = function(options) {
             var markers        = [],
               images         = {
                 'building'      : UTIL.get_google_image('building'),
-                'dininglocation': UTIL.get_google_image('building'),
                 'parkinglot'    : UTIL.get_google_image('parking'),
                 'group'         : UTIL.get_google_image('group'),
                 'location'      : UTIL.get_google_image('blue')
