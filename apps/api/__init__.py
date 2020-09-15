@@ -10,27 +10,27 @@ log = logging.getLogger(__name__)
 
 formats = {
     'json': {
-        'mimetype': 'application/json',
+        'content_type': 'application/json',
         'content': '{"error":"%s"}',
         },
     'txt': {
-        'mimetype': 'text/plain; charset=utf-8',
+        'content_type': 'text/plain; charset=utf-8',
         'content': '%s',
         },
     'kml': {
-        'mimetype': 'application/vnd.google-earth.kml+xml',
+        'content_type': 'application/vnd.google-earth.kml+xml',
         'content': '<?xml version="1.0"?><kml xmlns="http://www.opengis.net/kml/2.2"><Document><name>%s</name></Document></kml>',
         },
     'xml': {
-        'mimetype': 'text/xml',
+        'content_type': 'text/xml',
         'content': '<?xml version="1.0"?><error>%s</error>',
         },
     'bxml': {
-        'mimetype': 'application/xml',
+        'content_type': 'application/xml',
         'content': '<?xml version="1.0"?><error>%s</error>',
         },
     'ajax': {
-        'mimetype': 'text/html; charset=utf-8',
+        'content_type': 'text/html; charset=utf-8',
         'content': '%s',
         },
 }
@@ -73,7 +73,7 @@ class MapMiddleware(object):
             is_api_call = getattr(request, 'is_%s' % format)
             if is_api_call():
                 # view returned bad content type, assuming not implemented
-                if response['Content-type'] != spec['mimetype']:
+                if response['Content-type'] != spec['content_type']:
                     if response.status_code == 200:
                         rsp = dict(spec)
                         rsp['content'] = spec['content'] % 'Not Implemented'
@@ -89,7 +89,7 @@ class MapMiddleware(object):
                         return HttpResponseServerError(**rsp)
                     else:
                         msg = spec['content'] % ('Error %s' % response.status_code)
-                        response['Content-Type'] = spec['mimetype']
+                        response['Content-Type'] = spec['content_type']
                         response._container = [msg]
 
         return response

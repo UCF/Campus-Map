@@ -13,6 +13,6 @@
 	</p>
 </div>
 
-<a href="{{ base_url }}{% url 'regional' %}" class="item">More UCF Connect Locations</a>
+<a href="{{ base_url }}{% url 'campus.views.regional' %}" class="item">More UCF Connect Locations</a>
 
 {% endif %}

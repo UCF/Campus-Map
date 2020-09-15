@@ -22,7 +22,7 @@
 		<ul>
 			{% for loc in locations %}
 			<li>
-				<a href="{% url 'location' loc.pk %}{{ loc.title|slugify }}" data-pk="{{ loc.pk }}">
+				<a href="{% url 'campus.views.location' loc.pk %}{{ loc.title|slugify }}" data-pk="{{ loc.pk }}">
 					{{ loc.title|highlight_term:query|safe }}
 				</a>
 				<ul>

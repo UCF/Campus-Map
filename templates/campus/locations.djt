@@ -4,7 +4,7 @@
 
 {% block meta-description %}Use the UCF Campus Map to find Locations and Buildings {{ block.super }}{% endblock %}
 
-{% block rel-canonical %}{{ base_url }}{% url 'locations' %}{% endblock %}
+{% block rel-canonical %}{{ base_url }}{% url 'campus.views.locations' %}{% endblock %}
 
 {% block wrap %}
 
@@ -53,18 +53,18 @@
 		{% if groups %}
 			<ul>
 			{% for g in groups %}
-				<li><a href="{% url 'location' loc=g.id %}">{{ g }}</a></li>
+				<li><a href="{% url 'campus.views.location' loc=g.id %}">{{ g }}</a></li>
 			{% endfor %}
 			</ul>
 		{% else %}
 			<p>No groups found.</p>
 		{% endif %}
 
-		<h2><a href="{% url 'regional' %}">UCF Connect Locations</a></h2>
+		<h2><a href="{% url 'campus.views.regional' %}">UCF Connect Locations</a></h2>
 		{% if campuses %}
 			<ul>
 			{% for c in campuses %}
-				<li><a href="{% url 'regional' %}{{ c.id }}/">{{ c.name }}</a></li>
+				<li><a href="{% url 'campus.views.regional' %}{{ c.id }}/">{{ c.name }}</a></li>
 			{% endfor %}
 			</ul>
 		{% else %}
@@ -74,13 +74,13 @@
 
 		<h2>Miscellaneous</h2>
 		<ul>
-			<li><a href="{% url 'parking' %}">Parking</a></li>
-			<li><a href="{% url 'bikeracks' %}">Bike Racks</a></li>
-			<li><a href="{% url 'emergency_phones' %}">Blue Light Emergency Phones</a></li>
-			<li><a href="{% url 'emergency_aeds' %}">Automated External Defibrillators (AEDs)</a></li>
-			<li><a href="{% url 'sidewalks' %}">Walking Paths</a></li>
-			<li><a href="{% url 'shuttles' %}">Shuttles</a></li>
-			<li><a href="{% url 'electric_charging_stations' %}">EV Charging Stations</a></li>
+			<li><a href="{% url 'campus.views.parking' %}">Parking</a></li>
+			<li><a href="{% url 'campus.views.bikeracks' %}">Bike Racks</a></li>
+			<li><a href="{% url 'campus.views.emergency_phones' %}">Blue Light Emergency Phones</a></li>
+			<li><a href="{% url 'campus.views.emergency_aeds' %}">Automated External Defibrillators (AEDs)</a></li>
+			<li><a href="{% url 'campus.views.sidewalks' %}">Walking Paths</a></li>
+			<li><a href="{% url 'campus.views.shuttles' %}">Shuttles</a></li>
+			<li><a href="{% url 'campus.views.electric_charging_stations' %}">EV Charging Stations</a></li>
 		</ul>
 
 	</div>

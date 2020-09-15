@@ -95,26 +95,8 @@ class Command(BaseCommand):
         Noreset argument allows to run the campusdata command
         without data being removed
         '''
-        noreset = "noreset" in args
 
-        if noreset:
-            print "Database will not be reset."
-        else:
-            for i in range(2):
-                sql = self.reset_sql()
-                error = self.run_query(sql)
-            if error:
-                print "Failed to update the db :("
-                print type(error)
-                print error
-                return
-
-        #syncdb
-        call_command('syncdb', verbosity=0, interactive=False)
-
-        #south migrate
-        if options.get('test') is not True:
-            call_command('migrate', verbosity=0, interactive=False)
+        call_command('migrate')
 
         # load all the data from fixtures
         path = os.path.join(os.path.dirname(campus.__file__), 'fixtures')
@@ -142,11 +124,7 @@ class Command(BaseCommand):
             mob = mob.__dict__
             mob.pop('_state')
 
-            if noreset:
-                obj, created = Group.objects.get_or_create(**mob)
-
-            else:
-                Group.objects.create(**mob)
+            obj, created = Group.objects.get_or_create(**mob)
 
             '''
             when / if groups get additional attributes, will have to extend importer here
