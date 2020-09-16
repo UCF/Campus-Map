@@ -89,33 +89,6 @@ class MapMiddleware(object):
         response['Access-Control-Allow-Origin']  = '*'
         response['Access-Control-Allow-Methods'] = ','.join( ['GET', 'OPTIONS'] )
 
-
-        '''
-        Make sure reponses have right mime type and return Not Implemented server error when appropriate
-        '''
-        for format,spec in list(formats.items()):
-            is_api_call = getattr(request, 'is_%s' % format)
-            if is_api_call():
-                # view returned bad content type, assuming not implemented
-                if response['Content-type'] != spec['content_type']:
-                    if response.status_code == 200:
-                        rsp = dict(spec)
-                        rsp['content'] = spec['content'] % 'Not Implemented'
-                        return HttpResponseNotImplemented(**rsp)
-                    elif response.status_code == 404:
-                        rsp = dict(spec)
-                        rsp['content'] = spec['content'] % 'Not Found'
-                        return HttpResponseNotFound(**rsp)
-                    elif response.status_code == 500:
-                        if settings.DEBUG: return response
-                        rsp = dict(spec)
-                        rsp['content'] = spec['content'] % 'Server Error.'
-                        return HttpResponseServerError(**rsp)
-                    else:
-                        msg = spec['content'] % ('Error %s' % response.status_code)
-                        response['Content-Type'] = spec['content_type']
-                        response._container = [msg]
-
         return response
 
 
