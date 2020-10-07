@@ -1,29 +1,43 @@
 # [UCF Campus Map - Main Campus and Other College Locations in Central Florida](https://map.ucf.edu)
 Campus map ... find what you're looking for at UCF.
 
-## Setup
-Ensure your environment has virtualenv and pip installed for python
-1. Create virtual environment
-2. cd to the new virtual environment
-3. Clone repo to subdirectory (ex. git clone <url> src)
-4. Activate virtual environment
+## Requirements
+
+### Installation Requirements
+- Python 3.8+
+- pip
+
+### Development Requirements
+- node
+- gulp-cli
+
+## Installation and Setup
+1. Create virtual environment and `cd` to it
+
+        python3 -m venv ENV
+        cd ENV
+2. Clone repo to a subdirectory (ex. `git clone REPO_URL src`)
+3. Activate virtual environment
 
         source bin/activate
-5. Install requirements
+4. `cd` to new src directory and install requirements
 
-        pip install -r src/requirements.txt
-7. Setup local settings using the local_settings.templ.py file
-8. Setup templates/robots.txt using templates/robots.templ.txt
-9. Run an initial deployment of the project
+        cd src
+        pip install -r requirements.txt
+5. Set up local settings using the settings_local.templ.py file
+6. Set up static_files/templates/robots.txt using static_files/templates/robots.templ.txt
+7. Run an initial deployment of the project
 
         python manage.py deploy
 
     This command handles migration, static file collection, and initial
     loading of campus app fixtures if no data is available yet in the db
     (see "Working with the Data" below.)
+8. Create a superuser: `python manage.py createsuperuser`
 
 Upon completing these steps, you should be able to start Django
 (`python manage.py runserver`) successfully.
+
 
 ## Working with the Data
 
@@ -49,7 +63,12 @@ If there is updated campus data from the authoritative source, read `data/export
 ### helpful:
 http://docs.djangoproject.com/en/dev/howto/initial-data/
 
-## Code Contribution
-Never commit directly to master. Create a branch or fork and work on the new feature. Once it is complete it will be merged back to the master branch.
 
-If you use a branch to develop a feature, make sure to delete the old branch once it has been merged to master.
+## Development
+This project uses gulp to handle minifying/uglifying javascript. Because this project is old, we still use vanilla CSS in lieu of Sass and manually include vendor assets in the repo, so gulp tasks in this project are pretty minimal.
+
+Use the following steps to setup gulp for this project.
+
+1. Run `npm install` from the root directory to install node packages defined in package.json.
+2. Run `gulp default` to compile static assets.
+3. Make sure up-to-date concatenated/minified files (minified files in `static_files/`) are pushed to the repo when changes are made.
