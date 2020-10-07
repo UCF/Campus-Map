@@ -206,14 +206,14 @@ def locations(request):
         'groups'    : list(),
     }
 
-    for l in locations:
-        if (l.object_type == 'Building'):
+    for l in locations.all():
+        if (l.object_type == 'building'):
             context['buildings'].append(l)
-        elif(l.object_type == 'Location'):
+        elif(l.object_type == 'location'):
             context['locations'].append(l)
-        elif(l.object_type == 'RegionalCampus'):
+        elif(l.object_type == 'regionalcampus'):
             context['campuses'].append(l)
-        elif(l.object_type == 'Group'):
+        elif(l.object_type == 'group'):
                 context['groups'].append(l)
 
     return render(request, 'campus/locations.djt', context)
@@ -234,6 +234,9 @@ def location(request, loc, return_obj=False):
     if location.object_type in settings.REDIRECT_TYPES and not request.is_json():
         url = get_external_link(slugify(location.name))
         return HttpResponsePermanentRedirect(url)
+
+    if location.object_type == 'group':
+        location = Group.objects.get(pk=location.pk)
 
     base_url = request.build_absolute_uri(reverse('campus.views.home'))[:-1]
     html = location_html(location, request)
