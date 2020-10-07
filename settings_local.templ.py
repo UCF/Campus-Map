@@ -62,9 +62,9 @@ GOOGLE_API_KEY = ''
 LOCATION_REDIRECT_BASE = 'https://www.ucf.edu/location/'
 
 REDIRECT_TYPES = [
-    'Location',
-    'DiningLocation',
-    'Building'
+    'location',
+    'dininglocation',
+    'building'
 ]
 
 # Phonebook search service url
