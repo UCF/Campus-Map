@@ -95,7 +95,7 @@ def pages(request, page=None):
 def organizations(request):
     context = {'organizations': get_orgs()}
     orgs = get_orgs()['results']
-    half = len(orgs) / 2
+    half = int(len(orgs) / 2)
     error = None
     if not orgs:
         error = "Issue with phonebook search service"
