@@ -1706,7 +1706,7 @@ var CampusMap = function(options) {
             options.func(data);
           }
 
-          if(data.object_type == 'Group') {
+          if(data.object_type == 'group') {
             CURRENT_LOCATION = location_id;
             // Pan to the group center point
             MAP.panTo((new google.maps.LatLng(data[point_type][0], data[point_type][1])));

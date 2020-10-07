@@ -337,6 +337,9 @@ class MapObj(models.Model):
     def __unicode__(self):
         return '%s' % (self.name)
 
+    def __str__(self):
+        return '%s' % (self.name)
+
     class Meta:
         app_label = 'campus'
         ordering = ("name",)
@@ -418,7 +421,7 @@ class ParkingLot(MapObj):
         # same as fill, up opacity
         color = self.color_fill
         opacity = .70
-        kml_color = "%x%s" % (opacity * 255, color[2:])
+        kml_color = "%x%s" % (int(opacity * 255), color[2:])
         return kml_color
     color_line = property(_color_line)
 
@@ -678,6 +681,7 @@ class Group(MapObj):
     locations = models.ManyToManyField(GroupedLocation)
 
     def json(self, **kw):
+        print("Getting json from group")
         obj = super(Group, self).json(**kw)
         locations = {}
         locations['count'] = self.locations.count()
