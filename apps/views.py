@@ -294,13 +294,13 @@ def search(request):
         for loc in found_entries['locations']:
             query_match = loc.name.lower().find(query_string.lower())
             for org in found_entries['organizations']:
-                if 'bldg' in org.keys() and str(org['bldg']['import_id']) == loc.pk and query_match != -1:
+                if 'bldg_id' in org.keys() and str(org['bldg_id']) == loc.pk and query_match != -1:
                     _locations.append(loc)
                     break
 
         for loc in found_entries['locations']:
             for org in found_entries['organizations']:
-                if 'bldg' in org.keys() and str(org['bldg']['import_id']) == loc.pk and loc not in _locations:
+                if 'bldg_id' in org.keys() and str(org['bldg_id']) == loc.pk and loc not in _locations:
                     _locations.append(loc)
                     break
 
