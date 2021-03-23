@@ -1,6 +1,14 @@
 # [UCF Campus Map - Main Campus and Other College Locations in Central Florida](https://map.ucf.edu)
 Campus map ... find what you're looking for at UCF.
 
+
+## Requirements
+
+### Development Requirements
+- node
+- gulp-cli
+
+
 ## Setup
 Ensure your environment has virtualenv and pip installed for python
 1. Create virtual environment
@@ -24,6 +32,7 @@ Ensure your environment has virtualenv and pip installed for python
 
 Upon completing these steps, you should be able to start Django
 (`python manage.py runserver`) successfully.
+
 
 ## Working with the Data
 
@@ -49,7 +58,12 @@ If there is updated campus data from the authoritative source, read `data/export
 ### helpful:
 http://docs.djangoproject.com/en/dev/howto/initial-data/
 
-## Code Contribution
-Never commit directly to master. Create a branch or fork and work on the new feature. Once it is complete it will be merged back to the master branch.
 
-If you use a branch to develop a feature, make sure to delete the old branch once it has been merged to master.
+## Development
+This project uses gulp to handle minifying/uglifying javascript. Because this project is old, we still use vanilla CSS in lieu of Sass and manually include vendor assets in the repo, so gulp tasks in this project are pretty minimal.
+
+Use the following steps to setup gulp for this project.
+
+1. Run `npm install` from the root directory to install node packages defined in package.json.
+2. Run `gulp default` to compile static assets.
+3. Make sure up-to-date concatenated/minified files (minified files in `static_files/`) are pushed to the repo when changes are made.
