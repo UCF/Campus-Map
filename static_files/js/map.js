@@ -13,8 +13,7 @@ var CampusMap = function(options) {
       'zoom_control'        : true,
       'street_view_control' : true,
       'map_type_control'    : true,
-      'infobox_location_id' : null,
-      'illustrated'         : false
+      'infobox_location_id' : null
     },
 
     options = $.extend({}, default_options, options);
@@ -81,9 +80,7 @@ var CampusMap = function(options) {
       parts = parts.splice(3);
       $.each(parts, function(index, part) {
         if(part != 'map' && part != '') {
-          if(part == 'illustrated') {
-            options.illustrated = true;
-          } else if (part == 'emergency') {
+          if (part == 'emergency') {
             for (l in emergencyLayers) {
               ACTIVATED_LAYERS.push(emergencyLayers[l]);
             }
@@ -114,8 +111,7 @@ var CampusMap = function(options) {
         google.maps.MapTypeId.ROADMAP,
         google.maps.MapTypeId.SATELLITE,
         google.maps.MapTypeId.HYBRID,
-        google.maps.MapTypeId.TERRAIN,
-        'illustrated'
+        google.maps.MapTypeId.TERRAIN
       ],
       position: google.maps.ControlPosition.RIGHT_BOTTOM
     };
@@ -142,51 +138,21 @@ var CampusMap = function(options) {
     mapTypeControlOptions: mapTypes
   };
 
-  // Illustrated Map
-  IMAP_OPTIONS = {
-    zoom              : 14,
-    center            : new google.maps.LatLng(85.04591,-179.94189), // world's corner
-    mapTypeId         : 'illustrated',
-    panControl        : options.pan_control,
-    zoomControl       : options.zoom_control,
-    streetViewControl : options.street_view_control,
-    mapTypeControl    : options.map_type_control
-  };
-  IMAP_TYPE = {
-    tileSize : new google.maps.Size(256,256),
-    minZoom: 12,
-    maxZoom :16, //can go up to 18
-    getTile : function(coordinate, zoom, ownerDocument) {
-      var div                   = ownerDocument.createElement('div');
-      div.style.width           = this.tileSize.width + 'px';
-      div.style.height          = this.tileSize.height + 'px';
-      div.style.backgroundImage = UTIL.get_illustrated_tile(coordinate,zoom);
-      return div;
-    },
-    name : "Illustrated",
-    alt  : "Show illustrated map"
-  };
-
 
   // Setup and configure the map
   google.maps.visualRefresh = true;
-  MAP = new google.maps.Map(document.getElementById(options.canvas_id), options.illustrated ? IMAP_OPTIONS : GMAP_OPTIONS);
-  MAP.mapTypes.set('illustrated', IMAP_TYPE); // Register the illustrated map type
+  MAP = new google.maps.Map(document.getElementById(options.canvas_id), GMAP_OPTIONS);
   google.maps.event.addListener(MAP, 'maptypeid_changed', function() {
     var type    = MAP.mapTypeId,
-      options = (type === 'illustrated') ? IMAP_OPTIONS : GMAP_OPTIONS,
+      options = GMAP_OPTIONS,
       gpoints = LAYER_MANAGER.get_layer('gpoints'),
       ipoints = LAYER_MANAGER.get_layer('ipoints');
     MAP.setZoom(options.zoom);
     MAP.setCenter(options.center);
-    if(type == 'illustrated') {
-      gpoints.deactivate();
-      ipoints.activate();
-    } else {
-      ipoints.deactivate();
-      gpoints.activate();
-    }
-    INFO_MANAGER.clear();
+
+    ipoints.deactivate();
+    gpoints.activate();
+
     if(CURRENT_LOCATION != null) {
       UTIL.highlight_location(CURRENT_LOCATION);
     }
@@ -662,7 +628,7 @@ var CampusMap = function(options) {
       if(isDesktopWidth) {
         if(!activated_layer) {
           // Display the google map points layer when the  map loads
-          options.illustrated ? (LAYER_MANAGER.get_layer('ipoints')).toggle() : (LAYER_MANAGER.get_layer('gpoints')).toggle();
+          (LAYER_MANAGER.get_layer('gpoints')).toggle();
         }
       }
     })();
@@ -1252,22 +1218,11 @@ var CampusMap = function(options) {
         'title'   : false,
         'subject' : "UCF Campus Map",
         'body'    : escape("UCF Campus Map\nhttps://map.ucf.edu/"),
-        'print'   : BASE_URL + '/print/?',
-        'toggle_illustrated' : false
+        'print'   : BASE_URL + '/print/?'
       };
 
       // setting
       var s = $.extend({}, defaults, options);
-
-      var illustrated = (MAP.mapTypeId === 'illustrated');
-
-      if(s.toggle_illustrated){
-        var href = $('#print').attr('href');
-        href = href.replace('&illustrated', '');
-        if(illustrated) href = href + '&illustrated';
-        $('#print').attr('href', href);
-        return;
-      }
 
       if(s.loc_id){
         var title   = escape(s.title);
@@ -1283,7 +1238,6 @@ var CampusMap = function(options) {
       $('#email').attr('href', mailto);
 
       // update print button
-      if(illustrated) s.print = s.print + '&illustrated';
       $('#print').attr('href', s.print);
     };
     this.change_buttons();
@@ -1614,32 +1568,6 @@ var CampusMap = function(options) {
   function Util() {
     var that = this;
 
-    // Returns the URL of a illustrated map tiles based on the specified
-    // coordinate and zoom. If coordinate and/or zoom are outside the illustrated
-    // map's viewable area, return a white tile.
-    this.get_illustrated_tile = function(coordinate, zoom) {
-      var filename = null,
-        no_tile  = 'white.png',
-        // Smallest map dimensions
-        dimensions     = {x:2.5, y:3.5},
-        scaling_factor = Math.pow(2, (zoom - 13));
-
-      if( // Outside bounds
-        (zoom < 12 || coordinate.y < 0 || coordinate.x < 0)
-        ||
-        // Too small
-        (zoom === 12 && (coordinate.y > 1 || coordinate.x > 2))
-        ||
-        // Too big
-        (coordinate.x >= (dimensions.x * scaling_factor) || coordinate.y >= (dimensions.y*scaling_factor))
-        ) {
-        filename = no_tile;
-      } else {
-        filename = 'zoom-' + zoom + '/' + zoom + '-' + coordinate.x + '-' + coordinate.y + '.jpg';
-      }
-      return 'url("https://cdn.ucf.edu/map/tiles/' + filename + '?_=' + new Date().getTime() + '")';
-    }
-
     // Wraps a specified term with start and end wraps. Preserves capitalization.
     this.highlight_term = function(string, term, link) {
       if(typeof link != 'undefined' && link) {
@@ -1698,9 +1626,9 @@ var CampusMap = function(options) {
         dataType :'json',
         success  : function(data, text_status, jq_xhr) {
           var map_type       = MAP.mapTypeId;
-          var point_type     = (map_type === 'illustrated') ? 'illustrated_point' : 'googlemap_point',
-            default_zoom   = (map_type === 'illustrated') ? IMAP_OPTIONS.zoom : GMAP_OPTIONS.zoom,
-            default_center = (map_type === 'illustrated') ? IMAP_OPTIONS.center : GMAP_OPTIONS.center;
+          var point_type     = 'googlemap_point',
+            default_zoom   = GMAP_OPTIONS.zoom,
+            default_center = GMAP_OPTIONS.center;
 
           if(typeof options.func != 'undefined') {
             options.func(data);
@@ -1729,11 +1657,7 @@ var CampusMap = function(options) {
                       if(SIMPLE) {
                         zoom = 16;
                       } else {
-                        if(map_type == 'illustrated') {
-                          zoom = 16;
-                        } else {
-                          zoom = 19;
-                        }
+                        zoom = 19;
                       }
 
                       // Collect the position of each infobox
@@ -1764,12 +1688,7 @@ var CampusMap = function(options) {
                       if(SIMPLE) {
                         MAP.setZoom(zoom - 1);
                       } else {
-                        if(map_type == 'illustrated') {
-                          if(zoom < 12) zoom = 12;
-                          if(zoom > 16) zoom = 16;
-                        } else {
-                          zoom = (zoom < 15) ? 15 : zoom;
-                        }
+                        zoom = (zoom < 15) ? 15 : zoom;
                         MAP.setZoom(zoom);
                       }
                     }

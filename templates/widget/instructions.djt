@@ -47,25 +47,11 @@
 					$(this).parent().before(copy);
 				});
 
-			$('#widget_illustrated')
-				.change(function() {
-					var zoom = $('#widget_zoom');
-					if($(this).is(':checked')) {
-						if(zoom.val() == '12') {
-							zoom.val('14');
-						}
-					} else {
-						if(zoom.val() == '14') {
-							zoom.val('12');
-						}
-					}
-				})
 			form.submit(function(e) {
 				e.preventDefault();
 				var title                 = $('#widget_title').val(),
 					width                 = $('#widget_width').val(),
 					height                = $('#widget_height').val(),
-					illustrated           = $('#widget_illustrated').attr('checked'),
 					ssl                   = $('#widget_ssl').attr('checked'),
 					zoom                  = $('#widget_zoom').val(),
 					building_els          = $('.widget_building_id:has(option:selected[value!=""])'),
@@ -123,14 +109,11 @@
 				}
 
 				if(!dimension_error) {
-					// Normalize illustrated param
-					illustrated = (illustrated) ? 'y':'n';
 
 					// Construct IFRAME URL params
 					iframe_params.push('title='+title);
 					iframe_params.push('width='+width);
 					iframe_params.push('height='+height);
-					iframe_params.push('illustrated='+illustrated);
 					$.each(building_els, function(index, building_el) {
 						var building_id = $(building_el).val();
 
@@ -167,13 +150,7 @@
 
 							if(lat_lngs) {
 								alt_content += '<a style="display:block;color:#000;font-weight:bold;font-size:16px;" href="' + encodeURI(map_base_url + '?show=' + index) + '">' + selection.text() + '</a>';
-								if(illustrated && lat_lngs[1][0] != null && lat_lngs[1][1] != null) {
-									markers.push('red|label:' + String.fromCharCode(64 + index) + '|' + lat_lngs[1].join(','));
-									if(!center_found) {
-										center_found = true;
-										static_params.push('center=' + lat_lngs[1].join(','));
-									}
-								} else if(lat_lngs[0][0] != null && lat_lngs[0][1] != null) {
+								if(lat_lngs[0][0] != null && lat_lngs[0][1] != null) {
 									markers.push('red|label:' + String.fromCharCode(64 + index) + '|' + lat_lngs[0].join(','));
 									if(!center_found) {
 										center_found = true;
@@ -252,11 +229,6 @@
 					<input type="checkbox" id="widget_ssl" />
 				</div>
 				<p>(Check this box if you are embedding the map on a secure website.)
-				<div class="field">
-					<label for="widget_illustrated">Illustrated:</label>
-					<input type="checkbox" id="widget_illustrated" />
-				</div>
-				<p>(Display an illustrated map instead of the standard road map.)</p>
 				<div class="field">
 					<label for="widget_zoom">Zoom Level:</label>
 					<input type="text" id="widget_zoom" value="12" />

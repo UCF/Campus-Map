@@ -11,80 +11,27 @@
 					width                 = {{width}},
 					height                = {{height}},
 					title                 = '{{title}}',
-					illustrated           = {{illustrated}},
 					zoom                  = {{zoom|default:'false'}},
 					map_element           = document.getElementById('map'),
 					map_options           = {},
 					map                   = undefined,
 					infobox               = undefined,
 					buildings             = {{buildings|safe}},
-					googlemap_center      = {{googlemap_center}},
-					illustrated_center    = {{illustrated_center}};
+					googlemap_center      = {{googlemap_center}};
 
 				if(googlemap_center == null) {
 					googlemap_center = new google.maps.LatLng(28.6022,-81.2004)
 				} else {
 					googlemap_center = new google.maps.LatLng(googlemap_center[0],googlemap_center[1]);
 				}
-				if(illustrated_center == null) {
-					illustrated_center = new google.maps.LatLng(85.04591,-179.92189);
-				} else {
-					illustrated_center = new google.maps.LatLng(illustrated_center[0], illustrated_center[1]);
-				}
 
 				//
 				// Construct the map options and create the map
 				//
-				var imap_type = {
-					tileSize : new google.maps.Size(256,256),
-					minZoom  : 12,
-					maxZoom  : 16, //can go up to 18
-					getTile  : function(coord, zoom, ownerDocument) {
-						var div                   = ownerDocument.createElement('div');
-						div.style.width           = this.tileSize.width + 'px';
-						div.style.height          = this.tileSize.height + 'px';
-						div.style.backgroundImage = this.bg(coord,zoom);
-						return div;
-					},
-					name : "Illustrated",
-					alt  : "Show illustrated map",
-					bg   : function(coord,zoom) {
-						var tile = "zoom-" + zoom + "/" + zoom + "-" + coord.x + "-" + coord.y + ".jpg";
-						var nope = "white.png";
-
-						// check to see if requested tile for this zoom is within bounds,
-						// if not, return a whilte tile
-						if(zoom < 12 || coord.y<0 || coord.x<0){
-							tile = nope;
-						} else if( zoom === 12){
-							// map is 2 tiles tall, 3 wide (zero indexed)
-							if(coord.y > 1 || coord.x > 1){ tile = nope; }
-						} else {
-							// smallest map is 5x3
-							// for each zoom a tile is divided equally into 4 parts
-							var wide = 2.5;
-							var tall = 3.5;
-							var factor = Math.pow(2, (zoom - 13));
-							if( coord.x >= wide*factor || coord.y >= tall*factor){ tile = nope; }
-						}
-
-						return 'url("//cdn.ucf.edu/map/tiles/' + tile + '?_=' + new Date().getTime() + '")';
-					}
-				};
-
-				if(illustrated) {
-					map_options = {
-						zoom           : (zoom ? zoom : 12),
-						center         : illustrated_center,
-						mapTypeId      : 'illustrated',
-						mapTypeControl : true
-					};
-				} else {
-					map_options = {
-						zoom      : (zoom ? zoom : 14),
-						center    : googlemap_center,
-						mapTypeId : google.maps.MapTypeId.ROADMAP
-					}
+				map_options = {
+					zoom      : (zoom ? zoom : 14),
+					center    : googlemap_center,
+					mapTypeId : google.maps.MapTypeId.ROADMAP
 				}
 
 				// Shared map options
@@ -100,16 +47,13 @@
 				// Create the map
 				google.maps.visualRefresh = true;
 				map = new google.maps.Map(map_element, map_options);
-				map.mapTypes.set('illustrated',imap_type);
 
 				// Create an infobox or marker if needed
 				for(var index in buildings) {
 					var building         = buildings[index],
 						map_point_latlng = null;
 
-					if(illustrated && building.illustrated_point != null) {
-						map_point_latlng = new google.maps.LatLng(building.illustrated_point[0],building.illustrated_point[1]);
-					} else if(building.googlemap_point != null) {
+					if(building.googlemap_point != null) {
 						map_point_latlng = new google.maps.LatLng(building.googlemap_point[0],building.googlemap_point[1]);
 					}
 
