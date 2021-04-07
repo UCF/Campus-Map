@@ -35,7 +35,6 @@ class Command(BaseCommand):
                 'object_type'       : 'obj_type',
                 'permit_type'       : 'perm_type',
                 'abbreviation'      : 'abbrev',
-                'illustrated_point' : 'ill_point',
                 'googlemap_point'   : 'gmap_point',
                 'profile_link'      : 'prof_link',
             }

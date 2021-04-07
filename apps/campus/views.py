@@ -801,7 +801,6 @@ def widget(request):
         context['height']      = request.GET.get('height',      256)
         context['title']       = request.GET.get('title',       'UCF Map')
         building_ids           = request.GET.getlist('building_id')
-        context['illustrated'] = request.GET.get('illustrated', 'n')
         context['ssl']         = request.GET.get('ssl',         'n')
         context['zoom']        = request.GET.get('zoom',        None)
 
@@ -816,25 +815,11 @@ def widget(request):
         except ValueError:
             context['height'] = 256
 
-        if context['illustrated'] not in ('y', 'n', 'Y', 'N'):
-            context['illustrated'] = 'n'
-        if context['illustrated'].lower() in ('y', 'Y'):
-            context['illustrated'] = True
-        elif context['illustrated'].lower() in ('n', 'N'):
-            context['illustrated'] = False
-
         context['buildings'] = []
         for building_id in building_ids:
             try:
                 building = MapObj.objects.get(id=building_id)
-                if context['illustrated']:
-                    if building.illustrated_point is not None:
-                        context['buildings'].append({
-                            'illustrated_point' : json.loads(building.illustrated_point),
-                            'id'                : building.id,
-                            'title'             : building.title
-                        })
-                elif building.googlemap_point is not None:
+                if building.googlemap_point is not None:
                     context['buildings'].append({
                         'googlemap_point'   : json.loads(building.googlemap_point),
                         'id'                : building.id,
@@ -844,17 +829,10 @@ def widget(request):
                 pass
 
         context['googlemap_center']   = json.dumps(None)
-        context['illustrated_center'] = json.dumps(None)
         if len(context['buildings']) > 0:
-            if context['illustrated']:
-                context['illustrated_center'] = json.dumps(reduce(midpoint_func, [b['illustrated_point'] for b in context['buildings']]))
-            else:
-                context['googlemap_center']   = json.dumps(reduce(midpoint_func, [b['googlemap_point'] for b in context['buildings']]))
+            context['googlemap_center']   = json.dumps(reduce(midpoint_func, [b['googlemap_point'] for b in context['buildings']]))
 
         context['buildings']          = json.dumps(context['buildings'])
-
-        # Convert to JavaScript boolean
-        context['illustrated'] = str(context['illustrated']).lower()
 
         if context['ssl'] not in ('y', 'n', 'Y', 'N'):
             context['ssl'] = 'n'

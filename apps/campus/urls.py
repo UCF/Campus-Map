@@ -8,7 +8,6 @@ urlpatterns = [
     url(r'^$', views.home, { 'points' : True }, name='campus.views.home'),
     url(r'^locations/$', views.locations, name='campus.views.locations'),
     url(r'^locations/(?P<loc>[\w-]+)/([^/]+/)??$', views.location, name='campus.views.location'),
-    url(r'^illustrated/$', views.home, name='campus.views.illustrated'),
     url(r'^sidewalks/$', views.sidewalks, name='campus.views.sidewalks'),
     url(r'^bikeracks/$', views.bikeracks, name='campus.views.bikeracks'),
     url(r'^charging-stations', views.electric_charging_stations, name='campus.views.electric_charging_stations'),
