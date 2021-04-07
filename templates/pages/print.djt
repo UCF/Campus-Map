@@ -54,7 +54,6 @@
 	</div>
 
 	<script>
-	{% if not illustrated %}
 	/**************************************************************************\
 		Create a google map
 	\**************************************************************************/
@@ -83,81 +82,6 @@
 
 	google.maps.visualRefresh = true;
 	var map = new google.maps.Map(document.getElementById("map-canvas"), options);
-
-
-	{% else %}
-	/**************************************************************************\
-		Illustrated Map
-	\**************************************************************************/
-	var loc = {
-		{% if loc and loc.illustrated_point %}
-			set  : true,
-			x    : {{loc.illustrated_point}}[0],
-			y    : {{loc.illustrated_point}}[1],
-			name : "{{loc.name}}"
-		{% else %}
-			set  : false,
-			x    : 85.045714130897840,
-			y    : -179.917893864798690,
-			name : null
-		{% endif %}
-	};
-	var center = new google.maps.LatLng(loc.x, loc.y);
-
-	var options = {
-		zoom: 16,
-		center: center,
-		mapTypeControl: false,
-		mapTypeId: google.maps.MapTypeId.ROADMAP
-	};
-
-	var CoordMapType= function(){};
-	CoordMapType.prototype.tileSize = new google.maps.Size(256,256);
-	CoordMapType.prototype.minZoom = 12;
-	CoordMapType.prototype.maxZoom = 17;
-	CoordMapType.prototype.alt = "UCF Illustrated Campus Map";
-	CoordMapType.prototype.getTile = function(coord, zoom, ownerDocument) {
-		var div = ownerDocument.createElement('DIV');
-		div.style.width = this.tileSize.width + 'px';
-		div.style.height = this.tileSize.height + 'px';
-		div.style.backgroundImage = 'url("https://cdn.ucf.edu/map/tiles/' + getTileUrl(coord, zoom) + '?_=' + new Date().getTime() + '")';
-		return div;
-	};
-
-	var getTileUrl = function(coord,zoom) {
-		var tile = "zoom-" + zoom + "/" + zoom + "-" + coord.x + "-" + coord.y + ".jpg";
-		var nope = "white.png"; //white tile
-		if(zoom < 12 || coord.y<0 || coord.x<0){
-			return nope;
-		} else if( zoom === 12){
-			if(coord.y >1 || coord.x > 2) return nope;
-		} else {
-			var wide = 2.5;
-			var tall = 3.5;
-			var factor = Math.pow(2, (zoom - 13));
-			if( coord.x >= wide*factor || coord.y >= tall*factor) return nope;
-		}
-		return tile;
-	};
-
-	var myOptions = {
-	  zoom: 14,
-	  center: center,
-	  mapTypeControl: false
-	}
-
-	var map;
-	var coordinateMapType = new CoordMapType();
-	google.maps.visualRefresh = true;
-	map = new google.maps.Map(document.getElementById("map-canvas"), myOptions);
-
-	// Now attach the coordinate map type to the map's registry
-	map.mapTypes.set('coordinate',coordinateMapType);
-
-	// We can now set the map to use the 'coordinate' map type
-	map.setMapTypeId('coordinate');
-
-	{% endif %}
 
 
 	/**************************************************************************\
