@@ -45,4 +45,7 @@ def map_context(request):
 
     context_extras['google_api_key'] = settings.GOOGLE_API_KEY
 
+    if settings.GA_ACCOUNT:
+        context_extras['ga_account'] = settings.GA_ACCOUNT
+
     return context_extras
