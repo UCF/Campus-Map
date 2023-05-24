@@ -59,6 +59,8 @@ REQUEST_TIMEOUT = 10
 
 GOOGLE_API_KEY = ''
 
+GA_ACCOUNT = ''
+
 LOCATION_REDIRECT_BASE = 'https://www.ucf.edu/location/'
 
 REDIRECT_TYPES = [

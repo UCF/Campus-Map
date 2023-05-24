@@ -36,15 +36,16 @@
 
 		{% if not debug %}
 		<meta name="google-site-verification" content="8hYa3fslnyoRE8vg6COo48-GCMdi5Kd-1qFpQTTXSIw" />
+    {% if ga_account %}
+    <script type="text/javascript" async src="https://www.googletagmanager.com/gtag/js?id={{ ga_account }}"></script>
 		<script type="text/javascript">
-			var _gaq = _gaq || [];
-			_gaq.push(['_setAccount', 'UA-6464593-26']);
-			_gaq.push(['_trackPageview']);    (function() {
-				var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-				ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-			})();
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', '{{ ga_account }}');
 		</script>
+    {% endif %}
 		{% endif %}
 
 	</head>
@@ -87,22 +88,6 @@
 	</script>
 
 	{% block js %}{% endblock %}
-
-	{% if not debug %}
-	{# analytics #}
-	{% comment %}
-	<script type="text/javascript">
-		var _gaq = _gaq || [];
-		_gaq.push(['_setAccount', 'UA-6464593-21']);
-		_gaq.push(['_trackPageview']);
-		(function() {
-			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-		})();
-	</script>
-	{% endcomment %}
-	{% endif %}
 
 </body>
 </html>
