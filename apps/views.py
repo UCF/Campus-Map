@@ -269,7 +269,8 @@ def search(request):
                 'type': item.__class__.__name__,
                 'name': item.name,
                 'id': item.pk,
-                'link': item.link}
+                'link': item.link,
+                'abbr': item.abbreviation}
 
         def extended_meta(item):
             return item.json()
