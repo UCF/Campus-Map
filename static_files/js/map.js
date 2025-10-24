@@ -1371,7 +1371,8 @@ var CampusMap = function(options) {
                           }
                         });
 
-                        if(loc.orgs.length && loc.link != highlighted_loc_link) {
+                        if(loc.orgs.length && loc.link != highlighted_loc_link ||
+                          (search_query?.toLowerCase() == loc.abbr?.toLowerCase())) {
                           loc.link = highlighted_loc_link;
                           best_matches.push(loc);
                         } else if(loc.orgs.length) {
@@ -1387,6 +1388,7 @@ var CampusMap = function(options) {
                       // results list will be too long
                       var results_html = '';
                       var org_loc_count = 0;
+
                       $.each(best_matches.concat(better_matches, good_matches), function(index, loc) {
                         var org_html = '';
 
