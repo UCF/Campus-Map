@@ -1371,7 +1371,8 @@ var CampusMap = function(options) {
                           }
                         });
 
-                        if(loc.orgs.length && loc.link != highlighted_loc_link || search_query.toLowerCase() == loc.abbr.toLowerCase()) {
+                        if(loc.orgs.length && loc.link != highlighted_loc_link ||
+                          (search_query?.toLowerCase() == loc.abbr?.toLowerCase())) {
                           loc.link = highlighted_loc_link;
                           best_matches.push(loc);
                         } else if(loc.orgs.length) {
